@@ -1,0 +1,54 @@
+﻿<div class="navigation"></div>
+<div class="contacts-list">
+    <div class="contacts-title">
+        <h4>
+            Lista de Cursos 
+        </h4>
+        <div class="buttons">
+            <button type="button" ng-click="createContact()" ng-show="userCanAdd">Añadir Contacto</button>
+		</div>
+		<div>
+			<input type="text" ng-model="search" placeholder="Búsqueda de Contacto" />
+        </div>
+    </div>
+    <div style="width: 938px; height: 1110px" ng-grid="gridOptions"></div>
+	<div class="footer-grid">
+		<button type="button" ng-click="sync()">Guardar</button>
+		<button type="button" ng-click="requestUpdate()" ng-show="userCanRequestUpdate">Solicitar Actualización</button>
+	    <div ng-show="userCanMove">
+	        <label>Mover a:</label>
+	        <select name="organization" ui-select2 ng-model="organization" data-placeholder="Seleccione" style="width: 300px;">
+	            <option value=""></option>
+	            <option value="{{item.OrganizationId}}" ng-repeat="item in organizationsList">{{item.Name}}</option>
+	        </select>
+	        <button type="button" ng-click="moveContacts()">Mover</button>
+	    </div>
+	    @{bool isCentralAdmin = User.IsInRole("CentralAdmin"), isContactAdmin = User.IsInRole("ContactAdmin");}
+        @if (isCentralAdmin || isContactAdmin) { <button type="button" ng-click="exportContacts()">Exportar</button> }
+	</div>
+	<script type="text/ng-template" id="modalRequest">
+        <div class="modal-header">
+			<h3>Solicitar actualización</h3>
+		</div>
+		<div class="modal-body">
+			<label>Mensaje:</label>
+			<textarea type="text" data-ng-model="message"></textarea>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" data-ng-click="ok(message)">Solicitar</button>
+			<button type="button" class="btn" data-ng-click="close()">Cancelar</button>
+		</div>
+    </script>
+	<script type="text/ng-template" id="modalContacts">
+        <div class="modal-header">
+			<h3>Exportar Contactos</h3>
+		</div>
+		<div class="modal-body contacts">
+			<div style="width: 853px; height: 1110px" ng-grid="exportGridOptions"></div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" data-ng-click="ok()">Descargar archivo</button>
+			<button type="button" class="btn" data-ng-click="close()">Cancelar</button>
+		</div>
+    </script>
+</div>
