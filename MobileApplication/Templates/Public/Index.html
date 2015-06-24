@@ -1,0 +1,22 @@
+﻿<h1>Incluso</h1>
+<h2>Estudia | Trabaja | Emprende</h2>
+<form name="form">
+
+    <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <input type="text" name="username" id="Text1" class="form-control" ng-model="vm.username" required placeholder="Correo electronico" />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Correo es requerido</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <input type="password" name="password" id="password1" class="form-control" ng-model="vm.password" required placeholder="Contraseña" />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password es requerido</span>
+        </div>
+        <div class="form-actions">
+            <button ng-click="login()" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Entrar</button>
+        </div>
+    o<br />
+    <button ng-click="loginWithFacebook()">Entrar con Facebook</button>
+</form>
+
+            <a href="#/register"><h3>Soy nuevo y deseo registrarme</h3></a>
+            <a href="#/forgotpassword"><h3>Recuperar contraseña</h3></a>
+
