@@ -28,8 +28,6 @@ angular
             $scope.getDataAsync = function () {
 
                 var courses = new models.Courses();
-                //courses.storage.clear();
-                //courses.storage.sync.pull();
 
                     courses.fetch({
                        local: true,

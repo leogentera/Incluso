@@ -211,3 +211,16 @@ Caused by: org.eclipse.swt.SWTException: Widget is disposed
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
 	... 60 more
+!SESSION 2015-06-24 21:28:55.972 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_67
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -showlocation -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86 -showlocation -data C:\Projects\git\Incluso -showlocation
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2015-06-24 21:29:03.190
+!MESSAGE No repository found at http://downloads.zend.com/studio-eclipse/updates/11_1.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2015-06-24 21:29:04.881
+!MESSAGE No repository found at http://downloads.zend.com/studio-eclipse/updates-extra/11_1.

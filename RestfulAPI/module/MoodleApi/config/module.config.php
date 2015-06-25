@@ -4,7 +4,7 @@ return array(
         'invokables' => array(
             'MoodleApi\Controller\Course' => 'MoodleApi\Controller\CourseController',
             'MoodleApi\Controller\User' => 'MoodleApi\Controller\UserController',
-            'MoodleApi\Controller\Index' => 'MoodleApi\Controller\IndexController',
+            'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
         ),
     ),
     'router' => array(
@@ -40,6 +40,15 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'MoodleApi\Controller\User',
+                    ),
+                ),
+            ),
+            'authentication' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/authentication',
+                    'defaults' => array(
+                        'controller' => 'MoodleApi\Controller\Authentication',
                     ),
                 ),
             ),

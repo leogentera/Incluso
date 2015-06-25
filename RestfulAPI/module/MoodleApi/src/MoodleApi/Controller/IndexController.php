@@ -9,13 +9,13 @@
 
 namespace MoodleApi\Controller;
 
-use MoodleApi\Utilities\AbstractRestfulJsonController;
 use Zend\View\Model\JsonModel;
 
-class IndexController extends AbstractRestfulJsonController
+class IndexController extends Zend_Controller_Action
 {
-    public function getList()
+    public function indexAction()
     {
-        return new JsonModel(array('data' => "Welcome to the Zend Framework Moodle API example"));
+    	$this->_helper->json(array('data' => "Welcome to the Zend Framework Moodle API example"));
+        //return new JsonModel(array('data' => "Welcome to the Zend Framework Moodle API example"));
     }
 }

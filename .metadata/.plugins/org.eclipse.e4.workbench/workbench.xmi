@@ -6,6 +6,8 @@
   <children xsi:type="basic:TrimmedWindow" xmi:id="_XQO_UhawEeWl694xdd9GTg" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_XX3RUxawEeWl694xdd9GTg" label="%trimmedwindow.label.eclipseSDK" x="78" y="78" width="1024" height="768">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
+    <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workingSets/>"/>
+    <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1435199339049"/>
     <tags>topLevel</tags>
     <tags>shellMaximized</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_XX3RUxawEeWl694xdd9GTg" selectedElement="_XX3RVBawEeWl694xdd9GTg" horizontal="true">
@@ -63,7 +65,7 @@
           <tags>persp.newWizSC:org.zend.php.framework.ui.wizards.NewZendItemWizard</tags>
           <tags>persp.actionSet:org.zend.php.framework.ZendToolActionSet</tags>
           <tags>persp.viewSC:org.zend.php.server.ui.views.ServersView</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_XbBTARawEeWl694xdd9GTg" selectedElement="_XbBTBBawEeWl694xdd9GTg" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_XbBTARawEeWl694xdd9GTg" selectedElement="_XbBTAhawEeWl694xdd9GTg" horizontal="true">
             <children xsi:type="basic:PartStack" xmi:id="_XbBTAhawEeWl694xdd9GTg" elementId="topLeft" containerData="2200" selectedElement="_XbBTAxawEeWl694xdd9GTg">
               <tags>newtablook</tags>
               <tags>active</tags>
@@ -149,13 +151,14 @@
       <tags>categoryTag:General</tags>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_Xa_d0RawEeWl694xdd9GTg" elementId="org.eclipse.ui.views.ContentOutline" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Outline" iconURI="platform:/plugin/org.eclipse.ui.views/icons/full/eview16/outline_co.png" closeable="true">
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
       <menus xmi:id="_XgIcgBawEeWl694xdd9GTg" elementId="org.eclipse.ui.views.ContentOutline">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
-      <toolbar xmi:id="_XgIcgRawEeWl694xdd9GTg" elementId="org.eclipse.ui.views.ContentOutline" visible="false"/>
+      <toolbar xmi:id="_XgIcgRawEeWl694xdd9GTg" elementId="org.eclipse.ui.views.ContentOutline"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_Xa_d0hawEeWl694xdd9GTg" elementId="org.eclipse.php.ui.projectOutline" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="PHP Project Outline" iconURI="platform:/plugin/org.eclipse.php.ui/icons/full/obj16/php_project_outline.gif" closeable="true">
       <tags>View</tags>
@@ -184,7 +187,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XZLf8BawEeWl694xdd9GTg" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_XZN8NhawEeWl694xdd9GTg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_XQmy6xawEeWl694xdd9GTg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_7tcBpRrhEeWGZre8PLjbnA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_XQmy6xawEeWl694xdd9GTg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XZLf8RawEeWl694xdd9GTg" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -205,7 +208,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XZMHABawEeWl694xdd9GTg" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_XZPKUxawEeWl694xdd9GTg" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_XQjvhhawEeWl694xdd9GTg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_7tfE8xrhEeWGZre8PLjbnA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_XQjvhhawEeWl694xdd9GTg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XZMHARawEeWl694xdd9GTg" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>

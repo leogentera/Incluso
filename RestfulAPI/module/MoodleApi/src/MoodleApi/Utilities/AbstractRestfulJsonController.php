@@ -6,6 +6,15 @@ use Zend\Http\Response;
 
 class AbstractRestfulJsonController extends AbstractRestfulController
 {
+	
+    private $config;
+    public function getConfig() {
+    	if ($this->config == null) {
+    		$this->config = $this->getServiceLocator()->get('config');
+    	}
+    	return $this->config;
+    }
+    
     protected function methodNotAllowed()
     {
         $this->response->setStatusCode(405);

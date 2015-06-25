@@ -3,6 +3,7 @@
 return array(
     'MoodleApi\Module'                        => __DIR__ . '/Module.php',
     'MoodleApi\Controller\CourseController' => __DIR__ . '/src/MoodleApi/Controller/CourseController.php',
-    'MoodleApiTest\Framework\TestCase'        => __DIR__ . '/tests/MoodleApi/Framework/TestCase.php',
+    'MoodleApi\Controller\IndexController' => __DIR__ . '/src/MoodleApi/Controller/IndexController.php',
+		'MoodleApiTest\Framework\TestCase'        => __DIR__ . '/tests/MoodleApi/Framework/TestCase.php',
     'MoodleApiTest\SampleTest'                => __DIR__ . '/tests/MoodleApi/SampleTest.php',
 );
