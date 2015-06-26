@@ -42,18 +42,29 @@ angular
                     rememberCredentials: $("[name='rememberCredentials']")[0].checked,
                 };
 
+                $http(
+                    {
+                        method: 'POST',
+                        url: API_RESOURCE.format("authentication"), 
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                        data: $.param({username:userCredentials.username, password:userCredentials.password})
+                    }
+                    ).success(function(data, status, headers, config) {
+                        //succesful credentials
+                        //_syncAll(function() {
+                        //    $location.path('/ProgramaDashboard');
+                        //});
 
-                //succesful credentials
-                if (userCredentials.rememberCredentials) {
-                    localStorage.setItem("Credentials", JSON.stringify(userCredentials));
-                } else {
-                    localStorage.removeItem("Credentials");
-                }
+                        if (userCredentials.rememberCredentials) {
+                            localStorage.setItem("Credentials", JSON.stringify(userCredentials));
+                        } else {
+                            localStorage.removeItem("Credentials");
+                        }
 
-                _syncAll(function() {
-                    $location.path('/ProgramaDashboard');
-                });
-                
+                        $location.path('/ProgramaDashboard');
+                    }).error(function(data, status, headers, config) {
+                        alert('error');
+                    });
             }
 
             $scope.loginWithFacebook = function () {
