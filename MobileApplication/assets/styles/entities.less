@@ -1,0 +1,470 @@
+/********************************************************************************
+    Incluso Digital CSS Entities
+    Description:    This file provides CSS rules for all the business entities 
+                    of the Incluso Digital Application.
+    Uses:           bootstrap.css, base.css
+
+    Color Palette:  Please look at base.css
+    Index:
+        01. $video-gallery
+        02. $my-progress
+        03. $current-satge
+        04. $my-badges
+        05. $user-avatar
+        06. $top-users
+********************************************************************************/
+@import "less-utilities.less";
+
+
+/* xs viewport */
+@media screen and (max-width: 767px) {
+    .ns-app {
+
+        /***********************************************************************
+         01. $video-gallery
+         Description: CSS for video gallery component
+        ************************************************************************/
+        .video-gallery {
+            margin-top: 10px;
+
+            .stage {
+                display: block;
+                position: relative;
+                padding: 0;
+                margin: 0 auto;
+                width: 370px;
+                height: 220px;
+
+                .icon {
+                    display: block;
+                    position: absolute;
+                    z-index: 2;
+                }
+                .icon-close {
+                    right: -22px; top: -22px;
+                    padding: 0;
+                    margin: 0;
+                    width: 46px;
+                    height: 46px;
+                    border: 5px solid @clr-black;
+                    .border-radius-circle ();
+                    background-color:@clr-orange;
+                    background-image: url('../images/ics-gentera.png');
+                    background-position: center -127px;
+                    background-repeat: no-repeat;
+                }
+                .icon-play {
+                    left: 50%; top: 50%;
+                    padding: 0;
+                    margin: -41px 0 0 -41px;
+                    width: 82px;
+                    height: 82px;
+                    border: none;
+                    background-color: transparent;
+                    background-image: url('../images/icn-video-play.png');
+                    background-position: center center;
+                }                 
+            }
+            .stage.perform {
+                .player {display: block;}
+                .carousel {display: none;}
+            }
+            .player {
+                display: none;
+                position: relative;
+                overflow: hidden;
+                padding:0;
+                margin: 0 auto;
+                width: inherit; 
+                height: inherit;
+                border:6px solid @clr-black;
+                .border-radius(6px);
+            }
+            .carousel {
+                display: block;
+                width: 320px; 
+                height: 180px;
+                margin: 0 auto;
+            }
+        }
+        /***********************************************************************/
+
+
+        /***********************************************************************
+         02. $my-progress
+         Description: CSS for video gallery component
+        ************************************************************************/        
+        .my-progress {
+            margin-top: 70px;
+
+            .progress {
+                display: block;
+                position: relative;
+                padding: 0 ;
+                margin: 32px auto 18px;
+                width: 203px;
+                height: 203px;
+                background-color: transparent;
+                background-image: url('../images/img-progress-component.png');
+                background-position: center center;
+            }
+            label {
+                display: block;
+                margin-top: 81px;
+                width: auto; 
+                height: auto;
+                color: @clr-white;
+                font-family: Robot, Arial, Sans-serif;
+                font-size: 30px;
+                font-weight: 600;
+                text-align: center;
+            }
+            .stage {
+                display: block;
+                padding:1px 0;
+                margin: 5px 0;
+            }
+            img {
+                display: block;
+                padding: 0;
+                margin: 0 auto;
+                width: auto; 
+                height: auto;
+            }
+        }
+        /***********************************************************************/     
+
+
+        /***********************************************************************
+         03. $current-satge
+         Description: CSS for video gallery component
+        ************************************************************************/   
+        .current-satge {
+            margin-top: 26px;
+
+            h3 {
+                margin-bottom: 6px;
+            }
+            .btn {
+                display: block;
+                width: 270px;
+                margin: 32px auto;
+            }
+        }
+        /***********************************************************************/ 
+
+
+        /***********************************************************************
+         04. $my-badges
+         Description: CSS for user badges component
+        ************************************************************************/  
+        .my-badges {
+            margin-top: 147px;
+
+            h3 {
+                margin-bottom: 15px;
+            }
+            img {
+                display: block;
+                padding: 0;
+                margin: 0 auto;
+
+            } 
+            p {
+                margin-top: 15px;
+            }    
+        } 
+        /***********************************************************************/ 
+
+
+        /***********************************************************************
+         05. $user-avatar
+         Description: CSS to represent a user avatar picture with info
+        ************************************************************************/  
+        .user-avatar {
+            display: block;
+            position: relative;
+            overflow: visible;
+            padding: 0;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 115px;
+            height: auto;
+
+            img {
+                display: block;
+                padding: 0; 
+                margin: 0; 
+                width: 115px;
+                height: 115px;
+                .border-radius-circle ();                  
+            }
+            figcaption {
+                position: absolute;
+                left: 50%; bottom: -16px;
+                padding: 0;
+                margin: 0 0 0 -16px;
+                width: 34px;
+                height: 34px;
+                background-color: @clr-blueMedium;
+                .border-radius-circle ();                      
+                color: @clr-white;
+                font-family: Roboto, Sans-serif, Arial;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 36px;
+                text-align: center;
+            }
+        }
+        /***********************************************************************/   
+
+
+        /***********************************************************************
+         06. $user-data
+         Description: CSS to represent the user's data section beneath to avatar
+        ************************************************************************/          
+        .user-data {
+            display: block;
+            position: relative;
+            padding: 0;
+            margin: 60px auto 0;
+            width: 370px; 
+            height: 94px;
+            background-color: @clr-blueDark;
+            .border-radius(6px);
+
+            p {
+                padding:18px 0 0;
+                margin:0 auto;
+                color: @clr-white;
+                font-family: Roboto, Sans-serif, Arial;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 1.4;
+                text-transform: capitalize;
+            }
+            label {
+                padding: 0;
+                margin: 0;
+                color: @clr-blueLight;
+                font-weight: inherit;
+            }
+            span {
+                padding: 0;
+                margin: 0;                    
+                color: inherit;
+                font-weight: 700;
+            } 
+            .inline-list {
+                margin-top: 11px;
+                text-align: center;
+            }
+            li {
+                display: inline;
+                float: none;
+                padding: 3px 8px;
+                margin-left:3px;
+                background-color: transparent;
+                border: 2px solid @clr-green;
+                .border-radius(15px);
+                color: @clr-green;
+
+                span {
+                    color: inherit;
+                    font-family: Play, Sans-serif, Arial;
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+            }
+            .points {
+                position: relative;
+                padding-right: 24px;
+
+                &:before {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 0;
+                    margin: 0;
+                    width: 24px;
+                    height: 22px;
+                    background-attachment: scroll;
+                    background-image: url('../images/ics-gentera.png');
+                    background-position: center -165px;
+                    background-repeat: no-repeat;
+                    content: " ";
+                }
+            }
+        }
+        /***********************************************************************/        
+
+
+        /***********************************************************************
+         06. $top-users
+         Description: CSS to represent the tabbed list of top users and current
+        ************************************************************************/ 
+        .top-users {
+            margin-top: 243px;
+
+            .head,
+            .body {
+                padding: 0;
+                margin: 0 auto;
+            }
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+
+                &> div {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+            .user-avatar {
+                position: relative;
+                overflow: visible;
+            }
+
+            .arrow-up {
+                display: none;
+                position: absolute;
+                bottom:-63px; left: 52%;
+                margin-left:-20px;
+                .css-arrow-up(20px, @clr-blueDark);
+            }
+            .current-user {
+                width: 370px;
+                padding: 0;
+                margin: 40px auto 0;
+
+                a {
+                    display: block;
+                    margin: 0 auto;
+                    width: 115px;
+                }
+                .user-data {
+                    margin-top: 8px;
+                    height: auto;
+                    background-color: transparent;
+                }
+            }
+            [data-content-id] {
+                display: none;
+            }
+            .tabs {
+                display: block; 
+                padding: 0;
+                margin: 0 auto;
+                width: 370px;                
+                &[data-tab-selected="1"] {
+                    [data-tab-id="1"] {
+                        .arrow-up {
+                            display: block;
+                        }
+                        figcaption {
+                            background-color: @clr-blueDark;
+                        }
+                    }
+                    [data-content-id="1"] {
+                        display: block;
+                    }
+                    
+                }
+                &[data-tab-selected="2"] {
+                    [data-tab-id="2"] {
+                        .arrow-up {
+                            display: block;
+                        }
+                        figcaption {
+                            background-color: @clr-blueDark;
+                        }
+                    }
+                    [data-content-id="2"] {
+                        display: block;
+                    }                    
+                    
+                } 
+                &[data-tab-selected="3"] {
+                    [data-tab-id="3"] {
+                        .arrow-up {
+                            display: block;
+                        }
+                        figcaption {
+                            background-color: @clr-blueDark;
+                        }
+                    }
+                    [data-content-id="3"] {
+                        display: block;
+                    }                    
+                    
+                }
+            }   
+        }
+        /***********************************************************************/
+
+
+        /***********************************************************************
+         07. $ilustration
+         Description: CSS to represent an area to place a graphic illustration
+        ************************************************************************/
+        .ilustration {
+            display: block;
+            padding: 0;
+            margin: 0;
+            width: auto;
+            height: 400px;
+        }
+        /***********************************************************************/
+
+
+        /***********************************************************************
+         08. $user-dashboard
+         Description: CSS to represent an area to place a graphic illustration
+        ************************************************************************/
+        .user-dashboard {
+            padding-top: 150px;
+            height: 858px;
+            /* .gradient-sky (); */
+            /*background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, 
+                        url('../images/img-profile-spaceship-dashboard-bottom.png') left bottom no-repeat, 
+                        url('../images/img-bg-profile-sky.jpg') center top repeat-y;*/
+
+            background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, url('../images/img-bg-profile-top.jpg') left top no-repeat;
+
+            .user-data {
+                margin-top: 8px;
+                height: auto;
+                background-color: transparent;
+
+                p {
+                    text-align: center;
+                }
+            }
+        }
+
+
+
+    }
+}
+
+/* sm viewport */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .ns-app {
+        
+    }    
+}
+
+/* md viewport */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .ns-app {
+        
+    }
+}
+
+/* lg viewport */
+@media screen and (min-width: 1200px) {
+    .ns-app {
+        
+    }
+}

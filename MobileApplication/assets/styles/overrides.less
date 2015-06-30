@@ -1,0 +1,158 @@
+/********************************************************************************
+    Incluso Digital CSS Base Styles
+
+    Description:    This file provides CSS rules for all the views that conform 
+                    the Incluso Digital Application.
+    Uses:           bootstrap.css, base.css, entities.css
+
+    Color Palette:  Please look at base.css
+    Index:
+        01. $layout
+        02. $flowserve-reports-contents
+********************************************************************************/
+@import "less-utilities.less";
+
+.ns-app.start-dashboard {
+	background-attachment: scroll;
+	background-image:url('../images/img-bg-start-dashboard.jpg');
+	background-position: center -23px;
+	background-repeat: no-repeat;
+	/*background-size: cover;*/
+}
+.ns-app.start-dashboard {
+	h1 { 
+		display: block;
+		padding:0; margin: 42px 0 15px;
+		color:#FFF;
+		font-family: Roboto, Arial;
+		font-size: 28px;
+		font-weight: 400;
+		text-transform: capitalize;
+	}	
+}
+
+.ns-app.profile-dashboard {
+    .gradient-sky ();
+
+    .user-dashboard {
+        
+    }
+}
+
+.ns-app.public {
+    background-attachment: fixed;
+    background-image:url('../images/bg-sm-public-page.jpg');
+    background-position: center -23px;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+    /*background-color: lighten(@clr-orange, 10%);*/
+    .alert-warning {
+        display: block;
+        position: absolute;
+        z-index: 0;
+        width:100%;
+        border:none;
+        .border-radius(0);
+        .clr-orange(0.2);
+        color: @clr-white;
+        font-family: Play, Sans-serif, Arial;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+
+    header {
+        position: relative;
+        padding-top:90px;
+
+        img {
+            display: block;
+            margin:0 auto;
+        }
+        figcaption {
+            margin:10px auto;
+            color:@clr-white;            
+            /*font-family: Play, Sans-serif, Arial;*/
+            font-size: 18px;
+
+        }
+    }
+
+    .input-group {
+        .input-group-addon {
+            background-color: transparent;
+            border-left:none;
+            border-top:none;
+            border-right:none;
+            border-bottom:1px solid @clr-white;
+            .border-radius-reset();
+            color:@clr-white;
+            font-size:18px;
+        }        
+        .form-control {
+            background-color: transparent;
+            border-left:none;
+            border-top:none;
+            border-right:none;
+            border-bottom:1px solid @clr-white;
+            .border-radius-reset();
+            .box-shadow-reset();
+            color:@clr-white;
+            font-size:24px;
+        }
+        .form-control:hover, 
+        .form-control:focus,
+        .form-control:active {
+            .box-shadow-reset();
+        }  
+    }
+
+    ::-webkit-input-placeholder {
+         color:@clr-white !important;
+         font-weight:100;
+    }
+    input:-moz-placeholder { /* Firefox 18- */
+         color:@clr-white !important;
+         font-weight:100;
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+         color:@clr-white !important;
+         font-weight:100;
+    }
+    :-ms-input-placeholder { 
+         color:@clr-white !important;
+         font-weight:100;
+    }
+}
+
+
+/* xs viewport */
+@media screen and (max-width: 767px) {
+    .ns-app {
+        
+    }
+}
+
+/* sm viewport */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .ns-app {
+        
+    }    
+}
+
+/* md viewport */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .ns-app {
+        
+    }
+}
+
+/* lg viewport */
+@media screen and (min-width: 1200px) {
+    .ns-app {
+        
+    }
+}
