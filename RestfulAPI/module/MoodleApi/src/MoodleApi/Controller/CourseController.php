@@ -11,14 +11,7 @@ class CourseController extends AbstractRestfulJsonController {
     private $token = "";
     private $function = "core_course_get_courses";
 	
-    private $config;
-    private function getConfig() {
-    	if ($this->config == null) {
-    		$this->config = $this->getServiceLocator()->get('config');
-    	}
-    	return $this->config;
-    }
-    
+   
     //test
     // Action used for GET requests without resource Id
     public function getList()

@@ -10,12 +10,28 @@ var _IsOffline = function() {
 
 var _syncAll = function(blah) {
 
-    var courses = new models.Courses();
-    
-    courses.stoage.clear();
 
-    courses.storage.sync.pull({
-    	success: blah
-    });
+	console.log('is offline:' + _IsOffline());
+
+	//check if the session is OnLine
+	if (!_IsOffline()) {
+
+		console.log('synching courses');
+
+	    var courses = new models.Courses();
+	    courses.storage.clear();
+	    courses.storage.sync.pull({
+	    	success: blah
+	    });
+
+		console.log('courses synced');
+
+	}
+}
+
+var _setToken = function(token) {
+//	$.ajaxSetup({
+//    	headers: { 'Access_token' : token.token }
+//	});
 }
 

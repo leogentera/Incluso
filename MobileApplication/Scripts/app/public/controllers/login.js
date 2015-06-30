@@ -23,10 +23,9 @@ angular
                 //autologin
                 if (_IsOffline() && userCredentials) {
                     $location.path('/ProgramaDashboard');
-                }
-
-                //set credentials
-                if (userCredentials) {
+                } 
+                else if (userCredentials) 
+                {
                     $timeout(
                         function() {
                             $("[name='username']").val(userCredentials.username);
@@ -36,6 +35,7 @@ angular
             }
 
             $scope.login = function (username, password) {
+                
                 var userCredentials = {
                     username: $("[name='username']").val(),
                     password: $("[name='password']").val(),
@@ -50,10 +50,18 @@ angular
                         data: $.param({username:userCredentials.username, password:userCredentials.password})
                     }
                     ).success(function(data, status, headers, config) {
+
+                        _setToken(data)
+
                         //succesful credentials
-                        //_syncAll(function() {
-                        //    $location.path('/ProgramaDashboard');
-                        //});
+                        _syncAll(function() {
+                            console.log('came back from redirecting...');
+                            $timeout(
+                                function() {
+                                    console.log('redirecting..');
+                                    $location.path('/ProgramaDashboard');
+                                },1000);
+                        });
 
                         if (userCredentials.rememberCredentials) {
                             localStorage.setItem("Credentials", JSON.stringify(userCredentials));
@@ -61,7 +69,6 @@ angular
                             localStorage.removeItem("Credentials");
                         }
 
-                        $location.path('/ProgramaDashboard');
                     }).error(function(data, status, headers, config) {
                         alert('error');
                     });
