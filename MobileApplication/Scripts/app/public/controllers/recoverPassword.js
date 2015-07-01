@@ -11,7 +11,14 @@ angular
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
             
-            alert('recovering password');
+            $scope.recover = function() {
+                $location.path('/');
+            }
+
+            $scope.cancel = function() {
+                $location.path('/');
+            }
+
 
         }]);
 

@@ -11,7 +11,13 @@ angular
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
             
-            alert('registering user');
+            $scope.register = function() {
+                $location.path('/');
+            }
+
+            $scope.cancel = function() {
+                $location.path('/');
+            }
 
         }]);
 
