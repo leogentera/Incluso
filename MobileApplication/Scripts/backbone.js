@@ -1185,7 +1185,6 @@
     }
 
     // Make the request, allowing the user to override any Ajax options.
-   debugger;
     var xhr = options.xhr = Backbone.ajax(_.extend(params, options));
     model.trigger('request', model, xhr, options);
     return xhr;

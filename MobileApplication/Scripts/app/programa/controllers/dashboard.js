@@ -27,11 +27,14 @@ angular
 
             $scope.getDataAsync = function () {
 
+                console.log('getting courses');
+
                 var courses = new models.Courses();
 
                     courses.fetch({
                        local: true,
                         success: function (data) {
+                            console.log('courses are back');
                             _spinner.loading = false;
                             $scope.setData(data);
 

@@ -10,7 +10,9 @@
         // one controller for all controllers in the module, and we would also need a variable to keep track of the modules:
         // http://zinkpulse.com/organizing-modules-in-angularjs/ and http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript
 		'incluso.programa.dashboard',
-		'incluso.public.login'
+		'incluso.public.login',
+        'incluso.public.recoverPassword',
+        'incluso.public.register'
     ])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
@@ -22,6 +24,16 @@
         $routeProvider.when('/', {
             templateUrl: 'Templates/Public/Index.html',
             controller: 'publicLoginController'
+        });
+
+        $routeProvider.when('/RecoverPassword', {
+            templateUrl: 'Templates/Public/RecoverPassword.html',
+            controller: 'publicRecoverPasswordController'
+        });
+
+        $routeProvider.when('/Register', {
+            templateUrl: 'Templates/Public/Register.html',
+            controller: 'publicRegisterController'
         });
 
         $routeProvider.otherwise({

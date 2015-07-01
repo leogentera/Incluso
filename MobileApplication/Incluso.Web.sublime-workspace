@@ -7,6 +7,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "Scripts/global.js",
+			"settings":
+			{
+				"buffer_size": 617,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Scripts/app/programa/controllers/dashboard.js",
+			"settings":
+			{
+				"buffer_size": 1552,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Scripts/app/public/controllers/login.js",
+			"settings":
+			{
+				"buffer_size": 3356,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Templates/Public/Login.html",
+			"settings":
+			{
+				"buffer_size": 3964,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -32,10 +64,24 @@
 	},
 	"file_history":
 	[
+		"/C/Projects/git/Incluso/MobileApplication/Scripts/app/models/Courses.js",
+		"/C/Projects/git/Incluso/MobileApplication/Scripts/app/models/Course.js",
+		"/C/Projects/git/Incluso/MobileApplication/Scripts/app/public/controllers/login.js",
+		"/C/Projects/git/Incluso/MobileApplication/index.html",
+		"/C/Projects/git/Incluso/MobileApplication/Scripts/app/module.js",
+		"/C/Projects/git/Incluso/MobileApplication/Templates/Public/Index.html",
+		"/C/Projects/git/Incluso/MobileApplication/Templates/Programa/dashboard.html",
+		"/E/xampp/apache/conf/extra/httpd-vhosts.conf",
+		"/E/xampp/apache/conf/httpd.conf",
+		"/C/Projects/git/Incluso/MobileApplication/Scripts/backbone_offline.js",
+		"/C/Projects/git/Incluso/MobileApplication/Scripts/backbone.js",
+		"/C/Projects/git/Incluso/MobileApplication/Scripts/global.js",
+		"/C/Projects/git/Incluso/MobileApplication/Scripts/app/home/controllers/home.js",
+		"/C/Projects/git/Incluso/MobileApplication/Scripts/app/programa/controllers/dashboard.js"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -49,6 +95,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ajax",
+			"header",
+			"options",
+			"'options'",
+			"method",
+			"options",
+			"credentials"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -66,8 +119,120 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "Scripts/global.js",
+					"settings":
+					{
+						"buffer_size": 617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								333,
+								333
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Scripts/app/programa/controllers/dashboard.js",
+					"settings":
+					{
+						"buffer_size": 1552,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1269,
+								1330
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Scripts/app/public/controllers/login.js",
+					"settings":
+					{
+						"buffer_size": 3356,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2471,
+								2471
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 513.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Templates/Public/Login.html",
+					"settings":
+					{
+						"buffer_size": 3964,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3235,
+								3241
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -127,6 +292,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 326.0,
+	"side_bar_width": 225.0,
 	"status_bar_visible": true
 }

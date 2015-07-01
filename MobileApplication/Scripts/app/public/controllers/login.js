@@ -36,6 +36,8 @@ angular
 
             $scope.login = function (username, password) {
                 
+                console.log('login in');
+
                 var userCredentials = {
                     username: $("[name='username']").val(),
                     password: $("[name='password']").val(),
@@ -51,7 +53,12 @@ angular
                     }
                     ).success(function(data, status, headers, config) {
 
+                        console.log('successfully logged in');
+
                         _setToken(data)
+
+
+                        console.log('preparing for syncAll');
 
                         //succesful credentials
                         _syncAll(function() {
@@ -70,6 +77,7 @@ angular
                         }
 
                     }).error(function(data, status, headers, config) {
+                        console.log('data' + data);
                         alert('error');
                     });
             }
