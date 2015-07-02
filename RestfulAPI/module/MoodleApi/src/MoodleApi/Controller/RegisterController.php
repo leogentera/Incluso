@@ -16,14 +16,14 @@ class RegisterController extends AbstractRestfulJsonController {
     {
     	$url = $this->getConfig()['MOODLE_API_URL'].
     	'&users[0][username]=%s&users[0][password]=%s&users[0][firstname]=%s&users[0][lastname]=%s&users[0][email]=%s&users[0]'/*[auth]=%s&users[0][idnumber]=%s&users[0][lang]=%s&users[0][calendartype]=%s&users[0]*/.'[city]=%s&users[0][country]=%s'.
-    			'&users[0][customfields][0][type]=respsecreta&users[0][customfields][0][value]=%s'.
-    			'&users[0][customfields][1][type]=pregsecreta&users[0][customfields][1][value]=%s'.
+    			'&users[0][customfields][0][type]=secretanswer&users[0][customfields][0][value]=%s'.
+    			'&users[0][customfields][1][type]=secretquestion&users[0][customfields][1][value]=%s'.
     			'&users[0][customfields][2][type]=birthday&users[0][customfields][2][value]=%s'.
     			'&users[0][customfields][3][type]=gender&users[0][customfields][3][value]=%s';
     	
     	//$url = sprintf($url, $this->getToken(), $this->function, $data['username'], $data['password'], $data['firstname'], $data['lastname'], $data['email'], $data['auth'], $data['idnumber'], $data['lang'], $data['calendartype']);
     	$url = sprintf($url, $this->getToken(), $this->function, $data['username'], urlencode($data['password']), "", "",  $data['email'], /*$data['auth'], $data['idnumber'], $data['lang'], $data['calendartype'],*/ urlencode($data['city']), urlencode($data['country'])
-    			, urlencode($data['respsecreta']), urlencode($data['pregsecreta']), $data['birthday'], $data['gender']);
+    			, urlencode($data['secretanswer']), urlencode($data['secretquestion']), $data['birthday'], $data['gender']);
     	//var_dump($url);
     	
     	

@@ -5,6 +5,7 @@ use MoodleApi\Utilities\AbstractRestfulJsonController;
 use Zend\View\Model\JsonModel;
 use MoodleApi\Model\MoodleUser;
 use MoodleApi\Model\MoodleException;
+use MoodleApi\Model\MoodleApi\Model;
 
 class UserController extends AbstractRestfulJsonController{
 	
@@ -12,14 +13,14 @@ class UserController extends AbstractRestfulJsonController{
 	private $token = "";
 	private $function = "core_user_get_users_by_field";
 	
-	private $config;
-	private function getConfig()
-	{
-		if ($this->config == null) {
-			$this->config = $this->getServiceLocator()->get('config');
-		}
-		return $this->config;
-	}
+// 	private $config;
+// 	private function getConfig()
+// 	{
+// 		if ($this->config == null) {
+// 			$this->config = $this->getServiceLocator()->get('config');
+// 		}
+// 		return $this->config;
+// 	}
 	
 	
 
@@ -28,7 +29,7 @@ class UserController extends AbstractRestfulJsonController{
 	{
 		$url = $this->getConfig()['MOODLE_API_URL'];
 		$url = sprintf($url, $this->getToken(), $this->function);
-		 
+		
 		$response = file_get_contents($url);
 		$json = json_decode($response,true);
 	
@@ -44,7 +45,7 @@ class UserController extends AbstractRestfulJsonController{
 // 		{
 // 			// Good
 // 			foreach ($json as $res) {
-// 				$course = new MoodleCourse();
+// 				$course = new MoodleUser();
 // 				$course->exchangeArray($res);
 // 				array_push($courses, $course);
 // 			}
@@ -62,6 +63,7 @@ class UserController extends AbstractRestfulJsonController{
         $json = json_decode($response,true);
 
         $users= array();
+        
 		if (strpos($response, "exception") !== false) 
         {
             // Error
@@ -84,7 +86,6 @@ class UserController extends AbstractRestfulJsonController{
 
     
     
-    
     private function hasToken() {
     	$request = $this->getRequest();
     	if (isset($request->getCookie()->MOODLE_TOKEN)) {
@@ -96,7 +97,7 @@ class UserController extends AbstractRestfulJsonController{
 
     private function generateToken() {
     	$url = $this->getConfig()['TOKEN_GENERATION_URL'];
-    	$url = sprintf($url, 'admin', 'Admin123!', $this->getConfig()['MOODLE_SERVICE_NAME']);
+    	$url = sprintf($url, 'admin', 'administrator', $this->getConfig()['MOODLE_SERVICE_NAME']);
     
     	$response = file_get_contents($url);
     	$json = json_decode($response,true);

@@ -4,7 +4,9 @@ return array(
         'invokables' => array(
             'MoodleApi\Controller\Course' => 'MoodleApi\Controller\CourseController',
             'MoodleApi\Controller\User' => 'MoodleApi\Controller\UserController',
+        	'MoodleApi\Controller\CourseContents' => 'MoodleApi\Controller\CourseContentController',
             'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
+        	'MoodleApi\Controller\Register'       => 'MoodleApi\Controller\RegisterController',
         ),
     ),
     'router' => array(
@@ -34,7 +36,7 @@ return array(
         	'user' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/user[/:id]',
+                    'route'    => '/user/:id',
                     'constraints' => array(
                         'id'     => '[0-9]+',
                     ),
@@ -43,7 +45,19 @@ return array(
                     ),
                 ),
             ),
-            'authentication' => array(
+        		'CourseContents' => array(
+        				'type'    => 'segment',
+        				'options' => array(
+        						'route'    => '/CourseContents[/:id]',
+        						'constraints' => array(
+        								'id'     => '[0-9]+',
+        						),
+        						'defaults' => array(
+        								'controller' => 'MoodleApi\Controller\CourseContents',
+        						),
+        				),
+        		),
+            'Authentication' => array(
                 'type'    => 'segment',
                 'options' => array(
                     'route'    => '/authentication',
@@ -52,6 +66,17 @@ return array(
                     ),
                 ),
             ),
+        		
+        	'Register' => array(
+        		'type'    => 'segment',
+        		'options' => array(
+        			'route'    => '/Register',
+        			'defaults' => array(
+        			'controller' => 'MoodleApi\Controller\Register',
+        			),
+        		),
+        	),
+        	
         ),
     ),
     'view_manager' => array(
