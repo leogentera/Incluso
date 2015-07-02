@@ -41,7 +41,7 @@
                 <p class="input-group-addon" id="emailAddOn">
                   <span class="glyphicon glyphicon-envelope"></span>
                 </p>
-                <input type="text" name="username" class="form-control input-lg" placeholder="Correo" aria-describedby="emailAddOn" required>
+                <input type="text" name="username" class="form-control input-lg" ng-model="userCredentialsModel.username" placeholder="Correo" aria-describedby="emailAddOn" required>
               </div>
             </div>
           </div>
@@ -54,13 +54,13 @@
                 <p class="input-group-addon" id="passwordAddOn">
                   <span class="glyphicon glyphicon-lock"></span>
                 </p>
-                <input type="password" name="password" class="form-control input-lg" placeholder="Contraseña" aria-describedby="emailAddOn" required>
+                <input type="password" name="password" class="form-control input-lg" ng-model="userCredentialsModel.password" placeholder="Contraseña" aria-describedby="emailAddOn" required>
               </div>
             </div>
 
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="rememberCredentials"> <span>Recordar contraseña</span>
+                <input type="checkbox" ng-model="userCredentialsModel.rememberCredentials" name="rememberCredentials"> <span>Recordar contraseña</span>
               </label>
             </div>            
           </div>

@@ -11,12 +11,22 @@ angular
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
 
+            $scope.userCredentialsModel = {
+                username: "",
+                password: "",
+                rememberCredentials: false
+            };
+
             $scope.loadCredentials = function() {
                 var txtCredentials = localStorage.getItem("Credentials");
                 var userCredentials = null;
 
                 if (txtCredentials){
                     userCredentials = JSON.parse(txtCredentials);
+
+                    $scope.userCredentialsModel.username = userCredentials.username;
+                    $scope.userCredentialsModel.password = userCredentials.password;
+                    $scope.userCredentialsModel.rememberCredentials = userCredentials.rememberCredentials;
                 }
 
 
@@ -24,32 +34,18 @@ angular
                 if (_IsOffline() && userCredentials) {
                     $location.path('/ProgramaDashboard');
                 } 
-                else if (userCredentials) 
-                {
-                    $timeout(
-                        function() {
-                            $("[name='username']").val(userCredentials.username);
-                            $("[name='password']").val(userCredentials.password);
-                        },1000);
-               }
             }
 
             $scope.login = function (username, password) {
                 
                 console.log('login in');
 
-                var userCredentials = {
-                    username: $("[name='username']").val(),
-                    password: $("[name='password']").val(),
-                    rememberCredentials: $("[name='rememberCredentials']")[0].checked,
-                };
-
                 $http(
                     {
                         method: 'POST',
                         url: API_RESOURCE.format("authentication"), 
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                        data: $.param({username:userCredentials.username, password:userCredentials.password})
+                        data: $.param({username: $scope.userCredentialsModel.username, password: $scope.userCredentialsModel.password})
                     }
                     ).success(function(data, status, headers, config) {
 
@@ -70,8 +66,8 @@ angular
                                 },1000);
                         });
 
-                        if (userCredentials.rememberCredentials) {
-                            localStorage.setItem("Credentials", JSON.stringify(userCredentials));
+                        if ($scope.userCredentialsModel.rememberCredentials) {
+                            localStorage.setItem("Credentials", JSON.stringify($scope.userCredentialsModel));
                         } else {
                             localStorage.removeItem("Credentials");
                         }
