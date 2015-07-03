@@ -37,7 +37,7 @@
                     <p class="input-group-addon" id="aliasAddOn">
                       <span class="glyphicon glyphicon-user"></span>
                     </p>
-                    <input name="username" type="text" class="form-control input-lg" placeholder="Alias" aria-describedby="aliasAddOn">
+                    <input name="username" type="text" class="form-control input-lg" ng-model="registerModel.username" placeholder="Alias" aria-describedby="aliasAddOn">
                   </div>
                 </div>
               </div>
@@ -50,7 +50,7 @@
                     <p class="input-group-addon" id="birthDateAddOn">
                       <span class="glyphicon glyphicon-calendar"></span>
                     </p>
-                    <input name="dob" type="date" class="form-control input-lg" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn">
+                    <input name="dob" type="date" class="form-control input-lg" ng-model="registerModel.birthday" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn">
                   </div>
                 </div>
               </div>
@@ -63,10 +63,10 @@
                     <p class="input-group-addon" id="genderAddOn">
                       <span class="glyphicon glyphicon-user"></span>
                     </p>
-                    <select name="gender" type="text" class="form-control input-lg" aria-describedby="genderAddOn">
+                    <select name="gender" type="text" class="form-control input-lg" ng-model="registerModel.gender" aria-describedby="genderAddOn">
                       <option label="Género" value="" disabled selected style="display:none"></option>
-                      <option value="">Masculino</option>
-                      <option value="">Femenino</option> 
+                      <option value="Male">Masculino</option>
+                      <option value="Female">Femenino</option> 
                     </select>
                   </div>
                 </div>
@@ -80,15 +80,15 @@
                     <p class="input-group-addon" id="countryAddOn">
                       <span class="glyphicon glyphicon-globe"></span>
                     </p>
-                    <select name="country" type="text" class="form-control input-lg" aria-describedby="countryAddOn">
+                    <select name="country" type="text" class="form-control input-lg" ng-model="registerModel.country" aria-describedby="countryAddOn">
                       <option label="País" value="" disabled selected style="display:none"></option>
-                      <option value="">Bolivia</option>
-                      <option value="">Colombia</option> 
-                      <option value="">Ecuador</option> 
-                      <option value="">México</option> 
-                      <option value="">Perú</option> 
-                      <option value="">Uruguay</option> 
-                      <option value="">Venezuela</option> 
+                      <option value="BL">Bolivia</option>
+                      <option value="CL">Colombia</option> 
+                      <option value="EC">Ecuador</option> 
+                      <option value="MX">México</option> 
+                      <option value="PR">Perú</option> 
+                      <option value="UR">Uruguay</option> 
+                      <option value="VZ">Venezuela</option> 
                     </select>
                   </div>
                 </div>
@@ -102,7 +102,7 @@
                     <p class="input-group-addon" id="cityAddOn">
                       <span class="glyphicon glyphicon-map-marker"></span>
                     </p>
-                    <input name="password" type="password" class="form-control input-lg" placeholder="Ciudad" aria-describedby="cityAddOn">
+                    <input name="password" type="password" class="form-control input-lg" ng-model="registerModel.city" placeholder="Ciudad" aria-describedby="cityAddOn">
                   </div>
                 </div>            
               </div>
@@ -140,7 +140,7 @@
                     <p class="input-group-addon" id="emailAddOn">
                       <span class="glyphicon glyphicon-envelope"></span>
                     </p>
-                    <input name="useremail" type="email" class="form-control input-lg" placeholder="Correo" aria-describedby="emailAddOn">
+                    <input name="useremail" type="email" class="form-control input-lg" ng-model="registerModel.email" placeholder="Correo" aria-describedby="emailAddOn" required>
                   </div>
                 </div>
               </div>
@@ -153,7 +153,7 @@
                     <p class="input-group-addon" id="accountPasswordAddOn">
                       <span class="glyphicon glyphicon-lock"></span>
                     </p>
-                    <input name="password" type="password" class="form-control input-lg" placeholder="Contraseña" aria-describedby="accountPasswordAddOn">
+                    <input name="password" type="password" class="form-control input-lg" ng-model="registerModel.password" placeholder="Contraseña" aria-describedby="accountPasswordAddOn">
                   </div>
                 </div>
               </div>
@@ -166,7 +166,7 @@
                     <p class="input-group-addon" id="confirmPasswordAddOn">
                       <span class="glyphicon glyphicon-lock"></span>
                     </p>
-                    <input name="passwordConfirmation" type="password" class="form-control input-lg" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn">
+                    <input name="passwordConfirmation" type="password" class="form-control input-lg" ng-model="registerModel.confirmPassword" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn">
                   </div>
                 </div>
               </div>
@@ -179,13 +179,13 @@
                     <p class="input-group-addon" id="securityQuestionAddOn">
                       <span class="glyphicon glyphicon-question-sign"></span>
                     </p>
-                    <select name="securityQuestion" type="text" class="form-control input-lg" aria-describedby="securityQuestionAddOn">
+                    <select name="securityQuestion" type="text" class="form-control input-lg" ng-model="registerModel.secretQuestion" aria-describedby="securityQuestionAddOn">
                       <option label="Pregunta de Seguridad" value="" disabled selected style="display:none"></option>
-                      <option value="">¿Dónde crecí?</option>
-                      <option value="">Nombre de mi mejor amigo</option> 
-                      <option value="">Nombre de mi mascota</option> 
-                      <option value="">Personaje favorito</option> 
-                      <option value="">Banda musical favorita</option> 
+                      <option value="¿Dónde crecí?">¿Dónde crecí?</option>
+                      <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
+                      <option value="Nombre de mi mascota">Nombre de mi mascota</option> 
+                      <option value="Personaje favorito">Personaje favorito</option> 
+                      <option value="Banda musical favorita">Banda musical favorita</option> 
                     </select>
                   </div>
                 </div>
@@ -199,7 +199,7 @@
                     <p class="input-group-addon" id="securityAnswerAddOn">
                       <span class="glyphicon glyphicon-question-sign"></span>
                     </p>
-                    <input name="securityQuestionAnswer" type="text" class="form-control input-lg" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn">
+                    <input name="securityQuestionAnswer" type="text" class="form-control input-lg" ng-model="registerModel.secretAnswer" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn">
                   </div>
                 </div>            
               </div>
