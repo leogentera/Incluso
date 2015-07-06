@@ -6,6 +6,7 @@
 
     Color Palette:  Please look at base.css
     Index:
+        00. $Text n containers
         01. $video-gallery
         02. $my-progress
         03. $current-satge
@@ -20,6 +21,525 @@
 @media screen and (max-width: 767px) {
     .ns-app {
 
+        /***********************************************************************
+         01. $text n containers
+         Description: CSS for most used parts
+        ************************************************************************/
+            .to-top{
+                bottom: 0;
+                color: #f00;
+                left: ~"calc(50% - 19px)";
+                position: absolute;
+                text-align: center;
+                color: @clr-greenLight;
+            }
+            img{
+                max-width:100%;
+            }
+            .txt-title{
+                color: white;
+                font-weight: bold;
+                margin: 5% 15%;
+                font-size:120%;
+
+                &:before{
+                    content: "- ";
+                }
+                &:after{
+                    content: " -";
+                }
+            }
+            .txt-renglon{
+                color: white;
+                font-weight: bold;
+                margin: 5% 15%;
+            }
+            .txt-bigger{
+                font-size: 150%;
+                line-height: 80%;
+            }
+            .subtitle{
+                color: @clr-greenLight;
+                font-size: 150%;
+                padding: 5% 15%;
+                text-transform: uppercase;
+            }
+            .centrado{
+                text-align: center;   
+            }
+            .fl-left{
+                float:left;
+            }
+            .fl-right{
+                float:right;
+            }
+            .blanco{
+                    color:white;
+            }
+            .hangar-bay{
+                background-image:url('../images/bckgnd.jpg');
+                background-color: #24282a;
+                background-position: -1px -35px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                border-bottom: 10px solid #24282a;
+
+                #ship{
+
+                    display: block;
+                    width: 100%;
+                    min-height: 200px;
+                    margin-bottom: 20px;
+
+                    img{
+                        margin: 5% 20%;
+                        width: 60%;
+                    }
+                }
+
+            }
+            .blueprint{
+                background-image:url('../images/blueprint.jpg');
+                background-color: #112845;
+                background-position: -1px 0px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-bottom: 10px solid #24282a;
+            }
+            .progreso{
+                background-image:url('../images/progreso.jpg');
+                background-size:cover;
+                background-color: #24282A;
+                padding-top: 5px;
+                padding-bottom: 10px;
+                .spinner{    
+                    max-width: 49%;
+                    padding: 5% 9% 10%;
+                    position: relative;
+                    .circle{
+                        background-color: rgba(13, 15, 19, 0.55);
+                        border-radius: 50%;
+                        display: block;
+                        height: 46%;
+                        left: 28%;
+                        position: absolute;
+                        text-align: center;
+                        top: 22%;
+                        width: 44%;
+                    }
+                    .text{
+                        color: white;
+                        font-size: 20px;
+                        font-weight: bold;
+                        left: ~"calc(50% - 19px)";
+                        position: absolute;
+                        top: ~"calc(50% - 25px)";
+                        width: auto;
+                    }
+                    @i: 0;
+                    .loop (@i) when (@i <= 100) {
+                        &[data-progress="@{i}"] {
+                            background-image: url("../images/prcnt/@{i}.png");
+                        }
+                        .loop(@i + 1);
+                    }
+                    .loop(@i);
+                }
+            }
+            .holoproj{
+                background-image:url('../images/holoproj.jpg');
+                background-size:cover;
+                background-color: #24282A;
+                background-position: 0 100%;
+                padding: 10px 0 60px;
+                position: relative;
+                .light{
+                    position:absolute;
+                    bottom:0;
+                    animation: 2s ease .5s normal none infinite running flicker;
+                    max-width: 100%;
+                    img{
+                        max-width: 100%;
+                    }
+                }
+
+            }
+            .jector{
+                background-image:url('../images/holoprojftr.jpg');
+                background-size:cover;
+                background-color: #24282A;
+                background-position: 0 0;
+                padding-top: 60px;
+            }
+            .parts{
+                background-image:url('../images/footernave.gif');
+                background-position: 0 -3px;
+                background-size: cover;
+                border-top: 2px solid #2a2f32;
+                padding: 20px 0;
+            }
+            .agregar{
+                border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+                border-top: 2px solid rgba(255, 255, 255, 0.3);
+                color: white;
+                font-size: 150%;
+                margin: 4% 10%;
+                padding: 2% 3%;
+                span{
+                    padding-left:3%;
+                }
+            }
+            .parte{
+                display:block;
+                background: #1f2733;
+                border-radius: 5px;
+                color: white;
+                font-size: 150%;
+                margin: 2% 10%;
+                padding: 3% 5%;
+                width: 80%;
+                background: -moz-radial-gradient(center, ellipse cover,  #1f2733 0%, #141921 100%);
+                background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#1f2733), color-stop(100%,#141921));
+                background: -webkit-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: -o-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: -ms-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: radial-gradient(ellipse at center,  #1f2733 0%,#141921 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f2733', endColorstr='#141921',GradientType=1 );
+                [class^="icon-"]{
+                    color:@clr-greenLight;
+                    font-size:150%;
+                    padding-right: 5%;
+                }
+                .icon-checked-join{
+                    color:@clr-greenicon;
+                }
+                .icon-wrong{
+                    color:gray;
+                }
+
+                span{
+                    line-height: normal;
+                }
+            }
+            .paginadores{
+                color:@clr-greenicon;
+                margin: 5% 15%;
+                i{
+                    font-size: 300%;
+                }
+            }
+            .forma{
+                label {
+                    cursor: pointer;
+                    display: block;
+                    margin-right: 15px;
+                    padding-left: 10%;
+                    position: relative;
+                    line-height:normal;
+                }
+                input[type="radio"], input[type="checkbox"] {
+                    display: none;
+                }
+                input[type="radio"] + label::before, input[type="checkbox"] + label::before{                
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                }
+                label::before {
+                    background-color: transparent;
+                    content: "";
+                    display: inline-block;
+                    left: 0;
+                    margin-right: 10px;
+                    position: absolute;
+                }
+                input[type=radio] + label::before {
+                    line-height: 50%;
+                    padding: 0 2px 3px 1px;
+                }
+                input[type=checkbox] + label {
+                    margin-bottom: 10px;
+                }
+                input[type=checkbox] + label::before {
+                    border-radius: 3px;
+                    padding: 0 6px;
+                    content: "\2713";
+                    color: rgba(0,0,0,0);
+                }
+                input[type=checkbox]:checked + label:before {
+                    content: "\2713";
+                    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+                    color: @clr-greenLight;
+                    text-align: center;
+                }
+                input[type=checkbox]:checked + label{
+                    color: @clr-greenLight;
+                }
+                input[type=radio] + label:before {
+                    content: "\2022";
+                    color: rgba(0,0,0,0);
+                    border-radius: 50%;     
+                }
+                input[type=radio]:checked + label:before {
+                    content: "\2022";
+                    color: @clr-greenLight;
+                    text-align: center;
+                }
+                .tnf{
+                    label:before{
+                        display:none;
+                        content:"";
+                    }
+                    label{
+                       padding:0 !important;
+                       display: inline-block;
+                    }
+                    input[type=radio]:checked + label{
+                        color: @clr-greenLight;
+                    }
+                    label{
+                        border: 1px solid white;
+                        display: inline-block;
+                        line-height: 200%;
+                        margin: -2.5px !important;
+                        padding: 0;
+                        text-align: center;
+                        width: 50%;
+                        &:hover{
+                            background-color: rgba(0,0,0,.2);
+                        }
+                    }
+                    label:nth-child(2){
+                        border-radius: 20px 0 0 20px;
+                    }
+                    label:nth-child(4){
+                        border-radius: 0 20px 20px 0;
+                    }
+
+                }
+                div.cs-select {
+                    display: inline-block;
+                    vertical-align: middle;
+                    position: relative;
+                    text-align: left;
+                    background: #fff;
+                    z-index: 100;
+                    width: 100%;
+                    max-width: 500px;
+                    margin: 10px 0;
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+
+                div.cs-select:focus {
+                    outline: none;
+                }
+                .cs-select select {
+                    display: none;
+                }
+                .cs-select span {
+                    display: block;
+                    position: relative;
+                    cursor: pointer;
+                    padding: 1em;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .cs-select > span {
+                    padding-right: 3em;
+                }
+                .cs-select > span::after,
+                .cs-select .cs-selected span::after {
+                    speak: none;
+                    position: absolute;
+                    top: 50%;
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+
+                .cs-select > span::after {
+                    content: "\e612";
+                    right: 1em;
+                }
+
+                .cs-select .cs-selected span::after {
+                    content: '\2713';
+                    margin-left: 1em;
+                }
+
+                .cs-select.cs-active > span::after {
+                    -webkit-transform: translateY(-50%) rotate(180deg);
+                    transform: translateY(-50%) rotate(180deg);
+                }
+
+                div.cs-active {
+                    z-index: 200;
+                }
+                .cs-select .cs-options {
+                    position: absolute;
+                    overflow: hidden;
+                    width: 100%;
+                    background: #fff;
+                    visibility: hidden;
+                }
+                .cs-select.cs-active .cs-options {
+                    visibility: visible;
+                }
+                .cs-select ul {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                }
+                .cs-select ul span {
+                    padding: 1em;
+                }
+
+                .cs-select ul li.cs-focus span {
+                    background-color: #ddd;
+                }
+
+                .cs-select li.cs-optgroup ul {
+                    padding-left: 1em;
+                }
+                .cs-select li.cs-optgroup > span {
+                    cursor: default;
+                }
+                div.cs-skin-rotate {
+                    background: transparent;
+                    -webkit-perspective: 1000px;
+                    perspective: 1000px;
+                }
+
+                @media screen and (max-width: 30em) {
+                    div.cs-skin-rotate { font-size: 1em; width: 200px; }
+                }
+
+                .cs-skin-rotate > span,
+                .cs-skin-rotate .cs-options li {
+                    background: transparent;
+                    -webkit-transform-origin: 50% 50% -200px;
+                    transform-origin: 50% 50% -200px;
+                    -webkit-backface-visibility: hidden;
+                    backface-visibility: hidden;
+                    -webkit-transform-style: preserve-3d;
+                    transform-style: preserve-3d;
+                    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+                    transition: transform 0.3s, opacity 0.3s;
+                }
+
+                @media screen and (max-width: 30em) {
+                    .cs-skin-rotate > span,
+                    .cs-skin-rotate .cs-options li {
+                        -webkit-transform-origin: 50% 50% -100px;
+                        transform-origin: 50% 50% -100px;
+                    }
+                }
+
+                .cs-skin-rotate > span {
+                    border-bottom: 1px solid rgba(255,255,255,.3);
+                    border-top: 1px solid rgba(255,255,255,.3);
+                }
+
+                .cs-skin-rotate.cs-active > span {
+                    opacity: 0;
+                    -webkit-transform: rotate3d(0,1,0,-90deg);
+                    transform: rotate3d(0,1,0,-90deg);
+                }
+
+                .cs-skin-rotate > span::after,
+                .cs-skin-rotate .cs-selected span::after {
+                    font-family: 'icomoon';
+                }
+
+                .cs-skin-rotate > span::after,
+                .cs-skin-rotate.cs-active > span::after {
+                    -webkit-transform: translate3d(0,-50%,0) rotate3d(0,0,1,-90deg);
+                    transform: translate3d(0,-50%,0) rotate3d(0,0,1,-90deg);
+                }
+
+                .cs-skin-rotate ul span::after {
+                    content: '';
+                    opacity: 0;
+                }
+
+                .cs-skin-rotate .cs-selected span::after {
+                    opacity: 0.5;
+                    -webkit-transition: opacity 0.3s;
+                    transition: opacity 0.3s;
+                }
+
+                .cs-skin-rotate .cs-options {
+                    background: transparent;
+                    top: 0;
+                    overflow: visible;
+                    visibility: visible;
+                    pointer-events: none;
+                    -webkit-transform-style: preserve-3d;
+                    transform-style: preserve-3d;
+                }
+
+                .cs-skin-rotate .cs-options ul {
+                    -webkit-transform-style: preserve-3d;
+                    transform-style: preserve-3d;
+                }
+
+                .cs-skin-rotate .cs-options li {
+                    opacity: 0;
+                    -webkit-transform: rotate3d(0,1,0,90deg);
+                    transform: rotate3d(0,1,0,90deg);
+                }
+
+                .cs-skin-rotate.cs-active .cs-options li {
+                    opacity: 1;
+                    -webkit-transform: rotate3d(0,1,0,0deg);
+                    transform: rotate3d(0,1,0,0deg);
+                    pointer-events: auto;
+                }
+
+                .cs-skin-rotate .cs-options li:nth-child(2) {
+                    -webkit-transition-delay: 0.05s;
+                    transition-delay: 0.05s;
+                }
+
+                .cs-skin-rotate .cs-options li:nth-child(3) {
+                    -webkit-transition-delay: 0.1s;
+                    transition-delay: 0.1s;
+                }
+
+                .cs-skin-rotate .cs-options li:nth-child(4) {
+                    -webkit-transition-delay: 0.15s;
+                    transition-delay: 0.15s;
+                }
+
+                .cs-skin-rotate .cs-options li:nth-child(5) {
+                    -webkit-transition-delay: 0.2s;
+                    transition-delay: 0.2s;
+                }
+
+                .cs-skin-rotate.cs-active .cs-options ul li {
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+
+                .cs-skin-rotate .cs-options li span {    
+                    background-color: #1f2733;
+                    padding: 5px 0;
+                }
+
+                .cs-skin-rotate .cs-options li span:hover,
+                .cs-skin-rotate .cs-options li.cs-focus span,
+                .cs-skin-rotate .cs-selected span {
+                    opacity: 0.8;
+                }
+
+            }
+            
         /***********************************************************************
          01. $video-gallery
          Description: CSS for video gallery component

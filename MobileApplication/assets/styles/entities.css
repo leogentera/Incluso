@@ -1,1 +1,1205 @@
-@media screen and (max-width:767px){.ns-app .video-gallery{margin-top:10px}.ns-app .video-gallery .stage{display:block;position:relative;padding:0;margin:0 auto;width:370px;height:220px}.ns-app .video-gallery .stage .icon{display:block;position:absolute;z-index:2}.ns-app .video-gallery .stage .icon-close{right:-22px;top:-22px;padding:0;margin:0;width:46px;height:46px;border:5px solid #000;-webkit-border-radius:60px;-moz-border-radius:60px;border-radius:60px;background-color:#f5461f;background-image:url('../images/ics-gentera.png');background-position:center -127px;background-repeat:no-repeat}.ns-app .video-gallery .stage .icon-play{left:50%;top:50%;padding:0;margin:-41px 0 0 -41px;width:82px;height:82px;border:none;background-color:transparent;background-image:url('../images/icn-video-play.png');background-position:center center}.ns-app .video-gallery .stage.perform .player{display:block}.ns-app .video-gallery .stage.perform .carousel{display:none}.ns-app .video-gallery .player{display:none;position:relative;overflow:hidden;padding:0;margin:0 auto;width:inherit;height:inherit;border:6px solid #000;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px}.ns-app .video-gallery .carousel{display:block;width:320px;height:180px;margin:0 auto}.ns-app .my-progress{margin-top:70px}.ns-app .my-progress .progress{display:block;position:relative;padding:0;margin:32px auto 18px;width:203px;height:203px;background-color:transparent;background-image:url('../images/img-progress-component.png');background-position:center center}.ns-app .my-progress label{display:block;margin-top:81px;width:auto;height:auto;color:#fff;font-family:Robot,Arial,Sans-serif;font-size:30px;font-weight:600;text-align:center}.ns-app .my-progress .stage{display:block;padding:1px 0;margin:5px 0}.ns-app .my-progress img{display:block;padding:0;margin:0 auto;width:auto;height:auto}.ns-app .current-satge{margin-top:26px}.ns-app .current-satge h3{margin-bottom:6px}.ns-app .current-satge .btn{display:block;width:270px;margin:32px auto}.ns-app .my-badges{margin-top:147px}.ns-app .my-badges h3{margin-bottom:15px}.ns-app .my-badges img{display:block;padding:0;margin:0 auto}.ns-app .my-badges p{margin-top:15px}.ns-app .user-avatar{display:block;position:relative;overflow:visible;padding:0;margin:0 auto;width:100%;max-width:115px;height:auto}.ns-app .user-avatar img{display:block;padding:0;margin:0;width:115px;height:115px;-webkit-border-radius:60px;-moz-border-radius:60px;border-radius:60px}.ns-app .user-avatar figcaption{position:absolute;left:50%;bottom:-16px;padding:0;margin:0 0 0 -16px;width:34px;height:34px;background-color:#243436;-webkit-border-radius:60px;-moz-border-radius:60px;border-radius:60px;color:#fff;font-family:Roboto,Sans-serif,Arial;font-size:16px;font-weight:700;line-height:36px;text-align:center}.ns-app .user-data{display:block;position:relative;padding:0;margin:60px auto 0;width:370px;height:94px;background-color:#121b1c;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px}.ns-app .user-data p{padding:18px 0 0;margin:0 auto;color:#fff;font-family:Roboto,Sans-serif,Arial;font-size:18px;font-weight:500;line-height:1.4;text-transform:capitalize}.ns-app .user-data label{padding:0;margin:0;color:#355a6b;font-weight:inherit}.ns-app .user-data span{padding:0;margin:0;color:inherit;font-weight:700}.ns-app .user-data .inline-list{margin-top:11px;text-align:center}.ns-app .user-data li{display:inline;float:none;padding:3px 8px;margin-left:3px;background-color:transparent;border:2px solid #bcd431;-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;color:#bcd431}.ns-app .user-data li span{color:inherit;font-family:Play,Sans-serif,Arial;font-size:16px;font-weight:700}.ns-app .user-data .points{position:relative;padding-right:24px}.ns-app .user-data .points:before{display:block;position:absolute;top:0;right:0;padding:0;margin:0;width:24px;height:22px;background-attachment:scroll;background-image:url('../images/ics-gentera.png');background-position:center -165px;background-repeat:no-repeat;content:" "}.ns-app .top-users{margin-top:243px}.ns-app .top-users .head,.ns-app .top-users .body{padding:0;margin:0 auto}.ns-app .top-users .row{margin-left:0;margin-right:0}.ns-app .top-users .row>div{padding-left:0;padding-right:0}.ns-app .top-users .user-avatar{position:relative;overflow:visible}.ns-app .top-users .arrow-up{display:none;position:absolute;bottom:-63px;left:52%;margin-left:-20px;width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:20px solid #121b1c}.ns-app .top-users .current-user{width:370px;padding:0;margin:40px auto 0}.ns-app .top-users .current-user a{display:block;margin:0 auto;width:115px}.ns-app .top-users .current-user .user-data{margin-top:8px;height:auto;background-color:transparent}.ns-app .top-users [data-content-id]{display:none}.ns-app .top-users .tabs{display:block;padding:0;margin:0 auto;width:370px}.ns-app .top-users .tabs[data-tab-selected="1"] [data-tab-id="1"] .arrow-up{display:block}.ns-app .top-users .tabs[data-tab-selected="1"] [data-tab-id="1"] figcaption{background-color:#121b1c}.ns-app .top-users .tabs[data-tab-selected="1"] [data-content-id="1"]{display:block}.ns-app .top-users .tabs[data-tab-selected="2"] [data-tab-id="2"] .arrow-up{display:block}.ns-app .top-users .tabs[data-tab-selected="2"] [data-tab-id="2"] figcaption{background-color:#121b1c}.ns-app .top-users .tabs[data-tab-selected="2"] [data-content-id="2"]{display:block}.ns-app .top-users .tabs[data-tab-selected="3"] [data-tab-id="3"] .arrow-up{display:block}.ns-app .top-users .tabs[data-tab-selected="3"] [data-tab-id="3"] figcaption{background-color:#121b1c}.ns-app .top-users .tabs[data-tab-selected="3"] [data-content-id="3"]{display:block}.ns-app .ilustration{display:block;padding:0;margin:0;width:auto;height:400px}.ns-app .user-dashboard{padding-top:150px;height:858px;background:url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat,url('../images/img-bg-profile-top.jpg') left top no-repeat}.ns-app .user-dashboard .user-data{margin-top:8px;height:auto;background-color:transparent}.ns-app .user-dashboard .user-data p{text-align:center}}
+/********************************************************************************
+    Incluso Digital CSS Entities
+    Description:    This file provides CSS rules for all the business entities 
+                    of the Incluso Digital Application.
+    Uses:           bootstrap.css, base.css
+
+    Color Palette:  Please look at base.css
+    Index:
+        00. $Text n containers
+        01. $video-gallery
+        02. $my-progress
+        03. $current-satge
+        04. $my-badges
+        05. $user-avatar
+        06. $top-users
+********************************************************************************/
+/****************************************************************************
+ LESS Utilities - variables and functions
+****************************************************************************/
+/* Path vars */
+/* Color Palette */
+/* parametric color functions */
+/* Custom Functions */
+/* xs viewport */
+@media screen and (max-width: 767px) {
+  .ns-app {
+    /***********************************************************************
+         01. $text n containers
+         Description: CSS for most used parts
+        ************************************************************************/
+    /***********************************************************************
+         01. $video-gallery
+         Description: CSS for video gallery component
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         02. $my-progress
+         Description: CSS for video gallery component
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         03. $current-satge
+         Description: CSS for video gallery component
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         04. $my-badges
+         Description: CSS for user badges component
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         05. $user-avatar
+         Description: CSS to represent a user avatar picture with info
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         06. $user-data
+         Description: CSS to represent the user's data section beneath to avatar
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         06. $top-users
+         Description: CSS to represent the tabbed list of top users and current
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         07. $ilustration
+         Description: CSS to represent an area to place a graphic illustration
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         08. $user-dashboard
+         Description: CSS to represent an area to place a graphic illustration
+        ************************************************************************/
+  }
+  .ns-app .to-top {
+    bottom: 0;
+    color: #f00;
+    left: calc(50% - 19px);
+    position: absolute;
+    text-align: center;
+    color: #e1e455;
+  }
+  .ns-app img {
+    max-width: 100%;
+  }
+  .ns-app .txt-title {
+    color: white;
+    font-weight: bold;
+    margin: 5% 15%;
+    font-size: 120%;
+  }
+  .ns-app .txt-title:before {
+    content: "- ";
+  }
+  .ns-app .txt-title:after {
+    content: " -";
+  }
+  .ns-app .txt-renglon {
+    color: white;
+    font-weight: bold;
+    margin: 5% 15%;
+  }
+  .ns-app .txt-bigger {
+    font-size: 150%;
+    line-height: 80%;
+  }
+  .ns-app .subtitle {
+    color: #e1e455;
+    font-size: 150%;
+    padding: 5% 15%;
+    text-transform: uppercase;
+  }
+  .ns-app .centrado {
+    text-align: center;
+  }
+  .ns-app .fl-left {
+    float: left;
+  }
+  .ns-app .fl-right {
+    float: right;
+  }
+  .ns-app .blanco {
+    color: white;
+  }
+  .ns-app .hangar-bay {
+    background-image: url('../images/bckgnd.jpg');
+    background-color: #24282a;
+    background-position: -1px -35px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-bottom: 10px solid #24282a;
+  }
+  .ns-app .hangar-bay #ship {
+    display: block;
+    width: 100%;
+    min-height: 200px;
+    margin-bottom: 20px;
+  }
+  .ns-app .hangar-bay #ship img {
+    margin: 5% 20%;
+    width: 60%;
+  }
+  .ns-app .blueprint {
+    background-image: url('../images/blueprint.jpg');
+    background-color: #112845;
+    background-position: -1px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 10px solid #24282a;
+  }
+  .ns-app .progreso {
+    background-image: url('../images/progreso.jpg');
+    background-size: cover;
+    background-color: #24282A;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+  .ns-app .progreso .spinner {
+    max-width: 49%;
+    padding: 5% 9% 10%;
+    position: relative;
+  }
+  .ns-app .progreso .spinner .circle {
+    background-color: rgba(13, 15, 19, 0.55);
+    border-radius: 50%;
+    display: block;
+    height: 46%;
+    left: 28%;
+    position: absolute;
+    text-align: center;
+    top: 22%;
+    width: 44%;
+  }
+  .ns-app .progreso .spinner .text {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    left: calc(50% - 19px);
+    position: absolute;
+    top: calc(50% - 25px);
+    width: auto;
+  }
+  .ns-app .progreso .spinner[data-progress="0"] {
+    background-image: url("../images/prcnt/0.png");
+  }
+  .ns-app .progreso .spinner[data-progress="1"] {
+    background-image: url("../images/prcnt/1.png");
+  }
+  .ns-app .progreso .spinner[data-progress="2"] {
+    background-image: url("../images/prcnt/2.png");
+  }
+  .ns-app .progreso .spinner[data-progress="3"] {
+    background-image: url("../images/prcnt/3.png");
+  }
+  .ns-app .progreso .spinner[data-progress="4"] {
+    background-image: url("../images/prcnt/4.png");
+  }
+  .ns-app .progreso .spinner[data-progress="5"] {
+    background-image: url("../images/prcnt/5.png");
+  }
+  .ns-app .progreso .spinner[data-progress="6"] {
+    background-image: url("../images/prcnt/6.png");
+  }
+  .ns-app .progreso .spinner[data-progress="7"] {
+    background-image: url("../images/prcnt/7.png");
+  }
+  .ns-app .progreso .spinner[data-progress="8"] {
+    background-image: url("../images/prcnt/8.png");
+  }
+  .ns-app .progreso .spinner[data-progress="9"] {
+    background-image: url("../images/prcnt/9.png");
+  }
+  .ns-app .progreso .spinner[data-progress="10"] {
+    background-image: url("../images/prcnt/10.png");
+  }
+  .ns-app .progreso .spinner[data-progress="11"] {
+    background-image: url("../images/prcnt/11.png");
+  }
+  .ns-app .progreso .spinner[data-progress="12"] {
+    background-image: url("../images/prcnt/12.png");
+  }
+  .ns-app .progreso .spinner[data-progress="13"] {
+    background-image: url("../images/prcnt/13.png");
+  }
+  .ns-app .progreso .spinner[data-progress="14"] {
+    background-image: url("../images/prcnt/14.png");
+  }
+  .ns-app .progreso .spinner[data-progress="15"] {
+    background-image: url("../images/prcnt/15.png");
+  }
+  .ns-app .progreso .spinner[data-progress="16"] {
+    background-image: url("../images/prcnt/16.png");
+  }
+  .ns-app .progreso .spinner[data-progress="17"] {
+    background-image: url("../images/prcnt/17.png");
+  }
+  .ns-app .progreso .spinner[data-progress="18"] {
+    background-image: url("../images/prcnt/18.png");
+  }
+  .ns-app .progreso .spinner[data-progress="19"] {
+    background-image: url("../images/prcnt/19.png");
+  }
+  .ns-app .progreso .spinner[data-progress="20"] {
+    background-image: url("../images/prcnt/20.png");
+  }
+  .ns-app .progreso .spinner[data-progress="21"] {
+    background-image: url("../images/prcnt/21.png");
+  }
+  .ns-app .progreso .spinner[data-progress="22"] {
+    background-image: url("../images/prcnt/22.png");
+  }
+  .ns-app .progreso .spinner[data-progress="23"] {
+    background-image: url("../images/prcnt/23.png");
+  }
+  .ns-app .progreso .spinner[data-progress="24"] {
+    background-image: url("../images/prcnt/24.png");
+  }
+  .ns-app .progreso .spinner[data-progress="25"] {
+    background-image: url("../images/prcnt/25.png");
+  }
+  .ns-app .progreso .spinner[data-progress="26"] {
+    background-image: url("../images/prcnt/26.png");
+  }
+  .ns-app .progreso .spinner[data-progress="27"] {
+    background-image: url("../images/prcnt/27.png");
+  }
+  .ns-app .progreso .spinner[data-progress="28"] {
+    background-image: url("../images/prcnt/28.png");
+  }
+  .ns-app .progreso .spinner[data-progress="29"] {
+    background-image: url("../images/prcnt/29.png");
+  }
+  .ns-app .progreso .spinner[data-progress="30"] {
+    background-image: url("../images/prcnt/30.png");
+  }
+  .ns-app .progreso .spinner[data-progress="31"] {
+    background-image: url("../images/prcnt/31.png");
+  }
+  .ns-app .progreso .spinner[data-progress="32"] {
+    background-image: url("../images/prcnt/32.png");
+  }
+  .ns-app .progreso .spinner[data-progress="33"] {
+    background-image: url("../images/prcnt/33.png");
+  }
+  .ns-app .progreso .spinner[data-progress="34"] {
+    background-image: url("../images/prcnt/34.png");
+  }
+  .ns-app .progreso .spinner[data-progress="35"] {
+    background-image: url("../images/prcnt/35.png");
+  }
+  .ns-app .progreso .spinner[data-progress="36"] {
+    background-image: url("../images/prcnt/36.png");
+  }
+  .ns-app .progreso .spinner[data-progress="37"] {
+    background-image: url("../images/prcnt/37.png");
+  }
+  .ns-app .progreso .spinner[data-progress="38"] {
+    background-image: url("../images/prcnt/38.png");
+  }
+  .ns-app .progreso .spinner[data-progress="39"] {
+    background-image: url("../images/prcnt/39.png");
+  }
+  .ns-app .progreso .spinner[data-progress="40"] {
+    background-image: url("../images/prcnt/40.png");
+  }
+  .ns-app .progreso .spinner[data-progress="41"] {
+    background-image: url("../images/prcnt/41.png");
+  }
+  .ns-app .progreso .spinner[data-progress="42"] {
+    background-image: url("../images/prcnt/42.png");
+  }
+  .ns-app .progreso .spinner[data-progress="43"] {
+    background-image: url("../images/prcnt/43.png");
+  }
+  .ns-app .progreso .spinner[data-progress="44"] {
+    background-image: url("../images/prcnt/44.png");
+  }
+  .ns-app .progreso .spinner[data-progress="45"] {
+    background-image: url("../images/prcnt/45.png");
+  }
+  .ns-app .progreso .spinner[data-progress="46"] {
+    background-image: url("../images/prcnt/46.png");
+  }
+  .ns-app .progreso .spinner[data-progress="47"] {
+    background-image: url("../images/prcnt/47.png");
+  }
+  .ns-app .progreso .spinner[data-progress="48"] {
+    background-image: url("../images/prcnt/48.png");
+  }
+  .ns-app .progreso .spinner[data-progress="49"] {
+    background-image: url("../images/prcnt/49.png");
+  }
+  .ns-app .progreso .spinner[data-progress="50"] {
+    background-image: url("../images/prcnt/50.png");
+  }
+  .ns-app .progreso .spinner[data-progress="51"] {
+    background-image: url("../images/prcnt/51.png");
+  }
+  .ns-app .progreso .spinner[data-progress="52"] {
+    background-image: url("../images/prcnt/52.png");
+  }
+  .ns-app .progreso .spinner[data-progress="53"] {
+    background-image: url("../images/prcnt/53.png");
+  }
+  .ns-app .progreso .spinner[data-progress="54"] {
+    background-image: url("../images/prcnt/54.png");
+  }
+  .ns-app .progreso .spinner[data-progress="55"] {
+    background-image: url("../images/prcnt/55.png");
+  }
+  .ns-app .progreso .spinner[data-progress="56"] {
+    background-image: url("../images/prcnt/56.png");
+  }
+  .ns-app .progreso .spinner[data-progress="57"] {
+    background-image: url("../images/prcnt/57.png");
+  }
+  .ns-app .progreso .spinner[data-progress="58"] {
+    background-image: url("../images/prcnt/58.png");
+  }
+  .ns-app .progreso .spinner[data-progress="59"] {
+    background-image: url("../images/prcnt/59.png");
+  }
+  .ns-app .progreso .spinner[data-progress="60"] {
+    background-image: url("../images/prcnt/60.png");
+  }
+  .ns-app .progreso .spinner[data-progress="61"] {
+    background-image: url("../images/prcnt/61.png");
+  }
+  .ns-app .progreso .spinner[data-progress="62"] {
+    background-image: url("../images/prcnt/62.png");
+  }
+  .ns-app .progreso .spinner[data-progress="63"] {
+    background-image: url("../images/prcnt/63.png");
+  }
+  .ns-app .progreso .spinner[data-progress="64"] {
+    background-image: url("../images/prcnt/64.png");
+  }
+  .ns-app .progreso .spinner[data-progress="65"] {
+    background-image: url("../images/prcnt/65.png");
+  }
+  .ns-app .progreso .spinner[data-progress="66"] {
+    background-image: url("../images/prcnt/66.png");
+  }
+  .ns-app .progreso .spinner[data-progress="67"] {
+    background-image: url("../images/prcnt/67.png");
+  }
+  .ns-app .progreso .spinner[data-progress="68"] {
+    background-image: url("../images/prcnt/68.png");
+  }
+  .ns-app .progreso .spinner[data-progress="69"] {
+    background-image: url("../images/prcnt/69.png");
+  }
+  .ns-app .progreso .spinner[data-progress="70"] {
+    background-image: url("../images/prcnt/70.png");
+  }
+  .ns-app .progreso .spinner[data-progress="71"] {
+    background-image: url("../images/prcnt/71.png");
+  }
+  .ns-app .progreso .spinner[data-progress="72"] {
+    background-image: url("../images/prcnt/72.png");
+  }
+  .ns-app .progreso .spinner[data-progress="73"] {
+    background-image: url("../images/prcnt/73.png");
+  }
+  .ns-app .progreso .spinner[data-progress="74"] {
+    background-image: url("../images/prcnt/74.png");
+  }
+  .ns-app .progreso .spinner[data-progress="75"] {
+    background-image: url("../images/prcnt/75.png");
+  }
+  .ns-app .progreso .spinner[data-progress="76"] {
+    background-image: url("../images/prcnt/76.png");
+  }
+  .ns-app .progreso .spinner[data-progress="77"] {
+    background-image: url("../images/prcnt/77.png");
+  }
+  .ns-app .progreso .spinner[data-progress="78"] {
+    background-image: url("../images/prcnt/78.png");
+  }
+  .ns-app .progreso .spinner[data-progress="79"] {
+    background-image: url("../images/prcnt/79.png");
+  }
+  .ns-app .progreso .spinner[data-progress="80"] {
+    background-image: url("../images/prcnt/80.png");
+  }
+  .ns-app .progreso .spinner[data-progress="81"] {
+    background-image: url("../images/prcnt/81.png");
+  }
+  .ns-app .progreso .spinner[data-progress="82"] {
+    background-image: url("../images/prcnt/82.png");
+  }
+  .ns-app .progreso .spinner[data-progress="83"] {
+    background-image: url("../images/prcnt/83.png");
+  }
+  .ns-app .progreso .spinner[data-progress="84"] {
+    background-image: url("../images/prcnt/84.png");
+  }
+  .ns-app .progreso .spinner[data-progress="85"] {
+    background-image: url("../images/prcnt/85.png");
+  }
+  .ns-app .progreso .spinner[data-progress="86"] {
+    background-image: url("../images/prcnt/86.png");
+  }
+  .ns-app .progreso .spinner[data-progress="87"] {
+    background-image: url("../images/prcnt/87.png");
+  }
+  .ns-app .progreso .spinner[data-progress="88"] {
+    background-image: url("../images/prcnt/88.png");
+  }
+  .ns-app .progreso .spinner[data-progress="89"] {
+    background-image: url("../images/prcnt/89.png");
+  }
+  .ns-app .progreso .spinner[data-progress="90"] {
+    background-image: url("../images/prcnt/90.png");
+  }
+  .ns-app .progreso .spinner[data-progress="91"] {
+    background-image: url("../images/prcnt/91.png");
+  }
+  .ns-app .progreso .spinner[data-progress="92"] {
+    background-image: url("../images/prcnt/92.png");
+  }
+  .ns-app .progreso .spinner[data-progress="93"] {
+    background-image: url("../images/prcnt/93.png");
+  }
+  .ns-app .progreso .spinner[data-progress="94"] {
+    background-image: url("../images/prcnt/94.png");
+  }
+  .ns-app .progreso .spinner[data-progress="95"] {
+    background-image: url("../images/prcnt/95.png");
+  }
+  .ns-app .progreso .spinner[data-progress="96"] {
+    background-image: url("../images/prcnt/96.png");
+  }
+  .ns-app .progreso .spinner[data-progress="97"] {
+    background-image: url("../images/prcnt/97.png");
+  }
+  .ns-app .progreso .spinner[data-progress="98"] {
+    background-image: url("../images/prcnt/98.png");
+  }
+  .ns-app .progreso .spinner[data-progress="99"] {
+    background-image: url("../images/prcnt/99.png");
+  }
+  .ns-app .progreso .spinner[data-progress="100"] {
+    background-image: url("../images/prcnt/100.png");
+  }
+  .ns-app .holoproj {
+    background-image: url('../images/holoproj.jpg');
+    background-size: cover;
+    background-color: #24282A;
+    background-position: 0 100%;
+    padding: 10px 0 60px;
+    position: relative;
+  }
+  .ns-app .holoproj .light {
+    position: absolute;
+    bottom: 0;
+    animation: 2s ease .5s normal none infinite running flicker;
+    max-width: 100%;
+  }
+  .ns-app .holoproj .light img {
+    max-width: 100%;
+  }
+  .ns-app .jector {
+    background-image: url('../images/holoprojftr.jpg');
+    background-size: cover;
+    background-color: #24282A;
+    background-position: 0 0;
+    padding-top: 60px;
+  }
+  .ns-app .parts {
+    background-image: url('../images/footernave.gif');
+    background-position: 0 -3px;
+    background-size: cover;
+    border-top: 2px solid #2a2f32;
+    padding: 20px 0;
+  }
+  .ns-app .agregar {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 150%;
+    margin: 4% 10%;
+    padding: 2% 3%;
+  }
+  .ns-app .agregar span {
+    padding-left: 3%;
+  }
+  .ns-app .parte {
+    display: block;
+    background: #1f2733;
+    border-radius: 5px;
+    color: white;
+    font-size: 150%;
+    margin: 2% 10%;
+    padding: 3% 5%;
+    width: 80%;
+    background: -moz-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1f2733), color-stop(100%, #141921));
+    background: -webkit-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+    background: -o-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+    background: -ms-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+    background: radial-gradient(ellipse at center, #1f2733 0%, #141921 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1f2733', endColorstr='#141921', GradientType=1);
+  }
+  .ns-app .parte [class^="icon-"] {
+    color: #e1e455;
+    font-size: 150%;
+    padding-right: 5%;
+  }
+  .ns-app .parte .icon-checked-join {
+    color: #08b190;
+  }
+  .ns-app .parte .icon-wrong {
+    color: gray;
+  }
+  .ns-app .parte span {
+    line-height: normal;
+  }
+  .ns-app .paginadores {
+    color: #08b190;
+    margin: 5% 15%;
+  }
+  .ns-app .paginadores i {
+    font-size: 300%;
+  }
+  .ns-app .forma label {
+    cursor: pointer;
+    display: block;
+    margin-right: 15px;
+    padding-left: 10%;
+    position: relative;
+    line-height: normal;
+  }
+  .ns-app .forma input[type="radio"],
+  .ns-app .forma input[type="checkbox"] {
+    display: none;
+  }
+  .ns-app .forma input[type="radio"] + label::before,
+  .ns-app .forma input[type="checkbox"] + label::before {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .ns-app .forma label::before {
+    background-color: transparent;
+    content: "";
+    display: inline-block;
+    left: 0;
+    margin-right: 10px;
+    position: absolute;
+  }
+  .ns-app .forma input[type=radio] + label::before {
+    line-height: 50%;
+    padding: 0 2px 3px 1px;
+  }
+  .ns-app .forma input[type=checkbox] + label {
+    margin-bottom: 10px;
+  }
+  .ns-app .forma input[type=checkbox] + label::before {
+    border-radius: 3px;
+    padding: 0 6px;
+    content: "\2713";
+    color: rgba(0, 0, 0, 0);
+  }
+  .ns-app .forma input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    color: #e1e455;
+    text-align: center;
+  }
+  .ns-app .forma input[type=checkbox]:checked + label {
+    color: #e1e455;
+  }
+  .ns-app .forma input[type=radio] + label:before {
+    content: "\2022";
+    color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+  }
+  .ns-app .forma input[type=radio]:checked + label:before {
+    content: "\2022";
+    color: #e1e455;
+    text-align: center;
+  }
+  .ns-app .forma .tnf label:before {
+    display: none;
+    content: "";
+  }
+  .ns-app .forma .tnf label {
+    padding: 0 !important;
+    display: inline-block;
+  }
+  .ns-app .forma .tnf input[type=radio]:checked + label {
+    color: #e1e455;
+  }
+  .ns-app .forma .tnf label {
+    border: 1px solid white;
+    display: inline-block;
+    line-height: 200%;
+    margin: -2.5px !important;
+    padding: 0;
+    text-align: center;
+    width: 50%;
+  }
+  .ns-app .forma .tnf label:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .ns-app .forma .tnf label:nth-child(2) {
+    border-radius: 20px 0 0 20px;
+  }
+  .ns-app .forma .tnf label:nth-child(4) {
+    border-radius: 0 20px 20px 0;
+  }
+  .ns-app .forma div.cs-select {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    text-align: left;
+    background: #fff;
+    z-index: 100;
+    width: 100%;
+    max-width: 500px;
+    margin: 10px 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .ns-app .forma div.cs-select:focus {
+    outline: none;
+  }
+  .ns-app .forma .cs-select select {
+    display: none;
+  }
+  .ns-app .forma .cs-select span {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ns-app .forma .cs-select > span {
+    padding-right: 3em;
+  }
+  .ns-app .forma .cs-select > span::after,
+  .ns-app .forma .cs-select .cs-selected span::after {
+    speak: none;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .ns-app .forma .cs-select > span::after {
+    content: "\e612";
+    right: 1em;
+  }
+  .ns-app .forma .cs-select .cs-selected span::after {
+    content: '\2713';
+    margin-left: 1em;
+  }
+  .ns-app .forma .cs-select.cs-active > span::after {
+    -webkit-transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .ns-app .forma div.cs-active {
+    z-index: 200;
+  }
+  .ns-app .forma .cs-select .cs-options {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    background: #fff;
+    visibility: hidden;
+  }
+  .ns-app .forma .cs-select.cs-active .cs-options {
+    visibility: visible;
+  }
+  .ns-app .forma .cs-select ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .ns-app .forma .cs-select ul span {
+    padding: 1em;
+  }
+  .ns-app .forma .cs-select ul li.cs-focus span {
+    background-color: #ddd;
+  }
+  .ns-app .forma .cs-select li.cs-optgroup ul {
+    padding-left: 1em;
+  }
+  .ns-app .forma .cs-select li.cs-optgroup > span {
+    cursor: default;
+  }
+  .ns-app .forma div.cs-skin-rotate {
+    background: transparent;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+  }
+  .ns-app .forma .cs-skin-rotate > span,
+  .ns-app .forma .cs-skin-rotate .cs-options li {
+    background: transparent;
+    -webkit-transform-origin: 50% 50% -200px;
+    transform-origin: 50% 50% -200px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .ns-app .forma .cs-skin-rotate > span {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .ns-app .forma .cs-skin-rotate.cs-active > span {
+    opacity: 0;
+    -webkit-transform: rotate3d(0, 1, 0, -90deg);
+    transform: rotate3d(0, 1, 0, -90deg);
+  }
+  .ns-app .forma .cs-skin-rotate > span::after,
+  .ns-app .forma .cs-skin-rotate .cs-selected span::after {
+    font-family: 'icomoon';
+  }
+  .ns-app .forma .cs-skin-rotate > span::after,
+  .ns-app .forma .cs-skin-rotate.cs-active > span::after {
+    -webkit-transform: translate3d(0, -50%, 0) rotate3d(0, 0, 1, -90deg);
+    transform: translate3d(0, -50%, 0) rotate3d(0, 0, 1, -90deg);
+  }
+  .ns-app .forma .cs-skin-rotate ul span::after {
+    content: '';
+    opacity: 0;
+  }
+  .ns-app .forma .cs-skin-rotate .cs-selected span::after {
+    opacity: 0.5;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+  }
+  .ns-app .forma .cs-skin-rotate .cs-options {
+    background: transparent;
+    top: 0;
+    overflow: visible;
+    visibility: visible;
+    pointer-events: none;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  .ns-app .forma .cs-skin-rotate .cs-options ul {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  .ns-app .forma .cs-skin-rotate .cs-options li {
+    opacity: 0;
+    -webkit-transform: rotate3d(0, 1, 0, 90deg);
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  .ns-app .forma .cs-skin-rotate.cs-active .cs-options li {
+    opacity: 1;
+    -webkit-transform: rotate3d(0, 1, 0, 0deg);
+    transform: rotate3d(0, 1, 0, 0deg);
+    pointer-events: auto;
+  }
+  .ns-app .forma .cs-skin-rotate .cs-options li:nth-child(2) {
+    -webkit-transition-delay: 0.05s;
+    transition-delay: 0.05s;
+  }
+  .ns-app .forma .cs-skin-rotate .cs-options li:nth-child(3) {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+  }
+  .ns-app .forma .cs-skin-rotate .cs-options li:nth-child(4) {
+    -webkit-transition-delay: 0.15s;
+    transition-delay: 0.15s;
+  }
+  .ns-app .forma .cs-skin-rotate .cs-options li:nth-child(5) {
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+  }
+  .ns-app .forma .cs-skin-rotate.cs-active .cs-options ul li {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .ns-app .forma .cs-skin-rotate .cs-options li span {
+    background-color: #1f2733;
+    padding: 5px 0;
+  }
+  .ns-app .forma .cs-skin-rotate .cs-options li span:hover,
+  .ns-app .forma .cs-skin-rotate .cs-options li.cs-focus span,
+  .ns-app .forma .cs-skin-rotate .cs-selected span {
+    opacity: 0.8;
+  }
+  .ns-app .video-gallery {
+    margin-top: 10px;
+  }
+  .ns-app .video-gallery .stage {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    width: 370px;
+    height: 220px;
+  }
+  .ns-app .video-gallery .stage .icon {
+    display: block;
+    position: absolute;
+    z-index: 2;
+  }
+  .ns-app .video-gallery .stage .icon-close {
+    right: -22px;
+    top: -22px;
+    padding: 0;
+    margin: 0;
+    width: 46px;
+    height: 46px;
+    border: 5px solid #000000;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    background-color: #f5461f;
+    background-image: url('../images/ics-gentera.png');
+    background-position: center -127px;
+    background-repeat: no-repeat;
+  }
+  .ns-app .video-gallery .stage .icon-play {
+    left: 50%;
+    top: 50%;
+    padding: 0;
+    margin: -41px 0 0 -41px;
+    width: 82px;
+    height: 82px;
+    border: none;
+    background-color: transparent;
+    background-image: url('../images/icn-video-play.png');
+    background-position: center center;
+  }
+  .ns-app .video-gallery .stage.perform .player {
+    display: block;
+  }
+  .ns-app .video-gallery .stage.perform .carousel {
+    display: none;
+  }
+  .ns-app .video-gallery .player {
+    display: none;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0 auto;
+    width: inherit;
+    height: inherit;
+    border: 6px solid #000000;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+  }
+  .ns-app .video-gallery .carousel {
+    display: block;
+    width: 320px;
+    height: 180px;
+    margin: 0 auto;
+  }
+  .ns-app .my-progress {
+    margin-top: 70px;
+  }
+  .ns-app .my-progress .progress {
+    display: block;
+    position: relative;
+    padding: 0 ;
+    margin: 32px auto 18px;
+    width: 203px;
+    height: 203px;
+    background-color: transparent;
+    background-image: url('../images/img-progress-component.png');
+    background-position: center center;
+  }
+  .ns-app .my-progress label {
+    display: block;
+    margin-top: 81px;
+    width: auto;
+    height: auto;
+    color: #ffffff;
+    font-family: Robot, Arial, Sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .ns-app .my-progress .stage {
+    display: block;
+    padding: 1px 0;
+    margin: 5px 0;
+  }
+  .ns-app .my-progress img {
+    display: block;
+    padding: 0;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+  }
+  .ns-app .current-satge {
+    margin-top: 26px;
+  }
+  .ns-app .current-satge h3 {
+    margin-bottom: 6px;
+  }
+  .ns-app .current-satge .btn {
+    display: block;
+    width: 270px;
+    margin: 32px auto;
+  }
+  .ns-app .my-badges {
+    margin-top: 147px;
+  }
+  .ns-app .my-badges h3 {
+    margin-bottom: 15px;
+  }
+  .ns-app .my-badges img {
+    display: block;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .ns-app .my-badges p {
+    margin-top: 15px;
+  }
+  .ns-app .user-avatar {
+    display: block;
+    position: relative;
+    overflow: visible;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 115px;
+    height: auto;
+  }
+  .ns-app .user-avatar img {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 115px;
+    height: 115px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+  }
+  .ns-app .user-avatar figcaption {
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    padding: 0;
+    margin: 0 0 0 -16px;
+    width: 34px;
+    height: 34px;
+    background-color: #243436;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    color: #ffffff;
+    font-family: Roboto, Sans-serif, Arial;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 36px;
+    text-align: center;
+  }
+  .ns-app .user-data {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 60px auto 0;
+    width: 370px;
+    height: 94px;
+    background-color: #121b1c;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+  }
+  .ns-app .user-data p {
+    padding: 18px 0 0;
+    margin: 0 auto;
+    color: #ffffff;
+    font-family: Roboto, Sans-serif, Arial;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: capitalize;
+  }
+  .ns-app .user-data label {
+    padding: 0;
+    margin: 0;
+    color: #355a6b;
+    font-weight: inherit;
+  }
+  .ns-app .user-data span {
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    font-weight: 700;
+  }
+  .ns-app .user-data .inline-list {
+    margin-top: 11px;
+    text-align: center;
+  }
+  .ns-app .user-data li {
+    display: inline;
+    float: none;
+    padding: 3px 8px;
+    margin-left: 3px;
+    background-color: transparent;
+    border: 2px solid #bcd431;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    color: #bcd431;
+  }
+  .ns-app .user-data li span {
+    color: inherit;
+    font-family: Play, Sans-serif, Arial;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .ns-app .user-data .points {
+    position: relative;
+    padding-right: 24px;
+  }
+  .ns-app .user-data .points:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    width: 24px;
+    height: 22px;
+    background-attachment: scroll;
+    background-image: url('../images/ics-gentera.png');
+    background-position: center -165px;
+    background-repeat: no-repeat;
+    content: " ";
+  }
+  .ns-app .top-users {
+    margin-top: 243px;
+  }
+  .ns-app .top-users .head,
+  .ns-app .top-users .body {
+    padding: 0;
+    margin: 0 auto;
+  }
+  .ns-app .top-users .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .ns-app .top-users .row > div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ns-app .top-users .user-avatar {
+    position: relative;
+    overflow: visible;
+  }
+  .ns-app .top-users .arrow-up {
+    display: none;
+    position: absolute;
+    bottom: -63px;
+    left: 52%;
+    margin-left: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #121b1c;
+  }
+  .ns-app .top-users .current-user {
+    width: 370px;
+    padding: 0;
+    margin: 40px auto 0;
+  }
+  .ns-app .top-users .current-user a {
+    display: block;
+    margin: 0 auto;
+    width: 115px;
+  }
+  .ns-app .top-users .current-user .user-data {
+    margin-top: 8px;
+    height: auto;
+    background-color: transparent;
+  }
+  .ns-app .top-users [data-content-id] {
+    display: none;
+  }
+  .ns-app .top-users .tabs {
+    display: block;
+    padding: 0;
+    margin: 0 auto;
+    width: 370px;
+  }
+  .ns-app .top-users .tabs[data-tab-selected="1"] [data-tab-id="1"] .arrow-up {
+    display: block;
+  }
+  .ns-app .top-users .tabs[data-tab-selected="1"] [data-tab-id="1"] figcaption {
+    background-color: #121b1c;
+  }
+  .ns-app .top-users .tabs[data-tab-selected="1"] [data-content-id="1"] {
+    display: block;
+  }
+  .ns-app .top-users .tabs[data-tab-selected="2"] [data-tab-id="2"] .arrow-up {
+    display: block;
+  }
+  .ns-app .top-users .tabs[data-tab-selected="2"] [data-tab-id="2"] figcaption {
+    background-color: #121b1c;
+  }
+  .ns-app .top-users .tabs[data-tab-selected="2"] [data-content-id="2"] {
+    display: block;
+  }
+  .ns-app .top-users .tabs[data-tab-selected="3"] [data-tab-id="3"] .arrow-up {
+    display: block;
+  }
+  .ns-app .top-users .tabs[data-tab-selected="3"] [data-tab-id="3"] figcaption {
+    background-color: #121b1c;
+  }
+  .ns-app .top-users .tabs[data-tab-selected="3"] [data-content-id="3"] {
+    display: block;
+  }
+  .ns-app .ilustration {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: 400px;
+  }
+  .ns-app .user-dashboard {
+    padding-top: 150px;
+    height: 858px;
+    /* .gradient-sky (); */
+    /*background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, 
+                        url('../images/img-profile-spaceship-dashboard-bottom.png') left bottom no-repeat, 
+                        url('../images/img-bg-profile-sky.jpg') center top repeat-y;*/
+    background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, url('../images/img-bg-profile-top.jpg') left top no-repeat;
+  }
+  .ns-app .user-dashboard .user-data {
+    margin-top: 8px;
+    height: auto;
+    background-color: transparent;
+  }
+  .ns-app .user-dashboard .user-data p {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 767px) and screen and (max-width: 30em) {
+  .ns-app .forma div.cs-skin-rotate {
+    font-size: 1em;
+    width: 200px;
+  }
+}
+@media screen and (max-width: 767px) and screen and (max-width: 30em) {
+  .ns-app .forma .cs-skin-rotate > span,
+  .ns-app .forma .cs-skin-rotate .cs-options li {
+    -webkit-transform-origin: 50% 50% -100px;
+    transform-origin: 50% 50% -100px;
+  }
+}
+/* sm viewport */
+/* md viewport */
+/* lg viewport */
