@@ -106,4 +106,17 @@ class AbstractRestfulJsonController extends AbstractRestfulController
     	}
     	return $token;
     }
+    
+    /**
+     * Throws a error customizing the message and the status code
+     * @param string $message Details of the error, 
+     * @param number $statusCode
+     * @return multitype:string
+     */
+    public function throwJSONError($message='Ocurrio un error, contacte al administrador.', $statusCode=500){
+    	$this->getResponse()->setStatusCode($statusCode);
+    	$associativeArray = array();
+    	$associativeArray ['messageerror'] = $message;
+    	return $associativeArray;
+    }
 }

@@ -11,14 +11,21 @@ class CourseController extends AbstractRestfulJsonController {
     private $token = "";
     private $function = "core_course_get_courses";
 	
-   
+//     private $config;
+//     private function getConfig() {
+//     	if ($this->config == null) {
+//     		$this->config = $this->getServiceLocator()->get('config');
+//     	}
+//     	return $this->config;
+//     }
+    
     //test
     // Action used for GET requests without resource Id
     public function getList()
     {    	
         $url = $this->getConfig()['MOODLE_API_URL'];
         $url = sprintf($url, $this->getToken(), $this->function);
-       	 
+       	var_dump($url);
         $response = file_get_contents($url);
         $json = json_decode($response,true);
         
@@ -48,7 +55,7 @@ class CourseController extends AbstractRestfulJsonController {
 
     	$url = $this->getConfig()['MOODLE_API_URL'].'&options[ids][0]=%s';
     	$url = sprintf($url, $this->getToken(), $this->function, $id);
-
+		
         $response = file_get_contents($url);
         $json = json_decode($response,true);
 
@@ -101,11 +108,9 @@ class CourseController extends AbstractRestfulJsonController {
 
     private function generateToken() {
         $url = $this->getConfig()['TOKEN_GENERATION_URL'];
-        $url = sprintf($url, 'admin', 'Admin123!', $this->getConfig()['MOODLE_SERVICE_NAME']);
-        
+        $url = sprintf($url, 'test', 'Test123!', $this->getConfig()['MOODLE_SERVICE_NAME']);
         $response = file_get_contents($url);
         $json = json_decode($response,true);
-                
         setcookie('MOODLE_TOKEN', $json['token'], time() + 3600, '/',null, false); //the true indicates to store only if there´s a secure connection
 
         return $json['token'];

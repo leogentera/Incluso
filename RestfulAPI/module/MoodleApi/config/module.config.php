@@ -7,6 +7,8 @@ return array(
         	'MoodleApi\Controller\CourseContents' => 'MoodleApi\Controller\CourseContentController',
             'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
         	'MoodleApi\Controller\Register'       => 'MoodleApi\Controller\RegisterController',
+        	'MoodleApi\Controller\ResetPassword'       => 'MoodleApi\Controller\ResetPasswordController',
+        	'MoodleApi\Controller\ForgotPassword'       => 'MoodleApi\Controller\ForgotPasswordController',
         ),
     ),
     'router' => array(
@@ -76,6 +78,26 @@ return array(
         			),
         		),
         	),
+        		
+        	'ResetPassword' => array(
+        		'type'    => 'segment',
+        		'options' => array(
+        			'route'    => '/ResetPassword',
+        			'defaults' => array(
+        			'controller' => 'MoodleApi\Controller\ResetPassword',
+        			),
+        		),
+        	),
+        	
+        	'ForgotPassword' => array(
+        		'type'    => 'segment',
+        		'options' => array(
+        			'route'    => '/ForgotPassword',
+        			'defaults' => array(
+        			'controller' => 'MoodleApi\Controller\ForgotPassword',
+        			),
+        		),
+        ),
         	
         ),
     ),
