@@ -22,10 +22,12 @@ class AuthenticationController extends AbstractRestfulJsonController {
     // Action used for POST requests
     public function create($data)
     {
+    	//var_dump($data);
 //     	try {
 	    	$url = $this->getConfig()['TOKEN_GENERATION_URL'];
 	    	$url = sprintf($url, $data['username'], $data['password'], $this->getConfig()['MOODLE_SERVICE_NAME']);
-	    	
+
+	    	//var_dump($url);
 	    	$response = file_get_contents($url);
 	    	$json = json_decode($response,true);
 	    	if (strpos($response, "error") !== false)
