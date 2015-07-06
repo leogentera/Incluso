@@ -1,1 +1,115 @@
-////not used
+<div class="incluso-app public" ng-app>
+
+  <article class="login">
+
+    <div class="alert alert-warning hidden" role="alert">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="icomoon icon-warning"></div>
+            <p>¡Error con tu correo! Verifícalo de nuevo</p>
+            <ul>
+              <li>Verifica el usuario</li>
+              <li>Verifica el password</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success hidden" role="alert" style="display:block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="icomoon icon-checked-clip"></div>
+            <p>¡Tu correo se ha enviado correctamente!</p> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <figure>
+            <img src="../../assets/images/img-logo-sm-white-gentera.png" alt="" class="login-logo">
+            <figcaption class="center-block text-center">
+              <span>Estudia | </span>
+              <span>Trabaja | </span>
+              <span>Emprende</span>
+            </figcaption>
+          </figure> 
+        </div>
+      </div>
+    
+    </header>
+
+    <section>
+      <form action="#" class="login-form container-fluid">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <div class="input-group">
+                <p class="input-group-addon" id="emailAddOn">
+                  <span class="icomoon icon-envelope"></span>
+                </p>
+                <input type="text" ng-model="userCredentialsModel.username" name="username" class="form-control form-control-lg" placeholder="Correo" aria-describedby="emailAddOn">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <div class="input-group">
+                <p class="input-group-addon" id="passwordAddOn">
+                  <span class="icomoon icon-lock"></span>
+                </p>
+                <input type="password" ng-model="userCredentialsModel.password" name="password" class="form-control form-control-lg" placeholder="Contraseña" aria-describedby="emailAddOn">
+              </div>
+            </div>          
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="userCredentialsModel.rememberCredentials" name="rememberCredentials" /> <span>Recordar contraseña</span>
+              </label>
+            </div>              
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="button" ng-click="login()" class="btn btn-primary btn-lg btn-block">Entrar</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="center-block text-center btn-spacer">&mdash; ó &mdash;</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <a type="button" ng-click="loginWithFacebook()" class="btn btn-default btn-lg btn-block btn-facebook">
+              <span class="icomoon icon-facebook"></span>
+              Entrar con Facebook</a>
+          </div>
+        </div>
+
+      </form>
+    </section>
+    <footer>
+      <ul class="list-unstyled text-center">
+        <li><a href="#Register">Soy nuevo y deseo registrarme</a></li>
+        <li><a href="#RecoverPassword">Recuperar contraseña</a></li>
+      </ul>
+    </footer>
+
+</div>

@@ -1,4 +1,4 @@
-<div class="ns-app public" ng-app>
+<!-- <div class="ns-app public" ng-app>
 
   <article class="register">
   
@@ -235,7 +235,278 @@
 
   </article> 
 
-  <!-- html -->
-  <!-- scripts -->
-</div>
+</div> -->
 
+<div class="incluso-app public" ng-app>
+
+  <article class="register">
+
+    <div class="alert alert-warning hidden" role="alert">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="icomoon icon-warning"></div>
+            <p>¡Error con tu correo! Verifícalo de nuevo</p>
+            <ul>
+              <li>Verifica el usuario</li>
+              <li>Verifica el password</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-success hidden" role="alert" style="display:block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="icomoon icon-checked-clip"></div>
+            <p>¡Tu correo se ha enviado correctamente!</p> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <figure>
+            <img src="../../assets/images/img-logo-sm-white-gentera.png" alt="" class="login-logo">
+            <figcaption class="center-block text-center">
+              <span>Estudia | </span>
+              <span>Trabaja | </span>
+              <span>Emprende</span>
+            </figcaption>
+          </figure> 
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <form action="" class="register-form container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>Datos de Registro</h1>
+          </div>
+        </div>
+        <div class="pages">
+
+          <div class="page active-" data-page="1">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="aliasAddOn">
+                      <span class="icomoon icon-profile"></span>
+                    </p>
+                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg" placeholder="Alias" aria-describedby="aliasAddOn">
+                  </div>
+                </div>
+              </div>
+            </div>   
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="birthDateAddOn">
+                      <span class="icomoon icon-calendar"></span>
+                    </p>
+                    <input type="text" ng-model="registerModel.birthday" name="dob" class="form-control form-control-lg" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn">
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="genderAddOn">
+                      <span class="icomoon icon-dna"></span>                      
+                    </p>
+                    <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg" aria-describedby="genderAddOn">
+                      <option label="Género" value="" disabled selected style="display:none"></option>
+                      <option value="">Masculino</option>
+                      <option value="">Femenino</option> 
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="countryAddOn">
+                      <span class="icomoon icon-planet"></span>                        
+                    </p>
+                    <select ng-model="registerModel.country" name="country" class="form-control form-control-lg" aria-describedby="countryAddOn">
+                      <option label="País" value="" disabled selected style="display:none"></option>
+                      <option value="">Bolivia</option>
+                      <option value="">Colombia</option> 
+                      <option value="">Ecuador</option> 
+                      <option value="">México</option> 
+                      <option value="">Perú</option> 
+                      <option value="">Uruguay</option> 
+                      <option value="">Venezuela</option> 
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>        
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="cityAddOn">
+                      <span class="icomoon icon-map"></span> 
+                    </p>
+                    <select ng-model="registerModel.city" name="city" class="form-control form-control-lg" aria-describedby="cityAddOn">
+                      <option label="Ciudad" value="" disabled selected style="display:none"></option>
+                      <option value="">Bogotá</option>                       
+                      <option value="">Buenos Aires</option>
+                      <option value="">La Paz</option> 
+                      <option value="">México D.F.</option> 
+                      <option value="">Monterrey</option> 
+                      <option value="">Montevideo</option> 
+                      <option value="">Rosario</option> 
+                    </select>                    
+                  </div>
+                </div>            
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="page-number">
+                  <p class="text-center">
+                    <span>1</span>
+                    <span>/</span>
+                    <span>2</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="button" class="btn btn-primary btn-lg btn-block">Continuar</button>
+              </div>
+              <div class="col-xs-12">
+                <button type="button" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</button>
+              </div> 
+            </div>          
+
+          </div>   
+
+          <div class="page active" data-page="2">
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="emailAddOn">
+                      <span class="icomoon icon-envelope"></span>                      
+                    </p>
+                    <input type="email" ng-model="registerModel.email" name="useremail" class="form-control form-control-lg" placeholder="Correo" aria-describedby="emailAddOn">
+                  </div>
+                </div>
+              </div>
+            </div>   
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="accountPasswordAddOn">
+                      <span class="icomoon icon-lock"></span>
+                    </p>
+                    <input type="password" ng-model="registerModel.password" name="password" class="form-control form-control-lg" placeholder="Contraseña" aria-describedby="accountPasswordAddOn">
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="confirmPasswordAddOn">
+                      <span class="icomoon icon-lock"></span> 
+                    </p>
+                    <input type="password" ng-model="registerModel.confirmPassword" name="passwordConfirmation" class="form-control form-control-lg" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn">
+                  </div>
+                </div>
+              </div>
+            </div>             
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="securityQuestionAddOn">
+                      <span class="icomoon icon-help"></span>
+                    </p>
+                    <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg" aria-describedby="securityQuestionAddOn">
+                      <option label="Pregunta de Seguridad" value="" disabled selected style="display:none"></option>
+                      <option value="">¿Dónde crecí?</option>
+                      <option value="">Nombre de mi mejor amigo</option> 
+                      <option value="">Nombre de mi mascota</option> 
+                      <option value="">Personaje favorito</option> 
+                      <option value="">Banda musical favorita</option> 
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>       
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <p class="input-group-addon" id="securityAnswerAddOn">
+                      <span class="icomoon icon-help"></span>
+                    </p>
+                    <input type="text" ng-model="registerModel.secretAnswer" name="securityQuestionAnswer" class="form-control form-control-lg" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn">
+                  </div>
+                </div>            
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="page-number">
+                  <p class="text-center">
+                    <span>2</span>
+                    <span>/</span>
+                    <span>2</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="button-group">
+                  <button type="button" class="btn btn-primary btn-lg">
+                    <span class="icomoon icon-arrow-slim-left"></span>
+                  </button>
+                  <button type="button" ng-click="register()" class="btn btn-primary btn-lg">Registrar</button>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <button type="button" ng-click="cancel()" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</button>
+              </div>         
+            </div>
+
+          </div>                  
+        </div> 
+      </form>      
+    </section>
+
+  </article> 
+
+</div>

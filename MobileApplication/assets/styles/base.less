@@ -7,22 +7,26 @@
     Targets:        Modern Browsers, Android's WebView.
 	
 	Index:
-            01. Basic Tags
-            02. Selection
-            03. $form-control   (bootstrap)
-            04. $btn            (bootstrap)
-            05. $form-group		(bootstrap)
-            06. $table     		(bootstrap)
-            07. $date-picker-control
-            08. $text-ellipsis
-            09. $contents
+            01. incluso-app
+            02. btn             (bootstrap)
+            03. btn-back-to-top   
+            04. form-control    (bootstrap)
+            05. input-group		(bootstrap)
+            06. alert     		(bootstrap)
+            07. navbar          (bootstrap)
+            08. navbar-toggle   (bootstrap)
+            09. component
+            10. inline-list
+            11. block-list
+            12. pages
+            13. footer
 ********************************************************************************/
 @import "less-utilities.less";
 
-.ns-app {
+.incluso-app {
 
     /****************************************************************************
-     01. ns-app
+     01. incluso-app
      Description: CSS rules for basic namespace wrapper.
     ****************************************************************************/   
     padding:0; margin:0 auto;
@@ -32,87 +36,274 @@
 
 
     /****************************************************************************
-     02 form-control
-     Description: CSS overrides to bootstrap's form-control class.
+     02. btn
+     Description: CSS override to bootstrap's btn class.
     ****************************************************************************/
-    .form-control {}
-
-    /* for aero theme */
-    .form-control {
-        .border-radius-reset();
-        .box-shadow-reset();
-        border-color:rgba(255,255,255,0.3);
+    .btn {
+        border: none;
+        .border-radius-all(3px);
+        font-weight: 600;        
+    }
+    .btn-primary {
+        .gradient-btn-primary();
         color:@clr-white;
-        line-height: 1.42857143;
     }
-    .form-control:focus {
-        border-color: #06BACC;
-    }        
+    .btn-facebook {
+        .gradient-btn-facebook();
+        color:@clr-white;
 
-    ::-webkit-input-placeholder {
-        color:#CCC !important;
-        font-style:italic; font-weight:400;
+        .icon-facebook{
+            float: left;
+            font-size: 28px;
+        }
     }
-    input:-moz-placeholder { /* Firefox 18- */
-        color:#CCC !important;
-        font-style:italic; font-weight:400;
+    .btn-default.btn-transparent {
+        background: transparent;
+        color:@clr-white;
+        font-size: 20px;        
     }
-    ::-moz-placeholder {  /* Firefox 19+ */
-        color:#CCC !important;
-        font-style:italic; font-weight:400;
-    }
-    :-ms-input-placeholder { 
-        color:#CCC !important;
-        font-style:italic; font-weight:400;
-    }
-
-    /* control sizes */
-    .form-control-xl,
-    .form-control-xl::-webkit-input-placeholder,
-    input.form-control-xl:-moz-placeholder,
-    .form-control-xl::-moz-placeholder {
-        height:75px;
-        padding:12px 16px;
-        font-size: 32px;
-    }
-    .form-control-lg,
-    .form-control-lg::-webkit-input-placeholder,
-    input.form-control-lg:-moz-placeholder,
-    .form-control-lg::-moz-placeholder {
-        height:55px;
-        padding:12px 16px;
+    .btn-link {
+        display: block;
+        padding: 9px 3px;
+        border: 1px solid @clr-green;
+        .border-radius(24px);
+        color: @clr-green;
+        font-family: Roboto, Sans-serif, Arial;
         font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-align: center;
     }
-    .form-control-md,
-    .form-control-md::-webkit-input-placeholder,
-    input.form-control-md:-moz-placeholder,
-    .form-control-md::-moz-placeholder {
-        height:40px;
-        padding:6px 16px;
-        font-size: 16px;
+    .btn-link:hover, .btn-link:focus {
+        text-decoration: none;
+    }     
+    .btn-lg, .btn-group-lg > .btn {
+        padding-top: 15px;
+        padding-bottom: 16px;
+        font-size: 24px;
+        letter-spacing: 1px;
+        line-height: 24px;
     }
-    .form-control-sm,
-    .form-control-sm::-webkit-input-placeholder,
-    input.form-control-sm:-moz-placeholder,
-    .form-control-sm::-moz-placeholder {
-        height:35px;
-        padding:6px 16px;
-        font-size: 14px;
-    }        
-    .form-control-xs,
-    .form-control-xs::-webkit-input-placeholder,
-    input.form-control-xs:-moz-placeholder,
-    .form-control-xs::-moz-placeholder {
-        height:30px;
-        padding:6px 16px;
-        font-size: 12px;
-    } 
-    /***************************************************************************/ 
-
+    /***************************************************************************/
 
 
     /****************************************************************************
-     02. $navbar
+     03. btn-back-to-top
+     Description: CSS to represent a back-to-top button
+    ****************************************************************************/
+    .btn-back-to-top {
+        display: block;
+        padding: 0;
+        margin: 0;
+        width: 60px;
+        height: 40px;
+        .border-radius(6px, 6px, 0, 0);
+        background-color: @clr-gray;
+        background-attachment: scroll;
+        background-image: url('../images/ics-gentera.png');
+        background-position: center -187px;
+        background-repeat: no-repeat;
+        opacity: 0.9;
+    }
+    /***************************************************************************/ 
+
+
+    /****************************************************************************
+     04. input-group
+     Description: CSS overrides to bootstrap's input-group class.
+    ****************************************************************************/
+    .button-group {
+        display: block;
+        position: relative;
+
+        &:before, &:after {
+            display: table;
+            content: " ";
+        }
+        &:after {
+            clear: both;
+        }        
+
+        .btn {
+            display: inline-block;
+            float: left;
+            width: 50%;
+            height: 55px;
+            max-height: 55px;
+
+            &:first-child {
+                width: 45%;
+                margin-right: 5%;
+            }
+        }
+    }
+    /***************************************************************************/ 
+
+    /****************************************************************************
+     05. form-control
+     Description: CSS overrides to bootstrap's form-control class.
+    ****************************************************************************/
+    .form-control {
+        .border-radius-reset();
+        .box-shadow-reset();
+        .clr-white(border-color, 0.3);
+        color:@clr-white;
+        line-height: 1.42857143;
+        font-weight: 700;
+
+        &:focus {
+            border-color: #06BACC;
+        } 
+
+        &::-webkit-input-placeholder {
+            /* opacity: 0.5; */
+            color:@clr-white !important;
+            font-weight:100;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+            /* opacity: 0.5; */
+            color:@clr-white !important;
+            font-weight:100;
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+            /* opacity: 0.5; */           
+            color:@clr-white !important;
+            font-weight:100;
+        }
+
+        /* control sizing */
+        &.form-control-xl {
+            height:75px;
+            padding:12px 16px;
+            font-size: 32px;
+        }
+        &.form-control-lg {
+            height:66px;
+            padding:21px 16px;
+            font-size: 24px;
+        }
+        &.form-control-md {
+            height:40px;
+            padding:6px 16px;
+            font-size: 16px;
+        }
+        &.form-control-sm {
+            height:35px;
+            padding:6px 16px;
+            font-size: 14px;
+        }        
+        &.form-control-xs {
+            height:30px;
+            padding:6px 16px;
+            font-size: 12px;
+        }         
+    }
+    /***************************************************************************/
+
+
+    /****************************************************************************
+     06. input-group
+     Description: CSS overrides to bootstrap's input-group class.
+    ****************************************************************************/
+    .input-group {
+        .input-group-addon {
+            padding: 0 1px;
+            background-color: transparent;
+            border-left:none;
+            border-top:none;
+            border-right:none;
+            border-bottom:none;
+            .border-radius-reset();
+            color:@clr-white;
+        }    
+        .input-group-addon + .form-control {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+        .form-control {
+            background-color: transparent;
+            border-left:none;
+            border-top:none;
+            border-right:none;
+            border-bottom:none;
+            .border-radius-reset();
+            .box-shadow-reset();
+            color:@clr-white;
+            font-size:24px;
+            font-weight: 600;
+        }
+        .form-control:hover, 
+        .form-control:focus,
+        .form-control:active {
+            .box-shadow-reset();
+        }
+
+        select.form-control {
+
+            option {
+                color: @clr-blueDark;
+            }
+            option:first-child {
+                color: @clr-blueDark;
+            }
+        }
+    }
+    /***************************************************************************/
+
+
+    /****************************************************************************
+     07. alert
+     Description: CSS overrides to bootstrap's alert class.
+    ****************************************************************************/
+    .alert {
+        display: block; 
+        height: auto; 
+        min-height: 60px;
+        padding:0;
+        border:none;
+        .border-radius(0);
+
+        &.fixed-top {
+            position: absolute;
+            z-index: 1;
+            width:100%; 
+        }
+        &.alert-warning {
+            .clr-orange(background-color, 0.2);
+        }
+        &.alert-success {
+            .clr-greenMedium(background-color, 0.5);
+        }
+        .icomoon {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            left:16px; top:16px;
+            color:@clr-white;
+            font-size:28px;
+        }
+        .icon-warning {}
+        .icon-warning {}
+        p {
+            display: block;
+            margin: 16px 0 16px 45px;
+            color:@clr-white; 
+            font-size: 18px;
+            font-weight: 600;    
+        }
+        ol, ul {
+            display: block;
+            margin: 16px 0 16px 33px;
+            color:@clr-white; 
+            font-size: 18px;
+            font-weight: 300;    
+        }        
+    }
+    /***************************************************************************/     
+
+
+    /****************************************************************************
+     08. navbar
      Description: CSS overrides to bootstrap's navbar class and descendants.
     ****************************************************************************/
     .navbar {
@@ -123,7 +314,6 @@
     .navbar-default .navbar-toggle {}
 
     .navbar {}
-
     .navbar-welcome {
         background-color: @clr-orange;
         border-color: @clr-orange;
@@ -184,7 +374,7 @@
     
 
     /****************************************************************************
-     03. $navbar-toggle
+     09. navbar-toggle
      Description: CSS override to bootstrap's navbar toggle button on mobile.
     ****************************************************************************/
     .navbar-toggle {
@@ -206,29 +396,7 @@
 
 
     /****************************************************************************
-     04. $btn
-     Description: CSS override to bootstrap's navbar toggle button on mobile.
-    ****************************************************************************/
-    .btn {}
-    .btn-primary {
-        .gradient-btn-primary();
-    }
-    .btn-lg, .btn-group-lg > .btn {
-        padding-top: 18px;
-        padding-bottom: 18px;
-        color: @clr-blue;
-        font-family: Roboto, Sans-serif, Arial;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        line-height: 18px;
-        text-transform: uppercase;
-    }    
-    /***************************************************************************/    
-
-
-    /****************************************************************************
-     05. $component
+     10. component
      Description: CSS generic class for components
     ****************************************************************************/
     .component {
@@ -274,8 +442,8 @@
     
 
     /****************************************************************************
-     06. $inline-list
-     Description: CSS override to bootstrap's inline-list class
+     11. inline-list
+     Description: CSS class to represent an inline list of elements.
     ****************************************************************************/
     .inline-list {
         display: block;
@@ -297,8 +465,8 @@
 
 
     /****************************************************************************
-     07. $block-list
-     Description: CSS override to bootstrap's block-list class
+     12. block-list
+     Description: CSS class to represent a block list of elements.
     ****************************************************************************/
     .block-list {
         display: block;
@@ -320,48 +488,60 @@
 
 
     /****************************************************************************
-     08. $btn-link
-     Description: CSS override to bootstrap's btn-link class
+     13. pages
+     Description: CSS class for a page wrapper with pages and buttons
     ****************************************************************************/
-    .btn-link {
+    .pages {
         display: block;
-        padding: 9px 3px;
-        border: 1px solid @clr-green;
-        .border-radius(24px);
-        color: @clr-green;
-        font-family: Roboto, Sans-serif, Arial;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-align: center;
+
+        .page {
+            display: none;
+            margin-bottom: 15px;
+
+            &.active {display: block;}
+        }
+        .page-number {
+            margin: 15px 0;
+            color:@clr-white;
+            font-size: 24px;
+            font-weight: bold;
+
+            span {
+                color: @clr-blueTurquoise;
+
+                &:last-child {
+                    color: @clr-white;
+                }
+            }
+        }
+        .btn {
+            margin-bottom:15px;
+        }
+        /*.button-group {
+            display: block;
+            position: relative;
+
+            .btn {
+                display: block;
+                width: auto;
+
+                &:first-child {
+                    position: absolute;
+                    width: 60px;
+                }
+                &:first-child + .btn {
+                    margin-left: 80px;
+                }
+            }
+        }*/
     }
-    .btn-link:hover, .btn-link:focus {
-        text-decoration: none;
-    }
-    /***************************************************************************/      
+    /***************************************************************************/    
 
 
     /****************************************************************************
-     09. $btn-back-to-top
-     Description: CSS to represent a back-to-top button
+     14. footer
+     Description: CSS class for a page wrapper with pages and buttons
     ****************************************************************************/
-    .btn-back-to-top {
-        display: block;
-        padding: 0;
-        margin: 0;
-        width: 60px;
-        height: 40px;
-        .border-radius(6px, 6px, 0, 0);
-        background-color: @clr-gray;
-        background-attachment: scroll;
-        background-image: url('../images/ics-gentera.png');
-        background-position: center -187px;
-        background-repeat: no-repeat;
-        opacity: 0.9;
-    }
-    /***************************************************************************/     
-
-
     footer {
         display: block;
         position: relative;
@@ -391,33 +571,6 @@
             margin-left: -30px;
         }
     }
+    /***************************************************************************/
 }
 
-
-/* xs viewport */
-@media screen and (max-width: 767px) {
-    .ns-app {
-
-    }
-}
-
-/* sm viewport */
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .ns-app {
-        
-    }    
-}
-
-/* md viewport */
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-    .ns-app {
-        
-    }
-}
-
-/* lg viewport */
-@media screen and (min-width: 1200px) {
-    .ns-app {
-        
-    }
-}
