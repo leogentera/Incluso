@@ -9,13 +9,13 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
   <!-- <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css"> -->
   <!-- <link rel="stylesheet" type="text/css" href="assets/styles/css.css"> -->
-  <link rel="stylesheet" type="text/css" href="../assets/styles/dev-css.css">
-	<link rel="stylesheet" href="../assets/styles/font.css">
-  <script type="text/javascript" src="../scripts/jquery-1.11.2.js"></script>
-  <script type="text/javascript" src="../scripts/bootstrap-3.3.2.js"></script>
-  <script type="text/javascript" src="../scripts/angular.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../assets/styles/dev-css.css">
+	<link rel="stylesheet" href="../../assets/styles/font.css">
+  <script type="text/javascript" src="../../Scripts/jquery-1.11.2.js"></script>
+  <script type="text/javascript" src="../../Scripts/bootstrap-3.3.2.js"></script>
+  <script type="text/javascript" src="../../Scripts/angular.js"></script>
 </head>
-<body class="ns-app step-dashboard" ng-app>
+<body class="incluso-app step-dashboard" ng-app>
 
   <div class="navbar navbar-step" id="navBar">
     <div class="container-fluid">
@@ -72,9 +72,57 @@
 
   <article class="blueprint">
 
-	
-	
-	
+	<section>
+<div class="subtitle">Mis sue&ntilde;os de tener</div>
+<div class="txt-renglon">Tus suenos de tener pueden llevarte a continuar tus estudios, comenzar a trabajar o emprender un proyecto propio.<br/>Registra la lista de tus suenos de ser.</div>
+
+</section>
+	<section id="suenios">
+	<div class="parte"><span>Terminar mis estudios</span><i class="icon-edit fl-right"></i></div>
+	<div class="parte"><span>Entrar a cursos de musica</span><i class="icon-edit fl-right"></i></div>
+	<div class="parte"><span>Ser mas responsable con el medio ambiente.</span><i class="icon-edit fl-right"></i></div>
+	</section>
+<section class="controls">
+<div class="agregar"><i class="icon-edit"></i><span>Nuevo Sue&ntilde;o...</span><i class="fl-right icon-add-btn-circle txt-bigger"><span class="path1"></span><span class="path2"></span></i></div>
+<div class="paginadores">
+<i class="icon-arrow-bold-left txt-bigger fl-left"></i>
+<i class="icon-arrow-bold-right txt-bigger fl-right"></i>
+<div class="centrado"><span class="txt-bigger">1/</span><span class="blanco txt-bigger">3</span></div>
+</div><br/>
+<div class="txt-renglon centrado txt-bigger">Cancelar</div>
+</section>
+
+<section class="forma txt-renglon txt-bigger">
+		<input type="checkbox" value="check1" name="check" id="check1">
+		<label for="check1">Checkbox No. 1</label>
+		<input type="checkbox" value="check1" name="check" id="check2">
+		<label for="check2">Checkbox No. 2</label>
+		<input type="checkbox" value="check1" name="check" id="check3">
+		<label for="check3">Checkbox No. 3</label>
+		<input type="checkbox" value="check1" name="check" id="check4">
+		<label for="check4">Checkbox No. 4</label>
+		<input type="radio" value="male" name="gender" id="male">
+		<label for="male">Male</label>
+		<input type="radio" value="female" name="gender" id="female">
+		<label for="female">Female</label>
+<div>
+<label class="select-label">Pregunta de opcion multiple</label>
+				<select class="cs-select cs-skin-rotate">
+					<option value="1">Opcion 1</option>
+					<option value="2">Opcion 2</option>
+					<option value="3">Opcion 3</option>
+					<option value="4">Opcion 4</option>
+					<option value="5">Opcion 5</option>
+				</select>
+</div>
+<div>Falso y Verdadero</div><br/>
+<div class="tnf">
+		<input type="radio" value="verdadero" name="vf" id="tru">
+		<label for="tru">Verdadero</label>
+		<input type="radio" value="Falso" name="vf" id="fols">
+		<label for="fols">Falso</label>
+</div>
+</section>
   </article>
 
   <footer>
@@ -82,9 +130,18 @@
       <li><a href="" class="centrado txt-title">Preguntas Frecuentes</a></li>
       <li><a href="" class="centrado txt-title">Ayuda y Soporte</a></li>
     </ul>
-    <a href="#navBar"><i class="icon-double-arrow-up"></i>SUBIR</a>
+    <a href="#navBar" class="to-top"><i class="icon-double-arrow-up"></i><br/>SUBIR</a>
   </footer>
   <!-- html -->
   <!-- scripts -->
+		<script src="../../Scripts/classie.js"></script>
+		<script src="../../Scripts/selectFx.js"></script>
+		<script>
+			(function() {
+				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
+					new SelectFx(el);
+				} );
+			})();
+		</script>
 </body>
 </html>
