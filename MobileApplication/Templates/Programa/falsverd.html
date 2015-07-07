@@ -77,22 +77,19 @@
 <div class="txt-renglon">Responde lo siguiente:</div>
 </section>
 <section class="forma txt-renglon txt-bigger">
-<div>
-<label class="select-label">2.¿Pregunta de Valor Numérico?</label>
-				<select class="cs-select cs-skin-rotate">
-					<option value="1"> 1</option>
-					<option value="2">10</option>
-					<option value="3">100</option>
-					<option value="4">1000</option>
-					<option value="5">10000</option>
-				</select>
+3.¿Pregunta de Falso/Verdadero?<br/><br/>
+<div class="tnf">
+		<input type="radio" value="verdadero" name="vf" id="tru">
+		<label for="tru">Verdadero</label>
+		<input type="radio" value="Falso" name="vf" id="fols">
+		<label for="fols">Falso</label>
 </div>
 </section>
 <section class="controls">
 <div class="paginadores">
 <i class="icon-arrow-bold-left txt-bigger fl-left notw"></i>
 <i class="icon-arrow-bold-right txt-bigger fl-right"></i>
-<div class="centrado"><span class="txt-bigger">3/</span><span class="blanco txt-bigger">5</span></div>
+<div class="centrado"><span class="txt-bigger">4/</span><span class="blanco txt-bigger">5</span></div>
 </div><br/>
 <div class="txt-renglon centrado txt-bigger">Cancelar</div>
 </section>
@@ -108,14 +105,6 @@
   </footer>
   <!-- html -->
   <!-- scripts -->
-  		<script src="../../Scripts/classie.js"></script>
-		<script src="../../Scripts/selectFx.js"></script>
-		<script>
-			(function() {
-				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
-					new SelectFx(el);
-				} );
-			})();
-		</script>
+
 </body>
 </html>

@@ -120,6 +120,9 @@
   .incluso-app .fl-right {
     float: right;
   }
+  .incluso-app .notw {
+    opacity: .5;
+  }
   .incluso-app .blanco {
     color: white;
   }
@@ -625,6 +628,9 @@
     content: "\2022";
     color: #e1e455;
     text-align: center;
+  }
+  .incluso-app .forma .tnf {
+    margin-top: 5%;
   }
   .incluso-app .forma .tnf label:before {
     display: none;
