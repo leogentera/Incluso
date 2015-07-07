@@ -8,10 +8,10 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"file": "Templates/Public/Login.html",
 			"settings":
 			{
-				"buffer_size": 3773,
+				"buffer_size": 3810,
 				"line_ending": "Windows"
 			}
 		}
@@ -40,16 +40,22 @@
 	},
 	"file_history":
 	[
+		"/C/df/projects/Gentera/Incluso/MobileApplication/Templates/Public/RecoverPassword.html",
+		"/C/df/projects/Gentera/Incluso/MobileApplication/index.html",
+		"/C/df/projects/Gentera/Incluso/MobileApplication/Templates/Public/Register.html",
+		"/C/df/projects/Gentera/Incluso/MobileApplication/Templates/Public/Index.html",
+		"/C/df/projects/Gentera/Incluso/MobileApplication/Templates/Public/Login.html"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
 		"height": 0.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -57,6 +63,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Templates/Public",
+			"Register",
+			"ng-"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -74,29 +83,28 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
+					"file": "Templates/Public/Login.html",
 					"settings":
 					{
-						"buffer_size": 3773,
+						"buffer_size": 3810,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								554,
-								554
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -164,6 +172,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 326.0,
+	"side_bar_width": 238.0,
 	"status_bar_visible": true
 }
