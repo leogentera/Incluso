@@ -22,7 +22,7 @@
         });
 
         $routeProvider.when('/', {
-            templateUrl: 'Templates/Public/Index.html',
+            templateUrl: 'Templates/Public/Login.html',
             controller: 'publicLoginController'
         });
 

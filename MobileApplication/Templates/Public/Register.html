@@ -1,255 +1,15 @@
-<!-- <div class="ns-app public" ng-app>
-
-  <article class="register">
-  
-    <header class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <figure>
-            <img src="" alt="" class="login-logo">
-            <figcaption class="center-block text-center">
-              <span>Estudia</span>
-              <span>Trabaja</span>
-              <span>Emprende</span>
-            </figcaption>
-          </figure> 
-        </div>
-      </div>
-    </header>
-
-    <form action="" class="register-form">
-
-      <section class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12">
-            <h4>Datos de Registro</h4>
-          </div>
-        </div>
-        
-        <div class="pages slider">
-
-          <div class="page" style="display:block">
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="aliasAddOn">
-                      <span class="glyphicon glyphicon-user"></span>
-                    </p>
-                    <input name="username" type="text" class="form-control input-lg" ng-model="registerModel.username" placeholder="Alias" aria-describedby="aliasAddOn">
-                  </div>
-                </div>
-              </div>
-            </div>   
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="birthDateAddOn">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                    </p>
-                    <input name="dob" type="date" class="form-control input-lg" ng-model="registerModel.birthday" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn">
-                  </div>
-                </div>
-              </div>
-            </div> 
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="genderAddOn">
-                      <span class="glyphicon glyphicon-user"></span>
-                    </p>
-                    <select name="gender" type="text" class="form-control input-lg" ng-model="registerModel.gender" aria-describedby="genderAddOn">
-                      <option label="Género" value="" disabled selected style="display:none"></option>
-                      <option value="Male">Masculino</option>
-                      <option value="Female">Femenino</option> 
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="countryAddOn">
-                      <span class="glyphicon glyphicon-globe"></span>
-                    </p>
-                    <select name="country" type="text" class="form-control input-lg" ng-model="registerModel.country" aria-describedby="countryAddOn">
-                      <option label="País" value="" disabled selected style="display:none"></option>
-                      <option value="BL">Bolivia</option>
-                      <option value="CL">Colombia</option> 
-                      <option value="EC">Ecuador</option> 
-                      <option value="MX">México</option> 
-                      <option value="PR">Perú</option> 
-                      <option value="UR">Uruguay</option> 
-                      <option value="VZ">Venezuela</option> 
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>        
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="cityAddOn">
-                      <span class="glyphicon glyphicon-map-marker"></span>
-                    </p>
-                    <input name="password" type="password" class="form-control input-lg" ng-model="registerModel.city" placeholder="Ciudad" aria-describedby="cityAddOn">
-                  </div>
-                </div>            
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="page-number">
-                  <p class="text-center">
-                    <span>1</span>
-                    <span>/</span>
-                    <span>2</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Continuar</button>
-              </div>
-              <div class="col-xs-12">
-                <button type="button" class="btn btn-default btn-lg btn-block">Cancelar</button>
-              </div>         
-            </div>
-
-          </div>   
-                 
-          <div class="page">
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="emailAddOn">
-                      <span class="glyphicon glyphicon-envelope"></span>
-                    </p>
-                    <input name="useremail" type="email" class="form-control input-lg" ng-model="registerModel.email" placeholder="Correo" aria-describedby="emailAddOn" required>
-                  </div>
-                </div>
-              </div>
-            </div>   
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="accountPasswordAddOn">
-                      <span class="glyphicon glyphicon-lock"></span>
-                    </p>
-                    <input name="password" type="password" class="form-control input-lg" ng-model="registerModel.password" placeholder="Contraseña" aria-describedby="accountPasswordAddOn">
-                  </div>
-                </div>
-              </div>
-            </div> 
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="confirmPasswordAddOn">
-                      <span class="glyphicon glyphicon-lock"></span>
-                    </p>
-                    <input name="passwordConfirmation" type="password" class="form-control input-lg" ng-model="registerModel.confirmPassword" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn">
-                  </div>
-                </div>
-              </div>
-            </div>             
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="securityQuestionAddOn">
-                      <span class="glyphicon glyphicon-question-sign"></span>
-                    </p>
-                    <select name="securityQuestion" type="text" class="form-control input-lg" ng-model="registerModel.secretQuestion" aria-describedby="securityQuestionAddOn">
-                      <option label="Pregunta de Seguridad" value="" disabled selected style="display:none"></option>
-                      <option value="¿Dónde crecí?">¿Dónde crecí?</option>
-                      <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
-                      <option value="Nombre de mi mascota">Nombre de mi mascota</option> 
-                      <option value="Personaje favorito">Personaje favorito</option> 
-                      <option value="Banda musical favorita">Banda musical favorita</option> 
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>       
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <p class="input-group-addon" id="securityAnswerAddOn">
-                      <span class="glyphicon glyphicon-question-sign"></span>
-                    </p>
-                    <input name="securityQuestionAnswer" type="text" class="form-control input-lg" ng-model="registerModel.secretAnswer" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn">
-                  </div>
-                </div>            
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="page-number">
-                  <p class="text-center">
-                    <span>2</span>
-                    <span>/</span>
-                    <span>2</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12">
-                <button ng-click="register()" type="button" class="btn btn-primary btn-lg btn-block">Registrar</button>
-              </div>
-              <div class="col-xs-12">
-                <button ng-click="cancel()" type="button" class="btn btn-default btn-lg btn-block">Cancelar</button>
-              </div>         
-            </div>
-
-          </div>                  
-
-        </div>        
-      </section>
-    
-    </form>
-
-  </article> 
-
-</div> -->
-
 <div class="incluso-app public" ng-app>
 
   <article class="register">
 
-    <div class="alert alert-warning hidden" role="alert">
+    <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
             <div class="icomoon icon-warning"></div>
-            <p>¡Error con tu correo! Verifícalo de nuevo</p>
-            <ul>
-              <li>Verifica el usuario</li>
-              <li>Verifica el password</li>
+            <p>¡Error! Verifica tus datos</p>
+            <ul ng-repeat="msg in registerModel.modelState.errorMessages">
+              <li>{{msg}}</li>
             </ul>
           </div>
         </div>
@@ -261,7 +21,7 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="icomoon icon-checked-clip"></div>
-            <p>¡Tu correo se ha enviado correctamente!</p> 
+            <p>¡Te has registrado correctamente!</p> 
           </div>
         </div>
       </div>
@@ -291,7 +51,7 @@
         </div>
         <div class="pages">
 
-          <div class="page active-" data-page="1">
+          <div class="page" data-page="1" ng-class="currentPage === 1 ? 'active' : ''">
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
@@ -312,7 +72,7 @@
                     <p class="input-group-addon" id="birthDateAddOn">
                       <span class="icomoon icon-calendar"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.birthday" name="dob" class="form-control form-control-lg" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn">
+                    <input type="text" ng-model="registerModel.birthday" name="dob" class="form-control form-control-lg" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn" maxlength="10">
                   </div>
                 </div>
               </div>
@@ -327,8 +87,8 @@
                     </p>
                     <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg" aria-describedby="genderAddOn">
                       <option label="Género" value="" disabled selected style="display:none"></option>
-                      <option value="">Masculino</option>
-                      <option value="">Femenino</option> 
+                      <option value="Male">Masculino</option>
+                      <option value="Female">Femenino</option> 
                     </select>
                   </div>
                 </div>
@@ -344,13 +104,13 @@
                     </p>
                     <select ng-model="registerModel.country" name="country" class="form-control form-control-lg" aria-describedby="countryAddOn">
                       <option label="País" value="" disabled selected style="display:none"></option>
-                      <option value="">Bolivia</option>
-                      <option value="">Colombia</option> 
-                      <option value="">Ecuador</option> 
-                      <option value="">México</option> 
-                      <option value="">Perú</option> 
-                      <option value="">Uruguay</option> 
-                      <option value="">Venezuela</option> 
+                      <option value="BO">Bolivia</option>
+                      <option value="CO">Colombia</option> 
+                      <option value="EC">Ecuador</option> 
+                      <option value="ME">México</option> 
+                      <option value="PE">Perú</option> 
+                      <option value="UR">Uruguay</option> 
+                      <option value="VE">Venezuela</option> 
                     </select>
                   </div>
                 </div>
@@ -366,13 +126,13 @@
                     </p>
                     <select ng-model="registerModel.city" name="city" class="form-control form-control-lg" aria-describedby="cityAddOn">
                       <option label="Ciudad" value="" disabled selected style="display:none"></option>
-                      <option value="">Bogotá</option>                       
-                      <option value="">Buenos Aires</option>
-                      <option value="">La Paz</option> 
-                      <option value="">México D.F.</option> 
-                      <option value="">Monterrey</option> 
-                      <option value="">Montevideo</option> 
-                      <option value="">Rosario</option> 
+                      <option value="Bogotá">Bogotá</option>                       
+                      <option value="Buenos Aires">Buenos Aires</option>
+                      <option value="La Paz">La Paz</option> 
+                      <option value="México D.F.">México D.F.</option> 
+                      <option value="Monterrey">Monterrey</option> 
+                      <option value="Montevideo">Montevideo</option> 
+                      <option value="Rosario">Rosario</option> 
                     </select>                    
                   </div>
                 </div>            
@@ -393,7 +153,7 @@
 
             <div class="row">
               <div class="col-xs-12">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Continuar</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(2)">Continuar</button>
               </div>
               <div class="col-xs-12">
                 <button type="button" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</button>
@@ -402,7 +162,7 @@
 
           </div>   
 
-          <div class="page active" data-page="2">
+          <div class="page" data-page="2" ng-class="currentPage === 2 ? 'active' : ''">
 
             <div class="row">
               <div class="col-xs-12">
@@ -411,7 +171,7 @@
                     <p class="input-group-addon" id="emailAddOn">
                       <span class="icomoon icon-envelope"></span>                      
                     </p>
-                    <input type="email" ng-model="registerModel.email" name="useremail" class="form-control form-control-lg" placeholder="Correo" aria-describedby="emailAddOn">
+                    <input type="email" ng-model="registerModel.email" name="useremail" class="form-control form-control-lg" placeholder="Correo" aria-describedby="emailAddOn" required>
                   </div>
                 </div>
               </div>
@@ -452,11 +212,11 @@
                     </p>
                     <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg" aria-describedby="securityQuestionAddOn">
                       <option label="Pregunta de Seguridad" value="" disabled selected style="display:none"></option>
-                      <option value="">¿Dónde crecí?</option>
-                      <option value="">Nombre de mi mejor amigo</option> 
-                      <option value="">Nombre de mi mascota</option> 
-                      <option value="">Personaje favorito</option> 
-                      <option value="">Banda musical favorita</option> 
+                      <option value="¿Dónde crecí?">¿Dónde crecí?</option>
+                      <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
+                      <option value="Nombre de mi mascota">Nombre de mi mascota</option> 
+                      <option value="Personaje favorito">Personaje favorito</option> 
+                      <option value="Banda musical favorita">Banda musical favorita</option> 
                     </select>
                   </div>
                 </div>
@@ -470,7 +230,7 @@
                     <p class="input-group-addon" id="securityAnswerAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.secretAnswer" name="securityQuestionAnswer" class="form-control form-control-lg" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn">
+                    <input type="text" ng-model="registerModel.secretAnswer" name="securityQuestionAnswer" class="form-control form-control-lg" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required>
                   </div>
                 </div>            
               </div>
@@ -491,7 +251,7 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="button-group">
-                  <button type="button" class="btn btn-primary btn-lg">
+                  <button type="button" class="btn btn-primary btn-lg" ng-click="navigateToPage(1)">
                     <span class="icomoon icon-arrow-slim-left"></span>
                   </button>
                   <button type="button" ng-click="register()" class="btn btn-primary btn-lg">Registrar</button>

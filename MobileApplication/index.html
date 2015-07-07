@@ -13,22 +13,13 @@
   <!-- <link rel="stylesheet" href="assets/styles/font-awesome.min.css"> -->
 
     </head>
-    <body>
-        <div id="body" class="main-content ns-app start-dashboard">
-            <section class="content-wrapper">
-                <div ng-controller="homeCtrl">
-                    <div id="spinner" class="spinner" ng-show="loading">
-                        <img src="Content/images/ajax-loader.gif"  class="ajax-loader"/>
-                    </div>
-                    <div ng-view>
+    <body ng-controller="homeCtrl">
+        <div id="spinner" class="spinner" ng-show="loading">
+            <img src="Content/images/ajax-loader.gif"  class="ajax-loader"/>
+        </div>
+        <div ng-view>
 
-                  
-                    </div>
-                </div>
-            </section>
-  <footer>
-    <a href="#navBar" class="btn-back-to-top"></a>
-  </footer>
+          
         </div>
 
 

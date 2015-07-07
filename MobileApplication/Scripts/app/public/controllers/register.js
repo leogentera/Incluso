@@ -13,6 +13,8 @@ angular
             
             var isConfirmedPasswordValid = false;
 
+            $scope.currentPage = 1;
+
             $scope.registerModel = {
                 username: "",
                 birthday: "",
@@ -23,32 +25,47 @@ angular
                 password: "",
                 confirmPassword: "",
                 secretQuestion: "",
-                secretAnswer: ""
+                secretAnswer: "",
+                modelState: {
+                    isValid: null,
+                    errorMessages: []
+                }
             };
 
             $scope.$watch("registerModel.confirmPassword", function(newValue, oldValue){
                 isConfirmedPasswordValid = (newValue === $scope.registerModel.password);
             });
 
+            $scope.$watch("registerModel.password", function(newValue, oldValue){
+                isConfirmedPasswordValid = (newValue === $scope.registerModel.confirmPassword);
+            });
+
+            $scope.$watch("registerModel.modelState.errorMessages", function(newValue, oldValue){
+                $scope.registerModel.modelState.isValid = (newValue.length === 0);
+            });
+
             $scope.register = function() {
                 
                 console.log('register');
 
-                if(validateForm()){
+                if(validateModel()){
                     registerUser();
                 }
             }
-
 
             $scope.cancel = function() {
                 $location.path('/');
             }
 
+            $scope.navigateToPage = function(pageNumber){
+                $scope.currentPage = pageNumber;
+            };
+
             var registerUser = function(){
 
                 $http({
                         method: 'POST',
-                        url: API_RESOURCE.format("register"), 
+                        url: API_RESOURCE.format("Register"), 
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
                             username: $scope.registerModel.username,
@@ -75,25 +92,36 @@ angular
 
 
                     }).error(function(data, status, headers, config) {
+                        $scope.registerModel.modelState.errorMessages = [data.messageerror];
                         console.log('data' + data);
-                        alert('error');
                     });
             };
 
-            var validateForm = function(){
+            var validateModel = function(){
 
-                var isValid = true;
+                var errors = [];
 
-                /* validate password */
-                if(!isConfirmedPasswordValid){
+                if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
+                if($scope.registerModel.username.length === 0){ errors.push("Usuario inválido."); }
+                if($scope.registerModel.birthday.length === 0){ errors.push("Fecha de Nacimiento inválida."); }
+                if($scope.registerModel.gender.length === 0){ errors.push("Género inválido."); }
+                if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
+                if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválido."); }
+                if(!validateEmail($scope.registerModel.email)){ errors.push("Email inválido."); }
+                if($scope.registerModel.password.length === 0){ errors.push("Contraseña inválida."); }
+                if($scope.registerModel.confirmPassword.length === 0){ errors.push("Confirmación de contraseña inválida."); }
+                if($scope.registerModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
+                if($scope.registerModel.secretAnswer.length === 0){ errors.push("Respuesta secreta inválida."); }
 
-                    isValid = isValid && isConfirmedPasswordValid;
-                    alert("la confirmación de contraseña no coincide con la contraseña");
-                }
+                $scope.registerModel.modelState.errorMessages = errors;
 
-                return isValid;
+                return (errors.length === 0);
             };
 
+            var validateEmail = function (email) {
+                var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                return re.test(email);
+            }
 
         }]);
 

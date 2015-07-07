@@ -14,8 +14,16 @@ angular
             $scope.userCredentialsModel = {
                 username: "",
                 password: "",
-                rememberCredentials: false
+                rememberCredentials: false,
+                modelState: {
+                    isValid: null,
+                    errorMessages: []
+                }
             };
+
+            $scope.$watch("userCredentialsModel.modelState.errorMessages", function(newValue, oldValue){
+                $scope.userCredentialsModel.modelState.isValid = (newValue.length === 0);
+            });
 
             $scope.loadCredentials = function() {
                 var txtCredentials = localStorage.getItem("Credentials");
@@ -28,7 +36,6 @@ angular
                     $scope.userCredentialsModel.password = userCredentials.password;
                     $scope.userCredentialsModel.rememberCredentials = userCredentials.rememberCredentials;
                 }
-
 
                 //autologin
                 if (_IsOffline() && userCredentials) {
@@ -51,7 +58,7 @@ angular
 
                         console.log('successfully logged in');
 
-                        _setToken(data)
+                        _setToken(data.token);
 
 
                         console.log('preparing for syncAll');
@@ -73,8 +80,8 @@ angular
                         }
 
                     }).error(function(data, status, headers, config) {
-                        console.log('data' + data);
-                        alert('error');
+                        $scope.userCredentialsModel.modelState.errorMessages = [data.messageerror];
+                        console.log(status + ": " + data.messageerror);
                     });
             }
 
