@@ -568,7 +568,7 @@
 .incluso-app .pages .btn {
   margin-bottom: 15px;
 }
-.incluso-app footer {
+.incluso-app .footer {
   background-image: url('../images/footernave.gif');
   background-position: 0 99%;
   background-size: cover;
@@ -579,22 +579,22 @@
   min-height: 180px;
   box-shadow: 0 28px 10px -28px black inset;
 }
-.incluso-app footer .block-list {
+.incluso-app .footer .block-list {
   width: 250px;
   padding-bottom: 50px;
   margin: 0 auto;
   text-align: center;
 }
-.incluso-app footer .block-list li {
+.incluso-app .footer .block-list li {
   margin-top: 12px;
 }
-.incluso-app footer .block-list li:first-child {
+.incluso-app .footer .block-list li:first-child {
   margin-top: 0;
 }
-.incluso-app footer .block-list .btn-link {
+.incluso-app .footer .block-list .btn-link {
   border-width: 3px;
 }
-.incluso-app footer .btn-back-to-top {
+.incluso-app .footer .btn-back-to-top {
   position: absolute;
   left: 50%;
   bottom: 0;
