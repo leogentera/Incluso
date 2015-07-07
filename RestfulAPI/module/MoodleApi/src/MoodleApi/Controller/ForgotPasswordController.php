@@ -3,9 +3,13 @@ namespace MoodleApi\Controller;
 
 use MoodleApi\Utilities\AbstractRestfulJsonController;
 use Zend\View\Model\JsonModel;
+
 use MoodleApi\Model\MoodleCourse;
 use MoodleApi\Model\MoodleException;
-//use MoodleApi\Utilities\SMTPClient;
+use Zend\Mail;
+use Zend\Mail\Transport\Smtp as SmtpTransport;
+use Zend\Mail\Transport\SmtpOptions;
+use Zend\Mail\Message;
 class ForgotPasswordController extends AbstractRestfulJsonController {
 	
     private $token = "";
@@ -46,7 +50,48 @@ class ForgotPasswordController extends AbstractRestfulJsonController {
     		 
     		$response = file_get_contents($url);
     		if ($response=="null"){
+    			
+    			
+//     			$to =$data['email'];
+//     			$from = 'desarrollo.definityfist@gmail.com';
+//     			$subject = 'Reseteo de Contraseña Incluso';
+//     			$body = "Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar";
+//     			//     	$SMTPMail = new SMTPClient ($SmtpServer, $SmtpPort, $SmtpUser, $SmtpPass, $from, $to, $subject, $body);
+//     			//     	$SMTPChat = $SMTPMail->SendMail();
+    			 
+//     			//mail('caffeinated@example.com', 'My Subject', $message);
+//     			$mail= new SMTPClient();
+//     			$mail->SMTPClient ('mtymaildf-v05.sieenasoftware.com', 25, 'humberto.castaneda','Hh.83420676', 'humberto.castaneda@definityfirst.com', $data['email'], $subject, $body);
+//     			var_dump($mail->SendMail ());
+    			
+    			//$mail= new SMTPClient();
+    			//$mail->SMTPClient ('ssl://smtp.gmail.com', 465, 'desarrollo.definityfist@gmail.com','Admin123!', 'desarrollo.definityfist@gmail.com', $data['email'], "hello", "hola");
+    			
+    			$transport = new SmtpTransport();
+    			$options   = new SmtpOptions(array(
+    					'name' => 'mtymaildf-v05.sieenasoftware.com',
+    					'host' => 'mail.definityfirst.com',
+    					'port' => 25,
+    					'connection_class'  => 'login',
+    					'connection_config' => array(
+    							'username' => 'humberto.castaneda',
+    							'password' => 'pass',
+    							'ssl'      => 'tls',
+    					),
+    			));
+    			$transport->setOptions($options);
+    			
+    			$message = new Message();
+    			
+    			$message->addTo($data['email'])
+    			->addFrom('humberto.castaneda@definityfirst.com')
+    			->setSubject('Reseteo de Contraseña Incluso')
+    			->setBody("Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
+    			$transport->send($message);
+    			
     			return  new JsonModel(array());
+    			
+    			
     		}
     		else{
     			$json = json_decode($response,true);
