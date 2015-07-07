@@ -22,7 +22,7 @@
 /* parametric color functions */
 /* Custom Functions */
 /* xs viewport */
-@media screen and (max-width: 767px) {
+@media screen {
   .incluso-app {
     /***********************************************************************
          01. $text n containers
@@ -74,7 +74,7 @@
         ************************************************************************/
   }
   .incluso-app .to-top {
-    bottom: 0;
+    bottom: 20px;
     color: #f00;
     left: calc(50% - 19px);
     position: absolute;
@@ -87,7 +87,7 @@
   .incluso-app .txt-title {
     color: white;
     font-weight: bold;
-    margin: 5% 15%;
+    margin: 5% 10%;
     font-size: 120%;
   }
   .incluso-app .txt-title:before {
@@ -99,7 +99,7 @@
   .incluso-app .txt-renglon {
     color: white;
     font-weight: bold;
-    margin: 5% 15%;
+    margin: 5% 10%;
   }
   .incluso-app .txt-bigger {
     font-size: 150%;
@@ -108,7 +108,7 @@
   .incluso-app .subtitle {
     color: #e1e455;
     font-size: 150%;
-    padding: 5% 15%;
+    padding: 5% 10%;
     text-transform: uppercase;
   }
   .incluso-app .centrado {
@@ -525,6 +525,12 @@
   }
   .incluso-app .agregar span {
     padding-left: 3%;
+  }
+  .incluso-app .up-line {
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    margin: 0 10%;
+    padding: 4% 2%;
+    width: 80%;
   }
   .incluso-app .parte {
     display: block;
@@ -1187,13 +1193,13 @@
     text-align: center;
   }
 }
-@media screen and (max-width: 767px) and screen and (max-width: 30em) {
+@media screen and screen and (max-width: 30em) {
   .incluso-app .forma div.cs-skin-rotate {
     font-size: 1em;
     width: 200px;
   }
 }
-@media screen and (max-width: 767px) and screen and (max-width: 30em) {
+@media screen and screen and (max-width: 30em) {
   .incluso-app .forma .cs-skin-rotate > span,
   .incluso-app .forma .cs-skin-rotate .cs-options li {
     -webkit-transform-origin: 50% 50% -100px;

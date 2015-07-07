@@ -105,12 +105,20 @@
     ****************************************************************************/
   /***************************************************************************/
 }
+.incluso-app a:hover {
+  text-decoration: none;
+}
 .incluso-app .btn {
   border: none;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   font-weight: 600;
+}
+.incluso-app .btn-cnt {
+  width: 80%;
+  margin: 0 10%;
+  text-transform: uppercase;
 }
 .incluso-app .btn-primary {
   background: #f5421a;
@@ -420,6 +428,7 @@
   margin: 0;
   width: auto;
   list-style-type: none;
+  padding: 0;
 }
 .incluso-app .navbar-tools li {
   display: inline-block;
@@ -574,6 +583,7 @@
   width: 250px;
   padding-bottom: 50px;
   margin: 0 auto;
+  text-align: center;
 }
 .incluso-app footer .block-list li {
   margin-top: 12px;

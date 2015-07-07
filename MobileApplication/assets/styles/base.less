@@ -32,6 +32,11 @@
     padding:0; margin:0 auto;
     width: auto; max-width: none;
     font-family: Play, Sans-serif, Arial;
+    a{
+        &:hover{
+            text-decoration: none;
+        }
+    }
     /***************************************************************************/  
 
 
@@ -43,6 +48,11 @@
         border: none;
         .border-radius-all(3px);
         font-weight: 600;        
+    }
+    .btn-cnt{
+        width:80%;
+        margin:0 10%;
+        text-transform: uppercase;
     }
     .btn-primary {
         .gradient-btn-primary();
@@ -357,6 +367,7 @@
         margin: 0;
          width: auto;    
         list-style-type: none;   
+        padding: 0;
     }
     .navbar-tools li {
         display: inline-block;
@@ -554,7 +565,8 @@
         .block-list {
             width: 250px;
             padding-bottom: 50px;
-            margin: 0 auto;
+            margin: 0 auto; 
+            text-align: center;
 
             li {
                 margin-top: 12px;
