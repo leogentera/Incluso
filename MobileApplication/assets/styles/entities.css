@@ -112,6 +112,44 @@
     padding: 5% 10%;
     text-transform: uppercase;
   }
+  .incluso-app .min-pad {
+    padding: 5px 0px;
+  }
+  .incluso-app .green-giant {
+    color: #0f9847;
+    font-size: 1400%;
+  }
+  .incluso-app .green-pill {
+    border: 1px solid #0f9847;
+    border-radius: 25px;
+    margin: -5px -10px;
+    padding: 5px 10px;
+    color: #0f9847;
+  }
+  .incluso-app .green {
+    color: #0f9847 !important;
+  }
+  .incluso-app .red {
+    color: #ef4823 !important;
+  }
+  .incluso-app .white {
+    color: white !important;
+  }
+  .incluso-app .pill {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 40px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: normal;
+    margin: 5% 10%;
+    padding: 20px 20px 46px;
+  }
+  .incluso-app .sm-pill {
+    border: 1px solid #bbd331;
+    border-radius: 25px;
+    color: #bbd331;
+    margin: -5px -10px;
+    padding: 5px 10px;
+  }
   .incluso-app .centrado {
     text-align: center;
   }
@@ -150,7 +188,7 @@
     background-color: #112845;
     background-position: -1px 0px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     border-bottom: 10px solid #24282a;
   }
   .incluso-app .progreso {
@@ -541,7 +579,7 @@
     background: #1f2733;
     border-radius: 5px;
     color: white;
-    font-size: 150%;
+    font-size: 120%;
     margin: 2% 10%;
     padding: 3% 5%;
     width: 80%;
