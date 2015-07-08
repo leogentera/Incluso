@@ -575,7 +575,9 @@
     width: 80%;
   }
   .incluso-app .parte {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
     background: #1f2733;
     border-radius: 5px;
     color: white;
@@ -601,6 +603,9 @@
   }
   .incluso-app .parte .icon-wrong {
     color: gray;
+  }
+  .incluso-app .parte div {
+    display: inherit;
   }
   .incluso-app .parte span {
     line-height: normal;
