@@ -99,7 +99,8 @@
   .incluso-app .txt-renglon {
     color: white;
     font-weight: bold;
-    margin: 5% 10%;
+    margin: 0% 10%;
+    padding: 5% 0;
   }
   .incluso-app .txt-bigger {
     font-size: 150%;

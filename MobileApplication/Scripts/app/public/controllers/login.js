@@ -47,7 +47,9 @@ angular
                 
                 console.log('login in');
 
-                $http(
+                if(validateModel()){
+
+                    $http(
                     {
                         method: 'POST',
                         url: API_RESOURCE.format("authentication"), 
@@ -83,10 +85,22 @@ angular
                         $scope.userCredentialsModel.modelState.errorMessages = [data.messageerror];
                         console.log(status + ": " + data.messageerror);
                     });
+                }
             }
 
             $scope.loginWithFacebook = function () {
                 $location.path('/ProgramaDashboard');
+            }
+
+            function validateModel(){
+                var errors = [];
+
+                if(!$scope.loginForm.username.$valid){ errors.push("formato de usuario incorrecto."); }
+                if(!$scope.loginForm.password.$valid){ errors.push("formato de contraseña incorrecto."); }
+
+                $scope.userCredentialsModel.modelState.errorMessages = errors;
+
+                return (errors.length === 0);
             }
 
             $scope.loadCredentials();

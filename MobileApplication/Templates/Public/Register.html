@@ -43,7 +43,7 @@
     </header>
 
     <section>
-      <form action="" class="register-form container-fluid">
+      <form action="" class="register-form container-fluid" name="registerForm">
         <div class="row">
           <div class="col-xs-12">
             <h1>Datos de Registro</h1>
@@ -59,7 +59,7 @@
                     <p class="input-group-addon" id="aliasAddOn">
                       <span class="icomoon icon-profile"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg" placeholder="Alias" aria-describedby="aliasAddOn">
+                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg" placeholder="Alias" aria-describedby="aliasAddOn" required>
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@
                     <p class="input-group-addon" id="birthDateAddOn">
                       <span class="icomoon icon-calendar"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.birthday" name="dob" class="form-control form-control-lg" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn" maxlength="10">
+                    <input type="text" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required>
                   </div>
                 </div>
               </div>
@@ -156,7 +156,7 @@
                 <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(2)">Continuar</button>
               </div>
               <div class="col-xs-12">
-                <button type="button" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</button>
+                <button type="button" class="btn btn-default btn-transparent btn-lg btn-block" ng-click="cancel()">Cancelar</button>
               </div> 
             </div>          
 
@@ -171,7 +171,7 @@
                     <p class="input-group-addon" id="emailAddOn">
                       <span class="icomoon icon-envelope"></span>                      
                     </p>
-                    <input type="email" ng-model="registerModel.email" name="useremail" class="form-control form-control-lg" placeholder="Correo" aria-describedby="emailAddOn" required>
+                    <input type="email" ng-model="registerModel.email" name="email" class="form-control form-control-lg" placeholder="Correo" aria-describedby="emailAddOn" required>
                   </div>
                 </div>
               </div>
@@ -184,7 +184,7 @@
                     <p class="input-group-addon" id="accountPasswordAddOn">
                       <span class="icomoon icon-lock"></span>
                     </p>
-                    <input type="password" ng-model="registerModel.password" name="password" class="form-control form-control-lg" placeholder="Contraseña" aria-describedby="accountPasswordAddOn">
+                    <input type="password" ng-model="registerModel.password" name="password" class="form-control form-control-lg" placeholder="Contraseña" aria-describedby="accountPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
                   </div>
                 </div>
               </div>
@@ -197,7 +197,7 @@
                     <p class="input-group-addon" id="confirmPasswordAddOn">
                       <span class="icomoon icon-lock"></span> 
                     </p>
-                    <input type="password" ng-model="registerModel.confirmPassword" name="passwordConfirmation" class="form-control form-control-lg" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn">
+                    <input type="password" ng-model="registerModel.confirmPassword" name="confirmPassword" class="form-control form-control-lg" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
                   </div>
                 </div>
               </div>
@@ -230,7 +230,7 @@
                     <p class="input-group-addon" id="securityAnswerAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.secretAnswer" name="securityQuestionAnswer" class="form-control form-control-lg" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required>
+                    <input type="text" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required>
                   </div>
                 </div>            
               </div>

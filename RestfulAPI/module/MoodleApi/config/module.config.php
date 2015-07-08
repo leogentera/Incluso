@@ -3,6 +3,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'MoodleApi\Controller\Course' => 'MoodleApi\Controller\CourseController',
+            'MoodleApi\Controller\Catalog' => 'MoodleApi\Controller\CatalogController',
             'MoodleApi\Controller\User' => 'MoodleApi\Controller\UserController',
         	'MoodleApi\Controller\CourseContents' => 'MoodleApi\Controller\CourseContentController',
             'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
@@ -32,6 +33,18 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'MoodleApi\Controller\Course',
+                    ),
+                ),
+            ),
+            'catalog' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/catalog[/:catalogname]',
+                    'constraints' => array(
+                        'catalogname'     => '[a-zA-Z0-9\-_]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'MoodleApi\Controller\Catalog',
                     ),
                 ),
             ),
