@@ -34,7 +34,7 @@
                 color: @clr-greenLight;
             }
             img{
-                max-width:100%;
+                width:100%;
             }
             .txt-title{
                 color: white;
@@ -54,10 +54,11 @@
                 font-weight: bold;
                 margin: 0% 10%;
                 padding: 5% 0;
+                width:80%;
             }
             .txt-bigger{
                 font-size: 150%;
-                line-height: 80%;
+                line-height: normal;
             }
             .subtitle{
                 color: @clr-greenLight;
@@ -105,6 +106,13 @@
             }
             .centrado{
                 text-align: center;   
+            }
+            .distribuido{
+                display: inline-flex;
+                justify-content: space-between;
+                img{
+                    width:23.5%;
+                }
             }
             .fl-left{
                 float:left;
@@ -199,9 +207,9 @@
                     position:absolute;
                     bottom:0;
                     animation: 2s ease .5s normal none infinite running flicker;
-                    max-width: 100%;
+                    width: 100%;
                     img{
-                        max-width: 100%;
+                        width: 100%;
                     }
                 }
 

@@ -82,7 +82,7 @@
     color: #e1e455;
   }
   .incluso-app img {
-    max-width: 100%;
+    width: 100%;
   }
   .incluso-app .txt-title {
     color: white;
@@ -101,10 +101,11 @@
     font-weight: bold;
     margin: 0% 10%;
     padding: 5% 0;
+    width: 80%;
   }
   .incluso-app .txt-bigger {
     font-size: 150%;
-    line-height: 80%;
+    line-height: normal;
   }
   .incluso-app .subtitle {
     color: #e1e455;
@@ -152,6 +153,13 @@
   }
   .incluso-app .centrado {
     text-align: center;
+  }
+  .incluso-app .distribuido {
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  .incluso-app .distribuido img {
+    width: 23.5%;
   }
   .incluso-app .fl-left {
     float: left;
@@ -538,10 +546,10 @@
     position: absolute;
     bottom: 0;
     animation: 2s ease .5s normal none infinite running flicker;
-    max-width: 100%;
+    width: 100%;
   }
   .incluso-app .holoproj .light img {
-    max-width: 100%;
+    width: 100%;
   }
   .incluso-app .jector {
     background-image: url('../images/holoprojftr.jpg');
