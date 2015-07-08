@@ -97,30 +97,26 @@ angular
                     });
             };
 
-            var validateModel = function(){
 
+            function validateModel(){
                 var errors = [];
 
                 if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
-                if($scope.registerModel.username.length === 0){ errors.push("Usuario inválido."); }
-                if($scope.registerModel.birthday.length === 0){ errors.push("Fecha de Nacimiento inválida."); }
+
+                if(!$scope.registerForm.username.$valid){ errors.push("formato de usuario incorrecto."); }
+                if(!$scope.registerForm.birthday.$valid){ errors.push("Fecha de nacimiento incorrecta."); }
                 if($scope.registerModel.gender.length === 0){ errors.push("Género inválido."); }
                 if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
-                if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválido."); }
-                if(!validateEmail($scope.registerModel.email)){ errors.push("Email inválido."); }
-                if($scope.registerModel.password.length === 0){ errors.push("Contraseña inválida."); }
-                if($scope.registerModel.confirmPassword.length === 0){ errors.push("Confirmación de contraseña inválida."); }
+                if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválida."); }
+                if(!$scope.registerForm.email.$valid){ errors.push("formato de correo incorrecto."); }
+                if(!$scope.registerForm.password.$valid){ errors.push("formato de contraseña incorrecto."); }
+                if(!$scope.registerForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto."); }
                 if($scope.registerModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
-                if($scope.registerModel.secretAnswer.length === 0){ errors.push("Respuesta secreta inválida."); }
+                if(!$scope.registerForm.secretAnswer.$valid){ errors.push("respuesta secreta inválida."); }
 
                 $scope.registerModel.modelState.errorMessages = errors;
 
                 return (errors.length === 0);
-            };
-
-            var validateEmail = function (email) {
-                var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-                return re.test(email);
             }
 
         }]);
