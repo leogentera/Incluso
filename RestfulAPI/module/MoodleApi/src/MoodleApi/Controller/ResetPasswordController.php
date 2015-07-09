@@ -52,7 +52,7 @@ class ResetPasswordController extends AbstractRestfulJsonController {
     			return new JsonModel( $this->throwJSONError(mb_convert_encoding("El codigo ya expiró", "UTF-8")));
     		}
     		if($recoverycode!=$data['recoverycode']){
-    			return new JsonModel( $this->throwJSONError("El codigo ingresado es incorrecto"));
+    			return new JsonModel( $this->throwJSONError("El código ingresado es incorrecto"));
     		}
     		
 	    	$url = $this->getConfig()['MOODLE_API_URL'].'&users[0][password]=%s&users[0][id]=%s'.
@@ -74,7 +74,7 @@ class ResetPasswordController extends AbstractRestfulJsonController {
 	    		if (strpos($response, "error") !== false)
 	    		{
 	    			if (strpos($json["errorcode"], "authpluginnotfound") !== false){
-	    				$message = 'El usuario ingresado no es valido';
+	    				$message = 'El usuario ingresado no es válido';
 	    			}
 	    			else{
 	    				return new JsonModel($this->throwJSONError());

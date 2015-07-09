@@ -14,6 +14,7 @@ angular
             var isConfirmedPasswordValid = false;
 
             $scope.currentPage = 1;
+            $scope.isRegistered = false;
 
             $scope.registerModel = {
                 username: "",
@@ -26,6 +27,7 @@ angular
                 confirmPassword: "",
                 secretQuestion: "",
                 secretAnswer: "",
+                termsAndConditions: false,
                 modelState: {
                     isValid: null,
                     errorMessages: []
@@ -53,7 +55,7 @@ angular
                 }
             }
 
-            $scope.cancel = function() {
+            $scope.login = function() {
                 $location.path('/');
             }
 
@@ -80,16 +82,10 @@ angular
                         })
                     }).success(function(data, status, headers, config) {
 
-                        console.log('successfully register');
-                        console.log('preparing for syncAll');
-                        console.log('redirecting..');
-                        
-                        $timeout(
-                                function() {
-                                    console.log('redirecting..');
-                                    $location.path('/');
-                                },1000);
+                        $scope.isRegistered = true;
+                        initModel();
 
+                        console.log('successfully register');
 
                     }).error(function(data, status, headers, config) {
                         $scope.registerModel.modelState.errorMessages = [data.messageerror];
@@ -113,10 +109,33 @@ angular
                 if(!$scope.registerForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto."); }
                 if($scope.registerModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
                 if(!$scope.registerForm.secretAnswer.$valid){ errors.push("respuesta secreta inválida."); }
+                if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }
 
                 $scope.registerModel.modelState.errorMessages = errors;
 
                 return (errors.length === 0);
+            }
+
+            function initModel(){
+
+                $scope.registerModel = {
+                    username: "",
+                    birthday: "",
+                    gender: "",
+                    country: "",
+                    city: "",
+                    email: "",
+                    password: "",
+                    confirmPassword: "",
+                    secretQuestion: "",
+                    secretAnswer: "",
+                    termsAndConditions: false,
+                    modelState: {
+                        isValid: null,
+                        errorMessages: []
+                    }
+                };
+
             }
 
         }]);
