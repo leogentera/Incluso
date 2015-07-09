@@ -23,6 +23,13 @@
 ********************************************************************************/
 @import "less-utilities.less";
 
+body {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: inherit;
+}
+
 .incluso-app {
 
     /****************************************************************************
@@ -388,10 +395,19 @@
     ****************************************************************************/
     .navbar-toggle {
         position: absolute;
-        left: 10px; top: 0;
+        left: 0; top: 0;
         float: none;
         padding: 0;
         margin: 0;
+        width: 42px;
+
+        .icomoon {
+            color:white;
+            font-size: 26px;
+            font-weight: bold;
+            line-height: 62px;
+            text-align: center;
+        }        
     }
     .navbar-toggle .icon-bar {
       display: block;
@@ -400,6 +416,7 @@
       -webkit-border-radius:16px;
          -moz-border-radius:16px;
               border-radius:16px;
+
     }
     /***************************************************************************/
 
