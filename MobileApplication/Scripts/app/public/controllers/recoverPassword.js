@@ -23,6 +23,10 @@ angular
                 $location.path('/');
             }
 
+            $scope.navigateToPage = function(pageNumber){
+                $scope.currentPage = pageNumber;
+            };
+
 
         }]);
 
