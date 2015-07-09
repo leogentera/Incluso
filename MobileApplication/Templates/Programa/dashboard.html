@@ -1,58 +1,63 @@
-﻿<div class="incluso-app start-dashboard" ng-app>
+﻿<div class="incluso-app start-dashboard" ng-app="incluso.programa.dashboard">
   
-  <div class="navbar navbar-welcome" id="navBar">
-    <div class="container-fluid">
+  <nav ng-controller="navController">
+    <div class="navbar navbar-welcome" id="navBar">
 
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="row">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+      <div class="container-fluid">
 
-        <div class="navbar-assets">
-          <h1 class="navbar-heading">Programa Incluso</h1>
-          <ul class="navbar-tools">
-            <li class="contribute">
-              <a href="">
-                <span class="icon"></span>
-              </a>
-            </li>
-            <li class="notifications">
-              <a href="">
-                <span class="icon"></span>
-              </a>
-            </li>
-            <li class="chat">
-              <a href="">
-                <span class="icon"></span>
-              </a>
-            </li>
-            <li class="profile">
-              <a href="">
-                <span class="icon"></span>
-              </a>
-            </li>                 
-          </ul>
-        </div>         
-      </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
 
-    </div><!-- /.container-fluid -->
-  </div>
+          <button type="button" class="navbar-toggle collapsed" ng-click="isNavCollapsed = !isNavCollapsed" >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icomoon icon-more-options"></span>
+          </button> 
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="app-navigation">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
-  </div><!-- /.navbar-collapse -->  
+          <div class="navbar-assets">
+            <h1 class="navbar-heading">Programa Incluso</h1>
+            <ul class="navbar-tools">
+              <li class="contribute">
+                <a href="">
+                  <span class="icon"></span>
+                </a>
+              </li>
+              <li class="notifications">
+                <a href="">
+                  <span class="icon"></span>
+                </a>
+              </li>
+              <li class="chat">
+                <a href="">
+                  <span class="icon"></span>
+                </a>
+              </li>
+              <li class="profile">
+                <a href="">
+                  <span class="icon"></span>
+                </a>
+              </li>                 
+            </ul>
+          </div> 
+
+        </div>
+
+      </div> <!-- /.container-fluid -->
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling  // class="collapse navbar-collapse" id="app-navigation"-->
+    <div class="navbar-collapse in" collapse="isCollapsed">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->  
+
+  </nav>
 
   <article>
     <div class="container">

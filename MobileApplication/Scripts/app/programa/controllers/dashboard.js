@@ -47,3 +47,6 @@ angular
         }]);
 
 
+angular.module('incluso.programa.dashboard').controller('navController', function ($scope) {
+  $scope.isNavCollapsed = false;
+});
