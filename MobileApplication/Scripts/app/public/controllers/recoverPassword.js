@@ -11,6 +11,10 @@ angular
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
             
+            $scope.currentPage = 1;
+
+
+
             $scope.recover = function() {
                 $location.path('/');
             }

@@ -2,7 +2,7 @@
 
   <article class="register">
 
-    <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid">
+    <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="alert alert-success hidden" role="alert" style="display:block">
+    <div class="alert alert-success" role="alert" style="display:block" ng-show="isRegistered">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
@@ -156,7 +156,7 @@
                 <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(2)">Continuar</button>
               </div>
               <div class="col-xs-12">
-                <button type="button" class="btn btn-default btn-transparent btn-lg btn-block" ng-click="cancel()">Cancelar</button>
+                <button type="button" class="btn btn-default btn-transparent btn-lg btn-block" ng-click="login()">Cancelar</button>
               </div> 
             </div>          
 
@@ -240,7 +240,7 @@
               <div class="col-xs-12">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="acceptTermsAndConditions" /> <span>Acepto los términos y condiciones</span>
+                    <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> <span>Acepto los términos y condiciones</span>
                   </label>
                 </div>              
               </div>
@@ -259,7 +259,7 @@
             </div>
 
             <div class="row">
-              <div class="col-xs-12">
+              <div class="col-xs-12" ng-show="!isRegistered">
                 <div class="button-group">
                   <button type="button" class="btn btn-primary btn-lg" ng-click="navigateToPage(1)">
                     <span class="icomoon icon-arrow-slim-left"></span>
@@ -267,11 +267,11 @@
                   <button type="button" ng-click="register()" class="btn btn-primary btn-lg">Registrar</button>
                 </div>
               </div>
-              <div class="col-xs-12">
-                <button type="button" ng-click="cancel()" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</button>
+              <div class="col-xs-12" ng-show="!isRegistered">
+                <button type="button" ng-click="login()" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</button>
               </div>  
-              <div class="col-xs-12">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Entrar</button>
+              <div class="col-xs-12" ng-show="isRegistered">
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="login()">Entrar</button>
               </div>       
             </div>          
 
