@@ -29,7 +29,7 @@ class AuthenticationController extends AbstractRestfulJsonController {
 	    	$json = json_decode($response,true);
 	    	if (strpos($response, "error") !== false)
 	    	{
-	    		return new JsonModel ($this->throwJSONError("Verifique usuario y contrasena", 401));
+	    		return new JsonModel ($this->throwJSONError("Verifique usuario y contraseña", 401));
 	    	}
 	    	
 	    	$url = $this->getConfig()['MOODLE_API_URL'].'&field=username&values[0]=%s';

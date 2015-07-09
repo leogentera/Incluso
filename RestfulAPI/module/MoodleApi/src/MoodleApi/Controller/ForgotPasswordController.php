@@ -42,6 +42,15 @@ class ForgotPasswordController extends AbstractRestfulJsonController {
     		
     		$id=$json[0]['id'];
     		
+	    	for($i=0;count($json[0]['customfields'])>$i;$i++){
+	        	$customFields[$json[0]['customfields'][$i]['name']]=$json[0]['customfields'][$i]['value'];
+	        }
+	        
+	        if ($customFields["secretquestion"]!=$data["secretquestion"] || $customFields["secretanswer"]!=$data["secretanswer"]){
+	        	        	
+	        	return new JsonModel( $this->throwJSONError("La pregunta o la respuesta secreta son incorrectas"));
+	        }
+    		
     		$url = $this->getConfig()['MOODLE_API_URL'].'&users[0][id]=%s'.
     		'&users[0][customfields][0][type]=recoverycode&users[0][customfields][0][value]=%s'.
     		'&users[0][customfields][1][type]=codeexpirationdate&users[0][customfields][1][value]=%s';
@@ -67,27 +76,32 @@ class ForgotPasswordController extends AbstractRestfulJsonController {
     			//$mail= new SMTPClient();
     			//$mail->SMTPClient ('ssl://smtp.gmail.com', 465, 'desarrollo.definityfist@gmail.com','Admin123!', 'desarrollo.definityfist@gmail.com', $data['email'], "hello", "hola");
     			
-    			$transport = new SmtpTransport();
-    			$options   = new SmtpOptions(array(
-    					'name' => 'mtymaildf-v05.sieenasoftware.com',
-    					'host' => 'mail.definityfirst.com',
-    					'port' => 25,
-    					'connection_class'  => 'login',
-    					'connection_config' => array(
-    							'username' => 'humberto.castaneda',
-    							'password' => 'pass',
-    							'ssl'      => 'tls',
-    					),
-    			));
-    			$transport->setOptions($options);
+    			try {
+    				$transport = new SmtpTransport();
+    				$options   = new SmtpOptions(array(
+    						'name' => 'mtymaildf-v05.sieenasoftware.com',
+    						'host' => 'mail.definityfirst.com',
+    						'port' => 25,
+    						'connection_class'  => 'login',
+    						'connection_config' => array(
+    								'username' => 'gentera',
+    								'password' => 'An15b4r4',
+    								'ssl'      => 'tls',
+    						),
+    				));
+    				$transport->setOptions($options);
+    				 
+    				$message = new Message();
+    				 
+    				$message->addTo($data['email'])
+    				->addFrom('humberto.castaneda@definityfirst.com')
+    				->setSubject('Reseteo de Contraseña Incluso')
+    				->setBody("Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
+    				$transport->send($message);
+    			} catch (\Exception $e) {
+    				return new JsonModel( $this->throwJSONError("Ocurrio un error al momento de enviar el mail con el código de confirmacion, contacte al administrador"));
+    			}
     			
-    			$message = new Message();
-    			
-    			$message->addTo($data['email'])
-    			->addFrom('humberto.castaneda@definityfirst.com')
-    			->setSubject('Reseteo de Contraseña Incluso')
-    			->setBody("Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
-    			$transport->send($message);
     			
     			return  new JsonModel(array());
     			
