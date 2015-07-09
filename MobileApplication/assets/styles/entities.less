@@ -110,8 +110,8 @@
             .distribuido{
                 display: inline-flex;
                 justify-content: space-between;
-                img{
-                    width:23.5%;
+                a{
+                    padding:.5%;
                 }
             }
             .fl-left{
@@ -378,6 +378,59 @@
                 i{
                     font-size: 300%;
                 }
+            }
+            .modalDialog {
+                position: fixed;
+                font-family: Arial, Helvetica, sans-serif;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba(0,0,0,0.8);
+                z-index: 99999;
+                opacity:0;
+                -webkit-transition: opacity 400ms ease-in;
+                -moz-transition: opacity 400ms ease-in;
+                transition: opacity 400ms ease-in;
+                pointer-events: none;
+                &:target {
+                    opacity:1;
+                    pointer-events: auto;
+                }
+                > div {
+                    width: 100%;
+                    position: relative;
+                    margin: 10% 0;
+                    padding: 2% 0;
+                    background: #fff;
+                    .agregar{
+                        border-color: rgba(133,133,133,.2);
+                        color: #9c9c9c;
+                        padding: 2% 0;    
+                        display: flex;
+                        justify-content: space-between;
+                        input{
+                            border: 0px solid transparent;
+                        }
+                        i{
+                            color: #9c9c9c;
+                        }
+                    }        
+                }
+            }
+            .close {    
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid white;
+                position: absolute;
+                right: ~"calc(50% - 3px)";
+                top: -10px;
+                opacity: 1;
+            }
+            .close:hover { 
+                border-bottom: 10px solid black;
             }
             .forma{
                 label {

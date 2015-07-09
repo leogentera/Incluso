@@ -158,8 +158,8 @@
     display: inline-flex;
     justify-content: space-between;
   }
-  .incluso-app .distribuido img {
-    width: 23.5%;
+  .incluso-app .distribuido a {
+    padding: .5%;
   }
   .incluso-app .fl-left {
     float: left;
@@ -714,6 +714,59 @@
   }
   .incluso-app .paginadores i {
     font-size: 300%;
+  }
+  .incluso-app .modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+  }
+  .incluso-app .modalDialog:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .incluso-app .modalDialog > div {
+    width: 100%;
+    position: relative;
+    margin: 10% 0;
+    padding: 2% 0;
+    background: #fff;
+  }
+  .incluso-app .modalDialog > div .agregar {
+    border-color: rgba(133, 133, 133, 0.2);
+    color: #9c9c9c;
+    padding: 2% 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .incluso-app .modalDialog > div .agregar input {
+    border: 0px solid transparent;
+  }
+  .incluso-app .modalDialog > div .agregar i {
+    color: #9c9c9c;
+  }
+  .incluso-app .close {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white;
+    position: absolute;
+    right: calc(50% - 3px);
+    top: -10px;
+    opacity: 1;
+  }
+  .incluso-app .close:hover {
+    border-bottom: 10px solid black;
   }
   .incluso-app .forma label {
     cursor: pointer;
