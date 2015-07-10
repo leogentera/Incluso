@@ -64,7 +64,7 @@ angular
 
                     $http({
                         method: 'POST',
-                        url: API_RESOURCE.format("ForgotPassword"), 
+                        url: API_RESOURCE.format("forgotpassword"), 
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
                             email: $scope.recoverPasswordModel.email,
@@ -102,7 +102,7 @@ angular
                 if(errors.length === 0){
                     $http({
                         method: 'POST',
-                        url: API_RESOURCE.format("ResetPassword"), 
+                        url: API_RESOURCE.format("resetpassword"), 
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
                             email: $scope.recoverPasswordModel.email,

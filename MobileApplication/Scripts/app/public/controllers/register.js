@@ -67,7 +67,7 @@ angular
 
                 $http({
                         method: 'POST',
-                        url: API_RESOURCE.format("Register"), 
+                        url: API_RESOURCE.format("register"), 
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
                             username: $scope.registerModel.username,
