@@ -1,5 +1,15 @@
-﻿<div class="incluso-app start-dashboard" >
-
+﻿<div class="incluso-app start-dashboard" id="site-wrapper">
+<div id="site-canvas">
+<div id="site-menu" class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+            </ul>
+</div>
     <nav ng-controller="navController">
         <div class="navbar navbar-welcome" id="navBar">
 
@@ -8,13 +18,10 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="row">
 
-                    <button type="button" class="navbar-toggle collapsed" ng-click="isNavCollapsed = !isNavCollapsed" >
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icomoon icon-more-options"></span>
-                    </button> 
-
+                        
+                    
                     <div class="navbar-assets">
-                        <h1 class="navbar-heading">Programa Incluso</h1>
+                        <h1 class="navbar-heading"><a href="#" data-transition="ease" id="eranditon"><i class="icomoon icon-more-options white"></i></a> Programa Incluso</h1>
                         <ul class="navbar-tools">
                             <li class="contribute">
                                 <a href="">
@@ -44,18 +51,7 @@
             </div>
 
         </div> <!-- /.container-fluid -->
-
-        <!-- Collect the nav links, forms, and other content for toggling  // class="collapse navbar-collapse" id="app-navigation"-->
-        <div class="navbar-collapse" collapse="isNavCollapsed">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->  
+       
 
     </nav>
 
@@ -208,4 +204,22 @@
     <a href="#navBar" class="btn-back-to-top"></a>
   </footer>
 
-<div>
+</div></div>
+<script>
+$(function() {
+
+   $('#eranditon').click(function() {
+
+    var transitionClass = $(this).data('transition');
+      $('body').removeClass();
+      $('#site-canvas').removeClass();
+      $('#site-canvas').addClass(transitionClass);
+
+    $('#site-wrapper').toggleClass('show-nav');
+
+    return false;
+
+  });
+
+});
+</script>
