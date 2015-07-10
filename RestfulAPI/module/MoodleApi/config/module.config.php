@@ -3,13 +3,14 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'MoodleApi\Controller\Course' => 'MoodleApi\Controller\CourseController',
-            'MoodleApi\Controller\Catalog' => 'MoodleApi\Controller\CatalogController',
             'MoodleApi\Controller\User' => 'MoodleApi\Controller\UserController',
         	'MoodleApi\Controller\CourseContents' => 'MoodleApi\Controller\CourseContentController',
             'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
         	'MoodleApi\Controller\Register'       => 'MoodleApi\Controller\RegisterController',
         	'MoodleApi\Controller\ResetPassword'       => 'MoodleApi\Controller\ResetPasswordController',
         	'MoodleApi\Controller\ForgotPassword'       => 'MoodleApi\Controller\ForgotPasswordController',
+        	'MoodleApi\Controller\UserProfile'       => 'MoodleApi\Controller\UserProfileController',
+        	'MoodleApi\Controller\UpdateUserProfile'       => 'MoodleApi\Controller\UpdateUserProfileController',
         ),
     ),
     'router' => array(
@@ -33,18 +34,6 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'MoodleApi\Controller\Course',
-                    ),
-                ),
-            ),
-            'catalog' => array(
-                'type'    => 'segment',
-                'options' => array(
-                    'route'    => '/catalog[/:catalogname]',
-                    'constraints' => array(
-                        'catalogname'     => '[a-zA-Z0-9\-_]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'MoodleApi\Controller\Catalog',
                     ),
                 ),
             ),
@@ -85,7 +74,7 @@ return array(
         	'Register' => array(
         		'type'    => 'segment',
         		'options' => array(
-        			'route'    => '/Register',
+        			'route'    => '/register',
         			'defaults' => array(
         			'controller' => 'MoodleApi\Controller\Register',
         			),
@@ -95,7 +84,7 @@ return array(
         	'ResetPassword' => array(
         		'type'    => 'segment',
         		'options' => array(
-        			'route'    => '/ResetPassword',
+        			'route'    => '/resetpassword',
         			'defaults' => array(
         			'controller' => 'MoodleApi\Controller\ResetPassword',
         			),
@@ -105,12 +94,35 @@ return array(
         	'ForgotPassword' => array(
         		'type'    => 'segment',
         		'options' => array(
-        			'route'    => '/ForgotPassword',
+        			'route'    => '/forgotpassword',
         			'defaults' => array(
         			'controller' => 'MoodleApi\Controller\ForgotPassword',
         			),
         		),
         ),
+        		
+        		'UserProfile' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/userprofile/:id',
+                    'constraints' => array(
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'MoodleApi\Controller\UserProfile',
+                    ),
+                ),
+            ),
+        		
+        		'UpdateUserProfile' => array(
+        				'type'    => 'segment',
+        				'options' => array(
+        						'route'    => '/updateuserprofile',
+        						'defaults' => array(
+        								'controller' => 'MoodleApi\Controller\UpdateUserProfile',
+        						),
+        				),
+        		),
         	
         ),
     ),

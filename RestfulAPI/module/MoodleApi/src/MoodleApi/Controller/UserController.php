@@ -60,6 +60,7 @@ class UserController extends AbstractRestfulJsonController{
         $url = sprintf($url, $this->getToken(), $this->function, $id);
 
         $response = file_get_contents($url);
+        var_dump($response);
         $json = json_decode($response,true);
 
         $users= array();
