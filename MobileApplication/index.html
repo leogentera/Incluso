@@ -11,18 +11,26 @@
   <link href="assets/styles/dev-css.css" rel='stylesheet' type='text/css' />
 </head>
 
-<body ng-controller="homeCtrl">
+<body ng-controller="homeCtrl"> 
+<!-- <body>-->
+
+    
     <div id="spinner" class="spinner" ng-show="loading">
         <img src="Content/images/ajax-loader.gif"  class="ajax-loader"/>
     </div>
     <div ng-view></div>
-
+    <!-- -->
+    
     <script src="Scripts/jquery-2.1.4.min.js"></script>
-    <!--        <script type="text/javascript" src="scripts/bootstrap-3.3.2.js"></script>-->
-    <script src="Scripts/bootstrap.js"></script>
+    <!-- <script type="text/javascript" src="scripts/bootstrap-3.3.2.js"></script>-->
+    
+ 
+    <!-- <script src="Scripts/bootstrap.js"></script> -->
     <script src="Scripts/underscore-min.js"></script>
     <script src="Scripts/backbone.js"></script>
     <script src="Scripts/backbone_offline.js"></script>
+
+    
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular-route.js"></script>
     <script src="Scripts/angular-sanitize.js"></script>
@@ -42,9 +50,10 @@
     <script src="Scripts/Plugins/ng-tags-input.js"></script>
     <script src="Scripts/Plugins/angular-locale_es-mx.js"></script>
     <script src="Scripts/Plugins/angular-autocomplete.js"></script>
-    <script src="Scripts/Plugins/Chart.js"></script>
+    <script src="Scripts/Plugins/Chart.js"></script>    
     <script src="Scripts/app/module.js"></script>
     <script src="Scripts/app/home/controllers/home.js"></script>
+
     <script src="Scripts/app/programa/controllers/dashboard.js"></script>
     <script src="Scripts/app/public/controllers/login.js"></script>
     <script src="Scripts/app/public/controllers/register.js"></script>
@@ -57,6 +66,14 @@
     <script src="Scripts/app/models/Dashboard.js"></script>
     <script src="Scripts/app/models/Course.js"></script>
     <script src="Scripts/app/models/Courses.js"></script>
+<!--
+    -->
+
+
+    <script src="Scripts/angular.js"></script>    
+    <script src="Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="Scripts/app/shared/controllers/navigation.js"></script>
+
 </body>
 
 </html>
