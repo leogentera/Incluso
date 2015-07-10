@@ -1,6 +1,6 @@
 ﻿// http://weblogs.asp.net/dwahlin/archive/2013/09/18/building-an-angularjs-modal-service.aspx
 angular
-    .module('incluso.public.login', ['ui.select2', 'ngTagsInput'])
+    .module('incluso.public.login', [])
     .controller('publicLoginController', [
         '$q',
         '$scope',

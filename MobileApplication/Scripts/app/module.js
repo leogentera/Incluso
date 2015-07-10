@@ -12,7 +12,9 @@
 		'incluso.programa.dashboard',
 		'incluso.public.login',
         'incluso.public.recoverPassword',
-        'incluso.public.register'
+        'incluso.public.register',
+        'MainNavigation'
+
     ])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
