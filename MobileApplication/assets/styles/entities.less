@@ -110,8 +110,8 @@
             .distribuido{
                 display: inline-flex;
                 justify-content: space-between;
-                img{
-                    width:23.5%;
+                a{
+                    padding:.5%;
                 }
             }
             .fl-left{
@@ -327,17 +327,48 @@
                             }
                         } 
                     }
-                    .vermas{
-                        border: 2px dashed rgba(255, 255, 255, 0.25);
-                        border-radius: 6px;
-                        display: inline-flex;
-                        justify-content: space-between;
-                        margin: 5%;
-                        padding: 2% 5%;
-                        width: 90%;
-                        i{
-                            color:white;
+                    .social{
+                        width: 100%; 
+                        border-top: 2px solid rgba(255, 255, 255, 0.08); 
+                        display: inline-block;
+                        div{
+                            display: inline-flex;
+                            justify-content: space-around;
+                            padding: 3% 5%;
+                            width: 49%;
+                            font-size:80%;
+                            &:nth-child(1){
+                                border-right: 2px solid rgba(255, 255, 255, 0.08);
+                                color:#E80D81;
+                                i{
+                                    color:#E80D81;
+                                    margin: 0;
+                                    padding:0;
+                                }
+                            }
+                            &:nth-child(2){
+                                color:#08B190;
+                                i{
+                                    color:#08B190;
+                                    margin: 0;
+                                    padding:0;
+                                }
+                            }
                         }
+                    }
+                }
+                .vermas{
+                    border: 2px dashed rgba(255, 255, 255, 0.25);
+                    border-radius: 6px;
+                    display: inline-flex;
+                    justify-content: space-between;
+                    margin: 2% 10%;
+                    padding: 2% 5%;
+                    width: 80%;
+                    color:white;
+                    i{
+                        color:white;
+                        padding:0;
                     }
                 }
             }
@@ -347,6 +378,59 @@
                 i{
                     font-size: 300%;
                 }
+            }
+            .modalDialog {
+                position: fixed;
+                font-family: Arial, Helvetica, sans-serif;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba(0,0,0,0.8);
+                z-index: 99999;
+                opacity:0;
+                -webkit-transition: opacity 400ms ease-in;
+                -moz-transition: opacity 400ms ease-in;
+                transition: opacity 400ms ease-in;
+                pointer-events: none;
+                &:target {
+                    opacity:1;
+                    pointer-events: auto;
+                }
+                > div {
+                    width: 100%;
+                    position: relative;
+                    margin: 10% 0;
+                    padding: 2% 0;
+                    background: #fff;
+                    .agregar{
+                        border-color: rgba(133,133,133,.2);
+                        color: #9c9c9c;
+                        padding: 2% 0;    
+                        display: flex;
+                        justify-content: space-between;
+                        input{
+                            border: 0px solid transparent;
+                        }
+                        i{
+                            color: #9c9c9c;
+                        }
+                    }        
+                }
+            }
+            .close {    
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid white;
+                position: absolute;
+                right: ~"calc(50% - 3px)";
+                top: -10px;
+                opacity: 1;
+            }
+            .close:hover { 
+                border-bottom: 10px solid black;
             }
             .forma{
                 label {

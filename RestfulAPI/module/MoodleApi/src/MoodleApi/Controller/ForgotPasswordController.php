@@ -94,7 +94,7 @@ class ForgotPasswordController extends AbstractRestfulJsonController {
     				$message = new Message();
     				 
     				$message->addTo($data['email'])
-    				->addFrom('humberto.castaneda@definityfirst.com')
+    				->addFrom('gentera@definityfirst.com')
     				->setSubject('Reseteo de Contraseña Incluso')
     				->setBody("Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
     				$transport->send($message);
