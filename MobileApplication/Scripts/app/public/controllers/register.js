@@ -10,12 +10,8 @@ angular
 		'$rootScope',
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
-            
-            var isConfirmedPasswordValid = false;
 
-            $scope.currentPage = 1;
-            $scope.isRegistered = false;
-
+            /* ViewModel */
             $scope.registerModel = {
                 username: "",
                 birthday: "",
@@ -33,15 +29,19 @@ angular
                     errorMessages: []
                 }
             };
+            
+            /* Helpers */
+            var isConfirmedPasswordValid = false;
+            $scope.currentPage = 1;
+            $scope.isRegistered = false;
 
+            /* Watchers */
             $scope.$watch("registerModel.confirmPassword", function(newValue, oldValue){
                 isConfirmedPasswordValid = (newValue === $scope.registerModel.password);
             });
-
             $scope.$watch("registerModel.password", function(newValue, oldValue){
                 isConfirmedPasswordValid = (newValue === $scope.registerModel.confirmPassword);
             });
-
             $scope.$watch("registerModel.modelState.errorMessages", function(newValue, oldValue){
                 $scope.registerModel.modelState.isValid = (newValue.length === 0);
             });
@@ -88,8 +88,10 @@ angular
                         console.log('successfully register');
 
                     }).error(function(data, status, headers, config) {
-                        $scope.registerModel.modelState.errorMessages = [data.messageerror];
-                        console.log('data' + data);
+                        var errorMessage = window.atob(data.messageerror);
+
+                        $scope.registerModel.modelState.errorMessages = [errorMessage];
+                        console.log('data' + errorMessage);
                     });
             };
 

@@ -11,6 +11,7 @@ angular
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
 
+            /* ViewModel */
             $scope.userCredentialsModel = {
                 username: "",
                 password: "",
@@ -21,6 +22,7 @@ angular
                 }
             };
 
+            /* Watchers */
             $scope.$watch("userCredentialsModel.modelState.errorMessages", function(newValue, oldValue){
                 $scope.userCredentialsModel.modelState.isValid = (newValue.length === 0);
             });
@@ -82,8 +84,10 @@ angular
                         }
 
                     }).error(function(data, status, headers, config) {
-                        $scope.userCredentialsModel.modelState.errorMessages = [data.messageerror];
-                        console.log(status + ": " + data.messageerror);
+                        var errorMessage = window.atob(data.messageerror);
+
+                        $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
+                        console.log(status + ": " + errorMessage);
                     });
                 }
             }
