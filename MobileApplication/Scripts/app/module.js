@@ -19,7 +19,7 @@
     ])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
-        $routeProvider.when('/ProgramaProfile', {
+        $routeProvider.when('/Perfil', {
             templateUrl: 'Templates/Programa/profile.html',
             controller: 'programaProfileController'
         });
