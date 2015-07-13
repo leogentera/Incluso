@@ -145,7 +145,20 @@
                 padding: 5px 10px;
             }
             .centrado{
-                text-align: center;   
+                text-align: center;  
+                .spinner{
+                    max-width: 79%;
+                    margin: 0 auto;
+                    .circle{
+                        height: 56%;
+                        left: 23%;
+                        position: absolute;
+                        text-align: center;
+                        top: 19%;
+                        width: 54%;
+                    }
+                } 
+                
             }
             .distribuido{
                 display: inline-flex;
@@ -202,39 +215,39 @@
                 background-color: #24282A;
                 padding-top: 5px;
                 padding-bottom: 10px;
-                .spinner{    
-                    max-width: 49%;
-                    padding: 5% 9% 10%;
-                    position: relative;
-                    .circle{
-                        background-color: rgba(13, 15, 19, 0.55);
-                        border-radius: 50%;
-                        display: block;
-                        height: 46%;
-                        left: 28%;
-                        position: absolute;
-                        text-align: center;
-                        top: 22%;
-                        width: 44%;
-                    }
-                    .text{
-                        color: white;
-                        font-size: 20px;
-                        font-weight: bold;
-                        left: ~"calc(50% - 19px)";
-                        position: absolute;
-                        top: ~"calc(50% - 25px)";
-                        width: auto;
-                    }
-                    @i: 0;
-                    .loop (@i) when (@i <= 100) {
-                        &[data-progress="@{i}"] {
-                            background-image: url("../images/prcnt/@{i}.png");
-                        }
-                        .loop(@i + 1);
-                    }
-                    .loop(@i);
+            }
+            .spinner{    
+                max-width: 49%;
+                padding: 5% 9% 10%;
+                position: relative;
+                .circle{
+                    background-color: rgba(13, 15, 19, 0.55);
+                    border-radius: 50%;
+                    display: block;
+                    height: 46%;
+                    left: 28%;
+                    position: absolute;
+                    text-align: center;
+                    top: 22%;
+                    width: 44%;
                 }
+                .text{
+                    color: white;
+                    font-size: 20px;
+                    font-weight: bold;
+                    left: ~"calc(50% - 19px)";
+                    position: absolute;
+                    top: ~"calc(50% - 25px)";
+                    width: auto;
+                }
+                @i: 0;
+                .loop (@i) when (@i <= 100) {
+                    &[data-progress="@{i}"] {
+                        background-image: url("../images/prcnt/@{i}.png");
+                    }
+                    .loop(@i + 1);
+                }
+                .loop(@i);
             }
             .holoproj{
                 background-image:url('../images/holoproj.jpg');
