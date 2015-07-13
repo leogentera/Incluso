@@ -159,6 +159,10 @@ class MoodleUserProfile extends Common
         	//var_dump($this->phones);
         }
         
+        if(array_key_exists ( 'stars' , $customFields )){
+        	$this->stars=$customFields['stars'];
+        	//var_dump($this->phones);
+        }
         
     }
 }
