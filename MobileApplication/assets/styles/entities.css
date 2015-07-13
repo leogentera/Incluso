@@ -115,22 +115,27 @@
         ************************************************************************/
     /***********************************************************************/
     /***********************************************************************
-         08. $user-dashboard
+         $user-dashboard
          Description: CSS to represent an area to place a graphic illustration
         ************************************************************************/
     /***********************************************************************/
     /***********************************************************************
-         08. $profile-data
-         Description: CSS to represent user's profile data
+         $profile-data
+         Description: CSS to represent profile data section related to avatar
         ************************************************************************/
     /***********************************************************************/
     /***********************************************************************
-         08. $profile-dashboard
+         $profile-settings
+         Description: CSS to represent profile settings area related to user
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         $profile-options
          Description: CSS to represent user's profile dashboard landing page
         ************************************************************************/
     /***********************************************************************/
     /***********************************************************************
-         08. $profile-settings
+         $profile-dashboard
          Description: CSS to represent user's profile dashboard landing page
         ************************************************************************/
     /***********************************************************************/
@@ -1580,6 +1585,37 @@
     font-size: 24px;
     font-weight: 600;
   }
+  .incluso-app .profile-settings {
+    margin: 0;
+    height: 176px;
+    background-attachment: scroll;
+    background-image: url('../images/img-profile-spaceship-dashboard-settings.png');
+    background-color: #444d53;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% auto;
+    -moz-background-size: 100% auto;
+    background-size: 100% auto;
+  }
+  .incluso-app .profile-settings .user-avatar {
+    margin-top: 10px;
+  }
+  .incluso-app .profile-options {
+    margin: 0;
+    padding: 41px 0;
+    height: auto;
+    background-attachment: scroll;
+    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png');
+    background-color: #444d53;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% auto;
+    -moz-background-size: 100% auto;
+    background-size: 100% auto;
+  }
+  .incluso-app .profile-options .user-avatar {
+    margin-top: 10px;
+  }
   .incluso-app .profile-dashboard {
     margin: 0;
     background-attachment: scroll;
@@ -1588,17 +1624,6 @@
     background-repeat: no-repeat;
   }
   .incluso-app .profile-dashboard .user-avatar {
-    margin-top: 10px;
-  }
-  .incluso-app .profile-settings {
-    margin: 0;
-    height: 176px;
-    background-attachment: scroll;
-    background-image: url('../images/img-profile-spaceship-dashboard-settings.png');
-    background-position: center 0;
-    background-repeat: no-repeat;
-  }
-  .incluso-app .profile-settings .user-avatar {
     margin-top: 10px;
   }
 }

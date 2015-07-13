@@ -7,19 +7,21 @@
     Targets:        Modern Browsers, Android's WebView.
 	
 	Index:
-            01. incluso-app
-            02. btn             (bootstrap)
-            03. btn-back-to-top   
-            04. form-control    (bootstrap)
-            05. input-group		(bootstrap)
-            06. alert     		(bootstrap)
-            07. navbar          (bootstrap)
-            08. navbar-toggle   (bootstrap)
-            09. component
-            10. inline-list
-            11. block-list
-            12. pages
-            13. footer
+            01. $incluso-app    
+            02. $btn                (bootstrap)
+            03. $btn-back-to-top    
+            04. $button-group       (bootstrap)    
+            05. $form-control       (bootstrap)
+            06. $input-group        (bootstrap)
+            07. $alert              (bootstrap)
+            08. $navbar             (bootstrap)
+            09. $navbar-toggle      (bootstrap)
+            10. $list-group
+            11. $inline-list
+            12. $block-list
+            13. $component            
+            14. $pages
+            15. $footer
 ********************************************************************************/
 /****************************************************************************
  LESS Utilities - variables and functions
@@ -36,7 +38,7 @@ body {
 }
 .incluso-app {
   /****************************************************************************
-     01. incluso-app
+     $incluso-app 
      Description: CSS rules for basic namespace wrapper.
     ****************************************************************************/
   padding: 0;
@@ -46,72 +48,77 @@ body {
   font-family: Play, Sans-serif, Arial;
   /***************************************************************************/
   /****************************************************************************
-     02. btn
+     $btn
      Description: CSS override to bootstrap's btn class.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     03. btn-back-to-top
+     $btn-back-to-top
      Description: CSS to represent a back-to-top button
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     04. input-group
+     $button-group 
      Description: CSS overrides to bootstrap's input-group class.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     05. form-control
+     $form-control
      Description: CSS overrides to bootstrap's form-control class.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     06. input-group
+     $input-group 
      Description: CSS overrides to bootstrap's input-group class.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     07. alert
+     $alert
      Description: CSS overrides to bootstrap's alert class.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     08. navbar
+     $navbar
      Description: CSS overrides to bootstrap's navbar class and descendants.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     09. navbar-toggle
+     $navbar-toggle
      Description: CSS override to bootstrap's navbar toggle button on mobile.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     10. component
-     Description: CSS generic class for components
+     $list-group
+     Description: CSS overrides to bootstrap's list-group class and descendants.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     11. inline-list
+     $inline-list
      Description: CSS class to represent an inline list of elements.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     12. block-list
+     $block-list
      Description: CSS class to represent a block list of elements.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     13. pages
+     $component
+     Description: CSS generic class for components
+    ****************************************************************************/
+  /***************************************************************************/
+  /****************************************************************************
+     $pages
      Description: CSS class for a page wrapper with pages and buttons
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     14. footer
+     $footer
      Description: CSS class for a page wrapper with pages and buttons
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     14. spinner
+     16. spinner
      Description: CSS class to positionante, show and hide the preloader image
     ****************************************************************************/
   /***************************************************************************/
@@ -482,11 +489,61 @@ body {
   -moz-border-radius: 16px;
   border-radius: 16px;
 }
+.incluso-app .list-group-item {
+  padding: 0;
+  margin: 12px 0 0 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  z-index: 10;
+}
+.incluso-app .list-group-item a {
+  display: block;
+  height: 77px;
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 77px;
+}
+.incluso-app .list-group-item .icomoon {
+  font-weight: normal;
+}
+.incluso-app .inline-list {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+.incluso-app .inline-list li {
+  display: inline-block;
+  float: left;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+}
+.incluso-app .block-list {
+  display: block;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  list-style-type: none;
+}
+.incluso-app .block-list li {
+  display: block;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+}
 .incluso-app .component {
   display: block;
-  position: relative;
-  padding: 0 5%;
+  padding: 0;
   margin: 30px 0 10px;
+  position: relative;
   z-index: 10;
 }
 .incluso-app .component h3 {
@@ -519,36 +576,6 @@ body {
   display: block;
   padding: 0;
   margin: 0 auto;
-}
-.incluso-app .inline-list {
-  display: block;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-}
-.incluso-app .inline-list li {
-  display: inline-block;
-  float: left;
-  padding: 0;
-  margin: 0;
-  width: auto;
-  height: auto;
-}
-.incluso-app .block-list {
-  display: block;
-  padding: 0;
-  margin: 0;
-  width: auto;
-  height: auto;
-  list-style-type: none;
-}
-.incluso-app .block-list li {
-  display: block;
-  padding: 0;
-  margin: 0;
-  width: auto;
-  height: auto;
 }
 .incluso-app .pages {
   display: block;

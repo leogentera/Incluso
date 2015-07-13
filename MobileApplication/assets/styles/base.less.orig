@@ -429,14 +429,24 @@ body {
      $list-group
      Description: CSS overrides to bootstrap's list-group class and descendants.
     ****************************************************************************/
+<<<<<<< HEAD
+    .component {
+        display: block;
+        position:relative;
+        padding: 0 5%;
+        margin: 30px 0 10px;
+        z-index:10;
+    
+        h3 {
+=======
     .list-group {}
     .list-group-item {
         padding:0;
         margin:12px 0 0 0;
         .border-radius(4px);
-        z-index:10;
         
         a {
+>>>>>>> 1e143d8afaae90b5509c7b3df86ce390bba4c66d
             display: block;
             height: 77px;
             padding: 0;
@@ -504,8 +514,7 @@ body {
         display: block;
         padding: 0;
         margin: 30px 0 10px;
-        position:relative;
-        z-index:10;
+    
         h3 {
             display: block;
             padding: 0;
