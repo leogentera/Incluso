@@ -1,0 +1,100 @@
+<div class="incluso-app profile">
+ 
+  <nav ng-controller="navController">
+    <div class="navbar navbar-welcome" id="navBar">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+
+          <button type="button" class="navbar-toggle collapsed" ng-click="isNavCollapsed = !isNavCollapsed" >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icomoon icon-more-options"></span>
+          </button>
+
+          <div class="navbar-assets">
+            <h1 class="navbar-heading">Mi Perfil</h1>
+            <ul class="navbar-tools">
+              <li class="contribute">
+                <a href="">
+                  <span class="icon"></span>
+                </a>
+              </li>
+              <li class="notifications">
+                <a href="">
+                  <span class="icon"></span>
+                </a>
+              </li>
+              <li class="chat">
+                <a href="">
+                  <span class="icon"></span>
+                </a>
+              </li>
+              <li class="profile">
+                <a href="">
+                  <span class="icon"></span>
+                </a>
+              </li>                
+            </ul>
+          </div>
+
+        </div>
+      </div> <!-- /.container-fluid -->
+    </div> <!-- /.navbar -->
+    <div class="navbar-collapse" collapse="isNavCollapsed">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse --> 
+  </nav>
+ 
+  <article>
+      <section class="component profile-dashboard">
+        <div>
+          <figure>
+            <img src="assets/images/img-profile-spaceship-dashboard-top.png" alt="" />
+          </figure>
+        </div>        
+        <div class="user-avatar">
+          <figure>
+            <img src="assets/images/img-user-sample-photo.jpg" alt="" class="img-responsive" />
+            <figcaption>28</figcaption>
+          </figure>   
+          <button type="button" id="editProfile">
+            <span class="icomoon icon-edit"></span>
+          </button>       
+        </div>
+        <div class="profile-data">
+          <h4 class="user-name">Leonardo Garza R.</h4>
+          <p class="user-points">
+            <span>100</span>
+            <span class="icomoon icon-star"></span>
+          </p>
+          <!-- <span class="badge">100<span class="icomoon icon-star"></span></span> -->
+        </div>
+      </section>
+
+      <section class="component profile-settings">
+        
+      </section>
+ 
+      <section class="ilustration">
+        <figure class="space-ship">
+          <img src="" alt="">
+        </figure>
+      </section>
+  </article>
+ 
+  <footer>
+    <ul class="block-list">
+      <li><a href="" class="btn-link">Preguntas Frecuentes</a></li>
+      <li><a href="" class="btn-link">Ayuda y Soporte</a></li>
+    </ul>
+    <a href="#navBar" class="btn-back-to-top"></a>
+  </footer>
+
+</div>

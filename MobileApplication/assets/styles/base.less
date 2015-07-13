@@ -156,6 +156,7 @@ body {
     }
     /***************************************************************************/ 
 
+
     /****************************************************************************
      05. form-control
      Description: CSS overrides to bootstrap's form-control class.
@@ -326,17 +327,15 @@ body {
     .navbar {
         position: relative;
         margin-bottom: 0;
-    }
-    .navbar-default {}
-    .navbar-default .navbar-toggle {}
 
-    .navbar {
-        [class^="icon-"]{
+        [class^="icon-"] {
             color:white;
             font-size: 22px;
             line-height: 64px;
-        }
+        }        
     }
+    .navbar-default {}
+    .navbar-default .navbar-toggle {}
 
     .navbar-welcome {
         background-color: @clr-orange;
@@ -447,7 +446,7 @@ body {
             margin: 0 auto 15px;
             width: 88%;
             color: @clr-white;
-            font-family: Roboto, Arial, Sans-serif;
+            /*font-family: Roboto, Arial, Sans-serif;*/
             font-size: 20px;
             font-weight: 300;
             text-align: center;
@@ -611,6 +610,7 @@ body {
     ****************************************************************************/
     .spinner {}
     /***************************************************************************/
+    
 
 }
 
