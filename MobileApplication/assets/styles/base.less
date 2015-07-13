@@ -44,6 +44,9 @@ body {
             text-decoration: none;
         }
     }
+    .container{
+        padding:0;
+    }
     /***************************************************************************/  
 
 
@@ -426,8 +429,10 @@ body {
     ****************************************************************************/
     .component {
         display: block;
-        padding: 0;
+        position:relative;
+        padding: 0 5%;
         margin: 30px 0 10px;
+        z-index:10;
     
         h3 {
             display: block;
@@ -600,6 +605,11 @@ body {
             bottom: 0;
             margin-left: -30px;
         }
+    }
+    .db-bg{
+        background-image: url("../images/footnav.png");
+        background-position: 50% 0;
+        box-shadow: unset;
     }
     /***************************************************************************/
 
