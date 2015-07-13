@@ -72,6 +72,7 @@ class UpdateUserProfileController extends AbstractRestfulJsonController {
 	    				"phones",$phones);
 	    	}
 	    	
+	    	
 	    	$url.=$this->createURLParms($data, '&users[0][customfields][7][type]=%s&users[0][customfields][7][value]=%s', 'stage' );
 	    	
 	    	$socialNetworks=$this->createTableRows($data,  'socialNetwork', 'socialNetworkId' );
@@ -80,6 +81,47 @@ class UpdateUserProfileController extends AbstractRestfulJsonController {
 	    		$url.=sprintf('&users[0][customfields][8][type]=%s&users[0][customfields][8][value]=%s',
 	    				"socialNetworks",$socialNetworks);
 	    	}
+	    	
+
+	    	$attributesAndQualities=$this->createTableRows($data,  'attributesAndQualities' );
+	    	if (trim($attributesAndQualities)!=""){
+	    		$url.=sprintf('&users[0][customfields][9][type]=%s&users[0][customfields][9][value]=%s',
+	    				"attributesAndQualities",$attributesAndQualities);
+	    	}
+	    	
+	    	$dreamsToBe=$this->createTableRows($data,  'dreamsToBe' );
+	    	if (trim($dreamsToBe)!=""){
+	    		$url.=sprintf('&users[0][customfields][10][type]=%s&users[0][customfields][10][value]=%s',
+	    				"dreamsToBe",$dreamsToBe);
+	    	}
+	    	
+	    	$dreamsToHave=$this->createTableRows($data,  'dreamsToHave' );
+	    	if (trim($dreamsToHave)!=""){
+	    		$url.=sprintf('&users[0][customfields][11][type]=%s&users[0][customfields][11][value]=%s',
+	    				"dreamsToHave",$dreamsToHave);
+	    	}
+	    	
+	    	$dreamsToDo=$this->createTableRows($data,  'dreamsToDo' );
+	    	if (trim($dreamsToDo)!=""){
+	    		$url.=sprintf('&users[0][customfields][12][type]=%s&users[0][customfields][12][value]=%s',
+	    				"dreamsToDo",$dreamsToDo);
+	    	}
+	    	
+	    	$likesAndPreferences=$this->createTableRows($data,  'likesAndPreferences' );
+	    	if (trim($likesAndPreferences)!=""){
+	    		$url.=sprintf('&users[0][customfields][13][type]=%s&users[0][customfields][13][value]=%s',
+	    				"likesAndPreferences",$likesAndPreferences);
+	    	}
+	    	
+	    	
+	    	//
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][14][type]=%s&users[0][customfields][14][value]=%s', 'showMyInformation' );
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][15][type]=%s&users[0][customfields][15][value]=%s', 'showAttributesAndQualities' );
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][16][type]=%s&users[0][customfields][16][value]=%s', 'showLikesAndPreferences' );
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][17][type]=%s&users[0][customfields][17][value]=%s', 'showBadgesEarned' );
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][18][type]=%s&users[0][customfields][18][value]=%s', 'showStrengths' );
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][19][type]=%s&users[0][customfields][19][value]=%s', 'showRecomendedBachelorDegrees' );
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][20][type]=%s&users[0][customfields][20][value]=%s', 'showMyDreams' );
 	    	
 	    	
 	    	//$url = sprintf($url, $this->getToken(), $this->function);
