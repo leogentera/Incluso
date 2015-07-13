@@ -111,18 +111,15 @@ body {
      Description: CSS to represent a back-to-top button
     ****************************************************************************/
     .btn-back-to-top {
-        display: block;
-        padding: 0;
-        margin: 0;
-        width: 60px;
-        height: 40px;
-        .border-radius(6px, 6px, 0, 0);
-        background-color: @clr-gray;
-        background-attachment: scroll;
-        background-image: url('../images/ics-gentera.png');
-        background-position: center -187px;
-        background-repeat: no-repeat;
-        opacity: 0.9;
+        color: @clr-green;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        span {
+            display: block;
+            width: auto;
+            text-transform: uppercase;
+        }
     }
     /***************************************************************************/ 
 
@@ -427,22 +424,15 @@ body {
      Description: CSS overrides to bootstrap's list-group class and descendants.
     ****************************************************************************/
     .list-group {}
-    .list-group-item {
-        padding:0;
-        margin:12px 0 0 0;
-        .border-radius(4px);
-        
-        a {
-            display: block;
-            height: 77px;
-            padding: 0;
-            margin: 0;
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 77px;
-        }
-        .icomoon {font-weight: normal;}
+
+    .list-group.separte-items {
+        .list-group-item {
+            padding:0;
+            margin:12px 0 0 0;
+            .border-radius(9px);
+        }        
     }
+
     /***************************************************************************/ 
 
 

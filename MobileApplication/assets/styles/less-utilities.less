@@ -145,6 +145,17 @@
 	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13171c', endColorstr='#163a4a',GradientType=0 ); /* IE6-8 */
 }
 
+.gradient-navy-blue() {
+	background: #1f2733;
+	background: -moz-radial-gradient(center, ellipse cover, #1f2733 0%, #14181f 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1f2733), color-stop(100%, #14181f));
+	background: -webkit-radial-gradient(center, ellipse cover, #1f2733 0%, #14181f 100%);
+	background: -o-radial-gradient(center, ellipse cover, #1f2733 0%, #14181f 100%);
+	background: -ms-radial-gradient(center, ellipse cover, #1f2733 0%, #14181f 100%);
+	background: radial-gradient(ellipse at center, #1f2733 0%, #14181f 100%);
+
+}
+
 .background-size (@w, @h) {
 	-webkit-background-size: @w @h;
 	   -moz-background-size: @w @h;
