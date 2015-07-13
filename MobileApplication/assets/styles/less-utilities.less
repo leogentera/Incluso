@@ -3,11 +3,13 @@
 ****************************************************************************/
 /* Path vars */
 @url-font: "../fonts";
+@url-images: "../images";
 
 /* Color Palette */
 @clr-black: #000;
 @clr-white: #FFF;
 @clr-gray: rgb(42, 51,51);
+@clr-gray-asphalt: rgb(68, 77,83);
 @clr-orange: rgb(245, 70,31);
 @clr-green: rgb(188, 212, 49);
 @clr-greenMedium: rgb(104, 189, 69);
@@ -71,9 +73,9 @@
 }
 
 .border-radius-circle() {
-  -webkit-border-radius: 60px;
-     -moz-border-radius: 60px;
-          border-radius: 60px;	
+  -webkit-border-radius: 90px;
+     -moz-border-radius: 90px;
+          border-radius: 90px;	
 }
 
 .border-radius-reset() {
@@ -141,5 +143,10 @@
 	background: -ms-linear-gradient(top,  #13171c 0%,#163a4a 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #13171c 0%,#163a4a 100%); /* W3C */
 	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13171c', endColorstr='#163a4a',GradientType=0 ); /* IE6-8 */
+}
 
+.background-size (@w, @h) {
+	-webkit-background-size: @w @h;
+	   -moz-background-size: @w @h;
+			background-size: @w @h;  
 }

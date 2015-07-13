@@ -7,19 +7,21 @@
     Targets:        Modern Browsers, Android's WebView.
 	
 	Index:
-            01. incluso-app
-            02. btn             (bootstrap)
-            03. btn-back-to-top   
-            04. form-control    (bootstrap)
-            05. input-group		(bootstrap)
-            06. alert     		(bootstrap)
-            07. navbar          (bootstrap)
-            08. navbar-toggle   (bootstrap)
-            09. component
-            10. inline-list
-            11. block-list
-            12. pages
-            13. footer
+            01. $incluso-app    
+            02. $btn                (bootstrap)
+            03. $btn-back-to-top    
+            04. $button-group       (bootstrap)    
+            05. $form-control       (bootstrap)
+            06. $input-group        (bootstrap)
+            07. $alert              (bootstrap)
+            08. $navbar             (bootstrap)
+            09. $navbar-toggle      (bootstrap)
+            10. $list-group
+            11. $inline-list
+            12. $block-list
+            13. $component            
+            14. $pages
+            15. $footer
 ********************************************************************************/
 @import "less-utilities.less";
 
@@ -33,7 +35,7 @@ body {
 .incluso-app {
 
     /****************************************************************************
-     01. incluso-app
+     $incluso-app 
      Description: CSS rules for basic namespace wrapper.
     ****************************************************************************/   
     padding:0; margin:0 auto;
@@ -48,7 +50,7 @@ body {
 
 
     /****************************************************************************
-     02. btn
+     $btn
      Description: CSS override to bootstrap's btn class.
     ****************************************************************************/
     .btn {
@@ -105,7 +107,7 @@ body {
 
 
     /****************************************************************************
-     03. btn-back-to-top
+     $btn-back-to-top
      Description: CSS to represent a back-to-top button
     ****************************************************************************/
     .btn-back-to-top {
@@ -126,7 +128,7 @@ body {
 
 
     /****************************************************************************
-     04. input-group
+     $button-group 
      Description: CSS overrides to bootstrap's input-group class.
     ****************************************************************************/
     .button-group {
@@ -156,8 +158,9 @@ body {
     }
     /***************************************************************************/ 
 
+
     /****************************************************************************
-     05. form-control
+     $form-control
      Description: CSS overrides to bootstrap's form-control class.
     ****************************************************************************/
     .form-control {
@@ -219,7 +222,7 @@ body {
 
 
     /****************************************************************************
-     06. input-group
+     $input-group 
      Description: CSS overrides to bootstrap's input-group class.
     ****************************************************************************/
     .input-group {
@@ -269,7 +272,7 @@ body {
 
 
     /****************************************************************************
-     07. alert
+     $alert
      Description: CSS overrides to bootstrap's alert class.
     ****************************************************************************/
     .alert {
@@ -320,23 +323,21 @@ body {
 
 
     /****************************************************************************
-     08. navbar
+     $navbar
      Description: CSS overrides to bootstrap's navbar class and descendants.
     ****************************************************************************/
     .navbar {
         position: relative;
         margin-bottom: 0;
-    }
-    .navbar-default {}
-    .navbar-default .navbar-toggle {}
 
-    .navbar {
-        [class^="icon-"]{
+        [class^="icon-"] {
             color:white;
             font-size: 22px;
             line-height: 64px;
-        }
+        }        
     }
+    .navbar-default {}
+    .navbar-default .navbar-toggle {}
 
     .navbar-welcome {
         background-color: @clr-orange;
@@ -344,9 +345,7 @@ body {
     }
     .navbar-welcome .navbar-toggle,.navbar-step .navbar-toggle  {border-color: transparent;}
     .navbar-welcome .navbar-toggle .icon-bar,.navbar-step .navbar-toggle .icon-bar {background-color: @clr-white;}
-    .navbar-step{
-        background-color: @clr-bluenav;
-    }
+    .navbar-step {background-color: @clr-bluenav;}
     .navbar-header {}
     .navbar-assets {
         display: block;
@@ -390,7 +389,7 @@ body {
     
 
     /****************************************************************************
-     09. navbar-toggle
+     $navbar-toggle
      Description: CSS override to bootstrap's navbar toggle button on mobile.
     ****************************************************************************/
     .navbar-toggle {
@@ -421,8 +420,80 @@ body {
     /***************************************************************************/
 
 
+  
+
     /****************************************************************************
-     10. component
+     $list-group
+     Description: CSS overrides to bootstrap's list-group class and descendants.
+    ****************************************************************************/
+    .list-group {}
+    .list-group-item {
+        padding:0;
+        margin:12px 0 0 0;
+        .border-radius(4px);
+        
+        a {
+            display: block;
+            height: 77px;
+            padding: 0;
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 77px;
+        }
+        .icomoon {font-weight: normal;}
+    }
+    /***************************************************************************/ 
+
+
+    /****************************************************************************
+     $inline-list
+     Description: CSS class to represent an inline list of elements.
+    ****************************************************************************/
+    .inline-list {
+        display: block;
+        width: auto;
+        height: auto;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: inline-block;
+            float: left;
+            padding: 0;
+            margin: 0;
+            width: auto;
+            height: auto;
+        }
+    }
+    /***************************************************************************/    
+
+
+    /****************************************************************************
+     $block-list
+     Description: CSS class to represent a block list of elements.
+    ****************************************************************************/
+    .block-list {
+        display: block;
+        padding: 0;
+        margin: 0;
+        width: auto;
+        height: auto;
+        list-style-type: none;
+
+        li {
+            display: block;
+            padding: 0;
+            margin: 0;
+            width: auto;
+            height: auto;
+        }
+    }
+    /***************************************************************************/    
+
+
+    /****************************************************************************
+     $component
      Description: CSS generic class for components
     ****************************************************************************/
     .component {
@@ -447,7 +518,7 @@ body {
             margin: 0 auto 15px;
             width: 88%;
             color: @clr-white;
-            font-family: Roboto, Arial, Sans-serif;
+            /*font-family: Roboto, Arial, Sans-serif;*/
             font-size: 20px;
             font-weight: 300;
             text-align: center;
@@ -465,56 +536,10 @@ body {
         }
     }
     /***************************************************************************/
-    
+  
 
     /****************************************************************************
-     11. inline-list
-     Description: CSS class to represent an inline list of elements.
-    ****************************************************************************/
-    .inline-list {
-        display: block;
-        width: auto;
-        height: auto;
-        padding: 0;
-        margin: 0;
-
-        li {
-            display: inline-block;
-            float: left;
-            padding: 0;
-            margin: 0;
-            width: auto;
-            height: auto;
-        }
-    }
-    /***************************************************************************/    
-
-
-    /****************************************************************************
-     12. block-list
-     Description: CSS class to represent a block list of elements.
-    ****************************************************************************/
-    .block-list {
-        display: block;
-        padding: 0;
-        margin: 0;
-        width: auto;
-        height: auto;
-        list-style-type: none;
-
-        li {
-            display: block;
-            padding: 0;
-            margin: 0;
-            width: auto;
-            height: auto;
-        }
-    }
-    /***************************************************************************/    
-
-
-    /****************************************************************************
-     13. pages
+     $pages
      Description: CSS class for a page wrapper with pages and buttons
     ****************************************************************************/
     .pages {
@@ -565,7 +590,7 @@ body {
 
 
     /****************************************************************************
-     14. footer
+     $footer
      Description: CSS class for a page wrapper with pages and buttons
     ****************************************************************************/
    .footer {
@@ -606,11 +631,12 @@ body {
 
 
     /****************************************************************************
-     14. spinner
+     16. spinner
      Description: CSS class to positionante, show and hide the preloader image
     ****************************************************************************/
     .spinner {}
     /***************************************************************************/
+    
 
 }
 

@@ -59,6 +59,7 @@
         -webkit-transition: 300ms ease all; 
         transition: 300ms ease all; 
     }
+
     .incluso-app {
 
         /***********************************************************************
@@ -145,7 +146,20 @@
                 padding: 5px 10px;
             }
             .centrado{
-                text-align: center;   
+                text-align: center;  
+                .spinner{
+                    max-width: 79%;
+                    margin: 0 auto;
+                    .circle{
+                        height: 56%;
+                        left: 23%;
+                        position: absolute;
+                        text-align: center;
+                        top: 19%;
+                        width: 54%;
+                    }
+                } 
+                
             }
             .distribuido{
                 display: inline-flex;
@@ -202,39 +216,39 @@
                 background-color: #24282A;
                 padding-top: 5px;
                 padding-bottom: 10px;
-                .spinner{    
-                    max-width: 49%;
-                    padding: 5% 9% 10%;
-                    position: relative;
-                    .circle{
-                        background-color: rgba(13, 15, 19, 0.55);
-                        border-radius: 50%;
-                        display: block;
-                        height: 46%;
-                        left: 28%;
-                        position: absolute;
-                        text-align: center;
-                        top: 22%;
-                        width: 44%;
-                    }
-                    .text{
-                        color: white;
-                        font-size: 20px;
-                        font-weight: bold;
-                        left: ~"calc(50% - 19px)";
-                        position: absolute;
-                        top: ~"calc(50% - 25px)";
-                        width: auto;
-                    }
-                    @i: 0;
-                    .loop (@i) when (@i <= 100) {
-                        &[data-progress="@{i}"] {
-                            background-image: url("../images/prcnt/@{i}.png");
-                        }
-                        .loop(@i + 1);
-                    }
-                    .loop(@i);
+            }
+            .spinner{    
+                max-width: 49%;
+                padding: 5% 9% 10%;
+                position: relative;
+                .circle{
+                    background-color: rgba(13, 15, 19, 0.55);
+                    border-radius: 50%;
+                    display: block;
+                    height: 46%;
+                    left: 28%;
+                    position: absolute;
+                    text-align: center;
+                    top: 22%;
+                    width: 44%;
                 }
+                .text{
+                    color: white;
+                    font-size: 20px;
+                    font-weight: bold;
+                    left: ~"calc(50% - 19px)";
+                    position: absolute;
+                    top: ~"calc(50% - 25px)";
+                    width: auto;
+                }
+                @i: 0;
+                .loop (@i) when (@i <= 100) {
+                    &[data-progress="@{i}"] {
+                        background-image: url("../images/prcnt/@{i}.png");
+                    }
+                    .loop(@i + 1);
+                }
+                .loop(@i);
             }
             .holoproj{
                 background-image:url('../images/holoproj.jpg');
@@ -784,7 +798,34 @@
                 }
 
             }
-            
+
+
+        /***********************************************************************
+         00. $points
+         Description: CSS to represent a user's score in points and an icon
+        ************************************************************************/
+        .user-points {
+            display: inline-block;
+            width: auto;
+            padding: 3px 8px;
+            margin-left: 3px;
+            width:auto; height: auto;
+            background-color: transparent;
+            border: 3.2px solid @clr-green;
+            .border-radius(21px);
+            color: @clr-green;
+            font-size: 24px;
+            font-weight: bold;
+
+            .icomoon {
+                color: @clr-green;
+                font-size: 80%;
+                font-weight: bold;
+            }
+        }
+        /***********************************************************************/
+
+
         /***********************************************************************
          01. $video-gallery
          Description: CSS for video gallery component
@@ -954,32 +995,51 @@
             padding: 0;
             margin: 0 auto;
             width: 100%;
-            max-width: 115px;
+            max-width: 158px;
             height: auto;
 
             img {
                 display: block;
                 padding: 0; 
                 margin: 0; 
-                width: 115px;
-                height: 115px;
+                width: 158px;
+                height: 158px;
                 .border-radius-circle ();                  
             }
             figcaption {
                 position: absolute;
-                left: 50%; bottom: -16px;
+                left: 50%;
+                bottom: -16px;
                 padding: 0;
-                margin: 0 0 0 -16px;
-                width: 34px;
-                height: 34px;
+                margin: 0 0 0 -26px;
+                width: 52px;
+                height: 52px;
                 background-color: @clr-blueMedium;
+                border: 5px solid @clr-green;
                 .border-radius-circle ();                      
-                color: @clr-white;
+                color: @clr-green;
                 font-family: Roboto, Sans-serif, Arial;
-                font-size: 16px;
+                font-size: 22px;
                 font-weight: 700;
-                line-height: 36px;
+                line-height: 42px;
                 text-align: center;
+            }
+            button {
+                display: block;
+                position: absolute;
+                top:41%;
+                right: -50px;
+                padding:5px;
+                margin:0;
+                background:none transparent;
+                border:none;
+                line-height: 1;
+
+                .icomoon {
+                    color: @clr-green;
+                    font-size: 28px;
+                    font-weight: bold;
+                }
             }
         }
         /***********************************************************************/   
@@ -1185,7 +1245,7 @@
 
 
         /***********************************************************************
-         08. $user-dashboard
+         $user-dashboard
          Description: CSS to represent an area to place a graphic illustration
         ************************************************************************/
         .user-dashboard {
@@ -1208,6 +1268,108 @@
                 }
             }
         }
+        /***********************************************************************/
+
+
+        /***********************************************************************
+         $profile-data
+         Description: CSS to represent profile data section related to avatar
+        ************************************************************************/
+        .profile-data {
+            height: 290px;
+            margin-top: 24px;
+            font-weight: bold;
+            text-align: center;
+
+            background-attachment: scroll;
+            background-image:url('@{url-images}/img-profile-spaceship-dashboard-middle.png');
+            background-position: center bottom;
+            background-repeat: no-repeat;    
+            .background-size(100%, auto);
+
+            .user-name {
+                padding: 10px 0 32px;
+                margin:0;
+                color:@clr-white;
+                font-size: 32px;
+                font-weight: inherit;
+                text-transform: uppercase;
+            }
+            .user-points {
+                width: auto;
+                padding: 1px 12px;
+                margin: 0;
+                color: @clr-green;
+                font-size: 24px;
+                font-weight: 600;
+            }
+        }
+        /***********************************************************************/
+
+
+        /***********************************************************************
+         $profile-settings
+         Description: CSS to represent profile settings area related to user
+        ************************************************************************/
+        .profile-settings {
+            margin:0;
+            height: 176px;
+            background-attachment: scroll;
+            background-image:url('@{url-images}/img-profile-spaceship-dashboard-settings.png');
+            background-color: @clr-gray-asphalt;
+            background-position: center 0;
+            background-repeat: no-repeat;
+            .background-size(100%, auto);            
+
+            .user-avatar {
+                margin-top:10px;
+            }
+        }
+        /***********************************************************************/ 
+
+
+        /***********************************************************************
+         $profile-options
+         Description: CSS to represent user's profile dashboard landing page
+        ************************************************************************/
+        .profile-options {
+            margin:0;
+            padding:41px 0;
+            height: auto;
+            background-attachment: scroll;
+            background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
+            background-color: @clr-gray-asphalt;
+            background-position: center 0;
+            background-repeat: no-repeat;
+            .background-size(100%, auto);            
+
+            .user-avatar {
+                margin-top:10px;
+            }
+        }
+        /***********************************************************************/           
+
+
+        /***********************************************************************
+         $profile-dashboard
+         Description: CSS to represent user's profile dashboard landing page
+        ************************************************************************/
+        .profile-dashboard {
+            margin:0;
+            background-attachment: scroll;
+            background-image:url('@{url-images}/bg-xs-profile-sky.jpg');
+            background-position: center -98px;
+            background-repeat: no-repeat;
+
+            .user-avatar {
+                margin-top:10px;
+            }
+        }
+        /***********************************************************************/
+
+
+      
+
 
 
 
