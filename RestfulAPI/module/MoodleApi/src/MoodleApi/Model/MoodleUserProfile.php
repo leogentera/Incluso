@@ -25,7 +25,7 @@ class MoodleUserProfile extends Common
     public $phones;
     public $socialNetworks;
     public $familiaCompartamos;
-    public $stage="";
+    public $rank=0;
     public $stars=0;
     
     public $attributesAndQualities=array();
