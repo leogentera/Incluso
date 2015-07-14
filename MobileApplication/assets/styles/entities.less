@@ -1407,6 +1407,13 @@
             .user-avatar {
                 margin-top:10px;
             }
+
+            .btn {
+                display: block;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
         /***********************************************************************/ 
 
@@ -1424,11 +1431,72 @@
             background-color: @clr-gray-asphalt;
             background-position: center 0;
             background-repeat: no-repeat;
-            .background-size(100%, auto);            
+            .background-size(100%, auto); 
 
-            .user-avatar {
-                margin-top:10px;
+            .list-group {
+                .list-group-item {
+                    .gradient-navy-blue();
+                    border: none;
+                }
+                a {
+                    display: block;
+                    position: relative;
+                    height: 77px;
+                    padding: 0;
+                    margin: 0;
+                    font-size: 24px;
+                    font-weight: bold;
+                    line-height: 77px;
+                }
+                span {
+                    color: @clr-white;
+                    line-height: inherit;
+                }
+                span:first-child + span {
+                    display: block;
+                    overflow: hidden;
+                    width:auto;
+                    padding: 0;
+                    margin: 0 99px 0 60px;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                }
+                .icomoon {
+                    display: block;
+                    position: absolute;
+                    z-index: 1;
+                    padding: 0 0 0 18px;
+                    margin: 0;
+                    color: @clr-green;
+                    font-size: 26px;
+                    font-weight: normal;
+                }
+                .icomoon.icon-arrow-slim-right {
+                    top: 0; right: 0;
+                    padding: 0 9px 0 0;
+                    font-size: 32px;
+                }
+                .icomoon.icon-star {
+                    top: 50%; right: 41px;
+                    padding: 3px 9px;
+                    margin: -16px 9px 0 0;
+                    border: 3px solid @clr-green;
+                    .border-radius(21px);
+                    font-size: 15px;
+                    line-height: 21px;
+                }  
+
+                .no-badge {
+                    span:first-child + span {
+                        margin-right: 51px;
+                    }
+                    .icomoon.icon-star {
+                        display: none;
+                    }
+                }
+
             }
+
         }
         /***********************************************************************/           
 
