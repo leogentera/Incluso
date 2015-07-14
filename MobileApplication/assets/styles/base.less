@@ -16,6 +16,7 @@
             07. $alert              (bootstrap)
             08. $navbar             (bootstrap)
             09. $navbar-toggle      (bootstrap)
+            10. $panel              (bootstrap)
             10. $list-group
             11. $inline-list
             12. $block-list
@@ -492,6 +493,53 @@ body {
     /***************************************************************************/
 
 
+    /****************************************************************************
+     $panel
+     Description: CSS override to bootstrap's panel class.
+    ****************************************************************************/
+    .panel {
+        &.panel-default {
+            border:none;
+
+            .panel-heading {
+                background-color: @clr-blueDark;
+                border: none;
+                color: @clr-white;
+                font-size: 24px;
+            }
+            .panel-title {
+                margin: 0;
+                color: @clr-white;
+                font-size: 24px;
+                font-weight: 700;
+                text-transform: none;
+            }
+            .panel-body {
+                h5 {
+                    width: auto;
+                    padding: 0;
+                    margin: 6px 0;
+                    color: @clr-blueTurquoise;
+                    font-size: 20px;
+                    font-weight: bold;
+                    line-height: 1;
+                    text-align: left;
+                }
+                p {
+                    width: auto;
+                    color: @clr-gray;
+                    font-size: 22px;
+                    font-weight: bold;
+                    line-height: 1.2;
+                    text-align: left;
+                }
+                hr {
+                    margin: 15px 0;
+                }
+            }        
+        }
+    }
+    /***************************************************************************/
   
 
     /****************************************************************************
