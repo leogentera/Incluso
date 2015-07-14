@@ -186,6 +186,22 @@
             .blanco{
                     color:white;
             }
+            .nav-tabs{
+                border: 0;
+            }
+            .nav-tabs.nav-justified>li {
+                display: table-cell !important;
+                width: 1% !important;
+            }
+            .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, 
+            .nav-tabs.nav-justified > .active > a:focus,
+            .nav-tabs > li > a, 
+            .nav-tabs > li.active > a, 
+            .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+                background-color: transparent;
+                border:0;
+            }
+
             .hangar-bay{
                 background-image:url('../images/bckgnd.jpg');
                 background-color: #24282a;
@@ -1025,6 +1041,20 @@
          05. $user-avatar
          Description: CSS to represent a user avatar picture with info
         ************************************************************************/  
+        .user-container{
+            display: flex; 
+            justify-content: center;
+        }
+        .active{
+            .user-avatar{
+                img{
+                    border:10px solid #171f20;
+                }
+                figcaption{
+                    border-color: #171f20;
+                }
+            }
+        }
         .user-avatar {
             display: block;
             position: relative;
@@ -1034,12 +1064,13 @@
             width: 100%;
             max-width: 158px;
             height: auto;
-
+            
             img {
                 display: block;
                 padding: 0; 
                 margin: 0; 
-                .border-radius-circle ();                  
+                border-radius:50%;  
+                border:10px solid transparent;                
             }
             figcaption {
                 position: absolute;
@@ -1286,7 +1317,8 @@
         .ilustration {
             background-color: #1e2e2e;
             background-image: url("../images/navedwn.png");
-            background-position: 0 0;
+            background-position: 0 100%;
+            background-repeat: no-repeat;
             background-size: cover;
             .space-ship{
                 padding: 26% 16% 7.5%;
