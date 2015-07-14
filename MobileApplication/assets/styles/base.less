@@ -515,6 +515,9 @@ body {
                 text-transform: none;
             }
             .panel-body {
+                padding-top: 30px;
+                padding-bottom: 30px; 
+
                 h5 {
                     width: auto;
                     padding: 0;
@@ -525,13 +528,18 @@ body {
                     line-height: 1;
                     text-align: left;
                 }
-                p {
+                p, li {
                     width: auto;
                     color: @clr-gray;
+                    font-family: Roboto;
                     font-size: 22px;
                     font-weight: bold;
                     line-height: 1.2;
                     text-align: left;
+                }
+                label, em {
+                    color:@clr-gray-platinum;
+                    font-style: normal;
                 }
                 hr {
                     margin: 15px 0;
