@@ -268,6 +268,7 @@
   .incluso-app .nav-tabs > li.active > a:focus {
     background-color: transparent;
     border: 0;
+    padding: 0;
   }
   .incluso-app .hangar-bay {
     background-image: url('../images/bckgnd.jpg');
@@ -1338,7 +1339,6 @@
     padding: 0;
     margin: 0 auto;
     width: 90%;
-    /*max-width: 158px;*/
     height: auto;
   }
   .incluso-app .user-avatar figure {
@@ -1347,7 +1347,7 @@
     -webkit-border-radius: 90px;
     -moz-border-radius: 90px;
     border-radius: 90px;
-    /*border: 3px solid transparent;*/
+    border: 10px solid transparent;
   }
   .incluso-app .user-avatar img {
     display: block;
@@ -1725,6 +1725,7 @@
     display: none;
   }
   .incluso-app .profile-dashboard {
+    width: 100vw;
     margin: 0;
     background-attachment: scroll;
     background-image: url('../images/bg-xs-profile-sky.jpg');
@@ -1733,6 +1734,15 @@
   }
   .incluso-app .profile-dashboard .user-avatar {
     margin-top: 10px;
+  }
+  .incluso-app .profile-dashboard > .row {
+    padding: 0 5%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .incluso-app .profile-dashboard > .row > div {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 @media screen and screen and (max-width: 30em) {
