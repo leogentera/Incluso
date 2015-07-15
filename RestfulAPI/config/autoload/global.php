@@ -12,10 +12,22 @@
  */
 
 return array (
-	'MOODLE_API_URL' => 'http://moodle.gentera.com:8080/webservice/rest/server.php?wstoken=%s&wsfunction=%s&moodlewsrestformat=json',
-	'TOKEN_GENERATION_URL' => 'http://moodle.gentera.com:8080/login/token.php?username=%s&password=%s&service=%s',
-	'MOODLE_SERVICE_NAME' => 'profile',
+// 	'MOODLE_API_URL' => 'http://incluso.sieenasoftware.com/moodle/webservice/rest/server.php?wstoken=%s&wsfunction=%s&moodlewsrestformat=json',
+// 	'TOKEN_GENERATION_URL' => 'http://incluso.sieenasoftware.com/moodle/login/token.php?username=%s&password=%s&service=%s',
+// 	'MOODLE_SERVICE_NAME' => 'profile',
+// 	'MOODLE_API_URL_NO_TOKEN' => 'http://incluso.sieenasoftware.com/moodle/webservice/rest/server.php?wsfunction=%s&moodlewsrestformat=json',
+		
+		'MOODLE_API_URL' => 'http://localhost:4113/moodle/webservice/rest/server.php?wstoken=%s&wsfunction=%s&moodlewsrestformat=json',
+		'TOKEN_GENERATION_URL' => 'http://localhost:4113/moodle/login/token.php?username=%s&password=%s&service=%s',
+		'MOODLE_SERVICE_NAME' => 'profile',
+		'MOODLE_API_URL_NO_TOKEN' => 'http://localhost:4113/moodle/webservice/rest/server.php?wsfunction=%s&moodlewsrestformat=json',
 );
+
+// return array (
+// 		'MOODLE_API_URL' => 'http://moodle.gentera.com:8080/webservice/rest/server.php?wstoken=%s&wsfunction=%s&moodlewsrestformat=json',
+// 		'TOKEN_GENERATION_URL' => 'http://moodle.gentera.com:8080/login/token.php?username=%s&password=%s&service=%s',
+// 		'MOODLE_SERVICE_NAME' => 'profile',
+// );
 
 /*
  * // Use the global configs by doing the following:

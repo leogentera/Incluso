@@ -24,7 +24,7 @@ require_once($CFG->libdir . "../../config.php");
 
 class leaderboard_services extends external_api{
 	
-	public static function get_top_users_parameters(){
+	public static function get_leaderboard_parameters(){
 		return new external_function_parameters(
 			array(
 					'amount' => new external_value(PARAM_INT, 'Quantity of top leaders')
@@ -32,7 +32,7 @@ class leaderboard_services extends external_api{
 		);
 	}
 	
-	public static function get_top_users($n_top){
+	public static function get_leaderboard($n_top){
 		global $USER;
 		global $DB;
 		$response = array();
@@ -41,7 +41,7 @@ class leaderboard_services extends external_api{
 			//Parameter validation
 			//REQUIRED
 			$params = self::validate_parameters(
-					self::get_top_users_parameters(), 
+					self::get_leaderboard_parameters(), 
 					array(
 						'amount' => $n_top
 					));
@@ -62,7 +62,7 @@ class leaderboard_services extends external_api{
 						SELECT CONCAT(u.firstname, ' ',u.lastname) AS name, 
 						(CASE WHEN uid.data = '' THEN '0' ELSE uid.data END) AS stars 
 						FROM {user_info_data} AS uid 
-						INNER JOIN {user_info_field} AS uif 
+						LEFT JOIN {user_info_field} AS uif 
 						ON uid.fieldid = uif.id 
 						RIGHT JOIN {user} AS u 
 						ON uid.userid = u.id 
@@ -79,7 +79,7 @@ class leaderboard_services extends external_api{
 		return $response;
 	}
 	
-	public static function get_top_users_returns(){
+	public static function get_leaderboard_returns(){
 		return new external_multiple_structure(
 			new external_single_structure(
 				array(
@@ -91,7 +91,7 @@ class leaderboard_services extends external_api{
 		);
 	}
 	
-	public static function get_actual_position_parameters(){
+	public static function get_user_rank_parameters(){
 		return new external_function_parameters(
 			array(
 					'userid' => new external_value(PARAM_INT, 'User ID')
@@ -99,7 +99,7 @@ class leaderboard_services extends external_api{
 		);
 	}
 	
-	public static function get_actual_position($id_user){
+	public static function get_user_rank($id_user){
 		global $USER;
 		global $DB;
 		$response = array();
@@ -108,7 +108,7 @@ class leaderboard_services extends external_api{
 			//Parameter validation
 			//REQUIRED
 			$params = self::validate_parameters(
-				self::get_actual_position_parameters(),
+				self::get_user_rank_parameters(),
 				array(
 						'userid' => $id_user
 				));
@@ -131,7 +131,7 @@ class leaderboard_services extends external_api{
 							SELECT u.id, 
 							(CASE WHEN uid.data = '' THEN '0' ELSE uid.data END) AS stars 
 							FROM {user_info_data} AS uid 
-							INNER JOIN {user_info_field} AS uif 
+							LEFT JOIN {user_info_field} AS uif 
 							ON uid.fieldid = uif.id 
 							RIGHT JOIN {user} AS u 
 							ON uid.userid = u.id 
@@ -147,11 +147,12 @@ class leaderboard_services extends external_api{
 		return $response;
 	}
 	
-	public static function get_actual_position_returns(){
-		return new external_multiple_structure(
+	public static function get_user_rank_returns(){
+			return new external_multiple_structure(
 			new external_single_structure(
 				array(
-					'place' => new external_value(PARAM_INT, 'Ranking of user')
+					'place' => new external_value(PARAM_INT, 'Ranking'),
+					
 				)
 			)
 		);

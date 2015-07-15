@@ -1,6 +1,7 @@
 <?php
 namespace MoodleApi\Model;
 use MoodleApi\Model\MoodleStudies;
+use MoodleApi\Model\MoodleBadge;
 use MoodleApi\Model\MoodleAddress;
 use MoodleApi\Model\MoodleSocialNetworks;
 use MoodleApi\Model\MoodleFamiliaCompartamos;
@@ -35,7 +36,8 @@ class MoodleUserProfile extends Common
     public $dreamsToBe=array();
     public $dreamsToHave=array();
     public $dreamsToDo=array();
-    public $badgesEarned=array();
+    public $badgesEarned;
+    public $badgesToEarn;
     
     public $showMyInformation=true;
     public $showAttributesAndQualities=true;
@@ -46,7 +48,9 @@ class MoodleUserProfile extends Common
     public $showMyDreams=true;
     
     
-    public function __construct($data)
+    
+    
+    public function __construct($data, $badgesEarned, $badgesToEarn)
     {
         $this->country =     (!empty($data['country'])) ? $data['country'] : null;
         $this->email =     (!empty($data['email'])) ? $data['email'] : null;
@@ -58,6 +62,9 @@ class MoodleUserProfile extends Common
         $this->profileimageurlsmall =     (!empty($data['profileimageurlsmall'])) ? $data['profileimageurlsmall'] : null;
         $this->username =     (!empty($data['username'])) ? $data['username'] : null;
         
+        
+        $this->badgesEarned=$badgesEarned;
+        $this->badgesToEarn=$badgesToEarn;
         //We turn the custom fields to an array because otherwise, we should do a for loop to search for each value
         $customFields=array();
         for($i=0;count($data['customfields'])>$i;$i++){
@@ -164,5 +171,11 @@ class MoodleUserProfile extends Common
         	//var_dump($this->phones);
         }
         
+    }
+    
+    public function setRank($rank){
+    	
+    	$this->rank=$rank;
+    	
     }
 }
