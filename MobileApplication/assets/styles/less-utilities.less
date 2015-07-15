@@ -12,6 +12,7 @@
 @clr-gray-platinum: rgb(128, 152, 160);
 @clr-gray-asphalt: rgb(68, 77,83);
 @clr-gray-asphalt2: rgb(60, 68, 72);
+@clr-grayDark: rgb(21,25,34);
 @clr-orange: rgb(245, 70,31);
 @clr-green: rgb(188, 212, 49);
 @clr-greenMedium: rgb(104, 189, 69);
@@ -27,8 +28,11 @@
 @clr-bluenav: rgb(21,140,205);
 @clr-greenicon: rgb(8,177,144);
 @circle-background: rgb(54,107,142);
-@circle-size: 300px;
 @circle-color: @clr-greenMedium;
+
+
+/* shape variables */
+@circle-size: 300px;
 @transition-length: 1s;
 
 @clr-orangeDark: rgb(212, 63, 39);
@@ -51,11 +55,17 @@
 .clr-black(@prop, @alpha) {
 	@{prop}: rgba(000, 000, 000, @alpha);
 }
+.clr-grayDark(@prop, @alpha) {
+	@{prop}: rgba(21,25,34, @alpha);
+}
 .clr-orange(@prop, @alpha) {
 	@{prop}: rgba(245, 70,31, @alpha);
 }
 .clr-greenMedium(@prop, @alpha) {
 	@{prop}: rgba(104, 189, 69, @alpha);
+}
+.clr-blue(@prop, @alpha) {
+	@{prop}: rgba(28, 55, 74, @alpha);
 }
 .clr-blueLight(@prop, @alpha) {
 	@{prop}: rgba(53, 90, 107, @alpha);

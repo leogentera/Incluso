@@ -19,6 +19,7 @@
 ****************************************************************************/
 /* Path vars */
 /* Color Palette */
+/* shape variables */
 /* parametric color functions */
 /* Custom Functions */
 /* xs viewport */
@@ -1347,7 +1348,7 @@
     -webkit-border-radius: 90px;
     -moz-border-radius: 90px;
     border-radius: 90px;
-    border: 10px solid transparent;
+    /*border: 10px solid transparent; */
   }
   .incluso-app .user-avatar img {
     display: block;

@@ -29,6 +29,7 @@
 ****************************************************************************/
 /* Path vars */
 /* Color Palette */
+/* shape variables */
 /* parametric color functions */
 /* Custom Functions */
 body {
@@ -558,6 +559,7 @@ body {
 }
 .incluso-app .panel.panel-default {
   border: none;
+  background-color: rgba(21, 25, 34, 0.7);
 }
 .incluso-app .panel.panel-default .panel-heading {
   background-color: #121b1c;
@@ -589,9 +591,8 @@ body {
 .incluso-app .panel.panel-default .panel-body p,
 .incluso-app .panel.panel-default .panel-body li {
   width: auto;
-  color: #2a3333;
-  font-family: Roboto;
-  font-weight: bold;
+  color: #ffffff;
+  font-weight: normal;
   line-height: 1.2;
   text-align: left;
 }
