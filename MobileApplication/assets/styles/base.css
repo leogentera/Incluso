@@ -473,8 +473,8 @@ body {
 }
 .incluso-app .navbar [class^="icon-"] {
   color: white;
-  font-size: 22px;
-  line-height: 64px;
+  font-size: 6vw;
+  line-height: 18vw;
 }
 .incluso-app .navbar-welcome {
   background-color: #f5461f;
@@ -495,8 +495,8 @@ body {
   display: block;
   position: static;
   padding: 0;
-  margin: 0 15px 0 42px;
-  height: 64px;
+  margin: 0 2vw;
+  height: 18vw;
   width: auto;
 }
 .incluso-app .navbar-assets .navbar-heading {
@@ -504,12 +504,12 @@ body {
   overflow: hidden;
   float: left;
   margin: 0;
-  width: 50%;
+  width: 47vw;
   color: #ffffff;
   font-family: 'Play';
-  font-size: 22px;
+  font-size: 6vw;
   font-weight: bold;
-  line-height: 64px;
+  line-height: 18vw;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -524,9 +524,9 @@ body {
 .incluso-app .navbar-tools li {
   display: inline-block;
   padding: 0;
-  margin: 0 0 0 8px;
-  width: 32px;
-  height: 32px;
+  margin: 0 0 0 .5vw;
+  width: 9vw;
+  height: 9vw;
 }
 .incluso-app .navbar-tools a {
   display: block;
