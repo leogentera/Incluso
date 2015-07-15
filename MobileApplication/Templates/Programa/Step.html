@@ -11,9 +11,10 @@
   <!-- <link rel="stylesheet" type="text/css" href="assets/styles/css.css"> -->
   <link rel="stylesheet" type="text/css" href="../../assets/styles/dev-css.css">
 	<link rel="stylesheet" href="../../assets/styles/font.css">
-  <script type="text/javascript" src="../../scripts/jquery-1.11.2.js"></script>
-  <script type="text/javascript" src="../../scripts/bootstrap-3.3.2.js"></script>
-  <script type="text/javascript" src="../../scripts/angular.js"></script>
+  <script type="text/javascript" src="../../Scripts/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="../../Scripts/bootstrap-3.3.2.js"></script>
+  <script type="text/javascript" src="../../Scripts/angular.js"></script>
+  <script type="text/javascript" src="../../Scripts/owl.carousel.min.js"></script>
 </head>
 <body class="incluso-app step-dashboard" ng-app>
 
@@ -159,16 +160,24 @@
               <span class="sr-only">Next</span>
             </a>
       </div> 
-	  
+
 	<div class="txt-renglon centrado">¡Completa los retos para obtener la turbina para tu nave y ganar más estrellas!</div>
 	  <div class="light"><img src="../../assets/images/proyector.png"></div>
 	</section>	
-	
+
 	<section class="jector">
 	</section>
 	<section class="parts">
-	<div class="parte"><i class="icon-checked-join"></i><span>Sueña</span><div><i class="icon-play"></i><i class="icon-star fl-right"></i></div></div>
-	<div class="parte"><i class="icon-wrong"></i><span>Fora Común</span><div><i class="icon-play"></i><i class="icon-star fl-right"></i></div></div>
+	<div id="owl-demo" class="owl-carousel">
+              <div><div class="parte"><i class="icon-checked-join"></i><span>Sueña</span><div><i class="icon-play"></i><i class="icon-star fl-right"></i></div></div>
+	<div class="parte"><i class="icon-wrong"></i><span>Fora Común</span><div><i class="icon-play"></i><i class="icon-star fl-right"></i></div></div></div>
+              <div><div class="parte"><i class="icon-checked-join"></i><span>Sueña</span><div><i class="icon-play"></i><i class="icon-star fl-right"></i></div></div>
+	<div class="parte"><i class="icon-wrong"></i><span>Fora Común</span><div><i class="icon-play"></i><i class="icon-star fl-right"></i></div></div><div class="parte"><i class="icon-checked-join"></i><span>Sueña</span><div><i class="icon-play"></i><i class="icon-star fl-right"></i></div></div>
+	<div class="parte"><i class="icon-wrong"></i><span>Fora Común</span><div><i class="icon-play"></i><i class="icon-star fl-right"></i></div></div></div>
+              <div><div class="parte"><i class="icon-checked-join"></i><span>Sueña</span><div><i class="icon-play"></i><i class="icon-star fl-right"></i></div></div></div>
+              
+            </div>
+	
 <div><img src="../../assets/images/consolas.png"></div>
 	</section>
 	
@@ -191,5 +200,21 @@
   </footer>
   <!-- html -->
   <!-- scripts -->
+
+    
+    <script>
+    $(document).ready(function() {
+      $("#owl-demo").owlCarousel({
+        autoPlay : 3000,
+        stopOnHover : true,
+        navigation:true,
+        paginationSpeed : 1000,
+        goToFirstSpeed : 2000,
+        singleItem : true,
+        autoHeight : true,
+        transitionStyle:"fade"
+      });
+    });
+    </script>
 </body>
 </html>
