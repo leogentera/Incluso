@@ -16,6 +16,7 @@
             07. $alert              (bootstrap)
             08. $navbar             (bootstrap)
             09. $navbar-toggle      (bootstrap)
+            10. $panel              (bootstrap)
             10. $list-group
             11. $inline-list
             12. $block-list
@@ -46,10 +47,18 @@ body {
   width: auto;
   max-width: none;
   font-family: Play, Sans-serif, Arial;
+  /*    .container{
+        padding:0;
+    }*/
   /***************************************************************************/
   /****************************************************************************
      $btn
      Description: CSS override to bootstrap's btn class.
+    ****************************************************************************/
+  /***************************************************************************/
+  /****************************************************************************
+     $btn-icon-aside
+     Description: CSS to represent a button with an icon aside
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
@@ -85,6 +94,11 @@ body {
   /****************************************************************************
      $navbar-toggle
      Description: CSS override to bootstrap's navbar toggle button on mobile.
+    ****************************************************************************/
+  /***************************************************************************/
+  /****************************************************************************
+     $panel
+     Description: CSS override to bootstrap's panel class.
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
@@ -125,9 +139,6 @@ body {
 }
 .incluso-app a:hover {
   text-decoration: none;
-}
-.incluso-app .container {
-  padding: 0;
 }
 .incluso-app .btn {
   border: none;
@@ -187,13 +198,8 @@ body {
 .incluso-app .btn-link {
   display: block;
   padding: 9px 3px;
-  border: 1px solid #bcd431;
-  -webkit-border-radius: 24px;
-  -moz-border-radius: 24px;
-  border-radius: 24px;
-  color: #bcd431;
-  font-family: Roboto, Sans-serif, Arial;
-  font-size: 18px;
+  color: #ffffff;
+  font-size: 21px;
   font-weight: 600;
   letter-spacing: 1px;
   text-align: center;
@@ -210,21 +216,85 @@ body {
   letter-spacing: 1px;
   line-height: 24px;
 }
-.incluso-app .btn-back-to-top {
-  display: block;
-  padding: 0;
-  margin: 0;
-  width: 60px;
-  height: 40px;
-  -webkit-border-radius: 6px 6px 0 0;
-  -moz-border-radius: 6px 6px 0 0;
-  border-radius: 6px 6px 0 0;
+.incluso-app .btn-icon-aside {
+  display: inline-block;
+  position: relative;
+  height: 42px;
+  margin-top: 41px;
   background-color: #2a3333;
-  background-attachment: scroll;
-  background-image: url('../images/ics-gentera.png');
-  background-position: center -187px;
-  background-repeat: no-repeat;
-  opacity: 0.9;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  border-radius: 32px;
+}
+.incluso-app .btn-icon-aside.left {
+  padding-right: 15px;
+}
+.incluso-app .btn-icon-aside.left > span {
+  margin-left: 42px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: right;
+}
+.incluso-app .btn-icon-aside.left .btn-icon {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 48px;
+  height: 48px;
+  background-color: #bcd431;
+  border: 3px solid #2a3333;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  border-radius: 32px;
+}
+.incluso-app .btn-icon-aside.left .icomoon {
+  color: #1c374a;
+  font-size: 22px;
+  line-height: 42px;
+}
+.incluso-app .btn-icon-aside.right {
+  padding-left: 15px;
+}
+.incluso-app .btn-icon-aside.right > span {
+  margin-right: 42px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: left;
+}
+.incluso-app .btn-icon-aside.right .btn-icon {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 48px;
+  height: 48px;
+  background-color: #bcd431;
+  border: 3px solid #2a3333;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  border-radius: 32px;
+}
+.incluso-app .btn-icon-aside.right .icomoon {
+  color: #1c374a;
+  font-size: 22px;
+  line-height: 42px;
+}
+.incluso-app .btn-back-to-top {
+  color: #bcd431;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+.incluso-app .btn-back-to-top span {
+  display: block;
+  padding: 6px 0 0;
+  width: auto;
+  text-transform: uppercase;
 }
 .incluso-app .button-group {
   display: block;
@@ -425,7 +495,7 @@ body {
   display: block;
   position: static;
   padding: 0;
-  margin: 0 15px 0 20px;
+  margin: 0 15px 0 42px;
   height: 64px;
   width: auto;
 }
@@ -489,15 +559,62 @@ body {
   -moz-border-radius: 16px;
   border-radius: 16px;
 }
-.incluso-app .list-group-item {
+.incluso-app .panel.panel-default {
+  border: none;
+}
+.incluso-app .panel.panel-default .panel-heading {
+  background-color: #121b1c;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+}
+.incluso-app .panel.panel-default .panel-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: none;
+}
+.incluso-app .panel.panel-default .panel-body {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.incluso-app .panel.panel-default .panel-body h5 {
+  width: auto;
+  padding: 0;
+  margin: 6px 0;
+  color: #08b290;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  text-align: left;
+}
+.incluso-app .panel.panel-default .panel-body p,
+.incluso-app .panel.panel-default .panel-body li {
+  width: auto;
+  color: #2a3333;
+  font-family: Roboto;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: left;
+}
+.incluso-app .panel.panel-default .panel-body label,
+.incluso-app .panel.panel-default .panel-body em {
+  color: #8098a0;
+  font-style: normal;
+}
+.incluso-app .panel.panel-default .panel-body hr {
+  margin: 15px 0;
+}
+.incluso-app .list-group.separte-items .list-group-item {
   padding: 0;
   margin: 12px 0 0 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  z-index: 10;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
 }
-.incluso-app .list-group-item a {
+.incluso-app .list-group.separte-items .list-group-item a {
   display: block;
   height: 77px;
   padding: 0;
@@ -506,7 +623,7 @@ body {
   font-weight: bold;
   line-height: 77px;
 }
-.incluso-app .list-group-item .icomoon {
+.incluso-app .list-group.separte-items .list-group-item .icomoon {
   font-weight: normal;
 }
 .incluso-app .inline-list {
@@ -542,6 +659,7 @@ body {
 .incluso-app .component {
   display: block;
   padding: 0;
+  /*padding: 0 5%;*/
   margin: 30px 0 10px;
   position: relative;
   z-index: 10;
@@ -561,9 +679,8 @@ body {
 .incluso-app .component p {
   padding: 0;
   margin: 0 auto 15px;
-  width: 88%;
+  width: 93%;
   color: #ffffff;
-  /*font-family: Roboto, Arial, Sans-serif;*/
   font-size: 20px;
   font-weight: 300;
   text-align: center;

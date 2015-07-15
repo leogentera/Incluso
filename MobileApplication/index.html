@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title>Incluso Digital</title>
     <link href="assets/styles/dev-css.css" rel='stylesheet' type='text/css' />
+
 </head>
 
 <body ng-controller="homeCtrl"> 
@@ -44,6 +45,13 @@
     <script src="Scripts/app/public/controllers/recoverPassword.js"></script>
     <script src="Scripts/app/programa/controllers/dashboard.js"></script>
     <script src="Scripts/app/programa/controllers/profile.js"></script>
+
+    <script>
+        if (window.devicePixelRatio == 1.5) {
+            viewport = document.querySelector("meta[name=viewport]");
+            viewport.setAttribute('content', 'width=device-width, initial-scale=0.75, maximum-scale=0.75, user-scalable=no');
+        } 
+    </script>
 
 </body>
 

@@ -186,6 +186,22 @@
             .blanco{
                     color:white;
             }
+            .nav-tabs{
+                border: 0;
+            }
+            .nav-tabs.nav-justified>li {
+                display: table-cell !important;
+                width: 1% !important;
+            }
+            .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, 
+            .nav-tabs.nav-justified > .active > a:focus,
+            .nav-tabs > li > a, 
+            .nav-tabs > li.active > a, 
+            .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+                background-color: transparent;
+                border:0;
+            }
+
             .hangar-bay{
                 background-image:url('../images/bckgnd.jpg');
                 background-color: #24282a;
@@ -1025,26 +1041,46 @@
          05. $user-avatar
          Description: CSS to represent a user avatar picture with info
         ************************************************************************/  
+        .user-container{
+            display: flex; 
+            justify-content: center;
+        }
+        .active {
+            .user-avatar{
+                figure {
+                    border:10px solid #171f20;
+                }
+                figcaption{
+                    border-color: #171f20;
+                }
+            }
+        }
         .user-avatar {
             display: block;
             position: relative;
             overflow: visible;
             padding: 0;
             margin: 0 auto;
-            width: 100%;
-            max-width: 158px;
+            width: 90%;
+            /*max-width: 158px;*/
             height: auto;
 
+            figure {
+                overflow: hidden;
+                background-color: transparent;
+                .border-radius-circle();
+                /*border: 3px solid transparent;*/
+            }            
             img {
                 display: block;
                 padding: 0; 
                 margin: 0; 
-                .border-radius-circle ();                  
+                border:none;                
             }
             figcaption {
                 position: absolute;
                 left: 50%;
-                bottom: -16px;
+                bottom: -18px;
                 padding: 0;
                 margin: 0 0 0 -26px;
                 width: 52px;
@@ -1087,19 +1123,20 @@
         .user-data {
             display: block;
             position: relative;
-            padding: 0;
+            padding: 18px 0;
             margin: 60px auto 0;
-            width: 370px; 
-            height: 94px;
+            /*width: 370px; */
+            width: auto;
+            height: auto;
             background-color: @clr-blueDark;
             .border-radius(6px);
 
             p {
-                padding:18px 0 0;
+                padding:0;
                 margin:0 auto;
                 color: @clr-white;
                 font-family: Roboto, Sans-serif, Arial;
-                font-size: 18px;
+                font-size: 1.2em; /*18px;*/
                 font-weight: 500;
                 line-height: 1.4;
                 text-transform: capitalize;
@@ -1117,7 +1154,8 @@
                 font-weight: 700;
             } 
             .inline-list {
-                margin-top: 11px;
+                margin-top: 10px;
+                margin-bottom: 3px;
                 text-align: center;
             }
             li {
@@ -1209,14 +1247,15 @@
                 .css-arrow-up(20px, @clr-blueDark);
             }
             .current-user {
-                width: 370px;
+                /*width: 370px;*/
                 padding: 0;
                 margin: 40px auto 0;
 
                 a {
                     display: block;
                     margin: 0 auto;
-                    width: 115px;
+                    /*width: 115px;*/
+                    width: auto;
                 }
                 .user-data {
                     margin-top: 8px;
@@ -1231,7 +1270,7 @@
                 display: block; 
                 padding: 0;
                 margin: 0 auto;
-                width: 370px;                
+                /*width: 370px;  */              
                 &[data-tab-selected="1"] {
                     [data-tab-id="1"] {
                         .arrow-up {
@@ -1286,7 +1325,8 @@
         .ilustration {
             background-color: #1e2e2e;
             background-image: url("../images/navedwn.png");
-            background-position: 0 0;
+            background-position: 0 100%;
+            background-repeat: no-repeat;
             background-size: cover;
             .space-ship{
                 padding: 26% 16% 7.5%;
@@ -1375,6 +1415,13 @@
             .user-avatar {
                 margin-top:10px;
             }
+
+            .btn {
+                display: block;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
         /***********************************************************************/ 
 
@@ -1392,11 +1439,72 @@
             background-color: @clr-gray-asphalt;
             background-position: center 0;
             background-repeat: no-repeat;
-            .background-size(100%, auto);            
+            .background-size(100%, auto); 
 
-            .user-avatar {
-                margin-top:10px;
+            .list-group {
+                .list-group-item {
+                    .gradient-navy-blue();
+                    border: none;
+                }
+                a {
+                    display: block;
+                    position: relative;
+                    height: 77px;
+                    padding: 0;
+                    margin: 0;
+                    font-size: 24px;
+                    font-weight: bold;
+                    line-height: 77px;
+                }
+                span {
+                    color: @clr-white;
+                    line-height: inherit;
+                }
+                span:first-child + span {
+                    display: block;
+                    overflow: hidden;
+                    width:auto;
+                    padding: 0;
+                    margin: 0 99px 0 60px;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                }
+                .icomoon {
+                    display: block;
+                    position: absolute;
+                    z-index: 1;
+                    padding: 0 0 0 18px;
+                    margin: 0;
+                    color: @clr-green;
+                    font-size: 26px;
+                    font-weight: normal;
+                }
+                .icomoon.icon-arrow-slim-right {
+                    top: 0; right: 0;
+                    padding: 0 9px 0 0;
+                    font-size: 32px;
+                }
+                .icomoon.icon-star {
+                    top: 50%; right: 41px;
+                    padding: 3px 9px;
+                    margin: -16px 9px 0 0;
+                    border: 3px solid @clr-green;
+                    .border-radius(21px);
+                    font-size: 15px;
+                    line-height: 21px;
+                }  
+
+                .no-badge {
+                    span:first-child + span {
+                        margin-right: 51px;
+                    }
+                    .icomoon.icon-star {
+                        display: none;
+                    }
+                }
+
             }
+
         }
         /***********************************************************************/           
 

@@ -31,6 +31,7 @@
         img {
             display: block;
             margin:0 auto;
+            width: auto;
         }
         figcaption {
             margin:10px auto;
@@ -150,12 +151,41 @@
         font-weight: 400;
         text-transform: capitalize;
     }    
+    .component {padding: 0 5%;}
+    .container{
+        padding:0;
+    }
 }
 
 /* Profile Dashboard */
 .incluso-app.profile {
     .gradient-sky ();
 
+    footer {
+        padding-bottom: 30px;
+        background-color: @clr-gray-asphalt2;
+        background-image: url('@{url-images}/img-footer-texture.png');
+        background-position: center 10px;
+        background-repeat: no-repeat;
+        
+        .btn-back-to-top {
+            display: block;
+            padding:20px 0 0;
+            
+        }
+    }
+
+    .panel-title {display: inline;}
+    footer {
+        /*background-color: rgb(69,78,84);*/
+
+        .block-list,
+        .btn-back-to-top {
+            width:250px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
 
 }
 

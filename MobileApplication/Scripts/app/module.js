@@ -19,6 +19,11 @@
     ])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
+        $routeProvider.when('/Perfil/Editar', {
+            templateUrl: 'Templates/Programa/editProfile.html',
+            controller: 'programaProfileController'
+        });
+
         $routeProvider.when('/Perfil', {
             templateUrl: 'Templates/Programa/profile.html',
             controller: 'programaProfileController'

@@ -252,6 +252,23 @@
   .incluso-app .blanco {
     color: white;
   }
+  .incluso-app .nav-tabs {
+    border: 0;
+  }
+  .incluso-app .nav-tabs.nav-justified > li {
+    display: table-cell !important;
+    width: 1% !important;
+  }
+  .incluso-app .nav-tabs.nav-justified > .active > a,
+  .incluso-app .nav-tabs.nav-justified > .active > a:hover,
+  .incluso-app .nav-tabs.nav-justified > .active > a:focus,
+  .incluso-app .nav-tabs > li > a,
+  .incluso-app .nav-tabs > li.active > a,
+  .incluso-app .nav-tabs > li.active > a:hover,
+  .incluso-app .nav-tabs > li.active > a:focus {
+    background-color: transparent;
+    border: 0;
+  }
   .incluso-app .hangar-bay {
     background-image: url('../images/bckgnd.jpg');
     background-color: #24282a;
@@ -1304,28 +1321,44 @@
   .incluso-app .my-badges p {
     margin-top: 15px;
   }
+  .incluso-app .user-container {
+    display: flex;
+    justify-content: center;
+  }
+  .incluso-app .active .user-avatar figure {
+    border: 10px solid #171f20;
+  }
+  .incluso-app .active .user-avatar figcaption {
+    border-color: #171f20;
+  }
   .incluso-app .user-avatar {
     display: block;
     position: relative;
     overflow: visible;
     padding: 0;
     margin: 0 auto;
-    width: 100%;
-    max-width: 158px;
+    width: 90%;
+    /*max-width: 158px;*/
     height: auto;
+  }
+  .incluso-app .user-avatar figure {
+    overflow: hidden;
+    background-color: transparent;
+    -webkit-border-radius: 90px;
+    -moz-border-radius: 90px;
+    border-radius: 90px;
+    /*border: 3px solid transparent;*/
   }
   .incluso-app .user-avatar img {
     display: block;
     padding: 0;
     margin: 0;
-    -webkit-border-radius: 90px;
-    -moz-border-radius: 90px;
-    border-radius: 90px;
+    border: none;
   }
   .incluso-app .user-avatar figcaption {
     position: absolute;
     left: 50%;
-    bottom: -16px;
+    bottom: -18px;
     padding: 0;
     margin: 0 0 0 -26px;
     width: 52px;
@@ -1361,21 +1394,23 @@
   .incluso-app .user-data {
     display: block;
     position: relative;
-    padding: 0;
+    padding: 18px 0;
     margin: 60px auto 0;
-    width: 370px;
-    height: 94px;
+    /*width: 370px; */
+    width: auto;
+    height: auto;
     background-color: #121b1c;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
   }
   .incluso-app .user-data p {
-    padding: 18px 0 0;
+    padding: 0;
     margin: 0 auto;
     color: #ffffff;
     font-family: Roboto, Sans-serif, Arial;
-    font-size: 18px;
+    font-size: 1.2em;
+    /*18px;*/
     font-weight: 500;
     line-height: 1.4;
     text-transform: capitalize;
@@ -1393,7 +1428,8 @@
     font-weight: 700;
   }
   .incluso-app .user-data .inline-list {
-    margin-top: 11px;
+    margin-top: 10px;
+    margin-bottom: 3px;
     text-align: center;
   }
   .incluso-app .user-data li {
@@ -1480,14 +1516,15 @@
     border-bottom: 20px solid #121b1c;
   }
   .incluso-app .top-users .current-user {
-    width: 370px;
+    /*width: 370px;*/
     padding: 0;
     margin: 40px auto 0;
   }
   .incluso-app .top-users .current-user a {
     display: block;
     margin: 0 auto;
-    width: 115px;
+    /*width: 115px;*/
+    width: auto;
   }
   .incluso-app .top-users .current-user .user-data {
     margin-top: 8px;
@@ -1501,7 +1538,7 @@
     display: block;
     padding: 0;
     margin: 0 auto;
-    width: 370px;
+    /*width: 370px;  */
   }
   .incluso-app .top-users .tabs[data-tab-selected="1"] [data-tab-id="1"] .arrow-up {
     display: block;
@@ -1533,7 +1570,8 @@
   .incluso-app .ilustration {
     background-color: #1e2e2e;
     background-image: url("../images/navedwn.png");
-    background-position: 0 0;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
     background-size: cover;
   }
   .incluso-app .ilustration .space-ship {
@@ -1600,6 +1638,12 @@
   .incluso-app .profile-settings .user-avatar {
     margin-top: 10px;
   }
+  .incluso-app .profile-settings .btn {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .incluso-app .profile-options {
     margin: 0;
     padding: 41px 0;
@@ -1613,8 +1657,72 @@
     -moz-background-size: 100% auto;
     background-size: 100% auto;
   }
-  .incluso-app .profile-options .user-avatar {
-    margin-top: 10px;
+  .incluso-app .profile-options .list-group .list-group-item {
+    background: #1f2733;
+    background: -moz-radial-gradient(center, ellipse cover, #1f2733 0%, #14181f 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1f2733), color-stop(100%, #14181f));
+    background: -webkit-radial-gradient(center, ellipse cover, #1f2733 0%, #14181f 100%);
+    background: -o-radial-gradient(center, ellipse cover, #1f2733 0%, #14181f 100%);
+    background: -ms-radial-gradient(center, ellipse cover, #1f2733 0%, #14181f 100%);
+    background: radial-gradient(ellipse at center, #1f2733 0%, #14181f 100%);
+    border: none;
+  }
+  .incluso-app .profile-options .list-group a {
+    display: block;
+    position: relative;
+    height: 77px;
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 77px;
+  }
+  .incluso-app .profile-options .list-group span {
+    color: #ffffff;
+    line-height: inherit;
+  }
+  .incluso-app .profile-options .list-group span:first-child + span {
+    display: block;
+    overflow: hidden;
+    width: auto;
+    padding: 0;
+    margin: 0 99px 0 60px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .incluso-app .profile-options .list-group .icomoon {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    padding: 0 0 0 18px;
+    margin: 0;
+    color: #bcd431;
+    font-size: 26px;
+    font-weight: normal;
+  }
+  .incluso-app .profile-options .list-group .icomoon.icon-arrow-slim-right {
+    top: 0;
+    right: 0;
+    padding: 0 9px 0 0;
+    font-size: 32px;
+  }
+  .incluso-app .profile-options .list-group .icomoon.icon-star {
+    top: 50%;
+    right: 41px;
+    padding: 3px 9px;
+    margin: -16px 9px 0 0;
+    border: 3px solid #bcd431;
+    -webkit-border-radius: 21px;
+    -moz-border-radius: 21px;
+    border-radius: 21px;
+    font-size: 15px;
+    line-height: 21px;
+  }
+  .incluso-app .profile-options .list-group .no-badge span:first-child + span {
+    margin-right: 51px;
+  }
+  .incluso-app .profile-options .list-group .no-badge .icomoon.icon-star {
+    display: none;
   }
   .incluso-app .profile-dashboard {
     margin: 0;
