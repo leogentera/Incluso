@@ -62,16 +62,16 @@
         <div class="user-avatar">
           <figure>
             <img src="assets/images/img-user-sample-photo.jpg" alt="" class="img-responsive" />
-            <figcaption>28</figcaption>
+            <figcaption>{{model.rank}}</figcaption>
           </figure>   
           <button type="button" id="editProfile">
             <span class="icomoon icon-edit"></span>
           </button>       
         </div>
         <div class="profile-data">
-          <h4 class="user-name">Leonardo Garza R.</h4>
+          <h4 class="user-name">{{model.fullname}}</h4>
           <p class="user-points">
-            <span>100</span>
+            <span>{{model.stars}}</span>
             <span class="icomoon icon-star"></span>
           </p>
           <!-- <span class="badge">100<span class="icomoon icon-star"></span></span> -->
@@ -101,12 +101,12 @@
       </section>
       <section class="component profile-options">
         <div class="pages">
-          <div class="page">
+          <div class="page" ng-class="currentPage == 1 ? 'active' : ''">
             <div class="container">
               <div class="row">
                 <div class="col-xs-12">
                   <ul class="list-group separte-items">
-                    <li class="list-group-item">
+                    <li class="list-group-item" ng-click="navigateToPage(2)">
                       <a href="">
                         <span class="icomoon icon-information"></span>
                         <span>Mi Información</span>
@@ -115,7 +115,7 @@
                       </a>
                     </li>
 
-                    <li class="list-group-item">
+                    <li class="list-group-item" ng-click="navigateToPage(2)">
                       <a href="">
                         <span class="icomoon icon-document"></span>
                         <span>Cualidades y Talentos</span>
@@ -124,7 +124,7 @@
                       </a>
                     </li>
 
-                    <li class="list-group-item">
+                    <li class="list-group-item" ng-click="navigateToPage(2)">
                       <a href="">
                         <span class="icomoon icon-required"></span>
                         <span>Gustos y Preferencias</span>
@@ -133,7 +133,7 @@
                       </a>
                     </li>    
 
-                    <li class="list-group-item no-badge">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(2)">
                       <a href="">
                         <span class="icomoon icon-badge"></span>
                         <span>Insignias Ganadas</span>
@@ -142,7 +142,7 @@
                       </a>
                     </li> 
 
-                    <li class="list-group-item no-badge">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(2)">
                       <a href="">
                         <span class="icomoon icon-workman"></span>
                         <span>Mis Fortalezas</span>
@@ -151,7 +151,7 @@
                       </a>
                     </li>         
 
-                    <li class="list-group-item no-badge">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(2)">
                       <a href="">
                         <span class="icomoon icon-user"></span>
                         <span>Carreras Afínes</span>
@@ -160,7 +160,7 @@
                       </a>
                     </li> 
 
-                    <li class="list-group-item no-badge">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(2)" ng-show="hasDreams()">
                       <a href="">
                         <span class="icomoon icon-rocket"></span>
                         <span>Mis Sueños</span>
@@ -174,14 +174,14 @@
               </div>
             </div>
           </div>
-          <div class="page active">
+          <div class="page" ng-class="currentPage == 2 ? 'active' : ''">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-xs-12">
 
                   <div class="panel panel-default">
                     <div class="panel-heading">
-                      <span class="icomoon icon-arrow-slim-left"></span>
+                      <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
                       <span class="icomoon icon-information"></span>
                       <h3 class="panel-title">Mi información</h3>
                     </div>
@@ -247,7 +247,7 @@
               </div>
             </div>
           </div>
-          <div class="page"></div>
+          <div class="page" ng-class="currentPage == 3 ? 'active' : ''"></div>
         </div>
       </section> 
   </article>

@@ -10,38 +10,31 @@ angular
 		'$rootScope',
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
-            var _spinner = angular.element(document.getElementById('spinner')).scope();
+            
+            /* Helpers */
+            $scope.currentPage = 1;
 
-            _spinner.loading = true;
+            $scope.model = JSON.parse(localStorage.getItem("profile"));
 
-            $scope.setData = function (data) {
-                setTimeout(function () {
-                    console.log('response length:' + data.length);
-                    $scope.courses = data.toJSON();
-                    $scope.course = _.findWhere($scope.courses, { sid: _courseId });
-                    if (!$scope.$$phase) {
-                        $scope.$apply();
-                    }
-                }, 1000);
+            $scope.hasDreams = function(){
+                var dreamsToBe = $scope.dreamsToBe || [];
+                var dreamsToHave = $scope.dreamsToHave || [];
+                var dreamsToDo = $scope.dreamsToDo || [];
+
+                return dreamsToBe.length > 0 || dreamsToHave.length > 0 || dreamsToDo.length > 0;
             };
 
-            $scope.getDataAsync = function () {
-
-                console.log('getting courses');
-
-                var courses = new models.Courses();
-
-                    courses.fetch({
-                       local: true,
-                        success: function (data) {
-                            console.log('courses are back');
-                            _spinner.loading = false;
-                            $scope.setData(data);
-
-                        }
-                    });
+            $scope.navigateToPage = function(pageNumber){
+                $scope.currentPage = pageNumber;
             };
 
-            $scope.getDataAsync();
+            $scope.edit = function() {
+                $location.path('/Perfil/Editar');
+            }
+
+            $scope.login = function() {
+                $location.path('/Perfil');
+            }
+
 
         }]);
