@@ -60,14 +60,19 @@ class leaderboard_services extends external_api{
 			$sql = "SELECT @r := @r+1 AS place, 
 					z.* FROM( 
 						SELECT CONCAT(u.firstname, ' ',u.lastname) AS name, 
-						(CASE WHEN uid.data = '' THEN '0' ELSE uid.data END) AS stars 
-						FROM {user_info_data} AS uid 
-						LEFT JOIN {user_info_field} AS uif 
-						ON uid.fieldid = uif.id 
-						RIGHT JOIN {user} AS u 
-						ON uid.userid = u.id 
-						WHERE uif.shortname = 'stars' 
-						ORDER BY CAST(uid.data AS UNSIGNED) DESC, u.username 
+						IFNULL(result.stars, 0) AS stars 
+						FROM {user} as u 
+						LEFT JOIN ( 
+							SELECT u.id as id, 
+							(CASE WHEN uid.data = '' THEN '0' ELSE uid.data END) AS stars 
+							FROM {user_info_data} AS uid 
+							LEFT JOIN {user_info_field} AS uif 
+							ON uid.fieldid = uif.id 
+							RIGHT JOIN {user} AS u 
+							ON uid.userid = u.id 
+							WHERE uif.shortname = 'stars') AS result 
+						ON u.id = result.id 
+						ORDER BY CAST(stars AS UNSIGNED) DESC, name ASC 
 						LIMIT $n_top)z, 
 					(SELECT @r:=0)y";
 			
@@ -127,17 +132,24 @@ class leaderboard_services extends external_api{
 			$sql = "SELECT place 
 					FROM (
 						SELECT @r := @r+1 AS place, 
-						z.* FROM ( 
+						z.* FROM( 
 							SELECT u.id, 
-							(CASE WHEN uid.data = '' THEN '0' ELSE uid.data END) AS stars 
-							FROM {user_info_data} AS uid 
-							LEFT JOIN {user_info_field} AS uif 
-							ON uid.fieldid = uif.id 
-							RIGHT JOIN {user} AS u 
-							ON uid.userid = u.id 
-							WHERE uif.shortname = 'stars' 
-							ORDER BY CAST(uid.data AS UNSIGNED) DESC, u.username )z, 
-					(SELECT @r:=0)y)t1 WHERE id=$id_user ";
+							CONCAT(u.firstname, ' ',u.lastname) AS name, 
+							IFNULL(result.stars, 0) as stars 
+							FROM {user} as u 
+							LEFT JOIN ( 
+								SELECT u.id as id, 
+								(CASE WHEN uid.data = '' THEN '0' ELSE uid.data END) AS stars 
+								FROM {user_info_data} AS uid 
+								LEFT JOIN {user_info_field} AS uif 
+								ON uid.fieldid = uif.id 
+								RIGHT JOIN {user} AS u 
+								ON uid.userid = u.id 
+								WHERE uif.shortname = 'stars') AS result 
+							ON u.id = result.id 
+							ORDER BY CAST(stars AS UNSIGNED) DESC, name ASC)z, 
+						(SELECT @r:=0)y) AS ranking 
+					WHERE id =$id_user";
 				
 			$response = $DB->get_records_sql($sql);
 		
