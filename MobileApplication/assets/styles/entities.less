@@ -200,6 +200,7 @@
             .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
                 background-color: transparent;
                 border:0;
+                padding: 0;
             }
 
             .hangar-bay{
@@ -1045,9 +1046,9 @@
             display: flex; 
             justify-content: center;
         }
-        .active{
+        .active {
             .user-avatar{
-                img{
+                figure {
                     border:10px solid #171f20;
                 }
                 figcaption{
@@ -1061,21 +1062,25 @@
             overflow: visible;
             padding: 0;
             margin: 0 auto;
-            width: 100%;
-            max-width: 158px;
+            width: 90%;
             height: auto;
-            
+
+            figure {
+                overflow: hidden;
+                background-color: transparent;
+                .border-radius-circle();
+                border: 10px solid transparent; 
+            }            
             img {
                 display: block;
                 padding: 0; 
                 margin: 0; 
-                border-radius:50%;  
-                border:10px solid transparent;                
+                border:none;                
             }
             figcaption {
                 position: absolute;
                 left: 50%;
-                bottom: -16px;
+                bottom: -18px;
                 padding: 0;
                 margin: 0 0 0 -26px;
                 width: 52px;
@@ -1118,19 +1123,20 @@
         .user-data {
             display: block;
             position: relative;
-            padding: 0;
+            padding: 18px 0;
             margin: 60px auto 0;
-            width: 370px; 
-            height: 94px;
+            /*width: 370px; */
+            width: auto;
+            height: auto;
             background-color: @clr-blueDark;
             .border-radius(6px);
 
             p {
-                padding:18px 0 0;
+                padding:0;
                 margin:0 auto;
                 color: @clr-white;
                 font-family: Roboto, Sans-serif, Arial;
-                font-size: 18px;
+                font-size: 1.2em; /*18px;*/
                 font-weight: 500;
                 line-height: 1.4;
                 text-transform: capitalize;
@@ -1148,7 +1154,8 @@
                 font-weight: 700;
             } 
             .inline-list {
-                margin-top: 11px;
+                margin-top: 10px;
+                margin-bottom: 3px;
                 text-align: center;
             }
             li {
@@ -1240,14 +1247,15 @@
                 .css-arrow-up(20px, @clr-blueDark);
             }
             .current-user {
-                width: 370px;
+                /*width: 370px;*/
                 padding: 0;
                 margin: 40px auto 0;
 
                 a {
                     display: block;
                     margin: 0 auto;
-                    width: 115px;
+                    /*width: 115px;*/
+                    width: auto;
                 }
                 .user-data {
                     margin-top: 8px;
@@ -1262,7 +1270,7 @@
                 display: block; 
                 padding: 0;
                 margin: 0 auto;
-                width: 370px;                
+                /*width: 370px;  */              
                 &[data-tab-selected="1"] {
                     [data-tab-id="1"] {
                         .arrow-up {
@@ -1506,6 +1514,7 @@
          Description: CSS to represent user's profile dashboard landing page
         ************************************************************************/
         .profile-dashboard {
+            width: 100vw;
             margin:0;
             background-attachment: scroll;
             background-image:url('@{url-images}/bg-xs-profile-sky.jpg');
@@ -1514,6 +1523,17 @@
 
             .user-avatar {
                 margin-top:10px;
+            }
+
+            & > .row {
+                padding: 0 5%;
+                margin-left: 0;
+                margin-right: 0;
+
+                & > div {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
             }
         }
         /***********************************************************************/
