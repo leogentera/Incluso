@@ -47,9 +47,6 @@ body {
             text-decoration: none;
         }
     }
-/*    .container{
-        padding:0;
-    }*/
     /***************************************************************************/  
 
 
@@ -534,14 +531,34 @@ body {
                     width: auto;
                     color: @clr-gray;
                     font-family: Roboto;
-                    font-size: 22px;
                     font-weight: bold;
                     line-height: 1.2;
                     text-align: left;
                 }
+                p {
+                    margin-bottom:3px;
+                    font-size: 1.2em;
+
+                    & > label {
+                        margin: 0;
+                    }
+                }
+                li {
+                    margin-top: 15px;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    & > p {
+                        margin-top:0;
+                    }
+                }                
                 label, em {
                     color:@clr-gray-platinum;
+                    font-size: inherit;
                     font-style: normal;
+                    line-height: inherit;
                 }
                 hr {
                     margin: 15px 0;

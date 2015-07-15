@@ -47,9 +47,6 @@ body {
   width: auto;
   max-width: none;
   font-family: Play, Sans-serif, Arial;
-  /*    .container{
-        padding:0;
-    }*/
   /***************************************************************************/
   /****************************************************************************
      $btn
@@ -594,15 +591,32 @@ body {
   width: auto;
   color: #2a3333;
   font-family: Roboto;
-  font-size: 22px;
   font-weight: bold;
   line-height: 1.2;
   text-align: left;
 }
+.incluso-app .panel.panel-default .panel-body p {
+  margin-bottom: 3px;
+  font-size: 1.2em;
+}
+.incluso-app .panel.panel-default .panel-body p > label {
+  margin: 0;
+}
+.incluso-app .panel.panel-default .panel-body li {
+  margin-top: 15px;
+}
+.incluso-app .panel.panel-default .panel-body li:first-child {
+  margin-top: 0;
+}
+.incluso-app .panel.panel-default .panel-body li > p {
+  margin-top: 0;
+}
 .incluso-app .panel.panel-default .panel-body label,
 .incluso-app .panel.panel-default .panel-body em {
   color: #8098a0;
+  font-size: inherit;
   font-style: normal;
+  line-height: inherit;
 }
 .incluso-app .panel.panel-default .panel-body hr {
   margin: 15px 0;
