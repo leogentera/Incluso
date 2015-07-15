@@ -20,28 +20,27 @@
  */
 // We defined the web service functions to install.
 $functions = array(
-        'get_leaderboard' => array(
-                'classname'   => 'leaderboard_services',
-                'methodname'  => 'get_leaderboard',
-                'classpath'   => 'local/leaderboard/externallib.php',
-                'description' => 'Return a list of the N top users',
+        'earned_badges' => array(
+                'classname'   => 'badge_services',
+                'methodname'  => 'get_earned_badges',
+                'classpath'   => 'local/badge_plugin/externallib.php',
+                'description' => 'Return the badges earned for the given user',
                 'type'        => 'read',
         ),
-        'get_user_rank' => array(
-                'classname'   => 'leaderboard_services',
-                'methodname'  => 'get_user_rank',
-                'classpath'   => 'local/leaderboard/externallib.php',
-                'description' => 'Return the actual position of a user',
-                'type'        => 'read',
+        'posible_badges_to_earn' => array(
+        		'classname'   => 'badge_services',
+        		'methodname'  => 'get_posible_badges_to_earn',
+        		'classpath'   => 'local/badge_plugin/externallib.php',
+        		'description' => 'Return the badges that the user could earn',
+        		'type'        => 'read',
         ),
+        
 );
-
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
 $services = array(
-        'Leaderboard Services' => array(
-                'functions' => array (	'get_leaderboard',
-                						'get_user_rank'),
+        'Badge Services' => array(
+                'functions' => array ('earned_badges','posible_badges_to_earn'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
-        )
+        ),
 );

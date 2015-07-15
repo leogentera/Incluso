@@ -89,6 +89,7 @@ class AbstractRestfulJsonController extends AbstractRestfulController
     private function generateToken() {
     	$url = $this->getConfig()['TOKEN_GENERATION_URL'];
     	$url = sprintf($url, 'Admin', 'administrator', $this->getConfig()['MOODLE_SERVICE_NAME']);
+    	//$url = sprintf($url, 'Admin', 'M00dleAdmin!', $this->getConfig()['MOODLE_SERVICE_NAME']);
     	$response = file_get_contents($url);
     	$json = json_decode($response,true);
     	setcookie('MOODLE_TOKEN', $json['token'], time() + 3600, '/',null, false); //the true indicates to store only if there´s a secure connection
