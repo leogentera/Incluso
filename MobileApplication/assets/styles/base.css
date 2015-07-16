@@ -219,8 +219,10 @@ body {
 .incluso-app .btn-icon-aside {
   display: inline-block;
   position: relative;
-  height: 42px;
-  margin-top: 41px;
+  height: 1.8em;
+  /*42px;*/
+  margin-top: 5vw;
+  /*41px;*/
   background-color: #2a3333;
   -webkit-border-radius: 32px;
   -moz-border-radius: 32px;

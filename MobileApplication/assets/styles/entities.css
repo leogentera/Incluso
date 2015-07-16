@@ -1602,7 +1602,7 @@
     text-align: center;
   }
   .incluso-app .profile-data {
-    height: 290px;
+    height: 228px;
     margin-top: 24px;
     font-weight: bold;
     text-align: center;
@@ -1618,7 +1618,7 @@
     padding: 10px 0 32px;
     margin: 0;
     color: #ffffff;
-    font-size: 32px;
+    font-size: 1.8em;
     font-weight: inherit;
     text-transform: uppercase;
   }
@@ -1693,7 +1693,7 @@
     overflow: hidden;
     width: auto;
     padding: 0;
-    margin: 0 90px 0 60px;
+    margin: 0 72px 0 48px;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -1701,23 +1701,23 @@
     display: block;
     position: absolute;
     z-index: 1;
-    padding: 0 0 0 18px;
+    padding: 0 0 0 12px;
     margin: 0;
     color: #bcd431;
-    font-size: 26px;
+    font-size: 1.4em;
     font-weight: normal;
   }
   .incluso-app .profile-options .list-group .icomoon.icon-arrow-slim-right {
     top: 0;
     right: 0;
     padding: 0 9px 0 0;
-    font-size: 32px;
+    font-size: 1.2em;
   }
   .incluso-app .profile-options .list-group .icomoon.icon-star {
     top: 50%;
     right: 30px;
     padding: 3px 9px;
-    margin: -0.9em 9px 0 0;
+    margin: -1.2em 6px 0 0;
     border: 2px solid #bcd431;
     -webkit-border-radius: 21px;
     -moz-border-radius: 21px;
