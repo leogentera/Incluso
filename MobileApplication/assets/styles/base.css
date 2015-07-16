@@ -236,7 +236,7 @@ body {
 .incluso-app .btn-icon-aside.left > span {
   margin-left: 30px;
   color: #ffffff;
-  font-size: 0.8em;
+  font-size: 1em;
   /*20px;*/
   font-weight: 700;
   line-height: 1;
@@ -268,7 +268,7 @@ body {
 .incluso-app .btn-icon-aside.right > span {
   margin-right: 30px;
   color: #ffffff;
-  font-size: 0.8em;
+  font-size: 1em;
   /*20px;*/
   font-weight: 700;
   line-height: 1;
@@ -722,7 +722,7 @@ body {
   margin: 0 0 33px;
   color: #bcd431;
   font-family: Play, Sans-serif;
-  font-size: 20px;
+  font-size: 1.1em;
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;

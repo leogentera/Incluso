@@ -1091,11 +1091,11 @@
                 left: 50%;
                 bottom: -18px;
                 padding: 0;
-                margin: 0 0 0 -26px;
-                width: 52px;
-                height: 52px;
+                margin: 0 0 0 -17px;
+                width: 34px;
+                height: 34px;
                 background-color: @clr-blueMedium;
-                border: 5px solid @clr-green;
+                /*border: 5px solid @clr-green;*/
                 .border-radius-circle ();                      
                 color: @clr-green;
                 font-family: Roboto, Sans-serif, Arial;
@@ -1213,7 +1213,7 @@
          Description: CSS to represent the tabbed list of top users and current
         ************************************************************************/ 
         .top-users {
-            margin-top: 243px;
+            margin-top: 164px;
             margin-bottom:0;
             background: #1e2e2e;
             &:before{
@@ -1412,25 +1412,53 @@
          Description: CSS to represent profile settings area related to user
         ************************************************************************/
         .profile-settings {
+            position: relative;
+            z-index: 2;
             margin:0;
-            height: 176px;
+            height: 136px;
+
             background-attachment: scroll;
-            background-image:url('@{url-images}/img-profile-spaceship-dashboard-settings.png');
-            background-color: @clr-gray-asphalt;
-            background-position: center 0;
+            /*background-image:url('@{url-images}/img-profile-spaceship-dashboard-settings.png');*/
+            background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
+            /*background-color: @clr-gray-asphalt;*/
+            background-position: center 100px;
             background-repeat: no-repeat;
-            .background-size(100%, auto);            
+            .background-size(100%, auto);
 
-            .user-avatar {
-                margin-top:10px;
-            }
-
+            .user-avatar {margin-top:10px;}
             .btn {
                 display: block;
                 width: 100%;
                 margin-left: auto;
                 margin-right: auto;
             }
+            & > .container {
+                position: relative;
+                height: inherit;
+                background-attachment: scroll;
+                background-image:url('@{url-images}/img-profile-spaceship-dashboard-settings.png');
+                /*background:none;*/
+                background-color: transparent;
+                background-position: center 0;
+                background-repeat: no-repeat;
+                .background-size(100%, auto);
+            }              
+            /*&:after {
+                display:block;
+                position:absolute;
+                z-index: 0;
+                bottom: 0;
+                width: 100%; 
+                height: 12px;
+                background-attachment: scroll;
+                background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
+                background-color: @clr-gray-asphalt;
+                background-position: center 0;
+                background-repeat: no-repeat;
+                .background-size(100%, auto);
+                content: " ";
+            }*/
+
         }
         /***********************************************************************/ 
 
@@ -1441,7 +1469,7 @@
         ************************************************************************/
         .profile-options {
             margin:0;
-            padding:41px 0;
+            padding:12px 0 41px;
             height: auto;
             background-attachment: scroll;
             background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
