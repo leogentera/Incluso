@@ -67,6 +67,8 @@ angular
 
                         _setToken(data.token);
 
+                        //keepUserInformation(data.id);
+
 
                         console.log('preparing for syncAll');
 
@@ -108,6 +110,22 @@ angular
                 $scope.userCredentialsModel.modelState.errorMessages = errors;
 
                 return (errors.length === 0);
+            }
+
+            function keepUserInformation(userId){
+
+                $http(
+                    {
+                        method: 'GET',
+                        url: API_RESOURCE.format("userprofile/" + userId), 
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    }
+                    ).success(function(data, status, headers, config) {
+
+                        localStorage.setItem("profile", JSON.stringify(data));
+                    }).error(function(data, status, headers, config) {
+                    });
+
             }
 
             $scope.loadCredentials();
