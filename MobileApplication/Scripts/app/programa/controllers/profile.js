@@ -17,9 +17,9 @@ angular
             $scope.model = JSON.parse(localStorage.getItem("profile"));
 
             $scope.hasDreams = function(){
-                var dreamsToBe = $scope.dreamsToBe || [];
-                var dreamsToHave = $scope.dreamsToHave || [];
-                var dreamsToDo = $scope.dreamsToDo || [];
+                var dreamsToBe = $scope.model.dreamsToBe;
+                var dreamsToHave = $scope.model.dreamsToHave;
+                var dreamsToDo = $scope.model.dreamsToDo;
 
                 return dreamsToBe.length > 0 || dreamsToHave.length > 0 || dreamsToDo.length > 0;
             };

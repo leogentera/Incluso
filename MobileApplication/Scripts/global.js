@@ -47,10 +47,10 @@ var dummyProfile = {
                     username: "fernando.gutierrez",
                     lastname: "Gtz",
                     country: "mx",
-                    email: "bernardo.garza@definityfirst.com",
+                    email: ["bernardo.garza@definityfirst.com"],
                     studies: [{
                         school: "Secundaria 50",
-                        levelOfStudies: "terminada"
+                        levelOfStudies: "Secundaria"
                     }],
                     address: {
                         street: "Alamo",

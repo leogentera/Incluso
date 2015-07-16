@@ -121,7 +121,7 @@
                       </a>
                     </li>
 
-                    <li class="list-group-item" ng-click="navigateToPage(2)">
+                    <li class="list-group-item" ng-click="navigateToPage(3)">
                       <a href="">
                         <span class="icomoon icon-document"></span>
                         <span>Cualidades y Talentos</span>
@@ -130,7 +130,7 @@
                       </a>
                     </li>
 
-                    <li class="list-group-item" ng-click="navigateToPage(2)">
+                    <li class="list-group-item" ng-click="navigateToPage(4)">
                       <a href="">
                         <span class="icomoon icon-required"></span>
                         <span>Gustos y Preferencias</span>
@@ -139,7 +139,7 @@
                       </a>
                     </li>    
 
-                    <li class="list-group-item no-badge" ng-click="navigateToPage(2)">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(5)">
                       <a href="">
                         <span class="icomoon icon-badge"></span>
                         <span>Insignias Ganadas</span>
@@ -148,7 +148,7 @@
                       </a>
                     </li> 
 
-                    <li class="list-group-item no-badge" ng-click="navigateToPage(2)">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(6)">
                       <a href="">
                         <span class="icomoon icon-workman"></span>
                         <span>Mis Fortalezas</span>
@@ -157,7 +157,7 @@
                       </a>
                     </li>         
 
-                    <li class="list-group-item no-badge" ng-click="navigateToPage(2)">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(7)">
                       <a href="">
                         <span class="icomoon icon-user"></span>
                         <span>Carreras Afínes</span>
@@ -166,7 +166,7 @@
                       </a>
                     </li> 
 
-                    <li class="list-group-item no-badge" ng-click="navigateToPage(2)" ng-show="hasDreams()">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(8)" ng-show="hasDreams()">
                       <a href="">
                         <span class="icomoon icon-rocket"></span>
                         <span>Mis Sueños</span>
@@ -181,6 +181,180 @@
             </div>
           </div>
           <div class="page" ng-class="currentPage == 2 ? 'active' : ''">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12">
+
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                      <span class="icomoon icon-information"></span>
+                      <h3 class="panel-title">Mi información</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <h5>Mis Estudios</h5>
+                            <ul class="block-list" ng-repeat="s in model.studies">
+                              <li>
+                                <p>{{s.school}}</p>
+                                <p>{{s.levelOfStudies}}</p>
+                              </li>
+                            </ul>                            
+                            <hr />
+
+                            <h5>Domicilio</h5>
+                            <p>{{model.address.street + " " + model.address.num_ext + " " + model.address.num_int + " " + model.address.colony + ", " + model.address.city + ", " + model.address.town + ", " + model.address.state + ", " + model.address.country + ", " + model.address.postalCode}}</p>                            
+                            <hr />
+
+                            <h5>Teléfono</h5>
+                            <ul class="block-list" ng-repeat="t in model.phones">
+                              <li>
+                                <p>{{t}}</p>
+                              </li>                           
+                            </ul>
+                            <hr />
+
+                            <h5>Correo</h5>
+                            <ul class="block-list" ng-repeat="m in model.email">
+                              <li>
+                                <p>{{m}}</p>
+                              </li>                             
+                            </ul>
+                            <hr />
+
+                            <h5>Redes Sociales</h5>
+                            <ul class="block-list" ng-repeat="sn in model.socialNetworks">
+                              <li>
+                                <p>
+                                  <label for="">{{sn.socialNetwork}}.</label>
+                                  <span>{{sn.socialNetworkId}}</span>                                  
+                                </p>
+                              </li>                            
+                            </ul>
+                            <hr />
+
+                            <h5>Familia Compartamos</h5>
+                            <ul class="block-list" ng-repeat="fc in model.familiaCompartamos">
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>{{fc.idClient}}</span>
+                                </p>
+                                <p>{{fc.relativeName}}</p>
+                                <p><em>{{fc.relationship}}</em></p>
+                              </li>                             
+                            </ul>
+                            <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page" ng-class="currentPage == 3 ? 'active' : ''">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12">
+
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                      <span class="icomoon icon-information"></span>
+                      <h3 class="panel-title">Cualidades y Talentos</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <h5>Mis Estudios</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>Instituto de educación media superior del Distrito Federal “Benito Juárez”</p>
+                                <p>2º Preparatoria</p>
+                              </li>
+                            </ul>                            
+                            <hr />
+
+                            <h5>Domicilio</h5>
+                            <p>Av. Insurgentes Sur 1458, Actipan Benito Juárez, Ciudad de México México, 03230</p>                            
+                            <hr />
+
+                            <h5>Teléfono</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Correo</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>leogarza955@gmail.com</p>
+                              </li>
+                              <li>
+                                <p>lgza@hmail.com</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Redes Sociales</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">Twitter.</label>
+                                  <span>@leogarza955</span>                                  
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">Facebook.</label>
+                                  <span>/leogarza955</span>                                  
+                                </p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Familia Compartamos</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8920093</span>
+                                </p>
+                                <p>Luis Enrique Garza Treviño</p>
+                                <p><em>Papá</em></p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8790093</span>
+                                </p>
+                                <p>María Guadalupe Pedraza de Garza</p>
+                                <p><em>Mamá</em></p>
+                              </li>                              
+                            </ul>
+                            <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page" ng-class="currentPage == 4 ? 'active' : ''">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-xs-12">
@@ -277,7 +451,394 @@
               </div>
             </div>
           </div>
-          <div class="page" ng-class="currentPage == 3 ? 'active' : ''"></div>
+          <div class="page" ng-class="currentPage == 5 ? 'active' : ''">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12">
+
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                      <span class="icomoon icon-information"></span>
+                      <h3 class="panel-title">Mi información</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <h5>Mis Estudios</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>Instituto de educación media superior del Distrito Federal “Benito Juárez”</p>
+                                <p>2º Preparatoria</p>
+                              </li>
+                            </ul>                            
+                            <hr />
+
+                            <h5>Domicilio</h5>
+                            <p>Av. Insurgentes Sur 1458, Actipan Benito Juárez, Ciudad de México México, 03230</p>                            
+                            <hr />
+
+                            <h5>Teléfono</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Correo</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>leogarza955@gmail.com</p>
+                              </li>
+                              <li>
+                                <p>lgza@hmail.com</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Redes Sociales</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">Twitter.</label>
+                                  <span>@leogarza955</span>                                  
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">Facebook.</label>
+                                  <span>/leogarza955</span>                                  
+                                </p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Familia Compartamos</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8920093</span>
+                                </p>
+                                <p>Luis Enrique Garza Treviño</p>
+                                <p><em>Papá</em></p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8790093</span>
+                                </p>
+                                <p>María Guadalupe Pedraza de Garza</p>
+                                <p><em>Mamá</em></p>
+                              </li>                              
+                            </ul>
+                            <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page" ng-class="currentPage == 6 ? 'active' : ''">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12">
+
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                      <span class="icomoon icon-information"></span>
+                      <h3 class="panel-title">Mi información</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <h5>Mis Estudios</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>Instituto de educación media superior del Distrito Federal “Benito Juárez”</p>
+                                <p>2º Preparatoria</p>
+                              </li>
+                            </ul>                            
+                            <hr />
+
+                            <h5>Domicilio</h5>
+                            <p>Av. Insurgentes Sur 1458, Actipan Benito Juárez, Ciudad de México México, 03230</p>                            
+                            <hr />
+
+                            <h5>Teléfono</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Correo</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>leogarza955@gmail.com</p>
+                              </li>
+                              <li>
+                                <p>lgza@hmail.com</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Redes Sociales</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">Twitter.</label>
+                                  <span>@leogarza955</span>                                  
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">Facebook.</label>
+                                  <span>/leogarza955</span>                                  
+                                </p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Familia Compartamos</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8920093</span>
+                                </p>
+                                <p>Luis Enrique Garza Treviño</p>
+                                <p><em>Papá</em></p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8790093</span>
+                                </p>
+                                <p>María Guadalupe Pedraza de Garza</p>
+                                <p><em>Mamá</em></p>
+                              </li>                              
+                            </ul>
+                            <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page" ng-class="currentPage == 7 ? 'active' : ''">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12">
+
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                      <span class="icomoon icon-information"></span>
+                      <h3 class="panel-title">Mi información</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <h5>Mis Estudios</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>Instituto de educación media superior del Distrito Federal “Benito Juárez”</p>
+                                <p>2º Preparatoria</p>
+                              </li>
+                            </ul>                            
+                            <hr />
+
+                            <h5>Domicilio</h5>
+                            <p>Av. Insurgentes Sur 1458, Actipan Benito Juárez, Ciudad de México México, 03230</p>                            
+                            <hr />
+
+                            <h5>Teléfono</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Correo</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>leogarza955@gmail.com</p>
+                              </li>
+                              <li>
+                                <p>lgza@hmail.com</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Redes Sociales</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">Twitter.</label>
+                                  <span>@leogarza955</span>                                  
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">Facebook.</label>
+                                  <span>/leogarza955</span>                                  
+                                </p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Familia Compartamos</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8920093</span>
+                                </p>
+                                <p>Luis Enrique Garza Treviño</p>
+                                <p><em>Papá</em></p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8790093</span>
+                                </p>
+                                <p>María Guadalupe Pedraza de Garza</p>
+                                <p><em>Mamá</em></p>
+                              </li>                              
+                            </ul>
+                            <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page" ng-class="currentPage == 8 ? 'active' : ''">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12">
+
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                      <span class="icomoon icon-information"></span>
+                      <h3 class="panel-title">Mi información</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <h5>Mis Estudios</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>Instituto de educación media superior del Distrito Federal “Benito Juárez”</p>
+                                <p>2º Preparatoria</p>
+                              </li>
+                            </ul>                            
+                            <hr />
+
+                            <h5>Domicilio</h5>
+                            <p>Av. Insurgentes Sur 1458, Actipan Benito Juárez, Ciudad de México México, 03230</p>                            
+                            <hr />
+
+                            <h5>Teléfono</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>
+                              <li>
+                                <p>55-1537-2672</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Correo</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>leogarza955@gmail.com</p>
+                              </li>
+                              <li>
+                                <p>lgza@hmail.com</p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Redes Sociales</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">Twitter.</label>
+                                  <span>@leogarza955</span>                                  
+                                </p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">Facebook.</label>
+                                  <span>/leogarza955</span>                                  
+                                </p>
+                              </li>                              
+                            </ul>
+                            <hr />
+
+                            <h5>Familia Compartamos</h5>
+                            <ul class="block-list">
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8920093</span>
+                                </p>
+                                <p>Luis Enrique Garza Treviño</p>
+                                <p><em>Papá</em></p>
+                              </li>
+                              <li>
+                                <p>
+                                  <label for="">No. Cliente</label>
+                                  <span>8790093</span>
+                                </p>
+                                <p>María Guadalupe Pedraza de Garza</p>
+                                <p><em>Mamá</em></p>
+                              </li>                              
+                            </ul>
+                            <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section> 
   </article>
