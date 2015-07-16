@@ -483,7 +483,9 @@ body {
 }
 .incluso-app .navbar [class^="icon-"] {
   color: white;
+  font-size: 20px;
   font-size: 6vw;
+  line-height: 54px;
   line-height: 18vw;
 }
 .incluso-app .step-dashboard .navbar {
@@ -510,6 +512,7 @@ body {
   position: static;
   padding: 0;
   margin: 0 2vw;
+  height: 54px;
   height: 18vw;
   width: auto;
 }
@@ -519,10 +522,13 @@ body {
   float: left;
   margin: 0;
   width: 47vw;
+  max-width: 60%;
   color: #ffffff;
   font-family: 'Play';
+  font-size: 20px;
   font-size: 6vw;
   font-weight: bold;
+  line-height: 54px;
   line-height: 18vw;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -535,6 +541,7 @@ body {
   float: right;
   margin: 0;
   width: 45vw;
+  max-width: 48%;
   list-style-type: none;
   padding: 0;
 }

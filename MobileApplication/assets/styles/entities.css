@@ -144,6 +144,7 @@
   .incluso-app .to-top {
     bottom: 20px;
     color: #f00;
+    left: 43.5%;
     left: calc(50% - 19px);
     position: absolute;
     text-align: center;
@@ -258,7 +259,6 @@
   }
   .incluso-app .nav-tabs.nav-justified > li {
     display: table-cell !important;
-    width: 1% !important;
   }
   .incluso-app .nav-tabs.nav-justified > .active > a,
   .incluso-app .nav-tabs.nav-justified > .active > a:hover,
@@ -328,8 +328,10 @@
     color: white;
     font-size: 20px;
     font-weight: bold;
+    left: 39.5%;
     left: calc(50% - 19px);
     position: absolute;
+    top: 39.5%;
     top: calc(50% - 25px);
     width: auto;
   }
@@ -1171,8 +1173,8 @@
     position: relative;
     padding: 0;
     margin: 0 auto;
-    width: 370px;
-    height: 220px;
+    width: 97%;
+    height: auto;
   }
   .incluso-app .video-gallery .stage .icon {
     display: block;
@@ -1349,9 +1351,7 @@
   .incluso-app .user-avatar figure {
     overflow: hidden;
     background-color: transparent;
-    -webkit-border-radius: 90px;
-    -moz-border-radius: 90px;
-    border-radius: 90px;
+    border-radius: 150px;
     /*border: 10px solid transparent; */
   }
   .incluso-app .user-avatar img {
@@ -1361,6 +1361,7 @@
     border: none;
     width: 130px;
     max-width: 100%;
+    border-radius: 150px;
   }
   .incluso-app .user-avatar figcaption {
     position: absolute;
