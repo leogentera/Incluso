@@ -12,7 +12,7 @@ angular
         '$anchorScroll',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll) {
 
-            $anchorScroll();
+            $scope.scrollToTop();
 
             /* ViewModel */
             $scope.registerModel = {
@@ -55,6 +55,8 @@ angular
 
                 if(validateModel()){
                     registerUser();
+                }else{
+                    $scope.scrollToTop();
                 }
             }
 
@@ -64,7 +66,7 @@ angular
 
             $scope.navigateToPage = function(pageNumber){
                 $scope.currentPage = pageNumber;
-                $anchorScroll();
+                $scope.scrollToTop();
             };
 
             var registerUser = function(){
@@ -90,12 +92,14 @@ angular
                         initModel();
 
                         console.log('successfully register');
+                        $scope.scrollToTop();
 
                     }).error(function(data, status, headers, config) {
                         var errorMessage = window.atob(data.messageerror);
 
                         $scope.registerModel.modelState.errorMessages = [errorMessage];
                         console.log('data' + errorMessage);
+                        $scope.scrollToTop();
                     });
             };
 

@@ -12,7 +12,7 @@ angular
         '$anchorScroll',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll) {
 
-            $anchorScroll();
+            $scope.scrollToTop();
 
             /* ViewModel */
             $scope.userCredentialsModel = {
@@ -93,7 +93,10 @@ angular
 
                         $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
                         console.log(status + ": " + errorMessage);
+                        $scope.scrollToTop();
                     });
+                }else{
+                    $scope.scrollToTop();
                 }
             }
 

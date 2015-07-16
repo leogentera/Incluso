@@ -768,7 +768,7 @@ body {
 }
 .incluso-app .pages .page {
   display: none;
-  margin-bottom: 15px;
+  /*margin-bottom: 15px;*/
 }
 .incluso-app .pages .page.active {
   display: block;

@@ -36,5 +36,9 @@ angular
                 $location.path('/Perfil');
             }
 
+            $scope.navigateToDashboard = function(){
+                $location.path('/ProgramaDashboard');
+            }
+
 
         }]);

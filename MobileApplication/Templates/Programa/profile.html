@@ -6,7 +6,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="row">
 
-          <button type="button" class="navbar-toggle collapsed" > <!-- ng-click="isNavCollapsed = !isNavCollapsed" -->
+          <button type="button" class="navbar-toggle collapsed" ng-click="navigateToDashboard();" > <!-- ng-click="isNavCollapsed = !isNavCollapsed" -->
             <span class="sr-only">Toggle navigation</span>
             <span class="icomoon icon-more-options"></span>
           </button>
@@ -462,7 +462,7 @@
       <li><a href="" class="btn-link">Preguntas Frecuentes</a></li>
       <li><a href="" class="btn-link">Ayuda y Soporte</a></li>
     </ul>
-    <a href="#navBar" class="btn-back-to-top">
+    <a class="btn-back-to-top" ng-click="scrollToTop();">
       <span class="icomoon icon-double-arrow-up"></span>
       <span>Subir</span>
     </a>

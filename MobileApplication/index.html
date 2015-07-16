@@ -8,14 +8,33 @@
     <title>Incluso Digital</title>
     <link href="assets/styles/dev-css.css" rel='stylesheet' type='text/css' />
 
+    <style>
+        body:after {
+            content: url(assets/images/nave2.png)
+            url(assets/images/mountain.png)
+            url(assets/images/prenube.png)
+            url(assets/images/postnube.png)
+            url(assets/images/estrellascortas.png)
+            url(assets/images/ptr-video-0001.jpg)
+            url(assets/images/navedwn.png)
+            url(assets/images/estrellaslarg-01.png)
+            url(assets/images/estrellascortas.png)
+            url(assets/images/img-profile-spaceship-dashboard-top.png)
+            url(assets/images/img-profile-spaceship-dashboard-middle.png)
+            url(assets/images/img-profile-spaceship-dashboard-bottom.png)
+            url(assets/images/bg-xs-profile-sky.jpg);
+            display: none;
+        }
+    </style>
+
 </head>
 
-<body ng-controller="homeCtrl"> 
+<body ng-controller="homeCtrl" style="background-color:#000;"> 
 
     <div id="spinner" class="spinner" ng-show="loading">
         <img src="Content/images/ajax-loader.gif"  class="ajax-loader"/>
     </div>
-    <div ng-view></div>
+    <div id="view-container" ng-view></div>
 
     <script src="Scripts/jquery-2.1.4.min.js"></script>
     <script src="Scripts/Plugins/underscore-min.js"></script>
@@ -56,8 +75,6 @@
     var match = ua.match(/android\s([0-9\.]*)/);
     return match ? match[1] : false;
 };
-if(parseFloat(getAndroidVersion())<4.4)
-	alert("Su navegador necesita ser actualizado para ver esta página correctamente.");
     </script>
 
 </body>

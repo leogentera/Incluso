@@ -86,7 +86,10 @@ angular
 
                         $scope.recoverPasswordModel.modelState.errorMessages = [errorMessage];
                         console.log('data' + errorMessage);
+                        $scope.scrollToTop();
                     });
+                }else{
+                    $scope.scrollToTop();
                 }
             }
 
@@ -124,7 +127,10 @@ angular
 
                         $scope.recoverPasswordModel.modelState.errorMessages = [errorMessage];
                         console.log('data' + errorMessage);
+                        $scope.scrollToTop();
                     });
+                }else{
+                    $scope.scrollToTop();
                 }
             };
         }]);

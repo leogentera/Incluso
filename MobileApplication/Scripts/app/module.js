@@ -14,9 +14,15 @@
         'incluso.public.recoverPassword',
         'incluso.public.register',
         'incluso.programa.dashboard',
-        'incluso.programa.profile',
-
+        'incluso.programa.profile'
     ])
+    .run(function ($templateCache, $http) {
+        $http.get('Templates/Programa/profile.html', { cache: $templateCache });
+        $http.get('Templates/Programa/Dashboard.html', { cache: $templateCache });
+        $http.get('Templates/Programa/Login.html', { cache: $templateCache });
+        $http.get('Templates/Programa/RecoverPassword.html', { cache: $templateCache });
+        $http.get('Templates/Programa/Register.html', { cache: $templateCache });
+    })
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
         $routeProvider.when('/Perfil/Editar', {
