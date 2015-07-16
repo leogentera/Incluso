@@ -193,6 +193,9 @@ body {
   color: #ffffff;
   font-size: 20px;
 }
+.incluso-app a.btn-transparent:hover {
+  text-decoration: underline;
+}
 .incluso-app .btn-link {
   display: block;
   padding: 9px 3px;
@@ -210,7 +213,7 @@ body {
 .incluso-app .btn-group-lg > .btn {
   padding-top: 15px;
   padding-bottom: 16px;
-  font-size: 24px;
+  font-size: 1.2em;
   letter-spacing: 1px;
   line-height: 24px;
 }
@@ -309,12 +312,12 @@ body {
 .incluso-app .button-group .btn {
   display: inline-block;
   float: left;
-  width: 50%;
+  width: 75%;
   height: 55px;
   max-height: 55px;
 }
 .incluso-app .button-group .btn:first-child {
-  width: 45%;
+  width: 20%;
   margin-right: 5%;
 }
 .incluso-app .form-control {
@@ -404,7 +407,7 @@ body {
   -moz-box-shadow: none;
   box-shadow: none;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 1.2em;
   font-weight: 600;
 }
 .incluso-app .input-group .form-control:hover,
@@ -414,11 +417,21 @@ body {
   -moz-box-shadow: none;
   box-shadow: none;
 }
+.incluso-app .input-group select.form-control {
+  padding-left: 24px;
+}
 .incluso-app .input-group select.form-control option {
   color: #121b1c;
 }
 .incluso-app .input-group select.form-control option:first-child {
   color: #121b1c;
+  padding-left: 0;
+}
+.incluso-app .input-group p:first-child {
+  padding-right: 24px;
+}
+.incluso-app .input-group p:first-child + .form-control {
+  padding-left: 0;
 }
 .incluso-app .alert {
   display: block;
@@ -436,7 +449,7 @@ body {
   width: 100%;
 }
 .incluso-app .alert.alert-warning {
-  background-color: rgba(245, 70, 31, 0.2);
+  background-color: rgba(245, 70, 31, 0.5);
 }
 .incluso-app .alert.alert-success {
   background-color: rgba(104, 189, 69, 0.5);

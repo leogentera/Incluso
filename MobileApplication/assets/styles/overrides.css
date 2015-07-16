@@ -44,12 +44,12 @@
   margin: 0;
   padding: 24px 0 10px 0;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 28px;
+  font-size: 1.6em;
   font-weight: bold;
   line-height: 28px;
 }
 .incluso-app.public section {
-  margin: 0 24px;
+  margin: 0 15px;
 }
 .incluso-app.public .input-group-addon {
   font-size: 24px;
@@ -66,9 +66,11 @@
 .incluso-app.public .checkbox input {
   position: static;
   margin-left: 0;
+  /*width: 24px;
+            height: 24px;*/
 }
 .incluso-app.public .checkbox label {
-  padding-left: 18px;
+  padding-left: 8px;
   line-height: 1.4;
   vertical-align: middle;
 }
@@ -76,7 +78,7 @@
   font-size: 20px;
   color: white;
   font-weight: 500;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .incluso-app.public .btn-spacer {
   height: 66px;
@@ -89,7 +91,7 @@
   text-transform: uppercase;
 }
 .incluso-app.public .btn-facebook {
-  font-size: 21px;
+  font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
@@ -105,12 +107,16 @@
   font-weight: normal;
   text-decoration: none;
 }
+.incluso-app.public footer a:hover {
+  text-decoration: underline;
+}
 .incluso-app.public form h1 {
   margin: 10px 0 24px;
   color: #ffffff;
   font-size: 18.666px;
   font-weight: bold;
   letter-spacing: 0.037em;
+  text-transform: capitalize;
 }
 .incluso-app.public .login {
   position: relative;

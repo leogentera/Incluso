@@ -82,6 +82,10 @@ body {
         color:@clr-white;
         font-size: 20px;        
     }
+    a.btn-transparent:hover {
+        text-decoration: underline;
+    }
+
     .btn-link {
         display: block;
         padding: 9px 3px;
@@ -97,7 +101,7 @@ body {
     .btn-lg, .btn-group-lg > .btn {
         padding-top: 15px;
         padding-bottom: 16px;
-        font-size: 24px;
+        font-size: 1.2em;
         letter-spacing: 1px;
         line-height: 24px;
     }
@@ -216,12 +220,12 @@ body {
         .btn {
             display: inline-block;
             float: left;
-            width: 50%;
+            width: 75%;
             height: 55px;
             max-height: 55px;
 
             &:first-child {
-                width: 45%;
+                width: 20%;
                 margin-right: 5%;
             }
         }
@@ -296,6 +300,7 @@ body {
      Description: CSS overrides to bootstrap's input-group class.
     ****************************************************************************/
     .input-group {
+
         .input-group-addon {
             padding: 0 1px;
             background-color: transparent;
@@ -319,7 +324,7 @@ body {
             .border-radius-reset();
             .box-shadow-reset();
             color:@clr-white;
-            font-size:24px;
+            font-size:1.2em;
             font-weight: 600;
         }
         .form-control:hover, 
@@ -329,14 +334,23 @@ body {
         }
 
         select.form-control {
+            padding-left:24px;
 
             option {
                 color: @clr-blueDark;
             }
             option:first-child {
                 color: @clr-blueDark;
+                padding-left:0;
             }
         }
+        p:first-child {
+            padding-right: 24px;
+        }  
+        p:first-child + .form-control {
+            padding-left: 0;
+        } 
+
     }
     /***************************************************************************/
 
@@ -359,7 +373,7 @@ body {
             width:100%; 
         }
         &.alert-warning {
-            .clr-orange(background-color, 0.2);
+            .clr-orange(background-color, 0.5);
         }
         &.alert-success {
             .clr-greenMedium(background-color, 0.5);
