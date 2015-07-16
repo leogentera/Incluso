@@ -21,10 +21,10 @@ class MoodleUserProfile extends Common
     
     //From this point the generic variables
         
-    public $studies;
+    public $studies=array();
     public $address;
-    public $phones;
-    public $socialNetworks;
+    public $phones=array();
+    public $socialNetworks=array();
     public $familiaCompartamos;
     public $rank=0;
     public $stars=0;
