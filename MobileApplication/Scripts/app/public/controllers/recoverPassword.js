@@ -9,7 +9,10 @@ angular
 		'$timeout',
 		'$rootScope',
 		'$http',
-        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
+        '$anchorScroll',
+        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll) {
+
+            $anchorScroll();
 
             /* ViewModel */
             $scope.recoverPasswordModel = {
@@ -47,6 +50,7 @@ angular
 
             $scope.navigateToPage = function(pageNumber){
                 $scope.currentPage = pageNumber;
+                $anchorScroll();
             };
 
             $scope.getPasswordRecoveryCode = function() {

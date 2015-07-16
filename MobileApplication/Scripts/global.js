@@ -26,6 +26,8 @@ var _syncAll = function(blah) {
 
 		console.log('courses synced');
 
+		blah();
+
 	}
 }
 
@@ -75,7 +77,7 @@ var dummyProfile = {
                     rank: 2,
                     stars: 56,
                     attributesAndQualities: ["Divertido", "Original"],
-                    strengths: [],
+                    strengths: [{name: "Cualidades de negocio", values: ["Analítico", "Aprendo rápido"]}],
                     recomendedBachelorDegrees: [],
                     likesAndPreferences: ["Face", "Dibujar"],
                     dreamsToBe: ["Ser Rico", "Poderoso"],

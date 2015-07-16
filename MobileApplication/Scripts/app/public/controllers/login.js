@@ -9,7 +9,10 @@ angular
 		'$timeout',
 		'$rootScope',
 		'$http',
-        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
+        '$anchorScroll',
+        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll) {
+
+            $anchorScroll();
 
             /* ViewModel */
             $scope.userCredentialsModel = {
