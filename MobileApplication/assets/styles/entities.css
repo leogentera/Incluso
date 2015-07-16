@@ -27,10 +27,10 @@
   #site-wrapper {
     position: relative;
     overflow: hidden;
-    width: 100%;
+    width: 100vw;
   }
   #site-canvas {
-    width: 100%;
+    width: 100vw;
     position: relative;
     -webkit-transform: translateX(0);
     transform: translateX(0);
@@ -40,24 +40,24 @@
     backface-visibility: hidden;
   }
   .show-nav #site-canvas {
-    -webkit-transform: translateX(300px);
-    transform: translateX(300px);
-    transform: translate3d(300px, 0, 0);
-    -webkit-transform: translate3d(300px, 0, 0);
+    -webkit-transform: translateX(150px);
+    transform: translateX(150px);
+    transform: translate3d(150px, 0, 0);
+    -webkit-transform: translate3d(150px, 0, 0);
   }
   .show-nav #site-menu {
     left: 0px;
   }
   #site-menu {
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    width: 300px;
-    height: 100%;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+    width: 150px;
+    height: 100vh;
     position: absolute;
     top: 0;
-    left: -300px;
+    left: -150px;
     background: #12171D;
     padding: 15px;
   }
@@ -270,6 +270,10 @@
     background-color: transparent;
     border: 0;
     padding: 0;
+  }
+  .incluso-app.step-dashboard .navbar {
+    background-color: #158ccd;
+    border-color: #158ccd;
   }
   .incluso-app .hangar-bay {
     background-image: url('../images/bckgnd.jpg');
@@ -1355,6 +1359,8 @@
     padding: 0;
     margin: 0;
     border: none;
+    width: 130px;
+    max-width: 100%;
   }
   .incluso-app .user-avatar figcaption {
     position: absolute;
@@ -1687,7 +1693,7 @@
     overflow: hidden;
     width: auto;
     padding: 0;
-    margin: 0 99px 0 60px;
+    margin: 0 90px 0 60px;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -1709,15 +1715,17 @@
   }
   .incluso-app .profile-options .list-group .icomoon.icon-star {
     top: 50%;
-    right: 41px;
+    right: 30px;
     padding: 3px 9px;
-    margin: -16px 9px 0 0;
-    border: 3px solid #bcd431;
+    margin: -0.9em 9px 0 0;
+    border: 2px solid #bcd431;
     -webkit-border-radius: 21px;
     -moz-border-radius: 21px;
     border-radius: 21px;
-    font-size: 15px;
-    line-height: 21px;
+    font-size: 0.6em;
+    /*15px;*/
+    line-height: 1.2em;
+    /*21px;*/
   }
   .incluso-app .profile-options .list-group .no-badge span:first-child + span {
     margin-right: 51px;
