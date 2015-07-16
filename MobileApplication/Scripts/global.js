@@ -26,10 +26,6 @@ var _syncAll = function(blah) {
 
 		console.log('courses synced');
 
-		var profile = new models.Profile();
-
-		var hola = "";
-
 	}
 }
 

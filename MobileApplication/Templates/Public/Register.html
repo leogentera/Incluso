@@ -57,9 +57,9 @@
                 <div class="form-group">
                   <div class="input-group">
                     <p class="input-group-addon" id="aliasAddOn">
-                      <span class="icomoon icon-profile"></span>
+                      <span class="icomoon icon-user"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg" placeholder="Alias" aria-describedby="aliasAddOn" required>
+                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg" placeholder="Usuario" aria-describedby="aliasAddOn" required>
                   </div>
                 </div>
               </div>
@@ -156,7 +156,7 @@
                 <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(2)">Continuar</button>
               </div>
               <div class="col-xs-12">
-                <button type="button" class="btn btn-default btn-transparent btn-lg btn-block" ng-click="login()">Cancelar</button>
+                <a type="button" class="btn btn-default btn-transparent btn-lg btn-block" ng-click="login()">Cancelar</a>
               </div> 
             </div>          
 
@@ -268,7 +268,7 @@
                 </div>
               </div>
               <div class="col-xs-12" ng-show="!isRegistered">
-                <button type="button" ng-click="login()" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</button>
+                <a type="button" ng-click="login()" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</a>
               </div>  
               <div class="col-xs-12" ng-show="isRegistered">
                 <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="login()">Entrar</button>

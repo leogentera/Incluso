@@ -23,10 +23,10 @@
     #site-wrapper {
         position: relative;
         overflow: hidden;
-        width: 100%;
+        width: 100vw;
     }
     #site-canvas {
-        width: 100%;
+        width: 100vw;
         position: relative;
         -webkit-transform: translateX(0);
         transform: translateX(0);
@@ -38,25 +38,25 @@
         backface-visibility: hidden;
     }
     .show-nav #site-canvas {
-        -webkit-transform: translateX(300px);
-        transform: translateX(300px);
+        -webkit-transform: translateX(150px);
+        transform: translateX(150px);
           
-        transform: translate3d(300px, 0, 0);
-        -webkit-transform: translate3d(300px, 0, 0);
+        transform: translate3d(150px, 0, 0);
+        -webkit-transform: translate3d(150px, 0, 0);
     }
     .show-nav #site-menu{
         left: 0px;
     }
     #site-menu {
-        -webkit-transition: all .5s ease-in-out;
-        -moz-transition: all .5s ease-in-out;
-        -o-transition: all .5s ease-in-out;
-        transition: all .5s ease-in-out;
-        width: 300px;
-        height: 100%;
+        -webkit-transition: all 300ms ease-in-out;
+        -moz-transition: all 300ms ease-in-out;
+        -o-transition: all 300ms ease-in-out;
+        transition: all 300ms ease-in-out;
+        width: 150px;
+        height: 100vh;
         position: absolute;
         top: 0;
-        left: -300px;
+        left: -150px;
         background: #12171D;
         padding: 15px;
     }
@@ -75,6 +75,7 @@
             .to-top{
                 bottom: 20px;
                 color: #f00;
+                left: 43.5%;
                 left: ~"calc(50% - 19px)";
                 position: absolute;
                 text-align: center;
@@ -191,7 +192,7 @@
             }
             .nav-tabs.nav-justified>li {
                 display: table-cell !important;
-                width: 1% !important;
+                //width: 1% !important;
             }
             .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, 
             .nav-tabs.nav-justified > .active > a:focus,
@@ -202,7 +203,10 @@
                 border:0;
                 padding: 0;
             }
-
+            &.step-dashboard .navbar{     
+                background-color: @clr-bluenav;
+                border-color: @clr-bluenav;
+            }
             .hangar-bay{
                 background-image:url('../images/bckgnd.jpg');
                 background-color: #24282a;
@@ -259,8 +263,10 @@
                     color: white;
                     font-size: 20px;
                     font-weight: bold;
+                    left: 39.5%;
                     left: ~"calc(50% - 19px)";
                     position: absolute;
+                    top: 39.5%;
                     top: ~"calc(50% - 25px)";
                     width: auto;
                 }
@@ -861,8 +867,8 @@
                 position: relative;
                 padding: 0;
                 margin: 0 auto;
-                width: 370px;
-                height: 220px;
+                width: 97%;
+                height: auto;
 
                 .icon {
                     display: block;
@@ -1049,7 +1055,7 @@
         .active {
             .user-avatar{
                 figure {
-                    border:10px solid #171f20;
+                    border:0px solid #171f20;
                 }
                 figcaption{
                     border-color: #171f20;
@@ -1068,14 +1074,17 @@
             figure {
                 overflow: hidden;
                 background-color: transparent;
-                .border-radius-circle();
-                border: 10px solid transparent; 
+                border-radius:150px;
+                /*border: 10px solid transparent; */
             }            
             img {
                 display: block;
                 padding: 0; 
                 margin: 0; 
-                border:none;                
+                border:none; 
+                width:130px;
+                max-width:100%;     
+                border-radius:150px;          
             }
             figcaption {
                 position: absolute;
@@ -1367,7 +1376,7 @@
          Description: CSS to represent profile data section related to avatar
         ************************************************************************/
         .profile-data {
-            height: 290px;
+            height: 228px;
             margin-top: 24px;
             font-weight: bold;
             text-align: center;
@@ -1382,7 +1391,7 @@
                 padding: 10px 0 32px;
                 margin:0;
                 color:@clr-white;
-                font-size: 32px;
+                font-size: 1.8em;
                 font-weight: inherit;
                 text-transform: uppercase;
             }
@@ -1418,7 +1427,7 @@
 
             .btn {
                 display: block;
-                width: 90%;
+                width: 100%;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -1465,7 +1474,7 @@
                     overflow: hidden;
                     width:auto;
                     padding: 0;
-                    margin: 0 99px 0 60px;
+                    margin: 0 72px 0 48px;
                     text-overflow:ellipsis;
                     white-space: nowrap;
                 }
@@ -1473,25 +1482,25 @@
                     display: block;
                     position: absolute;
                     z-index: 1;
-                    padding: 0 0 0 18px;
+                    padding: 0 0 0 12px;
                     margin: 0;
                     color: @clr-green;
-                    font-size: 26px;
+                    font-size: 1.4em;
                     font-weight: normal;
                 }
                 .icomoon.icon-arrow-slim-right {
                     top: 0; right: 0;
                     padding: 0 9px 0 0;
-                    font-size: 32px;
+                    font-size: 1.2em;
                 }
                 .icomoon.icon-star {
-                    top: 50%; right: 41px;
+                    top: 50%; right: 30px;
                     padding: 3px 9px;
-                    margin: -16px 9px 0 0;
-                    border: 3px solid @clr-green;
+                    margin: -1.2em 6px 0 0;
+                    border: 2px solid @clr-green;
                     .border-radius(21px);
-                    font-size: 15px;
-                    line-height: 21px;
+                    font-size: 0.6em; /*15px;*/
+                    line-height: 1.2em; /*21px;*/
                 }  
 
                 .no-badge {

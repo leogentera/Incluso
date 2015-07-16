@@ -38,13 +38,13 @@
             margin: 0;
             padding: 24px 0 10px 0;
             .clr-white(color, 0.5);
-            font-size: 28px;
+            font-size: 1.6em;
             font-weight: bold;
             line-height: 28px;
         }
     }
     section {
-        margin: 0 24px;
+        margin: 0 15px;
     }
     .input-group-addon {
         font-size: 24px;
@@ -61,9 +61,11 @@
         input {
             position: static;
             margin-left: 0;
+            /*width: 24px;
+            height: 24px;*/
         }
         label {
-            padding-left: 18px;
+            padding-left: 8px;
             line-height: 1.4;
             vertical-align: middle;
         }
@@ -71,12 +73,12 @@
           font-size: 20px;
           color: white;
           font-weight: 500;
-          margin-left: 10px;
+          margin-left: 20px;
         }
     }
     .btn-spacer {
         height: 66px; 
-        padding:20px0 0;
+        padding:20px 0 0;
         .clr-white(color, 0.75);
         font-size: 20px;
         font-weight: 500;
@@ -85,7 +87,7 @@
         text-transform: uppercase;
     }
     .btn-facebook {
-        font-size: 21px;
+        font-size: 1.2em;
         font-weight: 600;
         letter-spacing: 0.01em;
     }
@@ -100,6 +102,10 @@
             font-size: 20px;
             font-weight: normal;
             text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
     form {
@@ -109,6 +115,7 @@
             font-size: 18.666px;
             font-weight: bold;
             letter-spacing: 0.037em;
+            text-transform: capitalize;
         }
     }
     .login {
@@ -154,6 +161,9 @@
     .component {padding: 0 5%;}
     .container{
         padding:0;
+    }
+    .user-avatar {
+        figure {border: 0px solid transparent;}
     }
 }
 
