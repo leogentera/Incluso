@@ -137,6 +137,7 @@
     background: -ms-linear-gradient(top,  #14181d 0%,#173a4a 100%);
     background: linear-gradient(to bottom,  #14181d 0%,#173a4a 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14181d', endColorstr='#173a4a',GradientType=0 );
+
     .container{
         background-attachment: fixed;
         background-image: url("../images/estrellascortas.png");
@@ -154,22 +155,145 @@
         padding:0; margin: 42px 0 15px;
         color:#FFF;
         font-family: Roboto, Arial;
-        font-size: 28px;
+        font-size: 1.4em;
         font-weight: 400;
         text-transform: capitalize;
     }    
-    .component {padding: 0 5%;}
+    .component {
+        padding: 0 5%;
+    }
     .container{
         padding:0;
     }
     .user-avatar {
         figure {border: 0px solid transparent;}
+        figcaption {
+            background-color: @clr-blueMedium;
+            color: @clr-white;
+            font-size: 1em;
+        }
     }
+    .global-progress {
+        margin-top: 50px;
+    }
+    .current-satge {
+        h3 {
+            margin-top: 24px;
+            color: @clr-white;
+        } 
+        .btn {
+            text-transform: uppercase;
+        }       
+    }
+
+
+    .navbar-assets {
+        padding-left: 0;
+        margin-left: 42px;
+
+        .navbar-heading {width:50%;}
+        .navbar-tools {
+            width:50%;
+
+            li {
+                height: auto;
+            }
+        }
+    }
+    .navbar-toggle .icomoon {
+        font-size: 2em;
+        line-height: 2em;
+    }
+    .navbar-heading {
+        width: 40%;
+        font-size: 1.4em;
+        line-height: 60px;
+    }
+    .navbar-tools {
+        width: 60%;
+
+        li {
+          display: inline-block;
+          height: 32px;
+          margin: 0 0 0 8px;
+          padding: 0;
+          width: auto;
+          line-height: 64px;
+        }
+        a {
+          display: block;
+          height: inherit;
+          margin: 0;
+          padding: 0;
+          width: inherit;
+        } 
+        .icomoon {
+            font-size: 1.4em;
+            color: @clr-white;
+        }     
+    }    
+
+    /* tabs */
+    .active {
+        .user-avatar figcaption {
+            background-color: @clr-blueDark; /* @clr-grayDark; */
+        }
+        .arrow-up {
+            display:block;
+            bottom: -69px;
+        }
+    }    
 }
 
 /* Profile Dashboard */
 .incluso-app.profile {
     .gradient-sky ();
+
+    .navbar-assets {
+        padding-left: 0;
+        margin-left: 42px;
+
+        .navbar-heading {width:50%;}
+        .navbar-tools {
+            width:50%;
+
+            li {
+                height: auto;
+            }
+        }
+    }
+    .navbar-toggle .icomoon {
+        font-size: 2em;
+        line-height: 2em;
+    }
+    .navbar-heading {
+        width: 40%;
+        font-size: 1.4em;
+        line-height: 60px;
+    }
+    .navbar-tools {
+        width: 60%;
+
+        li {
+          display: inline-block;
+          height: 32px;
+          margin: 0 0 0 8px;
+          padding: 0;
+          width: auto;
+          line-height: 64px;
+        }
+        a {
+          display: block;
+          height: inherit;
+          margin: 0;
+          padding: 0;
+          width: inherit;
+        } 
+        .icomoon {
+            font-size: 1.4em;
+            color: @clr-white;
+        }     
+    }    
 
     footer {
         padding-bottom: 30px;
@@ -177,26 +301,29 @@
         background-image: url('@{url-images}/img-footer-texture.png');
         background-position: center 10px;
         background-repeat: no-repeat;
+        .background-size(80%, auto);
         
         .btn-back-to-top {
             display: block;
             padding:20px 0 0;
             
         }
-    }
-
-    .panel-title {display: inline;}
-    footer {
-        /*background-color: rgb(69,78,84);*/
-
         .block-list,
         .btn-back-to-top {
             width:250px;
             margin-left: auto;
             margin-right: auto;
+        }        
+    }
+    .panel-title {display: inline;}
+
+    .user-avatar {
+        figcaption {
+            border: 3px solid @clr-green;
+            font-size: 1em;
+            line-height: 2em;
         }
     }
-
 }
 
 

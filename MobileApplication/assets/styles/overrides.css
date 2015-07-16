@@ -135,6 +135,7 @@
   background: -ms-linear-gradient(top, #14181d 0%, #173a4a 100%);
   background: linear-gradient(to bottom, #14181d 0%, #173a4a 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#14181d', endColorstr='#173a4a', GradientType=0);
+  /* tabs */
 }
 .incluso-app.start-dashboard .container {
   background-attachment: fixed;
@@ -152,7 +153,7 @@
   margin: 42px 0 15px;
   color: #FFF;
   font-family: Roboto, Arial;
-  font-size: 28px;
+  font-size: 1.4em;
   font-weight: 400;
   text-transform: capitalize;
 }
@@ -164,6 +165,73 @@
 }
 .incluso-app.start-dashboard .user-avatar figure {
   border: 0px solid transparent;
+}
+.incluso-app.start-dashboard .user-avatar figcaption {
+  background-color: #243436;
+  color: #ffffff;
+  font-size: 1em;
+}
+.incluso-app.start-dashboard .global-progress {
+  margin-top: 50px;
+}
+.incluso-app.start-dashboard .current-satge h3 {
+  margin-top: 24px;
+  color: #ffffff;
+}
+.incluso-app.start-dashboard .current-satge .btn {
+  text-transform: uppercase;
+}
+.incluso-app.start-dashboard .navbar-assets {
+  padding-left: 0;
+  margin-left: 42px;
+}
+.incluso-app.start-dashboard .navbar-assets .navbar-heading {
+  width: 50%;
+}
+.incluso-app.start-dashboard .navbar-assets .navbar-tools {
+  width: 50%;
+}
+.incluso-app.start-dashboard .navbar-assets .navbar-tools li {
+  height: auto;
+}
+.incluso-app.start-dashboard .navbar-toggle .icomoon {
+  font-size: 2em;
+  line-height: 2em;
+}
+.incluso-app.start-dashboard .navbar-heading {
+  width: 40%;
+  font-size: 1.4em;
+  line-height: 60px;
+}
+.incluso-app.start-dashboard .navbar-tools {
+  width: 60%;
+}
+.incluso-app.start-dashboard .navbar-tools li {
+  display: inline-block;
+  height: 32px;
+  margin: 0 0 0 8px;
+  padding: 0;
+  width: auto;
+  line-height: 64px;
+}
+.incluso-app.start-dashboard .navbar-tools a {
+  display: block;
+  height: inherit;
+  margin: 0;
+  padding: 0;
+  width: inherit;
+}
+.incluso-app.start-dashboard .navbar-tools .icomoon {
+  font-size: 1.4em;
+  color: #ffffff;
+}
+.incluso-app.start-dashboard .active .user-avatar figcaption {
+  background-color: #121b1c;
+  /* @clr-grayDark; */
+}
+.incluso-app.start-dashboard .active .arrow-up {
+  display: block;
+  bottom: -69px;
 }
 /* Profile Dashboard */
 .incluso-app.profile {
@@ -184,26 +252,75 @@
   /* W3C */
   /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13171c', endColorstr='#163a4a',GradientType=0 ); /* IE6-8 */
 }
+.incluso-app.profile .navbar-assets {
+  padding-left: 0;
+  margin-left: 42px;
+}
+.incluso-app.profile .navbar-assets .navbar-heading {
+  width: 50%;
+}
+.incluso-app.profile .navbar-assets .navbar-tools {
+  width: 50%;
+}
+.incluso-app.profile .navbar-assets .navbar-tools li {
+  height: auto;
+}
+.incluso-app.profile .navbar-toggle .icomoon {
+  font-size: 2em;
+  line-height: 2em;
+}
+.incluso-app.profile .navbar-heading {
+  width: 40%;
+  font-size: 1.4em;
+  line-height: 60px;
+}
+.incluso-app.profile .navbar-tools {
+  width: 60%;
+}
+.incluso-app.profile .navbar-tools li {
+  display: inline-block;
+  height: 32px;
+  margin: 0 0 0 8px;
+  padding: 0;
+  width: auto;
+  line-height: 64px;
+}
+.incluso-app.profile .navbar-tools a {
+  display: block;
+  height: inherit;
+  margin: 0;
+  padding: 0;
+  width: inherit;
+}
+.incluso-app.profile .navbar-tools .icomoon {
+  font-size: 1.4em;
+  color: #ffffff;
+}
 .incluso-app.profile footer {
   padding-bottom: 30px;
   background-color: #3c4448;
   background-image: url('../images/img-footer-texture.png');
   background-position: center 10px;
   background-repeat: no-repeat;
+  -webkit-background-size: 80% auto;
+  -moz-background-size: 80% auto;
+  background-size: 80% auto;
 }
 .incluso-app.profile footer .btn-back-to-top {
   display: block;
   padding: 20px 0 0;
-}
-.incluso-app.profile .panel-title {
-  display: inline;
-}
-.incluso-app.profile footer {
-  /*background-color: rgb(69,78,84);*/
 }
 .incluso-app.profile footer .block-list,
 .incluso-app.profile footer .btn-back-to-top {
   width: 250px;
   margin-left: auto;
   margin-right: auto;
+}
+.incluso-app.profile .panel-title {
+  display: inline;
+}
+.incluso-app.profile .user-avatar figcaption {
+  border: 3px solid #bcd431;
+  font-size: 1em;
+  line-height: 2em;
 }

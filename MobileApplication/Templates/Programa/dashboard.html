@@ -11,10 +11,11 @@
   </div>
   <div id="site-canvas">
 
+    <!--
     <nav ng-controller="navController">
       <div class="navbar navbar-welcome" id="navBar">
         <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
+          <!-- Brand and toggle get grouped for better mobile display - ->
           <div class="row">
 
             <div class="navbar-assets">
@@ -44,15 +45,68 @@
             </div> 
           </div>
         </div>
-      </div> <!-- /.container-fluid -->
+      </div> <!-- /.container-fluid - ->
     </nav>
+    -->
+
+  <nav ng-controller="navController">
+    <div class="navbar navbar-welcome" id="navBar">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+
+          <button type="button" class="navbar-toggle collapsed" > <!-- ng-click="isNavCollapsed = !isNavCollapsed" -->
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icomoon icon-more-options"></span>
+          </button>
+
+          <div class="navbar-assets">
+            <h1 class="navbar-heading">Mi Perfil</h1>
+            <ul class="navbar-tools">
+              <li class="contribute">
+                <a href="">
+                  <span class="icomoon icon-edit"></span>
+                </a>
+              </li>
+              <li class="notifications">
+                <a href="">
+                  <span class="icomoon icon-antena"></span>
+                </a>
+              </li>
+              <li class="chat">
+                <a href="">
+                  <span class="icomoon icon-chat"></span>
+                </a>
+              </li>
+              <li class="profile">
+                <a href="" ng-href="#/Perfil/">
+                  <span class="icomoon icon-emoticon-smile"></span>
+                </a>
+              </li>                
+            </ul>
+          </div>
+
+        </div>
+      </div> <!-- /.container-fluid -->
+    </div> <!-- /.navbar -->
+    <div class="navbar-collapse" collapse="isNavCollapsed">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse --> 
+  </nav>    
 
     <article>
       <div class="container">
 
-        <h1 class="text-center">Bienvenido!</h1>
+        <h1 class="text-center">¡Bienvenido Leonardo!</h1>
         <section class="component video-gallery">
-          <h3>- ¿Cómo Funciona¡ -</h3>
+          <h3>- ¿Qué es incluso? -</h3>
           <div class="stage perform">
             <button class="icon icon-close"></button>
             <button class="icon icon-play"></button> 
@@ -67,7 +121,7 @@
             </figure>
           </div>
         </section>
-        <section class="component txt-renglon centrado">
+        <section class="component global-progress txt-renglon centrado">
          <h3>- Avance Global -</h3>
          <div class="spinner">
            <img src="assets/images/prcnt/80.png"><div class="circle"></div><div class="text">80%</div>
@@ -76,7 +130,8 @@
 
        <section class="component current-satge">
         <img  src="assets/images/3avanz.svg">
-        <a href="" class="btn btn-primary btn-lg">Iniciar mi aventura!</a>
+        <h3>- Estación: Conócete -</h3>
+        <a href="" class="btn btn-primary btn-lg">Iniciar mi aventura</a>
       </section>
 
       <section class="component my-badges">
@@ -96,8 +151,9 @@
             <div class="user-container">
               <div class="user-avatar">
                 <figure>
-                  <img src="assets/images/img-user-sample-photo.jpg" alt="" />
+                  <img src="assets/images/img-avatar-dummy-01.png" alt="" />
                   <figcaption>1</figcaption>
+                  <div class="arrow-up"></div>
                 </figure>
               </div>
             </div>
@@ -122,8 +178,9 @@
              <div class="user-container">
               <div class="user-avatar">
                 <figure>
-                  <img src="assets/images/img-user-sample-photo.jpg" alt="" />
+                  <img src="assets/images/img-avatar-dummy-02.png" alt="" />
                   <figcaption>2</figcaption>
+                  <div class="arrow-up"></div>
                 </figure>
               </div>
             </div>
@@ -148,8 +205,9 @@
               <div class="user-container">
               <div class="user-avatar">
                 <figure>
-                  <img src="assets/images/img-user-sample-photo.jpg" alt="" />
+                  <img src="assets/images/img-avatar-dummy-03.png" alt="" />
                   <figcaption>3</figcaption>
+                  <div class="arrow-up"></div>
                 </figure>
               </div>
             </div>
@@ -176,9 +234,8 @@
           <a href="">
             <div class="user-avatar">
               <figure class="user-avatar-">
-                <img src="assets/images/img-user-sample-photo.jpg" alt="">
+                <img src="assets/images/img-avatar-dummy-01.png" alt="">
                 <figcaption>28</figcaption>
-                <div class="arrow-up"></div>
               </figure>
             </div>                
           </a>
