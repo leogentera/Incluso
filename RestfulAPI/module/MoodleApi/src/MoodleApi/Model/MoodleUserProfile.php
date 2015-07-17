@@ -47,6 +47,9 @@ class MoodleUserProfile extends Common
     public $showRecomendedBachelorDegrees=true;
     public $showMyDreams=true;
     
+    public $alias="";
+    public $termsAndConditions=false;
+    public $informationUsage=false;
     
     
     
@@ -171,6 +174,20 @@ class MoodleUserProfile extends Common
         	//var_dump($this->phones);
         }
         
+        if(array_key_exists ( 'termsAndConditions' , $customFields )){
+        	$this->termsAndConditions=$customFields['termsAndConditions']==0?true:false;
+        	//var_dump($this->phones);
+        }
+        
+        if(array_key_exists ( 'informationUsage' , $customFields )){
+        	$this->informationUsage=$customFields['informationUsage']==0?true:false;
+        	//var_dump($this->phones);
+        }
+        
+        if(array_key_exists ( 'alias' , $customFields )){
+        	$this->alias=$customFields['alias'];
+        	//var_dump($this->phones);
+        }
     }
     
     public function setRank($rank){

@@ -122,11 +122,17 @@ class UpdateUserProfileController extends AbstractRestfulJsonController {
 	    	$url.=$this->createURLParms($data, '&users[0][customfields][18][type]=%s&users[0][customfields][18][value]=%s', 'showStrengths' );
 	    	$url.=$this->createURLParms($data, '&users[0][customfields][19][type]=%s&users[0][customfields][19][value]=%s', 'showRecomendedBachelorDegrees' );
 	    	$url.=$this->createURLParms($data, '&users[0][customfields][20][type]=%s&users[0][customfields][20][value]=%s', 'showMyDreams' );
-	    	
+	    	var_dump($data);
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][21][type]=%s&users[0][customfields][21][value]=%s', 'alias' );
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][22][type]=%s&users[0][customfields][22][value]=%s', 'termsAndConditions' );
+	    	$url.=$this->createURLParms($data, '&users[0][customfields][22][type]=%s&users[0][customfields][22][value]=%s', 'informationUsage' );
+	    	var_dump($url);
 	    	
 	    	//$url = sprintf($url, $this->getToken(), $this->function);
 	    	
 	    	$response = file_get_contents($url);
+	    	
+	    	
 	    	if ($response=="null"){
 	    		return  new JsonModel(array());
 	    	}
@@ -148,7 +154,7 @@ class UpdateUserProfileController extends AbstractRestfulJsonController {
 	    		}
 	    	
 	    	
-	    	
+	    		
 	    	
 	    //}
 
