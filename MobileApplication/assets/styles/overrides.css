@@ -139,12 +139,12 @@
 }
 .incluso-app.start-dashboard .container {
   background-attachment: fixed;
-  background-image: url("../images/estrellascortas.png");
+  background-image: url("../images/bg-stars-01.png");
   background-size: contain;
 }
 .incluso-app.start-dashboard #site-canvas {
   background-attachment: scroll;
-  background-image: url("../images/estrellaslarg-01.png");
+  background-image: url("../images/bg-stars-02.png");
   background-size: contain;
 }
 .incluso-app.start-dashboard h1 {

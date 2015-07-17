@@ -608,7 +608,7 @@ body {
      Description: CSS class for a page wrapper with pages and buttons
     ****************************************************************************/
    .footer {
-        background-image:url('../images/footernave.gif');
+        background-image:url('../images/bg-footer-ship.gif');
         background-position: 0 99%;
         background-size: cover;
         display: block;
@@ -642,7 +642,7 @@ body {
         }
     }
     .db-bg{
-        background-image: url("../images/footnav.png");
+        background-image: url("../images/bg-footer-rocks.png");
         background-position: 50% 0;
         box-shadow: unset;
     }

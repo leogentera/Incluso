@@ -276,7 +276,7 @@
     border-color: #158ccd;
   }
   .incluso-app .hangar-bay {
-    background-image: url('../images/bckgnd.jpg');
+    background-image: url('../images/bg-hangarbay.jpg');
     background-color: #24282a;
     background-position: -1px -35px;
     background-repeat: no-repeat;
@@ -294,7 +294,7 @@
     width: 60%;
   }
   .incluso-app .blueprint {
-    background-image: url('../images/blueprint.jpg');
+    background-image: url('../images/bg-blueprint-ship.jpg');
     background-color: #112845;
     background-position: -1px 0px;
     background-repeat: no-repeat;
@@ -302,7 +302,7 @@
     border-bottom: 10px solid #24282a;
   }
   .incluso-app .progreso {
-    background-image: url('../images/progreso.jpg');
+    background-image: url('../images/bg-progress-spinn.jpg');
     background-size: cover;
     background-color: #24282A;
     padding-top: 5px;
@@ -639,7 +639,7 @@
     background-image: url("../images/prcnt/100.png");
   }
   .incluso-app .holoproj {
-    background-image: url('../images/holoproj.jpg');
+    background-image: url('../images/bg-holoproj-top.jpg');
     background-size: cover;
     background-color: #24282A;
     background-position: 0 100%;
@@ -656,14 +656,14 @@
     width: 100%;
   }
   .incluso-app .jector {
-    background-image: url('../images/holoprojftr.jpg');
+    background-image: url('../images/bg-holoproj-bot.jpg');
     background-size: cover;
     background-color: #24282A;
     background-position: 0 0;
     padding-top: 60px;
   }
   .incluso-app .parts {
-    background-image: url('../images/footernave.gif');
+    background-image: url('../images/bg-footer-ship.gif');
     background-position: 0 -3px;
     background-size: cover;
     border-top: 2px solid #2a2f32;
@@ -1297,7 +1297,7 @@
   }
   .incluso-app .my-badges:before {
     background-color: transparent;
-    background-image: url("../images/prenube.png");
+    background-image: url("../images/bg-badges-pre.png");
     background-position: 0 100%;
     background-size: cover;
     content: " ";
@@ -1309,7 +1309,7 @@
   }
   .incluso-app .my-badges:after {
     background-color: transparent;
-    background-image: url("../images/postnube.png");
+    background-image: url("../images/bg-badges-post.png");
     background-size: cover;
     content: " ";
     height: 54%;
@@ -1484,7 +1484,7 @@
   }
   .incluso-app .top-users:before {
     background-color: transparent;
-    background-image: url("../images/mountain.png");
+    background-image: url("../images/bg-topusers-pre.png");
     background-position: 50% 0;
     background-size: contain;
     content: " ";
@@ -1577,7 +1577,7 @@
   }
   .incluso-app .ilustration {
     background-color: #1e2e2e;
-    background-image: url("../images/navedwn.png");
+    background-image: url("../images/bg-ilustration-launchpad.png");
     background-position: 0 100%;
     background-repeat: no-repeat;
     background-size: cover;

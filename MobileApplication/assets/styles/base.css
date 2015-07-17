@@ -789,7 +789,7 @@ body {
   margin-bottom: 15px;
 }
 .incluso-app .footer {
-  background-image: url('../images/footernave.gif');
+  background-image: url('../images/bg-footer-ship.gif');
   background-position: 0 99%;
   background-size: cover;
   display: block;
@@ -821,7 +821,7 @@ body {
   margin-left: -30px;
 }
 .incluso-app .db-bg {
-  background-image: url("../images/footnav.png");
+  background-image: url("../images/bg-footer-rocks.png");
   background-position: 50% 0;
   box-shadow: unset;
 }
