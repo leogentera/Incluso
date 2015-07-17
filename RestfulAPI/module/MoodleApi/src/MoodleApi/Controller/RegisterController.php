@@ -32,11 +32,11 @@ class RegisterController extends AbstractRestfulJsonController {
 //     	$dateinMilis+=3600000;
     	
     	$url = sprintf($url, $this->getToken(), $this->function, 
-    			$data['username'], 
+    			urlencode($data['username']), 
     			urlencode($data['password']),
-    			"", 
-    			"",  
-    			$data['email'],
+    			urlencode($data['firstname']), 
+    			urlencode($data['lastname']), 
+    			urlencode($data['email']),
     			urlencode($data['city']), urlencode($data['country']), 
     			urlencode($data['secretanswer']), 
     			urlencode($data['secretquestion']), 
