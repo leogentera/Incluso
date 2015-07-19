@@ -50,7 +50,7 @@ class MoodleUserProfile extends Common
     public $alias="";
     public $termsAndConditions=false;
     public $informationUsage=false;
-    
+    public $status="Enabled";
     
     
     public function __construct($data, $badgesEarned, $badgesToEarn)
@@ -186,6 +186,11 @@ class MoodleUserProfile extends Common
         
         if(array_key_exists ( 'alias' , $customFields )){
         	$this->alias=$customFields['alias'];
+        	//var_dump($this->phones);
+        }
+        
+        if(array_key_exists ( 'status' , $customFields )){
+        	$this->status=$customFields['status'];
         	//var_dump($this->phones);
         }
     }

@@ -9,6 +9,7 @@ use MoodleApi\Model\MoodleApi\Model;
 use MoodleApi\Model\MoodleBadge;
 use MoodleApi\Model\MoodleMainDashboard;
 use MoodleApi\Model\MoodleLeader;
+use MoodleApi\Model\MoodleStage;
 
 class MainDashboardController extends AbstractRestfulJsonController{
 	
@@ -39,6 +40,9 @@ class MainDashboardController extends AbstractRestfulJsonController{
             $dashboard = new MoodleMainDashboard($json[0]);
             $dashboard->setRank($this->getRank($id));
             $dashboard->setLeaderboard($this->getLeaderboard());
+            $dashboard->setProgress($this->getProgress($id));
+            $dashboard->setFinishedStages($this->getFinishedStages($id));
+            $dashboard->setAvalilableStages($this->getAvailableStages($id));
             
             return new JsonModel((array) $dashboard);
 
@@ -121,7 +125,81 @@ class MainDashboardController extends AbstractRestfulJsonController{
     
     }
     
+    public function getProgress($userid)
+    {
+    
+    	$url = $this->getConfig()['MOODLE_API_URL']."&userid=$userid";
+    	$url = sprintf($url, $this->getToken(), "get_global_progress");
+    
+    	$response = file_get_contents($url);
+    
+    	$json = json_decode($response,true);
+    
+    	if (strpos($response, "exception") !== false)
+    	{
+    
+    		return array();
+    	}
+    	// Good
+    	if (count($json)==0){
+    		return "-1";
+    	}
+    	$progress=$json[0]['percentage_completed'];
+    	return $progress;
+    
+    
+    }
+    
+    public function getFinishedStages($userid)
+    {
+    
+    	$url = $this->getConfig()['MOODLE_API_URL']."&userid=$userid";
+    	$url = sprintf($url, $this->getToken(), "get_finished_stages");
+    
+    	$response = file_get_contents($url);
+    
+    	$json = json_decode($response,true);
+    
+    	if (strpos($response, "exception") !== false)
+    	{
+    
+    		return array();
+    	}
+    	// Good
+    	$stages= array();
+    	foreach($json as $stage){
+    		$stage = new MoodleStage($stage);
+    		array_push($stages, $stage);
+    	}
+    	return $stages;
+    
+    
+    }
 
+    public function getAvailableStages($userid)
+    {
+    
+    	$url = $this->getConfig()['MOODLE_API_URL'];
+    	$url = sprintf($url, $this->getToken(), "get_all_stages");
+
+    	$response = file_get_contents($url);
+    
+    	$json = json_decode($response,true);
+    
+    	if (strpos($response, "exception") !== false)
+    	{
+    		return array();
+    	}
+    	// Good
+    	$stages= array();
+    	foreach($json as $stage){
+    		$stage = new MoodleStage($stage);
+    		array_push($stages, $stage);
+    	}
+    	return $stages;
+    
+    
+    }
     
    
 }

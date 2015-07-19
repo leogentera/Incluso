@@ -11,6 +11,8 @@ class MoodleMainDashboard extends Common
 	public $shield="";
 	public $leaderboard=array();
 	public $rank=-1;
+	public $finishedStages=array();
+	public $availableStages=array();
 	
    
     public function __construct($data)
@@ -37,6 +39,15 @@ class MoodleMainDashboard extends Common
     }
     
     public function  setProgress($progress){
-    	$this->progress=$progress;
+    	$this->progressPercentage=$progress;
     }
+    
+    public function  setFinishedStages($stage){
+    	$this->finishedStages=$stage;
+    }
+    
+    public function  setAvalilableStages($stage){
+    	$this->availableStages=$stage;
+    }
+    
 }

@@ -59,7 +59,7 @@ class leaderboard_services extends external_api{
 		
 			$sql = "SELECT @r := @r+1 AS place, 
 					z.* FROM( 
-						SELECT CONCAT(u.firstname, ' ',u.lastname) AS name, 
+						SELECT u.id id, CONCAT(u.firstname, ' ',u.lastname) AS name, 
 						IFNULL(result.stars, 0) AS stars 
 						FROM {user} as u 
 						LEFT JOIN ( 
@@ -88,6 +88,7 @@ class leaderboard_services extends external_api{
 		return new external_multiple_structure(
 			new external_single_structure(
 				array(
+					'id' => new external_value(PARAM_INT, 'Id of the user'),
 					'place' => new external_value(PARAM_INT, 'Ranking'),
 					'name' => new external_value(PARAM_TEXT, 'Full name of user'),
 					'stars' => new external_value(PARAM_INT, 'Quantity of stars')
@@ -129,7 +130,7 @@ class leaderboard_services extends external_api{
 			//     throw new moodle_exception('cannotviewprofile');
 			// }
 		
-			$sql = "SELECT place 
+			$sql = "SELECT place
 					FROM (
 						SELECT @r := @r+1 AS place, 
 						z.* FROM( 
