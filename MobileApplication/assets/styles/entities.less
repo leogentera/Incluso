@@ -180,12 +180,8 @@
             .blanco{
                     color:white;
             }
-            &.step-dashboard .navbar{     
-                background-color: @clr-bluenav;
-                border-color: @clr-bluenav;
-            }
             .hangar-bay{
-                background-image:url('../images/bg-hangarbay.jpg');
+                background-image:url('@{url-images}/bg-hangarbay.jpg');
                 background-color: #24282a;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -205,7 +201,7 @@
 
             }
             .blueprint{
-                background-image:url('../images/bg-blueprint-ship.jpg');
+                background-image:url('@{url-images}/bg-blueprint-ship.jpg');
                 background-color: #112845;
                 background-position: -1px 0px;
                 background-repeat: no-repeat;
@@ -213,7 +209,7 @@
                 border-bottom: 10px solid #24282a;
             }
             .progreso{
-                background-image:url('../images/bg-progress-spinn.jpg');
+                background-image:url('@{url-images}/bg-progress-spinn.jpg');
                 background-size:cover;
                 background-color: #24282A;
                 padding-top: 5px;
@@ -248,14 +244,14 @@
                 @i: 0;
                 .loop (@i) when (@i <= 100) {
                     &[data-progress="@{i}"] {
-                        background-image: url("../images/prcnt/@{i}.png");
+                        background-image: url("@{url-images}/prcnt/@{i}.png");
                     }
                     .loop(@i + 1);
                 }
                 .loop(@i);
             }
             .holoproj{
-                background-image:url('../images/bg-holoproj-top.jpg');
+                background-image:url('@{url-images}/bg-holoproj-top.jpg');
                 background-size:cover;
                 background-color: #24282A;
                 background-position: 0 100%;
@@ -273,14 +269,14 @@
 
             }
             .jector{
-                background-image:url('../images/bg-holoproj-bot.jpg');
+                background-image:url('@{url-images}/bg-holoproj-bot.jpg');
                 background-size:cover;
                 background-color: #24282A;
                 background-position: 0 0;
                 padding-top: 60px;
             }
             .parts{
-                background-image:url('../images/bg-footer-ship.gif');
+                background-image:url('@{url-images}/bg-footer-ship.gif');
                 background-position: 0 -3px;
                 background-size: cover;
                 border-top: 2px solid #2a2f32;
@@ -547,7 +543,7 @@
                     border: 5px solid @clr-black;
                     .border-radius-circle ();
                     background-color:@clr-orange;
-                    background-image: url('../images/ics-gentera.png');
+                    background-image: url('@{url-images}/ics-gentera.png');
                     background-position: center -127px;
                     background-repeat: no-repeat;
                 }
@@ -560,7 +556,7 @@
                     height: 82px;
                     border: none;
                     background-color: transparent;
-                    background-image: url('../images/icn-video-play.png');
+                    background-image: url('@{url-images}/icn-video-play.png');
                     background-position: center center;
                 }                 
             }
@@ -604,7 +600,7 @@
                 width: 203px;
                 height: 203px;
                 background-color: transparent;
-                background-image: url('../images/img-progress-component.png');
+                background-image: url('@{url-images}/img-progress-component.png');
                 background-position: center center;
             }
             label {
@@ -670,7 +666,7 @@
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#335565', endColorstr='#2c4c5b',GradientType=0 );
             &:before{
                 background-color: transparent;
-                background-image: url("../images/bg-badges-pre.png");
+                background-image: url("@{url-images}/bg-badges-pre.png");
                 background-position: 0 100%;
                 background-size: cover;
                 content: " ";
@@ -682,7 +678,7 @@
             }
             &:after{
                 background-color: transparent;
-                background-image: url("../images/bg-badges-post.png");
+                background-image: url("@{url-images}/bg-badges-post.png");
                 background-size: cover;
                 content: " ";
                 height: 54%;
@@ -861,7 +857,7 @@
                     width: 24px;
                     height: 22px;
                     background-attachment: scroll;
-                    background-image: url('../images/ics-gentera.png');
+                    background-image: url('@{url-images}/ics-gentera.png');
                     background-position: center -165px;
                     background-repeat: no-repeat;
                     content: " ";
@@ -881,7 +877,7 @@
             background: #1e2e2e;
             &:before{
                 background-color: transparent;
-                background-image: url("../images/bg-topusers-pre.png");
+                background-image: url("@{url-images}/bg-topusers-pre.png");
                 background-position: 50% 0;
                 background-size: contain;
                 content: " ";
@@ -996,7 +992,7 @@
         ************************************************************************/
         .ilustration {
             background-color: #1e2e2e;
-            background-image: url("../images/bg-ilustration-launchpad.png");
+            background-image: url("@{url-images}/bg-ilustration-launchpad.png");
             background-position: 0 100%;
             background-repeat: no-repeat;
             background-size: cover;
@@ -1015,11 +1011,11 @@
             padding-top: 150px;
             height: 858px;
             /* .gradient-sky (); */
-            /*background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, 
-                        url('../images/img-profile-spaceship-dashboard-bottom.png') left bottom no-repeat, 
-                        url('../images/img-bg-profile-sky.jpg') center top repeat-y;*/
+            /*background: url('@{url-images}/img-profile-spaceship-dashboard-top.png') left top no-repeat, 
+                        url('@{url-images}/img-profile-spaceship-dashboard-bottom.png') left bottom no-repeat, 
+                        url('@{url-images}/img-bg-profile-sky.jpg') center top repeat-y;*/
 
-            background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, url('../images/img-bg-profile-top.jpg') left top no-repeat;
+            background: url('@{url-images}/img-profile-spaceship-dashboard-top.png') left top no-repeat, url('@{url-images}/img-bg-profile-top.jpg') left top no-repeat;
 
             .user-data {
                 margin-top: 8px;

@@ -248,10 +248,6 @@
   .incluso-app .blanco {
     color: white;
   }
-  .incluso-app.step-dashboard .navbar {
-    background-color: #158ccd;
-    border-color: #158ccd;
-  }
   .incluso-app .hangar-bay {
     background-image: url('../images/bg-hangarbay.jpg');
     background-color: #24282a;
@@ -1291,9 +1287,9 @@
     padding-top: 150px;
     height: 858px;
     /* .gradient-sky (); */
-    /*background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, 
-                        url('../images/img-profile-spaceship-dashboard-bottom.png') left bottom no-repeat, 
-                        url('../images/img-bg-profile-sky.jpg') center top repeat-y;*/
+    /*background: url('@{url-images}/img-profile-spaceship-dashboard-top.png') left top no-repeat, 
+                        url('@{url-images}/img-profile-spaceship-dashboard-bottom.png') left bottom no-repeat, 
+                        url('@{url-images}/img-bg-profile-sky.jpg') center top repeat-y;*/
     background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, url('../images/img-bg-profile-top.jpg') left top no-repeat;
   }
   .incluso-app .user-dashboard .user-data {

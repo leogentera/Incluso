@@ -23,6 +23,8 @@
             13. $component            
             14. $pages
             15. $footer
+            16. $spinner
+            17. $forma
 ********************************************************************************/
 /****************************************************************************
  LESS Utilities - variables and functions
@@ -134,10 +136,14 @@ body {
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     16. spinner
+     16. $spinner
      Description: CSS class to positionante, show and hide the preloader image
     ****************************************************************************/
   /***************************************************************************/
+  /****************************************************************************
+     16. $forma
+     Description: CSS class to create the form components
+    ****************************************************************************/
 }
 .incluso-app a:hover {
   text-decoration: none;
@@ -936,6 +942,292 @@ body {
   background-image: url("../images/bg-footer-rocks.png");
   background-position: 50% 0;
   box-shadow: unset;
+}
+.incluso-app .forma label {
+  cursor: pointer;
+  display: block;
+  margin-right: 15px;
+  padding-left: 10%;
+  position: relative;
+  line-height: normal;
+}
+.incluso-app .forma input[type="radio"],
+.incluso-app .forma input[type="checkbox"] {
+  display: none;
+}
+.incluso-app .forma input[type="radio"] + label::before,
+.incluso-app .forma input[type="checkbox"] + label::before {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.incluso-app .forma label::before {
+  background-color: transparent;
+  content: "";
+  display: inline-block;
+  left: 0;
+  margin-right: 10px;
+  position: absolute;
+}
+.incluso-app .forma input[type=radio] + label::before {
+  line-height: 50%;
+  padding: 0 2px 3px 1px;
+}
+.incluso-app .forma input[type=checkbox] + label {
+  margin-bottom: 10px;
+}
+.incluso-app .forma input[type=checkbox] + label::before {
+  border-radius: 3px;
+  padding: 0 6px;
+  content: "\2713";
+  color: rgba(0, 0, 0, 0);
+}
+.incluso-app .forma input[type=checkbox]:checked + label:before {
+  content: "\2713";
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  color: #e1e455;
+  text-align: center;
+}
+.incluso-app .forma input[type=checkbox]:checked + label {
+  color: #e1e455;
+}
+.incluso-app .forma input[type=radio] + label:before {
+  content: "\2022";
+  color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+}
+.incluso-app .forma input[type=radio]:checked + label:before {
+  content: "\2022";
+  color: #e1e455;
+  text-align: center;
+}
+.incluso-app .forma .tnf {
+  margin-top: 5%;
+}
+.incluso-app .forma .tnf label:before {
+  display: none;
+  content: "";
+}
+.incluso-app .forma .tnf label {
+  padding: 0 !important;
+  display: inline-block;
+}
+.incluso-app .forma .tnf input[type=radio]:checked + label {
+  color: #e1e455;
+}
+.incluso-app .forma .tnf label {
+  border: 1px solid white;
+  display: inline-block;
+  line-height: 200%;
+  margin: -2.5px !important;
+  padding: 0;
+  text-align: center;
+  width: 50%;
+}
+.incluso-app .forma .tnf label:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.incluso-app .forma .tnf label:nth-child(2) {
+  border-radius: 20px 0 0 20px;
+}
+.incluso-app .forma .tnf label:nth-child(4) {
+  border-radius: 0 20px 20px 0;
+}
+.incluso-app .forma div.cs-select {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  text-align: left;
+  background: #fff;
+  z-index: 100;
+  width: 100%;
+  max-width: 500px;
+  margin: 10px 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.incluso-app .forma div.cs-select:focus {
+  outline: none;
+}
+.incluso-app .forma .cs-select select {
+  display: none;
+}
+.incluso-app .forma .cs-select span {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  padding: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.incluso-app .forma .cs-select > span {
+  padding-right: 3em;
+}
+.incluso-app .forma .cs-select > span::after,
+.incluso-app .forma .cs-select .cs-selected span::after {
+  speak: none;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.incluso-app .forma .cs-select > span::after {
+  content: "\e612";
+  right: 1em;
+}
+.incluso-app .forma .cs-select .cs-selected span::after {
+  content: '\2713';
+  margin-left: 1em;
+}
+.incluso-app .forma .cs-select.cs-active > span::after {
+  -webkit-transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
+}
+.incluso-app .forma div.cs-active {
+  z-index: 200;
+}
+.incluso-app .forma .cs-select .cs-options {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+  visibility: hidden;
+}
+.incluso-app .forma .cs-select.cs-active .cs-options {
+  visibility: visible;
+}
+.incluso-app .forma .cs-select ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.incluso-app .forma .cs-select ul span {
+  padding: 1em;
+}
+.incluso-app .forma .cs-select ul li.cs-focus span {
+  background-color: #ddd;
+}
+.incluso-app .forma .cs-select li.cs-optgroup ul {
+  padding-left: 1em;
+}
+.incluso-app .forma .cs-select li.cs-optgroup > span {
+  cursor: default;
+}
+.incluso-app .forma div.cs-skin-rotate {
+  background: transparent;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+@media screen and (max-width: 30em) {
+  .incluso-app .forma div.cs-skin-rotate {
+    font-size: 1em;
+    width: 200px;
+  }
+}
+.incluso-app .forma .cs-skin-rotate > span,
+.incluso-app .forma .cs-skin-rotate .cs-options li {
+  background: transparent;
+  -webkit-transform-origin: 50% 50% -200px;
+  transform-origin: 50% 50% -200px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+}
+@media screen and (max-width: 30em) {
+  .incluso-app .forma .cs-skin-rotate > span,
+  .incluso-app .forma .cs-skin-rotate .cs-options li {
+    -webkit-transform-origin: 50% 50% -100px;
+    transform-origin: 50% 50% -100px;
+  }
+}
+.incluso-app .forma .cs-skin-rotate > span {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+.incluso-app .forma .cs-skin-rotate.cs-active > span {
+  opacity: 0;
+  -webkit-transform: rotate3d(0, 1, 0, -90deg);
+  transform: rotate3d(0, 1, 0, -90deg);
+}
+.incluso-app .forma .cs-skin-rotate > span::after,
+.incluso-app .forma .cs-skin-rotate .cs-selected span::after {
+  font-family: 'icomoon';
+}
+.incluso-app .forma .cs-skin-rotate > span::after,
+.incluso-app .forma .cs-skin-rotate.cs-active > span::after {
+  -webkit-transform: translate3d(0, -50%, 0) rotate3d(0, 0, 1, -90deg);
+  transform: translate3d(0, -50%, 0) rotate3d(0, 0, 1, -90deg);
+}
+.incluso-app .forma .cs-skin-rotate ul span::after {
+  content: '';
+  opacity: 0;
+}
+.incluso-app .forma .cs-skin-rotate .cs-selected span::after {
+  opacity: 0.5;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options {
+  background: transparent;
+  top: 0;
+  overflow: visible;
+  visibility: visible;
+  pointer-events: none;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options ul {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li {
+  opacity: 0;
+  -webkit-transform: rotate3d(0, 1, 0, 90deg);
+  transform: rotate3d(0, 1, 0, 90deg);
+}
+.incluso-app .forma .cs-skin-rotate.cs-active .cs-options li {
+  opacity: 1;
+  -webkit-transform: rotate3d(0, 1, 0, 0deg);
+  transform: rotate3d(0, 1, 0, 0deg);
+  pointer-events: auto;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(2) {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(3) {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(4) {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(5) {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.incluso-app .forma .cs-skin-rotate.cs-active .cs-options ul li {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li span {
+  background-color: #1f2733;
+  padding: 5px 0;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li span:hover,
+.incluso-app .forma .cs-skin-rotate .cs-options li.cs-focus span,
+.incluso-app .forma .cs-skin-rotate .cs-selected span {
+  opacity: 0.8;
 }
 @keyframes flicker {
   from {
