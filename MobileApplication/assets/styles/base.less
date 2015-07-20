@@ -106,6 +106,8 @@ body {
        height:auto; 
     }
     /***************************************************************************/  
+
+
     /****************************************************************************
      $nav-tabs
      Description: CSS rules for menu.
@@ -689,7 +691,8 @@ body {
      Description: CSS override to bootstrap's panel class.
     ****************************************************************************/
     .panel {
-        .border-radius-all(3vw);
+        /*overflow: hidden;
+        .border-radius-all(1.5vw);*/
 
         &.panel-default {
             border:none;
@@ -698,8 +701,10 @@ body {
             .panel-heading {
                 background-color: @clr-blueDark;
                 border: none;
+                .border-radius(1.5vw, 1.5vw, 0, 0);
                 color: @clr-white;
-                font-size: 24px;
+                font-size: 4.8vw;
+                vertical-align: middle;
             }
             .panel-title {
                 margin: 0;
@@ -711,6 +716,7 @@ body {
             .panel-body {
                 padding-top: 30px;
                 padding-bottom: 30px; 
+                .border-radius(0, 0, 1.5vw, 1.5vw);
 
                 h5 {
                     width: auto;
@@ -760,8 +766,11 @@ body {
             }        
         }
         &.panel-form {
-            background-color: @clr-white;
-            .clr-blueGray(color, 0.5);           
+            background-color: transparent;
+            .panel-body {
+                background-color: @clr-white;
+                .clr-blueGray(color, 0.5);                 
+            }
         }
     }
     /***************************************************************************/

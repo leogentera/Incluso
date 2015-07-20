@@ -747,9 +747,8 @@ body {
   border-radius: 16px;
 }
 .incluso-app .panel {
-  -webkit-border-radius: 3vw;
-  -moz-border-radius: 3vw;
-  border-radius: 3vw;
+  /*overflow: hidden;
+        .border-radius-all(1.5vw);*/
 }
 .incluso-app .panel.panel-default {
   border: none;
@@ -758,8 +757,12 @@ body {
 .incluso-app .panel.panel-default .panel-heading {
   background-color: #121b1c;
   border: none;
+  -webkit-border-radius: 1.5vw 1.5vw 0 0;
+  -moz-border-radius: 1.5vw 1.5vw 0 0;
+  border-radius: 1.5vw 1.5vw 0 0;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 4.8vw;
+  vertical-align: middle;
 }
 .incluso-app .panel.panel-default .panel-title {
   margin: 0;
@@ -771,6 +774,9 @@ body {
 .incluso-app .panel.panel-default .panel-body {
   padding-top: 30px;
   padding-bottom: 30px;
+  -webkit-border-radius: 0 0 1.5vw 1.5vw;
+  -moz-border-radius: 0 0 1.5vw 1.5vw;
+  border-radius: 0 0 1.5vw 1.5vw;
 }
 .incluso-app .panel.panel-default .panel-body h5 {
   width: auto;
@@ -817,6 +823,9 @@ body {
   margin: 15px 0;
 }
 .incluso-app .panel.panel-form {
+  background-color: transparent;
+}
+.incluso-app .panel.panel-form .panel-body {
   background-color: #ffffff;
   color: rgba(142, 170, 179, 0.5);
 }

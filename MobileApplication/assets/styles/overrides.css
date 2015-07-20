@@ -326,6 +326,28 @@
   line-height: 2em;
 }
 /* Edit Profile */
+.incluso-app.edit-profile .list-group {
+  margin: 0 auto;
+  width: 92%;
+}
+.incluso-app.edit-profile .panel {
+  margin: 0 auto;
+  width: 92%;
+}
+.incluso-app.edit-profile .panel-heading {
+  padding: 5.5vw 2.6vw;
+  font-size: 4.8vw;
+  line-height: 5.2vw;
+}
+.incluso-app.edit-profile .panel-heading .icomoon {
+  margin-right: 3vw;
+  color: #bcd431;
+  font-size: inherit;
+  vertical-align: middle;
+}
+.incluso-app.edit-profile .panel-heading .panel-title {
+  font-size: 4.8vw;
+}
 .incluso-app.edit-profile .panel-form .panel-body {
   padding-left: 6vw;
   padding-right: 6vw;
