@@ -48,8 +48,30 @@ body {
             text-decoration: none;
         }
     }
+    video {  
+       width:100%; 
+       height:auto; 
+    }
     /***************************************************************************/  
-
+    /****************************************************************************
+     $nav-tabs
+     Description: CSS rules for menu.
+    ****************************************************************************/     
+    .nav-tabs{
+        border: 0;
+    }
+    .nav-tabs.nav-justified>li {
+        display: table-cell !important;
+    }
+    .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, 
+    .nav-tabs.nav-justified > .active > a:focus,
+    .nav-tabs > li > a, 
+    .nav-tabs > li.active > a, 
+    .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+        background-color: transparent;
+        border:0;
+        padding: 0;
+    }
 
     /****************************************************************************
      $btn

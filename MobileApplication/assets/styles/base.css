@@ -50,6 +50,10 @@ body {
   font-family: Play, Sans-serif, Arial;
   /***************************************************************************/
   /****************************************************************************
+     $nav-tabs
+     Description: CSS rules for menu.
+    ****************************************************************************/
+  /****************************************************************************
      $btn
      Description: CSS override to bootstrap's btn class.
     ****************************************************************************/
@@ -137,6 +141,27 @@ body {
 }
 .incluso-app a:hover {
   text-decoration: none;
+}
+.incluso-app video {
+  width: 100%;
+  height: auto;
+}
+.incluso-app .nav-tabs {
+  border: 0;
+}
+.incluso-app .nav-tabs.nav-justified > li {
+  display: table-cell !important;
+}
+.incluso-app .nav-tabs.nav-justified > .active > a,
+.incluso-app .nav-tabs.nav-justified > .active > a:hover,
+.incluso-app .nav-tabs.nav-justified > .active > a:focus,
+.incluso-app .nav-tabs > li > a,
+.incluso-app .nav-tabs > li.active > a,
+.incluso-app .nav-tabs > li.active > a:hover,
+.incluso-app .nav-tabs > li.active > a:focus {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
 }
 .incluso-app .btn {
   border: none;
