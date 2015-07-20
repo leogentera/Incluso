@@ -1189,10 +1189,112 @@
         /***********************************************************************/
 
 
-      
+        /***********************************************************************
+         $my-profile-form
+         Description: CSS to represent user's profile editable form
+        ************************************************************************/
+        .my-profile-form {
+            display: block;
+            width: auto;
+            height: auto;
+            padding: 0;
+            margin: 0 auto;
 
+            h5 {
+                width: auto;
+                padding: 0;
+                margin: 0 0 6vw 0;
 
+                color: @clr-gray-asphalt;
+                font-size: 4vw;
+                font-weight: bold;
+                line-height: 4vw;
+                text-align: left;
+                text-transform: capitalize;
+            }
+            p, li {
+                width: auto;
+                color: @clr-white;
+                line-height: 1.2;
+            }
+            p {
+                margin-bottom:3px;
+                font-size: 1.2em;
 
+                & > label {
+                    margin: 0;
+                }
+            }
+            li {
+                margin-top: 15px;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                & > p {
+                    margin-top:0;
+                }
+            }                
+            label, em {
+                color:@clr-gray-platinum;
+                font-size: inherit;
+                font-style: normal;
+                line-height: inherit;
+            }
+            hr {
+                margin: 15px 0;
+            }
+
+            & > section {
+                display: block;
+                width: auto;
+                height: auto;
+                padding: 0;
+                margin: 12vw 0 0;
+            }
+            & > section:first-child {
+                margin-top: 0;
+            }
+            .page-number {
+                margin: 3vw 0;
+
+                p.text-center {
+                    span {
+                        font-size: 4.8vw;
+                        font-weight: bold;
+                    }
+                    span:last-child {
+                        color: @clr-blueGray;
+                    }
+                }
+            }
+            .btn {
+                margin-top: 6vw;
+                border-width: 0.6vw;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+                &.btn-transparent {
+                    color: @clr-gray-asphalt;
+                }
+                &.btn-primary {
+                    text-transform: uppercase;
+                }
+                &.btn-add {
+                    padding: 3.2vw 0;
+                    font-size: 4vw;
+                    line-height: 4vw;
+
+                    font-family: Roboto;
+                    .icomoon {
+                        padding: 0.1vw 3vw;
+                    }
+                }
+            }
+        }
+        /***********************************************************************/
 
     }
 }

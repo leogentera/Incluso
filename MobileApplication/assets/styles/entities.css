@@ -99,6 +99,11 @@
          Description: CSS to represent user's profile dashboard landing page
         ************************************************************************/
     /***********************************************************************/
+    /***********************************************************************
+         $my-profile-form
+         Description: CSS to represent user's profile editable form
+        ************************************************************************/
+    /***********************************************************************/
   }
   .incluso-app .to-top {
     bottom: 20px;
@@ -1441,6 +1446,98 @@
   .incluso-app .profile-dashboard > .row > div {
     padding-left: 0;
     padding-right: 0;
+  }
+  .incluso-app .my-profile-form {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .incluso-app .my-profile-form h5 {
+    width: auto;
+    padding: 0;
+    margin: 0 0 6vw 0;
+    color: #444d53;
+    font-size: 4vw;
+    font-weight: bold;
+    line-height: 4vw;
+    text-align: left;
+    text-transform: capitalize;
+  }
+  .incluso-app .my-profile-form p,
+  .incluso-app .my-profile-form li {
+    width: auto;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+  .incluso-app .my-profile-form p {
+    margin-bottom: 3px;
+    font-size: 1.2em;
+  }
+  .incluso-app .my-profile-form p > label {
+    margin: 0;
+  }
+  .incluso-app .my-profile-form li {
+    margin-top: 15px;
+  }
+  .incluso-app .my-profile-form li:first-child {
+    margin-top: 0;
+  }
+  .incluso-app .my-profile-form li > p {
+    margin-top: 0;
+  }
+  .incluso-app .my-profile-form label,
+  .incluso-app .my-profile-form em {
+    color: #8098a0;
+    font-size: inherit;
+    font-style: normal;
+    line-height: inherit;
+  }
+  .incluso-app .my-profile-form hr {
+    margin: 15px 0;
+  }
+  .incluso-app .my-profile-form > section {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 12vw 0 0;
+  }
+  .incluso-app .my-profile-form > section:first-child {
+    margin-top: 0;
+  }
+  .incluso-app .my-profile-form .page-number {
+    margin: 3vw 0;
+  }
+  .incluso-app .my-profile-form .page-number p.text-center span {
+    font-size: 4.8vw;
+    font-weight: bold;
+  }
+  .incluso-app .my-profile-form .page-number p.text-center span:last-child {
+    color: #8eaab3;
+  }
+  .incluso-app .my-profile-form .btn {
+    margin-top: 6vw;
+    border-width: 0.6vw;
+  }
+  .incluso-app .my-profile-form .btn:first-child {
+    margin-top: 0;
+  }
+  .incluso-app .my-profile-form .btn.btn-transparent {
+    color: #444d53;
+  }
+  .incluso-app .my-profile-form .btn.btn-primary {
+    text-transform: uppercase;
+  }
+  .incluso-app .my-profile-form .btn.btn-add {
+    padding: 3.2vw 0;
+    font-size: 4vw;
+    line-height: 4vw;
+    font-family: Roboto;
+  }
+  .incluso-app .my-profile-form .btn.btn-add .icomoon {
+    padding: 0.1vw 3vw;
   }
 }
 /* sm viewport */

@@ -335,9 +335,9 @@
   width: 92%;
 }
 .incluso-app.edit-profile .panel-heading {
-  padding: 5.5vw 2.6vw;
-  font-size: 4.8vw;
-  line-height: 5.2vw;
+  /*padding: 5.5vw 2.6vw;
+        font-size: 4.8vw;
+        line-height: 5.2vw;*/
 }
 .incluso-app.edit-profile .panel-heading .icomoon {
   margin-right: 3vw;
@@ -348,59 +348,68 @@
 .incluso-app.edit-profile .panel-heading .panel-title {
   font-size: 4.8vw;
 }
+.incluso-app.edit-profile .panel-form {
+  /*        .page-number {
+            margin: 3vw 0;
+
+            p.text-center {
+                span {
+                    font-size: 4.8vw;
+                    font-weight: bold;
+                }
+                span:last-child {
+                    color: @clr-blueGray;
+                }
+            }
+        }*/
+  /*.btn {
+            margin-top: 3vw;
+
+            &:first-child {
+                margin-top: 0;
+            }
+            &.btn-transparent {
+                color: @clr-gray-asphalt;
+            }
+            &.btn-primary {
+                text-transform: uppercase;
+            }
+
+        }*/
+}
 .incluso-app.edit-profile .panel-form .panel-body {
-  padding-left: 6vw;
-  padding-right: 6vw;
-  padding-top: 6vw;
-  padding-bottom: 6vw;
-}
-.incluso-app.edit-profile .panel-form .panel-body > section {
-  margin-top: 12vw;
-}
-.incluso-app.edit-profile .panel-form .panel-body > section:first-child {
-  margin-top: 0;
-}
-.incluso-app.edit-profile .panel-form .panel-body h5 {
-  margin-bottom: 6vw;
-  color: #444d53;
-  font-size: 4vw;
-  line-height: 4vw;
-  text-transform: capitalize;
-}
-.incluso-app.edit-profile .panel-form .panel-body .btn {
-  margin-top: 6vw;
-  border-width: 0.6vw;
-}
-.incluso-app.edit-profile .panel-form .panel-body .btn.btn-add {
-  padding: 3.2vw 0;
-  font-size: 4vw;
-  line-height: 4vw;
-  font-family: Roboto;
-}
-.incluso-app.edit-profile .panel-form .panel-body .btn.btn-add .icomoon {
-  padding: 0.1vw 3vw;
-}
-.incluso-app.edit-profile .panel-form .page-number {
-  margin: 3vw 0;
-}
-.incluso-app.edit-profile .panel-form .page-number p.text-center span {
-  font-size: 4.8vw;
-  font-weight: bold;
-}
-.incluso-app.edit-profile .panel-form .page-number p.text-center span:last-child {
-  color: #8eaab3;
-}
-.incluso-app.edit-profile .panel-form .btn {
-  margin-top: 3vw;
-}
-.incluso-app.edit-profile .panel-form .btn:first-child {
-  margin-top: 0;
-}
-.incluso-app.edit-profile .panel-form .btn.btn-transparent {
-  color: #444d53;
-}
-.incluso-app.edit-profile .panel-form .btn.btn-primary {
-  text-transform: uppercase;
+  /*            padding-left: 6vw;
+            padding-right: 6vw;
+            padding-top: 6vw;
+            padding-bottom: 6vw;*/
+  /*& > section {
+                margin-top: 12vw;
+            }
+            & > section:first-child {
+                margin-top: 0;
+            }*/
+  /*h5 {
+                margin-bottom: 6vw;
+                color: @clr-gray-asphalt;
+                font-size: 4vw;
+                line-height: 4vw;
+                text-transform: capitalize;
+            }*/
+  /*.btn {
+                margin-top: 6vw;
+                border-width: 0.6vw;
+                &.btn-lg {}
+                &.btn-add {
+                    padding: 3.2vw 0;
+                    font-size: 4vw;
+                    line-height: 4vw;
+
+                    font-family: Roboto;
+                    .icomoon {
+                        padding: 0.1vw 3vw;
+                    }
+                }
+            }*/
 }
 .incluso-app.edit-profile .form-group {
   border: none;

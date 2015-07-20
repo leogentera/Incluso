@@ -691,8 +691,27 @@ body {
      Description: CSS override to bootstrap's panel class.
     ****************************************************************************/
     .panel {
-        /*overflow: hidden;
-        .border-radius-all(1.5vw);*/
+
+        & > .panel-heading {
+            padding: 5.5vw 2.6vw;
+            .border-radius(1.5vw, 1.5vw, 0, 0);
+            font-size: 4.8vw;
+            line-height: 5.2vw;
+            vertical-align: middle;
+        }
+        .panel-title {
+            margin: 0;
+            font-size: inherit;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+        & > .panel-body {
+            padding-left: 6vw;
+            padding-right: 6vw;
+            padding-top: 6vw;
+            padding-bottom: 6vw; 
+            .border-radius(0, 0, 1.5vw, 1.5vw);
+        }
 
         &.panel-default {
             border:none;
@@ -701,24 +720,20 @@ body {
             .panel-heading {
                 background-color: @clr-blueDark;
                 border: none;
-                .border-radius(1.5vw, 1.5vw, 0, 0);
                 color: @clr-white;
-                font-size: 4.8vw;
-                vertical-align: middle;
             }
             .panel-title {
-                margin: 0;
                 color: @clr-white;
-                font-size: 24px;
-                font-weight: 700;
-                text-transform: none;
+                /*font-size: inherit;*/
+                /*font-weight: 700;
+                text-transform: none;*/
             }
             .panel-body {
-                padding-top: 30px;
+                /*padding-top: 30px;
                 padding-bottom: 30px; 
-                .border-radius(0, 0, 1.5vw, 1.5vw);
+                .border-radius(0, 0, 1.5vw, 1.5vw);*/
 
-                h5 {
+                /*h5 {
                     width: auto;
                     padding: 0;
                     margin: 6px 0;
@@ -731,9 +746,7 @@ body {
                 p, li {
                     width: auto;
                     color: @clr-white;
-                    /*font-weight: normal;*/
                     line-height: 1.2;
-                    /*text-align: left;*/
                 }
                 p {
                     margin-bottom:3px;
@@ -762,7 +775,7 @@ body {
                 }
                 hr {
                     margin: 15px 0;
-                }
+                }*/
             }        
         }
         &.panel-form {

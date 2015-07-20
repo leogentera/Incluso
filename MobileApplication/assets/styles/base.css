@@ -746,9 +746,29 @@ body {
   -moz-border-radius: 16px;
   border-radius: 16px;
 }
-.incluso-app .panel {
-  /*overflow: hidden;
-        .border-radius-all(1.5vw);*/
+.incluso-app .panel > .panel-heading {
+  padding: 5.5vw 2.6vw;
+  -webkit-border-radius: 1.5vw 1.5vw 0 0;
+  -moz-border-radius: 1.5vw 1.5vw 0 0;
+  border-radius: 1.5vw 1.5vw 0 0;
+  font-size: 4.8vw;
+  line-height: 5.2vw;
+  vertical-align: middle;
+}
+.incluso-app .panel .panel-title {
+  margin: 0;
+  font-size: inherit;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.incluso-app .panel > .panel-body {
+  padding-left: 6vw;
+  padding-right: 6vw;
+  padding-top: 6vw;
+  padding-bottom: 6vw;
+  -webkit-border-radius: 0 0 1.5vw 1.5vw;
+  -moz-border-radius: 0 0 1.5vw 1.5vw;
+  border-radius: 0 0 1.5vw 1.5vw;
 }
 .incluso-app .panel.panel-default {
   border: none;
@@ -757,70 +777,61 @@ body {
 .incluso-app .panel.panel-default .panel-heading {
   background-color: #121b1c;
   border: none;
-  -webkit-border-radius: 1.5vw 1.5vw 0 0;
-  -moz-border-radius: 1.5vw 1.5vw 0 0;
-  border-radius: 1.5vw 1.5vw 0 0;
   color: #ffffff;
-  font-size: 4.8vw;
-  vertical-align: middle;
 }
 .incluso-app .panel.panel-default .panel-title {
-  margin: 0;
   color: #ffffff;
-  font-size: 24px;
-  font-weight: 700;
-  text-transform: none;
+  /*font-size: inherit;*/
+  /*font-weight: 700;
+                text-transform: none;*/
 }
 .incluso-app .panel.panel-default .panel-body {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  -webkit-border-radius: 0 0 1.5vw 1.5vw;
-  -moz-border-radius: 0 0 1.5vw 1.5vw;
-  border-radius: 0 0 1.5vw 1.5vw;
-}
-.incluso-app .panel.panel-default .panel-body h5 {
-  width: auto;
-  padding: 0;
-  margin: 6px 0;
-  color: #08b290;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1;
-  text-align: left;
-}
-.incluso-app .panel.panel-default .panel-body p,
-.incluso-app .panel.panel-default .panel-body li {
-  width: auto;
-  color: #ffffff;
-  /*font-weight: normal;*/
-  line-height: 1.2;
-  /*text-align: left;*/
-}
-.incluso-app .panel.panel-default .panel-body p {
-  margin-bottom: 3px;
-  font-size: 1.2em;
-}
-.incluso-app .panel.panel-default .panel-body p > label {
-  margin: 0;
-}
-.incluso-app .panel.panel-default .panel-body li {
-  margin-top: 15px;
-}
-.incluso-app .panel.panel-default .panel-body li:first-child {
-  margin-top: 0;
-}
-.incluso-app .panel.panel-default .panel-body li > p {
-  margin-top: 0;
-}
-.incluso-app .panel.panel-default .panel-body label,
-.incluso-app .panel.panel-default .panel-body em {
-  color: #8098a0;
-  font-size: inherit;
-  font-style: normal;
-  line-height: inherit;
-}
-.incluso-app .panel.panel-default .panel-body hr {
-  margin: 15px 0;
+  /*padding-top: 30px;
+                padding-bottom: 30px; 
+                .border-radius(0, 0, 1.5vw, 1.5vw);*/
+  /*h5 {
+                    width: auto;
+                    padding: 0;
+                    margin: 6px 0;
+                    color: @clr-blueTurquoise;
+                    font-size: 20px;
+                    font-weight: bold;
+                    line-height: 1;
+                    text-align: left;
+                }
+                p, li {
+                    width: auto;
+                    color: @clr-white;
+                    line-height: 1.2;
+                }
+                p {
+                    margin-bottom:3px;
+                    font-size: 1.2em;
+
+                    & > label {
+                        margin: 0;
+                    }
+                }
+                li {
+                    margin-top: 15px;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    & > p {
+                        margin-top:0;
+                    }
+                }                
+                label, em {
+                    color:@clr-gray-platinum;
+                    font-size: inherit;
+                    font-style: normal;
+                    line-height: inherit;
+                }
+                hr {
+                    margin: 15px 0;
+                }*/
 }
 .incluso-app .panel.panel-form {
   background-color: transparent;
