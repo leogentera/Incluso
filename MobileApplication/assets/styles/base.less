@@ -691,13 +691,21 @@ body {
      Description: CSS override to bootstrap's panel class.
     ****************************************************************************/
     .panel {
-
         & > .panel-heading {
             padding: 5.5vw 2.6vw;
             .border-radius(1.5vw, 1.5vw, 0, 0);
             font-size: 4.8vw;
             line-height: 5.2vw;
             vertical-align: middle;
+
+            &.with-icons {
+                .icomoon {
+                    margin-right:3vw;
+                    color:@clr-green;
+                    font-size: inherit;
+                    vertical-align: middle;
+                }
+            }
         }
         .panel-title {
             margin: 0;
@@ -712,7 +720,6 @@ body {
             padding-bottom: 6vw; 
             .border-radius(0, 0, 1.5vw, 1.5vw);
         }
-
         &.panel-default {
             border:none;
             .clr-grayDark(background-color, 0.7);
@@ -724,65 +731,16 @@ body {
             }
             .panel-title {
                 color: @clr-white;
-                /*font-size: inherit;*/
-                /*font-weight: 700;
-                text-transform: none;*/
             }
             .panel-body {
-                /*padding-top: 30px;
-                padding-bottom: 30px; 
-                .border-radius(0, 0, 1.5vw, 1.5vw);*/
 
-                /*h5 {
-                    width: auto;
-                    padding: 0;
-                    margin: 6px 0;
-                    color: @clr-blueTurquoise;
-                    font-size: 20px;
-                    font-weight: bold;
-                    line-height: 1;
-                    text-align: left;
-                }
-                p, li {
-                    width: auto;
-                    color: @clr-white;
-                    line-height: 1.2;
-                }
-                p {
-                    margin-bottom:3px;
-                    font-size: 1.2em;
-
-                    & > label {
-                        margin: 0;
-                    }
-                }
-                li {
-                    margin-top: 15px;
-
-                    &:first-child {
-                        margin-top: 0;
-                    }
-
-                    & > p {
-                        margin-top:0;
-                    }
-                }                
-                label, em {
-                    color:@clr-gray-platinum;
-                    font-size: inherit;
-                    font-style: normal;
-                    line-height: inherit;
-                }
-                hr {
-                    margin: 15px 0;
-                }*/
             }        
         }
         &.panel-form {
             background-color: transparent;
             .panel-body {
                 background-color: @clr-white;
-                .clr-blueGray(color, 0.5);                 
+                .clr-blueGray(color, 0.5);
             }
         }
     }

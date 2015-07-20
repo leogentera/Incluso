@@ -1245,7 +1245,6 @@
             hr {
                 margin: 15px 0;
             }
-
             & > section {
                 display: block;
                 width: auto;
@@ -1290,6 +1289,26 @@
                     font-family: Roboto;
                     .icomoon {
                         padding: 0.1vw 3vw;
+                    }
+                }
+            }
+            .form-group {
+                border: none;
+                margin-bottom: 0;
+
+                .form-control {
+                    border-top-width: 0;
+                    text-indent: 3px;
+                }
+                .form-control:first-child {
+                    /*border-top:1px solid;*/
+                }
+                select.form-control {
+                    text-indent: 0;
+                }
+                &:first-child {
+                    .form-control:first-child {
+                        border-top-width: 0.6vw;
                     }
                 }
             }

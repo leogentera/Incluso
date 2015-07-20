@@ -1539,6 +1539,23 @@
   .incluso-app .my-profile-form .btn.btn-add .icomoon {
     padding: 0.1vw 3vw;
   }
+  .incluso-app .my-profile-form .form-group {
+    border: none;
+    margin-bottom: 0;
+  }
+  .incluso-app .my-profile-form .form-group .form-control {
+    border-top-width: 0;
+    text-indent: 3px;
+  }
+  .incluso-app .my-profile-form .form-group .form-control:first-child {
+    /*border-top:1px solid;*/
+  }
+  .incluso-app .my-profile-form .form-group select.form-control {
+    text-indent: 0;
+  }
+  .incluso-app .my-profile-form .form-group:first-child .form-control:first-child {
+    border-top-width: 0.6vw;
+  }
 }
 /* sm viewport */
 /* md viewport */

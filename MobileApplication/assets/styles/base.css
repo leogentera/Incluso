@@ -755,6 +755,12 @@ body {
   line-height: 5.2vw;
   vertical-align: middle;
 }
+.incluso-app .panel > .panel-heading.with-icons .icomoon {
+  margin-right: 3vw;
+  color: #bcd431;
+  font-size: inherit;
+  vertical-align: middle;
+}
 .incluso-app .panel .panel-title {
   margin: 0;
   font-size: inherit;
@@ -781,57 +787,6 @@ body {
 }
 .incluso-app .panel.panel-default .panel-title {
   color: #ffffff;
-  /*font-size: inherit;*/
-  /*font-weight: 700;
-                text-transform: none;*/
-}
-.incluso-app .panel.panel-default .panel-body {
-  /*padding-top: 30px;
-                padding-bottom: 30px; 
-                .border-radius(0, 0, 1.5vw, 1.5vw);*/
-  /*h5 {
-                    width: auto;
-                    padding: 0;
-                    margin: 6px 0;
-                    color: @clr-blueTurquoise;
-                    font-size: 20px;
-                    font-weight: bold;
-                    line-height: 1;
-                    text-align: left;
-                }
-                p, li {
-                    width: auto;
-                    color: @clr-white;
-                    line-height: 1.2;
-                }
-                p {
-                    margin-bottom:3px;
-                    font-size: 1.2em;
-
-                    & > label {
-                        margin: 0;
-                    }
-                }
-                li {
-                    margin-top: 15px;
-
-                    &:first-child {
-                        margin-top: 0;
-                    }
-
-                    & > p {
-                        margin-top:0;
-                    }
-                }                
-                label, em {
-                    color:@clr-gray-platinum;
-                    font-size: inherit;
-                    font-style: normal;
-                    line-height: inherit;
-                }
-                hr {
-                    margin: 15px 0;
-                }*/
 }
 .incluso-app .panel.panel-form {
   background-color: transparent;
