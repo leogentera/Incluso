@@ -24,47 +24,6 @@
 /* Custom Functions */
 /* xs viewport */
 @media screen {
-  #site-wrapper {
-    position: relative;
-    overflow: hidden;
-    width: 100vw;
-  }
-  #site-canvas {
-    width: 100vw;
-    position: relative;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-  .show-nav #site-canvas {
-    -webkit-transform: translateX(150px);
-    transform: translateX(150px);
-    transform: translate3d(150px, 0, 0);
-    -webkit-transform: translate3d(150px, 0, 0);
-  }
-  .show-nav #site-menu {
-    left: 0px;
-  }
-  #site-menu {
-    -webkit-transition: all 300ms ease-in-out;
-    -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
-    transition: all 300ms ease-in-out;
-    width: 150px;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: -150px;
-    background: #12171D;
-    padding: 15px;
-  }
-  .ease {
-    -webkit-transition: 300ms ease all;
-    transition: 300ms ease all;
-  }
   .incluso-app {
     /***********************************************************************
          01. $text n containers
@@ -140,6 +99,11 @@
          Description: CSS to represent user's profile dashboard landing page
         ************************************************************************/
     /***********************************************************************/
+    /***********************************************************************
+         $my-profile-form
+         Description: CSS to represent user's profile editable form
+        ************************************************************************/
+    /***********************************************************************/
   }
   .incluso-app .to-top {
     bottom: 20px;
@@ -158,12 +122,6 @@
     font-weight: bold;
     margin: 5% 10%;
     font-size: 120%;
-  }
-  .incluso-app .txt-title:before {
-    content: "- ";
-  }
-  .incluso-app .txt-title:after {
-    content: " -";
   }
   .incluso-app .txt-renglon {
     color: white;
@@ -254,40 +212,17 @@
   .incluso-app .blanco {
     color: white;
   }
-  .incluso-app .nav-tabs {
-    border: 0;
-  }
-  .incluso-app .nav-tabs.nav-justified > li {
-    display: table-cell !important;
-  }
-  .incluso-app .nav-tabs.nav-justified > .active > a,
-  .incluso-app .nav-tabs.nav-justified > .active > a:hover,
-  .incluso-app .nav-tabs.nav-justified > .active > a:focus,
-  .incluso-app .nav-tabs > li > a,
-  .incluso-app .nav-tabs > li.active > a,
-  .incluso-app .nav-tabs > li.active > a:hover,
-  .incluso-app .nav-tabs > li.active > a:focus {
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-  }
-  .incluso-app.step-dashboard .navbar {
-    background-color: #158ccd;
-    border-color: #158ccd;
-  }
   .incluso-app .hangar-bay {
     background-image: url('../images/bg-hangarbay.jpg');
     background-color: #24282a;
-    background-position: -1px -35px;
     background-repeat: no-repeat;
-    background-size: contain;
-    border-bottom: 10px solid #24282a;
+    background-size: cover;
   }
   .incluso-app .hangar-bay #ship {
     display: block;
     width: 100%;
     min-height: 200px;
-    margin-bottom: 20px;
+    padding-bottom: 40px;
   }
   .incluso-app .hangar-bay #ship img {
     margin: 5% 20%;
@@ -705,7 +640,7 @@
     background: radial-gradient(ellipse at center, #1f2733 0%, #141921 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1f2733', endColorstr='#141921', GradientType=1);
   }
-  .incluso-app .parte [class^="icon-"] {
+  .incluso-app .parte .icomoon {
     color: #e1e455;
     font-size: 150%;
     padding-right: 5%;
@@ -871,279 +806,6 @@
   }
   .incluso-app .close:hover {
     border-bottom: 10px solid black;
-  }
-  .incluso-app .forma label {
-    cursor: pointer;
-    display: block;
-    margin-right: 15px;
-    padding-left: 10%;
-    position: relative;
-    line-height: normal;
-  }
-  .incluso-app .forma input[type="radio"],
-  .incluso-app .forma input[type="checkbox"] {
-    display: none;
-  }
-  .incluso-app .forma input[type="radio"] + label::before,
-  .incluso-app .forma input[type="checkbox"] + label::before {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-  .incluso-app .forma label::before {
-    background-color: transparent;
-    content: "";
-    display: inline-block;
-    left: 0;
-    margin-right: 10px;
-    position: absolute;
-  }
-  .incluso-app .forma input[type=radio] + label::before {
-    line-height: 50%;
-    padding: 0 2px 3px 1px;
-  }
-  .incluso-app .forma input[type=checkbox] + label {
-    margin-bottom: 10px;
-  }
-  .incluso-app .forma input[type=checkbox] + label::before {
-    border-radius: 3px;
-    padding: 0 6px;
-    content: "\2713";
-    color: rgba(0, 0, 0, 0);
-  }
-  .incluso-app .forma input[type=checkbox]:checked + label:before {
-    content: "\2713";
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-    color: #e1e455;
-    text-align: center;
-  }
-  .incluso-app .forma input[type=checkbox]:checked + label {
-    color: #e1e455;
-  }
-  .incluso-app .forma input[type=radio] + label:before {
-    content: "\2022";
-    color: rgba(0, 0, 0, 0);
-    border-radius: 50%;
-  }
-  .incluso-app .forma input[type=radio]:checked + label:before {
-    content: "\2022";
-    color: #e1e455;
-    text-align: center;
-  }
-  .incluso-app .forma .tnf {
-    margin-top: 5%;
-  }
-  .incluso-app .forma .tnf label:before {
-    display: none;
-    content: "";
-  }
-  .incluso-app .forma .tnf label {
-    padding: 0 !important;
-    display: inline-block;
-  }
-  .incluso-app .forma .tnf input[type=radio]:checked + label {
-    color: #e1e455;
-  }
-  .incluso-app .forma .tnf label {
-    border: 1px solid white;
-    display: inline-block;
-    line-height: 200%;
-    margin: -2.5px !important;
-    padding: 0;
-    text-align: center;
-    width: 50%;
-  }
-  .incluso-app .forma .tnf label:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  .incluso-app .forma .tnf label:nth-child(2) {
-    border-radius: 20px 0 0 20px;
-  }
-  .incluso-app .forma .tnf label:nth-child(4) {
-    border-radius: 0 20px 20px 0;
-  }
-  .incluso-app .forma div.cs-select {
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    text-align: left;
-    background: #fff;
-    z-index: 100;
-    width: 100%;
-    max-width: 500px;
-    margin: 10px 0;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  .incluso-app .forma div.cs-select:focus {
-    outline: none;
-  }
-  .incluso-app .forma .cs-select select {
-    display: none;
-  }
-  .incluso-app .forma .cs-select span {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    padding: 1em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .incluso-app .forma .cs-select > span {
-    padding-right: 3em;
-  }
-  .incluso-app .forma .cs-select > span::after,
-  .incluso-app .forma .cs-select .cs-selected span::after {
-    speak: none;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .incluso-app .forma .cs-select > span::after {
-    content: "\e612";
-    right: 1em;
-  }
-  .incluso-app .forma .cs-select .cs-selected span::after {
-    content: '\2713';
-    margin-left: 1em;
-  }
-  .incluso-app .forma .cs-select.cs-active > span::after {
-    -webkit-transform: translateY(-50%) rotate(180deg);
-    transform: translateY(-50%) rotate(180deg);
-  }
-  .incluso-app .forma div.cs-active {
-    z-index: 200;
-  }
-  .incluso-app .forma .cs-select .cs-options {
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
-    background: #fff;
-    visibility: hidden;
-  }
-  .incluso-app .forma .cs-select.cs-active .cs-options {
-    visibility: visible;
-  }
-  .incluso-app .forma .cs-select ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
-  .incluso-app .forma .cs-select ul span {
-    padding: 1em;
-  }
-  .incluso-app .forma .cs-select ul li.cs-focus span {
-    background-color: #ddd;
-  }
-  .incluso-app .forma .cs-select li.cs-optgroup ul {
-    padding-left: 1em;
-  }
-  .incluso-app .forma .cs-select li.cs-optgroup > span {
-    cursor: default;
-  }
-  .incluso-app .forma div.cs-skin-rotate {
-    background: transparent;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-  }
-  .incluso-app .forma .cs-skin-rotate > span,
-  .incluso-app .forma .cs-skin-rotate .cs-options li {
-    background: transparent;
-    -webkit-transform-origin: 50% 50% -200px;
-    transform-origin: 50% 50% -200px;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-  .incluso-app .forma .cs-skin-rotate > span {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-  }
-  .incluso-app .forma .cs-skin-rotate.cs-active > span {
-    opacity: 0;
-    -webkit-transform: rotate3d(0, 1, 0, -90deg);
-    transform: rotate3d(0, 1, 0, -90deg);
-  }
-  .incluso-app .forma .cs-skin-rotate > span::after,
-  .incluso-app .forma .cs-skin-rotate .cs-selected span::after {
-    font-family: 'icomoon';
-  }
-  .incluso-app .forma .cs-skin-rotate > span::after,
-  .incluso-app .forma .cs-skin-rotate.cs-active > span::after {
-    -webkit-transform: translate3d(0, -50%, 0) rotate3d(0, 0, 1, -90deg);
-    transform: translate3d(0, -50%, 0) rotate3d(0, 0, 1, -90deg);
-  }
-  .incluso-app .forma .cs-skin-rotate ul span::after {
-    content: '';
-    opacity: 0;
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-selected span::after {
-    opacity: 0.5;
-    -webkit-transition: opacity 0.3s;
-    transition: opacity 0.3s;
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-options {
-    background: transparent;
-    top: 0;
-    overflow: visible;
-    visibility: visible;
-    pointer-events: none;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-options ul {
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-options li {
-    opacity: 0;
-    -webkit-transform: rotate3d(0, 1, 0, 90deg);
-    transform: rotate3d(0, 1, 0, 90deg);
-  }
-  .incluso-app .forma .cs-skin-rotate.cs-active .cs-options li {
-    opacity: 1;
-    -webkit-transform: rotate3d(0, 1, 0, 0deg);
-    transform: rotate3d(0, 1, 0, 0deg);
-    pointer-events: auto;
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(2) {
-    -webkit-transition-delay: 0.05s;
-    transition-delay: 0.05s;
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(3) {
-    -webkit-transition-delay: 0.1s;
-    transition-delay: 0.1s;
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(4) {
-    -webkit-transition-delay: 0.15s;
-    transition-delay: 0.15s;
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(5) {
-    -webkit-transition-delay: 0.2s;
-    transition-delay: 0.2s;
-  }
-  .incluso-app .forma .cs-skin-rotate.cs-active .cs-options ul li {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-options li span {
-    background-color: #1f2733;
-    padding: 5px 0;
-  }
-  .incluso-app .forma .cs-skin-rotate .cs-options li span:hover,
-  .incluso-app .forma .cs-skin-rotate .cs-options li.cs-focus span,
-  .incluso-app .forma .cs-skin-rotate .cs-selected span {
-    opacity: 0.8;
   }
   .incluso-app .user-points {
     display: inline-block;
@@ -1589,9 +1251,9 @@
     padding-top: 150px;
     height: 858px;
     /* .gradient-sky (); */
-    /*background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, 
-                        url('../images/img-profile-spaceship-dashboard-bottom.png') left bottom no-repeat, 
-                        url('../images/img-bg-profile-sky.jpg') center top repeat-y;*/
+    /*background: url('@{url-images}/img-profile-spaceship-dashboard-top.png') left top no-repeat, 
+                        url('@{url-images}/img-profile-spaceship-dashboard-bottom.png') left bottom no-repeat, 
+                        url('@{url-images}/img-bg-profile-sky.jpg') center top repeat-y;*/
     background: url('../images/img-profile-spaceship-dashboard-top.png') left top no-repeat, url('../images/img-bg-profile-top.jpg') left top no-repeat;
   }
   .incluso-app .user-dashboard .user-data {
@@ -1635,7 +1297,7 @@
     position: relative;
     z-index: 2;
     margin: 0;
-    height: 136px;
+    height: 132px;
     background-attachment: scroll;
     /*background-image:url('@{url-images}/img-profile-spaceship-dashboard-settings.png');*/
     background-image: url('../images/img-profile-spaceship-dashboard-bottom.png');
@@ -1685,7 +1347,7 @@
   }
   .incluso-app .profile-options {
     margin: 0;
-    padding: 12px 0 41px;
+    padding: 32px 0 15px;
     height: auto;
     background-attachment: scroll;
     background-image: url('../images/img-profile-spaceship-dashboard-bottom.png');
@@ -1785,18 +1447,114 @@
     padding-left: 0;
     padding-right: 0;
   }
-}
-@media screen and screen and (max-width: 30em) {
-  .incluso-app .forma div.cs-skin-rotate {
-    font-size: 1em;
-    width: 200px;
+  .incluso-app .my-profile-form {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
   }
-}
-@media screen and screen and (max-width: 30em) {
-  .incluso-app .forma .cs-skin-rotate > span,
-  .incluso-app .forma .cs-skin-rotate .cs-options li {
-    -webkit-transform-origin: 50% 50% -100px;
-    transform-origin: 50% 50% -100px;
+  .incluso-app .my-profile-form h5 {
+    width: auto;
+    padding: 0;
+    margin: 0 0 6vw 0;
+    color: #444d53;
+    font-size: 4vw;
+    font-weight: bold;
+    line-height: 4vw;
+    text-align: left;
+    text-transform: capitalize;
+  }
+  .incluso-app .my-profile-form p,
+  .incluso-app .my-profile-form li {
+    width: auto;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+  .incluso-app .my-profile-form p {
+    margin-bottom: 3px;
+    font-size: 1.2em;
+  }
+  .incluso-app .my-profile-form p > label {
+    margin: 0;
+  }
+  .incluso-app .my-profile-form li {
+    margin-top: 15px;
+  }
+  .incluso-app .my-profile-form li:first-child {
+    margin-top: 0;
+  }
+  .incluso-app .my-profile-form li > p {
+    margin-top: 0;
+  }
+  .incluso-app .my-profile-form label,
+  .incluso-app .my-profile-form em {
+    color: #8098a0;
+    font-size: inherit;
+    font-style: normal;
+    line-height: inherit;
+  }
+  .incluso-app .my-profile-form hr {
+    margin: 15px 0;
+  }
+  .incluso-app .my-profile-form > section {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 12vw 0 0;
+  }
+  .incluso-app .my-profile-form > section:first-child {
+    margin-top: 0;
+  }
+  .incluso-app .my-profile-form .page-number {
+    margin: 3vw 0;
+  }
+  .incluso-app .my-profile-form .page-number p.text-center span {
+    font-size: 4.8vw;
+    font-weight: bold;
+  }
+  .incluso-app .my-profile-form .page-number p.text-center span:last-child {
+    color: #8eaab3;
+  }
+  .incluso-app .my-profile-form .btn {
+    margin-top: 6vw;
+    border-width: 0.6vw;
+  }
+  .incluso-app .my-profile-form .btn:first-child {
+    margin-top: 0;
+  }
+  .incluso-app .my-profile-form .btn.btn-transparent {
+    color: #444d53;
+  }
+  .incluso-app .my-profile-form .btn.btn-primary {
+    text-transform: uppercase;
+  }
+  .incluso-app .my-profile-form .btn.btn-add {
+    padding: 3.2vw 0;
+    font-size: 4vw;
+    line-height: 4vw;
+    font-family: Roboto;
+  }
+  .incluso-app .my-profile-form .btn.btn-add .icomoon {
+    padding: 0.1vw 3vw;
+  }
+  .incluso-app .my-profile-form .form-group {
+    border: none;
+    margin-bottom: 0;
+  }
+  .incluso-app .my-profile-form .form-group .form-control {
+    border-top-width: 0;
+    text-indent: 3px;
+  }
+  .incluso-app .my-profile-form .form-group .form-control:first-child {
+    /*border-top:1px solid;*/
+  }
+  .incluso-app .my-profile-form .form-group select.form-control {
+    text-indent: 0;
+  }
+  .incluso-app .my-profile-form .form-group:first-child .form-control:first-child {
+    border-top-width: 0.6vw;
   }
 }
 /* sm viewport */

@@ -56,9 +56,10 @@
 }
 .incluso-app.public .form-group {
   margin-bottom: 0;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: rgba(255, 255, 255, 0.3);
+  /*margin-bottom: 0;
+        border-bottom-width:1px;
+        border-bottom-style:solid;
+        .clr-white(border-color, 0.3);*/
 }
 .incluso-app.public .checkbox {
   margin: 28px 0;
@@ -323,4 +324,35 @@
   border: 3px solid #bcd431;
   font-size: 1em;
   line-height: 2em;
+}
+/* Edit Profile */
+.incluso-app.edit-profile .list-group {
+  margin: 0 auto;
+  width: 92%;
+}
+.incluso-app.edit-profile .panel {
+  margin: 0 auto;
+  width: 92%;
+}
+/* Step dashboard*/
+.incluso-app.step-dashboard .navbar {
+  background-color: #158ccd;
+  border-color: #158ccd;
+}
+.incluso-app.step-dashboard .video-gallery {
+  margin: 0;
+  padding: 20px;
+  background-image: url('../images/bg-video-lg.jpg');
+  background-color: #2A2E31;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.incluso-app.step-dashboard footer.footer {
+  background-image: url('../images/img-footer-texture-lg.png');
+  background-color: #24292B;
+  box-shadow: unset;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
 }

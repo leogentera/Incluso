@@ -23,6 +23,8 @@
             13. $component            
             14. $pages
             15. $footer
+            16. $spinner
+            17. $forma
 ********************************************************************************/
 @import "less-utilities.less";
 
@@ -32,12 +34,64 @@ body {
     width: 100%;
     height: inherit;
 }
+    /****************************************************************************
+     $menu 
+     Description: CSS rules to make the off canvas without javascript.
+     very important!!!
+    ****************************************************************************/   
+
+#site-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+}
+#site-canvas {
+    width: 100vw;
+    position: relative;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+      
+    -webkit-transform: translate3d(0, 0, 0); 
+    transform: translate3d(0, 0, 0); 
+      
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.show-nav #site-canvas {
+    -webkit-transform: translateX(150px);
+    transform: translateX(150px);
+      
+    transform: translate3d(150px, 0, 0);
+    -webkit-transform: translate3d(150px, 0, 0);
+}
+.show-nav #site-menu{
+    left: 0px;
+}
+#site-menu {
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+    width: 150px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -150px;
+    background: #12171D;
+    padding: 15px;
+}
+
+.ease { 
+    -webkit-transition: 300ms ease all; 
+    transition: 300ms ease all; 
+}
 
 .incluso-app {
 
     /****************************************************************************
      $incluso-app 
      Description: CSS rules for basic namespace wrapper.
+     very important!!!
     ****************************************************************************/   
     padding:0; margin:0 auto;
     max-width: 100vw;
@@ -47,8 +101,32 @@ body {
             text-decoration: none;
         }
     }
+    video {  
+       width:100%; 
+       height:auto; 
+    }
     /***************************************************************************/  
 
+
+    /****************************************************************************
+     $nav-tabs
+     Description: CSS rules for menu.
+    ****************************************************************************/     
+    .nav-tabs{
+        border: 0;
+    }
+    .nav-tabs.nav-justified>li {
+        display: table-cell !important;
+    }
+    .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, 
+    .nav-tabs.nav-justified > .active > a:focus,
+    .nav-tabs > li > a, 
+    .nav-tabs > li.active > a, 
+    .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+        background-color: transparent;
+        border:0;
+        padding: 0;
+    }
 
     /****************************************************************************
      $btn
@@ -80,7 +158,7 @@ body {
     .btn-default.btn-transparent {
         background: transparent;
         color:@clr-white;
-        font-size: 20px;        
+        font-size: 3.6vw;        
     }
     a.btn-transparent:hover {
         text-decoration: underline;
@@ -97,7 +175,15 @@ body {
     }
     .btn-link:hover, .btn-link:focus {
         text-decoration: none;
-    }     
+    }
+    .btn-add {
+        border-style: dashed;
+        border-color: @clr-blueTurquoise;
+        .border-radius-all(1vw);
+        background-color: transparent;
+        color: @clr-blueTurquoise;
+        text-align: left;
+    }
     .btn-lg, .btn-group-lg > .btn {
         padding-top: 15px;
         padding-bottom: 16px;
@@ -105,6 +191,20 @@ body {
         letter-spacing: 1px;
         line-height: 24px;
     }
+
+
+    .btn-xl {
+        height:auto;
+        padding:6vw 0;
+        font-size: 5.8vw;
+        line-height: 6vw;
+    }
+    .btn-lg {
+        height:auto;
+        padding:4vw 0;
+        font-size: 4.8vw;
+        line-height: 5vw;
+    }      
     /***************************************************************************/
 
 
@@ -255,24 +355,21 @@ body {
             border-color: #06BACC;
         } 
 
-        &::-webkit-input-placeholder {
-            /* opacity: 0.5; */
-            color:@clr-white !important;
-            font-weight:100;
+        &.form-control-xl {
+            height:auto;
+            padding:6vw 0;
+            font-size: 5.8vw;
+            line-height: 6vw;
         }
-        &:-moz-placeholder { /* Firefox 18- */
-            /* opacity: 0.5; */
-            color:@clr-white !important;
-            font-weight:100;
-        }
-        &::-moz-placeholder {  /* Firefox 19+ */
-            /* opacity: 0.5; */           
-            color:@clr-white !important;
-            font-weight:100;
-        }
+        &.form-control-lg {
+            height:auto;
+            padding:4vw 0;
+            font-size: 4.8vw;
+            line-height: 5.6vw;
+        }        
 
         /* control sizing */
-        &.form-control-xl {
+        /*&.form-control-xl {
             height:75px;
             padding:12px 16px;
             font-size: 32px;
@@ -281,7 +378,7 @@ body {
             height:66px;
             padding:21px 16px;
             font-size: 24px;
-        }
+        }*/
         &.form-control-md {
             height:40px;
             padding:6px 16px;
@@ -296,7 +393,72 @@ body {
             height:30px;
             padding:6px 16px;
             font-size: 12px;
-        }         
+        }
+
+        &.theme-form {
+            background-color: transparent;
+            border-left: none;
+            border-top: 0.6vw solid;
+            border-right: none;
+            border-bottom: 0.6vw solid;
+            .clr-blueGray(border-color, 0.5);
+            .clr-blueGray(color, 1);
+
+            &::-webkit-input-placeholder {
+                color:@clr-blueGray !important;
+                font-weight:100;
+            }
+            &:-moz-placeholder { /* Firefox 18- */
+                color:@clr-blueGray !important;
+                font-weight:100;
+            }
+            &::-moz-placeholder {  /* Firefox 19+ */   
+                color:@clr-blueGray !important;
+                font-weight:100;
+            }
+        }
+        &.theme-default {
+            background-color: transparent;
+            border-left:none;
+            border-top:none;
+            border-right:none;
+            border-bottom:none;
+            color:@clr-white;
+
+            &::-webkit-input-placeholder {
+                color:@clr-white !important;
+                font-weight:100;
+            }
+            &:-moz-placeholder { /* Firefox 18- */
+                color:@clr-white !important;
+                font-weight:100;
+            }
+            &::-moz-placeholder {  /* Firefox 19+ */   
+                color:@clr-white !important;
+                font-weight:100;
+            }            
+        }
+    }
+    select.form-control {
+        
+        /* control sizing */
+        /*&.form-control-xl {
+            padding-left:12px;
+        }
+        &.form-control-lg {
+            padding-left:12px;
+        }
+        &.form-control-md {
+            padding-left:12px;
+        }
+        &.form-control-sm {
+            padding-left:12px;
+        }        
+        &.form-control-xs {
+            padding-left:12px;
+        } */    
+
+        option:first-child {display: none;}   
     }
     /***************************************************************************/
 
@@ -306,6 +468,10 @@ body {
      Description: CSS overrides to bootstrap's input-group class.
     ****************************************************************************/
     .input-group {
+        width: 100%;
+        border-bottom-width:1px;
+        border-bottom-style:solid;
+        .clr-white(border-bottom-color, 0.3);
 
         .input-group-addon {
             padding: 0 1px;
@@ -322,17 +488,9 @@ body {
             padding-bottom: 0px;
         }
         .form-control {
-            background-color: transparent;
-            border-left:none;
-            border-top:none;
-            border-right:none;
-            border-bottom:none;
-            .border-radius-reset();
-            .box-shadow-reset();
-            color:@clr-white;
-            font-size:1.2em;
-            font-weight: 600;
-        }
+            /*font-size:1.2em;
+            font-weight: 600;*/
+        }        
         .form-control:hover, 
         .form-control:focus,
         .form-control:active {
@@ -340,8 +498,6 @@ body {
         }
 
         select.form-control {
-            padding-left:24px;
-
             option {
                 color: @clr-blueDark;
             }
@@ -420,7 +576,7 @@ body {
         position: relative;
         margin-bottom: 0;
 
-        [class^="icon-"] {
+        .icomoon {
             color:white;
             font-size: 20px;
             font-size: 6vw;
@@ -535,6 +691,35 @@ body {
      Description: CSS override to bootstrap's panel class.
     ****************************************************************************/
     .panel {
+        & > .panel-heading {
+            padding: 5.5vw 2.6vw;
+            .border-radius(1.5vw, 1.5vw, 0, 0);
+            font-size: 4.8vw;
+            line-height: 5.2vw;
+            vertical-align: middle;
+
+            &.with-icons {
+                .icomoon {
+                    margin-right:3vw;
+                    color:@clr-green;
+                    font-size: inherit;
+                    vertical-align: middle;
+                }
+            }
+        }
+        .panel-title {
+            margin: 0;
+            font-size: inherit;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+        & > .panel-body {
+            padding-left: 6vw;
+            padding-right: 6vw;
+            padding-top: 6vw;
+            padding-bottom: 6vw; 
+            .border-radius(0, 0, 1.5vw, 1.5vw);
+        }
         &.panel-default {
             border:none;
             .clr-grayDark(background-color, 0.7);
@@ -543,65 +728,20 @@ body {
                 background-color: @clr-blueDark;
                 border: none;
                 color: @clr-white;
-                font-size: 24px;
             }
             .panel-title {
-                margin: 0;
                 color: @clr-white;
-                font-size: 24px;
-                font-weight: 700;
-                text-transform: none;
             }
             .panel-body {
-                padding-top: 30px;
-                padding-bottom: 30px; 
 
-                h5 {
-                    width: auto;
-                    padding: 0;
-                    margin: 6px 0;
-                    color: @clr-blueTurquoise;
-                    font-size: 20px;
-                    font-weight: bold;
-                    line-height: 1;
-                    text-align: left;
-                }
-                p, li {
-                    width: auto;
-                    color: @clr-white;
-                    font-weight: normal;
-                    line-height: 1.2;
-                    text-align: left;
-                }
-                p {
-                    margin-bottom:3px;
-                    font-size: 1.2em;
-
-                    & > label {
-                        margin: 0;
-                    }
-                }
-                li {
-                    margin-top: 15px;
-
-                    &:first-child {
-                        margin-top: 0;
-                    }
-
-                    & > p {
-                        margin-top:0;
-                    }
-                }                
-                label, em {
-                    color:@clr-gray-platinum;
-                    font-size: inherit;
-                    font-style: normal;
-                    line-height: inherit;
-                }
-                hr {
-                    margin: 15px 0;
-                }
             }        
+        }
+        &.panel-form {
+            background-color: transparent;
+            .panel-body {
+                background-color: @clr-white;
+                .clr-blueGray(color, 0.5);
+            }
         }
     }
     /***************************************************************************/
@@ -611,24 +751,25 @@ body {
      $list-group
      Description: CSS overrides to bootstrap's list-group class and descendants.
     ****************************************************************************/
-    .list-group {}
-    
-    .list-group.separte-items {
-        .list-group-item {
-            padding:0;
-            margin:12px 0 0 0;
-            .border-radius(9px);
-            
-            a {
-                display: block;
-                height: 77px;
-                padding: 0;
-                margin: 0;
-                font-size: 1.2em;
-                font-weight: bold;
-                line-height: 77px;
+    .list-group {
+        &.separate-items {
+            .list-group-item {
+                padding:0;
+                margin:12px 0 0 0;
+                .border-radius(9px);
+
+                a {
+                    display: block;
+                    height: 77px;
+                    padding: 0;
+                    margin: 0;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    line-height: 77px;
+                }
+                .icomoon {font-weight: normal;}
             }
-            .icomoon {font-weight: normal;}
+            .list-group-item:first-child {margin-top: 0;}
         }
     }
     /***************************************************************************/ 
@@ -816,7 +957,7 @@ body {
         }
     }
     .db-bg{
-        background-image: url("../images/bg-footer-rocks.png");
+        background-image: url("@{url-images}/bg-footer-rocks.png");
         background-position: 50% 0;
         box-shadow: unset;
     }
@@ -824,13 +965,329 @@ body {
 
 
     /****************************************************************************
-     16. spinner
+     16. $spinner
      Description: CSS class to positionante, show and hide the preloader image
     ****************************************************************************/
     .spinner {}
     /***************************************************************************/
-    
+ 
 
+    /****************************************************************************
+     16. $forma
+     Description: CSS class to create the form components
+    ****************************************************************************/   
+    .forma{
+        label {
+            cursor: pointer;
+            display: block;
+            margin-right: 15px;
+            padding-left: 10%;
+            position: relative;
+            line-height:normal;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            display: none;
+        }
+        input[type="radio"] + label::before, input[type="checkbox"] + label::before{                
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        label::before {
+            background-color: transparent;
+            content: "";
+            display: inline-block;
+            left: 0;
+            margin-right: 10px;
+            position: absolute;
+        }
+        input[type=radio] + label::before {
+            line-height: 50%;
+            padding: 0 2px 3px 1px;
+        }
+        input[type=checkbox] + label {
+            margin-bottom: 10px;
+        }
+        input[type=checkbox] + label::before {
+            border-radius: 3px;
+            padding: 0 6px;
+            content: "\2713";
+            color: rgba(0,0,0,0);
+        }
+        input[type=checkbox]:checked + label:before {
+            content: "\2713";
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+            color: @clr-greenLight;
+            text-align: center;
+        }
+        input[type=checkbox]:checked + label{
+            color: @clr-greenLight;
+        }
+        input[type=radio] + label:before {
+            content: "\2022";
+            color: rgba(0,0,0,0);
+            border-radius: 50%;     
+        }
+        input[type=radio]:checked + label:before {
+            content: "\2022";
+            color: @clr-greenLight;
+            text-align: center;
+        }
+        .tnf{
+            margin-top:5%;
+            label:before{
+                display:none;
+                content:"";
+            }
+            label{
+               padding:0 !important;
+               display: inline-block;
+            }
+            input[type=radio]:checked + label{
+                color: @clr-greenLight;
+            }
+            label{
+                border: 1px solid white;
+                display: inline-block;
+                line-height: 200%;
+                margin: -2.5px !important;
+                padding: 0;
+                text-align: center;
+                width: 50%;
+                &:hover{
+                    background-color: rgba(0,0,0,.2);
+                }
+            }
+            label:nth-child(2){
+                border-radius: 20px 0 0 20px;
+            }
+            label:nth-child(4){
+                border-radius: 0 20px 20px 0;
+            }
+
+        }
+        div.cs-select {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            text-align: left;
+            background: #fff;
+            z-index: 100;
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        div.cs-select:focus {
+            outline: none;
+        }
+        .cs-select select {
+            display: none;
+        }
+        .cs-select span {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            padding: 1em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .cs-select > span {
+            padding-right: 3em;
+        }
+        .cs-select > span::after,
+        .cs-select .cs-selected span::after {
+            speak: none;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .cs-select > span::after {
+            content: "\e612";
+            right: 1em;
+        }
+
+        .cs-select .cs-selected span::after {
+            content: '\2713';
+            margin-left: 1em;
+        }
+
+        .cs-select.cs-active > span::after {
+            -webkit-transform: translateY(-50%) rotate(180deg);
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        div.cs-active {
+            z-index: 200;
+        }
+        .cs-select .cs-options {
+            position: absolute;
+            overflow: hidden;
+            width: 100%;
+            background: #fff;
+            visibility: hidden;
+        }
+        .cs-select.cs-active .cs-options {
+            visibility: visible;
+        }
+        .cs-select ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        .cs-select ul span {
+            padding: 1em;
+        }
+
+        .cs-select ul li.cs-focus span {
+            background-color: #ddd;
+        }
+
+        .cs-select li.cs-optgroup ul {
+            padding-left: 1em;
+        }
+        .cs-select li.cs-optgroup > span {
+            cursor: default;
+        }
+        div.cs-skin-rotate {
+            background: transparent;
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+        }
+
+        @media screen and (max-width: 30em) {
+            div.cs-skin-rotate { font-size: 1em; width: 200px; }
+        }
+
+        .cs-skin-rotate > span,
+        .cs-skin-rotate .cs-options li {
+            background: transparent;
+            -webkit-transform-origin: 50% 50% -200px;
+            transform-origin: 50% 50% -200px;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        @media screen and (max-width: 30em) {
+            .cs-skin-rotate > span,
+            .cs-skin-rotate .cs-options li {
+                -webkit-transform-origin: 50% 50% -100px;
+                transform-origin: 50% 50% -100px;
+            }
+        }
+
+        .cs-skin-rotate > span {
+            border-bottom: 1px solid rgba(255,255,255,.3);
+            border-top: 1px solid rgba(255,255,255,.3);
+        }
+
+        .cs-skin-rotate.cs-active > span {
+            opacity: 0;
+            -webkit-transform: rotate3d(0,1,0,-90deg);
+            transform: rotate3d(0,1,0,-90deg);
+        }
+
+        .cs-skin-rotate > span::after,
+        .cs-skin-rotate .cs-selected span::after {
+            font-family: 'icomoon';
+        }
+
+        .cs-skin-rotate > span::after,
+        .cs-skin-rotate.cs-active > span::after {
+            -webkit-transform: translate3d(0,-50%,0) rotate3d(0,0,1,-90deg);
+            transform: translate3d(0,-50%,0) rotate3d(0,0,1,-90deg);
+        }
+
+        .cs-skin-rotate ul span::after {
+            content: '';
+            opacity: 0;
+        }
+
+        .cs-skin-rotate .cs-selected span::after {
+            opacity: 0.5;
+            -webkit-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+        }
+
+        .cs-skin-rotate .cs-options {
+            background: transparent;
+            top: 0;
+            overflow: visible;
+            visibility: visible;
+            pointer-events: none;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+
+        .cs-skin-rotate .cs-options ul {
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+
+        .cs-skin-rotate .cs-options li {
+            opacity: 0;
+            -webkit-transform: rotate3d(0,1,0,90deg);
+            transform: rotate3d(0,1,0,90deg);
+        }
+
+        .cs-skin-rotate.cs-active .cs-options li {
+            opacity: 1;
+            -webkit-transform: rotate3d(0,1,0,0deg);
+            transform: rotate3d(0,1,0,0deg);
+            pointer-events: auto;
+        }
+
+        .cs-skin-rotate .cs-options li:nth-child(2) {
+            -webkit-transition-delay: 0.05s;
+            transition-delay: 0.05s;
+        }
+
+        .cs-skin-rotate .cs-options li:nth-child(3) {
+            -webkit-transition-delay: 0.1s;
+            transition-delay: 0.1s;
+        }
+
+        .cs-skin-rotate .cs-options li:nth-child(4) {
+            -webkit-transition-delay: 0.15s;
+            transition-delay: 0.15s;
+        }
+
+        .cs-skin-rotate .cs-options li:nth-child(5) {
+            -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+        }
+
+        .cs-skin-rotate.cs-active .cs-options ul li {
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+
+        .cs-skin-rotate .cs-options li span {    
+            background-color: #1f2733;
+            padding: 5px 0;
+        }
+
+        .cs-skin-rotate .cs-options li span:hover,
+        .cs-skin-rotate .cs-options li.cs-focus span,
+        .cs-skin-rotate .cs-selected span {
+            opacity: 0.8;
+        }
+
+    }
 }
 
 

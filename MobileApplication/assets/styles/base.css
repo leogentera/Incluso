@@ -23,6 +23,8 @@
             13. $component            
             14. $pages
             15. $footer
+            16. $spinner
+            17. $forma
 ********************************************************************************/
 /****************************************************************************
  LESS Utilities - variables and functions
@@ -38,16 +40,67 @@ body {
   width: 100%;
   height: inherit;
 }
+/****************************************************************************
+     $menu 
+     Description: CSS rules to make the off canvas without javascript.
+     very important!!!
+    ****************************************************************************/
+#site-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+}
+#site-canvas {
+  width: 100vw;
+  position: relative;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.show-nav #site-canvas {
+  -webkit-transform: translateX(150px);
+  transform: translateX(150px);
+  transform: translate3d(150px, 0, 0);
+  -webkit-transform: translate3d(150px, 0, 0);
+}
+.show-nav #site-menu {
+  left: 0px;
+}
+#site-menu {
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  width: 150px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: -150px;
+  background: #12171D;
+  padding: 15px;
+}
+.ease {
+  -webkit-transition: 300ms ease all;
+  transition: 300ms ease all;
+}
 .incluso-app {
   /****************************************************************************
      $incluso-app 
      Description: CSS rules for basic namespace wrapper.
+     very important!!!
     ****************************************************************************/
   padding: 0;
   margin: 0 auto;
   max-width: 100vw;
   font-family: Play, Sans-serif, Arial;
   /***************************************************************************/
+  /****************************************************************************
+     $nav-tabs
+     Description: CSS rules for menu.
+    ****************************************************************************/
   /****************************************************************************
      $btn
      Description: CSS override to bootstrap's btn class.
@@ -129,13 +182,38 @@ body {
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     16. spinner
+     16. $spinner
      Description: CSS class to positionante, show and hide the preloader image
     ****************************************************************************/
   /***************************************************************************/
+  /****************************************************************************
+     16. $forma
+     Description: CSS class to create the form components
+    ****************************************************************************/
 }
 .incluso-app a:hover {
   text-decoration: none;
+}
+.incluso-app video {
+  width: 100%;
+  height: auto;
+}
+.incluso-app .nav-tabs {
+  border: 0;
+}
+.incluso-app .nav-tabs.nav-justified > li {
+  display: table-cell !important;
+}
+.incluso-app .nav-tabs.nav-justified > .active > a,
+.incluso-app .nav-tabs.nav-justified > .active > a:hover,
+.incluso-app .nav-tabs.nav-justified > .active > a:focus,
+.incluso-app .nav-tabs > li > a,
+.incluso-app .nav-tabs > li.active > a,
+.incluso-app .nav-tabs > li.active > a:hover,
+.incluso-app .nav-tabs > li.active > a:focus {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
 }
 .incluso-app .btn {
   border: none;
@@ -190,7 +268,7 @@ body {
 .incluso-app .btn-default.btn-transparent {
   background: transparent;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 3.6vw;
 }
 .incluso-app a.btn-transparent:hover {
   text-decoration: underline;
@@ -208,6 +286,16 @@ body {
 .incluso-app .btn-link:focus {
   text-decoration: none;
 }
+.incluso-app .btn-add {
+  border-style: dashed;
+  border-color: #08b290;
+  -webkit-border-radius: 1vw;
+  -moz-border-radius: 1vw;
+  border-radius: 1vw;
+  background-color: transparent;
+  color: #08b290;
+  text-align: left;
+}
 .incluso-app .btn-lg,
 .incluso-app .btn-group-lg > .btn {
   padding-top: 15px;
@@ -215,6 +303,18 @@ body {
   font-size: 1.2em;
   letter-spacing: 1px;
   line-height: 24px;
+}
+.incluso-app .btn-xl {
+  height: auto;
+  padding: 6vw 0;
+  font-size: 5.8vw;
+  line-height: 6vw;
+}
+.incluso-app .btn-lg {
+  height: auto;
+  padding: 4vw 0;
+  font-size: 4.8vw;
+  line-height: 5vw;
 }
 .incluso-app .btn-icon-aside {
   display: inline-block;
@@ -341,36 +441,31 @@ body {
   line-height: 1.42857143;
   font-weight: 700;
   /* control sizing */
+  /*&.form-control-xl {
+            height:75px;
+            padding:12px 16px;
+            font-size: 32px;
+        }
+        &.form-control-lg {
+            height:66px;
+            padding:21px 16px;
+            font-size: 24px;
+        }*/
 }
 .incluso-app .form-control:focus {
   border-color: #06BACC;
 }
-.incluso-app .form-control::-webkit-input-placeholder {
-  /* opacity: 0.5; */
-  color: #ffffff !important;
-  font-weight: 100;
-}
-.incluso-app .form-control:-moz-placeholder {
-  /* Firefox 18- */
-  /* opacity: 0.5; */
-  color: #ffffff !important;
-  font-weight: 100;
-}
-.incluso-app .form-control::-moz-placeholder {
-  /* Firefox 19+ */
-  /* opacity: 0.5; */
-  color: #ffffff !important;
-  font-weight: 100;
-}
 .incluso-app .form-control.form-control-xl {
-  height: 75px;
-  padding: 12px 16px;
-  font-size: 32px;
+  height: auto;
+  padding: 6vw 0;
+  font-size: 5.8vw;
+  line-height: 6vw;
 }
 .incluso-app .form-control.form-control-lg {
-  height: 66px;
-  padding: 21px 16px;
-  font-size: 24px;
+  height: auto;
+  padding: 4vw 0;
+  font-size: 4.8vw;
+  line-height: 5.6vw;
 }
 .incluso-app .form-control.form-control-md {
   height: 40px;
@@ -386,6 +481,78 @@ body {
   height: 30px;
   padding: 6px 16px;
   font-size: 12px;
+}
+.incluso-app .form-control.theme-form {
+  background-color: transparent;
+  border-left: none;
+  border-top: 0.6vw solid;
+  border-right: none;
+  border-bottom: 0.6vw solid;
+  border-color: rgba(142, 170, 179, 0.5);
+  color: #8eaab3;
+}
+.incluso-app .form-control.theme-form::-webkit-input-placeholder {
+  color: #8eaab3 !important;
+  font-weight: 100;
+}
+.incluso-app .form-control.theme-form:-moz-placeholder {
+  /* Firefox 18- */
+  color: #8eaab3 !important;
+  font-weight: 100;
+}
+.incluso-app .form-control.theme-form::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #8eaab3 !important;
+  font-weight: 100;
+}
+.incluso-app .form-control.theme-default {
+  background-color: transparent;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  color: #ffffff;
+}
+.incluso-app .form-control.theme-default::-webkit-input-placeholder {
+  color: #ffffff !important;
+  font-weight: 100;
+}
+.incluso-app .form-control.theme-default:-moz-placeholder {
+  /* Firefox 18- */
+  color: #ffffff !important;
+  font-weight: 100;
+}
+.incluso-app .form-control.theme-default::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #ffffff !important;
+  font-weight: 100;
+}
+.incluso-app select.form-control {
+  /* control sizing */
+  /*&.form-control-xl {
+            padding-left:12px;
+        }
+        &.form-control-lg {
+            padding-left:12px;
+        }
+        &.form-control-md {
+            padding-left:12px;
+        }
+        &.form-control-sm {
+            padding-left:12px;
+        }        
+        &.form-control-xs {
+            padding-left:12px;
+        } */
+}
+.incluso-app select.form-control option:first-child {
+  display: none;
+}
+.incluso-app .input-group {
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
 }
 .incluso-app .input-group .input-group-addon {
   padding: 0 1px;
@@ -404,20 +571,8 @@ body {
   padding-bottom: 0px;
 }
 .incluso-app .input-group .form-control {
-  background-color: transparent;
-  border-left: none;
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  color: #ffffff;
-  font-size: 1.2em;
-  font-weight: 600;
+  /*font-size:1.2em;
+            font-weight: 600;*/
 }
 .incluso-app .input-group .form-control:hover,
 .incluso-app .input-group .form-control:focus,
@@ -425,9 +580,6 @@ body {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-}
-.incluso-app .input-group select.form-control {
-  padding-left: 24px;
 }
 .incluso-app .input-group select.form-control option {
   color: #121b1c;
@@ -491,7 +643,7 @@ body {
   position: relative;
   margin-bottom: 0;
 }
-.incluso-app .navbar [class^="icon-"] {
+.incluso-app .navbar .icomoon {
   color: white;
   font-size: 20px;
   font-size: 6vw;
@@ -594,6 +746,36 @@ body {
   -moz-border-radius: 16px;
   border-radius: 16px;
 }
+.incluso-app .panel > .panel-heading {
+  padding: 5.5vw 2.6vw;
+  -webkit-border-radius: 1.5vw 1.5vw 0 0;
+  -moz-border-radius: 1.5vw 1.5vw 0 0;
+  border-radius: 1.5vw 1.5vw 0 0;
+  font-size: 4.8vw;
+  line-height: 5.2vw;
+  vertical-align: middle;
+}
+.incluso-app .panel > .panel-heading.with-icons .icomoon {
+  margin-right: 3vw;
+  color: #bcd431;
+  font-size: inherit;
+  vertical-align: middle;
+}
+.incluso-app .panel .panel-title {
+  margin: 0;
+  font-size: inherit;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.incluso-app .panel > .panel-body {
+  padding-left: 6vw;
+  padding-right: 6vw;
+  padding-top: 6vw;
+  padding-bottom: 6vw;
+  -webkit-border-radius: 0 0 1.5vw 1.5vw;
+  -moz-border-radius: 0 0 1.5vw 1.5vw;
+  border-radius: 0 0 1.5vw 1.5vw;
+}
 .incluso-app .panel.panel-default {
   border: none;
   background-color: rgba(21, 25, 34, 0.7);
@@ -602,71 +784,25 @@ body {
   background-color: #121b1c;
   border: none;
   color: #ffffff;
-  font-size: 24px;
 }
 .incluso-app .panel.panel-default .panel-title {
-  margin: 0;
   color: #ffffff;
-  font-size: 24px;
-  font-weight: 700;
-  text-transform: none;
 }
-.incluso-app .panel.panel-default .panel-body {
-  padding-top: 30px;
-  padding-bottom: 30px;
+.incluso-app .panel.panel-form {
+  background-color: transparent;
 }
-.incluso-app .panel.panel-default .panel-body h5 {
-  width: auto;
-  padding: 0;
-  margin: 6px 0;
-  color: #08b290;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1;
-  text-align: left;
+.incluso-app .panel.panel-form .panel-body {
+  background-color: #ffffff;
+  color: rgba(142, 170, 179, 0.5);
 }
-.incluso-app .panel.panel-default .panel-body p,
-.incluso-app .panel.panel-default .panel-body li {
-  width: auto;
-  color: #ffffff;
-  font-weight: normal;
-  line-height: 1.2;
-  text-align: left;
-}
-.incluso-app .panel.panel-default .panel-body p {
-  margin-bottom: 3px;
-  font-size: 1.2em;
-}
-.incluso-app .panel.panel-default .panel-body p > label {
-  margin: 0;
-}
-.incluso-app .panel.panel-default .panel-body li {
-  margin-top: 15px;
-}
-.incluso-app .panel.panel-default .panel-body li:first-child {
-  margin-top: 0;
-}
-.incluso-app .panel.panel-default .panel-body li > p {
-  margin-top: 0;
-}
-.incluso-app .panel.panel-default .panel-body label,
-.incluso-app .panel.panel-default .panel-body em {
-  color: #8098a0;
-  font-size: inherit;
-  font-style: normal;
-  line-height: inherit;
-}
-.incluso-app .panel.panel-default .panel-body hr {
-  margin: 15px 0;
-}
-.incluso-app .list-group.separte-items .list-group-item {
+.incluso-app .list-group.separate-items .list-group-item {
   padding: 0;
   margin: 12px 0 0 0;
   -webkit-border-radius: 9px;
   -moz-border-radius: 9px;
   border-radius: 9px;
 }
-.incluso-app .list-group.separte-items .list-group-item a {
+.incluso-app .list-group.separate-items .list-group-item a {
   display: block;
   height: 77px;
   padding: 0;
@@ -675,8 +811,11 @@ body {
   font-weight: bold;
   line-height: 77px;
 }
-.incluso-app .list-group.separte-items .list-group-item .icomoon {
+.incluso-app .list-group.separate-items .list-group-item .icomoon {
   font-weight: normal;
+}
+.incluso-app .list-group.separate-items .list-group-item:first-child {
+  margin-top: 0;
 }
 .incluso-app .inline-list {
   display: block;
@@ -768,7 +907,7 @@ body {
 }
 .incluso-app .pages .page {
   display: none;
-  /*margin-bottom: 15px;*/
+  margin-bottom: 15px;
 }
 .incluso-app .pages .page.active {
   display: block;
@@ -824,6 +963,292 @@ body {
   background-image: url("../images/bg-footer-rocks.png");
   background-position: 50% 0;
   box-shadow: unset;
+}
+.incluso-app .forma label {
+  cursor: pointer;
+  display: block;
+  margin-right: 15px;
+  padding-left: 10%;
+  position: relative;
+  line-height: normal;
+}
+.incluso-app .forma input[type="radio"],
+.incluso-app .forma input[type="checkbox"] {
+  display: none;
+}
+.incluso-app .forma input[type="radio"] + label::before,
+.incluso-app .forma input[type="checkbox"] + label::before {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.incluso-app .forma label::before {
+  background-color: transparent;
+  content: "";
+  display: inline-block;
+  left: 0;
+  margin-right: 10px;
+  position: absolute;
+}
+.incluso-app .forma input[type=radio] + label::before {
+  line-height: 50%;
+  padding: 0 2px 3px 1px;
+}
+.incluso-app .forma input[type=checkbox] + label {
+  margin-bottom: 10px;
+}
+.incluso-app .forma input[type=checkbox] + label::before {
+  border-radius: 3px;
+  padding: 0 6px;
+  content: "\2713";
+  color: rgba(0, 0, 0, 0);
+}
+.incluso-app .forma input[type=checkbox]:checked + label:before {
+  content: "\2713";
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  color: #e1e455;
+  text-align: center;
+}
+.incluso-app .forma input[type=checkbox]:checked + label {
+  color: #e1e455;
+}
+.incluso-app .forma input[type=radio] + label:before {
+  content: "\2022";
+  color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+}
+.incluso-app .forma input[type=radio]:checked + label:before {
+  content: "\2022";
+  color: #e1e455;
+  text-align: center;
+}
+.incluso-app .forma .tnf {
+  margin-top: 5%;
+}
+.incluso-app .forma .tnf label:before {
+  display: none;
+  content: "";
+}
+.incluso-app .forma .tnf label {
+  padding: 0 !important;
+  display: inline-block;
+}
+.incluso-app .forma .tnf input[type=radio]:checked + label {
+  color: #e1e455;
+}
+.incluso-app .forma .tnf label {
+  border: 1px solid white;
+  display: inline-block;
+  line-height: 200%;
+  margin: -2.5px !important;
+  padding: 0;
+  text-align: center;
+  width: 50%;
+}
+.incluso-app .forma .tnf label:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.incluso-app .forma .tnf label:nth-child(2) {
+  border-radius: 20px 0 0 20px;
+}
+.incluso-app .forma .tnf label:nth-child(4) {
+  border-radius: 0 20px 20px 0;
+}
+.incluso-app .forma div.cs-select {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  text-align: left;
+  background: #fff;
+  z-index: 100;
+  width: 100%;
+  max-width: 500px;
+  margin: 10px 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.incluso-app .forma div.cs-select:focus {
+  outline: none;
+}
+.incluso-app .forma .cs-select select {
+  display: none;
+}
+.incluso-app .forma .cs-select span {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  padding: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.incluso-app .forma .cs-select > span {
+  padding-right: 3em;
+}
+.incluso-app .forma .cs-select > span::after,
+.incluso-app .forma .cs-select .cs-selected span::after {
+  speak: none;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.incluso-app .forma .cs-select > span::after {
+  content: "\e612";
+  right: 1em;
+}
+.incluso-app .forma .cs-select .cs-selected span::after {
+  content: '\2713';
+  margin-left: 1em;
+}
+.incluso-app .forma .cs-select.cs-active > span::after {
+  -webkit-transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
+}
+.incluso-app .forma div.cs-active {
+  z-index: 200;
+}
+.incluso-app .forma .cs-select .cs-options {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+  visibility: hidden;
+}
+.incluso-app .forma .cs-select.cs-active .cs-options {
+  visibility: visible;
+}
+.incluso-app .forma .cs-select ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.incluso-app .forma .cs-select ul span {
+  padding: 1em;
+}
+.incluso-app .forma .cs-select ul li.cs-focus span {
+  background-color: #ddd;
+}
+.incluso-app .forma .cs-select li.cs-optgroup ul {
+  padding-left: 1em;
+}
+.incluso-app .forma .cs-select li.cs-optgroup > span {
+  cursor: default;
+}
+.incluso-app .forma div.cs-skin-rotate {
+  background: transparent;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+@media screen and (max-width: 30em) {
+  .incluso-app .forma div.cs-skin-rotate {
+    font-size: 1em;
+    width: 200px;
+  }
+}
+.incluso-app .forma .cs-skin-rotate > span,
+.incluso-app .forma .cs-skin-rotate .cs-options li {
+  background: transparent;
+  -webkit-transform-origin: 50% 50% -200px;
+  transform-origin: 50% 50% -200px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+}
+@media screen and (max-width: 30em) {
+  .incluso-app .forma .cs-skin-rotate > span,
+  .incluso-app .forma .cs-skin-rotate .cs-options li {
+    -webkit-transform-origin: 50% 50% -100px;
+    transform-origin: 50% 50% -100px;
+  }
+}
+.incluso-app .forma .cs-skin-rotate > span {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+.incluso-app .forma .cs-skin-rotate.cs-active > span {
+  opacity: 0;
+  -webkit-transform: rotate3d(0, 1, 0, -90deg);
+  transform: rotate3d(0, 1, 0, -90deg);
+}
+.incluso-app .forma .cs-skin-rotate > span::after,
+.incluso-app .forma .cs-skin-rotate .cs-selected span::after {
+  font-family: 'icomoon';
+}
+.incluso-app .forma .cs-skin-rotate > span::after,
+.incluso-app .forma .cs-skin-rotate.cs-active > span::after {
+  -webkit-transform: translate3d(0, -50%, 0) rotate3d(0, 0, 1, -90deg);
+  transform: translate3d(0, -50%, 0) rotate3d(0, 0, 1, -90deg);
+}
+.incluso-app .forma .cs-skin-rotate ul span::after {
+  content: '';
+  opacity: 0;
+}
+.incluso-app .forma .cs-skin-rotate .cs-selected span::after {
+  opacity: 0.5;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options {
+  background: transparent;
+  top: 0;
+  overflow: visible;
+  visibility: visible;
+  pointer-events: none;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options ul {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li {
+  opacity: 0;
+  -webkit-transform: rotate3d(0, 1, 0, 90deg);
+  transform: rotate3d(0, 1, 0, 90deg);
+}
+.incluso-app .forma .cs-skin-rotate.cs-active .cs-options li {
+  opacity: 1;
+  -webkit-transform: rotate3d(0, 1, 0, 0deg);
+  transform: rotate3d(0, 1, 0, 0deg);
+  pointer-events: auto;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(2) {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(3) {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(4) {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li:nth-child(5) {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.incluso-app .forma .cs-skin-rotate.cs-active .cs-options ul li {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li span {
+  background-color: #1f2733;
+  padding: 5px 0;
+}
+.incluso-app .forma .cs-skin-rotate .cs-options li span:hover,
+.incluso-app .forma .cs-skin-rotate .cs-options li.cs-focus span,
+.incluso-app .forma .cs-skin-rotate .cs-selected span {
+  opacity: 0.8;
 }
 @keyframes flicker {
   from {

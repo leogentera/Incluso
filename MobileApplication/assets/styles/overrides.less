@@ -51,9 +51,10 @@
     }
     .form-group {
         margin-bottom: 0;
+        /*margin-bottom: 0;
         border-bottom-width:1px;
         border-bottom-style:solid;
-        .clr-white(border-color, 0.3);
+        .clr-white(border-color, 0.3);*/
     }
     .checkbox {
         margin:28px 0;
@@ -242,7 +243,10 @@
             display:block;
             bottom: -69px;
         }
-    }    
+    } 
+    footer {
+        li:last-child {display: none;}
+    }   
 }
 
 /* Profile Dashboard */
@@ -313,7 +317,8 @@
             width:250px;
             margin-left: auto;
             margin-right: auto;
-        }        
+        } 
+        li:last-child {display: none;}       
     }
     .panel-title {display: inline;}
 
@@ -326,5 +331,68 @@
     }
 }
 
+/* Edit Profile */
+.incluso-app.edit-profile {
+    .list-group {
+        margin:0 auto;
+        width: 92%;
+    }
+    .panel {
+        margin:0 auto;
+        width: 92%;
+    }
+}
+
+/* Step dashboard*/
+.incluso-app.step-dashboard {
+    .navbar{     
+        background-color: @clr-bluenav;
+        border-color: @clr-bluenav;
+    }
+    .video-gallery{
+        margin: 0;
+        padding: 20px;
+        background-image: url('@{url-images}/bg-video-lg.jpg');
+        background-color: #2A2E31;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: contain;        
+    }
+    .carousel{
+        .item{
+            display:none;
+            &.active{
+                display:block;
+            }
+        }
+        .control{
+            position:absolute;
+            top:20%;
+            font-size: 300%;
+            color:@clr-greenicon;
+            text-decoration: none;
+        }
+        #prev{
+            left:3%;
+        }
+        #next{
+            right:3%;
+        }
+    }
+    footer.footer{
+        background-image: url('@{url-images}/img-footer-texture-lg.png');
+        background-color: #24292B;
+        box-shadow: unset;
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+<<<<<<< HEAD
+        background-size: cover;
+=======
+        background-size: contain;
+
+        li:last-child {display: none;}
+>>>>>>> origin/master
+    }
+}
 
 
