@@ -234,6 +234,9 @@
   display: block;
   bottom: -69px;
 }
+.incluso-app.start-dashboard footer li:last-child {
+  display: none;
+}
 /* Profile Dashboard */
 .incluso-app.profile {
   background: #13171c;
@@ -317,6 +320,9 @@
   margin-left: auto;
   margin-right: auto;
 }
+.incluso-app.profile footer li:last-child {
+  display: none;
+}
 .incluso-app.profile .panel-title {
   display: inline;
 }
@@ -348,11 +354,34 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+.incluso-app.step-dashboard .carousel .item {
+  display: none;
+}
+.incluso-app.step-dashboard .carousel .item.active {
+  display: block;
+}
+.incluso-app.step-dashboard .carousel .control {
+  position: absolute;
+  top: 20%;
+  font-size: 300%;
+  color: #08b190;
+  text-decoration: none;
+}
+.incluso-app.step-dashboard .carousel #prev {
+  left: 3%;
+}
+.incluso-app.step-dashboard .carousel #next {
+  right: 3%;
+}
 .incluso-app.step-dashboard footer.footer {
   background-image: url('../images/img-footer-texture-lg.png');
   background-color: #24292B;
   box-shadow: unset;
-  background-position: 0 0;
+  background-position: 50% 0;
   background-repeat: no-repeat;
+  background-size: cover;
   background-size: contain;
+}
+.incluso-app.step-dashboard footer.footer li:last-child {
+  display: none;
 }

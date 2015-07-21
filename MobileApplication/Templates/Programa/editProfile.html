@@ -51,364 +51,328 @@
       </ul>
     </div><!-- /.navbar-collapse --> 
   </nav>
- 
+
   <article>
-      <section class="component profile-dashboard">
-        <div>
-          <figure>
-            <img src="assets/images/img-profile-spaceship-dashboard-top.png" alt="" />
-          </figure>
-        </div>
+    <section class="component profile-dashboard">
+      <div>
+        <figure>
+          <img src="assets/images/img-profile-spaceship-dashboard-top.png" alt="" />
+        </figure>
+      </div>
 
-        <div class="row">
-          <div class="col-xs-6 col-xs-offset-3">
-            <div class="user-avatar">
-              <figure>
-                <img src="assets/images/img-avatar-dummy-01.png" alt="" class="img-responsive" />
-                <figcaption>{{model.rank}}</figcaption>
-              </figure>   
-              <button type="button" id="editProfile">
-                <span class="icomoon icon-edit"></span>
-              </button>       
-            </div>            
-          </div>
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <div class="user-avatar">
+            <figure>
+              <img src="assets/images/img-avatar-dummy-01.png" alt="" class="img-responsive" />
+              <figcaption>{{model.rank}}</figcaption>
+            </figure>   
+            <button type="button" id="editProfile">
+              <span class="icomoon icon-edit"></span>
+            </button>
+          </div>            
         </div>
+      </div>
 
-        <div class="profile-data">
-          <h4 class="user-name">{{model.fullname}}</h4>
-          <p class="user-points">
-            <span>{{model.stars}}</span>
-            <span class="icomoon icon-star"></span>
-          </p>
-          <!-- <span class="badge">100<span class="icomoon icon-star"></span></span> -->
-        </div>
+      <div class="profile-data">
+        <h4 class="user-name">{{model.fullname}}</h4>
+        <p class="user-points">
+          <span>{{model.stars}}</span>
+          <span class="icomoon icon-star"></span>
+        </p>
+      </div>
 
-        <div class="profile-settings">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-6">
-                <button class="btn btn-icon-aside left">
-                  <div class="btn-icon">
-                    <span class="icomoon icon-settings"></span>
-                  </div>
-                  <span for="">Editar perfil</span>
-                </button>                
-              </div>
-              <div class="col-xs-6">
-                <button class="btn btn-icon-aside right">
-                  <div class="btn-icon">
-                    <span class="icomoon icon-lock"></span>
-                  </div>
-                  <span for="">Privacidad</span>
-                </button>                
-              </div>
+      <div class="profile-settings">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-6">
+              <button class="btn btn-icon-aside left">
+                <div class="btn-icon">
+                  <span class="icomoon icon-settings"></span>
+                </div>
+                <span for="">Editar perfil</span>
+              </button>                
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-icon-aside right">
+                <div class="btn-icon">
+                  <span class="icomoon icon-lock"></span>
+                </div>
+                <span for="">Privacidad</span>
+              </button>                
             </div>
           </div>
         </div>
-      </section>
-      <section class="component profile-options">
-        <form action="">
-          <div class="pages">
-            <div class="page" ng-class="currentPage == 1 ? 'active' : ''">
-              <!-- <div class="container">
-                <div class="row">
-                  <div class="col-xs-12"> -->
+      </div>
 
-                    <ul class="list-group separate-items">
-                      <li class="list-group-item" ng-click="navigateToPage(2)">
-                        <a href="">
-                          <span class="icomoon icon-information"></span>
-                          <span>Mi Información</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
+    </section>
+    <section class="component profile-options">
+      <form action="">
+        <div class="pages">
+          <div class="page" ng-class="currentPage == 1 ? 'active' : ''">
+            <ul class="list-group separate-items">
+              <li class="list-group-item" ng-click="navigateToPage(2)">
+                <a href="">
+                  <span class="icomoon icon-information"></span>
+                  <span>Mi Información</span>
+                  <span class="icomoon icon-star"></span>
+                  <span class="icomoon icon-arrow-slim-right"></span>
+                </a>
+              </li>
+
+              <li class="list-group-item" ng-click="navigateToPage(3)">
+                <a href="">
+                  <span class="icomoon icon-document"></span>
+                  <span>Cualidades y Talentos</span>
+                  <span class="icomoon icon-star"></span>
+                  <span class="icomoon icon-arrow-slim-right"></span>
+                </a>
+              </li>
+
+              <li class="list-group-item" ng-click="navigateToPage(4)">
+                <a href="">
+                  <span class="icomoon icon-required"></span>
+                  <span>Gustos y Preferencias</span>
+                  <span class="icomoon icon-star"></span>
+                  <span class="icomoon icon-arrow-slim-right"></span>
+                </a>
+              </li>    
+
+              <li class="list-group-item no-badge" ng-click="navigateToPage(5)">
+                <a href="">
+                  <span class="icomoon icon-badge"></span>
+                  <span>Insignias Ganadas</span>
+                  <span class="icomoon icon-star"></span>
+                  <span class="icomoon icon-arrow-slim-right"></span>
+                </a>
+              </li> 
+
+              <li class="list-group-item no-badge" ng-click="navigateToPage(6)">
+                <a href="">
+                  <span class="icomoon icon-workman"></span>
+                  <span>Mis Fortalezas</span>
+                  <span class="icomoon icon-star"></span>
+                  <span class="icomoon icon-arrow-slim-right"></span>
+                </a>
+              </li>         
+
+              <li class="list-group-item no-badge" ng-click="navigateToPage(7)">
+                <a href="">
+                  <span class="icomoon icon-user"></span>
+                  <span>Carreras Afínes</span>
+                  <span class="icomoon icon-star"></span>
+                  <span class="icomoon icon-arrow-slim-right"></span>
+                </a>
+              </li> 
+
+              <li class="list-group-item no-badge" ng-click="navigateToPage(8)" ng-show="hasDreams()">
+                <a href="">
+                  <span class="icomoon icon-rocket"></span>
+                  <span>Mis Sueños</span>
+                  <span class="icomoon icon-star"></span>
+                  <span class="icomoon icon-arrow-slim-right"></span>
+                </a>
+              </li> 
+            </ul>
+          </div>
+          <div class="page active" ng-class="currentPage == 2 ? 'active' : ''">
+            <div class="panel panel-default panel-form">
+              <div class="panel-heading with-icons">
+                <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                <span class="icomoon icon-information"></span>
+                <h3 class="panel-title">Mi información</h3>
+              </div>
+              <div class="panel-body">
+                <fieldset class="my-profile-form">
+                  <section>
+                    <h5>Mis Estudios</h5>
+                    <ul class="block-list">
+                      <li>
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" />
+                          <select name="" id="" class="form-control form-control-lg theme-form">
+                            <option>Grado</option>
+                            <option>Primaria</option>
+                            <option>Secundaria</option>
+                            <option>Preparatoria</option>
+                            <option>Profesional</option>
+                          </select>
+                        </div>
                       </li>
+                    </ul> 
+                    <button class="btn btn-lg btn-block btn-add">
+                      <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
+                    </button>
+                  </section>
 
-                      <li class="list-group-item" ng-click="navigateToPage(3)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Cualidades y Talentos</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
+                  <section>
+                    <h5>Domicilio</h5>
+                    <ul class="block-list">
+                      <li>
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Calle" />
+                        </div>
+                        <div class="form-group col-2">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Ext." />
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Int." />
+                        </div> 
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Colonia" />
+                        </div>
+                        <div class="form-group">
+                          <select name="country" id="country" class="form-control form-control-lg theme-form">
+                            <option disabled selected>País</option>
+                            <option>Bolivia</option>
+                            <option>México</option>
+                            <option>Venezuela</option>
+                          </select> 
+                        </div> 
+                        <div class="form-group">
+                          <select name="state" id="state" class="form-control form-control-lg theme-form">
+                            <option disabled selected>Estado</option>
+                            <option>Coahuila</option>
+                            <option>Jalisco</option>
+                            <option>México</option>
+                            <option>Nuevo León</option>
+                          </select> 
+                        </div> 
+                        <div class="form-group">
+                          <select name="" id="ciudad" class="form-control form-control-lg theme-form">
+                            <option disabled selected>Ciudad</option>
+                            <option>Guadalajara</option>
+                            <option>México D.F.</option>
+                            <option>Monterrey</option>
+                          </select> 
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Municipio / Delegación" />
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" />
+                        </div>
                       </li>
+                    </ul> 
+                  </section>
 
-                      <li class="list-group-item" ng-click="navigateToPage(4)">
-                        <a href="">
-                          <span class="icomoon icon-required"></span>
-                          <span>Gustos y Preferencias</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>    
+                  <div class="page-number">
+                    <p class="text-center">
+                      <span>1</span>
+                      <span>/</span>
+                      <span>2</span>
+                    </p>
+                  </div>
 
-                      <li class="list-group-item no-badge" ng-click="navigateToPage(5)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Insignias Ganadas</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li> 
+                  <div class="actions">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Continuar</button>
+                    <a type="button" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</a>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <div class="page active" ng-class="currentPage == 3 ? 'active' : ''">
+            <div class="panel panel-default panel-form">
+              <div class="panel-heading with-icons">
+                <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                <span class="icomoon icon-information"></span>
+                <h3 class="panel-title">Mi información</h3>
+              </div>
+              <div class="panel-body">
+                <fieldset class="my-profile-form">
+                  <section>
+                    <h5>Teléfono</h5>
+                    <ul class="block-list">
+                      <li>
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Número Telefónico">
+                        </div>
+                      </li>
+                    </ul> 
+                    <button class="btn btn-lg btn-block btn-add">
+                      <span class="icomoon icon-plus"></span>Agregar nuevo número...
+                    </button>
+                  </section>
 
-                      <li class="list-group-item no-badge" ng-click="navigateToPage(6)">
-                        <a href="">
-                          <span class="icomoon icon-workman"></span>
-                          <span>Mis Fortalezas</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>         
+                  <section>
+                    <h5>Correo</h5>
+                    <ul class="block-list">
+                      <li>
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico">
+                        </div>
+                      </li>
+                    </ul> 
+                    <button class="btn btn-lg btn-block btn-add">
+                      <span class="icomoon icon-plus"></span>Agregar nuevo correo...
+                    </button>
+                  </section>
 
-                      <li class="list-group-item no-badge" ng-click="navigateToPage(7)">
-                        <a href="">
-                          <span class="icomoon icon-user"></span>
-                          <span>Carreras Afínes</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li> 
-
-                      <li class="list-group-item no-badge" ng-click="navigateToPage(8)" ng-show="hasDreams()">
-                        <a href="">
-                          <span class="icomoon icon-rocket"></span>
-                          <span>Mis Sueños</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li> 
-
+                  <section>
+                    <h5>Redes sociales</h5>
+                    <ul class="block-list">
+                      <li>
+                        <div class="form-group">
+                          <select name="country" id="country" class="form-control form-control-lg theme-form">
+                            <option disabled selected>Red Social</option>
+                            <option>Facebook</option>
+                            <option>Instagram</option>
+                            <option>Tweeter</option>
+                          </select> 
+                        </div>                               
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre de Usuario" />
+                        </div>
+                      </li>
                     </ul>
+                    <button class="btn btn-lg btn-block btn-add">
+                      <span class="icomoon icon-plus"></span>Agregar nueva red social...
+                    </button>                          
+                  </section>
 
-                  <!-- </div>
-                </div>
-              </div> -->
+                  <section>
+                    <h5>Familiares Compartamos</h5>
+                    <ul class="block-list">
+                      <li>
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" />
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" />
+                        </div>                              
+                        <div class="form-group">
+                          <select name="country" id="country" class="form-control form-control-lg theme-form">
+                            <option disabled selected>Parentesco</option>
+                            <option>Mamá</option>
+                            <option>Papá</option>
+                          </select> 
+                        </div>                               
+
+                      </li>
+                    </ul>
+                    <button class="btn btn-lg btn-block btn-add">
+                      <span class="icomoon icon-plus"></span>Agregar nueva red social...
+                    </button>                          
+                  </section>                        
+
+                  <div class="page-number">
+                    <p class="text-center">
+                      <span>2</span>
+                      <span>/</span>
+                      <span>2</span>
+                    </p>
+                  </div>
+
+                  <div class="actions">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Guardar</button>
+                    <a type="button" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</a>
+                  </div>
+                </fieldset>                        
+              </div>
             </div>
-            <div class="page" ng-class="currentPage == 2 ? 'active' : ''">
-              <!-- <div class="container-fluid">
-                <div class="row">
-                  <div class="col-xs-12"> -->
-
-                    <div class="panel panel-default panel-form">
-                      <div class="panel-heading with-icons">
-                        <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
-                        <span class="icomoon icon-information"></span>
-                        <h3 class="panel-title">Mi información</h3>
-                      </div>
-                      <div class="panel-body">
-                        
-                        <fieldset class="my-profile-form">
-                        
-                          <section>
-                            <h5>Mis Estudios</h5>
-                            <ul class="block-list">
-                              <li>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución">
-                                  <select name="" id="" class="form-control form-control-lg theme-form">
-                                    <option>Grado</option>
-                                    <option>Primaria</option>
-                                    <option>Secundaria</option>
-                                    <option>Preparatoria</option>
-                                    <option>Profesional</option>
-                                  </select>
-                                </div>
-                              </li>
-                            </ul> 
-                            <button class="btn btn-lg btn-block btn-add">
-                              <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
-                            </button>
-                          </section>
-
-                          <section>
-                            <h5>Domicilio</h5>
-                            <ul class="block-list">
-                              <li>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Calle" />
-                                </div>
-                                <div class="form-group col-2">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Ext." />
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Int." />
-                                </div> 
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Colonia" />
-                                </div>
-                                <div class="form-group">
-                                  <select name="country" id="country" class="form-control form-control-lg theme-form">
-                                    <option disabled selected>País</option>
-                                    <option>Bolivia</option>
-                                    <option>México</option>
-                                    <option>Venezuela</option>
-                                  </select> 
-                                </div> 
-                                <div class="form-group">
-                                  <select name="state" id="state" class="form-control form-control-lg theme-form">
-                                    <option disabled selected>Estado</option>
-                                    <option>Coahuila</option>
-                                    <option>Jalisco</option>
-                                    <option>México</option>
-                                    <option>Nuevo León</option>
-                                  </select> 
-                                </div> 
-                                <div class="form-group">
-                                  <select name="" id="ciudad" class="form-control form-control-lg theme-form">
-                                    <option disabled selected>Ciudad</option>
-                                    <option>Guadalajara</option>
-                                    <option>México D.F.</option>
-                                    <option>Monterrey</option>
-                                  </select> 
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Municipio / Delegación" />
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" />
-                                </div>
-                              </li>
-                            </ul> 
-                          </section>
-
-                          <div class="page-number">
-                            <p class="text-center">
-                              <span>1</span>
-                              <span>/</span>
-                              <span>2</span>
-                            </p>
-                          </div>
-
-                          <div class="actions">
-                            <button type="button" class="btn btn-primary btn-lg btn-block">Continuar</button>
-                            <a type="button" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</a>
-                          </div>
-
-                        </fieldset>
-
-                      </div>
-                    </div> 
-
-                  <!-- </div>
-                </div>
-              </div> -->
-            </div>
-            <div class="page" ng-class="currentPage == 3 ? 'active' : ''">
-
-              <!-- <div class="container-fluid">
-                <div class="row">
-                  <div class="col-xs-12"> -->
-
-                    <div class="panel panel-default panel-form">
-                      <div class="panel-heading with-icons">
-                        <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
-                        <span class="icomoon icon-information"></span>
-                        <h3 class="panel-title">Mi información</h3>
-                      </div>
-                      <div class="panel-body">
-
-                        <fieldset class="my-profile-form">
-                          
-                          <section>
-                            <h5>Teléfono</h5>
-                            <ul class="block-list">
-                              <li>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Número Telefónico">
-                                </div>
-                              </li>
-                            </ul> 
-                            <button class="btn btn-lg btn-block btn-add">
-                              <span class="icomoon icon-plus"></span>Agregar nuevo número...
-                            </button>
-                          </section>
-
-                          <section>
-                            <h5>Correo</h5>
-                            <ul class="block-list">
-                              <li>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico">
-                                </div>
-                              </li>
-                            </ul> 
-                            <button class="btn btn-lg btn-block btn-add">
-                              <span class="icomoon icon-plus"></span>Agregar nuevo correo...
-                            </button>
-                          </section>
-
-                          <section>
-                            <h5>Redes sociales</h5>
-                            <ul class="block-list">
-                              <li>
-                                <div class="form-group">
-                                  <select name="country" id="country" class="form-control form-control-lg theme-form">
-                                    <option disabled selected>Red Social</option>
-                                    <option>Facebook</option>
-                                    <option>Instagram</option>
-                                    <option>Tweeter</option>
-                                  </select> 
-                                </div>                               
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre de Usuario" />
-                                </div>
-                              </li>
-                            </ul>
-                            <button class="btn btn-lg btn-block btn-add">
-                              <span class="icomoon icon-plus"></span>Agregar nueva red social...
-                            </button>                          
-                          </section>
-
-                          <section>
-                            <h5>Familiares Compartamos</h5>
-                            <ul class="block-list">
-                              <li>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" />
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" />
-                                </div>                              
-                                <div class="form-group">
-                                  <select name="country" id="country" class="form-control form-control-lg theme-form">
-                                    <option disabled selected>Parentesco</option>
-                                    <option>Mamá</option>
-                                    <option>Papá</option>
-                                  </select> 
-                                </div>                               
-
-                              </li>
-                            </ul>
-                            <button class="btn btn-lg btn-block btn-add">
-                              <span class="icomoon icon-plus"></span>Agregar nueva red social...
-                            </button>                          
-                          </section>                        
-
-                          <div class="page-number">
-                            <p class="text-center">
-                              <span>2</span>
-                              <span>/</span>
-                              <span>2</span>
-                            </p>
-                          </div>
-
-                          <div class="actions">
-                            <button type="button" class="btn btn-primary btn-lg btn-block">Guardar</button>
-                            <a type="button" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</a>
-                          </div>
-
-                        </fieldset>                        
-
-                      </div>
-                    </div> 
-
-                  <!-- </div>
-                </div>
-              </div> -->
-
-            </div>
-
           </div>
-        </form>
-      </section> 
+        </div>
+      </form>
+    </section> 
   </article>
  
   <footer>
