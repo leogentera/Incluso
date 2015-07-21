@@ -120,6 +120,9 @@ return array(
         				'type'    => 'segment',
         				'options' => array(
         						'route'    => '/userprofile/:id',
+        						'constraints' => array(
+        								'id'     => '[0-9]+',
+        						),
         						'defaults' => array(
         								'controller' => 'MoodleApi\Controller\UserProfile',
         						),
