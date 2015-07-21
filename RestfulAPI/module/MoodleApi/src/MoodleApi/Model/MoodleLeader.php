@@ -15,7 +15,8 @@ class MoodleLeader
         $this->id =     (!empty($data['id'])) ? $data['id'] : null;
         $this->fullname =     (!empty($data['name'])) ? $data['name'] : null;
         $this->rank =     (!empty($data['place'])) ? $data['place'] : null;
-        $this->stars =     (!empty($data['stars'])) ? $data['stars'] : null;
+        $this->stars =     (!empty($data['stars'])) ? $data['stars'] : 0;
+        $this->progressPercentage =     (!empty($data['percentage_completed'])) ? $data['percentage_completed'] : 0;
         
     }
 }

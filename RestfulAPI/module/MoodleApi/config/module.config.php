@@ -10,7 +10,7 @@ return array(
         	'MoodleApi\Controller\ResetPassword'       => 'MoodleApi\Controller\ResetPasswordController',
         	'MoodleApi\Controller\ForgotPassword'       => 'MoodleApi\Controller\ForgotPasswordController',
         	'MoodleApi\Controller\UserProfile'       => 'MoodleApi\Controller\UserProfileController',
-        	'MoodleApi\Controller\UpdateUserProfile'       => 'MoodleApi\Controller\UpdateUserProfileController',
+        	'MoodleApi\Controller\UpdateUserProfile'       => 'MoodleApi\Controller\UserProfileController',
         	'MoodleApi\Controller\AddStars'       => 'MoodleApi\Controller\AddStarsController',
         	'MoodleApi\Controller\MainDashboard'       => 'MoodleApi\Controller\MainDashboardController',
         ),
@@ -119,9 +119,9 @@ return array(
         		'UpdateUserProfile' => array(
         				'type'    => 'segment',
         				'options' => array(
-        						'route'    => '/updateuserprofile',
+        						'route'    => '/userprofile/:id',
         						'defaults' => array(
-        								'controller' => 'MoodleApi\Controller\UpdateUserProfile',
+        								'controller' => 'MoodleApi\Controller\UserProfile',
         						),
         				),
         		),
