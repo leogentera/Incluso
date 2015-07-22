@@ -598,7 +598,7 @@
     padding-top: 60px;
   }
   .incluso-app .parts {
-    background-image: url('../images/bg-footer-ship.gif');
+    background-image: url('../images/bg-footer-ship.jpg');
     background-position: 0 -3px;
     background-size: cover;
     border-top: 2px solid #2a2f32;
@@ -656,6 +656,7 @@
   }
   .incluso-app .parte span {
     line-height: normal;
+    display: inline-flex;
   }
   .incluso-app .wall .parte {
     display: block;
@@ -1552,9 +1553,11 @@
   }
   .incluso-app .my-profile-form .form-group select.form-control {
     text-indent: 0;
+    /*border-left-color: transparent !important;
+                    border-right-color: transparent !important;*/
   }
   .incluso-app .my-profile-form .form-group:first-child .form-control:first-child {
-    border-top-width: 0.6vw;
+    border-top-width: 1pt;
   }
 }
 /* sm viewport */
