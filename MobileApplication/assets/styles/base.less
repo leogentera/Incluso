@@ -344,6 +344,7 @@ body {
      Description: CSS overrides to bootstrap's form-control class.
     ****************************************************************************/
     .form-control {
+        .native-appearance-reset();
         .border-radius-reset();
         .box-shadow-reset();
         .clr-white(border-color, 0.3);
@@ -398,9 +399,9 @@ body {
         &.theme-form {
             background-color: transparent;
             border-left: none;
-            border-top: 0.6vw solid;
+            border-top: 1pt solid;
             border-right: none;
-            border-bottom: 0.6vw solid;
+            border-bottom: 1pt solid;
             .clr-blueGray(border-color, 0.5);
             .clr-blueGray(color, 1);
 
@@ -438,25 +439,27 @@ body {
                 font-weight:100;
             }            
         }
+        &.select-wrapper {
+            select + .placeholder-fallback {
+                color:@clr-white !important;
+                font-weight:100;                
+            }
+        }
     }
-    select.form-control {
-        
-        /* control sizing */
-        /*&.form-control-xl {
-            padding-left:12px;
+    select {
+        &.form-control {}      
+        &.ng-pristine {
+            &:before {
+                display: block;
+                position: absolute;
+                left: 0; 
+                top: 0; 
+                height: inherit;
+                content: "";
+                width: auto;
+            }
         }
-        &.form-control-lg {
-            padding-left:12px;
-        }
-        &.form-control-md {
-            padding-left:12px;
-        }
-        &.form-control-sm {
-            padding-left:12px;
-        }        
-        &.form-control-xs {
-            padding-left:12px;
-        } */    
+        &.ng-dirty {}
 
         option:first-child {display: none;}   
     }

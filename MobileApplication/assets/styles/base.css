@@ -430,6 +430,9 @@ body {
   margin-right: 5%;
 }
 .incluso-app .form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -485,9 +488,9 @@ body {
 .incluso-app .form-control.theme-form {
   background-color: transparent;
   border-left: none;
-  border-top: 0.6vw solid;
+  border-top: 1pt solid;
   border-right: none;
-  border-bottom: 0.6vw solid;
+  border-bottom: 1pt solid;
   border-color: rgba(142, 170, 179, 0.5);
   color: #8eaab3;
 }
@@ -527,25 +530,20 @@ body {
   color: #ffffff !important;
   font-weight: 100;
 }
-.incluso-app select.form-control {
-  /* control sizing */
-  /*&.form-control-xl {
-            padding-left:12px;
-        }
-        &.form-control-lg {
-            padding-left:12px;
-        }
-        &.form-control-md {
-            padding-left:12px;
-        }
-        &.form-control-sm {
-            padding-left:12px;
-        }        
-        &.form-control-xs {
-            padding-left:12px;
-        } */
+.incluso-app .form-control.select-wrapper select + .placeholder-fallback {
+  color: #ffffff !important;
+  font-weight: 100;
 }
-.incluso-app select.form-control option:first-child {
+.incluso-app select.ng-pristine:before {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: inherit;
+  content: "";
+  width: auto;
+}
+.incluso-app select option:first-child {
   display: none;
 }
 .incluso-app .input-group {
