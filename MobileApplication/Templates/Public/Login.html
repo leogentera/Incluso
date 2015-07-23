@@ -27,20 +27,17 @@
       </div>
     </div>
 
-    <header class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <figure>
-            <img src="assets/images/img-logo-gentera.svg" alt="" class="login-logo">
-            <figcaption class="center-block text-center">
-              <span>Estudia | </span>
-              <span>Trabaja | </span>
-              <span>Emprende</span>
-            </figcaption>
-          </figure> 
-        </div>
-      </div>
-    
+    <header>
+      <figure>
+        <img src="assets/images/img-logo-gentera.svg" alt="" class="login-logo">
+        <figcaption class="center-block text-center">
+          <span>Estudia</span>
+          <span>|</span>
+          <span>Trabaja</span>
+          <span>|</span>
+          <span>Emprende</span>
+        </figcaption>
+      </figure> 
     </header>
 
     <section>
@@ -74,16 +71,19 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <div class="checkbox">
+            <div class="checkbox checkbox-custom">
               <label>
-                <input type="checkbox" ng-model="userCredentialsModel.rememberCredentials" name="rememberCredentials" /> <span>Recordar contraseña</span>
+                <input type="checkbox" ng-model="userCredentialsModel.rememberCredentials" name="rememberCredentials" /> 
+                <span>Recordar contraseña</span>
               </label>
+              <!-- <label for="check2">Inside</label>
+              <input type="checkbox" value="check1" name="check" id="check3"> -->
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" ng-model="userCredentialsModel.rememberCredentials" name="rememberCredentials" /> <span>Acepto Términos de Uso</span>
+                <input type="checkbox"  name="acceptUsageTerms" /> <span>Acepto Términos de Uso</span>
               </label>
-            </div>  
+            </div>
           </div>
         </div>       
 
@@ -109,6 +109,7 @@
 
       </form>
     </section>
+
     <footer>
       <ul class="list-unstyled text-center">
         <li><a class="btn btn-default btn-transparent" href="#Register">Soy nuevo y deseo registrarme</a></li>
