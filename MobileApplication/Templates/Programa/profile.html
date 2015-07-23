@@ -86,7 +86,7 @@
           <div class="container">
             <div class="row">
               <div class="col-xs-6">
-                <button class="btn btn-icon-aside left">
+                <button class="btn btn-icon-aside left" ng-click="edit();">
                   <div class="btn-icon">
                     <span class="icomoon icon-settings"></span>
                   </div>
@@ -166,7 +166,7 @@
                       </a>
                     </li> 
 
-                    <li class="list-group-item no-badge" ng-click="navigateToPage(8)" ng-show="hasDreams()">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(8)">
                       <a href="">
                         <span class="icomoon icon-rocket"></span>
                         <span>Mis Sueños</span>
@@ -217,9 +217,9 @@
                             <hr />
 
                             <h5>Correo</h5>
-                            <ul class="block-list" ng-repeat="m in model.email">
+                            <ul class="block-list">
                               <li>
-                                <p>{{m}}</p>
+                                <p>{{model.email}}</p>
                               </li>                             
                             </ul>
                             <hr />
