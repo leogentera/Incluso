@@ -122,6 +122,16 @@
 .incluso-app.public .login {
   position: relative;
 }
+.incluso-app.public .login .input-group .input-group-addon.addon-lg {
+  /*font-size: 6vw;
+                line-height: 6vw;*/
+  vertical-align: top;
+}
+.incluso-app.public .login .input-group .form-control {
+  /*font-size: 6vw;
+                line-height: 6vw;*/
+  vertical-align: bottom;
+}
 /* Dashboard */
 .incluso-app.start-dashboard {
   background-attachment: scroll;

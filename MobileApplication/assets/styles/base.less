@@ -472,34 +472,17 @@ body {
     ****************************************************************************/
     .input-group {
         width: 100%;
-        border-bottom-width:1px;
-        border-bottom-style:solid;
-        .clr-white(border-bottom-color, 0.3);
 
         .input-group-addon {
-            padding: 0 1px;
-            background-color: transparent;
-            border-left:none;
-            border-top:none;
-            border-right:none;
-            border-bottom:none;
+            padding: 0;
+            border: none;
             .border-radius-reset();
-            color:@clr-white;
-        }    
-        .input-group-addon + .form-control {
-            padding-top: 0px;
-            padding-bottom: 0px;
-        }
-        .form-control {
-            /*font-size:1.2em;
-            font-weight: 600;*/
-        }        
+        } 
         .form-control:hover, 
         .form-control:focus,
         .form-control:active {
             .box-shadow-reset();
         }
-
         select.form-control {
             option {
                 color: @clr-blueDark;
@@ -509,12 +492,44 @@ body {
                 padding-left:0;
             }
         }
-        p:first-child {
+        /*p:first-child {
             padding-right: 24px;
         }  
         p:first-child + .form-control {
             padding-left: 0;
-        } 
+        }*/
+
+        /* by size */
+        &.input-group-lg {
+            .input-group-addon {
+                padding: 4vw 6vw 4vw 0;
+                font-size: 6vw;
+                line-height: 6vw;
+            }
+            .input-group-addon + .form-control {
+                padding: 4vw 0;
+                font-size: 6vw;
+                line-height: 6vw;
+            }            
+        }
+        
+        /* by theme */
+        &.theme-default {
+            border-bottom-width:1pt;
+            border-bottom-style:solid;
+            .clr-white(border-bottom-color, 0.3);
+
+            .input-group-addon {
+                background-color: transparent;
+                border: none;
+                color:@clr-white;
+            }
+            .input-group-addon + .form-control {
+                background-color: transparent;
+                border: none;
+                color:@clr-white;
+            }              
+        }
 
     }
     /***************************************************************************/
