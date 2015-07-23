@@ -9,8 +9,8 @@ use MoodleApi\Utilities\Common;
 
 class MoodleUserProfile extends Common
 {
-	public $country;
-    public $email;
+	public $country=null;
+    public $email=null;
     public $firstname;
     public $fullname;
     public $id;
@@ -25,7 +25,7 @@ class MoodleUserProfile extends Common
     public $address;
     public $phones=array();
     public $socialNetworks=array();
-    public $familiaCompartamos;
+    public $familiaCompartamos=array();
     public $rank=0;
     public $stars=0;
     
@@ -36,8 +36,8 @@ class MoodleUserProfile extends Common
     public $dreamsToBe=array();
     public $dreamsToHave=array();
     public $dreamsToDo=array();
-    public $badgesEarned;
-    public $badgesToEarn;
+    public $badgesEarned=array();
+    public $badgesToEarn=array();
     
     public $showMyInformation=true;
     public $showAttributesAndQualities=true;
@@ -55,6 +55,7 @@ class MoodleUserProfile extends Common
     
     public function __construct($data, $badgesEarned, $badgesToEarn)
     {
+    	
     	$customFields=array();
     	//We turn the custom fields to an array because otherwise, we should do a for loop to search for each value
     	for($i=0;count($data['customfields'])>$i;$i++){
@@ -98,18 +99,7 @@ class MoodleUserProfile extends Common
     		//var_dump($this->phones);
     	}
     	
-    	if( !$this->showMyInformation){
-    		unset($this->address);
-    		unset($this->country);
-    		unset($this->email);
-    		unset($this->studies);
-    		unset($this->phones);
-    		unset($this->socialNetworks);
-    		unset($this->familiaCompartamos);
-    		unset($this->stage);
-    		
-    	}
-    	else{
+    	if( $this->showMyInformation){
     		$this->country =     (!empty($data['country'])) ? $data['country'] : null;
     		$this->address=new MoodleAddress($data, $customFields);
     		$this->email =     (!empty($data['email'])) ? $data['email'] : null;
@@ -129,6 +119,9 @@ class MoodleUserProfile extends Common
     			$this->stage=$customFields['stage'];
     		}
     	}
+    	else{
+    		$this->address=new MoodleAddress();
+    	}
     	
        
        
@@ -141,42 +134,29 @@ class MoodleUserProfile extends Common
         $this->username =     (!empty($data['username'])) ? $data['username'] : null;
         
         
-        if(!$this->showBadgesEarned){
-        	unset($this->badgesEarned);
-        	unset($this->badgesToEarn);
-        }
-        else{
+        if($this->showBadgesEarned){
         	$this->badgesEarned=$badgesEarned;
         	$this->badgesToEarn=$badgesToEarn;
         }
        
         
         
-        if( !$this->showAttributesAndQualities){
-        	unset($this->attributesAndQualities);
-        }
-        elseif(array_key_exists ( 'attributesAndQualities' , $customFields )){
+        if( $this->showAttributesAndQualities && array_key_exists ( 'attributesAndQualities' , $customFields )){
         	$this->attributesAndQualities=$this->createTableFromCompundField($customFields['attributesAndQualities']);
         	//var_dump($this->phones);
         }
         
-    	if(!$this->showLikesAndPreferences){
-        	unset($this->likesAndPreferences);
-        }elseif(array_key_exists ( 'strengths' , $customFields )){
+    	if($this->showLikesAndPreferences && array_key_exists ( 'strengths' , $customFields )){
         	$this->strengths=$this->createTableFromCompundField($customFields['strengths']);
         	//var_dump($this->phones);
         }
         
-   		 if(!$this->showRecomendedBachelorDegrees){
-        	unset($this->recomendedBachelorDegrees);
-        }elseif(array_key_exists ( 'recomendedBachelorDegrees' , $customFields )){
+   		 if($this->showRecomendedBachelorDegrees && array_key_exists ( 'recomendedBachelorDegrees' , $customFields )){
         	$this->recomendedBachelorDegrees=$this->createTableFromCompundField($customFields['recomendedBachelorDegrees']);
         	//var_dump($this->phones);
         }
         
-        if(!$this->showStrengths){
-        	unset($this->strengths);
-        }elseif(array_key_exists ( 'likesAndPreferences' , $customFields )){
+        if($this->showStrengths && array_key_exists ( 'likesAndPreferences' , $customFields )){
         	$this->likesAndPreferences=$this->createTableFromCompundField($customFields['likesAndPreferences']);
         	//var_dump($this->phones);
         }
@@ -186,12 +166,7 @@ class MoodleUserProfile extends Common
 //         	//var_dump($this->phones);
 //         }
         
-        if(!$this->showMyDreams){
-        	unset($this->dreamsToBe);
-        	unset($this->dreamsToDo);
-        	unset($this->dreamsToHave);
-        }
-        else{
+        if($this->showMyDreams){
         	if(array_key_exists ( 'dreamsToBe' , $customFields )){
         		$this->dreamsToBe=$this->createTableFromCompundField($customFields['dreamsToBe']);
         		//var_dump($this->phones);

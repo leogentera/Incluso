@@ -3,17 +3,17 @@ namespace MoodleApi\Model;
 
 class MoodleAddress
 {
-	public $street="";
-	public $num_ext="";
-	public $num_int="";
-	public $colony="";
-	public $city="";
-	public $town="";
-	public $state="";
-	public $country="";
-	public $postalCode="";
+	public $street=null;
+	public $num_ext=null;
+	public $num_int=null;
+	public $colony=null;
+	public $city=null;
+	public $town=null;
+	public $state=null;
+	public $country=null;
+	public $postalCode=null;
 	
-    public function __construct($data, $customFields)
+    public function __construct($data=array(), $customFields=array())
     {
     //for($i=0;count($data['customfields'])>$i;$i++){
     //var_dump($data);
@@ -32,6 +32,7 @@ class MoodleAddress
     				
     				
     			}
+    			
     			if(array_key_exists ( "town" , $customFields )){
     				$this->town=$customFields['town'];
     			}
@@ -46,7 +47,6 @@ class MoodleAddress
     	
     	$this->city =     (!empty($data['city'])) ? $data['city'] : null;
     	$this->country =     (!empty($data['country'])) ? $data['country'] : null;
-    	
         
     }
 }
