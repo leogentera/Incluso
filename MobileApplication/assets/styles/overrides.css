@@ -38,6 +38,7 @@
   display: block;
   margin: 0 auto;
   width: auto;
+  width: 55vw;
 }
 .incluso-app.public header figcaption {
   margin: 10px auto;
