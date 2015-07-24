@@ -12,7 +12,7 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
 
             $scope.currentPage = 1;
-            $scope.model = loadDataAsync();
+            $scope.model = getDataAsync();
 
             $scope.navigateToPage = function(pageNumber){
                 $scope.currentPage = pageNumber;
@@ -37,7 +37,7 @@ angular
                 $scope.index();
             }
 
-            function loadDataAsync(){
+            function getDataAsync(){
                 return JSON.parse(localStorage.getItem("profile"));
             }
 
