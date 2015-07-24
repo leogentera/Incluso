@@ -141,16 +141,36 @@
 </section>
 <section class="">
 
-	<div class="part"><i class="icomoon icon-checked-join green"></i><span>¿Pregunta selección sencilla?</span><i class="icomoon icon-arrow-down fl-right white"></i></div>
-	<div class="part2 list">
+	<div class="part"><i class="icomoon icon-checked-join green"></i><span>¿Pregunta selección sencilla?</span><i class="icomoon icon-arrow-slim-right fl-right white acc" data-id="1"></i></div>
+	<div class="part part2 ordeon" id="ord1">
 	<div><i class="icomoon icon-required"></i><span>Bien</span></div>
 	<div><i class="icomoon icon-required red"></i><span>Mal</span></div>
 	<div><i class="icomoon icon-required"></i><span>bien</span></div>
 	</div>
-	<div class="part"><i class="icomoon icon-checked-join green"></i><span>¿Pregunta selección múltiple?</span><i class="icomoon icon-arrow-down fl-right white"></i></div>
-	<div class="part"><i class="icomoon icon-wrong red"></i><span>¿Pregunta valor númerico?</span><i class="icomoon icon-arrow-down fl-right white"></i></div>
-	<div class="part"><i class="icomoon icon-checked-join green"></i><span>¿Pregunta falso/verdadero?</span><i class="icomoon icon-arrow-down fl-right white"></i></div>
-	<div class="part"><i class="icomoon icon-checked-join green"></i><span>¿Pregunta selección sencilla?</span><i class="icomoon icon-arrow-down fl-right white"></i></div>
+	<div class="part"><i class="icomoon icon-checked-join green"></i><span>¿Pregunta selección múltiple?</span><i class="icomoon icon-arrow-slim-right fl-right white acc" data-id="2"></i></div>
+	<div class="part part2 ordeon" id="ord2">
+	<div><i class="icomoon icon-required"></i><span>Bien</span></div>
+	<div><i class="icomoon icon-required red"></i><span>Mal</span></div>
+	<div><i class="icomoon icon-required"></i><span>bien</span></div>
+	</div>
+	<div class="part"><i class="icomoon icon-wrong red"></i><span>¿Pregunta valor númerico?</span><i class="icomoon icon-arrow-slim-right fl-right white acc" data-id="3"></i></div>
+	<div class="part part2 ordeon" id="ord3">
+	<div><i class="icomoon icon-required"></i><span>Bien</span></div>
+	<div><i class="icomoon icon-required red"></i><span>Mal</span></div>
+	<div><i class="icomoon icon-required"></i><span>bien</span></div>
+	</div>
+	<div class="part"><i class="icomoon icon-checked-join green"></i><span>¿Pregunta falso/verdadero?</span><i class="icomoon icon-arrow-slim-right fl-right white acc" data-id="4"></i></div>
+	<div class="part part2 ordeon" id="ord4">
+	<div><i class="icomoon icon-required"></i><span>Bien</span></div>
+	<div><i class="icomoon icon-required red"></i><span>Mal</span></div>
+	<div><i class="icomoon icon-required"></i><span>bien</span></div>
+	</div>
+	<div class="part"><i class="icomoon icon-checked-join green"></i><span>¿Pregunta selección sencilla?</span><i class="icomoon icon-arrow-slim-right fl-right white acc" data-id="5"></i></div>
+	<div class="part part2 ordeon" id="ord5">
+	<div><i class="icomoon icon-required"></i><span>Bien</span></div>
+	<div><i class="icomoon icon-required red"></i><span>Mal</span></div>
+	<div><i class="icomoon icon-required"></i><span>bien</span></div>
+	</div>
 
 </section>
 <section class="txt-renglon pill">
@@ -216,7 +236,13 @@
 		$("#finalized").show("slow");
 		return false;
 	});
-	
+$(".acc").click(function(){
+$(this).toggleClass('icon-arrow-down');
+$(this).toggleClass('icon-arrow-slim-right');
+var cual = $(this).attr('data-id');
+  $('#ord' + cual).toggle();
+
+});	
 		$("#finalized").hide();
     $('#eranditon').click(function() {
       var transitionClass = $(this).data('transition');

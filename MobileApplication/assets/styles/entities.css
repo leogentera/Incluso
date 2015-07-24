@@ -671,6 +671,15 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(31, 39, 51, 0.68)', endColorstr='rgba(20, 25, 33, 0.68)', GradientType=1);
     margin-top: -4%;
   }
+  .incluso-app .part.part2 .icomoon {
+    font-size: 100%;
+  }
+  .incluso-app .acc {
+    cursor: pointer;
+  }
+  .incluso-app .ordeon {
+    display: none;
+  }
   .incluso-app .wall .part {
     display: block;
     justify-content: unset;
