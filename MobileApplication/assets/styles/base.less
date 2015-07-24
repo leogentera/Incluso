@@ -24,7 +24,7 @@
             14. $pages
             15. $footer
             16. $spinner
-            17. $forma
+            17. $form
 ********************************************************************************/
 @import "less-utilities.less";
 
@@ -33,6 +33,7 @@ body {
     position: absolute;
     width: 100%;
     height: inherit;
+    font-size: 4vw;
 }
     /****************************************************************************
      $menu 
@@ -68,10 +69,10 @@ body {
     left: 0px;
 }
 #site-menu {
-    -webkit-transition: all 300ms ease-in-out;
-    -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
-    transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
     width: 150px;
     height: 100vh;
     position: absolute;
@@ -979,14 +980,15 @@ body {
      16. $forma
      Description: CSS class to create the form components
     ****************************************************************************/   
-    .forma{
+    .form{
         label {
             cursor: pointer;
             display: block;
+            font-size: 5vw;
+            line-height: 8vw;
             margin-right: 15px;
-            padding-left: 10%;
+            padding-left: 10vw;
             position: relative;
-            line-height:normal;
         }
         input[type="radio"], input[type="checkbox"] {
             display: none;
@@ -998,20 +1000,27 @@ body {
             background-color: transparent;
             content: "";
             display: inline-block;
+            font-size: 7vw;
+            height: 8vw;
             left: 0;
+            line-height: 8vw;
             margin-right: 10px;
             position: absolute;
+            width: 8vw;
         }
         input[type=radio] + label::before {
-            line-height: 50%;
-            padding: 0 2px 3px 1px;
+            font-size: 15vw;
+            height: 8vw;
+            line-height: 5vw;
+            padding: 0;
+            width: 8vw;
+
         }
         input[type=checkbox] + label {
-            margin-bottom: 10px;
         }
         input[type=checkbox] + label::before {
             border-radius: 3px;
-            padding: 0 6px;
+            padding: 0;
             content: "\2713";
             color: rgba(0,0,0,0);
         }
@@ -1031,11 +1040,11 @@ body {
         }
         input[type=radio]:checked + label:before {
             content: "\2022";
-            color: @clr-greenLight;
+            background-color: @clr-greenLight;
             text-align: center;
         }
         .tnf{
-            margin-top:5%;
+            margin:2vw 0;
             label:before{
                 display:none;
                 content:"";
@@ -1045,10 +1054,10 @@ body {
                display: inline-block;
             }
             input[type=radio]:checked + label{
-                color: @clr-greenLight;
+                background-color: @clr-greenicon;
             }
             label{
-                border: 1px solid white;
+                border: 1px solid @clr-greenicon;
                 display: inline-block;
                 line-height: 200%;
                 margin: -2.5px !important;
@@ -1060,10 +1069,10 @@ body {
                 }
             }
             label:nth-child(2){
-                border-radius: 20px 0 0 20px;
+                border-radius: 10px 0 0 10px;
             }
             label:nth-child(4){
-                border-radius: 0 20px 20px 0;
+                border-radius: 0 10px 10px 0;
             }
 
         }
@@ -1169,7 +1178,7 @@ body {
         }
 
         @media screen and (max-width: 30em) {
-            div.cs-skin-rotate { font-size: 1em; width: 200px; }
+            div.cs-skin-rotate { font-size: 1em; }
         }
 
         .cs-skin-rotate > span,

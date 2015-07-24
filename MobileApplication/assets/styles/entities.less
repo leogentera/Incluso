@@ -68,7 +68,7 @@
             }
             .green-giant{
                 color: #0f9847;
-                font-size: 1400%;
+                font-size: 1000%;
             }
             .green-pill{    
                 border: 1px solid #0f9847;
@@ -88,20 +88,20 @@
             }
             .pill{
                 border: 2px solid rgba(255, 255, 255, 0.3);
-                border-radius: 40px;
+                border-radius: 200px;
                 color: rgba(255, 255, 255, 0.75);
                 line-height: normal;
-                margin: 5% 10%;
-                padding: 20px 20px 46px;
+                margin: 5vw 10vw;
+                padding: 2vw 3vw 7vw;
             }
             .sm-pill{
                 border: 1px solid #bbd331;
-                border-radius: 25px;
+                border-radius: 100px;
                 color: #bbd331;
-                margin: -5px -10px;
-                padding: 5px 10px;
+                margin: -0.3vw -1vw;
+                padding: 0.3vw 1vw;
             }
-            .centrado{
+            .centered{
                 text-align: center;  
                 .spinner{
                     max-width: 79%;
@@ -133,7 +133,7 @@
             .notw{
                 opacity:.5;
             }
-            .blanco{
+            .white{
                     color:white;
             }
             .hangar-bay{
@@ -161,7 +161,7 @@
                 background-color: #112845;
                 background-position: -1px 0px;
                 background-repeat: no-repeat;
-                background-size: contain;
+                background-size: 100% auto;
                 border-bottom: 10px solid #24282a;
             }
             .progreso{
@@ -238,7 +238,7 @@
                 border-top: 2px solid #2a2f32;
                 padding: 20px 0;
             }
-            .agregar{
+            .add{
                 border-bottom: 2px solid rgba(255, 255, 255, 0.3);
                 border-top: 2px solid rgba(255, 255, 255, 0.3);
                 color: white;
@@ -255,7 +255,7 @@
                 padding: 4% 2%;
                 width: 80%;
             }
-            .parte{    
+            .part{    
                 display: inline-flex;    
                 align-items: center;    
                 justify-content: space-between;
@@ -291,9 +291,22 @@
                     line-height: normal;
                     display: inline-flex;   
                 }
+                &.list{
+                    display: block;
+                }
+                &.part2{
+                    background: -moz-radial-gradient(center, ellipse cover,  rgba(31, 39, 51, 0.68) 0%, rgba(20, 25, 33, 0.68) 100%);
+                    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(31, 39, 51, 0.68)), color-stop(100%,rgba(20, 25, 33, 0.68)));
+                    background: -webkit-radial-gradient(center, ellipse cover,  rgba(31, 39, 51, 0.68) 0%,rgba(20, 25, 33, 0.68) 100%);
+                    background: -o-radial-gradient(center, ellipse cover,  rgba(31, 39, 51, 0.68) 0%,rgba(20, 25, 33, 0.68) 100%);
+                    background: -ms-radial-gradient(center, ellipse cover,  rgba(31, 39, 51, 0.68)3 0%,rgba(20, 25, 33, 0.68) 100%);
+                    background: radial-gradient(ellipse at center,  rgba(31, 39, 51, 0.68) 0%,rgba(20, 25, 33, 0.68) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(31, 39, 51, 0.68)', endColorstr='rgba(20, 25, 33, 0.68)',GradientType=1 );
+                    margin-top:-4%;
+                }
             }
             .wall{
-                .parte{
+                .part{
                     display: block; 
                     justify-content: unset; 
                     padding: 0px;
@@ -383,7 +396,7 @@
                     }
                 }
             }
-            .paginadores{
+            .paginate, .paginate a{
                 color:@clr-greenicon;
                 margin: 5% 15%;
                 i{
@@ -414,7 +427,7 @@
                     margin: 10% 0;
                     padding: 2% 0;
                     background: #fff;
-                    .agregar{
+                    .add{
                         border-color: rgba(133,133,133,.2);
                         color: #9c9c9c;
                         padding: 2% 0;    
