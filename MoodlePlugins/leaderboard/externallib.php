@@ -27,12 +27,13 @@ class leaderboard_services extends external_api{
 	public static function get_leaderboard_parameters(){
 		return new external_function_parameters(
 			array(
-					'amount' => new external_value(PARAM_INT, 'Quantity of top leaders')
+					'amount' => new external_value(PARAM_INT, 'Quantity of top leaders'),
+					'courseid' => new external_value(PARAM_INT, 'Course from you want to get the top users')
 			)
 		);
 	}
 	
-	public static function get_leaderboard($n_top){
+	public static function get_leaderboard($n_top, $courseid){
 		global $USER;
 		global $DB;
 		$response = array();
@@ -43,7 +44,8 @@ class leaderboard_services extends external_api{
 			$params = self::validate_parameters(
 					self::get_leaderboard_parameters(), 
 					array(
-						'amount' => $n_top
+						'amount' => $n_top,
+						'courseid' => $courseid
 					));
 		
 			//Context validation
