@@ -4,15 +4,7 @@ return array(
         'invokables' => array(
             'MoodleApi\Controller\Course' => 'MoodleApi\Controller\CourseController',
             'MoodleApi\Controller\User' => 'MoodleApi\Controller\UserController',
-        	'MoodleApi\Controller\CourseContents' => 'MoodleApi\Controller\CourseContentController',
             'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
-        	'MoodleApi\Controller\Register'       => 'MoodleApi\Controller\RegisterController',
-        	'MoodleApi\Controller\ResetPassword'       => 'MoodleApi\Controller\ResetPasswordController',
-        	'MoodleApi\Controller\ForgotPassword'       => 'MoodleApi\Controller\ForgotPasswordController',
-        	'MoodleApi\Controller\UserProfile'       => 'MoodleApi\Controller\UserProfileController',
-        	'MoodleApi\Controller\UpdateUserProfile'       => 'MoodleApi\Controller\UserProfileController',
-        	'MoodleApi\Controller\AddStars'       => 'MoodleApi\Controller\AddStarsController',
-        	'MoodleApi\Controller\MainDashboard'       => 'MoodleApi\Controller\MainDashboardController',
         ),
     ),
     'router' => array(
@@ -51,18 +43,7 @@ return array(
                     ),
                 ),
             ),
-        		'CourseContents' => array(
-        				'type'    => 'segment',
-        				'options' => array(
-        						'route'    => '/CourseContents[/:id]',
-        						'constraints' => array(
-        								'id'     => '[0-9]+',
-        						),
-        						'defaults' => array(
-        								'controller' => 'MoodleApi\Controller\CourseContents',
-        						),
-        				),
-        		),
+
             'Authentication' => array(
                 'type'    => 'segment',
                 'options' => array(
@@ -70,85 +51,8 @@ return array(
                     'defaults' => array(
                         'controller' => 'MoodleApi\Controller\Authentication',
                     ),
-                ),
-            ),
-        		
-        	'Register' => array(
-        		'type'    => 'segment',
-        		'options' => array(
-        			'route'    => '/register',
-        			'defaults' => array(
-        			'controller' => 'MoodleApi\Controller\Register',
-        			),
-        		),
+                )
         	),
-        		
-        	'ResetPassword' => array(
-        		'type'    => 'segment',
-        		'options' => array(
-        			'route'    => '/resetpassword',
-        			'defaults' => array(
-        			'controller' => 'MoodleApi\Controller\ResetPassword',
-        			),
-        		),
-        	),
-        	
-        	'ForgotPassword' => array(
-        		'type'    => 'segment',
-        		'options' => array(
-        			'route'    => '/forgotpassword',
-        			'defaults' => array(
-        			'controller' => 'MoodleApi\Controller\ForgotPassword',
-        			),
-        		),
-        ),
-        		
-        		'UserProfile' => array(
-                'type'    => 'segment',
-                'options' => array(
-                    'route'    => '/userprofile/:id',
-                    'constraints' => array(
-                        'id'     => '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'MoodleApi\Controller\UserProfile',
-                    ),
-                ),
-            ),
-        		
-        		'UpdateUserProfile' => array(
-        				'type'    => 'segment',
-        				'options' => array(
-        						'route'    => '/userprofile/:id',
-        						'constraints' => array(
-        								'id'     => '[0-9]+',
-        						),
-        						'defaults' => array(
-        								'controller' => 'MoodleApi\Controller\UserProfile',
-        						),
-        				),
-        		),
-        		
-        		'AddStars' => array(
-        				'type'    => 'segment',
-        				'options' => array(
-        						'route'    => '/addstars',
-        						'defaults' => array(
-        								'controller' => 'MoodleApi\Controller\AddStars',
-        						),
-        				),
-        		),
-        		
-        		'MainDashboard' => array(
-        				'type'    => 'segment',
-        				'options' => array(
-        						'route'    => '/maindashboard/:id',
-        						'defaults' => array(
-        								'controller' => 'MoodleApi\Controller\MainDashboard',
-        						),
-        				),
-        		),
-        	
         ),
     ),
     'view_manager' => array(

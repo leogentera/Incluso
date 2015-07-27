@@ -3,99 +3,35 @@ namespace MoodleApi\Controller;
 
 use MoodleApi\Utilities\AbstractRestfulJsonController;
 use Zend\View\Model\JsonModel;
+use MoodleApi\Model\MoodleActivity;
 use MoodleApi\Model\MoodleCourse;
 use MoodleApi\Model\MoodleException;
+use MoodleApi\Model\MoodleLeader;
+use MoodleApi\Model\MoodleStage;
+use MoodleApi\Model\MoodleChallenge;
 
 class CourseController extends AbstractRestfulJsonController {
     
     private $token = "";
-    private $function = "core_course_get_courses";
-	
-//     private $config;
-//     private function getConfig() {
-//     	if ($this->config == null) {
-//     		$this->config = $this->getServiceLocator()->get('config');
-//     	}
-//     	return $this->config;
-//     }
-    
-    //test
-    // Action used for GET requests without resource Id
-    public function getList()
-    {    	
-        $url = $this->getConfig()['MOODLE_API_URL'];
-        $url = sprintf($url, $this->getToken(), $this->function);
-       	var_dump($url);
-        $response = file_get_contents($url);
-        $json = json_decode($response,true);
-        
-        $courses= array();
-        if (strpos($response, "exception") !== false) 
-        {
-            // Error
-            $error = new MoodleException();
-            $error->exchangeArray($json);
-            array_push($courses, $error);
-        }
-        else
-        {
-            // Good
-            foreach ($json as $res) {
-                $course = new MoodleCourse();
-                $course->exchangeArray($res);
-                array_push($courses, $course);
-            }
-        }
-        return new JsonModel($courses);
-    }
+    private $function = "core_course_get_contents";
 
-    // Action used for GET requests with resource Id
     public function get($id)
     {
+        $course = new MoodleCourse();
+        $leaders = $this->getLeaderboard();
+        $stages = $this->getCourseStages($id);
 
-    	$url = $this->getConfig()['MOODLE_API_URL'].'&options[ids][0]=%s';
-    	$url = sprintf($url, $this->getToken(), $this->function, $id);
-		
-        $response = file_get_contents($url);
-        $json = json_decode($response,true);
+        $course->setLeaderboard($leaders);
 
-        $courses= array();
-        if (strpos($response, "exception") !== false) 
-        {
-            // Error
-            $error = new MoodleException();
-            $error->exchangeArray($json);
-            array_push($courses, $error);
+        $course->setStages($stages);
+
+        for($i = 0; $i < sizeof($stages); $i++){
+            $course->stages[$i]->setChallenges($this->getChallengesStage($id, $course->stages[$i]->section));
         }
-        else
-        {
-            // Good
-            foreach ($json as $res) {
-                $course = new MoodleCourse();
-                $course->exchangeArray($res);
-                array_push($courses, $course);
-            }
-        }
-        return new JsonModel($courses);
+
+        return new JsonModel((array)$course);
     }
 
-    // Action used for POST requests
-    public function create($data)
-    {
-        return new JsonModel(array('data' => array('id'=> 3, 'name' => 'New Album', 'band' => 'New Band')));
-    }
-
-    // Action used for PUT requests
-    public function update($id, $data)
-    {
-        return new JsonModel(array('data' => array('id'=> 3, 'name' => 'Updated Album', 'band' => 'Updated Band')));
-    }
-
-    // Action used for DELETE requests
-    public function delete($id)
-    {
-        return new JsonModel(array('data' => 'album id 3 deleted'));
-    }
     
     private function hasToken() {
     	$request = $this->getRequest();
@@ -108,7 +44,8 @@ class CourseController extends AbstractRestfulJsonController {
 
     private function generateToken() {
         $url = $this->getConfig()['TOKEN_GENERATION_URL'];
-        $url = sprintf($url, 'test', 'Test123!', $this->getConfig()['MOODLE_SERVICE_NAME']);
+        $url = sprintf($url, 'incluso', 'incluso', $this->getConfig()['MOODLE_SERVICE_NAME']);
+        //$url = sprintf($url, 'test', 'Test123!', $this->getConfig()['MOODLE_SERVICE_NAME']);
         $response = file_get_contents($url);
         $json = json_decode($response,true);
         setcookie('MOODLE_TOKEN', $json['token'], time() + 3600, '/',null, false); //the true indicates to store only if there´s a secure connection
@@ -125,6 +62,100 @@ class CourseController extends AbstractRestfulJsonController {
     		$token = $this->generateToken();
     	}
     	return $token;
+    }
+
+    private function getLeaderboard(){
+    
+        $url = $this->getConfig()['MOODLE_API_URL'].'&amount=3';
+        $url = sprintf($url, $this->getToken(), "get_leaderboard");
+
+        $response = file_get_contents($url);
+    
+        $json = json_decode($response,true);
+    
+        if (strpos($response, "exception") !== false)
+        {
+    
+            return array();
+        }
+        // Good
+        $leaders= array();
+
+        foreach($json as $leader){
+            $leader = new MoodleLeader($leader);
+            array_push($leaders, $leader);
+        }
+        return $leaders;
+    }
+
+    private function getChallengesStage($courseid, $stageid){
+    
+        $url = $this->getConfig()['MOODLE_API_URL'].'&courseid=%s&stageid=%s';
+        $url = sprintf($url, $this->getToken(), "get_challenges_stage", $courseid, $stageid);
+
+        $response = file_get_contents($url);
+
+        $json = json_decode($response,true);
+
+        if (strpos($response, "exception") !== false){
+            return array();
+        }
+
+        $challenges= array();
+
+        foreach($json as $challenge){
+            $challenge = new MoodleChallenge($challenge);
+            $challenge->setActivityType("ActivityManager");
+            $challenge->setActivities($this->getActivitiesByChallenge($challenge->id));
+            array_push($challenges, $challenge);
+        }
+
+        return $challenges;
+    }
+    
+    private function getCourseStages($courseid){
+        $url = $this->getConfig()['MOODLE_API_URL'].'&courseid=%s';
+        $url = sprintf($url, $this->getToken(), "get_stages_by_course", $courseid);
+
+        $response = file_get_contents($url);
+    
+        $json = json_decode($response,true);
+    
+        if (strpos($response, "exception") !== false)
+        {
+    
+            return array();
+        }
+        // Good
+        $stages= array();
+
+        foreach($json as $stage){
+            $stage = new MoodleStage($stage);
+            array_push($stages, $stage);
+        }
+        return $stages;
+    }
+
+    private function getActivitiesByChallenge($sectionid){
+        $url = $this->getConfig()['MOODLE_API_URL'].'&sectionid=%s';
+        $url = sprintf($url, $this->getToken(), "get_activities_by_challenge", $sectionid);
+
+        $response = file_get_contents($url);
+
+        $json = json_decode($response,true);
+
+        if (strpos($response, "exception") !== false){
+            return array();
+        }
+
+        $activities= array();
+
+        foreach($json as $activity){
+            $activity = new MoodleActivity($activity);
+            array_push($activities, $activity);
+        }
+
+        return $activities;
     }
 }
 
