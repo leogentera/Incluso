@@ -23,7 +23,7 @@ $functions = array(
         'get_quiz' => array(
                 'classname'   => 'quiz_plugin',
                 'methodname'  => 'get_quiz',
-                'classpath'   => 'local/forms_plugin/externallib.php',
+                'classpath'   => 'local/activities_plugin/externallib.php',
                 'description' => 'Returns the quiz given a quizid',
                 'type'        => 'read',
         ),
@@ -31,16 +31,31 @@ $functions = array(
         'get_quiz_result' => array(
         		'classname'   => 'quiz_plugin',
         		'methodname'  => 'get_quiz_result',
-        		'classpath'   => 'local/forms_plugin/externallib.php',
+        		'classpath'   => 'local/activities_plugin/externallib.php',
         		'description' => 'Returns the quiz results',
         		'type'        => 'read',
         ),
+
+        'get_activity_summary' => array(
+                        'classname'   => 'activitiesSummary_plugin',
+                        'methodname'  => 'get_activity_summary',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Returns the summary of activity',
+                        'type'        => 'read',
+        ),
+
 );
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
 $services = array(
         'Quiz service' => array(
                 'functions' => array (	'get_quiz','get_quiz_result'),
+                'restrictedusers' => 0,
+                'enabled'=>1,
+        ),
+
+        'ActivitySummary service' => array(
+                'functions' => array ('get_activity_summary'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         )

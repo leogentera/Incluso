@@ -15,4 +15,11 @@ class MoodleActivity
     
     }
 
+    public function setDescription($description){
+    	$this->description = $description;
+    }
+
+    public function setName($name){
+    	$this->name = $name;
+    }
 }

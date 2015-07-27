@@ -152,10 +152,28 @@ class CourseController extends AbstractRestfulJsonController {
 
         foreach($json as $activity){
             $activity = new MoodleActivity($activity);
+            $activitysummary = $this->getActivitySummary($activity->id, $activity->activityType);
+            $activity->setName($activitysummary->name);
+            $activity->setDescription($activitysummary->intro);
             array_push($activities, $activity);
         }
 
         return $activities;
+    }
+
+    private function getActivitySummary($instanceid, $typeOfActivity){
+        $url = $this->getConfig()['MOODLE_API_URL'].'&instanceid=%s&typeOfActivity=%s';
+        $url = sprintf($url, $this->getToken(), "get_activity_summary", $instanceid, $typeOfActivity);
+
+        $response = file_get_contents($url);
+
+        $json = json_decode($response,true);
+
+        if (strpos($response, "exception") !== false){
+            return array();
+        }
+
+        return new JsonModel($json[0]);   
     }
 }
 
