@@ -110,7 +110,7 @@ private function forgotPassword($data)
     		'&users[0][customfields][0][type]=recoverycode&users[0][customfields][0][value]=%s'.
     		'&users[0][customfields][1][type]=codeexpirationdate&users[0][customfields][1][value]=%s';
     		 
-    		$url = sprintf($url, $this->getToken(), $this->function, $id, $recoverycode, $codeexpirationdate);
+    		$url = sprintf($url, $this->getToken(), "core_user_update_users", $id, $recoverycode, $codeexpirationdate);
     		 
     		$response = file_get_contents($url);
     		if ($response=="null"){
@@ -229,7 +229,7 @@ private function forgotPassword($data)
     		'&users[0][customfields][0][type]=recoverycode&users[0][customfields][0][value]=%s'.
     		'&users[0][customfields][1][type]=codeexpirationdate&users[0][customfields][1][value]=%s';
 	    	
-	    	$url = sprintf($url, $this->getToken(), $this->function, $data['password'], $id, '', '');
+	    	$url = sprintf($url, $this->getToken(), "core_user_update_users", $data['password'], $id, '', '');
 	    	
 	    	$response = file_get_contents($url);
 	    	if ($response=="null"){
