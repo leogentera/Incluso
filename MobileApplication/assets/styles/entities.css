@@ -623,6 +623,7 @@
   }
   .incluso-app .part {
     display: inline-flex;
+    z-index: 2;
     align-items: center;
     justify-content: space-between;
     background: #1f2733;
@@ -632,6 +633,7 @@
     margin: 2% 10%;
     padding: 3% 5%;
     width: 80%;
+    position: relative;
     background: -moz-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1f2733), color-stop(100%, #141921));
     background: -webkit-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
@@ -670,6 +672,7 @@
     background: radial-gradient(ellipse at center, rgba(31, 39, 51, 0.68) 0%, rgba(20, 25, 33, 0.68) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(31, 39, 51, 0.68)', endColorstr='rgba(20, 25, 33, 0.68)', GradientType=1);
     margin-top: -4%;
+    z-index: 1;
   }
   .incluso-app .part.part2 .icomoon {
     font-size: 100%;
