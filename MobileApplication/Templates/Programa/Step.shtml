@@ -19,62 +19,14 @@
 <body ng-app>
 <div class="incluso-app step-dashboard" id="site-wrapper">
   <div id="site-menu" >
-  <nav ng-controller="navController" class="ng-scope">
-      <div id="navBar" class="navbar">
-        <div class="container-fluid">
-          <div class="row">
-
-            <div class="navbar-assets">
-              <h1 class="navbar-heading"><a id="closeaton" data-transition="ease" href="#"><i class="icomoon icon-required white"></i> Menu</a></h1>
-              
-            </div> 
-          </div>
-        </div>
-      </div>
-    </nav>
-    <ul class="nav">
-      <li class="active">
-	  <a href="#" class="menu-blue">
-	  <i class="icomoon icon-required "></i> Link</a></li>
-      <li><i class="icomoon icon-arrow-down fl-right white acc" data-id="1"></i><a href="#" class="menu-green"><i class="icomoon icon-required "></i> Link</a>
-	  <div class="submenu" id="sub1">
-	<ul>
-		<li>Título sin liga</li>
-		<li><a href="#">Bien</a></li>
-		<li><a href="#">Bien 2</a></li>
-		<li><a href="#">Bien 3</a></li>
-		<li><a href="#">Bien 4</a></li>
-	</ul>
-	</div>
-	  </li>
-      <li><i class="icomoon icon-arrow-down fl-right white acc" data-id="2"></i><a href="#" class="menu-pink"><i class="icomoon icon-required "></i> Link</a>
-	  <div class="submenu" id="sub2">
-	<ul>
-		<li>Título sin liga2</li>
-		<li><a href="#">Bien</a></li>
-		<li><a href="#">Bien 2</a></li>
-		<li><a href="#">Bien 3</a></li>
-		<li><a href="#">Bien 4</a></li>
-	</ul>
-	<ul>
-		<li>Título sin liga3</li>
-		<li><a href="#">Bien</a></li>
-		<li><a href="#">Bien 2</a></li>
-		<li><a href="#">Bien 3</a></li>
-		<li><a href="#">Bien 4</a></li>
-	</ul>
-	</div></li>
-      <li><a href="#"><i class="icomoon icon-required "></i> Link</a></li>
-      <li><a href="#"><i class="icomoon icon-required "></i> Link</a></li>
-      <li><a href="#"><i class="icomoon icon-required "></i> Link</a></li>
-    </ul>
+<!--#include file="menu.html" -->
   </div>
   <div id="site-canvas">
 
     <nav ng-controller="navController">
       <div class="navbar" id="navBar">
         <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
+          
           <div class="row">
 
             <div class="navbar-assets">
@@ -266,35 +218,10 @@
 			owl.trigger('owl.prev');
 			return false;
 		  })
-$(".acc").click(function(){
-$(this).toggleClass('icon-arrow-down');
-$(this).toggleClass('icon-required');
-$(this).toggleClass('green');
-$(this).toggleClass('white');
-var cual = $(this).attr('data-id');
-  $('#sub' + cual).toggle();
 
-});
-    $('#menuton').click(function() {
-      var transitionClass = $(this).data('transition');
-      $('body').removeClass();
-      $('#site-canvas').removeClass();
-      $('#site-canvas').addClass(transitionClass);
-      $('#site-wrapper').toggleClass('show-nav');
-
-      return false;
-    });
-	$('#closeaton').click(function() {
-      var transitionClass = $(this).data('transition');
-      $('body').removeClass();
-      $('#site-canvas').removeClass();
-      $('#site-canvas').addClass(transitionClass);
-      $('#site-wrapper').toggleClass('show-nav');
-
-      return false;
-    });
     });
     </script>
+  <script type="text/javascript" src="../../Scripts/scriptmenu.js"></script>
 
 </body>
 </html>

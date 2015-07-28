@@ -18,15 +18,8 @@
 </head>
 <body ng-app>
 <div class="incluso-app step-dashboard" id="site-wrapper">
-  <div id="site-menu" class="navbar-collapse">
-    <ul class="nav">
-      <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
+  <div id="site-menu" >
+<!--#include file="menu.html" -->
   </div>
   <div id="site-canvas">
 
@@ -236,6 +229,7 @@
 		$("#finalized").show("slow");
 		return false;
 	});
+	$("#finalized").hide();
 $(".acc").click(function(){
 $(this).toggleClass('icon-arrow-down');
 $(this).toggleClass('icon-arrow-slim-right');
@@ -243,18 +237,11 @@ var cual = $(this).attr('data-id');
   $('#ord' + cual).toggle();
 
 });	
-		$("#finalized").hide();
-    $('#menuton').click(function() {
-      var transitionClass = $(this).data('transition');
-      $('body').removeClass();
-      $('#site-canvas').removeClass();
-      $('#site-canvas').addClass(transitionClass);
-      $('#site-wrapper').toggleClass('show-nav');
 
-      return false;
-    });
     });
     </script>
+	
+  <script type="text/javascript" src="../../Scripts/scriptmenu.js"></script>
 	<script src="../../Scripts/classie.js"></script>
 		<script src="../../Scripts/selectFx.js"></script>
 		<script>
