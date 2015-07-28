@@ -83,7 +83,9 @@
 <button class="btn btn-primary btn-lg btn-cnt" type="button">Guardar</button>
 <div class="txt-renglon centered txt-bigger">Cancelar</div>
 </section>
-
+<br/><br/>
+<img src="../../assets/images/img-lines-ftr.png" class="centered">
+<br/>  
   </article>
   <footer class="footer">
     <ul class="block-list">
