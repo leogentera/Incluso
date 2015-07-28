@@ -50,6 +50,7 @@ body {
   position: relative;
   overflow: hidden;
   width: 100vw;
+  background-color: #040203;
 }
 #site-canvas {
   width: 100vw;
@@ -62,10 +63,10 @@ body {
   backface-visibility: hidden;
 }
 .show-nav #site-canvas {
-  -webkit-transform: translateX(150px);
-  transform: translateX(150px);
-  transform: translate3d(150px, 0, 0);
-  -webkit-transform: translate3d(150px, 0, 0);
+  -webkit-transform: translateX(80%);
+  transform: translateX(80%);
+  transform: translate3d(80%, 0, 0);
+  -webkit-transform: translate3d(80%, 0, 0);
 }
 .show-nav #site-menu {
   left: 0px;
@@ -75,13 +76,16 @@ body {
   -moz-transition: all 300ms ease;
   -o-transition: all 300ms ease;
   transition: all 300ms ease;
-  width: 150px;
+  width: 80%;
   height: 100vh;
   position: absolute;
   top: 0;
-  left: -150px;
-  background: #12171D;
-  padding: 15px;
+  left: -80%;
+  background-color: #040203;
+  padding: 0px;
+  background-image: url('../images/bg-menu.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 }
 .ease {
   -webkit-transition: 300ms ease all;
@@ -195,6 +199,9 @@ body {
 .incluso-app a:hover {
   text-decoration: none;
 }
+.incluso-app a:focus {
+  text-decoration: none;
+}
 .incluso-app video {
   width: 100%;
   height: auto;
@@ -215,6 +222,53 @@ body {
   background-color: transparent;
   border: 0;
   padding: 0;
+}
+.incluso-app .nav > li {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.28);
+  display: block;
+  margin-right: 6vw;
+  position: relative;
+  padding: 3vw 0;
+}
+.incluso-app .nav > li > i {
+  padding: 2vw 1vw;
+}
+.incluso-app .nav > li > a {
+  color: white;
+  display: block;
+  font-size: 5vw;
+  padding: 1vw 3vw;
+  position: relative;
+  width: 80%;
+}
+.incluso-app .nav > li > a:focus,
+.incluso-app .nav > li > a:hover {
+  background-color: rgba(255, 255, 255, 0.28);
+}
+.incluso-app .nav > li a.menu-blue {
+  color: #39a6dd;
+}
+.incluso-app .nav > li a.menu-green {
+  color: #80c241;
+}
+.incluso-app .nav > li a.menu-pink {
+  color: #e70e80;
+}
+.incluso-app .nav > li .submenu {
+  border-top: 2px solid rgba(255, 255, 255, 0.28);
+  display: none;
+  padding: 6vw 0 6vw 6vw;
+}
+.incluso-app .nav > li .submenu li:first-child {
+  color: #39a6dd;
+  text-transform: uppercase;
+}
+.incluso-app .nav > li .submenu a {
+  color: white;
+}
+.incluso-app .nav > li .submenu ul {
+  list-style: none;
+  padding: 4vw 0;
 }
 .incluso-app .btn {
   border: none;
@@ -641,6 +695,7 @@ body {
 .incluso-app .navbar {
   position: relative;
   margin-bottom: 0;
+  border-radius: 0px;
 }
 .incluso-app .navbar .icomoon {
   color: white;
@@ -2685,7 +2740,7 @@ body {
 }
 /* preloading images */
 .owl-item.loading {
-  min-height: 150px;
+  min-height: 80%;
   background: url(AjaxLoader.gif) no-repeat center center;
 }
 .owl-origin {

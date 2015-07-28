@@ -27,11 +27,11 @@ $functions = array(
                 'description' => 'Return a list with the name and summary of principal activities in sections',
                 'type'        => 'read',
         ),
-        'get_activities_status_by_stage' => array(
+        'get_activities_status_by_challenge' => array(
                 'classname'   => 'stage_services',
-                'methodname'  => 'get_activities_status_by_stage',
+                'methodname'  => 'get_activities_status_by_challenge',
                 'classpath'   => 'local/stage_plugin/externallib.php',
-                'description' => 'Return a list of the principal actitivies with status',
+                'description' => 'Return a list of actitivies with status in a challenge',
                 'type'        => 'read',
         ),
         'get_stages_by_course' => array(
@@ -55,7 +55,7 @@ $services = array(
         'Stage Services' => array(
                 'functions' => array (
                         'get_challenges_stage',
-                        'get_activities_status_by_stage',
+                        'get_activities_status_by_challenge',
                         'get_stages_by_course',
                         'get_activities_by_challenge'),
                 'restrictedusers' => 0,

@@ -18,15 +18,8 @@
 </head>
 <body ng-app>
 <div class="incluso-app step-dashboard" id="site-wrapper">
-  <div id="site-menu" class="navbar-collapse">
-    <ul class="nav">
-      <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
+  <div id="site-menu" >
+<!--#include file="menu.html" -->
   </div>
   <div id="site-canvas">
 
@@ -37,7 +30,7 @@
           <div class="row">
 
             <div class="navbar-assets">
-              <h1 class="navbar-heading"><a href="#" data-transition="ease" id="eranditon"><i class="icomoon icon-more-options white"></i> Estación: Conócete</a></h1>
+              <h1 class="navbar-heading"><a href="#" data-transition="ease" id="menuton"><i class="icomoon icon-more-options white"></i> Estación: Conócete</a></h1>
               <ul class="navbar-tools">
                 <li class="contribute">
                   <a href="">
@@ -68,121 +61,87 @@
 
   <article class="blueprint">
 
-	<section id="taitel">
-<div class="subtitle">Mis cualidades y talentos</div>
+	<section>
+<div class="subtitle">Mis gustos y preferencias</div>
 <div class="txt-renglon">Selecciona las opciones que te identifican.</div>
+
 </section>
-<div id="owl" class="owl-carousel">
+	<div id="owl" class="owl-carousel">
 	<div>
 <section class="form txt-renglon txt-bigger part list">
-<div class="txt-renglon txt-bigger">1. Cualidades de "título"</div>
+<div class="txt-renglon txt-bigger">1. Hobbies</div>
 		<input type="checkbox" value="check1" name="check" id="check1">
-		<label for="check1">Cualidad 1</label>
+		<label for="check1">Deportes</label>
 		<input type="checkbox" value="check1" name="check" id="check2">
-		<label for="check2">Cualidad 2</label>
+		<label for="check2">Carpintería</label>
 		<input type="checkbox" value="check1" name="check" id="check3">
-		<label for="check3">Cualidad 3</label>
+		<label for="check3">Pintura</label>
 		<input type="checkbox" value="check1" name="check" id="check4">
-		<label for="check4">Cualidad 4</label>
+		<label for="check4">Tocar un instrumento</label>
 		<input type="checkbox" value="check1" name="check" id="check5">
-		<label for="check5">Cualidad 5</label>
+		<label for="check5">Cantar</label>
 		<input type="checkbox" value="check1" name="check" id="check6">
-		<label for="check6">Cualidad 6</label>
+		<label for="check6">Baile / Danza</label>
 		<input type="checkbox" value="check1" name="check" id="check7">
-		<label for="check7">Cualidad 7</label>
+		<label for="check7">Leer</label>
 		<input type="checkbox" value="check1" name="check" id="check8">
-		<label for="check8">Cualidad 8</label>
+		<label for="check8">Escribir</label>
 		<input type="checkbox" value="check1" name="check" id="check9">
-		<label for="check9">Cualidad 9</label>
+		<label for="check9">Otros</label>
 </section>
-<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otras</span></div></div>
+<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otros</span></div></div>
 	<div>
 <section class="form txt-renglon txt-bigger part list">
-<div class="txt-renglon txt-bigger">2. Cualidades de "título2"</div>
+<div class="txt-renglon txt-bigger">2. Deportes</div>
 		<input type="checkbox" value="check1" name="check" id="check11">
-		<label for="check11">Cualidad 10</label>
+		<label for="check11">Basket</label>
 		<input type="checkbox" value="check1" name="check" id="check12">
-		<label for="check12">Cualidad 11</label>
+		<label for="check12">Futbol</label>
 		<input type="checkbox" value="check1" name="check" id="check13">
-		<label for="check13">Cualidad 12</label>
+		<label for="check13">Badminton</label>
 		<input type="checkbox" value="check1" name="check" id="check14">
-		<label for="check14">Cualidad 13</label>
+		<label for="check14">Esgrima</label>
 		<input type="checkbox" value="check1" name="check" id="check15">
-		<label for="check15">Cualidad 14</label>
+		<label for="check15">Do Shin Kan</label>
 </section>
-<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otras</span></div></div>
+<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otros</span></div></div>
 	<div>
 <section class="form txt-renglon txt-bigger part list">
-<div class="txt-renglon txt-bigger">3. Cualidades de "título3"</div>
+<div class="txt-renglon txt-bigger">3. Oficios</div>
 		<input type="checkbox" value="check1" name="check" id="check21">
-		<label for="check21">Cualidad 15</label>
+		<label for="check21">Carpintería</label>
 		<input type="checkbox" value="check1" name="check" id="check22">
-		<label for="check22">Cualidad 16</label>
+		<label for="check22">Fontanería</label>
 		<input type="checkbox" value="check1" name="check" id="check23">
-		<label for="check23">Cualidad 17</label>
+		<label for="check23">Repostería</label>
 </section>
-<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otras</span></div></div>
+<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otros</span></div></div>
 	<div>
 <section class="form txt-renglon txt-bigger part list">
-<div class="txt-renglon txt-bigger">4. Cualidades de "título4"</div>
+<div class="txt-renglon txt-bigger">4. Artes</div>
 		<input type="checkbox" value="check1" name="check" id="check31">
-		<label for="check31">Cualidad 18</label>
+		<label for="check31">Escénicas</label>
 		<input type="checkbox" value="check1" name="check" id="check32">
-		<label for="check32">Cualidad 19</label>
+		<label for="check32">Plásticas</label>
 		<input type="checkbox" value="check1" name="check" id="check33">
-		<label for="check33">Cualidad 20</label>
+		<label for="check33">Visuales</label>
 		<input type="checkbox" value="check1" name="check" id="check34">
-		<label for="check34">Cualidad 21</label>
+		<label for="check34">Quinéticas</label>
 </section>
-<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otras</span></div></div>
-	<div>
-<section class="form txt-renglon txt-bigger part list">
-<div class="txt-renglon txt-bigger">5. Cualidades de "título5"</div>
-		<input type="checkbox" value="check1" name="check" id="check41">
-		<label for="check41">Cualidad 22</label>
-		<input type="checkbox" value="check1" name="check" id="check42">
-		<label for="check42">Cualidad 23</label>
-</section>
-<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otras</span></div></div>
+<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otros</span></div></div>
 </div>
-<section id="controls" class="controls">
+<section class="controls">
 
 <div class="paginate">
 <a href="#" id="prev">
 <i class="icomoon icon-arrow-bold-left txt-bigger fl-left"></i></a>
 <a href="#" id="next">
 <i class="icomoon icon-arrow-bold-right txt-bigger fl-right"></i></a>
-<div class="centered"><span class="txt-bigger" id="index">1</span><span>/</span><span class="white txt-bigger" id="total">5</span></div>
-</div><br/><button type="button" id="save" class="btn btn-primary btn-lg btn-cnt">Terminar</button>
+<div class="centered"><span class="txt-bigger" id="index">1</span><span>/</span><span class="white txt-bigger" id="total">4</span></div>
+</div><br/>
 <div class="txt-renglon centered txt-bigger">Cancelar</div>
 </section>
-<div id="finalized">
-	<section>
-<div class="txt-renglon centered txt-bigger"></div>	
-<div class="txt-renglon centered txt-bigger min-pad">Has completado la actividad</div>
-<div class="subtitle centered min-pad">"Mis Cualidades y talentos"</div>
-<div class="txt-renglon centered txt-bigger min-pad">¡Felicidades!</div>
-<div class="txt-renglon centered txt-bigger"></div>	
-</section>
-<section class="centered txt-bigger">
 
-<i class="icomoon icon-checked-join txt-bigger green-giant"></i>
-</section>
-<section class="txt-renglon pill">
-<div class="fl-left">Estrellas Ganadas</div><div class="fl-right sm-pill">240&nbsp;&nbsp;<i class="icomoon icon-star fl-right"></i></div>
-</section>
-<section class="txt-renglon centered form">
-¿Qué opinas de ésta actividad?
-<div class="tnf">
-		<input type="radio" value="verdadero" name="vf" id="tru">
-		<label for="tru">Me Gusta</label>
-		<input type="radio" value="Falso" name="vf" id="fols">
-		<label for="fols">No me gusta</label>
-</div>
-<button class="btn btn-primary btn-lg btn-cnt" type="button">Terminar</button>
-<div class="txt-renglon centered txt-bigger"></div>	
-</section>
-</div>
   </article>
 
   <footer class="footer">
@@ -196,9 +155,6 @@
   <!-- scripts -->
   <script>
     $(document).ready(function() {
-	var step = 0;
-	
-	
     var owl = $("#owl");
 		owl.owlCarousel({
 			navigation:false,
@@ -221,25 +177,9 @@
 			owl.trigger('owl.prev');
 			return false;
 		  })
-	$("#save").click(function(){
-		$(owl).hide("slow");
-		$("#controls").hide();
-		$("#taitel").hide();
-		$("#finalized").show("slow");
-		return false;
-	});
-	
-		$("#finalized").hide();
-    $('#eranditon').click(function() {
-      var transitionClass = $(this).data('transition');
-      $('body').removeClass();
-      $('#site-canvas').removeClass();
-      $('#site-canvas').addClass(transitionClass);
-      $('#site-wrapper').toggleClass('show-nav');
 
-      return false;
-    });
-    });
+        });
     </script>
+  <script type="text/javascript" src="../../Scripts/scriptmenu.js"></script>
 </body>
 </html>
