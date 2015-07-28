@@ -14,10 +14,15 @@ class UserCourseController extends AbstractRestfulJsonController {
 
     public function get($userid){
 
-        $userCourse = new MoodleUserCourse($userid);
+        $userCourse = new MoodleUserCourse();
 
-        //Get course
-        $courseid = 2;
+        $userCourse->setUser($userid);
+
+        $courseid = $this->getCurrentCourse($userid);
+
+        $userCourse->setCourse($courseid);
+
+        $userCourse->setFirstTime($this->getIfIsFirstTime($courseid, $userid));
 
         $stages = $this->getCourseStages($courseid);
 
@@ -42,7 +47,6 @@ class UserCourseController extends AbstractRestfulJsonController {
 
         //Get activities
     }
-
     
     private function hasToken() {
     	$request = $this->getRequest();
@@ -75,6 +79,44 @@ class UserCourseController extends AbstractRestfulJsonController {
     	return $token;
     }
 
+    private function getCurrentCourse($userid){
+        $url = $this->getConfig()['MOODLE_API_URL'].'&field=id&values[0]=%s';
+        $url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $userid);
+        
+        $response = file_get_contents($url);
+
+        $json = json_decode($response, true);
+        
+        if (strpos($response, "exception") !== false)
+        {
+            return new JsonModel( $this->throwJSONError("El usuario no esta registrado"));
+        }
+        else
+        {
+            for($i=0;count($json[0]['customfields'])>$i;$i++){
+                $customFields[$json[0]['customfields'][$i]['name']]=$json[0]['customfields'][$i]['value'];
+            }
+
+            return $customFields["course"];
+      
+        }
+    }
+
+    private function getIfIsFirstTime($courseid, $userid){
+        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s&courseid=%s';
+        $url = sprintf($url, $this->getToken(), "is_first_time_in_course", $userid, $courseid);
+        
+        $response = file_get_contents($url);
+
+        $json = json_decode($response, true);
+        
+        if (strpos($response, "exception") !== false){
+            return 1;
+        }else{
+            return $json["firsttime"];
+        }
+    }
+
     private function getCourseStages($courseid){
         $url = $this->getConfig()['MOODLE_API_URL'].'&courseid=%s';
         $url = sprintf($url, $this->getToken(), "get_stages_by_course", $courseid);
@@ -97,7 +139,6 @@ class UserCourseController extends AbstractRestfulJsonController {
         }
         return $stages;
     }
-
 
     private function getChallengesStage($userid, $courseid, $stageid){
     
@@ -155,7 +196,6 @@ class UserCourseController extends AbstractRestfulJsonController {
 
         return $activities;
     }
-
 
     private function getProgressStage($stageid, $userid){
 

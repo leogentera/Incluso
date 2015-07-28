@@ -206,13 +206,18 @@ class stage_services extends external_api{
 			// }
 		
 			$sql = "SELECT cfo.sectionid AS stageid,
-			               cs.section AS section, 
-					       cs.name AS stage
-					FROM {course_format_options} cfo, 
-					     {course_sections} cs 
-					WHERE  cs.id = cfo.sectionid 
-					AND cfo.courseid = cs.course
-					AND cfo.courseid = $courseid
+					       cs.section AS section, 
+					       cs.name AS stage,
+					       IFNULL(urv.firsttime,1) AS firsttime
+					FROM {course_format_options} AS cfo
+
+					INNER JOIN {course_sections} AS cs 
+					ON (cs.id = cfo.sectionid AND cfo.courseid = cs.course)
+
+					LEFT JOIN {user_resource_visited} AS urv
+					ON urv.resourceid = cfo.sectionid
+
+					WHERE cfo.courseid = $courseid
 					AND cfo.name = 'parent'
 					AND cfo.value = 0
 					AND cs.name <> ''";
@@ -231,7 +236,8 @@ class stage_services extends external_api{
 				array(
 					'stageid' 	=> new external_value(PARAM_INT, 'Stage ID'),
 					'section'	=> new external_value(PARAM_INT, 'Section ID'),
-					'stage' 	=> new external_value(PARAM_TEXT, 'Name of Stage')
+					'stage' 	=> new external_value(PARAM_TEXT, 'Name of Stage'),
+					'firsttime' => new external_value(PARAM_INT, 'First time in the section?')
 				)
 			)
 		);		
