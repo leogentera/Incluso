@@ -206,6 +206,10 @@ body {
   width: 100%;
   height: auto;
 }
+.incluso-app ol {
+  list-style: outside none decimal-leading-zero;
+  padding-left: 7vw;
+}
 .incluso-app .nav-tabs {
   border: 0;
 }
