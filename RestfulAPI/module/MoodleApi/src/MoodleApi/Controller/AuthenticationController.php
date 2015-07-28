@@ -21,13 +21,18 @@ class AuthenticationController extends AbstractRestfulJsonController {
 // Action used for POST requests
  public function create($data)
 {
-    switch($data["action"]){
-        case 'forgot':
-            $this->forgotPassword($data);
-            break;
-        default:
-            $this->authentication($data);
-            break;
+    if(!array_key_exists("action", $data)){
+        return $this->authentication($data);
+    }else{
+        switch($data["action"]){
+            case 'forgot':
+                $this->forgotPassword($data);
+                break;
+            default:
+                $this->authentication($data);
+                break;
+        }
+
     }
 	
 }
