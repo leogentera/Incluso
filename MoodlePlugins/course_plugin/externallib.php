@@ -91,6 +91,64 @@ class course_plugin extends external_api{
 		);
 	}
 	
+
+	public static function is_first_time_in_course_parameters(){
+		return new external_function_parameters(
+			array(
+				'userid'   => new external_value(PARAM_INT, 'User ID'),
+				'courseid' => new external_value(PARAM_INT, 'Course ID')
+			)
+		);
+	}
+
+	public static function is_first_time_in_course($userid, $courseid){
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::is_first_time_in_course_parameters(), 
+					array(
+						'userid' => $userid,
+						'courseid' => $courseid
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+		
+			$sql = "SELECT firsttime
+					FROM {user_resource_visited}
+					WHERE resourceid = $courseid
+					AND typeresource = 'course'
+					AND userid = $userid";
+			
+			$response = $DB->get_records_sql($sql);
+		
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		
+		return $response;
+	}
+
+	public static function is_first_time_in_course_returns(){
+		return new external_function_parameters(
+			array(
+				'firsttime' => new external_value(PARAM_INT, 'Value if is the first time in course'),
+			)
+		);
+	}
 	
 }
 

@@ -8,11 +8,8 @@ class MoodleUserCourse
     public $firstTime;
     public $stages=array();
     
-    public function __construct($data)
-    {
-        $this->courseId           = (!empty($data['instance'])) ? $data['instance'] : null;
-        $this->userId = (!empty($data['name'])) ? $data['name'] : null;
-    
+    public function setCourse($courseid){
+        $this->courseId = $courseid;
     }
 
     public function setFirstTime($time){
@@ -21,5 +18,9 @@ class MoodleUserCourse
 
     public function setStages($stage){
     	$this->stages = $stage;
+    }
+
+    public function setUser($userid){
+        $this->userId = $userid;
     }
 }

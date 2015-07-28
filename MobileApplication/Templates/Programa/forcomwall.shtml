@@ -78,7 +78,7 @@
 <div id="openModal1" class="modalDialog">
 	<div>
 		<a href="#close" title="Close" class="close"></a>
-<div class="agregar"><i class="icomoon icon-edit"></i><input type="text" placeholder="Agregar texto..." value=""/></div>
+<div class="add"><i class="icomoon icon-edit"></i><input type="text" placeholder="Agregar texto..." value=""/></div>
 
 <button class="btn btn-primary btn-lg btn-cnt" type="button">Compartir</button>
 	</div>
@@ -87,7 +87,7 @@
 <div id="openModal2" class="modalDialog">
 	<div>
 		<a href="#close" title="Close" class="close"></a>
-<div class="agregar"><i class="icomoon icon-edit"></i><input type="text" placeholder="Agregar tu enlace..." value=""/></div>
+<div class="add"><i class="icomoon icon-edit"></i><input type="text" placeholder="Agregar tu enlace..." value=""/></div>
 
 <button class="btn btn-primary btn-lg btn-cnt" type="button">Compartir</button>
 	</div>
@@ -96,7 +96,7 @@
 <div id="openModal3" class="modalDialog">
 	<div>
 		<a href="#close" title="Close" class="close"></a>
-<div class="agregar"><i class="icomoon icon-edit"></i><input type="text" placeholder="Agregar ruta de tu peli..." value=""/></div>
+<div class="add"><i class="icomoon icon-edit"></i><input type="text" placeholder="Agregar ruta de tu peli..." value=""/></div>
 
 <button class="btn btn-primary btn-lg btn-cnt" type="button">Compartir</button>
 	</div>
@@ -105,7 +105,7 @@
 <div id="openModal4" class="modalDialog">
 	<div>
 		<a href="#close" title="Close" class="close"></a>
-<div class="agregar"><i class="icomoon icon-edit"></i><input type="text" placeholder="Atachea algo..." value=""/></div>
+<div class="add"><i class="icomoon icon-edit"></i><input type="text" placeholder="Atachea algo..." value=""/></div>
 
 <button class="btn btn-primary btn-lg btn-cnt" type="button">Compartir</button>
 	</div>
@@ -122,11 +122,11 @@
   ¡Les comparto una foto que tomé!
 <img src="../../assets/images/avatar.svg">
   <div>A <span class="green">30</span> jóvenes les gusta esto</div></div>
-<div class="coment block"><img src="../../assets/images/avatar.svg">
+<div class="coment block"><img src="../../assets/images/img-avatar-dummy-01.png">
   <div>   Juan Juan <span>publicó:</span>   <div>Me encantó tu foto!!</div>
   </div>
 </div>
-<div class="coment block"><img src="../../assets/images/avatar.svg">
+<div class="coment block"><img src="../../assets/images/img-avatar-dummy-03.png">
   <div>   Ricardo O'connor <span>publicó:</span>   <div>UUUUf, guapísima!!</div>
   </div>
 </div>
@@ -156,8 +156,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   <div>Juan Juan<span>publicó:</span>   <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</div>
   </div>
 </div>
-<div class="coment block"><img src="../../assets/images/avatar.svg">
-  <div>Ricardo O'connor <span>publicó:</span>   <div>Ut enim ad minima veniam</div>
+<div class="coment block"><img src="../../assets/images/img-avatar-dummy-02.png">
+  <div>Georgina <span> publicó:</span>   <div>Ut enim ad minima veniam</div>
   </div>
 </div>
 
