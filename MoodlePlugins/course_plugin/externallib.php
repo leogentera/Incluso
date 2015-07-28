@@ -58,8 +58,12 @@ class course_plugin extends external_api{
 
 
 			//HCG Added progress percentage to the users on the leaderboard
-			$sql = "select max(id)id from {course}";
-			
+			$sql = "select ifnull(max(course.id), -1) id 
+					from {course} course,
+					{course_type} courseType
+					where course.id = courseType.courseid
+					and courseType.coursetype='Incluso'";
+								
 			$response = $DB->get_record_sql($sql);
 		
 		} catch (Exception $e) {
