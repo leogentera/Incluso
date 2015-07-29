@@ -6,6 +6,7 @@ class MoodleUserCourse
 	public $courseId;
     public $userId;
     public $firstTime;
+    public $globalProgress;
     public $stages=array();
     
     public function setCourse($courseid){
@@ -14,6 +15,10 @@ class MoodleUserCourse
 
     public function setFirstTime($time){
     	$this->firstTime = $time;
+    }
+
+    public function setGlobalProgress($progress){
+        $this->globalProgress = $progress;
     }
 
     public function setStages($stage){
