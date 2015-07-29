@@ -358,6 +358,10 @@
   background-color: #158ccd;
   border-color: #158ccd;
 }
+.incluso-app.step-dashboard #site-menu .navbar {
+  background-color: #1170a3;
+  border-color: #1170a3;
+}
 .incluso-app.step-dashboard .video-gallery {
   margin: 0;
   padding: 20px;
@@ -400,4 +404,7 @@
 }
 .incluso-app.step-dashboard .gr-bg {
   background: none #0A9648;
+}
+.incluso-app.show-nav #menuton {
+  color: rgba(0, 0, 0, 0.2);
 }
