@@ -14,6 +14,7 @@
         'incluso.public.recoverPassword',
         'incluso.public.register',
         'incluso.programa.dashboard',
+        'incluso.programa.dashboard.etapa',
         'incluso.programa.profile'
     ])
     .run(function ($templateCache, $http) {
@@ -21,6 +22,7 @@
         $http.get('Templates/Public/RecoverPassword.html', { cache: $templateCache });
         $http.get('Templates/Public/Register.html', { cache: $templateCache });
         $http.get('Templates/Programa/Dashboard.html', { cache: $templateCache });
+        $http.get('Templates/Programa/Step.html', { cache: $templateCache });
         $http.get('Templates/Programa/profile.html', { cache: $templateCache });
         $http.get('Templates/Programa/editProfile.html', { cache: $templateCache });
 
@@ -40,6 +42,11 @@
         $routeProvider.when('/ProgramaDashboard', {
         	templateUrl: 'Templates/Programa/Dashboard.html',
         	controller: 'programaDashboardController'
+        });
+
+        $routeProvider.when('/ProgramaDashboardEtapa/:stageId', {
+            templateUrl: 'Templates/Programa/Step.html',
+            controller: 'programaEtapaController'
         });
 
         $routeProvider.when('/', {
