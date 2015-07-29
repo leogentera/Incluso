@@ -35,6 +35,14 @@ $functions = array(
         		'description' => 'Returns the quiz results',
         		'type'        => 'read',
         ),
+        
+        'save_quiz' => array(
+        		'classname'   => 'quiz_plugin',
+        		'methodname'  => 'save_quiz',
+        		'classpath'   => 'local/activities_plugin/externallib.php',
+        		'description' => 'Save answers on the db',
+        		'type'        => 'write',
+        ),
 
         'get_activity_summary' => array(
                         'classname'   => 'activitiesSummary_plugin',
