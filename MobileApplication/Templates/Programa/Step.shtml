@@ -7,7 +7,7 @@
   <title>Incluso Digital</title>
   <link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="assets/styles/dev-css.css">
+  <link rel="stylesheet" type="text/css" href="../../assets/styles/dev-css.css">
 	
   <script type="text/javascript" src="../../Scripts/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="../../Scripts/bootstrap-3.3.2.js"></script>
@@ -65,7 +65,7 @@
             <button class="icon icon-close"></button>
             <button class="icon icon-play"></button> 
             <figure class="player">
-              <video width="370" height="220" poster="assets/images/ptr-video-0001.jpg" >
+              <video width="370" height="220" poster="../../assets/images/ptr-video-0001.jpg" >
                 <source src="http://techslides.com/demos/sample-videos/small.webm" type="video/webm" />
                 <source src="http://techslides.com/demos/sample-videos/small.ogv" type="video/ogg" />
                 <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
@@ -82,27 +82,27 @@
 
 	<div id="owl-demo2" class="owl-carousel">
 	  <div id="item1" class="item visib">
-	   <img src="assets/images/img-rotator-01-lg.png">
+	   <img src="../../assets/images/img-rotator-01-lg.png">
      <div class="txt-renglon centered">¡Completa los retos para obtener el puente para tu nave y ganar más estrellas!</div>
     </div>
 
     <div id="item2" class="item hidd">
-     <img src="assets/images/img-rotator-02-lg.png">
+     <img src="../../assets/images/img-rotator-02-lg.png">
      <div class="txt-renglon centered">¡Completa los retos para obtener el motor para tu nave y ganar más estrellas!</div>
     </div>
 
     <div id="item3" class="item hidd">
-		  <img src="assets/images/img-rotator-03-lg.png">
+		  <img src="../../assets/images/img-rotator-03-lg.png">
        <div class="txt-renglon centered">¡Completa los retos para obtener el cuerpo para tu nave y ganar más estrellas!</div>
     </div>
 
     <div id="item4" class="item hidd">
-       <img src="assets/images/img-rotator-04-lg.png">
+       <img src="../../assets/images/img-rotator-04-lg.png">
        <div class="txt-renglon centered">¡Completa los retos para obtener los estabilizadores para tu nave y ganar más estrellas!</div>
     </div>
 
     <div id="item5" class="item hidd">
-     <img src="assets/images/img-rotator-05-lg.png">
+     <img src="../../assets/images/img-rotator-05-lg.png">
      <div class="txt-renglon centered">¡Completa los retos para obtener la proa para tu nave y ganar más estrellas!</div>
     </div>
 	 </div>
@@ -115,7 +115,7 @@
       </a>
 </div> 
 
-	  <div class="light"><img src="assets/images/img-light-cone.png"></div>
+	  <div class="light"><img src="../../assets/images/img-light-cone.png"></div>
 	</section>	
 
 	<section class="jector">
@@ -150,18 +150,18 @@
               
     </div>
 	
-<div><img src="assets/images/img-consoles.png"></div>
+<div><img src="../../assets/images/img-consoles.png"></div>
 	</section>
 	
 	
 	<section class="progreso">
 		<div class="spinner">
-			<img src="assets/images/prcnt/80.png"><div class="circle"></div><div class="text">80%</div>
+			<img src="../../assets/images/prcnt/80.png"><div class="circle"></div><div class="text">80%</div>
 		</div>
 	</section>
 	<section class="hangar-bay">	
 	    <div id="ship">
-      <img src="assets/images/img-ship-01.png"/>
+      <img src="../../assets/images/img-ship-01.png"/>
     </div>
 	</section>
 	
