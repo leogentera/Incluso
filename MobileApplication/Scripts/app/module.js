@@ -54,6 +54,11 @@
             controller: 'publicLoginController'
         });
 
+        $routeProvider.when('/Login/:stageId', {
+            templateUrl: function(params){ return 'Templates/Public/Login' + params.stageId + ".html"; },
+            controller: 'publicLoginController'
+        });
+
         $routeProvider.when('/RecoverPassword', {
             templateUrl: 'Templates/Public/RecoverPassword.html',
             controller: 'publicRecoverPasswordController'
