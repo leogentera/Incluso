@@ -133,4 +133,6 @@ angular
 
             $scope.loadCredentials();
 
+           // $location.path('/ProgramaDashboardEtapa/' + 1);
+
         }]);

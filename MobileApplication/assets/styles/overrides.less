@@ -366,6 +366,12 @@
         background-color: @clr-bluenav;
         border-color: @clr-bluenav;
     }
+    #site-menu{
+        .navbar{     
+            background-color: darken(@clr-bluenav, 9%);
+            border-color: darken(@clr-bluenav, 9%);
+        }
+    }
     .video-gallery{
         margin: 0;
         padding: 20px;
@@ -394,11 +400,24 @@
         background-image: url('@{url-images}/img-footer-texture-lg.png');
         background-color: #24292B;
         box-shadow: unset;
-        background-position: 50% 0;
+        background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: contain;
         li:last-child {display: none;}
     }
+    .txt-small{
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        font-size: 80%;
+        line-height: normal;
+        margin: 0 2vw;
+        padding: 1vw 2vw;
+    }
+    .gr-bg{
+        background:none #0A9648;
+    }
+}
+.incluso-app.show-nav #menuton{
+    color: rgba(0,0,0,.2);
 }
 
 

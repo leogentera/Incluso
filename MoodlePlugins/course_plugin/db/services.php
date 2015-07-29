@@ -35,6 +35,14 @@ $functions = array(
                 'description' => 'Return 1 or 0 if is the first time in a course',
                 'type'        => 'read',
         ),
+
+        'update_first_time_in_resource' => array(
+                'classname'   => 'course_plugin',
+                'methodname'  => 'update_first_time_in_resource',
+                'classpath'   => 'local/course_plugin/externallib.php',
+                'description' => 'Update the first time in a resource',
+                'type'        => 'write',
+        ),
 );
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
@@ -42,7 +50,9 @@ $services = array(
         'Course Plugin' => array(
                 'functions' => array (
                         'get_latest_course',
-                        'is_first_time_in_course'),
+                        'is_first_time_in_course',
+                        'update_first_time_in_resource'
+                        ),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         )

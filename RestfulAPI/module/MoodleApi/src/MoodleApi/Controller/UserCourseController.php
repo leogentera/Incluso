@@ -24,7 +24,7 @@ class UserCourseController extends AbstractRestfulJsonController {
 
         $userCourse->setFirstTime($this->getIfIsFirstTime($courseid, $userid));
 
-        $stages = $this->getCourseStages($courseid);
+        $stages = $this->getCourseStages($courseid, $userid);
 
         $userCourse->setStages($stages);
 
@@ -40,12 +40,30 @@ class UserCourseController extends AbstractRestfulJsonController {
 
             $userCourse->stages[$i]->setStageStatus($stageStatus);
 
-
         }
 
         return new JsonModel((array)$userCourse);
+    }
 
-        //Get activities
+    public function update($userid, $data){
+
+        //Update Flag First Time
+        if(array_key_exists("firstTime", $data)){
+            //Update course firsttime
+            $this->setFirstTime($userid, $data["courseId"], "course");
+        }
+
+        //Update Flag First Time
+        if(array_key_exists("stages", $data)){;
+            foreach ($data["stages"] as $stage) {
+                if(array_key_exists("firstTime", $stage)){
+                    //Update stage firstime;
+                    $this->setFirstTime($userid, $stage["section"], "stage");
+                }
+            }
+        }
+
+        return new JsonModel(array("update"=>true));
     }
     
     private function hasToken() {
@@ -113,13 +131,13 @@ class UserCourseController extends AbstractRestfulJsonController {
         if (strpos($response, "exception") !== false){
             return 1;
         }else{
-            return $json["firsttime"];
+            return $json[0]["firsttime"];
         }
     }
 
-    private function getCourseStages($courseid){
-        $url = $this->getConfig()['MOODLE_API_URL'].'&courseid=%s';
-        $url = sprintf($url, $this->getToken(), "get_stages_by_course", $courseid);
+    private function getCourseStages($courseid, $userid){
+        $url = $this->getConfig()['MOODLE_API_URL'].'&courseid=%s&userid=%s';
+        $url = sprintf($url, $this->getToken(), "get_stages_by_user_and_course", $courseid, $userid);
 
         $response = file_get_contents($url);
     
@@ -216,6 +234,21 @@ class UserCourseController extends AbstractRestfulJsonController {
         
         $progress=$json[0]['percentage_completed'];
         return $progress;
+    }
+
+    private function setFirstTime($userid, $resource, $typeOfResource){
+        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s&resourceid=%s&typeofresource=%s';
+        $url = sprintf($url, $this->getToken(), "update_first_time_in_resource", $userid, $resource, $typeOfResource);
+        
+        $response = file_get_contents($url);
+
+        $json = json_decode($response, true);
+        
+        if (strpos($response, "exception") !== false){
+            return -1;
+        }else{
+            return $json[0]["id"];
+        }
     }
 
 }

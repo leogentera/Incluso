@@ -143,9 +143,73 @@ class course_plugin extends external_api{
 	}
 
 	public static function is_first_time_in_course_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'firsttime' => new external_value(PARAM_INT, 'Value if is the first time in course'),
+				)
+			)
+		);
+	}
+
+	public static function update_first_time_in_resource_parameters(){
 		return new external_function_parameters(
 			array(
-				'firsttime' => new external_value(PARAM_INT, 'Value if is the first time in course'),
+				'userid'         => new external_value(PARAM_INT, 'User ID'),
+				'resourceid'     => new external_value(PARAM_INT, 'Resource ID'),
+				'typeofresource' => new external_value(PARAM_TEXT, 'Type of Resource')
+			)
+		);
+	}
+
+	public static function update_first_time_in_resource($userid, $resourceid, $typeofresource){
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::update_first_time_in_resource_parameters(), 
+					array(
+						'userid'         => $userid,
+						'resourceid'     => $resourceid,
+						'typeofresource' => $typeofresource
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+		
+			$record = new stdClass();
+			$record->resourceid 	= $resourceid;
+			$record->typeofresource = $typeofresource;
+			$record->userid 		= $userid;
+			$record->firsttime 		= 0;
+			
+			$response = array();
+
+			$response["id"] = $DB->insert_record("user_resource_visited", $record, false);
+
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		
+		return $response;
+	}
+
+	public static function update_first_time_in_resource_returns(){
+		return new external_single_structure(
+			array(
+				'id' => new external_value(PARAM_INT, 'Id of the latest insert'),
 			)
 		);
 	}

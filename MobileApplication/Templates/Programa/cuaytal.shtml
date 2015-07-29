@@ -175,7 +175,9 @@
 <button class="btn btn-primary btn-lg btn-cnt" type="button">Terminar</button>
 <div class="txt-renglon centered txt-bigger"></div>	
 </section>
-</div>
+</div><br/><br/>
+<img src="../../assets/images/img-lines-ftr.png" class="centered">
+<br/>  
   </article>
 
   <footer class="footer">

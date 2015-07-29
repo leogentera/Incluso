@@ -322,84 +322,125 @@ function syncCacheData (){
                   }
                 ]
               }]
+            },
+            {
+              Id: 2,
+              Name: "Inspirar 2",
+              Description: "Inspirar 2 es blah blah",
+              Activities : [
+              {
+                Id : 12,
+                Name: "Descubre mas",
+                Description: "lorem ipsum bla",
+                Image: "descubre.png",
+                ActivityType: "ActivityManager",
+                Status: 1,
+                Activities: [
+                  {
+                    Id : 12,
+                    Name: "Descubre mas",
+                    Description: "lorem ipsum bla",
+                    ActityType: "Forum"
+                  },
+                  {
+                    Id : 12,
+                    Name: "Descubre mas",
+                    Description: "lorem ipsum bla",
+                    ActityType: "Formulario"               
+                  }
+                ]
+              }]
             }
           ]
         };
 
         var UserCourse = {
-          CourseID: 2,
-          UserID: 3,
-          Stages: [
-            {
-              StageID: 1,
-              Status: 0,
-              Activities : [
-                {
-                  ActivityID : 12,
-                  Status: 1,
-                  Activities: [
-                    {
-                      ActivityID : 13,
-                      Status: 1
-                    },
-                    {
-                      ActivityID : 14,
-                      Status: 1                     
-                    }
-                  ]
-                },
-                {
-                  ActivityID : 15,
-                  Status: 0,
-                  Activities: [
-                    {
-                      ActivityID : 16,
-                      Status: 1
-                    },
-                    {
-                      ActivityID : 17,
-                      Status: 0                     
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              StageID: 2,
-              Status: 1,
-              Activities : [
-                {
-                  ActivityID : 18,
-                  Status: 1,
-                  Activities: [
-                    {
-                      ActivityID : 19,
-                      Status: 1
-                    },
-                    {
-                      ActivityID : 20,
-                      Status: 1                     
-                    }
-                  ]
-                },
-                {
-                  ActivityID : 21,
-                  Status: 0,
-                  Activities: [
-                    {
-                      ActivityID : 22,
-                      Status: 1
-                    },
-                    {
-                      ActivityID : 23,
-                      Status: 0                     
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        };
+            courseId: 2,
+            userId: 3,
+            firstTime: 1,
+            stages: [
+              {
+                stageId: 1,
+                stageStatus: 0,
+                stageProgress: 70,
+                firstTime: 0,
+                activities : [
+                  {
+                    activityId : 12,
+                    status: 1,
+                    activities: [
+                      {
+                        activityId : 13,
+                        status: 1,
+                    timemodified: 1437089512
+                      },
+                      {
+                        activityId : 14,
+                        status: 1,
+                    timemodified: 1437089512          
+                      }
+                    ]
+                  },
+                  {
+                    activityId : 15,
+                    status: 0,
+                    activities: [
+                      {
+                        activityId : 16,
+                        status: 1,
+                    timemodified: 1437089512
+                      },
+                      {
+                        activityId : 17,
+                        status: 0,
+                    timemodified: null            
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                stageId: 2,
+                stageStatus: 0,
+                stageProgress: 10,
+                firstTime: 0,
+                activities : [
+                  {
+                    activityId : 18,
+                    status: 1,
+                    activities: [
+                      {
+                        activityId : 19,
+                        status: 1,
+                    timemodified: 1437089512
+                      },
+                      {
+                        activityId : 20,
+                        status: 1,                    
+                    timemodified: 1437089512
+                      }
+                    ]
+                  },
+                  {
+                    activityId : 21,
+                    status: 0,
+                    activities: [
+                      {
+                        activityId : 22,
+                        status: 1,
+                    timemodified: 1437089512
+                      },
+                      {
+                        activityId : 23,
+                        status: 0,
+                    timemodified: null            
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          };
 
     localStorage.setItem("profile", JSON.stringify(dummyProfile));
     localStorage.setItem("user", JSON.stringify(User));
@@ -407,3 +448,5 @@ function syncCacheData (){
     localStorage.setItem("usercourse", JSON.stringify(UserCourse));
 
 }
+
+syncCacheData();

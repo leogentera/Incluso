@@ -48,6 +48,13 @@ $functions = array(
                 'description' => 'Return a list of activities in a challenge',
                 'type'        => 'read',
         ),
+        'get_stages_by_user_and_course' => array(
+                'classname'   => 'stage_services',
+                'methodname'  => 'get_stages_by_user_and_course',
+                'classpath'   => 'local/stage_plugin/externallib.php',
+                'description' => 'Return a list of stages in a course with the status of first time',
+                'type'        => 'read',
+        ),
 );
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
@@ -57,7 +64,8 @@ $services = array(
                         'get_challenges_stage',
                         'get_activities_status_by_challenge',
                         'get_stages_by_course',
-                        'get_activities_by_challenge'),
+                        'get_activities_by_challenge',
+                        'get_stages_by_user_and_course'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         )
