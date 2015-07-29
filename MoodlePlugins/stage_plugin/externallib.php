@@ -25,16 +25,15 @@ require_once($CFG->libdir . "../../config.php");
 
 class stage_services extends external_api{
 	
-	public static function get_challenges_stage_parameters(){
+	public static function get_activities_by_challenge_parameters(){
 		return new external_function_parameters(
 			array(
-					'courseid' => new external_value(PARAM_INT, 'Course ID'),
-					'stageid'  => new external_value(PARAM_INT, 'Stage ID of course')
+				'sectionid' => new external_value(PARAM_INT, 'Section ID')
 			)
-		);
+		);	
 	}
-	
-	public static function get_challenges_stage($courseid, $stageid){
+
+	public static function get_activities_by_challenge($sectionid){	
 		global $USER;
 		global $DB;
 		$response = array();
@@ -43,10 +42,9 @@ class stage_services extends external_api{
 			//Parameter validation
 			//REQUIRED
 			$params = self::validate_parameters(
-					self::get_challenges_stage_parameters(), 
+					self::get_activities_by_challenge_parameters(), 
 					array(
-						'courseid' => $courseid,
-						'stageid' => $stageid
+						'sectionid' => $sectionid,
 					));
 		
 			//Context validation
@@ -60,13 +58,11 @@ class stage_services extends external_api{
 			//     throw new moodle_exception('cannotviewprofile');
 			// }
 		
-			$sql = "SELECT cfo.sectionid, cs.name, cs.summary
-					FROM {course_format_options} AS cfo
-					INNER JOIN {course_sections} AS cs
-					ON cfo.sectionid = cs.id
-					WHERE cfo.courseid = $courseid
-					AND cfo.name = 'parent'
-					AND cfo.value = $stageid";
+			$sql = "SELECT cm.id, cm.instance, m.name 
+					FROM {course_modules} AS cm
+					INNER JOIN {modules} AS m
+					ON cm.module = m.id
+					WHERE section = $sectionid";
 			
 			$response = $DB->get_records_sql($sql);
 		
@@ -75,19 +71,18 @@ class stage_services extends external_api{
 		}
 		return $response;
 	}
-	
-	public static function get_challenges_stage_returns(){
+
+	public static function get_activities_by_challenge_returns(){	
 		return new external_multiple_structure(
 			new external_single_structure(
 				array(
-					'sectionid' => new external_value(PARAM_INT, 'Principal Activities of the stage'),
-					'name' => new external_value(PARAM_TEXT, 'Name of the principal activity'),
-					'summary' => new external_value(PARAM_RAW, 'Challenge of the principal activity')
+					'instance' 	=> new external_value(PARAM_INT, 'Instance ID'),
+					'name' 	=> new external_value(PARAM_TEXT, 'Name of instance')
 				)
 			)
 		);
 	}
-	
+
 	public static function get_activities_status_by_challenge_parameters(){
 		return new external_function_parameters(
 			array(
@@ -172,6 +167,69 @@ class stage_services extends external_api{
 		);
 	}
 
+	public static function get_challenges_stage_parameters(){
+		return new external_function_parameters(
+			array(
+					'courseid' => new external_value(PARAM_INT, 'Course ID'),
+					'stageid'  => new external_value(PARAM_INT, 'Stage ID of course')
+			)
+		);
+	}
+	
+	public static function get_challenges_stage($courseid, $stageid){
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_challenges_stage_parameters(), 
+					array(
+						'courseid' => $courseid,
+						'stageid' => $stageid
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+		
+			$sql = "SELECT cfo.sectionid, cs.name, cs.summary
+					FROM {course_format_options} AS cfo
+					INNER JOIN {course_sections} AS cs
+					ON cfo.sectionid = cs.id
+					WHERE cfo.courseid = $courseid
+					AND cfo.name = 'parent'
+					AND cfo.value = $stageid";
+			
+			$response = $DB->get_records_sql($sql);
+		
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+	
+	public static function get_challenges_stage_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'sectionid' => new external_value(PARAM_INT, 'Principal Activities of the stage'),
+					'name' => new external_value(PARAM_TEXT, 'Name of the principal activity'),
+					'summary' => new external_value(PARAM_RAW, 'Challenge of the principal activity')
+				)
+			)
+		);
+	}
+
 	public static function get_stages_by_course_parameters(){
 		return new external_function_parameters(
 			array(
@@ -207,15 +265,11 @@ class stage_services extends external_api{
 		
 			$sql = "SELECT cfo.sectionid AS stageid,
 					       cs.section AS section, 
-					       cs.name AS stage,
-					       IFNULL(urv.firsttime,1) AS firsttime
+					       cs.name AS stage
 					FROM {course_format_options} AS cfo
 
 					INNER JOIN {course_sections} AS cs 
 					ON (cs.id = cfo.sectionid AND cfo.courseid = cs.course)
-
-					LEFT JOIN {user_resource_visited} AS urv
-					ON urv.resourceid = cfo.sectionid
 
 					WHERE cfo.courseid = $courseid
 					AND cfo.name = 'parent'
@@ -236,22 +290,22 @@ class stage_services extends external_api{
 				array(
 					'stageid' 	=> new external_value(PARAM_INT, 'Stage ID'),
 					'section'	=> new external_value(PARAM_INT, 'Section ID'),
-					'stage' 	=> new external_value(PARAM_TEXT, 'Name of Stage'),
-					'firsttime' => new external_value(PARAM_INT, 'First time in the section?')
+					'stage' 	=> new external_value(PARAM_TEXT, 'Name of Stage')
 				)
 			)
 		);		
 	}
 
-	public static function get_activities_by_challenge_parameters(){
+	public static function get_stages_by_user_and_course_parameters(){
 		return new external_function_parameters(
 			array(
-				'sectionid' => new external_value(PARAM_INT, 'Section ID')
+				'courseid' => new external_value(PARAM_INT, 'Course ID'),
+				'userid'   => new external_value(PARAM_INT, 'User ID')
 			)
-		);	
+		);
 	}
 
-	public static function get_activities_by_challenge($sectionid){	
+	public static function get_stages_by_user_and_course($courseid, $userid){
 		global $USER;
 		global $DB;
 		$response = array();
@@ -260,9 +314,10 @@ class stage_services extends external_api{
 			//Parameter validation
 			//REQUIRED
 			$params = self::validate_parameters(
-					self::get_activities_by_challenge_parameters(), 
+					self::get_stages_by_user_and_course_parameters(), 
 					array(
-						'sectionid' => $sectionid,
+						'courseid' => $courseid,
+						'userid'   => $userid
 					));
 		
 			//Context validation
@@ -276,11 +331,25 @@ class stage_services extends external_api{
 			//     throw new moodle_exception('cannotviewprofile');
 			// }
 		
-			$sql = "SELECT cm.id, cm.instance, m.name 
-					FROM {course_modules} AS cm
-					INNER JOIN {modules} AS m
-					ON cm.module = m.id
-					WHERE section = $sectionid";
+			$sql = "SELECT cfo.sectionid AS stageid,
+					       cs.section AS section, 
+					       cs.name AS stage,
+					       IFNULL(urv.firsttime,1) AS firsttime
+					FROM {course_format_options} AS cfo
+
+					INNER JOIN {course_sections} AS cs 
+					ON (cs.id = cfo.sectionid AND cfo.courseid = cs.course)
+
+					LEFT JOIN (
+						SELECT * FROM {user_resource_visited}
+						WHERE userid = $userid
+                        AND typeresource = 'stage') AS urv
+					ON urv.resourceid = cfo.sectionid
+
+					WHERE cfo.courseid = $courseid
+					AND cfo.name = 'parent'
+					AND cfo.value = 0
+					AND cs.name <> ''";
 			
 			$response = $DB->get_records_sql($sql);
 		
@@ -290,14 +359,17 @@ class stage_services extends external_api{
 		return $response;
 	}
 
-	public static function get_activities_by_challenge_returns(){	
+	public static function get_stages_by_user_and_course_returns(){
 		return new external_multiple_structure(
 			new external_single_structure(
 				array(
-					'instance' 	=> new external_value(PARAM_INT, 'Instance ID'),
-					'name' 	=> new external_value(PARAM_TEXT, 'Name of instance')
+					'stageid' 	=> new external_value(PARAM_INT,  'Stage ID'),
+					'section'	=> new external_value(PARAM_INT,  'Section ID'),
+					'stage' 	=> new external_value(PARAM_TEXT, 'Name of Stage'),
+					'firsttime' => new external_value(PARAM_INT,  'Indicates if is the first time in stage')
 				)
 			)
-		);
+		);		
 	}
+
 }
