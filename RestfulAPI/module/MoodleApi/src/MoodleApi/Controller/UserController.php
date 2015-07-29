@@ -13,7 +13,7 @@ class UserController extends AbstractRestfulJsonController{
 	
 
 	private $token = "";
-	private $function = "core_user_get_users_by_field";
+	//private $function = "core_user_get_users_by_field";
 	
     // Action used for POST requests
     public function create($data)
@@ -35,11 +35,11 @@ class UserController extends AbstractRestfulJsonController{
 //      $dateinMilis=strtotime($data['birthday']) * 1000;
 //      $dateinMilis+=3600000;
         
-        $url = sprintf($url, $this->getToken(), $this->function, 
+        $url = sprintf($url, $this->getToken(), "core_user_create_users", 
                 urlencode($data['username']), 
                 urlencode($data['password']),
-                urlencode($data['firstname']), 
-                urlencode($data['lastname']), 
+                /*urlencode($data['firstname']), */ "", //Register page doesn't send firstname and last name
+                /*urlencode($data['lastname']), */ "",
                 urlencode($data['email']),
                 urlencode($data['city']), urlencode($data['country']), 
                 urlencode($data['secretanswer']), 
@@ -71,15 +71,90 @@ class UserController extends AbstractRestfulJsonController{
             
             return new JsonModel($this->throwJSONError($message));
         }
-            return  new JsonModel(array());
+        $message=$this->enrol_user($data['username'], $this->getLatestCourse());
+        
+        if ($message!=""){
+        	new JsonModel($message);
+        }
+        return  new JsonModel(array());
     }
+    
+    private function enrol_user($username, $courseid){
+    	if ($courseid<0){
+    		return new JsonModel( $this->throwJSONError("Ocurrio un error, Contacte al administrador", 404));
+    	}
+    	 
+    	$url = $this->getConfig()['MOODLE_API_URL'].'&field=username&values[0]=%s';
+    	$url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $username);
+    
+    	$response = file_get_contents($url);
+    	$json_user = json_decode($response,true);
+    
+    	if (strpos($response, "exception") !== false || count($json_user)==0 )
+    	{
+    		
+    		return $this->throwJSONError("Ocurrio un error, Contacte al administrador", 404);
+    	}
+    	$id=$json_user[0]['id'];//id
+    	 
+    	$url = $this->getConfig()['MOODLE_API_URL'].'&enrolments[0][userid]=%s&enrolments[0][courseid]=%s&enrolments[0][roleid]=5';
+    	$url = sprintf($url, $this->getToken(), "enrol_manual_enrol_users", $id, $courseid);
+    	 
+    	$response = file_get_contents($url);
+    	$json_user = json_decode($response,true);
+    	 
+    	if (strpos($response, "exception") !== false  )
+    	{
+    		return $this->throwJsonError();
+    	}
+    	
+    	
+    	
+    	return $this->updateCurrentCourseId($id, $courseid);
+    }
+    
+    private function getLatestCourse(){
+    
+    	$url = $this->getConfig()['MOODLE_API_URL'];
+    	$url = sprintf($url, $this->getToken(), "get_latest_course");
+    
+    	$response = file_get_contents($url);
+    	$json_user = json_decode($response,true);
+    
+    	if (strpos($response, "exception") !== false )
+    	{
+    		return -1;
+    	}
+    	return $json_user['id'];
+    }
+    
+    private function updateCurrentCourseId($id, $courseid)
+    {
+    	
+    		$url = $this->getConfig()['MOODLE_API_URL'].'&users[0][id]=%s'.
+    				'&users[0][customfields][0][type]=course&users[0][customfields][0][value]=%s';
+    
+    		$url = sprintf($url, $this->getToken(), "core_user_update_users", $id, $courseid);
+    
+    		$response = file_get_contents($url);
+    		if ($response=="null"){
+    			return "";
+    		}
+    		else{
+    			$json = json_decode($response,true);
+    		}
+    		
+    		return $this->throwJSONError();
+    
+    }
+    
 	
 	// Action used for GET requests with resource Id
 	public function get($id)
 	{
 		
         $url = $this->getConfig()['MOODLE_API_URL'].'&field=id&values[0]=%s';
-        $url = sprintf($url, $this->getToken(), $this->function, $id);
+        $url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $id);
 
         $response = file_get_contents($url);
         
@@ -431,16 +506,12 @@ class UserController extends AbstractRestfulJsonController{
         {
             return new JsonModel( $this->throwJSONError("El usuario no esta registrado"));
         }
-        else
-        {
             
         $customFields=array();
 
         for($i=0;count($json[0]['customfields'])>$i;$i++){
             $customFields[$json[0]['customfields'][$i]['name']]=$json[0]['customfields'][$i]['value'];
         }
-        
-        
 
         $currentStars=$data['stars'];
         

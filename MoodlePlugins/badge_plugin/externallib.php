@@ -81,10 +81,11 @@ class badge_services extends external_api {
     
     public static function get_posible_badges_to_earn_parameters() {
     	return new external_function_parameters(
-    			array('id' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false))
+    			array('id' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false)),
+    			array('courseid' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false))
     	);
     }
-    public static function get_posible_badges_to_earn($id) {
+    public static function get_posible_badges_to_earn($id, $courseid) {
     	global $USER;
     	global $DB;
     	$response = array();
@@ -92,7 +93,7 @@ class badge_services extends external_api {
     	try {
     		//Parameter validation
     		//REQUIRED
-    		$params = self::validate_parameters(self::get_posible_badges_to_earn_parameters(), array('id' => $id));
+    		$params = self::validate_parameters(self::get_posible_badges_to_earn_parameters(), array('id' => $id,'courseid' => $courseid ));
     
     		//Context validation
     		//OPTIONAL but in most web service it should present
@@ -105,12 +106,12 @@ class badge_services extends external_api {
     		//     throw new moodle_exception('cannotviewprofile');
     		// }
     
-    		$sql = 'select ba.id id, ba.name name, ba.description description, bp.points points, (select count(*) from {badge_issued} bi_count where bi_count.badgeid = ba.id  ) earned_times  
+    		$sql = "select ba.id id, ba.name name, ba.description description, bp.points points, (select count(*) from {badge_issued} bi_count where bi_count.badgeid = ba.id  ) earned_times  
 					from {badge} ba,  {badge_points} bp 
-					where  ba.id=bp.badgeid and ba.id not in
+					where  ba.courseid=$courseid and ba.id=bp.badgeid and ba.id not in
 					(select bi.id id 
 					from {badge} ba, {badge_issued} bi,{badge_points} bp
-					where bp.badgeid=bi.badgeid and ba.id=bi.badgeid and bi.userid=:id)';
+					where bp.badgeid=bi.badgeid and ba.id=bi.badgeid and bi.userid=:id)";
     		
     		
             

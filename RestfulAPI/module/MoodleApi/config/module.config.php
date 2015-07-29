@@ -5,6 +5,7 @@ return array(
             'MoodleApi\Controller\Course' => 'MoodleApi\Controller\CourseController',
             'MoodleApi\Controller\User' => 'MoodleApi\Controller\UserController',
             'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
+            'MoodleApi\Controller\UserCourse' => 'MoodleApi\Controller\UserCourseController',
         ),
     ),
     'router' => array(
@@ -34,7 +35,7 @@ return array(
         	'user' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/user/:id',
+                    'route'    => '/user[/:id'],
                     'constraints' => array(
                         'id'     => '[0-9]+',
                     ),
@@ -53,6 +54,16 @@ return array(
                     ),
                 )
         	),
+
+            'UserCourse' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/usercourse[/:id]',
+                    'defaults' => array(
+                        'controller' => 'MoodleApi\Controller\UserCourse',
+                    ),
+                )
+            ),
         ),
     ),
     'view_manager' => array(
