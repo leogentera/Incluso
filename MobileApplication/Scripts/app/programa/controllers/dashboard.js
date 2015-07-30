@@ -53,10 +53,10 @@
             function getCurrentStage(){
                 var currentStage = 1;
 
-                for(var i = 0; i < $scope.usercourse.Stages.length; i++){
-                    var uc = $scope.usercourse.Stages[i];
+                for(var i = 0; i < $scope.usercourse.stages.length; i++){
+                    var uc = $scope.usercourse.stages[i];
 
-                    if(uc.Status === 0){
+                    if(uc.status === 0){
                         return;
                     }
 
