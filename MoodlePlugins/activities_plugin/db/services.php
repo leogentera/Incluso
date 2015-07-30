@@ -52,6 +52,13 @@ $functions = array(
                         'type'        => 'read',
         ),
 
+        'get_activity_id_and_name' => array(
+                        'classname'   => 'activitiesSummary_plugin',
+                        'methodname'  => 'get_activity_id_and_name',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Returns the id and type of activity',
+                        'type'        => 'read',
+        ),
 );
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
@@ -63,7 +70,9 @@ $services = array(
         ),
 
         'ActivitySummary service' => array(
-                'functions' => array ('get_activity_summary'),
+                'functions' => array(
+                        'get_activity_summary',
+                        'get_activity_id_and_name'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         )

@@ -58,7 +58,7 @@ class stage_services extends external_api{
 			//     throw new moodle_exception('cannotviewprofile');
 			// }
 		
-			$sql = "SELECT cm.id, cm.instance, m.name 
+			$sql = "SELECT cm.id AS coursemoduleid, cm.instance, m.name 
 					FROM {course_modules} AS cm
 					INNER JOIN {modules} AS m
 					ON cm.module = m.id
@@ -76,8 +76,9 @@ class stage_services extends external_api{
 		return new external_multiple_structure(
 			new external_single_structure(
 				array(
-					'instance' 	=> new external_value(PARAM_INT, 'Instance ID'),
-					'name' 	=> new external_value(PARAM_TEXT, 'Name of instance')
+					'coursemoduleid' => new external_value(PARAM_INT, 'ID of table course_modules'),
+					'instance' 		 => new external_value(PARAM_INT, 'Instance ID'),
+					'name' 			 => new external_value(PARAM_TEXT, 'Name of instance')
 				)
 			)
 		);
@@ -120,7 +121,7 @@ class stage_services extends external_api{
 			//     throw new moodle_exception('cannotviewprofile');
 			// }
 		
-			$sql = "SELECT coursemoduleid,
+			$sql = "SELECT cm.id AS coursemoduleid,
 						   IFNULL(cmc.completionstate,0) AS completionstate,
 						   instance, 
 						   name, 
@@ -158,6 +159,7 @@ class stage_services extends external_api{
 		return new external_multiple_structure(
 			new external_single_structure(
 				array(
+					'coursemoduleid'    => new external_value(PARAM_INT, 'ID of table course_modules'),
 					'instance' 			=> new external_value(PARAM_INT, 'Instance ID'),
 					'name' 				=> new external_value(PARAM_TEXT, 'Type of Activity'),
 					'timemodified' 		=> new external_value(PARAM_RAW, 'Time Modified of Activity'),

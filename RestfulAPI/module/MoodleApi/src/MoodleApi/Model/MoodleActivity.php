@@ -7,6 +7,7 @@ class MoodleActivity
     public $name;
     public $description;
     public $activityType;
+    public $coursemoduleid;
 
     //Using only in UserCourse
     public $status;
@@ -14,8 +15,9 @@ class MoodleActivity
     
     public function __construct($data)
     {
-        $this->id           = (!empty($data['instance'])) ? $data['instance'] : null;
-        $this->activityType = (!empty($data['name'])) ? $data['name'] : null;
+        $this->id             = (!empty($data['instance'])) ? $data['instance'] : null;
+        $this->activityType   = (!empty($data['name'])) ? $data['name'] : null;
+        $this->coursemoduleid = (!empty($data['coursemoduleid'])) ? $data['coursemoduleid'] : null;
     
     }
 
