@@ -274,79 +274,167 @@ function syncCacheData (){
 
 
     var Course = {
-          Leaderboard:[
+          leaderboard:[
             {
-              UserID: 2,
-              Fullname: "José Alberto Gónzalez",
-              Progress: 80,
-              Stars: 250,
+              userId: 2,
+              fullname: "José Alberto Gónzalez",
+              rank: 1,
+              pictureProfile: "foto.png",
+              progress: 80,
+              stars: 250
             },
             {
-              UserID: 3,
-              Fullname: "Samantha García",
-              Progress: 70,
-              Stars: 240,
+              userId: 3,
+              fullname: "Samantha García",
+              rank: 2,
+              pictureProfile: "foto.png",
+              progress: 70,
+              stars: 240
             },
             {
-              UserID: 4,
-              Fullname: "Araceli Martínez",
-              Progress: 68,
-              Stars: 235,
+              userId: 4,
+              fullname: "Araceli Martínez",
+              rank: 3,
+              pictureProfile: "foto.png",
+              progress: 68,
+              stars: 235,
             }
           ],
-          Stages: [
+          stages: [
             {
-              Id: 1,
-              Name: "Inspirar",
-              Description: "Inspirar es blah blah",
-              Activities : [
+              id: 1,
+              name: "Inspirar",
+              description: "Inspirar es blah blah",
+              challenges : [
               {
-                Id : 12,
-                Name: "Descubre mas",
-                Description: "lorem ipsum bla",
-                Image: "descubre.png",
-                ActivityType: "ActivityManager",
-                Status: 1,
-                Activities: [
+                id : 1,
+                name: "Descubre mas",
+                description: "lorem ipsum bla 1",
+                image: "img-rotator-01-lg.png",
+                activityType: "ActivityManager",
+                activities: [
                   {
-                    Id : 12,
-                    Name: "Descubre mas",
-                    Description: "lorem ipsum bla",
-                    ActityType: "Forum"
+                    id : 12,
+                    name: "Sueña",
+                    description: "lorem ipsum bla",
+                    actityType: "Forum"
                   },
                   {
-                    Id : 12,
-                    Name: "Descubre mas",
-                    Description: "lorem ipsum bla",
-                    ActityType: "Formulario"               
+                    id : 12,
+                    name: "Foro Común",
+                    description: "lorem ipsum bla",
+                    actityType: "Formulario"               
+                  }
+                ]
+              },
+              {
+                id : 2,
+                name: "Descubre mas",
+                description: "lorem ipsum bla 1",
+                image: "img-rotator-01-lg.png",
+                activityType: "ActivityManager",
+                activities: [
+                  {
+                    id : 12,
+                    name: "Sueña",
+                    description: "lorem ipsum bla",
+                    actityType: "Forum"
+                  },
+                  {
+                    id : 12,
+                    name: "Foro Común",
+                    description: "lorem ipsum bla",
+                    actityType: "Formulario"               
+                  }
+                ]
+              },
+              {
+                id : 3,
+                name: "Descubre mas",
+                description: "lorem ipsum bla 1",
+                image: "img-rotator-01-lg.png",
+                activityType: "ActivityManager",
+                activities: [
+                  {
+                    id : 12,
+                    name: "Sueña",
+                    description: "lorem ipsum bla",
+                    actityType: "Forum"
+                  },
+                  {
+                    id : 12,
+                    name: "Foro Común",
+                    description: "lorem ipsum bla",
+                    actityType: "Formulario"               
                   }
                 ]
               }]
             },
             {
-              Id: 2,
-              Name: "Inspirar 2",
-              Description: "Inspirar 2 es blah blah",
-              Activities : [
+              id: 2,
+              name: "Inspirar",
+              description: "Inspirar es blah blah",
+              challenges : [
               {
-                Id : 12,
-                Name: "Descubre mas",
-                Description: "lorem ipsum bla",
-                Image: "descubre.png",
-                ActivityType: "ActivityManager",
-                Status: 1,
-                Activities: [
+                id : 12,
+                name: "Descubre mas",
+                description: "lorem ipsum bla 1",
+                image: "img-rotator-01-lg.png",
+                activityType: "ActivityManager",
+                activities: [
                   {
-                    Id : 12,
-                    Name: "Descubre mas",
-                    Description: "lorem ipsum bla",
-                    ActityType: "Forum"
+                    id : 12,
+                    name: "Sueña",
+                    description: "lorem ipsum bla",
+                    actityType: "Forum"
                   },
                   {
-                    Id : 12,
-                    Name: "Descubre mas",
-                    Description: "lorem ipsum bla",
-                    ActityType: "Formulario"               
+                    id : 12,
+                    name: "Foro Común",
+                    description: "lorem ipsum bla",
+                    actityType: "Formulario"               
+                  }
+                ]
+              },
+              {
+                id : 12,
+                name: "Descubre mas",
+                description: "lorem ipsum bla 1",
+                image: "img-rotator-01-lg.png",
+                activityType: "ActivityManager",
+                activities: [
+                  {
+                    id : 12,
+                    name: "Sueña",
+                    description: "lorem ipsum bla",
+                    actityType: "Forum"
+                  },
+                  {
+                    id : 12,
+                    name: "Foro Común",
+                    description: "lorem ipsum bla",
+                    actityType: "Formulario"               
+                  }
+                ]
+              },
+              {
+                id : 12,
+                name: "Descubre mas",
+                description: "lorem ipsum bla 1",
+                image: "img-rotator-01-lg.png",
+                activityType: "ActivityManager",
+                activities: [
+                  {
+                    id : 12,
+                    name: "Sueña",
+                    description: "lorem ipsum bla",
+                    actityType: "Forum"
+                  },
+                  {
+                    id : 12,
+                    name: "Foro Común",
+                    description: "lorem ipsum bla",
+                    actityType: "Formulario"               
                   }
                 ]
               }]
@@ -355,92 +443,109 @@ function syncCacheData (){
         };
 
         var UserCourse = {
-            courseId: 2,
-            userId: 3,
-            firstTime: 1,
-            stages: [
-              {
-                stageId: 1,
-                stageStatus: 0,
-                stageProgress: 70,
-                firstTime: 0,
-                activities : [
-                  {
-                    activityId : 12,
-                    status: 1,
-                    activities: [
-                      {
-                        activityId : 13,
-                        status: 1,
-                    timemodified: 1437089512
-                      },
-                      {
-                        activityId : 14,
-                        status: 1,
-                    timemodified: 1437089512          
-                      }
-                    ]
-                  },
-                  {
-                    activityId : 15,
-                    status: 0,
-                    activities: [
-                      {
-                        activityId : 16,
-                        status: 1,
-                    timemodified: 1437089512
-                      },
-                      {
-                        activityId : 17,
-                        status: 0,
-                    timemodified: null            
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                stageId: 2,
-                stageStatus: 0,
-                stageProgress: 10,
-                firstTime: 0,
-                activities : [
-                  {
-                    activityId : 18,
-                    status: 1,
-                    activities: [
-                      {
-                        activityId : 19,
-                        status: 1,
-                    timemodified: 1437089512
-                      },
-                      {
-                        activityId : 20,
-                        status: 1,                    
-                    timemodified: 1437089512
-                      }
-                    ]
-                  },
-                  {
-                    activityId : 21,
-                    status: 0,
-                    activities: [
-                      {
-                        activityId : 22,
-                        status: 1,
-                    timemodified: 1437089512
-                      },
-                      {
-                        activityId : 23,
-                        status: 0,
-                    timemodified: null            
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          };
+          courseId: 2,
+          userId: 3,
+          globalProgress: 20,
+          firstTime: 1,
+          stages: [
+            {
+              stageId: 1,
+              stageStatus: 0,
+              stageProgress: 70,
+              firstTime: 0,
+              activities : [
+                {
+                  activityId : 1,
+                  status: 1,
+                  activities: [
+                    {
+                      activityId : 13,
+                      status: 1,
+                  timemodified: 1437089512
+                    },
+                    {
+                      activityId : 14,
+                      status: 1,
+                  timemodified: 1437089512          
+                    }
+                  ]
+                },
+                {
+                  activityId : 2,
+                  status: 0,
+                  activities: [
+                    {
+                      activityId : 16,
+                      status: 1,
+                  timemodified: 1437089512
+                    },
+                    {
+                      activityId : 17,
+                      status: 0,
+                  timemodified: null            
+                    }
+                  ]
+                },
+                {
+                  activityId : 3,
+                  status: 0,
+                  activities: [
+                    {
+                      activityId : 16,
+                      status: 1,
+                  timemodified: 1437089512
+                    },
+                    {
+                      activityId : 17,
+                      status: 0,
+                  timemodified: null            
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              stageId: 2,
+              stageStatus: 0,
+              stageProgress: 10,
+              firstTime: 0,
+              activities : [
+                {
+                  activityId : 18,
+                  status: 1,
+                  activities: [
+                    {
+                      activityId : 19,
+                      status: 1,
+                  timemodified: 1437089512
+                    },
+                    {
+                      activityId : 20,
+                      status: 1,                    
+                  timemodified: 1437089512
+                    }
+                  ]
+                },
+                {
+                  activityId : 21,
+                  status: 0,
+                  activities: [
+                    {
+                      activityId : 22,
+                      status: 1,
+                  timemodified: 1437089512
+                    },
+                    {
+                      activityId : 23,
+                      status: 0,
+                  timemodified: null            
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        };
 
     localStorage.setItem("profile", JSON.stringify(dummyProfile));
     localStorage.setItem("user", JSON.stringify(User));
