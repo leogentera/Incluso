@@ -22,7 +22,7 @@
         $http.get('Templates/Public/RecoverPassword.html', { cache: $templateCache });
         $http.get('Templates/Public/Register.html', { cache: $templateCache });
         $http.get('Templates/Programa/Dashboard.html', { cache: $templateCache });
-        $http.get('Templates/Programa/Step.html', { cache: $templateCache });
+        /*$http.get('Templates/Programa/Step.html', { cache: $templateCache });*/
         $http.get('Templates/Programa/profile.html', { cache: $templateCache });
         $http.get('Templates/Programa/editProfile.html', { cache: $templateCache });
         $http.get('Templates/Programa/etapa.shtml', { cache: $templateCache });
