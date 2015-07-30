@@ -854,4 +854,62 @@ class activitiesSummary_plugin extends external_api{
 			)
 		);
 	}
+
+	public static function get_activity_id_and_name_parameters(){
+		return new external_function_parameters(
+			array(
+				'coursemoduleid' => new external_value(PARAM_INT, 'ID of table course_modules'),
+			)
+		);
+	}
+
+	public static function get_activity_id_and_name($coursemoduleid){
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_activity_id_and_name_parameters(), 
+					array(
+						'coursemoduleid' => $coursemoduleid
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+		
+			$sql = "SELECT cm.instance AS id, m.name
+					FROM mdl_course_modules AS cm
+					INNER JOIN mdl_modules AS m
+					ON cm.module = m.id
+					WHERE cm.id = $coursemoduleid";
+			
+			$response = $DB->get_records_sql($sql);
+		
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+
+	public static function get_activity_id_and_name_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'id' => new external_value(PARAM_INT, 'Activity ID'),
+					'name' => new external_value(PARAM_TEXT, 'Type of the activity')
+				)
+			)
+		);
+	}	
 }
