@@ -24,6 +24,8 @@ class UserCourseController extends AbstractRestfulJsonController {
 
         $userCourse->setFirstTime($this->getIfIsFirstTime($courseid, $userid));
 
+        $userCourse->setGlobalProgress($this->getGlobalProgress($userid, $courseid));
+
         $stages = $this->getCourseStages($courseid, $userid);
 
         $userCourse->setStages($stages);
@@ -213,6 +215,29 @@ class UserCourseController extends AbstractRestfulJsonController {
         }
 
         return $activities;
+    }
+
+    private function getGlobalProgress($userid, $courseid){
+    
+        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s&courseid=%s';
+        $url = sprintf($url, $this->getToken(), "get_global_progress", $userid, $courseid);
+
+        $response = file_get_contents($url);
+
+        $json = json_decode($response,true);
+
+        if (strpos($response, "exception") !== false){
+            return array();      
+        }
+        // Good
+        if (count($json)==0){
+            return "-1";
+        }
+
+        $progress=$json[0]['percentage_completed'];
+
+        return $progress;
+
     }
 
     private function getProgressStage($stageid, $userid){
