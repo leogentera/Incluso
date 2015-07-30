@@ -16,15 +16,8 @@
 </head>
 <body ng-app>
 <div class="incluso-app step-dashboard" id="site-wrapper">
-  <div id="site-menu" class="navbar-collapse">
-    <ul class="nav">
-      <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
+  <div id="site-menu" >
+  <!--#include file="menu.html" -->
   </div>
   <div id="site-canvas">
 
@@ -81,7 +74,7 @@
               </video>
             </figure>
           </div>
-        </section>
+</section>
 
 	<section class="holoproj">
 	<div class="centered txt-title">MIS RETOS</div>
