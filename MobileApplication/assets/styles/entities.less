@@ -68,7 +68,7 @@
             }
             .green-giant{
                 color: #0f9847;
-                font-size: 1400%;
+                font-size: 1000%;
             }
             .green-pill{    
                 border: 1px solid #0f9847;
@@ -88,20 +88,20 @@
             }
             .pill{
                 border: 2px solid rgba(255, 255, 255, 0.3);
-                border-radius: 40px;
+                border-radius: 200px;
                 color: rgba(255, 255, 255, 0.75);
                 line-height: normal;
-                margin: 5% 10%;
-                padding: 20px 20px 46px;
+                margin: 5vw 10vw;
+                padding: 2vw 3vw 7vw;
             }
             .sm-pill{
                 border: 1px solid #bbd331;
-                border-radius: 25px;
+                border-radius: 100px;
                 color: #bbd331;
-                margin: -5px -10px;
-                padding: 5px 10px;
+                margin: -0.3vw -1vw;
+                padding: 0.3vw 1vw;
             }
-            .centrado{
+            .centered{
                 text-align: center;  
                 .spinner{
                     max-width: 79%;
@@ -133,7 +133,7 @@
             .notw{
                 opacity:.5;
             }
-            .blanco{
+            .white{
                     color:white;
             }
             .hangar-bay{
@@ -161,7 +161,7 @@
                 background-color: #112845;
                 background-position: -1px 0px;
                 background-repeat: no-repeat;
-                background-size: contain;
+                background-size: 100% auto;
                 border-bottom: 10px solid #24282a;
             }
             .progreso{
@@ -238,7 +238,7 @@
                 border-top: 2px solid #2a2f32;
                 padding: 20px 0;
             }
-            .agregar{
+            .add{
                 border-bottom: 2px solid rgba(255, 255, 255, 0.3);
                 border-top: 2px solid rgba(255, 255, 255, 0.3);
                 color: white;
@@ -252,11 +252,12 @@
             .up-line{
                 border-top:2px solid rgba(255, 255, 255, 0.3);
                 margin: 0 10%;
-                padding: 4% 2%;
+                padding: 4% 0;
                 width: 80%;
             }
-            .parte{    
-                display: inline-flex;    
+            .part{    
+                display: inline-flex;  
+                z-index: 2;  
                 align-items: center;    
                 justify-content: space-between;
                 background: #1f2733;
@@ -266,6 +267,7 @@
                 margin: 2% 10%;
                 padding: 3% 5%;
                 width: 80%;
+                position: relative;
                 background: -moz-radial-gradient(center, ellipse cover,  #1f2733 0%, #141921 100%);
                 background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#1f2733), color-stop(100%,#141921));
                 background: -webkit-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
@@ -291,9 +293,32 @@
                     line-height: normal;
                     display: inline-flex;   
                 }
+                &.list{
+                    display: block;
+                }
+                &.part2{
+                    background: -moz-radial-gradient(center, ellipse cover,  rgba(31, 39, 51, 0.68) 0%, rgba(20, 25, 33, 0.68) 100%);
+                    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(31, 39, 51, 0.68)), color-stop(100%,rgba(20, 25, 33, 0.68)));
+                    background: -webkit-radial-gradient(center, ellipse cover,  rgba(31, 39, 51, 0.68) 0%,rgba(20, 25, 33, 0.68) 100%);
+                    background: -o-radial-gradient(center, ellipse cover,  rgba(31, 39, 51, 0.68) 0%,rgba(20, 25, 33, 0.68) 100%);
+                    background: -ms-radial-gradient(center, ellipse cover,  rgba(31, 39, 51, 0.68)3 0%,rgba(20, 25, 33, 0.68) 100%);
+                    background: radial-gradient(ellipse at center,  rgba(31, 39, 51, 0.68) 0%,rgba(20, 25, 33, 0.68) 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(31, 39, 51, 0.68)', endColorstr='rgba(20, 25, 33, 0.68)',GradientType=1 );
+                    margin-top:-4%;
+                    z-index:1;
+                    .icomoon{
+                        font-size: 100%;
+                    }
+                }
+            }
+            .pointer{
+                cursor: pointer;
+            }
+            .ordeon{
+                display: none;
             }
             .wall{
-                .parte{
+                .part{
                     display: block; 
                     justify-content: unset; 
                     padding: 0px;
@@ -325,6 +350,7 @@
                         img{
                             margin-right: 5%; 
                             width: 20%;
+                            height: 20%;
                         }
                         div{
                             display:block;
@@ -383,7 +409,7 @@
                     }
                 }
             }
-            .paginadores{
+            .paginate, .paginate a{
                 color:@clr-greenicon;
                 margin: 5% 15%;
                 i{
@@ -391,13 +417,8 @@
                 }
             }
             .modalDialog {
-                position: fixed;
+                position: relative;
                 font-family: Arial, Helvetica, sans-serif;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background: rgba(0,0,0,0.8);
                 z-index: 99999;
                 opacity:0;
                 -webkit-transition: opacity 400ms ease-in;
@@ -407,14 +428,20 @@
                 &:target {
                     opacity:1;
                     pointer-events: auto;
+                    &:before {
+                      content:"";
+                      display:block;
+                      height:25vw;
+                      margin:-25vw 0 0;
+                    }
                 }
                 > div {
                     width: 100%;
-                    position: relative;
-                    margin: 10% 0;
+                    position: absolute;
+                    margin: 0;
                     padding: 2% 0;
                     background: #fff;
-                    .agregar{
+                    .add{
                         border-color: rgba(133,133,133,.2);
                         color: #9c9c9c;
                         padding: 2% 0;    

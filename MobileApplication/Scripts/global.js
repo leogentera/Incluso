@@ -27,7 +27,7 @@ var _syncAll = function(callback) {
 
 		console.log('courses synced');
 
-        syncProfile();
+        syncCacheData();
 		callback();
 
 	}
@@ -39,7 +39,7 @@ var _setToken = function(token) {
 	});
 }
 
-function syncProfile (){
+function syncCacheData (){
 
     var dummyProfile = {
         "country": null,
@@ -131,6 +131,322 @@ function syncProfile (){
         "status": "Enabled"
     };
 
+    var User = {
+          ID: 2,
+          Alias: "Leonardo",
+          Username: "leogarza955",
+          Fullname: "Leonardo Garza R",
+          GlobalProgress: 20,
+          Badge:[ 
+            {
+              ID: 3,
+              name: "Musical",
+              description: "Lorem ipsum",
+              earned_times: 3,
+              points: 20,
+              dateIssued: 14052015
+            },
+            {
+              ID: 4,
+              name: "Musical",
+              description: "Lorem ipsum",
+              earned_times: 3,
+              points: 20,
+              dateIssued: 14052015
+            }
+          ],
+          Shield: "img-badges-blocked.png",
+          Stars: 240,
+          Place: 28,
+          Schools:[
+            "Instituto de educación media superior",
+            "Instituto de educación secundaria"
+          ],
+          Address:{
+            Street: "Av Insurgentes Sur",
+            ExteriorNumber: "1048",
+            Suburb: "Actipan",
+            City: "Benito Juárez",
+            Town: "Benito Juárez",
+            State: "Ciudad de México",
+            PostalCode: "03230",
+            Country: "México"
+          },
+          Phone: "55-1537-2672",
+          Email: "leogarza955@gmail.com",
+          SocialNetwork:[
+            {
+              Type: "Twitter",
+              Value: "@leogarza955"
+            },
+            {
+              Type: "Facebook",
+              Value:"leogarza.955"
+            }
+          ],
+          FamiliaCompartamos: [
+            {
+              Client: 8920093,
+              Name: "Luis Enrique Garza Treviño",
+              Relationship: "Padre"
+            },
+            {
+              Client: 8920094,
+              Name: "Maria Guadalupe Pedraza de Garza",
+              Relationship: "Madre"
+            }
+          ],
+          Dreams:[
+            {
+              ID: 2,
+              Value: "Terminar mis estudios"
+            },
+            {
+              ID: 3,
+              Value: "Entrar a cursos de música"
+            },
+            {
+              ID: 4,
+              Value: "Ser más responsable con el medio ambiente"
+            }
+          ],
+          Hobbies:[
+            {
+              ID: 2,
+              Description: "Deportes",
+              Value: 0
+            },
+            {
+              ID: 3,
+              Description: "Carpintería",
+              Value: 0
+            },
+            {
+              ID: 4,
+              Description: "Pintura",
+              Value: 1
+            }   
+          ],
+          Qualities:[
+            {
+              ID: 2,
+              Description: "Aprendo Rápido",
+              Value: 1
+            },
+            {
+              ID: 3,
+              Description: "Me comunico claramente",
+              Value: 1
+            },
+            {
+              ID: 4,
+              Description: "Emprendedor",
+              Value: 0
+            }
+          ],
+          Strengths:[
+            {
+              ID: 2,
+              Type: "Musical",
+              Description: "Lorem ipsum",
+              Value: "Alto"
+            },
+            {
+              ID: 3,
+              Type: "Interpersonal",
+              Description: "Lorem ipsum",
+              Value: "Alto"
+            },
+            {
+              ID: 4,
+              Type: "Naturalista",
+              Description: "Lorem ipsum",
+              Value: "Alto"
+            },
+            {
+              ID: 5,
+              Type: "Intrapersonal",
+              Description: "Lorem ipsum",
+              Value: "Medio"
+            }
+          ]
+        };
+
+
+    var Course = {
+          Leaderboard:[
+            {
+              UserID: 2,
+              Fullname: "José Alberto Gónzalez",
+              Progress: 80,
+              Stars: 250,
+            },
+            {
+              UserID: 3,
+              Fullname: "Samantha García",
+              Progress: 70,
+              Stars: 240,
+            },
+            {
+              UserID: 4,
+              Fullname: "Araceli Martínez",
+              Progress: 68,
+              Stars: 235,
+            }
+          ],
+          Stages: [
+            {
+              Id: 1,
+              Name: "Inspirar",
+              Description: "Inspirar es blah blah",
+              Activities : [
+              {
+                Id : 12,
+                Name: "Descubre mas",
+                Description: "lorem ipsum bla",
+                Image: "descubre.png",
+                ActivityType: "ActivityManager",
+                Status: 1,
+                Activities: [
+                  {
+                    Id : 12,
+                    Name: "Descubre mas",
+                    Description: "lorem ipsum bla",
+                    ActityType: "Forum"
+                  },
+                  {
+                    Id : 12,
+                    Name: "Descubre mas",
+                    Description: "lorem ipsum bla",
+                    ActityType: "Formulario"               
+                  }
+                ]
+              }]
+            },
+            {
+              Id: 2,
+              Name: "Inspirar 2",
+              Description: "Inspirar 2 es blah blah",
+              Activities : [
+              {
+                Id : 12,
+                Name: "Descubre mas",
+                Description: "lorem ipsum bla",
+                Image: "descubre.png",
+                ActivityType: "ActivityManager",
+                Status: 1,
+                Activities: [
+                  {
+                    Id : 12,
+                    Name: "Descubre mas",
+                    Description: "lorem ipsum bla",
+                    ActityType: "Forum"
+                  },
+                  {
+                    Id : 12,
+                    Name: "Descubre mas",
+                    Description: "lorem ipsum bla",
+                    ActityType: "Formulario"               
+                  }
+                ]
+              }]
+            }
+          ]
+        };
+
+        var UserCourse = {
+            courseId: 2,
+            userId: 3,
+            firstTime: 1,
+            stages: [
+              {
+                stageId: 1,
+                stageStatus: 0,
+                stageProgress: 70,
+                firstTime: 0,
+                activities : [
+                  {
+                    activityId : 12,
+                    status: 1,
+                    activities: [
+                      {
+                        activityId : 13,
+                        status: 1,
+                    timemodified: 1437089512
+                      },
+                      {
+                        activityId : 14,
+                        status: 1,
+                    timemodified: 1437089512          
+                      }
+                    ]
+                  },
+                  {
+                    activityId : 15,
+                    status: 0,
+                    activities: [
+                      {
+                        activityId : 16,
+                        status: 1,
+                    timemodified: 1437089512
+                      },
+                      {
+                        activityId : 17,
+                        status: 0,
+                    timemodified: null            
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                stageId: 2,
+                stageStatus: 0,
+                stageProgress: 10,
+                firstTime: 0,
+                activities : [
+                  {
+                    activityId : 18,
+                    status: 1,
+                    activities: [
+                      {
+                        activityId : 19,
+                        status: 1,
+                    timemodified: 1437089512
+                      },
+                      {
+                        activityId : 20,
+                        status: 1,                    
+                    timemodified: 1437089512
+                      }
+                    ]
+                  },
+                  {
+                    activityId : 21,
+                    status: 0,
+                    activities: [
+                      {
+                        activityId : 22,
+                        status: 1,
+                    timemodified: 1437089512
+                      },
+                      {
+                        activityId : 23,
+                        status: 0,
+                    timemodified: null            
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          };
+
     localStorage.setItem("profile", JSON.stringify(dummyProfile));
+    localStorage.setItem("user", JSON.stringify(User));
+    localStorage.setItem("course", JSON.stringify(Course));
+    localStorage.setItem("usercourse", JSON.stringify(UserCourse));
 
 }
+
+syncCacheData();

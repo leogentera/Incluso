@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Incluso Digital</title>
+  <link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+  <!-- <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="assets/styles/css.css"> -->
+  <link rel="stylesheet" type="text/css" href="../../assets/styles/dev-css.css">
+	
+  <script type="text/javascript" src="../../Scripts/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="../../Scripts/bootstrap-3.3.2.js"></script>
+  <script type="text/javascript" src="../../Scripts/angular.js"></script>
+  <script type="text/javascript" src="../../Scripts/owl.carousel.min.js"></script>
+</head>
+<body ng-app>
+<div class="incluso-app step-dashboard" id="site-wrapper">
+  <div id="site-menu" >
+<!--#include file="menu.html" -->
+  </div>
+  <div id="site-canvas">
+
+    <nav ng-controller="navController">
+      <div class="navbar" id="navBar">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="row">
+
+            <div class="navbar-assets">
+              <h1 class="navbar-heading"><a href="#" data-transition="ease" id="menuton"><i class="icomoon icon-more-options white"></i> Estación: Conócete</a></h1>
+              <ul class="navbar-tools">
+                <li class="contribute">
+                  <a href="">
+                    <i class="icomoon icon-edit"></i>
+                  </a>
+                </li>
+                <li class="notifications">
+                  <a href="">
+                    <i class="icomoon icon-antena"></i>
+                  </a>
+                </li>
+                <li class="chat">
+                  <a href="">
+                    <i class="icomoon icon-chat"></i>
+                  </a>
+                </li>
+                <li class="profile">
+                  <a href="" ng-href="#/Perfil/">
+                    <i class="icomoon icon-emoticon-smile"></i>
+                  </a>
+                </li>                 
+              </ul>
+            </div> 
+          </div>
+        </div>
+      </div> <!-- /.container-fluid -->
+    </nav>
+
+  <article class="blueprint">
+
+	<section>
+<div class="subtitle">Mis gustos y preferencias</div>
+<div class="txt-renglon">Selecciona las opciones que te identifican.</div>
+
+</section>
+	<div id="owl" class="owl-carousel">
+	<div>
+<section class="form txt-renglon txt-bigger part list">
+<div class="txt-renglon txt-bigger">1. Hobbies</div>
+		<input type="checkbox" value="check1" name="check" id="check1">
+		<label for="check1">Deportes</label>
+		<input type="checkbox" value="check1" name="check" id="check2">
+		<label for="check2">Carpintería</label>
+		<input type="checkbox" value="check1" name="check" id="check3">
+		<label for="check3">Pintura</label>
+		<input type="checkbox" value="check1" name="check" id="check4">
+		<label for="check4">Tocar un instrumento</label>
+		<input type="checkbox" value="check1" name="check" id="check5">
+		<label for="check5">Cantar</label>
+		<input type="checkbox" value="check1" name="check" id="check6">
+		<label for="check6">Baile / Danza</label>
+		<input type="checkbox" value="check1" name="check" id="check7">
+		<label for="check7">Leer</label>
+		<input type="checkbox" value="check1" name="check" id="check8">
+		<label for="check8">Escribir</label>
+		<input type="checkbox" value="check1" name="check" id="check9">
+		<label for="check9">Otros</label>
+</section>
+<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otros</span></div></div>
+	<div>
+<section class="form txt-renglon txt-bigger part list">
+<div class="txt-renglon txt-bigger">2. Deportes</div>
+		<input type="checkbox" value="check1" name="check" id="check11">
+		<label for="check11">Basket</label>
+		<input type="checkbox" value="check1" name="check" id="check12">
+		<label for="check12">Futbol</label>
+		<input type="checkbox" value="check1" name="check" id="check13">
+		<label for="check13">Badminton</label>
+		<input type="checkbox" value="check1" name="check" id="check14">
+		<label for="check14">Esgrima</label>
+		<input type="checkbox" value="check1" name="check" id="check15">
+		<label for="check15">Do Shin Kan</label>
+</section>
+<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otros</span></div></div>
+	<div>
+<section class="form txt-renglon txt-bigger part list">
+<div class="txt-renglon txt-bigger">3. Oficios</div>
+		<input type="checkbox" value="check1" name="check" id="check21">
+		<label for="check21">Carpintería</label>
+		<input type="checkbox" value="check1" name="check" id="check22">
+		<label for="check22">Fontanería</label>
+		<input type="checkbox" value="check1" name="check" id="check23">
+		<label for="check23">Repostería</label>
+</section>
+<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otros</span></div></div>
+	<div>
+<section class="form txt-renglon txt-bigger part list">
+<div class="txt-renglon txt-bigger">4. Artes</div>
+		<input type="checkbox" value="check1" name="check" id="check31">
+		<label for="check31">Escénicas</label>
+		<input type="checkbox" value="check1" name="check" id="check32">
+		<label for="check32">Plásticas</label>
+		<input type="checkbox" value="check1" name="check" id="check33">
+		<label for="check33">Visuales</label>
+		<input type="checkbox" value="check1" name="check" id="check34">
+		<label for="check34">Quinéticas</label>
+</section>
+<div class="add"><i class="icomoon icon-edit"></i><span>Aquí escribe otros</span></div></div>
+</div>
+<section class="controls">
+
+<div class="paginate">
+<a href="#" id="prev">
+<i class="icomoon icon-arrow-bold-left txt-bigger fl-left"></i></a>
+<a href="#" id="next">
+<i class="icomoon icon-arrow-bold-right txt-bigger fl-right"></i></a>
+<div class="centered"><span class="txt-bigger" id="index">1</span><span>/</span><span class="white txt-bigger" id="total">4</span></div>
+</div><br/>
+<div class="txt-renglon centered txt-bigger">Cancelar</div>
+<br/><br/>
+<img src="../../assets/images/img-lines-ftr.png" class="centered">
+<br/>  
+</section>
+
+  </article>
+
+  <footer class="footer">
+    <ul class="block-list">
+      <li><a href="" class="centered txt-title">Preguntas Frecuentes</a></li>
+      <li><a href="" class="centered txt-title">Ayuda y Soporte</a></li>
+    </ul>
+    <a href="#navBar" class="to-top"><i class="icomoon icon-double-arrow-up"></i><br/>SUBIR</a>
+  </footer>
+  <!-- html -->
+  <!-- scripts -->
+  <script>
+    $(document).ready(function() {
+    var owl = $("#owl");
+		owl.owlCarousel({
+			navigation:false,
+			pagination:false,
+			paginationSpeed : 1000,
+			goToFirstSpeed : 2000,
+			singleItem : true,
+			autoHeight : true,
+			afterMove: callback
+		});
+	function callback(event) {
+		var item      = this.currentItem;
+		$("#index").html(item + 1);
+	}
+		$("#next").click(function(){
+			owl.trigger('owl.next');
+			return false;
+		  })
+		$("#prev").click(function(){
+			owl.trigger('owl.prev');
+			return false;
+		  })
+
+        });
+    </script>
+  <script type="text/javascript" src="../../Scripts/scriptmenu.js"></script>
+</body>
+</html>

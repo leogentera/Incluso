@@ -145,7 +145,7 @@
   }
   .incluso-app .green-giant {
     color: #0f9847;
-    font-size: 1400%;
+    font-size: 1000%;
   }
   .incluso-app .green-pill {
     border: 1px solid #0f9847;
@@ -165,27 +165,27 @@
   }
   .incluso-app .pill {
     border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 40px;
+    border-radius: 200px;
     color: rgba(255, 255, 255, 0.75);
     line-height: normal;
-    margin: 5% 10%;
-    padding: 20px 20px 46px;
+    margin: 5vw 10vw;
+    padding: 2vw 3vw 7vw;
   }
   .incluso-app .sm-pill {
     border: 1px solid #bbd331;
-    border-radius: 25px;
+    border-radius: 100px;
     color: #bbd331;
-    margin: -5px -10px;
-    padding: 5px 10px;
+    margin: -0.3vw -1vw;
+    padding: 0.3vw 1vw;
   }
-  .incluso-app .centrado {
+  .incluso-app .centered {
     text-align: center;
   }
-  .incluso-app .centrado .spinner {
+  .incluso-app .centered .spinner {
     max-width: 79%;
     margin: 0 auto;
   }
-  .incluso-app .centrado .spinner .circle {
+  .incluso-app .centered .spinner .circle {
     height: 56%;
     left: 23%;
     position: absolute;
@@ -209,7 +209,7 @@
   .incluso-app .notw {
     opacity: .5;
   }
-  .incluso-app .blanco {
+  .incluso-app .white {
     color: white;
   }
   .incluso-app .hangar-bay {
@@ -233,7 +233,7 @@
     background-color: #112845;
     background-position: -1px 0px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100% auto;
     border-bottom: 10px solid #24282a;
   }
   .incluso-app .progreso {
@@ -604,7 +604,7 @@
     border-top: 2px solid #2a2f32;
     padding: 20px 0;
   }
-  .incluso-app .agregar {
+  .incluso-app .add {
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     border-top: 2px solid rgba(255, 255, 255, 0.3);
     color: white;
@@ -612,17 +612,18 @@
     margin: 4% 10%;
     padding: 2% 3%;
   }
-  .incluso-app .agregar span {
+  .incluso-app .add span {
     padding-left: 3%;
   }
   .incluso-app .up-line {
     border-top: 2px solid rgba(255, 255, 255, 0.3);
     margin: 0 10%;
-    padding: 4% 2%;
+    padding: 4% 0;
     width: 80%;
   }
-  .incluso-app .parte {
+  .incluso-app .part {
     display: inline-flex;
+    z-index: 2;
     align-items: center;
     justify-content: space-between;
     background: #1f2733;
@@ -632,6 +633,7 @@
     margin: 2% 10%;
     padding: 3% 5%;
     width: 80%;
+    position: relative;
     background: -moz-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1f2733), color-stop(100%, #141921));
     background: -webkit-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
@@ -640,96 +642,120 @@
     background: radial-gradient(ellipse at center, #1f2733 0%, #141921 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1f2733', endColorstr='#141921', GradientType=1);
   }
-  .incluso-app .parte .icomoon {
+  .incluso-app .part .icomoon {
     color: #e1e455;
     font-size: 150%;
     padding-right: 5%;
   }
-  .incluso-app .parte .icon-checked-join {
+  .incluso-app .part .icon-checked-join {
     color: #08b190;
   }
-  .incluso-app .parte .icon-wrong {
+  .incluso-app .part .icon-wrong {
     color: gray;
   }
-  .incluso-app .parte div {
+  .incluso-app .part div {
     display: inherit;
   }
-  .incluso-app .parte span {
+  .incluso-app .part span {
     line-height: normal;
     display: inline-flex;
   }
-  .incluso-app .wall .parte {
+  .incluso-app .part.list {
+    display: block;
+  }
+  .incluso-app .part.part2 {
+    background: -moz-radial-gradient(center, ellipse cover, rgba(31, 39, 51, 0.68) 0%, rgba(20, 25, 33, 0.68) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(31, 39, 51, 0.68)), color-stop(100%, rgba(20, 25, 33, 0.68)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(31, 39, 51, 0.68) 0%, rgba(20, 25, 33, 0.68) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(31, 39, 51, 0.68) 0%, rgba(20, 25, 33, 0.68) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(31, 39, 51, 0.68) 3 0%, rgba(20, 25, 33, 0.68) 100%);
+    background: radial-gradient(ellipse at center, rgba(31, 39, 51, 0.68) 0%, rgba(20, 25, 33, 0.68) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(31, 39, 51, 0.68)', endColorstr='rgba(20, 25, 33, 0.68)', GradientType=1);
+    margin-top: -4%;
+    z-index: 1;
+  }
+  .incluso-app .part.part2 .icomoon {
+    font-size: 100%;
+  }
+  .incluso-app .pointer {
+    cursor: pointer;
+  }
+  .incluso-app .ordeon {
+    display: none;
+  }
+  .incluso-app .wall .part {
     display: block;
     justify-content: unset;
     padding: 0px;
   }
-  .incluso-app .wall .parte .author {
+  .incluso-app .wall .part .author {
     width: 100%;
     display: inline-flex;
     border-bottom: 2px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 3%;
     padding: 2% 5%;
   }
-  .incluso-app .wall .parte .author img {
+  .incluso-app .wall .part .author img {
     margin-right: 3%;
     width: 15%;
   }
-  .incluso-app .wall .parte .author div {
+  .incluso-app .wall .part .author div {
     display: block;
   }
-  .incluso-app .wall .parte .author div span,
-  .incluso-app .wall .parte .author div div {
+  .incluso-app .wall .part .author div span,
+  .incluso-app .wall .part .author div div {
     color: gray;
   }
-  .incluso-app .wall .parte .block {
+  .incluso-app .wall .part .block {
     border-bottom: 2px solid rgba(255, 255, 255, 0.08);
     margin: 0 5%;
     padding: 3% 0;
     width: 90%;
   }
-  .incluso-app .wall .parte .coment {
+  .incluso-app .wall .part .coment {
     display: inline-flex;
   }
-  .incluso-app .wall .parte .coment img {
+  .incluso-app .wall .part .coment img {
     margin-right: 5%;
     width: 20%;
+    height: 20%;
   }
-  .incluso-app .wall .parte .coment div {
+  .incluso-app .wall .part .coment div {
     display: block;
     font-size: 80%;
   }
-  .incluso-app .wall .parte .coment div span {
+  .incluso-app .wall .part .coment div span {
     color: gray;
   }
-  .incluso-app .wall .parte .coment div div {
+  .incluso-app .wall .part .coment div div {
     font-size: 120%;
     padding-top: 2%;
   }
-  .incluso-app .wall .parte .social {
+  .incluso-app .wall .part .social {
     width: 100%;
     border-top: 2px solid rgba(255, 255, 255, 0.08);
     display: inline-block;
   }
-  .incluso-app .wall .parte .social div {
+  .incluso-app .wall .part .social div {
     display: inline-flex;
     justify-content: space-around;
     padding: 3% 5%;
     width: 49%;
     font-size: 80%;
   }
-  .incluso-app .wall .parte .social div:nth-child(1) {
+  .incluso-app .wall .part .social div:nth-child(1) {
     border-right: 2px solid rgba(255, 255, 255, 0.08);
     color: #E80D81;
   }
-  .incluso-app .wall .parte .social div:nth-child(1) i {
+  .incluso-app .wall .part .social div:nth-child(1) i {
     color: #E80D81;
     margin: 0;
     padding: 0;
   }
-  .incluso-app .wall .parte .social div:nth-child(2) {
+  .incluso-app .wall .part .social div:nth-child(2) {
     color: #08B190;
   }
-  .incluso-app .wall .parte .social div:nth-child(2) i {
+  .incluso-app .wall .part .social div:nth-child(2) i {
     color: #08B190;
     margin: 0;
     padding: 0;
@@ -748,21 +774,18 @@
     color: white;
     padding: 0;
   }
-  .incluso-app .paginadores {
+  .incluso-app .paginate,
+  .incluso-app .paginate a {
     color: #08b190;
     margin: 5% 15%;
   }
-  .incluso-app .paginadores i {
+  .incluso-app .paginate i,
+  .incluso-app .paginate a i {
     font-size: 300%;
   }
   .incluso-app .modalDialog {
-    position: fixed;
+    position: relative;
     font-family: Arial, Helvetica, sans-serif;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.8);
     z-index: 99999;
     opacity: 0;
     -webkit-transition: opacity 400ms ease-in;
@@ -774,24 +797,30 @@
     opacity: 1;
     pointer-events: auto;
   }
+  .incluso-app .modalDialog:target:before {
+    content: "";
+    display: block;
+    height: 25vw;
+    margin: -25vw 0 0;
+  }
   .incluso-app .modalDialog > div {
     width: 100%;
-    position: relative;
-    margin: 10% 0;
+    position: absolute;
+    margin: 0;
     padding: 2% 0;
     background: #fff;
   }
-  .incluso-app .modalDialog > div .agregar {
+  .incluso-app .modalDialog > div .add {
     border-color: rgba(133, 133, 133, 0.2);
     color: #9c9c9c;
     padding: 2% 0;
     display: flex;
     justify-content: space-between;
   }
-  .incluso-app .modalDialog > div .agregar input {
+  .incluso-app .modalDialog > div .add input {
     border: 0px solid transparent;
   }
-  .incluso-app .modalDialog > div .agregar i {
+  .incluso-app .modalDialog > div .add i {
     color: #9c9c9c;
   }
   .incluso-app .close {

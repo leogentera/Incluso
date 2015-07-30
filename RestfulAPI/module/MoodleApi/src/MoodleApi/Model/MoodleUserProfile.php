@@ -9,7 +9,6 @@ use MoodleApi\Utilities\Common;
 
 class MoodleUserProfile extends Common
 {
-	public $country=null;
     public $email=null;
     public $firstname;
     public $fullname;
@@ -51,6 +50,7 @@ class MoodleUserProfile extends Common
     public $termsAndConditions=false;
     public $informationUsage=false;
     public $status="Enabled";
+    public $allowToSendAdvertisement =false;
     
     
     public function __construct($data, $badgesEarned, $badgesToEarn)
@@ -100,7 +100,6 @@ class MoodleUserProfile extends Common
     	}
     	
     	if( $this->showMyInformation){
-    		$this->country =     (!empty($data['country'])) ? $data['country'] : null;
     		$this->address=new MoodleAddress($data, $customFields);
     		$this->email =     (!empty($data['email'])) ? $data['email'] : null;
     		$this->studies=new MoodleStudies();
@@ -206,6 +205,11 @@ class MoodleUserProfile extends Common
         
         if(array_key_exists ( 'status' , $customFields )){
         	$this->status=$customFields['status'];
+        	//var_dump($this->phones);
+        }
+        
+        if(array_key_exists ( 'allowToSendAdvertisement' , $customFields )){
+        	$this->allowToSendAdvertisement=$customFields['allowToSendAdvertisement']==0?true:false;
         	//var_dump($this->phones);
         }
         

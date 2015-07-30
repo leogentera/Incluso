@@ -386,6 +386,10 @@
   background-color: #158ccd;
   border-color: #158ccd;
 }
+.incluso-app.step-dashboard #site-menu .navbar {
+  background-color: #1170a3;
+  border-color: #1170a3;
+}
 .incluso-app.step-dashboard .video-gallery {
   margin: 0;
   padding: 20px;
@@ -412,10 +416,23 @@
   background-image: url('../images/img-footer-texture-lg.png');
   background-color: #24292B;
   box-shadow: unset;
-  background-position: 50% 0;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: contain;
 }
 .incluso-app.step-dashboard footer.footer li:last-child {
   display: none;
+}
+.incluso-app.step-dashboard .txt-small {
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 80%;
+  line-height: normal;
+  margin: 0 2vw;
+  padding: 1vw 2vw;
+}
+.incluso-app.step-dashboard .gr-bg {
+  background: none #0A9648;
+}
+.incluso-app.show-nav #menuton {
+  color: rgba(0, 0, 0, 0.2);
 }
