@@ -82,6 +82,11 @@ class quiz_plugin extends external_api{
 					
 				
 				$response = $DB->get_records_sql($sql);
+				
+// 				foreach($response as $answer){
+// 					$answer->answer=strip_tags($answer->answer);
+// 				}
+				
 				$question->answers=$response;
 				$question->userAnswer="";
 				$question->questionType=$question->questiontype;
@@ -136,7 +141,7 @@ class quiz_plugin extends external_api{
 								'status' => new external_value(PARAM_TEXT, 'For knowing if the activity was compled or not, Always returns -1'), //
 								'stars' => new external_value(PARAM_INT, 'Stars to be obtained'),//
 								'dateIssued' => new external_value(PARAM_RAW, 'Date time when the quiz was answered'),//
-								'score' => new external_value(PARAM_INT, 'User score, It is always empty due it is user field'),//
+								'score' => new external_value(PARAM_RAW, 'User score, It is always empty due it is user field'),//
 								'quizType' => new external_value(PARAM_TEXT, 'quiz Type'),//
 								'questions' =>  new external_multiple_structure(
 										new external_single_structure(
@@ -267,7 +272,6 @@ public static function get_quiz_result($quizid, $userid){
 						and qa.questionid=$questionid
 						and lastAttempt.id=qa.id";
 					
-					
 				$response = $DB->get_records_sql($sql);
 				
 				$answered=reset($response);
@@ -282,17 +286,37 @@ public static function get_quiz_result($quizid, $userid){
 // 			from {quiz} quiz where id=$quizid";
 			
 			
-			$sql = "Select quiz.id id, quiz.name name, intro description, quiz.sumgrades sumgrades, quiz.grade grade, ifnull(completed.completed, 0) status, ifnull(completed.dateIssued, \"\") \"dateIssued\"
-					from {quiz} quiz left join     
-					(select mo.instance quizid,  IF(isnull(compl.timemodified), 0, 1) completed, FROM_UNIXTIME(timemodified) dateIssued
-					from {course_modules} mo 
-					join {course_modules_completion} compl 
-					on  mo.id=compl.coursemoduleid 
-					join mdl_modules module
-					on module.id = mo.module
-					where userid=$userid
-					and module.name='quiz') completed on completed.quizid=quiz.id
-					where quiz.id=$quizid;";
+// 			$sql = "Select quiz.id id, quiz.name name, intro description, quiz.sumgrades sumgrades, quiz.grade grade, ifnull(completed.completed, 0) status, ifnull(completed.dateIssued, \"\") \"dateIssued\"
+// 					from {quiz} quiz left join     
+// 					(select mo.instance quizid,  IF(isnull(compl.timemodified), 0, 1) completed, FROM_UNIXTIME(timemodified) dateIssued
+// 					from {course_modules} mo 
+// 					join {course_modules_completion} compl 
+// 					on  mo.id=compl.coursemoduleid 
+// 					join {modules} module
+// 					on module.id = mo.module
+// 					where userid=$userid
+// 					and module.name='quiz') completed on completed.quizid=quiz.id
+// 					where quiz.id=$quizid;";
+			
+			$sql = "Select quiz.id id, quiz.name name, intro description, quiz.sumgrades sumgrades, quiz.grade grade, ifnull(completed.completed, 0) status, completed.dateIssued, truncate((quiza.sumgrades * quiz.grade)/quiz.sumgrades, 2) score
+			from {quiz} quiz left join
+			(select mo.instance quizid,  IF(isnull(compl.timemodified), 0, 1) completed, FROM_UNIXTIME(timemodified) dateIssued
+			from {course_modules} mo
+			join {course_modules_completion} compl
+			on  mo.id=compl.coursemoduleid
+			join {modules} module
+			on module.id = mo.module
+			where userid=$userid
+			and module.name='quiz') completed on completed.quizid=quiz.id
+			left join {quiz_attempts} quiza on quiz.id = quiza.quiz
+			join (Select min(quiza.attempt) id
+			FROM {quiz_attempts} quiza
+			JOIN {question_usages} qu ON qu.id = quiza.uniqueid
+			JOIN {question_attempts} qa ON qa.questionusageid = qu.id
+			where quiza.quiz=$quizid and quiza.userid=$userid
+			and not isnull(qa.responsesummary)) lastAttempt
+			on lastAttempt.id=quiza.attempt
+			where quiz.id=$quizid;";
 			
 			$response = $DB->get_records_sql($sql);
 				
@@ -301,12 +325,13 @@ public static function get_quiz_result($quizid, $userid){
 				$quiz->questions=$questions;
 				$quiz->quizType='';
 				$quiz->stars=-1;
-				$quiz->score=-1;
+				//$quiz->score=-1;
 				$quiz->activityType="Quiz";
 				$quiz->dateIssued=$quiz->dateissued;
 				array_push($quizes, $quiz);
 			}
 				
+			//var_dump($sql);
 				
 			$response=$quizes;
 				
@@ -329,9 +354,9 @@ public static function get_quiz_result($quizid, $userid){
 					'description' => new external_value(PARAM_RAW, 'Quiz description'),
 					'activityType' => new external_value(PARAM_TEXT, 'Type of activity'),
 					'status' => new external_value(PARAM_TEXT, 'For knowing if the activity was compled or not, Returns 0 or 1 depending if the student finish the activity or not'),
-					'stars' => new external_value(PARAM_INT, 'Stars obtained'),
+					'stars' => new external_value(PARAM_RAW, 'Stars obtained'),
 					'dateIssued' => new external_value(PARAM_RAW, 'Date time when the quiz was answered'),
-					'score' => new external_value(PARAM_INT, 'Score'),
+					'score' => new external_value(PARAM_NUMBER, 'Score'),
 					'quizType' => new external_value(PARAM_TEXT, 'quiz Type'),
 					'questions' =>  new external_multiple_structure(
 							new external_single_structure(
@@ -829,4 +854,62 @@ class activitiesSummary_plugin extends external_api{
 			)
 		);
 	}
+
+	public static function get_activity_id_and_name_parameters(){
+		return new external_function_parameters(
+			array(
+				'coursemoduleid' => new external_value(PARAM_INT, 'ID of table course_modules'),
+			)
+		);
+	}
+
+	public static function get_activity_id_and_name($coursemoduleid){
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_activity_id_and_name_parameters(), 
+					array(
+						'coursemoduleid' => $coursemoduleid
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+		
+			$sql = "SELECT cm.instance AS id, m.name
+					FROM mdl_course_modules AS cm
+					INNER JOIN mdl_modules AS m
+					ON cm.module = m.id
+					WHERE cm.id = $coursemoduleid";
+			
+			$response = $DB->get_records_sql($sql);
+		
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+
+	public static function get_activity_id_and_name_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'id' => new external_value(PARAM_INT, 'Activity ID'),
+					'name' => new external_value(PARAM_TEXT, 'Type of the activity')
+				)
+			)
+		);
+	}	
 }
