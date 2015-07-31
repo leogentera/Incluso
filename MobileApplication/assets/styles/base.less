@@ -520,6 +520,40 @@ body {
 
         option:first-child {display: none;}   
     }
+
+    /* custom placeholder */
+    .custom-placeholder-wrapper {
+        position: relative;
+
+        .custom-placeholder {
+            position: absolute;
+            left: 0; top: 0;
+            z-index: 0;
+
+            &.form-control-xl {
+                height:auto;
+                padding:6vw 0;
+                font-size: 5.8vw;
+                line-height: 6vw;
+            }
+            &.form-control-lg {
+                height:auto;
+                padding:4vw 0;
+                font-size: 4.8vw;
+                line-height: 5.6vw;
+            }
+        }        
+        .form-control.ng-dirty + .custom-placeholder {
+            display: none;
+        }
+        .form-control.ng-pristine + .custom-placeholder {
+            display: block;
+        }
+        .theme-default.ng-pristine + .custom-placeholder {
+            color:@clr-white;
+            font-weight:100; 
+        }
+    }
     /***************************************************************************/
 
 
@@ -602,6 +636,11 @@ body {
             border: none;
             .border-radius-reset();
         } 
+        .input-group-control {
+            display: table-cell;
+            padding: 0;
+            border: none;
+        }
         .form-control:hover, 
         .form-control:focus,
         .form-control:active {
@@ -616,12 +655,7 @@ body {
                 padding-left:0;
             }
         }
-        /*p:first-child {
-            padding-right: 24px;
-        }  
-        p:first-child + .form-control {
-            padding-left: 0;
-        }*/
+
 
         /* by size */
         &.input-group-lg {
@@ -636,7 +670,20 @@ body {
                 padding: 4vw 0;
                 font-size: 6vw;
                 line-height: 12vw;
-            }            
+            }
+            .input-group-control .form-control {
+                height: auto;
+                padding: 7vw 0;
+                font-size: 6vw;
+                line-height: 12vw; 
+
+                & + .custom-placeholder {
+                    height: auto;
+                    padding: 5vw 0;
+                    font-size: 6vw;
+                    line-height: 12vw;                     
+                }
+            }
         }
         
         /* by theme */
@@ -654,7 +701,12 @@ body {
                 background-color: transparent;
                 border: none;
                 color:@clr-white;
-            }              
+            }
+            .input-group-control .form-control {
+                background-color: transparent;
+                border: none;
+                color:@clr-white;
+            }             
         }
 
     }
