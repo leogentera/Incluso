@@ -725,7 +725,6 @@
             figure {
                 overflow: hidden;
                 background-color: transparent;
-                border-radius:50%;
                 /*border: 10px solid transparent; */
             }            
             img {
@@ -737,11 +736,8 @@
                 border-radius:50%;          
             }
             figcaption {
-                position: absolute;
-                left: ~"calc(50% - 1vw)";
-                bottom: -18px;
                 padding: 0;
-                margin: 0 0 0 -17px;
+                margin: -3vw auto 0;
                 width: 6vw;
                 height: 6vw;
                 background-color: @clr-blueMedium;
@@ -749,10 +745,10 @@
                 .border-radius-circle ();                      
                 color: @clr-green;
                 font-family: Roboto, Sans-serif, Arial;
-                font-size: 22px;
                 font-weight: 700;
-                line-height: 42px;
+                line-height: 6vw;
                 text-align: center;
+                position:relative;
             }
             button {
                 display: block;
