@@ -85,11 +85,14 @@
                     <p class="input-group-addon" id="genderAddOn">
                       <span class="icomoon icon-dna"></span>                      
                     </p>
-                    <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg theme-default" aria-describedby="genderAddOn">
-                      <option label="Género" value="" disabled selected style="display:none"></option>
-                      <option value="Male">Masculino</option>
-                      <option value="Female">Femenino</option> 
-                    </select>
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg theme-default" aria-describedby="genderAddOn">
+                        <option label="Género" value="" disabled selected style="display:none"></option>
+                        <option value="Male">Masculino</option>
+                        <option value="Female">Femenino</option> 
+                      </select>
+                      <span class="custom-placeholder form-control-lg">Género</span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -100,7 +103,7 @@
                 <div class="form-group">
                   <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="countryAddOn">
-                      <span class="icomoon icon-planet"></span>                        
+                      <span class="icomoon icon-earth"></span>                        
                     </p>
                     <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
                       <option label="País" value="" disabled selected style="display:none"></option>
@@ -167,11 +170,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="emailAddOn">
                       <span class="icomoon icon-envelope"></span>                      
                     </p>
-                    <input type="email" ng-model="registerModel.email" name="email" class="form-control form-control-lg" placeholder="Correo" aria-describedby="emailAddOn" required>
+                    <input type="email" ng-model="registerModel.email" name="email" class="form-control form-control-lg theme-default" placeholder="Correo" aria-describedby="emailAddOn" required>
                   </div>
                 </div>
               </div>
@@ -180,11 +183,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="accountPasswordAddOn">
                       <span class="icomoon icon-lock"></span>
                     </p>
-                    <input type="password" ng-model="registerModel.password" name="password" class="form-control form-control-lg" placeholder="Contraseña" aria-describedby="accountPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
+                    <input type="password" ng-model="registerModel.password" name="password" class="form-control form-control-lg theme-default" placeholder="Contraseña" aria-describedby="accountPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
                   </div>
                 </div>
               </div>
@@ -193,11 +196,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="confirmPasswordAddOn">
                       <span class="icomoon icon-lock"></span> 
                     </p>
-                    <input type="password" ng-model="registerModel.confirmPassword" name="confirmPassword" class="form-control form-control-lg" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
+                    <input type="password" ng-model="registerModel.confirmPassword" name="confirmPassword" class="form-control form-control-lg theme-default" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
                   </div>
                 </div>
               </div>
@@ -206,11 +209,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="securityQuestionAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg" aria-describedby="securityQuestionAddOn">
+                    <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg theme-default" aria-describedby="securityQuestionAddOn">
                       <option label="Pregunta de Seguridad" value="" disabled selected style="display:none"></option>
                       <option value="¿Dónde crecí?">¿Dónde crecí?</option>
                       <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
@@ -226,11 +229,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="securityAnswerAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required>
+                    <input type="text" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg theme-default" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required>
                   </div>
                 </div>            
               </div>
@@ -238,7 +241,7 @@
 
             <div class="row">
               <div class="col-xs-12">
-                <div class="checkbox">
+                <div class="checkbox checkbox-custom">
                   <label>
                     <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> <span>Acepto los términos y condiciones</span>
                   </label>
