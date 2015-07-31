@@ -1,7 +1,7 @@
 
 	$(".accsub").click(function(){
-		$(this).toggleClass('icon-arrow-down');
-		$(this).toggleClass('icon-required');
+		$(this).toggleClass('icon-arrow');
+		$(this).toggleClass('icon-arrow-up');
 		$(this).toggleClass('green');
 		$(this).toggleClass('white');
 		var cual = $(this).attr('data-id');

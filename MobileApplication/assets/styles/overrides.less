@@ -400,12 +400,6 @@
         background-color: @clr-bluenav;
         border-color: @clr-bluenav;
     }
-    #site-menu{
-        .navbar .container-fluid{     
-            background-color: rgba(0, 0, 0, 0.2);
-            border-color: rgba(0, 0, 0, 0.2);
-        }
-    }
     .video-gallery{
         margin: 0;
         padding: 20px;
@@ -450,8 +444,42 @@
         background:none #0A9648;
     }
 }
+.incluso-app.score-dashboard{
+    .navbar{     
+        background-color: @clr-orangeLighter;
+        border-color: @clr-orangeLighter;
+    }
+    .score{
+        background-image: url('@{url-images}/bg-toppoints-hud.png');
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        background-size: 100% auto;       
+        height: 33vw;       
+        div{
+            font-size: 11vw;
+            padding: 7vw;
+        }  
+    }
+}
 .incluso-app.show-nav #menuton{
     color: rgba(0,0,0,.2);
 }
-
+#site-menu{
+    .navbar .container-fluid{     
+        background-color: rgba(0, 0, 0, 0.2);
+        border-color: rgba(0, 0, 0, 0.2);
+    }
+}
+.green{           
+    color: #0f9847 !important;                
+}
+.lightgreen{
+    color: @clr-green !important;
+}
+.red{
+    color:#ef4823 !important;
+}
+.white{
+    color:white !important;
+}
 
