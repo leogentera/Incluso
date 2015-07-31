@@ -87,7 +87,6 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg theme-default" aria-describedby="genderAddOn">
-                        <!-- <option label="Género" value="" disabled selected style="display:none"></option> -->
                         <option value="Male">Masculino</option>
                         <option value="Female">Femenino</option> 
                       </select>
@@ -105,16 +104,19 @@
                     <p class="input-group-addon" id="countryAddOn">
                       <span class="icomoon icon-earth"></span>                        
                     </p>
-                    <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
-                      <option label="País" value="" disabled selected style="display:none"></option>
-                      <option value="BO">Bolivia</option>
-                      <option value="CO">Colombia</option> 
-                      <option value="EC">Ecuador</option> 
-                      <option value="ME">México</option> 
-                      <option value="PE">Perú</option> 
-                      <option value="UR">Uruguay</option> 
-                      <option value="VE">Venezuela</option> 
-                    </select>
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
+                        <!-- <option label="País" value="" disabled selected style="display:none"></option> -->
+                        <option value="BO">Bolivia</option>
+                        <option value="CO">Colombia</option> 
+                        <option value="EC">Ecuador</option> 
+                        <option value="ME">México</option> 
+                        <option value="PE">Perú</option> 
+                        <option value="UR">Uruguay</option> 
+                        <option value="VE">Venezuela</option> 
+                      </select>
+                      <span class="custom-placeholder form-control-lg">País</span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -127,16 +129,19 @@
                     <p class="input-group-addon" id="cityAddOn">
                       <span class="icomoon icon-map"></span> 
                     </p>
-                    <select ng-model="registerModel.city" name="city" class="form-control form-control-lg theme-default" aria-describedby="cityAddOn">
-                      <option label="Ciudad" value="" disabled selected style="display:none"></option>
-                      <option value="Bogotá">Bogotá</option>                       
-                      <option value="Buenos Aires">Buenos Aires</option>
-                      <option value="La Paz">La Paz</option> 
-                      <option value="México D.F.">México D.F.</option> 
-                      <option value="Monterrey">Monterrey</option> 
-                      <option value="Montevideo">Montevideo</option> 
-                      <option value="Rosario">Rosario</option> 
-                    </select>                    
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <select ng-model="registerModel.city" name="city" class="form-control form-control-lg theme-default" aria-describedby="cityAddOn">
+                        <!-- <option label="Ciudad" value="" disabled selected style="display:none"></option> -->
+                        <option value="Bogotá">Bogotá</option>                       
+                        <option value="Buenos Aires">Buenos Aires</option>
+                        <option value="La Paz">La Paz</option> 
+                        <option value="México D.F.">México D.F.</option> 
+                        <option value="Monterrey">Monterrey</option> 
+                        <option value="Montevideo">Montevideo</option> 
+                        <option value="Rosario">Rosario</option> 
+                      </select>
+                      <span class="custom-placeholder form-control-lg">Ciudad</span>
+                    </p>                    
                   </div>
                 </div>            
               </div>
@@ -243,7 +248,8 @@
               <div class="col-xs-12">
                 <div class="checkbox checkbox-custom">
                   <label>
-                    <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> <span>Acepto los términos y condiciones</span>
+                    <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> 
+                    <a href=""><span>Acepto los términos y condiciones</span></a>
                   </label>
                 </div>              
               </div>
