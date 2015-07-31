@@ -160,6 +160,10 @@
 
 /* Dashboard */
 .incluso-app.start-dashboard {
+    .navbar{     
+        background-color: @clr-orangeLighter;
+        border-color: @clr-orangeLighter;
+    }
 	background-attachment: scroll;
 	background-position: center -23px;
 	background-repeat: no-repeat;
@@ -221,52 +225,6 @@
         }       
     }
 
-
-    .navbar-assets {
-        padding-left: 0;
-        margin-left: 42px;
-
-        .navbar-heading {width:50%;}
-        .navbar-tools {
-            width:50%;
-
-            li {
-                height: auto;
-            }
-        }
-    }
-    .navbar-toggle .icomoon {
-        font-size: 2em;
-        line-height: 2em;
-    }
-    .navbar-heading {
-        width: 40%;
-        font-size: 1.4em;
-        line-height: 60px;
-    }
-    .navbar-tools {
-        width: 60%;
-
-        li {
-          display: inline-block;
-          height: 32px;
-          margin: 0 0 0 8px;
-          padding: 0;
-          width: auto;
-          line-height: 64px;
-        }
-        a {
-          display: block;
-          height: inherit;
-          margin: 0;
-          padding: 0;
-          width: inherit;
-        } 
-        .icomoon {
-            font-size: 1.4em;
-            color: @clr-white;
-        }     
-    }    
 
     /* tabs */
     .active {
@@ -481,5 +439,8 @@
 }
 .white{
     color:white !important;
+}
+.pointer, a{
+    cursor: pointer;
 }
 
