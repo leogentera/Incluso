@@ -77,8 +77,8 @@
         .clr-white(border-color, 0.3);*/
 }
 .incluso-app.public .checkbox {
-  width: 66%;
-  /*        margin:28px 0;*/
+  /*width: 66%;*/
+  /*margin:28px 0;*/
   margin: 6vw 0;
 }
 .incluso-app.public .checkbox input {
@@ -109,9 +109,15 @@
   text-transform: uppercase;
 }
 .incluso-app.public .btn-facebook {
+  position: relative;
   font-size: 1.2em;
   font-weight: 600;
   letter-spacing: 0.01em;
+}
+.incluso-app.public .btn-facebook .icomoon {
+  position: absolute;
+  left: 3vw;
+  font-size: 6vw;
 }
 .incluso-app.public footer {
   padding: 64px 0;
@@ -166,6 +172,10 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#14181d', endColorstr='#173a4a', GradientType=0);
   /* tabs */
 }
+.incluso-app.start-dashboard .navbar {
+  background-color: #ee4823;
+  border-color: #ee4823;
+}
 .incluso-app.start-dashboard .container {
   background-attachment: fixed;
   background-image: url("../images/bg-stars-01.png");
@@ -210,50 +220,6 @@
 .incluso-app.start-dashboard .current-satge .btn {
   text-transform: uppercase;
 }
-.incluso-app.start-dashboard .navbar-assets {
-  padding-left: 0;
-  margin-left: 42px;
-}
-.incluso-app.start-dashboard .navbar-assets .navbar-heading {
-  width: 50%;
-}
-.incluso-app.start-dashboard .navbar-assets .navbar-tools {
-  width: 50%;
-}
-.incluso-app.start-dashboard .navbar-assets .navbar-tools li {
-  height: auto;
-}
-.incluso-app.start-dashboard .navbar-toggle .icomoon {
-  font-size: 2em;
-  line-height: 2em;
-}
-.incluso-app.start-dashboard .navbar-heading {
-  width: 40%;
-  font-size: 1.4em;
-  line-height: 60px;
-}
-.incluso-app.start-dashboard .navbar-tools {
-  width: 60%;
-}
-.incluso-app.start-dashboard .navbar-tools li {
-  display: inline-block;
-  height: 32px;
-  margin: 0 0 0 8px;
-  padding: 0;
-  width: auto;
-  line-height: 64px;
-}
-.incluso-app.start-dashboard .navbar-tools a {
-  display: block;
-  height: inherit;
-  margin: 0;
-  padding: 0;
-  width: inherit;
-}
-.incluso-app.start-dashboard .navbar-tools .icomoon {
-  font-size: 1.4em;
-  color: #ffffff;
-}
 .incluso-app.start-dashboard .active .user-avatar figcaption {
   background-color: #121b1c;
   /* @clr-grayDark; */
@@ -264,6 +230,11 @@
 }
 .incluso-app.start-dashboard footer li:last-child {
   display: none;
+}
+.incluso-app.start-dashboard .db-bg {
+  background-image: url("../images/bg-footer-rocks.png");
+  background-position: 50% 0;
+  box-shadow: unset;
 }
 /* Profile Dashboard */
 .incluso-app.profile {
@@ -386,10 +357,6 @@
   background-color: #158ccd;
   border-color: #158ccd;
 }
-.incluso-app.step-dashboard #site-menu .navbar {
-  background-color: #1170a3;
-  border-color: #1170a3;
-}
 .incluso-app.step-dashboard .video-gallery {
   margin: 0;
   padding: 20px;
@@ -433,6 +400,41 @@
 .incluso-app.step-dashboard .gr-bg {
   background: none #0A9648;
 }
+.incluso-app.score-dashboard .navbar {
+  background-color: #ee4823;
+  border-color: #ee4823;
+}
+.incluso-app.score-dashboard .score {
+  background-image: url('../images/bg-toppoints-hud.png');
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  height: 33vw;
+}
+.incluso-app.score-dashboard .score div {
+  font-size: 11vw;
+  padding: 7vw;
+}
 .incluso-app.show-nav #menuton {
   color: rgba(0, 0, 0, 0.2);
+}
+#site-menu .navbar .container-fluid {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.green {
+  color: #0f9847 !important;
+}
+.lightgreen {
+  color: #bcd431 !important;
+}
+.red {
+  color: #ef4823 !important;
+}
+.white {
+  color: white !important;
+}
+.pointer,
+a {
+  cursor: pointer;
 }
