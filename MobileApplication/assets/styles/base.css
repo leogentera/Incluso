@@ -1136,11 +1136,6 @@ body {
   bottom: 0;
   margin-left: -30px;
 }
-.incluso-app .db-bg {
-  background-image: url("../images/bg-footer-rocks.png");
-  background-position: 50% 0;
-  box-shadow: unset;
-}
 .incluso-app .form label {
   cursor: pointer;
   display: block;
