@@ -1,4 +1,4 @@
-﻿<div class="incluso-app start-dashboard" id="site-wrapper">
+<div class="incluso-app start-dashboard" id="site-wrapper">
   <div id="site-menu" >
 <nav class="ng-scope">
       <div id="navBar" class="navbar">
@@ -109,15 +109,22 @@
             <button class="icon icon-close"></button>
             <button class="icon icon-play"></button> 
             <figure class="player">
-               <video controls autoplay poster="assets/images/ptr-video-0001.jpg"> 
-                 <source src="assets/media/video1.mp4" type="video/mp4"> 
-                 <source src="assets/media/video1.webm" type="video/webm"> 
-                              Ups! Parece que tu dispositivo no soporta video
-              </video> 
+               <video controls  poster="assets/images/ptr-video-0001.jpg" > 
+   <source src="assets/media/1280x720.mp4" type="video/mp4"> 
+                Ups! Parece que tu dispositivo no soporta video
+</video> 
             </figure>
           </div>
+		  <video controls  poster="assets/images/ptr-video-0001.jpg" > 
+   <source src="assets/media/640x360.mp4" type="video/mp4"> 
+                Ups! Parece que tu dispositivo no soporta video
+</video>
+ <video controls  poster="assets/images/ptr-video-0001.jpg" > 
+   <source src="assets/media/256x144.mp4" type="video/mp4"> 
+                Ups! Parece que tu dispositivo no soporta video
+</video> 
         </section>
-        <section class="component global-progress txt-renglon centrado">
+        <section class="component global-progress txt-renglon centered">
          <h3>- Avance Global -</h3>
          <div class="spinner">
            <img src="assets/images/prcnt/{{Math.ceil(user.GlobalProgress)}}.png"><div class="circle"></div><div class="text">{{user.GlobalProgress}}%</div>
@@ -258,8 +265,8 @@
 
       <footer class="footer db-bg">
         <ul class="block-list">
-          <li><a href="" class="centrado txt-title">Preguntas Frecuentes</a></li>
-          <li><a href="" class="centrado txt-title">Ayuda y Soporte</a></li>
+          <li><a href="" class="centered txt-title">Preguntas Frecuentes</a></li>
+          <li><a href="" class="centered txt-title">Ayuda y Soporte</a></li>
         </ul>
         <a class="to-top" ng-click="scrollToTop();"><i class="icomoon icon-double-arrow-up"></i><br/>SUBIR</a>
       </footer>
