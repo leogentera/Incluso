@@ -620,7 +620,7 @@ body {
   display: block;
   width: auto;
   height: auto;
-  padding: 1pt 0;
+  padding: 0;
   margin: 0 auto;
   font-size: 3.9vw;
   font-weight: bold;
@@ -643,7 +643,7 @@ body {
                 */
   /*width: 3.9vw;
                 height: 3.9vw;*/
-  padding: 0 0.3vw;
+  padding: 1vw 1.2vw;
   margin-right: 6vw;
   border-style: solid;
   border-width: 1pt;
@@ -653,18 +653,20 @@ body {
   border-radius: 5px;
   background-color: transparent;
   content: "";
-  content: "\2713";
+  content: "\e62b";
   color: transparent;
-  font-size: 3.2vw;
+  font-family: icomoon;
+  font-size: 3.6vw;
   line-height: 3vw;
   /*font-size: 6vw;*/
   /*text-indent: 15px;*/
 }
 .incluso-app .checkbox.checkbox-custom input:checked + span:before {
-  content: "\2713";
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  color: #bcd431;
+  /*content: "\2713";*/
+  color: #08b290;
+  font-weight: 700;
   text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 .incluso-app .input-group {
   width: 100%;

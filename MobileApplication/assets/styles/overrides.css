@@ -77,8 +77,8 @@
         .clr-white(border-color, 0.3);*/
 }
 .incluso-app.public .checkbox {
-  width: 66%;
-  /*        margin:28px 0;*/
+  /*width: 66%;*/
+  /*margin:28px 0;*/
   margin: 6vw 0;
 }
 .incluso-app.public .checkbox input {
@@ -386,9 +386,9 @@
   background-color: #158ccd;
   border-color: #158ccd;
 }
-.incluso-app.step-dashboard #site-menu .navbar {
-  background-color: #1170a3;
-  border-color: #1170a3;
+.incluso-app.step-dashboard #site-menu .navbar .container-fluid {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 .incluso-app.step-dashboard .video-gallery {
   margin: 0;
