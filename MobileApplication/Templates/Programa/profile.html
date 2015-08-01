@@ -196,7 +196,7 @@
                       </a>
                     </li> 
 
-                    <li class="list-group-item no-badge" ng-click="navigateToPage(6)">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(6)" ng-show="model.strengths.length > 0">
                       <a href="">
                         <span class="icomoon icon-workman"></span>
                         <span>Mis Fortalezas</span>
@@ -205,7 +205,7 @@
                       </a>
                     </li>
 
-                    <li class="list-group-item no-badge" ng-click="navigateToPage(7)">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(7)" ng-show="model.recomendedBachelorDegrees.length > 0">
                       <a href="">
                         <span class="icomoon icon-user"></span>
                         <span>Carreras Afínes</span>
@@ -214,7 +214,7 @@
                       </a>
                     </li> 
 
-                    <li class="list-group-item no-badge" ng-click="navigateToPage(8)" >
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(8)" ng-show="(model.dreamsToBe.length > 0 || model.dreamsToHave.length > 0 || model.dreamsToDo.length > 0)">
                       <a href="">
                         <span class="icomoon icon-rocket"></span>
                         <span>Mis Sueños</span>
@@ -253,7 +253,7 @@
                             <hr />
 
                             <h5>Domicilio</h5>
-                            <p ng-bind="model.address.street + ' ' + model.address.num_ext + ' ' + model.address.num_int + ' ' + model.address.colony + ' ' + model.address.city + ' ' + model.address.town + ' ' + model.address.state + ' ' + model.address.country + ' ' + model.address.postalcode"></p>
+                            <p ng-bind="model.address.street + ' ' + model.address.num_ext + ' ' + model.address.num_int + ' ' + model.address.colony + ' ' + model.address.city + ' ' + model.address.town + ' ' + model.address.state + ' ' + model.address.country + ' ' + model.address.postalCode"></p>
                             <hr />
 
                             <h5>Teléfono</h5>
