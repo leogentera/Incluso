@@ -3,20 +3,23 @@
   <article class="register">
 
     <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="icomoon icon-warning"></div>
-            <p>¡Error! Verifica tus datos</p>
-            <ul ng-repeat="msg in registerModel.modelState.errorMessages">
-              <li>{{msg}}</li>
-            </ul>
-          </div>
-        </div>
+      <div class="alert-message">
+        <div class="icomoon icon-warning"></div>
+        <p>¡Error! Verifica tus datos</p>
+        <ul ng-if="userCredentialsModel.modelState.errorMessages.length > 0">
+          <li ng-repeat="msg in registerModel.modelState.errorMessages">{{msg}}</li>
+        </ul>
       </div>
     </div>
 
-    <div class="alert alert-success" role="alert" style="display:block" ng-show="isRegistered">
+    <div class="alert alert-success hidden" role="alert" style="display:block">
+      <div class="alert-message">
+        <div class="icomoon icon-checked-clip"></div>
+        <p>¡Te has registrado correctamente!</p> 
+      </div>
+    </div>    
+
+    <!-- <div class="alert alert-success" role="alert" style="display:block" ng-show="isRegistered">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
@@ -25,9 +28,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <header class="container">
+    <!-- <header class="container">
       <div class="row">
         <div class="col-xs-12">
           <figure>
@@ -40,7 +43,20 @@
           </figure> 
         </div>
       </div>
-    </header>
+    </header> -->
+
+    <header>
+      <figure>
+        <img src="assets/images/img-logo-gentera.svg" alt="" class="login-logo">
+        <figcaption class="center-block text-center">
+          <span>Estudia</span>
+          <span>|</span>
+          <span>Trabaja</span>
+          <span>|</span>
+          <span>Emprende</span>
+        </figcaption>
+      </figure> 
+    </header>    
 
     <section>
       <form action="" class="register-form container-fluid" name="registerForm">
@@ -87,7 +103,6 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg theme-default" aria-describedby="genderAddOn">
-                        <option label="Género" value="" disabled selected style="display:none"></option>
                         <option value="Male">Masculino</option>
                         <option value="Female">Femenino</option> 
                       </select>
@@ -105,16 +120,19 @@
                     <p class="input-group-addon" id="countryAddOn">
                       <span class="icomoon icon-earth"></span>                        
                     </p>
-                    <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
-                      <option label="País" value="" disabled selected style="display:none"></option>
-                      <option value="BO">Bolivia</option>
-                      <option value="CO">Colombia</option> 
-                      <option value="EC">Ecuador</option> 
-                      <option value="ME">México</option> 
-                      <option value="PE">Perú</option> 
-                      <option value="UR">Uruguay</option> 
-                      <option value="VE">Venezuela</option> 
-                    </select>
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
+                        <!-- <option label="País" value="" disabled selected style="display:none"></option> -->
+                        <option value="BO">Bolivia</option>
+                        <option value="CO">Colombia</option> 
+                        <option value="EC">Ecuador</option> 
+                        <option value="ME">México</option> 
+                        <option value="PE">Perú</option> 
+                        <option value="UR">Uruguay</option> 
+                        <option value="VE">Venezuela</option> 
+                      </select>
+                      <span class="custom-placeholder form-control-lg">País</span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -127,16 +145,19 @@
                     <p class="input-group-addon" id="cityAddOn">
                       <span class="icomoon icon-map"></span> 
                     </p>
-                    <select ng-model="registerModel.city" name="city" class="form-control form-control-lg theme-default" aria-describedby="cityAddOn">
-                      <option label="Ciudad" value="" disabled selected style="display:none"></option>
-                      <option value="Bogotá">Bogotá</option>                       
-                      <option value="Buenos Aires">Buenos Aires</option>
-                      <option value="La Paz">La Paz</option> 
-                      <option value="México D.F.">México D.F.</option> 
-                      <option value="Monterrey">Monterrey</option> 
-                      <option value="Montevideo">Montevideo</option> 
-                      <option value="Rosario">Rosario</option> 
-                    </select>                    
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <select ng-model="registerModel.city" name="city" class="form-control form-control-lg theme-default" aria-describedby="cityAddOn">
+                        <!-- <option label="Ciudad" value="" disabled selected style="display:none"></option> -->
+                        <option value="Bogotá">Bogotá</option>                       
+                        <option value="Buenos Aires">Buenos Aires</option>
+                        <option value="La Paz">La Paz</option> 
+                        <option value="México D.F.">México D.F.</option> 
+                        <option value="Monterrey">Monterrey</option> 
+                        <option value="Montevideo">Montevideo</option> 
+                        <option value="Rosario">Rosario</option> 
+                      </select>
+                      <span class="custom-placeholder form-control-lg">Ciudad</span>
+                    </p>                    
                   </div>
                 </div>            
               </div>
@@ -241,10 +262,21 @@
 
             <div class="row">
               <div class="col-xs-12">
+
+                <!-- <div class="checkbox checkbox-custom">
+                  <label>
+                    <input type="checkbox" ng-model="userCredentialsModel.rememberCredentials" name="rememberCredentials" /> 
+                    <span>Recordar contraseña</span>
+                  </label>
+                </div> -->
+                
+                
                 <div class="checkbox checkbox-custom">
                   <label>
-                    <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> <span>Acepto los términos y condiciones</span>
+                    <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> 
+                    <span><a href="">Acepto los términos y condiciones</a></span>
                   </label>
+
                 </div>              
               </div>
             </div>            
