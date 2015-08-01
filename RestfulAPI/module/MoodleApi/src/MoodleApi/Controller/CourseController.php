@@ -18,9 +18,9 @@ class CourseController extends AbstractRestfulJsonController {
     public function get($id)
     {
         $course = new MoodleCourse();
-        $leaders = $this->getLeaderboard();
+        $leaders = $this->getLeaderboard($id);
         $stages = $this->getCourseStages($id);
-
+        
         $course->setLeaderboard($leaders);
 
         $course->setStages($stages);
@@ -32,42 +32,10 @@ class CourseController extends AbstractRestfulJsonController {
         return new JsonModel((array)$course);
     }
 
+    private function getLeaderboard($course){
     
-    private function hasToken() {
-    	$request = $this->getRequest();
-        if (isset($request->getCookie()->MOODLE_TOKEN)) {
-        	return true;
-        }else{
-        	return false;
-        }
-    }
-
-    private function generateToken() {
-        $url = $this->getConfig()['TOKEN_GENERATION_URL'];
-        $url = sprintf($url, 'incluso', 'incluso', $this->getConfig()['MOODLE_SERVICE_NAME']);
-        //$url = sprintf($url, 'test', 'Test123!', $this->getConfig()['MOODLE_SERVICE_NAME']);
-        $response = file_get_contents($url);
-        $json = json_decode($response,true);
-        setcookie('MOODLE_TOKEN', $json['token'], time() + 3600, '/',null, false); //the true indicates to store only if there´s a secure connection
-
-        return $json['token'];
-    }
-    
-    public function getToken() {
-    	$token = '';
-    	$request = $this->getRequest();
-    	if ($this->hasToken()) {
-    		$token = $request->getCookie()->MOODLE_TOKEN;
-    	} else {
-    		$token = $this->generateToken();
-    	}
-    	return $token;
-    }
-
-    private function getLeaderboard(){
-    
-        $url = $this->getConfig()['MOODLE_API_URL'].'&amount=3';
-        $url = sprintf($url, $this->getToken(), "get_leaderboard");
+        $url = $this->getConfig()['MOODLE_API_URL'].'&amount=3&courseid=%s';
+        $url = sprintf($url, $this->getToken(), "get_leaderboard", $course);
 
         $response = file_get_contents($url);
     
@@ -75,7 +43,7 @@ class CourseController extends AbstractRestfulJsonController {
     
         if (strpos($response, "exception") !== false)
         {
-    
+   
             return array();
         }
         // Good
@@ -98,11 +66,10 @@ class CourseController extends AbstractRestfulJsonController {
         $json = json_decode($response,true);
 
         if (strpos($response, "exception") !== false){
-            return array();
+        	return array();
         }
 
         $challenges= array();
-
         foreach($json as $challenge){
             $challenge = new MoodleChallenge($challenge);
             $challenge->setActivityType("ActivityManager");
@@ -149,7 +116,7 @@ class CourseController extends AbstractRestfulJsonController {
         }
 
         $activities= array();
-
+        
         foreach($json as $activity){
             $activity = new MoodleActivity($activity);
             $activitysummary = $this->getActivitySummary($activity->id, $activity->activityType);
@@ -168,8 +135,8 @@ class CourseController extends AbstractRestfulJsonController {
         $response = file_get_contents($url);
 
         $json = json_decode($response,true);
-
         if (strpos($response, "exception") !== false){
+        	var_dump($response);
             return array();
         }
 

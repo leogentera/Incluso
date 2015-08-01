@@ -7,6 +7,10 @@ use MoodleApi\Utilities\SMTPClient;
 use Zend\View\Model\JsonModel;
 use MoodleApi\Model\MoodleCourse;
 use MoodleApi\Model\MoodleException;
+use Zend\Mail;
+use Zend\Mail\Transport\Smtp as SmtpTransport;
+use Zend\Mail\Transport\SmtpOptions;
+use Zend\Mail\Message;
 
 /**
  * AuthenticationController
@@ -26,10 +30,10 @@ class AuthenticationController extends AbstractRestfulJsonController {
     }else{
         switch($data["action"]){
             case 'forgot':
-                $this->forgotPassword($data);
+                return $this->forgotPassword($data);
                 break;
             default:
-                $this->authentication($data);
+                return $this->authentication($data);
                 break;
         }
 

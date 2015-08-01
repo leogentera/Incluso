@@ -51,9 +51,10 @@ class MoodleUserProfile extends Common
     public $informationUsage=false;
     public $status="Enabled";
     public $allowToSendAdvertisement =false;
+    public $course="2";
     
     
-    public function __construct($data, $badgesEarned, $badgesToEarn)
+    public function __construct($data)
     {
     	
     	$customFields=array();
@@ -99,6 +100,11 @@ class MoodleUserProfile extends Common
     		//var_dump($this->phones);
     	}
     	
+    	if(array_key_exists ( 'course' , $customFields )){
+    		$this->course=$customFields['course'];
+    		//var_dump($this->phones);
+    	}
+    	
     	if( $this->showMyInformation){
     		$this->address=new MoodleAddress($data, $customFields);
     		$this->email =     (!empty($data['email'])) ? $data['email'] : null;
@@ -133,11 +139,6 @@ class MoodleUserProfile extends Common
         $this->username =     (!empty($data['username'])) ? $data['username'] : null;
         
         
-        if($this->showBadgesEarned){
-        	$this->badgesEarned=$badgesEarned;
-        	$this->badgesToEarn=$badgesToEarn;
-        }
-       
         
         
         if( $this->showAttributesAndQualities && array_key_exists ( 'attributesAndQualities' , $customFields )){
@@ -220,5 +221,15 @@ class MoodleUserProfile extends Common
     	
     	$this->rank=$rank;
     	
+    }
+    
+    
+    public function setBadges($badgesEarned,$badgesToEarn ){
+
+    	if($this->showBadgesEarned){
+    		$this->badgesEarned=$badgesEarned;
+    		$this->badgesToEarn=$badgesToEarn;
+    	}
+    	 
     }
 }
