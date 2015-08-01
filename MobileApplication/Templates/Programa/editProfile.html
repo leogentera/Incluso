@@ -65,7 +65,7 @@
           <div class="user-avatar">
             <figure>
               <img src="assets/images/img-avatar-dummy-01.png" alt="" class="img-responsive" />
-              <figcaption>{{model.rank}}</figcaption>
+              <figcaption ng-bind="model.rank >= 0 ? model.rank : '?'"></figcaption>
             </figure>   
             <button type="button" id="editProfile">
               <span class="icomoon icon-edit"></span>
@@ -75,9 +75,9 @@
       </div>
 
       <div class="profile-data">
-        <h4 class="user-name">{{model.fullname}}</h4>
+        <h4 class="user-name" ng-bind="model.fullname"></h4>
         <p class="user-points">
-          <span>{{model.stars}}</span>
+          <span ng-bind="model.stars"></span>
           <span class="icomoon icon-star"></span>
         </p>
       </div>
@@ -200,7 +200,7 @@
                           <input type="text" class="form-control form-control-lg theme-form" placeholder="Municipio / Delegación" ng-model="model.address.town" />
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" ng-model="model.address.postalCode" />
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" ng-model="model.address.postalcode" />
                         </div>
                       </li>
                     </ul> 

@@ -66,6 +66,7 @@ angular
                         console.log('successfully logged in');
 
                         _setToken(data.token);
+                        _setId(data.id);
 
                         //keepUserInformation(data.id);
 
@@ -73,7 +74,7 @@ angular
                         console.log('preparing for syncAll');
 
                         //succesful credentials
-                        _syncAll(function() {
+                        _syncAll($http, function() {
                             console.log('came back from redirecting...');
                             $timeout(
                                 function() {

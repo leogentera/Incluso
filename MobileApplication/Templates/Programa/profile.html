@@ -65,7 +65,7 @@
             <div class="user-avatar">
               <figure>
                 <img src="assets/images/img-avatar-dummy-01.png" alt="" class="img-responsive" />
-                <figcaption>{{model.rank}}</figcaption>
+                <figcaption ng-bind="model.rank >= 0 ? model.rank : '?'"></figcaption>
               </figure>   
               <button type="button" id="editProfile">
                 <span class="icomoon icon-edit"></span>
@@ -75,9 +75,9 @@
         </div>
 
         <div class="profile-data">
-          <h4 class="user-name">{{model.fullname}}</h4>
+          <h4 class="user-name" ng-bind="model.fullname"></h4>
           <p class="user-points">
-            <span>{{model.stars}}</span>
+            <span ng-bind="model.stars"></span>
             <span class="icomoon icon-star"></span>
           </p>
           <!-- <span class="badge">100<span class="icomoon icon-star"></span></span> -->
@@ -137,7 +137,7 @@
                         <span class="icomoon icon-star"></span>
                         <span class="icomoon icon-arrow-slim-right"></span>
                       </a>
-                    </li>    
+                    </li>
 
                     <li class="list-group-item no-badge" ng-click="navigateToPage(5)">
                       <a href="">
@@ -155,7 +155,7 @@
                         <span class="icomoon icon-star"></span>
                         <span class="icomoon icon-arrow-slim-right"></span>
                       </a>
-                    </li>         
+                    </li>
 
                     <li class="list-group-item no-badge" ng-click="navigateToPage(7)">
                       <a href="">
@@ -166,7 +166,7 @@
                       </a>
                     </li> 
 
-                    <li class="list-group-item no-badge" ng-click="navigateToPage(8)">
+                    <li class="list-group-item no-badge" ng-click="navigateToPage(8)" >
                       <a href="">
                         <span class="icomoon icon-rocket"></span>
                         <span>Mis Sueños</span>
@@ -198,20 +198,20 @@
                             <h5>Mis Estudios</h5>
                             <ul class="block-list" ng-repeat="s in model.studies">
                               <li>
-                                <p>{{s.school}}</p>
-                                <p>{{s.levelOfStudies}}</p>
+                                <p ng-bind="s.school"></p>
+                                <p ng-bind="s.levelOfStudies"></p>
                               </li>
                             </ul>                            
                             <hr />
 
                             <h5>Domicilio</h5>
-                            <p>{{model.address.street + " " + model.address.num_ext + " " + model.address.num_int + " " + model.address.colony + ", " + model.address.city + ", " + model.address.town + ", " + model.address.state + ", " + model.address.country + ", " + model.address.postalCode}}</p>                            
+                            <p ng-bind="model.address.street + ' ' + model.address.num_ext + ' ' + model.address.num_int + ' ' + model.address.colony + ' ' + model.address.city + ' ' + model.address.town + ' ' + model.address.state + ' ' + model.address.country + ' ' + model.address.postalcode"></p>
                             <hr />
 
                             <h5>Teléfono</h5>
                             <ul class="block-list" ng-repeat="t in model.phones">
                               <li>
-                                <p>{{t}}</p>
+                                <p ng-bind="t"></p>
                               </li>                           
                             </ul>
                             <hr />
@@ -219,7 +219,7 @@
                             <h5>Correo</h5>
                             <ul class="block-list">
                               <li>
-                                <p>{{model.email}}</p>
+                                <p ng-bind="model.email"></p>
                               </li>                             
                             </ul>
                             <hr />
@@ -228,8 +228,8 @@
                             <ul class="block-list" ng-repeat="sn in model.socialNetworks">
                               <li>
                                 <p>
-                                  <label for="">{{sn.socialNetwork}}.</label>
-                                  <span>{{sn.socialNetworkId}}</span>                                  
+                                  <label for="" ng-bind="sn.socialNetwork + '.'"></label>
+                                  <span ng-bind="sn.socialNetworkId"></span>                                  
                                 </p>
                               </li>                            
                             </ul>
@@ -240,10 +240,10 @@
                               <li>
                                 <p>
                                   <label for="">No. Cliente</label>
-                                  <span>{{fc.idClient}}</span>
+                                  <span ng-bind="fc.idClient"></span>
                                 </p>
-                                <p>{{fc.relativeName}}</p>
-                                <p><em>{{fc.relationship}}</em></p>
+                                <p ng-bind="fc.relativeName"></p>
+                                <p><em ng-bind="fc.relationship"></em></p>
                               </li>                             
                             </ul>
                             <br />
@@ -274,7 +274,7 @@
                           <div class="col-xs-12">
                             <ul class="block-list" ng-repeat="aq in model.attributesAndQualities">
                               <li>
-                                <p>{{aq}}</p>
+                                <p ng-bind="aq"></p>
                               </li>
                             </ul>
                           </div>
@@ -352,10 +352,10 @@
                       <div class="container-fluid">
                         <div class="row">
                           <div class="col-xs-12" ng-repeat="s in model.strengths">
-                            <h5>{{s.name}}</h5>
+                            <h5 ng-bind="s.name"></h5>
                             <ul class="block-list" ng-repeat="v in s.values">
                               <li>
-                                <p>{{v}}</p>
+                                <p ng-bind="v"></p>
                               </li>
                             </ul>                            
                             <hr />                            
@@ -388,7 +388,7 @@
                           <div class="col-xs-12">
                             <ul class="block-list" ng-repeat="b in model.recomendedBachelorDegrees">
                               <li>
-                                <p>{{b}}</p>
+                                <p ng-bind="b"></p>
                               </li>
                             </ul>
                           </div>
@@ -419,7 +419,7 @@
                             <h5>Sueños Ser</h5>
                             <ul class="block-list" ng-repeat="db in model.dreamsToBe">
                               <li>
-                                <p>{{db}}</p>
+                                <p ng-bind="db"></p>
                               </li>
                             </ul>                            
                             <hr />
@@ -428,7 +428,7 @@
                             <h5>Sueños Tener</h5>
                             <ul class="block-list" ng-repeat="dh in model.dreamsToHave">
                               <li>
-                                <p>{{dh}}</p>
+                                <p ng-bind="dh"></p>
                               </li>
                             </ul>                            
                             <hr />
@@ -437,7 +437,7 @@
                             <h5>Sueños Hacer</h5>
                             <ul class="block-list" ng-repeat="dd in model.dreamsToDo">
                               <li>
-                                <p>{{dd}}</p>
+                                <p ng-bind="dd"></p>
                               </li>
                             </ul>                            
                             <hr />

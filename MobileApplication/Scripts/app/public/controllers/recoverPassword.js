@@ -68,21 +68,29 @@ angular
 
                     $http({
                         method: 'POST',
-                        url: API_RESOURCE.format("forgotpassword"), 
+                        url: API_RESOURCE.format("authentication"), 
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
                             email: $scope.recoverPasswordModel.email,
                             secretanswer: $scope.recoverPasswordModel.secretAnswer,
-                            secretquestion: $scope.recoverPasswordModel.secretQuestion
+                            secretquestion: $scope.recoverPasswordModel.secretQuestion,
+                            action: "forgot"
                         })
                     }).success(function(data, status, headers, config) {
 
                         console.log('successfully code recovery');
 
                         $scope.currentPage = 2;
+                        $scope.scrollToTop();
 
                     }).error(function(data, status, headers, config) {
-                        var errorMessage = window.atob(data.messageerror);
+                        var errorMessage;
+
+                        if((data != null && data.messageerror != null)){
+                            errorMessage = window.atob(data.messageerror);
+                        }else{
+                            errorMessage = "Se ha producido un error, contactate al administrador."
+                        }
 
                         $scope.recoverPasswordModel.modelState.errorMessages = [errorMessage];
                         console.log('data' + errorMessage);
@@ -108,8 +116,8 @@ angular
 
                 if(errors.length === 0){
                     $http({
-                        method: 'POST',
-                        url: API_RESOURCE.format("resetpassword"), 
+                        method: 'PUT',
+                        url: API_RESOURCE.format("authentication"), 
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
                             email: $scope.recoverPasswordModel.email,
@@ -123,7 +131,13 @@ angular
                         $scope.login();
 
                     }).error(function(data, status, headers, config) {
-                        var errorMessage = window.atob(data.messageerror);
+                        var errorMessage;
+
+                        if((data != null && data.messageerror != null)){
+                            errorMessage = window.atob(data.messageerror);
+                        }else{
+                            errorMessage = "Se ha producido un error, contactate al administrador."
+                        }
 
                         $scope.recoverPasswordModel.modelState.errorMessages = [errorMessage];
                         console.log('data' + errorMessage);
