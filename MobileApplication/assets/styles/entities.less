@@ -32,7 +32,7 @@
                 bottom: 20px;
                 color: #f00;
                 left: 43.5%;
-                left: ~"calc(50% - 19px)";
+                left: ~"calc(50% - 6vw)";
                 position: absolute;
                 text-align: center;
                 color: @clr-greenLight;
@@ -163,6 +163,18 @@
                 background-repeat: no-repeat;
                 background-size: 100% auto;
                 border-bottom: 10px solid #24282a;
+            }
+            .starway{
+                background: #1f2733;
+                background: -moz-radial-gradient(center, ellipse cover,  #1f2733 0%, #141921 100%);
+                background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#1f2733), color-stop(100%,#141921));
+                background: -webkit-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: -o-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: -ms-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: radial-gradient(ellipse at center,  #1f2733 0%,#141921 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f2733', endColorstr='#141921',GradientType=1 );                
+                background-image:url('@{url-images}/bg-stars-02.png');
+                background-size: 100% auto;
             }
             .progreso{
                 background-image:url('@{url-images}/bg-progress-spinn.jpg');
@@ -310,9 +322,6 @@
                         font-size: 100%;
                     }
                 }
-            }
-            .pointer{
-                cursor: pointer;
             }
             .ordeon{
                 display: none;
@@ -626,7 +635,6 @@
             }
             .btn {
                 display: block;
-                width: 270px;
                 margin: 32px auto;
             }
         }
@@ -711,13 +719,12 @@
             overflow: visible;
             padding: 0;
             margin: 0 auto;
-            width: 90%;
+            width: 100%;
             height: auto;
 
             figure {
                 overflow: hidden;
                 background-color: transparent;
-                border-radius:150px;
                 /*border: 10px solid transparent; */
             }            
             img {
@@ -725,27 +732,23 @@
                 padding: 0; 
                 margin: 0; 
                 border:none; 
-                width:130px;
                 max-width:100%;     
-                border-radius:150px;          
+                border-radius:50%;          
             }
             figcaption {
-                position: absolute;
-                left: 50%;
-                bottom: -18px;
                 padding: 0;
-                margin: 0 0 0 -17px;
-                width: 34px;
-                height: 34px;
+                margin: -3vw auto 0;
+                width: 6vw;
+                height: 6vw;
                 background-color: @clr-blueMedium;
                 /*border: 5px solid @clr-green;*/
                 .border-radius-circle ();                      
                 color: @clr-green;
                 font-family: Roboto, Sans-serif, Arial;
-                font-size: 22px;
                 font-weight: 700;
-                line-height: 42px;
+                line-height: 6vw;
                 text-align: center;
+                position:relative;
             }
             button {
                 display: block;
@@ -823,29 +826,11 @@
                 span {
                     color: inherit;
                     font-family: Play, Sans-serif, Arial;
-                    font-size: 16px;
                     font-weight: 700;
                 }
             }
             .points {
                 position: relative;
-                padding-right: 24px;
-
-                &:before {
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    padding: 0;
-                    margin: 0;
-                    width: 24px;
-                    height: 22px;
-                    background-attachment: scroll;
-                    background-image: url('@{url-images}/ics-gentera.png');
-                    background-position: center -165px;
-                    background-repeat: no-repeat;
-                    content: " ";
-                }
             }
         }
         /***********************************************************************/        

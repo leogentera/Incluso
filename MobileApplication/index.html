@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
     <title>Incluso Digital</title>
     <link href="assets/styles/dev-css.css" rel='stylesheet' type='text/css' />
 
@@ -50,10 +50,12 @@
 
     <script src="Scripts/owl.carousel.min.js"></script>
 
+
     <script src="Scripts/utils.js"></script>
     <script src="Scripts/global.js"></script>
 
     <script src="Scripts/app/module.js"></script>
+    <script src="Scripts/app/shared/services/moodleServices.js"></script>
     <script src="Scripts/app/models/Profile.js"></script>
     <script src="Scripts/app/models/Dashboard.js"></script>
     <script src="Scripts/app/models/Course.js"></script>
@@ -68,17 +70,7 @@
     <script src="Scripts/app/programa/controllers/dashboard.etapa.js"></script>
     <script src="Scripts/app/programa/controllers/profile.js"></script>
 
-    <script>
-        if (window.devicePixelRatio == 1.5) {
-            viewport = document.querySelector("meta[name=viewport]");
-            viewport.setAttribute('content', 'width=device-width, initial-scale=0.75, maximum-scale=0.75, user-scalable=no');
-        } 
-		function getAndroidVersion(ua) {
-    ua = (ua || navigator.userAgent).toLowerCase(); 
-    var match = ua.match(/android\s([0-9\.]*)/);
-    return match ? match[1] : false;
-};
-    </script>
+
 
 </body>
 

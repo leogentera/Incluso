@@ -65,7 +65,7 @@
           <div class="user-avatar">
             <figure>
               <img src="assets/images/img-avatar-dummy-01.png" alt="" class="img-responsive" />
-              <figcaption>{{model.rank}}</figcaption>
+              <figcaption ng-bind="model.rank >= 0 ? model.rank : '?'"></figcaption>
             </figure>   
             <button type="button" id="editProfile">
               <span class="icomoon icon-edit"></span>
@@ -75,9 +75,9 @@
       </div>
 
       <div class="profile-data">
-        <h4 class="user-name">{{model.fullname}}</h4>
+        <h4 class="user-name" ng-bind="model.fullname"></h4>
         <p class="user-points">
-          <span>{{model.stars}}</span>
+          <span ng-bind="model.stars"></span>
           <span class="icomoon icon-star"></span>
         </p>
       </div>
@@ -131,6 +131,20 @@
               </div>
               <div class="panel-body">
                 <fieldset class="my-profile-form">
+
+                  <section>
+                    <h5>Deseo recibir promoción y publicidad</h5>
+                    <ul class="block-list">
+                      <li>
+                        <div class="form-grup">
+                          <input type="checkbox" ng-model="model.allowToSendAdvertisement" /> 
+                        </div>
+                      </li>
+                    </ul>
+
+                  </section>
+
+
                   <section>
                     <h5>Mis Estudios</h5>
                     <ul class="block-list">
@@ -306,8 +320,8 @@
                     </ul>
                     <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFamiliaCompartamos();">
                       <span class="icomoon icon-plus"></span>Agregar familiar compartamos...
-                    </button>                          
-                  </section>                        
+                    </button>
+                  </section>
 
                   <div class="page-number">
                     <p class="text-center">
@@ -321,12 +335,9 @@
                     <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="save();">Guardar</button>
                     <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
                   </div>
-                </fieldset>                        
+                </fieldset>
               </div>
             </div>
-
-
-
         </div>
       </form>
     </section> 

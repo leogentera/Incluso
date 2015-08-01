@@ -3,20 +3,23 @@
   <article class="register">
 
     <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="icomoon icon-warning"></div>
-            <p>¡Error! Verifica tus datos</p>
-            <ul ng-repeat="msg in registerModel.modelState.errorMessages">
-              <li>{{msg}}</li>
-            </ul>
-          </div>
-        </div>
+      <div class="alert-message">
+        <div class="icomoon icon-warning"></div>
+        <p>¡Error! Verifica tus datos</p>
+        <ul ng-if="userCredentialsModel.modelState.errorMessages.length > 0">
+          <li ng-repeat="msg in registerModel.modelState.errorMessages">{{msg}}</li>
+        </ul>
       </div>
     </div>
 
-    <div class="alert alert-success" role="alert" style="display:block" ng-show="isRegistered">
+    <div class="alert alert-success" role="alert" ng-show="isRegistered">
+      <div class="alert-message">
+        <div class="icomoon icon-checked-clip"></div>
+        <p>¡Te has registrado correctamente!</p> 
+      </div>
+    </div>    
+
+    <!-- <div class="alert alert-success" role="alert" style="display:block" ng-show="isRegistered">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
@@ -25,9 +28,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <header class="container">
+    <!-- <header class="container">
       <div class="row">
         <div class="col-xs-12">
           <figure>
@@ -40,7 +43,20 @@
           </figure> 
         </div>
       </div>
-    </header>
+    </header> -->
+
+    <header>
+      <figure>
+        <img src="assets/images/img-logo-gentera.svg" alt="" class="login-logo">
+        <figcaption class="center-block text-center">
+          <span>Estudia</span>
+          <span>|</span>
+          <span>Trabaja</span>
+          <span>|</span>
+          <span>Emprende</span>
+        </figcaption>
+      </figure> 
+    </header>    
 
     <section>
       <form action="" class="register-form container-fluid" name="registerForm">
@@ -55,11 +71,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="aliasAddOn">
                       <span class="icomoon icon-user"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg" placeholder="Usuario" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required>
+                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg theme-default" placeholder="Usuario" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required>
                   </div>
                 </div>
               </div>
@@ -68,11 +84,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="birthDateAddOn">
                       <span class="icomoon icon-calendar"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required>
+                    <input type="text" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg theme-default" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required>
                   </div>
                 </div>
               </div>
@@ -81,15 +97,17 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="genderAddOn">
                       <span class="icomoon icon-dna"></span>                      
                     </p>
-                    <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg" aria-describedby="genderAddOn">
-                      <option label="Género" value="" disabled selected style="display:none"></option>
-                      <option value="Male">Masculino</option>
-                      <option value="Female">Femenino</option> 
-                    </select>
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg theme-default" aria-describedby="genderAddOn">
+                        <option value="Male">Masculino</option>
+                        <option value="Female">Femenino</option> 
+                      </select>
+                      <span class="custom-placeholder form-control-lg">Género</span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -98,20 +116,23 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="countryAddOn">
-                      <span class="icomoon icon-planet"></span>                        
+                      <span class="icomoon icon-earth"></span>                        
                     </p>
-                    <select ng-model="registerModel.country" name="country" class="form-control form-control-lg" aria-describedby="countryAddOn">
-                      <option label="País" value="" disabled selected style="display:none"></option>
-                      <option value="BO">Bolivia</option>
-                      <option value="CO">Colombia</option> 
-                      <option value="EC">Ecuador</option> 
-                      <option value="ME">México</option> 
-                      <option value="PE">Perú</option> 
-                      <option value="UR">Uruguay</option> 
-                      <option value="VE">Venezuela</option> 
-                    </select>
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
+                        <!-- <option label="País" value="" disabled selected style="display:none"></option> -->
+                        <option value="BO">Bolivia</option>
+                        <option value="CO">Colombia</option> 
+                        <option value="EC">Ecuador</option> 
+                        <option value="ME">México</option> 
+                        <option value="PE">Perú</option> 
+                        <option value="UR">Uruguay</option> 
+                        <option value="VE">Venezuela</option> 
+                      </select>
+                      <span class="custom-placeholder form-control-lg">País</span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -120,20 +141,23 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="cityAddOn">
                       <span class="icomoon icon-map"></span> 
                     </p>
-                    <select ng-model="registerModel.city" name="city" class="form-control form-control-lg" aria-describedby="cityAddOn">
-                      <option label="Ciudad" value="" disabled selected style="display:none"></option>
-                      <option value="Bogotá">Bogotá</option>                       
-                      <option value="Buenos Aires">Buenos Aires</option>
-                      <option value="La Paz">La Paz</option> 
-                      <option value="México D.F.">México D.F.</option> 
-                      <option value="Monterrey">Monterrey</option> 
-                      <option value="Montevideo">Montevideo</option> 
-                      <option value="Rosario">Rosario</option> 
-                    </select>                    
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <select ng-model="registerModel.city" name="city" class="form-control form-control-lg theme-default" aria-describedby="cityAddOn">
+                        <!-- <option label="Ciudad" value="" disabled selected style="display:none"></option> -->
+                        <option value="Bogotá">Bogotá</option>                       
+                        <option value="Buenos Aires">Buenos Aires</option>
+                        <option value="La Paz">La Paz</option> 
+                        <option value="México D.F.">México D.F.</option> 
+                        <option value="Monterrey">Monterrey</option> 
+                        <option value="Montevideo">Montevideo</option> 
+                        <option value="Rosario">Rosario</option> 
+                      </select>
+                      <span class="custom-placeholder form-control-lg">Ciudad</span>
+                    </p>                    
                   </div>
                 </div>            
               </div>
@@ -167,11 +191,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="emailAddOn">
                       <span class="icomoon icon-envelope"></span>                      
                     </p>
-                    <input type="email" ng-model="registerModel.email" name="email" class="form-control form-control-lg" placeholder="Correo" aria-describedby="emailAddOn" required>
+                    <input type="email" ng-model="registerModel.email" name="email" class="form-control form-control-lg theme-default" placeholder="Correo" aria-describedby="emailAddOn" required>
                   </div>
                 </div>
               </div>
@@ -180,11 +204,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="accountPasswordAddOn">
                       <span class="icomoon icon-lock"></span>
                     </p>
-                    <input type="password" ng-model="registerModel.password" name="password" class="form-control form-control-lg" placeholder="Contraseña" aria-describedby="accountPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
+                    <input type="password" ng-model="registerModel.password" name="password" class="form-control form-control-lg theme-default" placeholder="Contraseña" aria-describedby="accountPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
                   </div>
                 </div>
               </div>
@@ -193,11 +217,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="confirmPasswordAddOn">
                       <span class="icomoon icon-lock"></span> 
                     </p>
-                    <input type="password" ng-model="registerModel.confirmPassword" name="confirmPassword" class="form-control form-control-lg" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
+                    <input type="password" ng-model="registerModel.confirmPassword" name="confirmPassword" class="form-control form-control-lg theme-default" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
                   </div>
                 </div>
               </div>
@@ -206,11 +230,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="securityQuestionAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg" aria-describedby="securityQuestionAddOn">
+                    <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg theme-default" aria-describedby="securityQuestionAddOn">
                       <option label="Pregunta de Seguridad" value="" disabled selected style="display:none"></option>
                       <option value="¿Dónde crecí?">¿Dónde crecí?</option>
                       <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
@@ -226,11 +250,11 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group input-group-lg theme-default">
                     <p class="input-group-addon" id="securityAnswerAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required>
+                    <input type="text" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg theme-default" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required>
                   </div>
                 </div>            
               </div>
@@ -238,10 +262,21 @@
 
             <div class="row">
               <div class="col-xs-12">
-                <div class="checkbox">
+
+                <!-- <div class="checkbox checkbox-custom">
                   <label>
-                    <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> <span>Acepto los términos y condiciones</span>
+                    <input type="checkbox" ng-model="userCredentialsModel.rememberCredentials" name="rememberCredentials" /> 
+                    <span>Recordar contraseña</span>
                   </label>
+                </div> -->
+                
+                
+                <div class="checkbox checkbox-custom">
+                  <label>
+                    <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> 
+                    <span><a href="">Acepto los términos y condiciones</a></span>
+                  </label>
+
                 </div>              
               </div>
             </div>            

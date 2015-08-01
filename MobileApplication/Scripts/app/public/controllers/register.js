@@ -73,7 +73,7 @@ angular
 
                 $http({
                         method: 'POST',
-                        url: API_RESOURCE.format("register"), 
+                        url: API_RESOURCE.format("user"), 
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
                             username: $scope.registerModel.username,
@@ -95,7 +95,13 @@ angular
                         $scope.scrollToTop();
 
                     }).error(function(data, status, headers, config) {
-                        var errorMessage = window.atob(data.messageerror);
+                        var errorMessage;
+
+                        if((data != null && data.messageerror != null)){
+                            errorMessage = window.atob(data.messageerror);
+                        }else{
+                            errorMessage = "Se ha producido un error, contactate al administrador."
+                        }
 
                         $scope.registerModel.modelState.errorMessages = [errorMessage];
                         console.log('data' + errorMessage);

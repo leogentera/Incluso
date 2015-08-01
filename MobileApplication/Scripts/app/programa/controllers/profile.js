@@ -14,6 +14,26 @@ angular
             $scope.currentPage = 1;
             $scope.model = getDataAsync();
 
+            function getDataAsync(){
+
+                var m = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
+
+                initFields(m);
+
+                return m;
+            }
+
+            function initFields(m){
+                if(m.address.street == null){ m.address.street = ""; }
+                if(m.address.num_ext == null){ m.address.num_ext = ""; }
+                if(m.address.num_int == null){ m.address.num_int = ""; }
+                if(m.address.colony == null){ m.address.colony = ""; }
+                if(m.address.city == null){ m.address.city = ""; }
+                if(m.address.town == null){ m.address.town = ""; }
+                if(m.address.state == null){ m.address.state = ""; }
+                if(m.address.postalCode == null){ m.address.postalCode = ""; }
+            }
+
             $scope.navigateToPage = function(pageNumber){
                 $scope.currentPage = pageNumber;
             };
@@ -31,14 +51,13 @@ angular
             }
 
             $scope.save = function(){
-                var jMdoel = JSON.stringify($scope.model);
-                localStorage.setItem("profile", jMdoel);
-
-                $scope.index();
-            }
-
-            function getDataAsync(){
-                return JSON.parse(localStorage.getItem("profile"));
+                moodleFactory.Services.PutAsyncProfile(_getItem("userId"), $scope.model,
+                    function(){
+                        $scope.index();
+                    },
+                    function(){
+                        $scope.index();
+                    });
             }
 
             $scope.addStudy = function(){
