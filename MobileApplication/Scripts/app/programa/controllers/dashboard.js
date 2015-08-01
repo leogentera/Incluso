@@ -42,6 +42,11 @@
             //        });
             //};
 
+            $scope.logout = function () {
+                localStorage.removeItem("CurrentUser");
+                $location.path('/');
+            }
+
             function getDataAsync() {
                 $scope.user = JSON.parse(localStorage.getItem("user"));
                 $scope.course = JSON.parse(localStorage.getItem("course"));
