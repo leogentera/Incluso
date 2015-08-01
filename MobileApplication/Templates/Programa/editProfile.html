@@ -131,6 +131,20 @@
               </div>
               <div class="panel-body">
                 <fieldset class="my-profile-form">
+
+                  <section>
+                    <h5>Deseo recibir promoción y publicidad</h5>
+                    <ul class="block-list">
+                      <li>
+                        <div class="form-grup">
+                          <input type="checkbox" ng-model="model.allowToSendAdvertisement" /> 
+                        </div>
+                      </li>
+                    </ul>
+
+                  </section>
+
+
                   <section>
                     <h5>Mis Estudios</h5>
                     <ul class="block-list">
@@ -200,7 +214,7 @@
                           <input type="text" class="form-control form-control-lg theme-form" placeholder="Municipio / Delegación" ng-model="model.address.town" />
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" ng-model="model.address.postalcode" />
+                          <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" ng-model="model.address.postalCode" />
                         </div>
                       </li>
                     </ul> 
@@ -306,8 +320,8 @@
                     </ul>
                     <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFamiliaCompartamos();">
                       <span class="icomoon icon-plus"></span>Agregar familiar compartamos...
-                    </button>                          
-                  </section>                        
+                    </button>
+                  </section>
 
                   <div class="page-number">
                     <p class="text-center">
@@ -321,12 +335,9 @@
                     <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="save();">Guardar</button>
                     <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
                   </div>
-                </fieldset>                        
+                </fieldset>
               </div>
             </div>
-
-
-
         </div>
       </form>
     </section> 
