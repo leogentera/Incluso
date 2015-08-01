@@ -25,14 +25,25 @@ angular
                 }
             };
 
+            $scope.currentUserModel = {
+                token: "",
+                userId: ""
+            };
+
             /* Watchers */
             $scope.$watch("userCredentialsModel.modelState.errorMessages", function(newValue, oldValue){
                 $scope.userCredentialsModel.modelState.isValid = (newValue.length === 0);
             });
 
             $scope.loadCredentials = function() {
+
                 var txtCredentials = localStorage.getItem("Credentials");
+                var txtCurrentUser = localStorage.getItem("CurrentUser");
                 var userCredentials = null;
+                var currentUser = null;
+
+                 console.log('loading..');
+
 
                 if (txtCredentials){
                     userCredentials = JSON.parse(txtCredentials);
@@ -42,8 +53,15 @@ angular
                     $scope.userCredentialsModel.rememberCredentials = userCredentials.rememberCredentials;
                 }
 
+                  if (txtCurrentUser){
+                    currentUser = JSON.parse(txtCurrentUser);
+
+                    $scope.currentUserModel.token = currentUser.token;
+                    $scope.currentUserModel.userId = currentUser.userId;
+                }
+
                 //autologin
-                if (_IsOffline() && userCredentials) {
+                if (currentUser && currentUser.token && currentUser.token != "") {
                     $location.path('/ProgramaDashboard');
                 } 
             }
@@ -65,15 +83,19 @@ angular
 
                         console.log('successfully logged in');
 
+                        //save token for further requests and autologin
+                        $scope.currentUserModel.token = data.token;
+                        $scope.currentUserModel.userId = data.id;
+
+                        localStorage.setItem("CurrentUser", JSON.stringify($scope.currentUserModel));
+
                         _setToken(data.token);
-
-                        //keepUserInformation(data.id);
-
+                        _setId(data.id);
 
                         console.log('preparing for syncAll');
 
                         //succesful credentials
-                        _syncAll(function() {
+                        _syncAll($http, function() {
                             console.log('came back from redirecting...');
                             $timeout(
                                 function() {
