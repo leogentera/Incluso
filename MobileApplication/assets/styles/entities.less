@@ -32,7 +32,7 @@
                 bottom: 20px;
                 color: #f00;
                 left: 43.5%;
-                left: ~"calc(50% - 19px)";
+                left: ~"calc(50% - 6vw)";
                 position: absolute;
                 text-align: center;
                 color: @clr-greenLight;
@@ -635,7 +635,6 @@
             }
             .btn {
                 display: block;
-                width: 270px;
                 margin: 32px auto;
             }
         }
@@ -720,13 +719,12 @@
             overflow: visible;
             padding: 0;
             margin: 0 auto;
-            width: 90%;
+            width: 100%;
             height: auto;
 
             figure {
                 overflow: hidden;
                 background-color: transparent;
-                border-radius:150px;
                 /*border: 10px solid transparent; */
             }            
             img {
@@ -734,27 +732,23 @@
                 padding: 0; 
                 margin: 0; 
                 border:none; 
-                width:130px;
                 max-width:100%;     
-                border-radius:150px;          
+                border-radius:50%;          
             }
             figcaption {
-                position: absolute;
-                left: 50%;
-                bottom: -18px;
                 padding: 0;
-                margin: 0 0 0 -17px;
-                width: 34px;
-                height: 34px;
+                margin: -3vw auto 0;
+                width: 6vw;
+                height: 6vw;
                 background-color: @clr-blueMedium;
                 /*border: 5px solid @clr-green;*/
                 .border-radius-circle ();                      
                 color: @clr-green;
                 font-family: Roboto, Sans-serif, Arial;
-                font-size: 22px;
                 font-weight: 700;
-                line-height: 42px;
+                line-height: 6vw;
                 text-align: center;
+                position:relative;
             }
             button {
                 display: block;
@@ -832,29 +826,11 @@
                 span {
                     color: inherit;
                     font-family: Play, Sans-serif, Arial;
-                    font-size: 16px;
                     font-weight: 700;
                 }
             }
             .points {
                 position: relative;
-                padding-right: 24px;
-
-                &:before {
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    padding: 0;
-                    margin: 0;
-                    width: 24px;
-                    height: 22px;
-                    background-attachment: scroll;
-                    background-image: url('@{url-images}/ics-gentera.png');
-                    background-position: center -165px;
-                    background-repeat: no-repeat;
-                    content: " ";
-                }
             }
         }
         /***********************************************************************/        
