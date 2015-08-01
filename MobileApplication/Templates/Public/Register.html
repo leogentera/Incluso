@@ -6,7 +6,7 @@
       <div class="alert-message">
         <div class="icomoon icon-warning"></div>
         <p>¡Error! Verifica tus datos</p>
-        <ul ng-if="userCredentialsModel.modelState.errorMessages.length > 0">
+        <ul ng-if="registerModel.modelState.errorMessages.length > 0">
           <li ng-repeat="msg in registerModel.modelState.errorMessages">{{msg}}</li>
         </ul>
       </div>
@@ -17,33 +17,7 @@
         <div class="icomoon icon-checked-clip"></div>
         <p>¡Te has registrado correctamente!</p> 
       </div>
-    </div>    
-
-    <!-- <div class="alert alert-success" role="alert" style="display:block" ng-show="isRegistered">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="icomoon icon-checked-clip"></div>
-            <p>¡Te has registrado correctamente!</p> 
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <header class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <figure>
-            <img src="assets/images/img-logo-sm-white-gentera.png" alt="" class="login-logo">
-            <figcaption class="center-block text-center">
-              <span>Estudia | </span>
-              <span>Trabaja | </span>
-              <span>Emprende</span>
-            </figcaption>
-          </figure> 
-        </div>
-      </div>
-    </header> -->
+    </div>
 
     <header>
       <figure>
