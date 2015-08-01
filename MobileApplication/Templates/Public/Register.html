@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="alert alert-success hidden" role="alert" style="display:block">
+    <div class="alert alert-success" role="alert" ng-show="isRegistered">
       <div class="alert-message">
         <div class="icomoon icon-checked-clip"></div>
         <p>¡Te has registrado correctamente!</p> 
@@ -96,7 +96,6 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
-                        <!-- <option label="País" value="" disabled selected style="display:none"></option> -->
                         <option value="BO">Bolivia</option>
                         <option value="CO">Colombia</option> 
                         <option value="EC">Ecuador</option> 
@@ -121,8 +120,7 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.city" name="city" class="form-control form-control-lg theme-default" aria-describedby="cityAddOn">
-                        <!-- <option label="Ciudad" value="" disabled selected style="display:none"></option> -->
-                        <option value="Bogotá">Bogotá</option>                       
+                        <option value="Bogotá">Bogotá</option>
                         <option value="Buenos Aires">Buenos Aires</option>
                         <option value="La Paz">La Paz</option> 
                         <option value="México D.F.">México D.F.</option> 
@@ -210,7 +208,6 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg theme-default" aria-describedby="securityQuestionAddOn">
-                        <!-- <option label="Pregunta de Seguridad" value="" disabled selected style="display:none"></option> -->
                         <option value="¿Dónde crecí?">¿Dónde crecí?</option>
                         <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
                         <option value="Nombre de mi mascota">Nombre de mi mascota</option> 
@@ -238,22 +235,12 @@
             </div>
 
             <div class="row">
-              <div class="col-xs-12">
-
-                <!-- <div class="checkbox checkbox-custom">
-                  <label>
-                    <input type="checkbox" ng-model="userCredentialsModel.rememberCredentials" name="rememberCredentials" /> 
-                    <span>Recordar contraseña</span>
-                  </label>
-                </div> -->
-                
-                
+              <div class="col-xs-12">               
                 <div class="checkbox checkbox-custom">
                   <label>
                     <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> 
                     <span><a href="">Acepto los términos y condiciones</a></span>
                   </label>
-
                 </div>              
               </div>
             </div>            
