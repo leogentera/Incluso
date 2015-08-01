@@ -90,7 +90,7 @@ class leaderboard_services extends external_api{
 					            and gerStage.name = 'parent'
 					            and gerStage.value=0) stage,
 					            ( select  mo.course courseid, compl.userid userid, IF(isnull(compl.timemodified) or compl.completionstate=0, 0, 1) completed, mo.section sectionid
-					            from {course_modules mo left join {course_modules_completion compl on  mo.id=compl.coursemoduleid ) activities
+					            from {course_modules} mo left join {course_modules_completion} compl on  mo.id=compl.coursemoduleid ) activities
 					            where  se.id=ger.sectionid 
 					            and ger.courseid=se.course 
 					            and ger.name = 'parent'
@@ -102,24 +102,24 @@ class leaderboard_services extends external_api{
             ) percentage_completed,
 					z.* FROM(SELECT u.id id, CONCAT(u.firstname, ' ',u.lastname) AS name, 
 						IFNULL(result.stars, 0) AS stars , course.courseid 
-						FROM {user as u 
+						FROM {user} as u 
 						LEFT JOIN ( 
 							SELECT u.id as id, 
 							(CASE WHEN uid.data = '' THEN '0' ELSE uid.data END) AS stars 
-							FROM {user_info_data AS uid 
-							LEFT JOIN {user_info_field AS uif 
+							FROM {user_info_data} AS uid 
+							LEFT JOIN {user_info_field} AS uif 
 							ON uid.fieldid = uif.id 
-							RIGHT JOIN {user AS u 
+							RIGHT JOIN {user} AS u 
 							ON uid.userid = u.id 
 							WHERE uif.shortname = 'stars') AS result 
 						ON u.id = result.id 
              LEFT JOIN ( 
 							SELECT u.id as id, 
 							(CASE WHEN uid.data = '' THEN '0' ELSE uid.data END) AS courseid 
-							FROM {user_info_data AS uid 
-							LEFT JOIN {user_info_field AS uif 
+							FROM {user_info_data} AS uid 
+							LEFT JOIN {user_info_field} AS uif 
 							ON uid.fieldid = uif.id 
-							RIGHT JOIN {user AS u 
+							RIGHT JOIN {user} AS u 
 							ON uid.userid = u.id 
 							WHERE uif.shortname = 'course') AS course 
               ON u.id = course.id
@@ -158,7 +158,7 @@ class leaderboard_services extends external_api{
 		);
 	}
 	
-	public static function get_user_rank($id_user){
+	public static function get_user_rank($userid){
 		global $USER;
 		global $DB;
 		$response = array();
@@ -169,7 +169,7 @@ class leaderboard_services extends external_api{
 			$params = self::validate_parameters(
 				self::get_user_rank_parameters(),
 				array(
-						'userid' => $id_user
+						'userid' => $userid
 				));
 		
 			//Context validation
@@ -206,7 +206,7 @@ class leaderboard_services extends external_api{
 // 						WHERE id =$id_user";
 
 			$sql = "SELECT place
-					FROM (
+					FROM ( 
 						SELECT @r := @r+1 AS place, 
 						z.* FROM( 
 							SELECT u.id, 
@@ -242,10 +242,11 @@ class leaderboard_services extends external_api{
 							ON uid.userid = u.id 
 							WHERE uif.shortname = 'course'
               and userid =$userid)
-							ORDER BY CAST(stars AS UNSIGNED) DESC, name ASC)z, 
+							 ORDER BY CAST(stars AS UNSIGNED) DESC, name ASC)z, 
 						(SELECT @r:=0)y) AS ranking 
 					WHERE id =$userid";
 				
+			
 			$response = $DB->get_records_sql($sql);
 		
 		} catch (Exception $e) {

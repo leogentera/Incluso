@@ -831,6 +831,9 @@ class activitiesSummary_plugin extends external_api{
 				case 'assignment':
 					$sql.= "{assignment}";
 					break;
+				case 'lesson':
+					$sql.= "{lesson}";
+					break;
 			}
 
 			$sql.= " WHERE id=$instanceid";

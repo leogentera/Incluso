@@ -28,10 +28,11 @@ class badge_services extends external_api {
 
     public static function get_earned_badges_parameters() {
         return new external_function_parameters(
-                array('id' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false))
+                array('id' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false),
+        		'moodleurl' => new external_value(PARAM_TEXT, 'Moodle URL', VALUE_REQUIRED, null, false))
         );
     }
-    public static function get_earned_badges($id) {
+    public static function get_earned_badges($id, $moodleurl) {
         global $USER;
         global $DB;
         $response = array();
@@ -39,7 +40,7 @@ class badge_services extends external_api {
         try {
             //Parameter validation
             //REQUIRED
-            $params = self::validate_parameters(self::get_earned_badges_parameters(), array('id' => $id));
+            $params = self::validate_parameters(self::get_earned_badges_parameters(), array('id' => $id, 'moodleurl'=>$moodleurl));
 
             //Context validation
             //OPTIONAL but in most web service it should present
@@ -52,11 +53,22 @@ class badge_services extends external_api {
             //     throw new moodle_exception('cannotviewprofile');
             // }
 
-            $sql = 'select bi.id id, bi.badgeid badgeid, ba.name name, ba.description description, bp.points points, (select count(*) from {badge_issued} bi_count where bi_count.badgeid = bi.badgeid  ) earned_times, bi.dateissued dateissued  '.
-    				'from {badge} ba, {badge_issued} bi, {badge_points} bp '.
-    				'where bp.badgeid=bi.badgeid and ba.id=bi.badgeid and bi.userid=:id';
+            $sql = 'select bi.id id, bi.badgeid badgeid, ba.name name, ba.description description, bp.points points, (select count(*) from {badge_issued} bi_count where bi_count.badgeid = bi.badgeid  ) earned_times, bi.dateissued dateissued, 
+					concat("/pluginfile.php/",contextid, "/badges/badgeimage/", ba.id, "/f1") pictureroute '.
+    				'from {badge} ba, {badge_issued} bi, {badge_points} bp , (select distinct contextid, itemid badgeid from mdl_files where filearea="badgeimage") context '.
+    				'where bp.badgeid=bi.badgeid and ba.id=bi.badgeid and bi.userid=:id and context.badgeid=bi.badgeid';
             //$params = array('fieldname' => $catalogname);
             $response = $DB->get_records_sql($sql, array('id' => $id ));
+            
+            $newresponse=array();
+            foreach($response as $badge){
+            	$file = file_get_contents("$moodleurl/$badge->pictureroute");
+            	$file = base64_encode($file);
+            	$badge->badgeimage=$file;
+            	array_push($newresponse, $badge);
+            }
+           
+            $response=$newresponse;
             //return array("sql"=>$sql);
         } catch (Exception $e) {
             $response = $e;
@@ -69,6 +81,7 @@ class badge_services extends external_api {
                 array(
     							'id' => new external_value(PARAM_TEXT, 'id of the earned badge'),
     							'badgeid' => new external_value(PARAM_TEXT, 'id of the badge'),
+                				'badgeimage' => new external_value(PARAM_TEXT, 'picture of the badge'),
     							'name' => new external_value(PARAM_TEXT, 'Badge\'s name'),
     							'description' => new external_value(PARAM_TEXT, 'Badge\'s description'),
                 				'earned_times' => new external_value(PARAM_TEXT, 'Times that this badge has been earned'),
@@ -81,11 +94,12 @@ class badge_services extends external_api {
     
     public static function get_posible_badges_to_earn_parameters() {
     	return new external_function_parameters(
-    			array('id' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false)),
-    			array('courseid' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false))
+    			array('id' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false),
+    			'courseid' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false),
+    			'moodleurl' => new external_value(PARAM_TEXT, 'Moodle URL', VALUE_REQUIRED, null, false))
     	);
     }
-    public static function get_posible_badges_to_earn($id, $courseid) {
+    public static function get_posible_badges_to_earn($id, $courseid, $moodleurl) {
     	global $USER;
     	global $DB;
     	$response = array();
@@ -93,7 +107,7 @@ class badge_services extends external_api {
     	try {
     		//Parameter validation
     		//REQUIRED
-    		$params = self::validate_parameters(self::get_posible_badges_to_earn_parameters(), array('id' => $id,'courseid' => $courseid ));
+    		$params = self::validate_parameters(self::get_posible_badges_to_earn_parameters(), array('id' => $id,'courseid' => $courseid,'moodleurl' => $moodleurl ));
     
     		//Context validation
     		//OPTIONAL but in most web service it should present
@@ -106,17 +120,28 @@ class badge_services extends external_api {
     		//     throw new moodle_exception('cannotviewprofile');
     		// }
     
-    		$sql = "select ba.id id, ba.name name, ba.description description, bp.points points, (select count(*) from {badge_issued} bi_count where bi_count.badgeid = ba.id  ) earned_times  
-					from {badge} ba,  {badge_points} bp 
+    		$sql = "select ba.id id, ba.name name, ba.description description, bp.points points, (select count(*) from {badge_issued} bi_count where bi_count.badgeid = ba.id  ) earned_times  , 
+					concat('/pluginfile.php/',contextid, '/badges/badgeimage/', ba.id, '/f1') pictureroute
+					from {badge} ba,  {badge_points} bp, (select distinct contextid, itemid badgeid from {files} where filearea='badgeimage') context
 					where  ba.courseid=$courseid and ba.id=bp.badgeid and ba.id not in
 					(select bi.id id 
 					from {badge} ba, {badge_issued} bi,{badge_points} bp
-					where bp.badgeid=bi.badgeid and ba.id=bi.badgeid and bi.userid=:id)";
+					where bp.badgeid=bi.badgeid and ba.id=bi.badgeid and bi.userid=:id) and context.badgeid=ba.id";
     		
     		
-            
     		//$params = array('fieldname' => $catalogname);
     		$response = $DB->get_records_sql($sql, array('id' => $id ));
+    		
+    		$newresponse=array();
+    		
+    		foreach($response as $badge){
+    			//var_dump("$moodleurl/$badge->pictureroute");
+    			$file = file_get_contents("$moodleurl/$badge->pictureroute");
+    			$file = base64_encode($file);
+    			$badge->badgeimage=$file;
+    			array_push($newresponse, $badge);
+    		}
+    		$response=$newresponse;
     
     	} catch (Exception $e) {
     		$response = $e;
@@ -127,7 +152,8 @@ class badge_services extends external_api {
     	return new external_multiple_structure(
     			new external_single_structure(
     					array(
-    							'id' => new external_value(PARAM_TEXT, 'id of the earned badge'),
+    							'id' => new external_value(PARAM_TEXT, 'id of the badge'),
+    							'badgeimage' => new external_value(PARAM_TEXT, 'picture of the badge'),
     							'name' => new external_value(PARAM_TEXT, 'Badge\'s name'),
     							'description' => new external_value(PARAM_TEXT, 'Badge\'s description'),
                 				'earned_times' => new external_value(PARAM_TEXT, 'Times that this badge has been earned'),

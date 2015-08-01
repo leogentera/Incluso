@@ -8,6 +8,10 @@ use MoodleApi\Model\MoodleException;
 use MoodleApi\Model\MoodleApi\Model;
 use MoodleApi\Model\MoodleBadge;
 use MoodleApi\Model\MoodleCourse;
+use Zend\Mail;
+use Zend\Mail\Transport\Smtp as SmtpTransport;
+use Zend\Mail\Transport\SmtpOptions;
+use Zend\Mail\Message;
 
 class UserController extends AbstractRestfulJsonController{
 	
@@ -168,9 +172,12 @@ class UserController extends AbstractRestfulJsonController{
         	return new JsonModel($this->throwJSONError());
         }
             // Good
-        	$badgesEarned=$this->getBadgesByMethod($id, "earned_badges");
-        	$badgesToEarn=$this->getBadgesByMethod($id, "posible_badges_to_earn");
-            $user = new MoodleUserProfile($json[0], $badgesEarned,$badgesToEarn);
+        	
+            $user = new MoodleUserProfile($json[0]);
+            
+            $badgesEarned=$this->getBadgesByMethod($id, "earned_badges");
+            $badgesToEarn=$this->getBadgesByMethod($id, "posible_badges_to_earn",$user->course );
+            $user->setBadges($badgesEarned, $badgesToEarn);
             $user->setRank($this->getRank($id));
             return new JsonModel((array) $user);
 
@@ -179,22 +186,28 @@ class UserController extends AbstractRestfulJsonController{
     }
     
     
-    public function getBadgesByMethod($id, $function)
+    public function getBadgesByMethod($id, $function, $courseid="")
     {
     
-    	$url = $this->getConfig()['MOODLE_API_URL'].'&id=%s';
-    	$url = sprintf($url, $this->getToken(), $function, $id);
-    
+    	$url = $this->getConfig()['MOODLE_API_URL'].'&id=%s&moodleurl=%s';
+    	$url = sprintf($url, $this->getToken(), $function, $id, $this->getConfig()['MOODLE_URL']);
+    	
+    	if ($courseid!=""){
+    		$url.="&courseid=$courseid";
+    	}
+    	
+    	
+    	
     	$response = file_get_contents($url);
-    
     	$json = json_decode($response,true);
-    
+    	//var_dump($response);
     	if (strpos($response, "exception") !== false)
     	{
     		return array();
     	}
     		// Good
     		$badges= array();
+    		
     		
     		foreach($json as $badge){
     			$badge = new MoodleBadge($badge);
@@ -218,7 +231,7 @@ class UserController extends AbstractRestfulJsonController{
     
     	if (strpos($response, "exception") !== false)
     	{
-    		
+    		var_dump($response);
     		return -1;
     	}
     	// Good
@@ -358,7 +371,17 @@ class UserController extends AbstractRestfulJsonController{
     
     function createURLParms($array, $format, $key ){
     	if(array_key_exists ( $key , $array )){
-    		return sprintf($format, $key, urlencode($array[$key]));
+    		 $variable=$array[$key];
+    		 
+    		 if (gettype($variable)=="boolean"){
+    		 	if ($variable){
+    		 		$variable=0;
+    		 	}
+    		 	else{
+    		 		$variable=1;
+    		 	}
+    		 }
+    		return sprintf($format, $key, urlencode($variable));
     
     	}
     	return "";
@@ -519,7 +542,7 @@ class UserController extends AbstractRestfulJsonController{
             $currentStars+=$customFields['stars'];
         }
 
-        $url.=sprintf($format,$field,$currentStars);
+        $url=sprintf($format,$field,$currentStars);
 
         return $url;
     }

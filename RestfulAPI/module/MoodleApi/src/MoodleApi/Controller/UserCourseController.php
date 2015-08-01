@@ -67,37 +67,6 @@ class UserCourseController extends AbstractRestfulJsonController {
 
         return new JsonModel(array("update"=>true));
     }
-    
-    private function hasToken() {
-    	$request = $this->getRequest();
-        if (isset($request->getCookie()->MOODLE_TOKEN)) {
-        	return true;
-        }else{
-        	return false;
-        }
-    }
-
-    private function generateToken() {
-        $url = $this->getConfig()['TOKEN_GENERATION_URL'];
-        $url = sprintf($url, 'incluso', 'incluso', $this->getConfig()['MOODLE_SERVICE_NAME']);
-        //$url = sprintf($url, 'test', 'Test123!', $this->getConfig()['MOODLE_SERVICE_NAME']);
-        $response = file_get_contents($url);
-        $json = json_decode($response,true);
-        setcookie('MOODLE_TOKEN', $json['token'], time() + 3600, '/',null, false); //the true indicates to store only if there´s a secure connection
-
-        return $json['token'];
-    }
-    
-    public function getToken() {
-    	$token = '';
-    	$request = $this->getRequest();
-    	if ($this->hasToken()) {
-    		$token = $request->getCookie()->MOODLE_TOKEN;
-    	} else {
-    		$token = $this->generateToken();
-    	}
-    	return $token;
-    }
 
     private function getCurrentCourse($userid){
         $url = $this->getConfig()['MOODLE_API_URL'].'&field=id&values[0]=%s';
