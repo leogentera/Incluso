@@ -704,6 +704,13 @@ body {
   text-align: center;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
+.incluso-app .checkbox.checkbox-custom a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.incluso-app .checkbox.checkbox-custom a:hover {
+  text-decoration: underline;
+}
 .incluso-app .input-group {
   width: 100%;
   /* by size */
@@ -1118,8 +1125,10 @@ body {
 }
 .incluso-app .pages .page-number {
   margin: 15px 0;
+  margin: 3vw 0;
   color: #ffffff;
   font-size: 24px;
+  font-size: 5vw;
   font-weight: bold;
 }
 .incluso-app .pages .page-number span {

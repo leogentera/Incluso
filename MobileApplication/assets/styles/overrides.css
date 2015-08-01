@@ -195,9 +195,9 @@
   text-decoration: underline;
 }
 .incluso-app.public form h1 {
-  margin: 10px 0 24px;
+  margin: 2.1vw 0 5vw;
   color: #ffffff;
-  font-size: 18.666px;
+  font-size: 4.1vw;
   font-weight: bold;
   letter-spacing: 0.037em;
   text-transform: capitalize;
@@ -214,6 +214,9 @@
   /*font-size: 6vw;
                 line-height: 6vw;*/
   vertical-align: bottom;
+}
+.incluso-app.public .register #emailAddOn {
+  /*line-height: 10vw;*/
 }
 /* Dashboard */
 .incluso-app.start-dashboard {
