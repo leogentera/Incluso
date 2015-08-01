@@ -208,14 +208,17 @@
                     <p class="input-group-addon" id="securityQuestionAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg theme-default" aria-describedby="securityQuestionAddOn">
-                      <option label="Pregunta de Seguridad" value="" disabled selected style="display:none"></option>
-                      <option value="¿Dónde crecí?">¿Dónde crecí?</option>
-                      <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
-                      <option value="Nombre de mi mascota">Nombre de mi mascota</option> 
-                      <option value="Personaje favorito">Personaje favorito</option> 
-                      <option value="Banda musical favorita">Banda musical favorita</option> 
-                    </select>
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg theme-default" aria-describedby="securityQuestionAddOn">
+                        <!-- <option label="Pregunta de Seguridad" value="" disabled selected style="display:none"></option> -->
+                        <option value="¿Dónde crecí?">¿Dónde crecí?</option>
+                        <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
+                        <option value="Nombre de mi mascota">Nombre de mi mascota</option> 
+                        <option value="Personaje favorito">Personaje favorito</option> 
+                        <option value="Banda musical favorita">Banda musical favorita</option> 
+                      </select>
+                      <span class="custom-placeholder form-control-lg">Pregunta de Seguridad</span>
+                    </p>
                   </div>
                 </div>
               </div>
