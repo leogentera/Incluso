@@ -3,20 +3,23 @@
   <article class="register">
 
     <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="icomoon icon-warning"></div>
-            <p>¡Error! Verifica tus datos</p>
-            <ul ng-repeat="msg in registerModel.modelState.errorMessages">
-              <li>{{msg}}</li>
-            </ul>
-          </div>
-        </div>
+      <div class="alert-message">
+        <div class="icomoon icon-warning"></div>
+        <p>¡Error! Verifica tus datos</p>
+        <ul ng-if="userCredentialsModel.modelState.errorMessages.length > 0">
+          <li ng-repeat="msg in registerModel.modelState.errorMessages">{{msg}}</li>
+        </ul>
       </div>
     </div>
 
-    <div class="alert alert-success" role="alert" style="display:block" ng-show="isRegistered">
+    <div class="alert alert-success hidden" role="alert" style="display:block">
+      <div class="alert-message">
+        <div class="icomoon icon-checked-clip"></div>
+        <p>¡Te has registrado correctamente!</p> 
+      </div>
+    </div>    
+
+    <!-- <div class="alert alert-success" role="alert" style="display:block" ng-show="isRegistered">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
@@ -25,7 +28,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <header class="container">
       <div class="row">
