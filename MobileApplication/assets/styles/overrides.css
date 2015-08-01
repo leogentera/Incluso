@@ -290,6 +290,11 @@
 .incluso-app.start-dashboard footer li:last-child {
   display: none;
 }
+.incluso-app.start-dashboard .db-bg {
+  background-image: url("../images/bg-footer-rocks.png");
+  background-position: 50% 0;
+  box-shadow: unset;
+}
 /* Profile Dashboard */
 .incluso-app.profile {
   background: #13171c;
@@ -309,49 +314,9 @@
   /* W3C */
   /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13171c', endColorstr='#163a4a',GradientType=0 ); /* IE6-8 */
 }
-.incluso-app.profile .navbar-assets {
-  padding-left: 0;
-  margin-left: 42px;
-}
-.incluso-app.profile .navbar-assets .navbar-heading {
-  width: 50%;
-}
-.incluso-app.profile .navbar-assets .navbar-tools {
-  width: 50%;
-}
-.incluso-app.profile .navbar-assets .navbar-tools li {
-  height: auto;
-}
-.incluso-app.profile .navbar-toggle .icomoon {
-  font-size: 2em;
-  line-height: 2em;
-}
-.incluso-app.profile .navbar-heading {
-  width: 40%;
-  font-size: 1.4em;
-  line-height: 60px;
-}
-.incluso-app.profile .navbar-tools {
-  width: 60%;
-}
-.incluso-app.profile .navbar-tools li {
-  display: inline-block;
-  height: 32px;
-  margin: 0 0 0 8px;
-  padding: 0;
-  width: auto;
-  line-height: 64px;
-}
-.incluso-app.profile .navbar-tools a {
-  display: block;
-  height: inherit;
-  margin: 0;
-  padding: 0;
-  width: inherit;
-}
-.incluso-app.profile .navbar-tools .icomoon {
-  font-size: 1.4em;
-  color: #ffffff;
+.incluso-app.profile .navbar {
+  background-color: #ee4823;
+  border-color: #ee4823;
 }
 .incluso-app.profile footer {
   padding-bottom: 30px;
@@ -369,7 +334,6 @@
 }
 .incluso-app.profile footer .block-list,
 .incluso-app.profile footer .btn-back-to-top {
-  width: 250px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -381,8 +345,7 @@
 }
 .incluso-app.profile .user-avatar figcaption {
   border: 3px solid #bcd431;
-  font-size: 1em;
-  line-height: 2em;
+  box-sizing: content-box;
 }
 /* Edit Profile */
 .incluso-app.edit-profile .list-group {
