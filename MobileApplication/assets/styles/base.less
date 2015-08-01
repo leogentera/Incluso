@@ -722,7 +722,6 @@ body {
     .alert {
         display: block; 
         height: auto; 
-        min-height: 60px;
         padding:0;
         border:none;
         .border-radius(0);
@@ -738,29 +737,48 @@ body {
         &.alert-success {
             .clr-greenMedium(background-color, 0.5);
         }
+        .alert-message {
+            position: relative;
+            margin: 0 3vw 0 0;
+            padding: 3vw 0 3vw 13vw;
+        }
         .icomoon {
             display: block;
             position: absolute;
             z-index: 1;
-            left:16px; top:16px;
+            left:16px; left: 3.3vw;
+            top:16px; top: 3.3vw;
             color:@clr-white;
-            font-size:28px;
+            font-size:28px; font-size: 6vw;
         }
-        .icon-warning {}
-        .icon-warning {}
+        .icomoon + p {
+            margin-top: 0;
+        }        
         p {
             display: block;
-            margin: 16px 0 16px 45px;
+            margin: 4vw 0 0 0;
+            padding: 1vw 0;
             color:@clr-white; 
-            font-size: 18px;
-            font-weight: 600;    
+            font-size: 4vw;
+            font-weight: 600;
         }
         ol, ul {
             display: block;
-            margin: 16px 0 16px 33px;
+            margin: 0;
+            padding: 4vw 0 0 0;
             color:@clr-white; 
-            font-size: 18px;
-            font-weight: 300;    
+            font-size: 4vw;
+            font-weight: 300; 
+            list-style-position: inside;
+
+            li {
+                color: inherit;
+                font-size: inherit;
+                text-transform: none;
+                &:first-letter {
+                    text-transform: capitalize;
+                }
+            }
         }        
     }
     /***************************************************************************/     

@@ -28,6 +28,71 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+  /* grid system override */
+  /*.input-group-addon {
+        font-size: 24px;
+    }*/
+  /* checkbox overrides */
+  /* buttons overrides and some decoration */
+}
+.incluso-app.public .container-fluid {
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+.incluso-app.public .row {
+  margin-left: -3vw;
+  margin-right: -3vw;
+}
+.incluso-app.public .col-xs-1,
+.incluso-app.public .col-sm-1,
+.incluso-app.public .col-md-1,
+.incluso-app.public .col-lg-1,
+.incluso-app.public .col-xs-2,
+.incluso-app.public .col-sm-2,
+.incluso-app.public .col-md-2,
+.incluso-app.public .col-lg-2,
+.incluso-app.public .col-xs-3,
+.incluso-app.public .col-sm-3,
+.incluso-app.public .col-md-3,
+.incluso-app.public .col-lg-3,
+.incluso-app.public .col-xs-4,
+.incluso-app.public .col-sm-4,
+.incluso-app.public .col-md-4,
+.incluso-app.public .col-lg-4,
+.incluso-app.public .col-xs-5,
+.incluso-app.public .col-sm-5,
+.incluso-app.public .col-md-5,
+.incluso-app.public .col-lg-5,
+.incluso-app.public .col-xs-6,
+.incluso-app.public .col-sm-6,
+.incluso-app.public .col-md-6,
+.incluso-app.public .col-lg-6,
+.incluso-app.public .col-xs-7,
+.incluso-app.public .col-sm-7,
+.incluso-app.public .col-md-7,
+.incluso-app.public .col-lg-7,
+.incluso-app.public .col-xs-8,
+.incluso-app.public .col-sm-8,
+.incluso-app.public .col-md-8,
+.incluso-app.public .col-lg-8,
+.incluso-app.public .col-xs-9,
+.incluso-app.public .col-sm-9,
+.incluso-app.public .col-md-9,
+.incluso-app.public .col-lg-9,
+.incluso-app.public .col-xs-10,
+.incluso-app.public .col-sm-10,
+.incluso-app.public .col-md-10,
+.incluso-app.public .col-lg-10,
+.incluso-app.public .col-xs-11,
+.incluso-app.public .col-sm-11,
+.incluso-app.public .col-md-11,
+.incluso-app.public .col-lg-11,
+.incluso-app.public .col-xs-12,
+.incluso-app.public .col-sm-12,
+.incluso-app.public .col-md-12,
+.incluso-app.public .col-lg-12 {
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 .incluso-app.public header {
   position: relative;
@@ -66,15 +131,8 @@
   margin: 0 auto;
   width: 92%;
 }
-.incluso-app.public .input-group-addon {
-  font-size: 24px;
-}
 .incluso-app.public .form-group {
   margin-bottom: 0;
-  /*margin-bottom: 0;
-        border-bottom-width:1px;
-        border-bottom-style:solid;
-        .clr-white(border-color, 0.3);*/
 }
 .incluso-app.public .checkbox {
   /*width: 66%;*/
@@ -98,15 +156,16 @@
   font-weight: 500;
   /*margin-left: 20px;*/
 }
-.incluso-app.public .btn-spacer {
-  height: 66px;
-  padding: 20px 0 0;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 20px;
-  font-weight: 500;
-}
 .incluso-app.public .btn-primary {
   text-transform: uppercase;
+}
+.incluso-app.public .btn-spacer {
+  height: auto;
+  padding: 4vw 0;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 4.1vw;
+  font-weight: 500;
 }
 .incluso-app.public .btn-facebook {
   position: relative;
@@ -120,12 +179,12 @@
   font-size: 6vw;
 }
 .incluso-app.public footer {
-  padding: 64px 0;
-  padding: 15vw 0;
+  /*padding: 64px 0; padding: 15vw 0;*/
+  padding: 12vw 0 15vw;
 }
 .incluso-app.public footer a {
   display: inline-block;
-  padding: 8px 0;
+  padding: 1.8vw 0;
   margin: 0;
   color: #ffffff;
   font-size: 20px;
@@ -149,7 +208,7 @@
 .incluso-app.public .login .input-group .input-group-addon.addon-lg {
   /*font-size: 6vw;
                 line-height: 6vw;*/
-  vertical-align: top;
+  /*vertical-align: top;  -unused */
 }
 .incluso-app.public .login .input-group .form-control {
   /*font-size: 6vw;
@@ -171,6 +230,10 @@
   background: linear-gradient(to bottom, #14181d 0%, #173a4a 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#14181d', endColorstr='#173a4a', GradientType=0);
   /* tabs */
+}
+.incluso-app.start-dashboard .navbar {
+  background-color: #ee4823;
+  border-color: #ee4823;
 }
 .incluso-app.start-dashboard .container {
   background-attachment: fixed;
@@ -215,50 +278,6 @@
 }
 .incluso-app.start-dashboard .current-satge .btn {
   text-transform: uppercase;
-}
-.incluso-app.start-dashboard .navbar-assets {
-  padding-left: 0;
-  margin-left: 42px;
-}
-.incluso-app.start-dashboard .navbar-assets .navbar-heading {
-  width: 50%;
-}
-.incluso-app.start-dashboard .navbar-assets .navbar-tools {
-  width: 50%;
-}
-.incluso-app.start-dashboard .navbar-assets .navbar-tools li {
-  height: auto;
-}
-.incluso-app.start-dashboard .navbar-toggle .icomoon {
-  font-size: 2em;
-  line-height: 2em;
-}
-.incluso-app.start-dashboard .navbar-heading {
-  width: 40%;
-  font-size: 1.4em;
-  line-height: 60px;
-}
-.incluso-app.start-dashboard .navbar-tools {
-  width: 60%;
-}
-.incluso-app.start-dashboard .navbar-tools li {
-  display: inline-block;
-  height: 32px;
-  margin: 0 0 0 8px;
-  padding: 0;
-  width: auto;
-  line-height: 64px;
-}
-.incluso-app.start-dashboard .navbar-tools a {
-  display: block;
-  height: inherit;
-  margin: 0;
-  padding: 0;
-  width: inherit;
-}
-.incluso-app.start-dashboard .navbar-tools .icomoon {
-  font-size: 1.4em;
-  color: #ffffff;
 }
 .incluso-app.start-dashboard .active .user-avatar figcaption {
   background-color: #121b1c;
@@ -468,4 +487,8 @@
 }
 .white {
   color: white !important;
+}
+.pointer,
+a {
+  cursor: pointer;
 }

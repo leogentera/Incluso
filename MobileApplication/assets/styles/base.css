@@ -77,7 +77,7 @@ body {
   -o-transition: all 300ms ease;
   transition: all 300ms ease;
   width: 80%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
   left: -80%;
@@ -778,7 +778,6 @@ body {
 .incluso-app .alert {
   display: block;
   height: auto;
-  min-height: 60px;
   padding: 0;
   border: none;
   -webkit-border-radius: 0;
@@ -796,29 +795,53 @@ body {
 .incluso-app .alert.alert-success {
   background-color: rgba(104, 189, 69, 0.5);
 }
+.incluso-app .alert .alert-message {
+  position: relative;
+  margin: 0 3vw 0 0;
+  padding: 3vw 0 3vw 13vw;
+}
 .incluso-app .alert .icomoon {
   display: block;
   position: absolute;
   z-index: 1;
   left: 16px;
+  left: 3.3vw;
   top: 16px;
+  top: 3.3vw;
   color: #ffffff;
   font-size: 28px;
+  font-size: 6vw;
+}
+.incluso-app .alert .icomoon + p {
+  margin-top: 0;
 }
 .incluso-app .alert p {
   display: block;
-  margin: 16px 0 16px 45px;
+  margin: 4vw 0 0 0;
+  padding: 1vw 0;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 4vw;
   font-weight: 600;
 }
 .incluso-app .alert ol,
 .incluso-app .alert ul {
   display: block;
-  margin: 16px 0 16px 33px;
+  margin: 0;
+  padding: 4vw 0 0 0;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 4vw;
   font-weight: 300;
+  list-style-position: inside;
+}
+.incluso-app .alert ol li,
+.incluso-app .alert ul li {
+  color: inherit;
+  font-size: inherit;
+  text-transform: none;
+}
+.incluso-app .alert ol li:first-letter,
+.incluso-app .alert ul li:first-letter {
+  text-transform: capitalize;
 }
 .incluso-app .navbar {
   position: relative;
@@ -826,9 +849,7 @@ body {
   border-radius: 0px;
 }
 .incluso-app .navbar .icomoon {
-  font-size: 20px;
   font-size: 6vw;
-  line-height: 54px;
   line-height: 18vw;
 }
 .incluso-app .step-dashboard .navbar {
@@ -855,7 +876,6 @@ body {
   position: static;
   padding: 0;
   margin: 0 2vw;
-  height: 54px;
   height: 18vw;
   width: auto;
 }
@@ -868,10 +888,8 @@ body {
   max-width: 60%;
   color: #ffffff;
   font-family: 'Play';
-  font-size: 20px;
   font-size: 6vw;
   font-weight: bold;
-  line-height: 54px;
   line-height: 18vw;
   text-overflow: ellipsis;
   white-space: nowrap;
