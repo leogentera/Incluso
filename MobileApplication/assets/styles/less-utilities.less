@@ -120,11 +120,12 @@
      -moz-box-shadow: none;
           box-shadow: none;
 }
-.box-shadow-inset-reset() {
-  -webkit-box-shadow: inset none;
-     -moz-box-shadow: inset none;
-          box-shadow: inset none;
+.box-shadow-inset-custom(@x, @y, @blur, @spread, @color) {
+	-webkit-box-shadow:inset @arguments; 
+	-moz-box-shadow:inset @arguments; 
+	box-shadow:inset @arguments;
 }
+
 .native-appearance-reset() {
         -webkit-appearance: none;
            -moz-appearance: none;
