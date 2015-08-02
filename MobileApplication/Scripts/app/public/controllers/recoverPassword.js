@@ -31,6 +31,8 @@ angular
             /* Helpers */
             var isConfirmedPasswordValid = false;
             $scope.currentPage = 1;
+            $scope.successMessage = "";
+            $scope.recoveredPassword = false;
 
             /* Watchers */
             $scope.$watch("recoverPasswordModel.confirmPassword", function(newValue, oldValue){
@@ -82,6 +84,7 @@ angular
 
                         $scope.currentPage = 2;
                         $scope.scrollToTop();
+                        $scope.successMessage = "¡Tu correo se ha enviado correctamente!";
 
                     }).error(function(data, status, headers, config) {
                         var errorMessage;
@@ -128,7 +131,13 @@ angular
 
                         console.log('successfully reset password');
 
-                        $scope.login();
+                        $scope.recoveredPassword = true;
+                        $scope.successMessage = "Se ha restablecido su contraseña, ahora puedes iniciar sesión.";
+                        $anchorScroll();
+
+                        $scope.recoverPasswordModel.password = "";
+                        $scope.recoverPasswordModel.confirmPassword = "";
+                        $scope.recoverPasswordModel.code = "";
 
                     }).error(function(data, status, headers, config) {
                         var errorMessage;
