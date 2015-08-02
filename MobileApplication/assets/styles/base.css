@@ -730,9 +730,9 @@ body {
 }
 .incluso-app .checkbox.checkbox-custom a {
   color: #ffffff;
-  text-decoration: none;
+  text-decoration: underline;
 }
-.incluso-app .checkbox.checkbox-custom a:hover {
+.incluso-app .checkbox.checkbox-custom a:active {
   text-decoration: underline;
 }
 .incluso-app .input-group {
