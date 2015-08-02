@@ -1,6 +1,6 @@
 <div class="incluso-app public" ng-app>
 
-  <article class="register">
+  <article class="register" ng-controller="publicRegisterController">
 
     <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered">
       <div class="alert-message">
@@ -19,46 +19,27 @@
       </div>
     </div>
 
-<!--     <div ng-controller="modalServiceControllerA">
-        <script type="text/ng-template" id="termsAndConditionsModal.html">
-            <div class="modal-header">
-                <h3 class="modal-title">Title</h3>
-            </div>
-            <div class="modal-body">
-                <ul>
-                    <li ng-repeat="item in items">
-                        <a ng-click="selected.item = item">{{ item }}</a>
-                    </li>
-                </ul>
-                Selected: <b>{{ selected.item }}</b>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="ok()">OK</button>
-                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-            </div>
-        </script>
-
-        <button class="btn btn-default" ng-click="open()">Open me!</button>
-        <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
-        <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
-        <button class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
-        <div ng-show="selected">Selection from a modal: {{ selected }}</div>
-    </div> -->
-
-<!--     <div ng-controller="publicRegisterController">
-      <script type="text/ng-template" id="termsAndConditionsModal.html">
+    <script type="text/ng-template" id="termsAndConditionsModal.html">
+      <div class="modal-extend-default">
         <div class="modal-header">
           <h3 class="modal-title">Términos y Condiciones</h3>
         </div>
         <div class="modal-body">
           <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
           <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+          <ol>
+            <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+            <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+            <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+            <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+            <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+          </ol>
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" ng-click="cancel()">Cerrar</button>
         </div>
-      </script>      
-    </div> -->
+      </div>
+    </script>
 
     <header>
       <figure>
@@ -90,7 +71,7 @@
                     <p class="input-group-addon" id="aliasAddOn">
                       <span class="icomoon icon-user"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg theme-default" placeholder="Usuario" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required>
+                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg theme-default" placeholder="Usuario" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required />
                   </div>
                 </div>
               </div>
@@ -103,7 +84,7 @@
                     <p class="input-group-addon" id="birthDateAddOn">
                       <span class="icomoon icon-calendar"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg theme-default" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required>
+                    <input type="text" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg theme-default" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required />
                   </div>
                 </div>
               </div>
@@ -208,7 +189,7 @@
                     <p class="input-group-addon" id="emailAddOn">
                       <span class="icomoon icon-envelope"></span>                      
                     </p>
-                    <input type="email" ng-model="registerModel.email" name="email" class="form-control form-control-lg theme-default" placeholder="Correo" aria-describedby="emailAddOn" required>
+                    <input type="email" ng-model="registerModel.email" name="email" class="form-control form-control-lg theme-default" placeholder="Correo" aria-describedby="emailAddOn" required />
                   </div>
                 </div>
               </div>
@@ -221,7 +202,7 @@
                     <p class="input-group-addon" id="accountPasswordAddOn">
                       <span class="icomoon icon-lock"></span>
                     </p>
-                    <input type="password" ng-model="registerModel.password" name="password" class="form-control form-control-lg theme-default" placeholder="Contraseña" aria-describedby="accountPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
+                    <input type="password" ng-model="registerModel.password" name="password" class="form-control form-control-lg theme-default" placeholder="Contraseña" aria-describedby="accountPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required />
                   </div>
                 </div>
               </div>
@@ -234,7 +215,7 @@
                     <p class="input-group-addon" id="confirmPasswordAddOn">
                       <span class="icomoon icon-lock"></span> 
                     </p>
-                    <input type="password" ng-model="registerModel.confirmPassword" name="confirmPassword" class="form-control form-control-lg theme-default" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required>
+                    <input type="password" ng-model="registerModel.confirmPassword" name="confirmPassword" class="form-control form-control-lg theme-default" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required />
                   </div>
                 </div>
               </div>
@@ -269,7 +250,7 @@
                     <p class="input-group-addon" id="securityAnswerAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg theme-default" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required>
+                    <input type="text" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg theme-default" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required />
                   </div>
                 </div>            
               </div>
@@ -277,31 +258,12 @@
 
             <div class="row">
               <div class="col-xs-12">
-                <div ng-controller="modalServiceControllerA">
-                  
-                  <div class="incluso-app">
-                    <script type="text/ng-template" id="termsAndConditionsModal.html">
-                      <div class="modal-header">
-                        <h3 class="modal-title">Términos y Condiciones</h3>
-                      </div>
-                      <div class="modal-body">
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-primary" ng-click="cancel()">Cerrar</button>
-                      </div>
-                    </script>      
-                  </div>                  
-                
                   <div class="checkbox checkbox-custom">
                     <label>
                       <input type="checkbox" name="termsAndConditions" ng-model="registerModel.termsAndConditions" /> 
-                      <span><a href="" ng-click="open()">Acepto los términos y condiciones</a></span>
+                      <span><a href="" ng-click="openModal()">Acepto los términos y condiciones</a></span>
                     </label>
                   </div>
-
-                </div>
               </div>
             </div>            
 

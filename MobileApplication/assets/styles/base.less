@@ -820,6 +820,31 @@ body {
 
 
     /****************************************************************************
+     $modal
+     Description: CSS overrides to bootstrap's modal hierarchy class.
+    ****************************************************************************/
+    .modal {
+        .modal-dialog {}
+        .modal-header {}
+        .modal-body {}
+        .modal-footer {}
+    }
+    .modal-extend-default {
+        .modal-title {font-size: 6vw;}
+        .modal-body {
+            max-height: 50vh;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+
+            p, ol li {
+                font-size: 4.2vw;
+            }
+        }
+    }
+    /***************************************************************************/    
+
+
+    /****************************************************************************
      $navbar
      Description: CSS overrides to bootstrap's navbar class and descendants.
     ****************************************************************************/
