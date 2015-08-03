@@ -111,7 +111,7 @@ private function forgotPassword($data)
 	        }
 	        
 	        if  ($passwordRecoveryExpiration!='' && $passwordRecoveryExpiration>round(microtime(true) * 1000)) {
-	        	return new JsonModel( $this->throwJSONError("Ha superado la cantidad de intentos para restablecer un password, intente más en una hora"));
+	        	return new JsonModel( $this->throwJSONError("Ha superado la cantidad de intentos para restablecer un password, intente en una hora"));
 	        }
 	        
 	        if ($customFields["secretquestion"]!=$data["secretquestion"] || $customFields["secretanswer"]!=$data["secretanswer"]){
