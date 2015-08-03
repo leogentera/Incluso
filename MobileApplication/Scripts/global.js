@@ -8,26 +8,29 @@ var _IsOffline = function() {
   return false;
 }
 
-var _syncAll = function($http, callback) {
+var _syncCalls = 0;
+var _syncCallback = null;
 
+var _syncAll = function($http, callback) {
+  _syncCallback = callback;
 
   console.log('is offline:' + _IsOffline());
 
   //check if the session is OnLine
   if (!_IsOffline()) {
-
-    //console.log('synching courses');
-
-      //var courses = new models.Courses();
-      //courses.storage.clear();
-      //courses.storage.sync.pull({
-      //  success: callback
-      //});
-
-    //console.log('courses synced');
-
     moodleFactory.Services.SetHttpFactory($http);
-    moodleFactory.Services.GetAsyncProfile(_getItem("userId"), callback);
+    moodleFactory.Services.GetAsyncProfile(_getItem("userId"), allServicesCallback);
+    moodleFactory.Services.GetAsyncUserCourse(_getItem("userId"), allServicesCallback);
+  }
+};
+
+var allServicesCallback = function(){
+  var _totalSyncCalls = 2;
+
+  _syncCalls = _syncCalls + 1;
+  if(_syncCalls === _totalSyncCalls){
+    console.log("allServicesCallback");
+    _syncCallback();
   }
 };
 

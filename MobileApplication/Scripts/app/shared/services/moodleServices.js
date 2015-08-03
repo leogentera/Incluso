@@ -13,6 +13,10 @@
             _putAsyncData("profile", data, API_RESOURCE.format('user/' + userId), successCallback, errorCallback);
         };
 
+        var _getAsyncUserCourse = function(userId, successCallback, errorCallback){
+            _getAsyncData("usercourse", API_RESOURCE.format('usercourse/' + userId), successCallback, errorCallback);
+        };
+
         var _getCacheObject = function(key){
             return localStorage.getItem(key);
         };
@@ -67,6 +71,7 @@
         return {
             GetAsyncProfile: _getAsyncProfile,
             PutAsyncProfile: _putAsyncProfile,
+            GetAsyncUserCourse: _getAsyncUserCourse,
             SetHttpFactory: _setHttpFactory,
             GetCacheObject: _getCacheObject
         };
