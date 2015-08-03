@@ -348,6 +348,14 @@
 
 /* Step dashboard*/
 .incluso-app.step-dashboard {
+    background: -moz-radial-gradient(center, ellipse cover,  #1f2733 0%, #141921 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#1f2733), color-stop(100%,#141921));
+    background: -webkit-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+    background: radial-gradient(ellipse at center,  #1f2733 0%,#141921 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f2733', endColorstr='#141921',GradientType=1 );                
+   
     .navbar{     
         background-color: @clr-bluenav;
         border-color: @clr-bluenav;
@@ -396,7 +404,48 @@
         background:none #0A9648;
     }
 }
+.incluso-app.notif-dashboard{
+    background: -moz-radial-gradient(center, ellipse cover,  #1f2733 0%, #141921 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#1f2733), color-stop(100%,#141921));
+    background: -webkit-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+    background: radial-gradient(ellipse at center,  #1f2733 0%,#141921 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f2733', endColorstr='#141921',GradientType=1 );                
+               
+    .navbar{     
+        background-color: @clr-orangeLighter;
+        border-color: @clr-orangeLighter;
+    }
+    #controller{
+        .owl-item{
+            text-align:center;
+            border: 1px solid @clr-greenicon;
+            font-weight:lighter;
+            color: @clr-greenicon;
+            cursor: pointer;
+            &.synced{
+                background-color: @clr-greenicon;
+                color: white;
+            }
+            &:first-child{
+                 border-radius: 5px 0 0 5px;
+            }
+            &:last-child{
+                 border-radius: 0 5px 5px 0;
+            }
+        }
+    }
+}
 .incluso-app.score-dashboard{
+    background: -moz-radial-gradient(center, ellipse cover,  #1f2733 0%, #141921 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#1f2733), color-stop(100%,#141921));
+    background: -webkit-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+    background: radial-gradient(ellipse at center,  #1f2733 0%,#141921 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f2733', endColorstr='#141921',GradientType=1 );                
+   
     .navbar{     
         background-color: @clr-orangeLighter;
         border-color: @clr-orangeLighter;
@@ -412,18 +461,6 @@
             padding: 7vw;
         }  
     }
-    .starcontain{
-        .part{
-            div{
-                display: block;
-                font-size:86%;
-
-            }
-            .sm-pill{
-                display: inline-flex;
-            }
-        }
-    }
 }
 .incluso-app.show-nav #menuton{
     color: rgba(0,0,0,.2);
@@ -434,11 +471,26 @@
         border-color: rgba(0, 0, 0, 0.2);
     }
 }
+.starcontain{
+    .part{
+        div{
+            display: block;
+            font-size:86%;
+
+        }
+        .sm-pill{
+            display: inline-flex;
+        }
+    }
+}
 .green{           
     color: #0f9847 !important;                
 }
 .lightgreen{
     color: @clr-green !important;
+}
+.sosogreen{
+    color:@clr-greenicon !important;
 }
 .red{
     color:#ef4823 !important;
@@ -446,7 +498,19 @@
 .white{
     color:white !important;
 }
+.gray{
+    color:@clr-gray-platinum !important;
+}
+.pink{
+    color:@clr-pinkmenu !important;
+}
 .pointer, a{
     cursor: pointer;
+}
+.no-padding{
+    padding:0 !important;
+}
+.bord{
+    border: 1px solid @clr-greenicon;
 }
 
