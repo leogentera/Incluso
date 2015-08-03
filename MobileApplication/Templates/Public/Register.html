@@ -71,7 +71,7 @@
                     <p class="input-group-addon" id="aliasAddOn">
                       <span class="icomoon icon-user"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg theme-default" placeholder="Usuario" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required />
+                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg theme-default" placeholder="Alias" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required />
                   </div>
                 </div>
               </div>
@@ -84,7 +84,7 @@
                     <p class="input-group-addon" id="birthDateAddOn">
                       <span class="icomoon icon-calendar"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg theme-default" placeholder="Fecha de Nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required />
+                    <input type="text" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg theme-default" placeholder="Fecha de nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required />
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@
                         <option value="Male">Masculino</option>
                         <option value="Female">Femenino</option> 
                       </select>
-                      <span class="custom-placeholder form-control-lg">Género</span>
+                      <span class="custom-placeholder form-control-lg">Sexo</span>
                     </p>
                   </div>
                 </div>
@@ -236,7 +236,7 @@
                         <option value="Personaje favorito">Personaje favorito</option> 
                         <option value="Banda musical favorita">Banda musical favorita</option> 
                       </select>
-                      <span class="custom-placeholder form-control-lg">Pregunta de Seguridad</span>
+                      <span class="custom-placeholder form-control-lg">Pregunta de seguridad</span>
                     </p>
                   </div>
                 </div>
@@ -292,7 +292,7 @@
                 <a type="button" ng-click="login()" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</a>
               </div>  
               <div class="col-xs-12" ng-show="isRegistered">
-                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="login()">Entrar</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="autologin()">Entrar</button>
               </div>       
             </div>          
 
