@@ -21,6 +21,7 @@
 /* Custom Functions */
 /* Public Pages */
 .incluso-app.public {
+  min-height: 90vh;
   background-attachment: fixed;
   background-image: url('../images/bg-sm-public-page.jpg');
   background-position: center -23px;
@@ -130,6 +131,12 @@
 .incluso-app.public section {
   margin: 0 auto;
   width: 92%;
+}
+.incluso-app.public .exit-message {
+  margin: 6vw auto;
+  width: 90%;
+  color: #ffffff;
+  font-size: 6vw;
 }
 .incluso-app.public .form-group {
   margin-bottom: 0;

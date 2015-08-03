@@ -570,13 +570,28 @@ body {
                 line-height: 5.6vw;
             }
         }        
-        .form-control.ng-dirty + .custom-placeholder {
+        /*.form-control[data-show-placeholder="false"] + .custom-placeholder {
             display: none;
         }
-        .form-control.ng-pristine + .custom-placeholder {
+        .ng-dirty[data-show-placeholder="false"] + .custom-placeholder {
+            display: none; 
+        }        
+        .form-control[data-show-placeholder="true"] + .custom-placeholder {
             display: block;
-        }
+        }*/
+
+
+        .form-control.ng-dirty + .custom-placeholder {
+            display: none; 
+        } 
         .theme-default.ng-pristine + .custom-placeholder {
+            color:@clr-white;
+            font-weight:100; 
+        }
+
+        /* reset model */
+        .form-control.ng-dirty[data-show-placeholder="true"] + .custom-placeholder {
+            display: block;
             color:@clr-white;
             font-weight:100; 
         }

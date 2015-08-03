@@ -646,6 +646,16 @@ body {
 }
 .incluso-app .custom-placeholder-wrapper {
   position: relative;
+  /*.form-control[data-show-placeholder="false"] + .custom-placeholder {
+            display: none;
+        }
+        .ng-dirty[data-show-placeholder="false"] + .custom-placeholder {
+            display: none; 
+        }        
+        .form-control[data-show-placeholder="true"] + .custom-placeholder {
+            display: block;
+        }*/
+  /* reset model */
 }
 .incluso-app .custom-placeholder-wrapper .custom-placeholder {
   position: absolute;
@@ -668,10 +678,12 @@ body {
 .incluso-app .custom-placeholder-wrapper .form-control.ng-dirty + .custom-placeholder {
   display: none;
 }
-.incluso-app .custom-placeholder-wrapper .form-control.ng-pristine + .custom-placeholder {
-  display: block;
-}
 .incluso-app .custom-placeholder-wrapper .theme-default.ng-pristine + .custom-placeholder {
+  color: #ffffff;
+  font-weight: 100;
+}
+.incluso-app .custom-placeholder-wrapper .form-control.ng-dirty[data-show-placeholder="true"] + .custom-placeholder {
+  display: block;
   color: #ffffff;
   font-weight: 100;
 }
