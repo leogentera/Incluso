@@ -435,6 +435,13 @@
   font-size: 11vw;
   padding: 7vw;
 }
+.incluso-app.score-dashboard .starcontain .part div {
+  display: block;
+  font-size: 86%;
+}
+.incluso-app.score-dashboard .starcontain .part .sm-pill {
+  display: inline-flex;
+}
 .incluso-app.show-nav #menuton {
   color: rgba(0, 0, 0, 0.2);
 }

@@ -654,6 +654,10 @@
     background: radial-gradient(ellipse at center, #1f2733 0%, #141921 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1f2733', endColorstr='#141921', GradientType=1);
   }
+  .incluso-app .part .date {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 70%;
+  }
   .incluso-app .part .icomoon {
     color: #e1e455;
     font-size: 150%;
@@ -688,6 +692,15 @@
   }
   .incluso-app .part.part2 .icomoon {
     font-size: 100%;
+  }
+  .incluso-app .showmore {
+    background: rgba(28, 28, 28, 0.5) none repeat scroll 0 0;
+    color: #08b290;
+    justify-content: flex-start;
+    font-size: 4.5vw;
+  }
+  .incluso-app .showmore i.icomoon {
+    color: #08b290;
   }
   .incluso-app .ordeon {
     display: none;
@@ -802,6 +815,9 @@
     transition: opacity 400ms ease-in;
     pointer-events: none;
   }
+  .incluso-app .modalDialog .txt-renglon {
+    color: #ee4823;
+  }
   .incluso-app .modalDialog:target {
     opacity: 1;
     pointer-events: auto;
@@ -845,6 +861,42 @@
   }
   .incluso-app .close:hover {
     border-bottom: 10px solid black;
+  }
+  .incluso-app .sharer {
+    display: inline-block;
+    height: 15vw;
+    margin: 6vw 0;
+    position: relative;
+  }
+  .incluso-app .sharer .icon {
+    background-color: #bcd431;
+    border: 2px solid gray;
+    border-radius: 50%;
+    bottom: 0;
+    font-size: 7vw;
+    height: 12vw;
+    left: -4vw;
+    line-height: 11vw;
+    padding: 0vw;
+    position: absolute;
+    top: 0;
+    width: 12vw;
+    color: black;
+  }
+  .incluso-app .sharer .txt {
+    background-color: gray;
+    border-radius: 100px;
+    color: white;
+    line-height: 8vw;
+    margin: 2vw 0;
+    padding: 0 3vw 0 9vw;
+  }
+  .incluso-app .sharer.active .icon {
+    background-color: #d43f27;
+    color: white;
+  }
+  .incluso-app .sharer.active .txt {
+    background-color: #444d53;
   }
   .incluso-app .user-points {
     display: inline-block;
