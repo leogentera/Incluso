@@ -12,6 +12,9 @@
 
             $scope.Math = window.Math;
 
+            $scope.user = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
+            $scope.usercourse = JSON.parse(moodleFactory.Services.GetCacheObject("usercourse"));
+            $scope.course = JSON.parse(moodleFactory.Services.GetCacheObject("course"));
             getDataAsync();
 
             //$scope.setData = function (data) {
@@ -48,9 +51,8 @@
             }
 
             function getDataAsync() {
-                $scope.user = JSON.parse(localStorage.getItem("user"));
-                $scope.course = JSON.parse(localStorage.getItem("course"));
-                $scope.usercourse = JSON.parse(localStorage.getItem("course"));
+                //$scope.course = JSON.parse(localStorage.getItem("course"));
+                //$scope.usercourse = JSON.parse(localStorage.getItem("usercourse"));
 
                 $scope.currentStage = getCurrentStage();
             }
@@ -58,18 +60,17 @@
             function getCurrentStage(){
                 var currentStage = 1;
 
-                return currentStage;
-
                 for(var i = 0; i < $scope.usercourse.stages.length; i++){
                     var uc = $scope.usercourse.stages[i];
 
-                    if(uc.status === 0){
-                        return;
+                    $scope.stage = uc;
+                    if(uc.stageStatus === 0){
+                        break;
                     }
 
                     currentStage++;
                 }
 
-                
+                return currentStage;
             }
         }]);
