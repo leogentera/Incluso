@@ -203,15 +203,28 @@ body {
         margin:0 10%;
         text-transform: uppercase;
     }
+
     .btn-primary {
         .gradient-btn-primary();
         color:@clr-white;
+
+        &:active {
+            background: none darken(@clr-btn-primary-base, 15%);
+            .box-shadow-inset-custom(0, 0, 3vw, 0.6vw, darken(@clr-btn-primary-base, 32%));
+            outline: none;
+        }
     }
     .btn-facebook {
         .gradient-btn-facebook();
         color:@clr-white;
 
-        .icon-facebook{
+        &:active {
+            background: none darken(@clr-btn-facebook-base, 15%);
+            .box-shadow-inset-custom(0, 0, 3vw, 0.6vw, darken(@clr-btn-facebook-base, 15%));
+            outline: none;
+        }
+
+        .icon-facebook {
             float: left;
             font-size: 28px;
         }
@@ -219,7 +232,12 @@ body {
     .btn-default.btn-transparent {
         background: transparent;
         color:@clr-white;
-        font-size: 4.2vw;        
+        font-size: 4.2vw;
+
+        &:active {
+            .box-shadow-reset();
+            text-decoration: underline;
+        }
     }
     a.btn-transparent:hover {
         text-decoration: underline;
@@ -246,11 +264,11 @@ body {
         text-align: left;
     }
     .btn-lg, .btn-group-lg > .btn {
-        padding-top: 15px;
-        padding-bottom: 16px;
-        font-size: 1.2em;
-        letter-spacing: 1px;
-        line-height: 24px;
+        padding-top: 4vw;
+        padding-bottom: 4vw;
+        font-size: 4.8vw;
+        letter-spacing: 0.1em;
+        line-height: 5vw;
     }
 
 
@@ -265,7 +283,7 @@ body {
         padding:4vw 0;
         font-size: 4.8vw;
         line-height: 5vw;
-    }      
+    }
     /***************************************************************************/
 
 
@@ -388,13 +406,18 @@ body {
             display: inline-block;
             float: left;
             width: 75%;
-            height: 55px;
-            max-height: 55px;
+            height: 55px; height: auto;
 
             &:first-child {
                 width: 20%;
                 margin-right: 5%;
             }
+
+            .icomoon {
+                font-size: smaller;
+                line-height: 1;
+            }
+
         }
     }
     /***************************************************************************/ 
@@ -626,11 +649,12 @@ body {
             }
             a {
                 color: @clr-white;
-                text-decoration: none;
+                text-decoration: underline;
 
-                &:hover {
+                &:active {
                     text-decoration: underline;
                 }
+
             }
         }
     }
@@ -796,6 +820,31 @@ body {
 
 
     /****************************************************************************
+     $modal
+     Description: CSS overrides to bootstrap's modal hierarchy class.
+    ****************************************************************************/
+    .modal {
+        .modal-dialog {}
+        .modal-header {}
+        .modal-body {}
+        .modal-footer {}
+    }
+    .modal-extend-default {
+        .modal-title {font-size: 6vw;}
+        .modal-body {
+            max-height: 50vh;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+
+            p, ol li {
+                font-size: 4.2vw;
+            }
+        }
+    }
+    /***************************************************************************/    
+
+
+    /****************************************************************************
      $navbar
      Description: CSS overrides to bootstrap's navbar class and descendants.
     ****************************************************************************/
@@ -867,7 +916,13 @@ body {
             margin: 0 0 0 8px; 
             margin: 0 0 0 .5vw;
             width:9vw; 
-            height: 9vw;     
+            height: 9vw;
+
+            &.active {
+                .icomoon {
+                    color: darken(@clr-orange, 15%);
+                }
+            }
         }
         a {
             color: white;
@@ -1120,7 +1175,7 @@ body {
             }
         }
         .btn {
-            margin-bottom:15px;
+            margin-bottom: 1.5vw;
         }
         /*.button-group {
             display: block;

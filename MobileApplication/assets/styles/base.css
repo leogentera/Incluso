@@ -148,6 +148,11 @@ body {
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
+     $modal
+     Description: CSS overrides to bootstrap's modal hierarchy class.
+    ****************************************************************************/
+  /***************************************************************************/
+  /****************************************************************************
      $navbar
      Description: CSS overrides to bootstrap's navbar class and descendants.
     ****************************************************************************/
@@ -313,6 +318,13 @@ body {
   /* W3C */
   color: #ffffff;
 }
+.incluso-app .btn-primary:active {
+  background: none #ba2908;
+  -webkit-box-shadow: inset 0 0 3vw 0.6vw #671705;
+  -moz-box-shadow: inset 0 0 3vw 0.6vw #671705;
+  box-shadow: inset 0 0 3vw 0.6vw #671705;
+  outline: none;
+}
 .incluso-app .btn-facebook {
   background: #2b5fa9;
   /* Old browsers */
@@ -330,6 +342,13 @@ body {
   /* W3C */
   color: #ffffff;
 }
+.incluso-app .btn-facebook:active {
+  background: none #1b3d6c;
+  -webkit-box-shadow: inset 0 0 3vw 0.6vw #1b3d6c;
+  -moz-box-shadow: inset 0 0 3vw 0.6vw #1b3d6c;
+  box-shadow: inset 0 0 3vw 0.6vw #1b3d6c;
+  outline: none;
+}
 .incluso-app .btn-facebook .icon-facebook {
   float: left;
   font-size: 28px;
@@ -338,6 +357,12 @@ body {
   background: transparent;
   color: #ffffff;
   font-size: 4.2vw;
+}
+.incluso-app .btn-default.btn-transparent:active {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  text-decoration: underline;
 }
 .incluso-app a.btn-transparent:hover {
   text-decoration: underline;
@@ -367,11 +392,11 @@ body {
 }
 .incluso-app .btn-lg,
 .incluso-app .btn-group-lg > .btn {
-  padding-top: 15px;
-  padding-bottom: 16px;
-  font-size: 1.2em;
-  letter-spacing: 1px;
-  line-height: 24px;
+  padding-top: 4vw;
+  padding-bottom: 4vw;
+  font-size: 4.8vw;
+  letter-spacing: 0.1em;
+  line-height: 5vw;
 }
 .incluso-app .btn-xl {
   height: auto;
@@ -492,11 +517,15 @@ body {
   float: left;
   width: 75%;
   height: 55px;
-  max-height: 55px;
+  height: auto;
 }
 .incluso-app .button-group .btn:first-child {
   width: 20%;
   margin-right: 5%;
+}
+.incluso-app .button-group .btn .icomoon {
+  font-size: smaller;
+  line-height: 1;
 }
 .incluso-app .form-control {
   -webkit-appearance: none;
@@ -706,9 +735,9 @@ body {
 }
 .incluso-app .checkbox.checkbox-custom a {
   color: #ffffff;
-  text-decoration: none;
+  text-decoration: underline;
 }
-.incluso-app .checkbox.checkbox-custom a:hover {
+.incluso-app .checkbox.checkbox-custom a:active {
   text-decoration: underline;
 }
 .incluso-app .input-group {
@@ -854,6 +883,18 @@ body {
 .incluso-app .alert ul li:first-letter {
   text-transform: capitalize;
 }
+.incluso-app .modal-extend-default .modal-title {
+  font-size: 6vw;
+}
+.incluso-app .modal-extend-default .modal-body {
+  max-height: 50vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.incluso-app .modal-extend-default .modal-body p,
+.incluso-app .modal-extend-default .modal-body ol li {
+  font-size: 4.2vw;
+}
 .incluso-app .navbar {
   position: relative;
   margin-bottom: 0;
@@ -924,6 +965,9 @@ body {
   margin: 0 0 0 .5vw;
   width: 9vw;
   height: 9vw;
+}
+.incluso-app .navbar-tools li.active .icomoon {
+  color: #bf2a09;
 }
 .incluso-app .navbar-tools a {
   color: white;
@@ -1138,7 +1182,7 @@ body {
   color: #ffffff;
 }
 .incluso-app .pages .btn {
-  margin-bottom: 15px;
+  margin-bottom: 1.5vw;
 }
 .incluso-app .footer {
   background-image: url('../images/bg-footer-ship.gif');
