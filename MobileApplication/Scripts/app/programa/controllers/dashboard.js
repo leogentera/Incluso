@@ -58,6 +58,8 @@
             function getCurrentStage(){
                 var currentStage = 1;
 
+                return currentStage;
+
                 for(var i = 0; i < $scope.usercourse.stages.length; i++){
                     var uc = $scope.usercourse.stages[i];
 
@@ -68,6 +70,6 @@
                     currentStage++;
                 }
 
-                return currentStage;
+                
             }
         }]);
