@@ -102,6 +102,9 @@ class UserCourseController extends AbstractRestfulJsonController {
         if (strpos($response, "exception") !== false){
             return 1;
         }else{
+            if(count($json)==0){
+                return 1;
+            }            
             return $json[0]["firsttime"];
         }
     }
