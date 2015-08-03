@@ -916,7 +916,13 @@ body {
             margin: 0 0 0 8px; 
             margin: 0 0 0 .5vw;
             width:9vw; 
-            height: 9vw;     
+            height: 9vw;
+
+            &.active {
+                .icomoon {
+                    color: darken(@clr-orange, 15%);
+                }
+            }
         }
         a {
             color: white;
