@@ -69,6 +69,14 @@ $functions = array(
                 'description' => 'Returns a list of forum posts for a discussion..',
                 'type'        => 'read',
         ),
+        
+        'extra_service_get_admin_emails' => array(
+        		'classname'   => 'admin_services',
+        		'methodname'  => 'get_admin_emails',
+        		'classpath'   => 'local/extra_services/externallib.php',
+        		'description' => 'Returns a list with all the admin emails',
+        		'type'        => 'read',
+        ),
 );
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
 $services = array(
@@ -83,7 +91,8 @@ $services = array(
                                         'extra_service_forum_delete_forum_discussion_post', 
                                         'extra_service_forum_like_forum_discussion_post',
                                         'extra_service_forum_unlike_forum_discussion_post',
-                                        'extra_service_forum_get_forum_discussion_posts'
+                                        'extra_service_forum_get_forum_discussion_posts',
+                						'extra_service_get_admin_emails'
                                         ),
                 'restrictedusers' => 0,
                 'enabled'=>1,
