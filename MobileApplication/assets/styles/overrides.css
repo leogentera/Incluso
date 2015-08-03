@@ -528,3 +528,10 @@ a {
 .bord {
   border: 1px solid #08b190;
 }
+section.part.inbloq {
+  display: inline-block;
+}
+section.part.inbloq div {
+  width: 100%;
+  text-align: justify;
+}

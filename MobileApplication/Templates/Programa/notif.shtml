@@ -60,9 +60,9 @@
   <article class="starway">
 
 
-<section class="part">
-<div><i class="icomoon icon-star fl-left txt-bigger"></i>Has ganado +130 estrellas</div>
-<div class="up-line">Inteligencia Musical: Persigue tu sueño y continúa con el ritmo en tu vida, nosotros te apoyámos.
+<section class="part inbloq">
+<div><i class="icomoon 	icon-earned-stars fl-left txt-bigger"></i>Has ganado +130 estrellas</div><hr>
+<div>Inteligencia Musical: Persigue tu sueño y continúa con el ritmo en tu vida, nosotros te apoyámos.
 <br/><br/>
 Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis apibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante est non.</div>
 </section>
