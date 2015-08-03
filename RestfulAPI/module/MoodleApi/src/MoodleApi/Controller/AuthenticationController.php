@@ -97,7 +97,7 @@ private function forgotPassword($data)
     		
     		$recoverycode= rand(100000, 999999);
 
-    		$codeexpirationdate=round(microtime(true) * 1000)+86400000;
+    		$codeexpirationdate=round(microtime(true) * 1000)+1800000;
     		
     		$id=$json[0]['id'];
     		
@@ -105,8 +105,30 @@ private function forgotPassword($data)
 	        	$customFields[$json[0]['customfields'][$i]['name']]=$json[0]['customfields'][$i]['value'];
 	        }
 	        
+	        $passwordRecoveryExpiration='';
+	        if (key_exists('passwordRecoveryExpiration', $customFields)){
+	        	$passwordRecoveryExpiration=$customFields['passwordRecoveryExpiration'];
+	        }
+	        
+	        if  ($passwordRecoveryExpiration!='' && $passwordRecoveryExpiration>round(microtime(true) * 1000)) {
+	        	return new JsonModel( $this->throwJSONError("Ha superado la cantidad de intentos para restablecer un password, intente más en una hora"));
+	        }
+	        
 	        if ($customFields["secretquestion"]!=$data["secretquestion"] || $customFields["secretanswer"]!=$data["secretanswer"]){
-	        	        	
+	        	//We save the tries
+	        	$currentTries=0;
+	        	$passwordRecoveryFirstTryDate='';
+	        	if (key_exists('passwordRecoveryTries', $customFields)){
+	        		$currentTries=$customFields['passwordRecoveryTries'];
+	        	}
+	        	
+	        	if (key_exists('passwordRecoveryFirstTryDate', $customFields)){
+	        		$passwordRecoveryFirstTryDate=$customFields['passwordRecoveryFirstTryDate'];
+	        	}
+	        	
+	        	
+	        	$this->saveRecoveryTries($id, $currentTries, $passwordRecoveryFirstTryDate);
+	        	
 	        	return new JsonModel( $this->throwJSONError("La pregunta o la respuesta secreta son incorrectas"));
 	        }
     		
@@ -197,6 +219,7 @@ private function forgotPassword($data)
     	 
     	if (strpos($response, "exception") !== false)
     	{
+    		
     		return new JsonModel( $this->throwJSONError("El usuario no esta registrado"));
     	}
     	else
@@ -220,10 +243,10 @@ private function forgotPassword($data)
     		}
     	
     		if($recoverycode==""){
-    			return new JsonModel( $this->throwJSONError(mb_convert_encoding("No se ha solicitado un cambio de contraseña", "UTF-8")));
+    			return new JsonModel( $this->throwJSONError("No se ha solicitado un cambio de contraseña"));
     		}
     		if($codeexpirationdate<round(microtime(true) * 1000)){
-    			return new JsonModel( $this->throwJSONError(mb_convert_encoding("El codigo ya expiró", "UTF-8")));
+    			return new JsonModel( $this->throwJSONError("El código ha expirado"));
     		}
     		if($recoverycode!=$data['recoverycode']){
     			return new JsonModel( $this->throwJSONError("El código ingresado es incorrecto"));
@@ -261,6 +284,45 @@ private function forgotPassword($data)
 	    	
 	    }
 
+    }
+    
+    function saveRecoveryTries($id, $currentTries, $passwordRecoveryFirstTryDate){
+    	$isFirstTime=$currentTries==0;
+    	$tries= $currentTries + 1;
+    	$passwordRecoveryExpiration='';
+    	
+    	
+    	if ($isFirstTime){
+    		$passwordRecoveryFirstTryDate=round(microtime(true) * 1000);
+    	}
+    	elseif($passwordRecoveryFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+    	
+    		$passwordRecoveryFirstTryDate=round(microtime(true) * 1000); //we reset the code
+    		$tries= 1;
+    		$passwordRecoveryExpiration='';
+    	}
+    	
+    	
+    	if ($tries==3){
+    		$passwordRecoveryExpiration=round(microtime(true) * 1000)+3600000 ;
+    		$tries='0';
+    		$passwordRecoveryFirstTryDate='';
+    	}
+    	$url = $this->getConfig()['MOODLE_API_URL'].'&users[0][id]=%s'.
+    			'&users[0][customfields][0][type]=passwordRecoveryTries&users[0][customfields][0][value]=%s'.
+    		    '&users[0][customfields][1][type]=passwordRecoveryFirstTryDate&users[0][customfields][1][value]='.$passwordRecoveryFirstTryDate.
+    		    '&users[0][customfields][2][type]=passwordRecoveryExpiration&users[0][customfields][2][value]='.$passwordRecoveryExpiration ;
+    	 
+    	
+    	$url = sprintf($url, $this->getToken(), "core_user_update_users", $id, $tries);
+    	 
+    	$response = file_get_contents($url);
+    	if ($response=="null"){
+    		return "";
+    	}
+    	else{
+    		return $response;
+    	}
     }
 }
 
