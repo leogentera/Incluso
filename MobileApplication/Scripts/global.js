@@ -20,12 +20,18 @@ var _syncAll = function($http, callback) {
   if (!_IsOffline()) {
     moodleFactory.Services.SetHttpFactory($http);
     moodleFactory.Services.GetAsyncProfile(_getItem("userId"), allServicesCallback);
-    moodleFactory.Services.GetAsyncUserCourse(_getItem("userId"), allServicesCallback);
+    moodleFactory.Services.GetAsyncUserCourse(_getItem("userId"), getAsyncUserCourseCallBack);
   }
 };
 
+var getAsyncUserCourseCallBack = function(){
+  allServicesCallback();
+  var userCourse = JSON.parse(moodleFactory.Services.GetCacheObject("usercourse"));
+  moodleFactory.Services.GetAsyncCourse(userCourse.courseId, allServicesCallback);
+};
+
 var allServicesCallback = function(){
-  var _totalSyncCalls = 2;
+  var _totalSyncCalls = 3;
 
   _syncCalls = _syncCalls + 1;
   if(_syncCalls === _totalSyncCalls){
