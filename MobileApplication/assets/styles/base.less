@@ -162,6 +162,12 @@ body {
             &:focus, &:hover{
                 background-color: rgba(255, 255, 255, 0.28);
             }
+            & > .icomoon {
+                margin-right: 1vw;
+            }  
+            & > .glyphicon {
+                margin-right: 1vw;
+            } 
         }
         a.menu-blue{
             color: @clr-bluemenu;
@@ -314,11 +320,11 @@ body {
         .icomoon {
             color: @clr-blue;
             font-size: 5vw;
-            line-height: 10vw;
+            line-height: 9.6vw;
         }
         &>span {
             color: @clr-white;
-            font-size: 1em; 
+            font-size: 3.3vw;
             font-weight: 700;
             line-height: 1;
         }
@@ -347,6 +353,14 @@ body {
             }
             .btn-icon {
                 right: 0;                        
+            }
+        }
+        &.active {
+            .btn-icon {
+                background-color: @clr-orange;
+                .icomoon {
+                    color: @clr-white;
+                }
             }
         }
     }
@@ -1038,7 +1052,7 @@ body {
             .list-group-item {
                 padding:0;
                 margin:12px 0 0 0;
-                .border-radius(9px);
+                .border-radius(1.5vw);
 
                 a {
                     display: block;
