@@ -3,8 +3,6 @@
 
     moodleFactory.Services = (function(){
 
-        var httpFactory = null;
-
         var _getAsyncProfile = function(userId, successCallback, errorCallback){
             _getAsyncData("profile", API_RESOURCE.format('user/' + userId), successCallback, errorCallback);
         };
@@ -26,7 +24,7 @@
         };
 
         var _getAsyncData = function(key, url, successCallback, errorCallback){
-            httpFactory({
+            _httpFactory({
                 method: 'GET',
                 url: url, 
                 headers: {'Content-Type': 'application/json'},
@@ -39,7 +37,7 @@
         };
 
         var _postAsyncData = function(key, data, url, successCallback, errorCallback){
-            httpFactory({
+            _httpFactory({
                 method: 'POST',
                 url: url,
                 data: data,
@@ -54,7 +52,7 @@
         };
 
         var _putAsyncData = function(key, dataModel, url, successCallback, errorCallback){
-            httpFactory({
+            _httpFactory({
                 method: 'PUT',
                 url: url,
                 data: dataModel,
@@ -68,16 +66,11 @@
             });
         };
 
-        var _setHttpFactory = function(http){
-            httpFactory = http;
-        };
-
         return {
             GetAsyncProfile: _getAsyncProfile,
             PutAsyncProfile: _putAsyncProfile,
             GetAsyncUserCourse: _getAsyncUserCourse,
             GetAsyncCourse: _getAsyncCourse,
-            SetHttpFactory: _setHttpFactory,
             GetCacheObject: _getCacheObject
         };
     })();

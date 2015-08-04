@@ -10,6 +10,7 @@ angular
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
             /* $routeParams.stageId */
+            _httpFactory = $http;
 
             $scope.Math = window.Math;
 

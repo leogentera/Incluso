@@ -10,40 +10,16 @@
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
 
+            _httpFactory = $http;
+
             $scope.Math = window.Math;
 
             $scope.user = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
             $scope.usercourse = JSON.parse(moodleFactory.Services.GetCacheObject("usercourse"));
             $scope.course = JSON.parse(moodleFactory.Services.GetCacheObject("course"));
+            $scope.currentStage = JSON.parse(moodleFactory.Services.GetCacheObject("currentStage"));
+            $scope.stage = JSON.parse(moodleFactory.Services.GetCacheObject("stage"));
             getDataAsync();
-
-            //$scope.setData = function (data) {
-            //    setTimeout(function () {
-            //        console.log('response length:' + data.length);
-            //        $scope.courses = data.toJSON();
-            //        $scope.course = _.findWhere($scope.courses, { sid: _courseId });
-            //       if (!$scope.$$phase) {
-            //            $scope.$apply();
-            //        }
-            //    }, 1000);
-            //};
-
-            //$scope.getDataAsync = function () {
-            //
-            //    console.log('getting courses');
-            //
-            //    var courses = new models.Courses();
-            //
-            //        courses.fetch({
-            //           local: true,
-            //            success: function (data) {
-            //                console.log('courses are back');
-            //                _spinner.loading = false;
-            //                $scope.setData(data);
-            //
-            //            }
-            //        });
-            //};
 
             $scope.logout = function () {
                 localStorage.removeItem("CurrentUser");
@@ -55,10 +31,22 @@
             };
 
             function getDataAsync() {
-                //$scope.course = JSON.parse(localStorage.getItem("course"));
-                //$scope.usercourse = JSON.parse(localStorage.getItem("usercourse"));
+                moodleFactory.Services.GetAsyncUserCourse(_getItem("userId"), getDataAsyncCallback, errorCallback);
+            }
 
-                $scope.currentStage = getCurrentStage();
+            function getDataAsyncCallback(){
+                $scope.usercourse = JSON.parse(localStorage.getItem("usercourse"));
+
+                moodleFactory.Services.GetAsyncCourse($scope.usercourse.courseId, function(){
+                    $scope.course = JSON.parse(localStorage.getItem("course"));
+                    $scope.currentStage = getCurrentStage();
+
+                    localStorage.setItem("currentStage", $scope.currentStage);
+                }, errorCallback);
+            }
+
+            function errorCallback(data){
+                console.log(data);
             }
 
             function getCurrentStage(){
@@ -67,6 +55,7 @@
                 for(var i = 0; i < $scope.usercourse.stages.length; i++){
                     var uc = $scope.usercourse.stages[i];
 
+                    localStorage.setItem("stage", uc);
                     $scope.stage = uc;
                     if(uc.stageStatus === 0){
                         break;

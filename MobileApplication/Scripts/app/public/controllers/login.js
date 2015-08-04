@@ -12,6 +12,8 @@ angular
         '$anchorScroll',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll) {
 
+            _httpFactory = $http;
+
             $scope.scrollToTop();
 
             /* ViewModel */
@@ -95,7 +97,7 @@ angular
                         console.log('preparing for syncAll');
 
                         //succesful credentials
-                        _syncAll($http, function() {
+                        _syncAll(function() {
                             console.log('came back from redirecting...');
                             $timeout(
                                 function() {
