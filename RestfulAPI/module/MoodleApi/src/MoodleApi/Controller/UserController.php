@@ -132,7 +132,6 @@ class UserController extends AbstractRestfulJsonController{
     
     	if (strpos($response, "exception") !== false )
     	{
-    		var_dump($response);
     		return -1;
     	}
     	return $json_user['id'];
@@ -206,7 +205,6 @@ class UserController extends AbstractRestfulJsonController{
     	
     	$response = file_get_contents($url);
     	$json = json_decode($response,true);
-    	//var_dump($response);
     	if (strpos($response, "exception") !== false)
     	{
     		return array();
@@ -237,7 +235,6 @@ class UserController extends AbstractRestfulJsonController{
     
     	if (strpos($response, "exception") !== false)
     	{
-    		var_dump($response);
     		return -1;
     	}
     	// Good
