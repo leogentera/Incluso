@@ -21,6 +21,7 @@
 /* Custom Functions */
 /* Public Pages */
 .incluso-app.public {
+  min-height: 90vh;
   background-attachment: fixed;
   background-image: url('../images/bg-sm-public-page.jpg');
   background-position: center -23px;
@@ -29,9 +30,6 @@
   -moz-background-size: cover;
   background-size: cover;
   /* grid system override */
-  /*.input-group-addon {
-        font-size: 24px;
-    }*/
   /* checkbox overrides */
   /* buttons overrides and some decoration */
 }
@@ -130,6 +128,12 @@
 .incluso-app.public section {
   margin: 0 auto;
   width: 92%;
+}
+.incluso-app.public .exit-message {
+  margin: 6vw auto;
+  width: 90%;
+  color: #ffffff;
+  font-size: 6vw;
 }
 .incluso-app.public .form-group {
   margin-bottom: 0;
@@ -300,6 +304,7 @@
 }
 /* Profile Dashboard */
 .incluso-app.profile {
+  /* grid system override */
   background: #13171c;
   /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -316,6 +321,79 @@
   background: linear-gradient(to bottom, #13171c 0%, #163a4a 100%);
   /* W3C */
   /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13171c', endColorstr='#163a4a',GradientType=0 ); /* IE6-8 */
+  /*    .user-avatar {
+        width: 33.3vw;
+        margin-top: 3vw;
+
+        figcaption {
+            width: 9vw;
+            height: 9vw;
+            margin: -6vw auto 0;
+            border: 1vw solid @clr-green;
+            box-sizing: content-box;
+            font-size: 5.1vw;
+            line-height: 9vw;
+        }
+    }*/
+}
+.incluso-app.profile .container-fluid {
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+.incluso-app.profile .row {
+  margin-left: -3vw;
+  margin-right: -3vw;
+}
+.incluso-app.profile .col-xs-1,
+.incluso-app.profile .col-sm-1,
+.incluso-app.profile .col-md-1,
+.incluso-app.profile .col-lg-1,
+.incluso-app.profile .col-xs-2,
+.incluso-app.profile .col-sm-2,
+.incluso-app.profile .col-md-2,
+.incluso-app.profile .col-lg-2,
+.incluso-app.profile .col-xs-3,
+.incluso-app.profile .col-sm-3,
+.incluso-app.profile .col-md-3,
+.incluso-app.profile .col-lg-3,
+.incluso-app.profile .col-xs-4,
+.incluso-app.profile .col-sm-4,
+.incluso-app.profile .col-md-4,
+.incluso-app.profile .col-lg-4,
+.incluso-app.profile .col-xs-5,
+.incluso-app.profile .col-sm-5,
+.incluso-app.profile .col-md-5,
+.incluso-app.profile .col-lg-5,
+.incluso-app.profile .col-xs-6,
+.incluso-app.profile .col-sm-6,
+.incluso-app.profile .col-md-6,
+.incluso-app.profile .col-lg-6,
+.incluso-app.profile .col-xs-7,
+.incluso-app.profile .col-sm-7,
+.incluso-app.profile .col-md-7,
+.incluso-app.profile .col-lg-7,
+.incluso-app.profile .col-xs-8,
+.incluso-app.profile .col-sm-8,
+.incluso-app.profile .col-md-8,
+.incluso-app.profile .col-lg-8,
+.incluso-app.profile .col-xs-9,
+.incluso-app.profile .col-sm-9,
+.incluso-app.profile .col-md-9,
+.incluso-app.profile .col-lg-9,
+.incluso-app.profile .col-xs-10,
+.incluso-app.profile .col-sm-10,
+.incluso-app.profile .col-md-10,
+.incluso-app.profile .col-lg-10,
+.incluso-app.profile .col-xs-11,
+.incluso-app.profile .col-sm-11,
+.incluso-app.profile .col-md-11,
+.incluso-app.profile .col-lg-11,
+.incluso-app.profile .col-xs-12,
+.incluso-app.profile .col-sm-12,
+.incluso-app.profile .col-md-12,
+.incluso-app.profile .col-lg-12 {
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 .incluso-app.profile .navbar {
   background-color: #ee4823;
@@ -345,10 +423,6 @@
 }
 .incluso-app.profile .panel-title {
   display: inline;
-}
-.incluso-app.profile .user-avatar figcaption {
-  border: 3px solid #bcd431;
-  box-sizing: content-box;
 }
 /* Edit Profile */
 .incluso-app.edit-profile .list-group {

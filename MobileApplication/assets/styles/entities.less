@@ -808,7 +808,7 @@
                 display: block;
                 position: absolute;
                 top:41%;
-                right: -50px;
+                /*right: -50px;*/   right: -32%; 
                 padding:5px;
                 margin:0;
                 background:none transparent;
@@ -817,7 +817,7 @@
 
                 .icomoon {
                     color: @clr-green;
-                    font-size: 28px;
+                    /*font-size: 28px;*/ font-size: 6vw;
                     font-weight: bold;
                 }
             }
@@ -1058,7 +1058,7 @@
          Description: CSS to represent profile data section related to avatar
         ************************************************************************/
         .profile-data {
-            height: 228px;
+            height: 228px; height: 72vw;
             margin-top: 24px;
             font-weight: bold;
             text-align: center;
@@ -1070,7 +1070,7 @@
             .background-size(100%, auto);
 
             .user-name {
-                padding: 10px 0 32px;
+                padding: 10px 0 32px;  padding: 2vw 0 7vw;
                 margin:0;
                 color:@clr-white;
                 font-size: 1.8em;
@@ -1079,10 +1079,12 @@
             }
             .user-points {
                 width: auto;
-                padding: 1px 12px;
+                padding: 1px 12px;  padding: 0.222vw 2.5vw;
                 margin: 0;
+                border-width: 0.21em;
+                .border-radius-all(0.888em);
                 color: @clr-green;
-                font-size: 24px;
+                font-size: 24px;  font-size: 5vw;
                 font-weight: 600;
             }
         }
@@ -1097,50 +1099,35 @@
             position: relative;
             z-index: 2;
             margin:0;
-            height: 132px;
+            height: 32vw;
 
             background-attachment: scroll;
-            /*background-image:url('@{url-images}/img-profile-spaceship-dashboard-settings.png');*/
-            background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
-            /*background-color: @clr-gray-asphalt;*/
-            background-position: center 100px;
+            background-image:url('@{url-images}/img-profile-spaceship-dashboard-settings.png');
+            background-position: center top;
             background-repeat: no-repeat;
             .background-size(100%, auto);
 
             .user-avatar {margin-top:10px;}
             .btn {
                 display: block;
-                width: 100%;
-                margin-left: auto;
-                margin-right: auto;
+                width: auto;
+                height: 10vw;
+                margin-top: 6vw;
+                
+                &.btn-icon-aside {
+                    width: 36vw;
+                }
             }
             & > .container {
                 position: relative;
                 height: inherit;
                 background-attachment: scroll;
                 background-image:url('@{url-images}/img-profile-spaceship-dashboard-settings.png');
-                /*background:none;*/
                 background-color: transparent;
                 background-position: center 0;
                 background-repeat: no-repeat;
                 .background-size(100%, auto);
             }              
-            /*&:after {
-                display:block;
-                position:absolute;
-                z-index: 0;
-                bottom: 0;
-                width: 100%; 
-                height: 12px;
-                background-attachment: scroll;
-                background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
-                background-color: @clr-gray-asphalt;
-                background-position: center 0;
-                background-repeat: no-repeat;
-                .background-size(100%, auto);
-                content: " ";
-            }*/
-
         }
         /***********************************************************************/ 
 
@@ -1151,13 +1138,16 @@
         ************************************************************************/
         .profile-options {
             margin:0;
-            padding:32px 0 15px;
+            /*padding:32px 0 15px;*/
+            padding: 12vw 0 6vw;
             height: auto;
+            min-height: 120vw;
             background-attachment: scroll;
-            background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
-            background-color: @clr-gray-asphalt;
+            /*background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
+            background-color: @clr-gray-asphalt;*/
             background-position: center 0;
             background-repeat: no-repeat;
+            .gradient-custom('img-profile-spaceship-dashboard-bottom.png', @clr-gray-asphalt, @clr-gray-asphalt2);
             .background-size(100%, auto); 
 
             .list-group {
@@ -1227,36 +1217,6 @@
 
 
         /***********************************************************************
-         $profile-dashboard
-         Description: CSS to represent user's profile dashboard landing page
-        ************************************************************************/
-        .profile-dashboard {
-            width: 100vw;
-            margin:0;
-            background-attachment: scroll;
-            background-image:url('@{url-images}/bg-xs-profile-sky.jpg');
-            background-position: center -98px;
-            background-repeat: no-repeat;
-
-            .user-avatar {
-                margin-top:10px;
-            }
-
-            & > .row {
-                padding: 0 5%;
-                margin-left: 0;
-                margin-right: 0;
-
-                & > div {
-                    padding-left: 0;
-                    padding-right: 0;
-                }
-            }
-        }
-        /***********************************************************************/
-
-
-        /***********************************************************************
          $my-profile-form
          Description: CSS to represent user's profile editable form
         ************************************************************************/
@@ -1321,7 +1281,7 @@
             }
             & > section:first-child {
                 margin-top: 0;
-            }
+            }           
             .page-number {
                 margin: 3vw 0;
 
@@ -1359,6 +1319,9 @@
                     }
                 }
             }
+            .button-group .btn {
+                margin-top: 0;
+            }
             .form-group {
                 border: none;
                 margin-bottom: 0;
@@ -1384,6 +1347,49 @@
         }
         /***********************************************************************/
 
+
+        /***********************************************************************
+         $profile-dashboard
+         Description: CSS to represent user's profile dashboard component
+        ************************************************************************/
+        .profile-dashboard {
+            width: 100vw;
+            margin:0;
+            background-attachment: scroll;
+            background-color: @clr-black;
+            background-image:url('@{url-images}/bg-xs-profile-sky.jpg');
+            background-position: center -98px;
+            background-position: center -18vw;
+            background-repeat: no-repeat;
+            .background-size(auto, 100%);
+
+            .user-avatar {
+                width: 33.3vw;
+                margin-top: 3vw;
+
+                figcaption {
+                    width: 9vw;
+                    height: 9vw;
+                    margin: -6vw auto 0;
+                    border: 0.3em solid @clr-green;
+                    box-sizing: content-box;
+                    font-size: 5.1vw;
+                    line-height: 9vw;
+                }
+            }             
+
+            & > .row {
+                padding: 0 5%;
+                margin-left: 0;
+                margin-right: 0;
+
+                & > div {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+        /***********************************************************************/
     }
 }
 

@@ -294,73 +294,59 @@ body {
     .btn-icon-aside {
         display: inline-block;
         position: relative;
-        height: 2em; /*42px;*/
-        margin-top: 18%; /*41px;*/
-        padding: 2px 12px;
+        height: 2em;
+        margin: 0 auto;
+        padding: 2px 12px; /* + */
         background-color: @clr-gray;
-        .border-radius(32px);        
+        .border-radius(32px); /* + */
+
+        .btn-icon {
+            display: block;
+            position: absolute;
+            top: -0.3em;
+            width: 11.6vw;
+            height: 11.6vw;
+            background-color: @clr-green;
+            border: 0.42em solid @clr-gray;
+            .border-radius(32px);  /* + */
+            text-align: center;
+        }
+        .icomoon {
+            color: @clr-blue;
+            font-size: 5vw;
+            line-height: 10vw;
+        }
+        &>span {
+            color: @clr-white;
+            font-size: 1em; 
+            font-weight: 700;
+            line-height: 1;
+        }
 
         &.left {
-            padding-right: 15px;
+            float: left;
+            padding: 0 4vw 0 12.9vw;
+            margin-left: 9vw;
             text-align: left;
 
             &>span {
-                margin-left: 30px;
-                color: @clr-white;
-                font-size: 1em; /*20px;*/
-                font-weight: 700;
-                line-height: 1;
                 text-align: right;
             }
             .btn-icon {
-                display: block;
-                position: absolute;
                 left: 0;
-                top: -0.3em;
-                width:36px;
-                height: 36px;
-                background-color: @clr-green;
-                border: 3px solid @clr-gray;
-                .border-radius(32px);
-                text-align: center;
-            }
-            .icomoon {
-                color: @clr-blue;
-                font-size: 1.2em;
-                line-height: 32px;
             }
         }
-
         &.right {
-            padding-left: 15px;
-            text-align: right;
+            float: right;
+            padding: 0 12.9vw 0 4vw;
+            margin-right: 9vw;
+            text-align: left;
 
             &>span {
-                margin-right: 30px;
-                color: @clr-white;
-                font-size: 1em; /*20px;*/
-                font-weight: 700;
-                line-height: 1;
                 text-align: left;
             }
             .btn-icon {
-                display: block;
-                position: absolute;
-                right: 0;
-                top: -0.3em;
-                width:36px;
-                height: 36px;
-                background-color: @clr-green;
-                border: 3px solid @clr-gray;
-                .border-radius(32px);
-                text-align: center;
-                        
-            }
-            .icomoon {
-                color: @clr-blue;
-                font-size: 22px;
-                font-size: 1.2em;
-                line-height: 32px;
+                right: 0;                        
             }
         }
     }
@@ -407,6 +393,7 @@ body {
             float: left;
             width: 75%;
             height: 55px; height: auto;
+            margin-top: 0;
 
             &:first-child {
                 width: 20%;
@@ -570,13 +557,28 @@ body {
                 line-height: 5.6vw;
             }
         }        
-        .form-control.ng-dirty + .custom-placeholder {
+        /*.form-control[data-show-placeholder="false"] + .custom-placeholder {
             display: none;
         }
-        .form-control.ng-pristine + .custom-placeholder {
+        .ng-dirty[data-show-placeholder="false"] + .custom-placeholder {
+            display: none; 
+        }        
+        .form-control[data-show-placeholder="true"] + .custom-placeholder {
             display: block;
-        }
+        }*/
+
+
+        .form-control.ng-dirty + .custom-placeholder {
+            display: none; 
+        } 
         .theme-default.ng-pristine + .custom-placeholder {
+            color:@clr-white;
+            font-weight:100; 
+        }
+
+        /* reset model */
+        .form-control.ng-dirty[data-show-placeholder="true"] + .custom-placeholder {
+            display: block;
             color:@clr-white;
             font-weight:100; 
         }
