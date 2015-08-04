@@ -101,7 +101,7 @@ class leaderboard_services extends external_api{
 			            where (progress.userid=z.id  or isnull(progress.userid)) and progress.courseid=z.courseid
             ) percentage_completed,
 					z.* FROM(SELECT u.id id, CONCAT(u.firstname, ' ',u.lastname) AS name, 
-						IFNULL(result.stars, 0) AS stars , course.courseid 
+						IFNULL(result.stars, 0) AS stars , course.courseid , alias.alias
 						FROM {user} as u 
 						LEFT JOIN ( 
 							SELECT u.id as id, 
@@ -123,6 +123,16 @@ class leaderboard_services extends external_api{
 							ON uid.userid = u.id 
 							WHERE uif.shortname = 'course') AS course 
               ON u.id = course.id
+              LEFT JOIN ( 
+							SELECT u.id as id, 
+							(CASE WHEN uid.data = '' THEN '0' ELSE uid.data END) AS alias 
+							FROM {user_info_data} AS uid 
+							LEFT JOIN {user_info_field} AS uif 
+							ON uid.fieldid = uif.id 
+							RIGHT JOIN {user} AS u 
+							ON uid.userid = u.id 
+							WHERE uif.shortname = 'alias') AS alias 
+              ON u.id = alias.id
               where courseid=$courseid
 						ORDER BY CAST(stars AS UNSIGNED) DESC, name ASC 
 						LIMIT $n_top)z,
@@ -144,6 +154,7 @@ class leaderboard_services extends external_api{
 					'place' => new external_value(PARAM_INT, 'Ranking'),
 					'name' => new external_value(PARAM_TEXT, 'Full name of user'),
 					'stars' => new external_value(PARAM_INT, 'Quantity of stars'),
+					'alias' => new external_value(PARAM_RAW, 'Alias of the user'),
 					'percentage_completed' => new external_value(PARAM_INT, 'Percentage of completed activities')
 				)
 			)
