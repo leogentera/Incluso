@@ -21,6 +21,7 @@
 require_once("$CFG->libdir/externallib.php");
 require_once($CFG->libdir . "/externallib.php");
 require_once($CFG->libdir . "../../config.php"); 
+require_once($CFG->dirroot . '/badges/lib/awardlib.php');
 
 class badge_services extends external_api {   
 
@@ -163,6 +164,62 @@ class badge_services extends external_api {
     	);
     }
     
+    
+//     if (process_manual_award($user->id, $USER->id, $issuerrole->roleid, $badgeid)) {
+//     	// If badge was successfully awarded, review manual badge criteria.
+//     	$data = new stdClass();
+//     	$data->crit = $badge->criteria[BADGE_CRITERIA_TYPE_MANUAL];
+//     	$data->userid = $user->id;
+//     	badges_award_handle_manual_criteria_review($data);
+//     } else {
+//     	echo $OUTPUT->error_text(get_string('error:cannotawardbadge', 'badges'));
+//     }
    
+    public static function grant_a_badge_parameters() {
+    	return new external_function_parameters(
+    			array('userid' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false),
+    					'badgeid' => new external_value(PARAM_TEXT, 'Moodle User ID from whom you want to know the earned badges', VALUE_REQUIRED, null, false))
+    	);
+    }
+    public static function grant_a_badge($userid, $badgeid) {
+    	global $USER;
+    	global $DB;
+    	$response = array();
+    
+    		//Parameter validation
+    		//REQUIRED
+    		$params = self::validate_parameters(self::grant_a_badge_parameters(), array('userid' => $userid,'badgeid' => $badgeid ));
+    
+    		
+    		$sql="select value
+					from mdl_config
+					where name='siteadmins'";
+    		
+    		$admins = $DB->get_record_sql($sql);
+    		$admin=explode(",", $admins->value)[0];
+    		$badge = new badge($badgeid);
+    		    if (process_manual_award($userid, $USER->id, 1, $badgeid)) {
+    		    	// If badge was successfully awarded, review manual badge criteria.
+    		    	$data = new stdClass();
+    		    	$data->crit = $badge->criteria[BADGE_CRITERIA_TYPE_MANUAL];
+    		    	$data->userid = $userid;
+    		    	badges_award_handle_manual_criteria_review($data);
+    		    } else {
+    		    	array_push($response, array('message'=>'badge cannot be awarded'));
+    		    }
+    
+    		
+    		return $response;
+    	}
+    
+    	public static function grant_a_badge_returns() {
+    	return new external_multiple_structure(
+    	new external_single_structure(
+    			array(
+    					'message' => new external_value(PARAM_TEXT, 'id of the badge'),
+    				)
+    			)
+    		);
+    	}
 }
 

@@ -34,12 +34,19 @@ $functions = array(
         		'description' => 'Return the badges that the user could earn',
         		'type'        => 'read',
         ),
+        'grant_a_badge' => array(
+        		'classname'   => 'badge_services',
+        		'methodname'  => 'grant_a_badge',
+        		'classpath'   => 'local/badge_plugin/externallib.php',
+        		'description' => 'Set a badge',
+        		'type'        => 'write',
+        ),
         
 );
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
 $services = array(
         'Badge Services' => array(
-                'functions' => array ('earned_badges','posible_badges_to_earn'),
+                'functions' => array ('earned_badges','posible_badges_to_earn', 'grant_a_badge'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         ),
