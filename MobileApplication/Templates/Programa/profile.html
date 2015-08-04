@@ -34,26 +34,33 @@
         	</ul>
         </div>
       </li>
-      <li><i class="icomoon icon-arrow fl-right white accsub pointer" data-id="2"></i><a class="menu-pink">
-<span class="icomoon icon-planet">
-				<span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
-				</span>	  Link</a>
-	  <div class="submenu" id="sub2">
-	<ul>
-		<li>Título sin liga2</li>
-		<li><a>Bien</a></li>
-		<li><a>Bien 2</a></li>
-		<li><a>Bien 3</a></li>
-		<li><a>Bien 4</a></li>
-	</ul>
-	<ul>
-		<li>Título sin liga3</li>
-		<li><a>Bien</a></li>
-		<li><a>Bien 2</a></li>
-		<li><a>Bien 3</a></li>
-		<li><a>Bien 4</a></li>
-	</ul>
-	</div></li>
+      <li>
+        <i class="icomoon icon-arrow fl-right white accsub pointer" data-id="2"></i>
+        <a class="menu-pink">
+          <span class="icomoon icon-planet">
+				    <span class="path1"></span>
+            <span class="path2"></span>
+            <span class="path3"></span>
+            <span class="path4"></span>
+          </span>Link
+        </a>
+        <div class="submenu" id="sub2">
+          <ul>
+            <li>Título sin liga2</li>
+            <li><a>Bien</a></li>
+            <li><a>Bien 2</a></li>
+            <li><a>Bien 3</a></li>
+            <li><a>Bien 4</a></li>
+          </ul>
+          <ul>
+            <li>Título sin liga3</li>
+            <li><a>Bien</a></li>
+            <li><a>Bien 2</a></li>
+            <li><a>Bien 3</a></li>
+            <li><a>Bien 4</a></li>
+          </ul>
+        </div>
+      </li>
       <li><a><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
       <li><a><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
       <li><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
@@ -69,7 +76,7 @@
     <nav ng-controller="navController">
       <div class="navbar" id="navBar">
         <div class="container-fluid">
-          
+
           <div class="row">
 
             <div class="navbar-assets">
@@ -102,58 +109,65 @@
       </div> <!-- /.container-fluid -->
     </nav>
  
-  <article>
+    <article>
       <section class="component profile-dashboard">
+
         <div>
           <figure>
             <img src="assets/images/img-profile-spaceship-dashboard-top.png" alt="" />
           </figure>
         </div>
 
-        <div class="row">
-          <div class="col-xs-6 col-xs-offset-3">
-            <div class="user-avatar">
-              <figure>
-                <img src="assets/images/img-avatar-dummy-01.png" alt="" class="img-responsive" />
-                <figcaption ng-bind="model.rank >= 0 ? model.rank : '?'"></figcaption>
-              </figure>   
-              <button type="button" id="editProfile">
-                <span class="icomoon icon-edit"></span>
-              </button>       
-            </div>            
+        <div>
+          <div class="user-avatar">
+            <figure>
+              <img src="assets/images/img-avatar-dummy-01.png" alt="" class="img-responsive" />
+              <figcaption ng-bind="model.rank >= 0 ? model.rank : '?'"></figcaption>
+            </figure>
+            <button type="button" id="editProfile">
+              <span class="icomoon icon-edit"></span>
+            </button>
           </div>
         </div>
 
-        <div class="profile-data">
-          <h4 class="user-name" ng-bind="model.fullname"></h4>
-          <p class="user-points">
-            <span ng-bind="model.stars"></span>
-            <span class="icomoon icon-star"></span>
-          </p>
-          <!-- <span class="badge">100<span class="icomoon icon-star"></span></span> -->
-        </div>
-        <div class="profile-settings">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-6">
-                <button class="btn btn-icon-aside left" ng-click="edit();">
-                  <div class="btn-icon">
-                    <span class="icomoon icon-settings"></span>
-                  </div>
-                  <span for="">Editar perfil</span>
-                </button>                
-              </div>
-              <div class="col-xs-6">
-                <button class="btn btn-icon-aside right">
-                  <div class="btn-icon">
-                    <span class="icomoon icon-lock"></span>
-                  </div>
-                  <span for="">Privacidad</span>
-                </button>                
-              </div>
-            </div>
+        <div>
+          <div class="profile-data">
+            <!-- <h4 class="user-name" ng-bind="model.fullname"></h4> -->
+            <h4 class="user-name">leonardo garza r.</h4>
+            <p class="user-points">
+              <span ng-bind="model.stars"></span>
+              <span class="icomoon icon-star"></span>
+            </p>
+            <!-- <span class="badge">100<span class="icomoon icon-star"></span></span> -->
           </div>
+          <div class="profile-settings">
+            <!-- <div class="container">
+              <div class="row">
+                <div class="col-xs-6"> -->
+
+                  <button class="btn btn-icon-aside left" ng-click="edit();">
+                    <div class="btn-icon">
+                      <span class="icomoon icon-settings"></span>
+                    </div>
+                    <span for="">Editar perfil</span>
+                  </button>
+
+                <!-- </div>
+                <div class="col-xs-6"> -->
+
+                  <button class="btn btn-icon-aside right">
+                    <div class="btn-icon">
+                      <span class="icomoon icon-lock"></span>
+                    </div>
+                    <span for="">Privacidad</span>
+                  </button> 
+                                 
+                <!-- </div>
+              </div>
+            </div> -->
+          </div>          
         </div>
+
       </section>
       <section class="component profile-options">
         <div class="pages">
@@ -409,102 +423,102 @@
                               </li>
                             </ul>                            
                             <hr />                            
-                            </ul>
-                            <br />
-                          </div>
+                          </ul>
+                          <br />
                         </div>
                       </div>
                     </div>
-                  </div> 
+                  </div>
+                </div> 
 
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="page" ng-class="currentPage == 7 ? 'active' : ''">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-xs-12">
-
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
-                      <span class="icomoon icon-information"></span>
-                      <h3 class="panel-title">Carreras Afínes</h3>
-                    </div>
-                    <div class="panel-body">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="col-xs-12">
-                            <ul class="block-list" ng-repeat="b in model.recomendedBachelorDegrees">
-                              <li>
-                                <p ng-bind="b"></p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> 
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="page" ng-class="currentPage == 8 ? 'active' : ''">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-xs-12">
-
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
-                      <span class="icomoon icon-information"></span>
-                      <h3 class="panel-title">Mis Sueños</h3>
-                    </div>
-                    <div class="panel-body">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="col-xs-12">
-                            <h5>Sueños Ser</h5>
-                            <ul class="block-list" ng-repeat="db in model.dreamsToBe">
-                              <li>
-                                <p ng-bind="db"></p>
-                              </li>
-                            </ul>                            
-                            <hr />
-                            </ul>
-
-                            <h5>Sueños Tener</h5>
-                            <ul class="block-list" ng-repeat="dh in model.dreamsToHave">
-                              <li>
-                                <p ng-bind="dh"></p>
-                              </li>
-                            </ul>                            
-                            <hr />
-                            </ul>
-
-                            <h5>Sueños Hacer</h5>
-                            <ul class="block-list" ng-repeat="dd in model.dreamsToDo">
-                              <li>
-                                <p ng-bind="dd"></p>
-                              </li>
-                            </ul>                            
-                            <hr />
-                            </ul>
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> 
-
-                </div>
               </div>
             </div>
           </div>
         </div>
-      </section> 
+        <div class="page" ng-class="currentPage == 7 ? 'active' : ''">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                    <span class="icomoon icon-information"></span>
+                    <h3 class="panel-title">Carreras Afínes</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-xs-12">
+                          <ul class="block-list" ng-repeat="b in model.recomendedBachelorDegrees">
+                            <li>
+                              <p ng-bind="b"></p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page" ng-class="currentPage == 8 ? 'active' : ''">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                    <span class="icomoon icon-information"></span>
+                    <h3 class="panel-title">Mis Sueños</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-xs-12">
+                          <h5>Sueños Ser</h5>
+                          <ul class="block-list" ng-repeat="db in model.dreamsToBe">
+                            <li>
+                              <p ng-bind="db"></p>
+                            </li>
+                          </ul>                            
+                          <hr />
+                        </ul>
+
+                        <h5>Sueños Tener</h5>
+                        <ul class="block-list" ng-repeat="dh in model.dreamsToHave">
+                          <li>
+                            <p ng-bind="dh"></p>
+                          </li>
+                        </ul>                            
+                        <hr />
+                      </ul>
+
+                      <h5>Sueños Hacer</h5>
+                      <ul class="block-list" ng-repeat="dd in model.dreamsToDo">
+                        <li>
+                          <p ng-bind="dd"></p>
+                        </li>
+                      </ul>                            
+                      <hr />
+                    </ul>
+                    <br />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+        </div>
+      </div>
+    </div>
+    </div>
+      </div>
+    </section> 
   </article>
  
   <footer>
@@ -520,4 +534,4 @@
 
 </div>
 
-  <script type="text/javascript" src="Scripts/scriptmenu.js"></script>
+<script type="text/javascript" src="Scripts/scriptmenu.js"></script>

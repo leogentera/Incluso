@@ -190,9 +190,24 @@
 	background: radial-gradient(ellipse at center, #1f2733 0%, #14181f 100%);
 
 }
+.gradient-custom(@img-name, @top-color, @bottom-color) {
+	background-color: @bottom-color; /* Old browsers */
+	background-image: url('@{url-images}/@{img-name}');
+	background-image: url('@{url-images}/@{img-name}'),    -moz-linear-gradient(top,  @top-color 0%, @bottom-color 92%); /* FF3.6+ */
+	background-image: url('@{url-images}/@{img-name}'), 	     -webkit-gradient(linear, left top, left bottom, color-stop(0%,@top-color), color-stop(92%,@bottom-color)); /* Chrome,Safari4+ */
+	background-image: url('@{url-images}/@{img-name}'), -webkit-linear-gradient(top,  @top-color 0%, @bottom-color 92%); /* Chrome10+,Safari5.1+ */
+	background-image: url('@{url-images}/@{img-name}'),      -o-linear-gradient(top,  @top-color 0%, @bottom-color 92%); /* Opera 11.10+ */
+	background-image: url('@{url-images}/@{img-name}'),     -ms-linear-gradient(top,  @top-color 0%, @bottom-color 92%); /* IE10+ */
+	background-image: url('@{url-images}/@{img-name}'),         linear-gradient(to bottom,  @top-color 0%, @bottom-color 92%); /* W3C */
+}
 
-.background-size (@w, @h) {
+.background-size(@w, @h) {
 	-webkit-background-size: @w @h;
 	   -moz-background-size: @w @h;
 			background-size: @w @h;  
+}
+.background-size-cover() {
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+			background-size: cover;
 }
