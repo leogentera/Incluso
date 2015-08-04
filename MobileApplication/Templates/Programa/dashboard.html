@@ -103,7 +103,7 @@
     <article>
       <div class="container">
 
-        <h1 class="text-center">¡Bienvenido Leonardo!</h1>
+        <h1 class="text-center">¡Bienvenido {{user.username}}!</h1>
         <section class="component video-gallery">
           <h3>- ¿Qué es incluso? -</h3>
           <div class="stage perform">
@@ -121,19 +121,19 @@
         <section class="component global-progress txt-renglon centered">
          <h3>- Avance Global -</h3>
          <div class="spinner">
-           <img src="assets/images/prcnt/{{Math.ceil(user.GlobalProgress)}}.png"><div class="circle"></div><div class="text">{{user.GlobalProgress}}%</div>
+           <img src="assets/images/prcnt/{{Math.ceil(usercourse.globalProgress)}}.png"><div class="circle"></div><div class="text">{{usercourse.globalProgress}}%</div>
          </div>
        </section>
 
        <section class="component current-satge">
         <img  src="assets/images/estacion{{currentStage}}.png">
-        <h3>- Estación: Conócete -</h3>
+        <h3>- Estación: {{stage.name}} -</h3>
         <a href="" class="btn btn-primary btn-lg">Iniciar mi aventura</a>
       </section>
 
       <section class="component my-badges">
         <h3>- Mi Escudo -</h3>
-        <img src="assets/images/{{user.Shield}}" alt="">
+        <img src="assets/images/{{user.shield}}" alt="">
       </section>
 
         
@@ -228,7 +228,7 @@
             <div class="user-avatar">
               <figure class="user-avatar-">
                 <img src="assets/images/img-avatar-dummy-01.png" alt="">
-                <figcaption>{{user.Place}}</figcaption>
+                <figcaption>{{user.place}}</figcaption>
               </figure>
             </div>                
           </a>
@@ -241,8 +241,8 @@
                 <span>Mi puntuación actual</span>
               </p>
               <ul class="inline-list">
-                <li class="points"><span>{{user.Stars}}</span> <i class="icomoon icon-star"></i></li>
-                <li><span>{{user.GlobalProgress}}%</span></li>
+                <li class="points"><span>{{user.stars}}</span> <i class="icomoon icon-star"></i></li>
+                <li><span>{{usercourse.globalProgress}}%</span></li>
               </ul>
             </div> 
           </div>

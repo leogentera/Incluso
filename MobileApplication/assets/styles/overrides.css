@@ -447,6 +447,15 @@
   /*border: none !important;*/
 }
 /* Step dashboard*/
+.incluso-app.step-dashboard {
+  background: -moz-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1f2733), color-stop(100%, #141921));
+  background: -webkit-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: -o-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: radial-gradient(ellipse at center, #1f2733 0%, #141921 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1f2733', endColorstr='#141921', GradientType=1);
+}
 .incluso-app.step-dashboard .navbar {
   background-color: #158ccd;
   border-color: #158ccd;
@@ -494,6 +503,45 @@
 .incluso-app.step-dashboard .gr-bg {
   background: none #0A9648;
 }
+.incluso-app.notif-dashboard {
+  background: -moz-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1f2733), color-stop(100%, #141921));
+  background: -webkit-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: -o-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: radial-gradient(ellipse at center, #1f2733 0%, #141921 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1f2733', endColorstr='#141921', GradientType=1);
+}
+.incluso-app.notif-dashboard .navbar {
+  background-color: #ee4823;
+  border-color: #ee4823;
+}
+.incluso-app.notif-dashboard #controller .owl-item {
+  text-align: center;
+  border: 1px solid #08b190;
+  font-weight: lighter;
+  color: #08b190;
+  cursor: pointer;
+}
+.incluso-app.notif-dashboard #controller .owl-item.synced {
+  background-color: #08b190;
+  color: white;
+}
+.incluso-app.notif-dashboard #controller .owl-item:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.incluso-app.notif-dashboard #controller .owl-item:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.incluso-app.score-dashboard {
+  background: -moz-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1f2733), color-stop(100%, #141921));
+  background: -webkit-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: -o-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: -ms-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+  background: radial-gradient(ellipse at center, #1f2733 0%, #141921 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1f2733', endColorstr='#141921', GradientType=1);
+}
 .incluso-app.score-dashboard .navbar {
   background-color: #ee4823;
   border-color: #ee4823;
@@ -516,11 +564,21 @@
   background-color: rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.2);
 }
+.starcontain .part div {
+  display: block;
+  font-size: 86%;
+}
+.starcontain .part .sm-pill {
+  display: inline-flex;
+}
 .green {
   color: #0f9847 !important;
 }
 .lightgreen {
   color: #bcd431 !important;
+}
+.sosogreen {
+  color: #08b190 !important;
 }
 .red {
   color: #ef4823 !important;
@@ -528,7 +586,26 @@
 .white {
   color: white !important;
 }
+.gray {
+  color: #8098a0 !important;
+}
+.pink {
+  color: #e70e80 !important;
+}
 .pointer,
 a {
   cursor: pointer;
+}
+.no-padding {
+  padding: 0 !important;
+}
+.bord {
+  border: 1px solid #08b190;
+}
+section.part.inbloq {
+  display: inline-block;
+}
+section.part.inbloq div {
+  width: 100%;
+  text-align: justify;
 }

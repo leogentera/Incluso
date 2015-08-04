@@ -1,57 +1,105 @@
-<div class="incluso-app profile edit-profile">
- 
-  <nav ng-controller="navController">
-    <div class="navbar navbar-welcome" id="navBar">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="row">
+<div class="incluso-app profile edit-profile"  id="site-wrapper">
+  <div id="site-menu" >
+<nav class="ng-scope">
+      <div id="navBar" class="navbar">
+        <div class="container-fluid">
+          <div class="row">
 
-          <button type="button" class="navbar-toggle collapsed" ng-click="navigateToDashboard();" > <!-- ng-click="isNavCollapsed = !isNavCollapsed" -->
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icomoon icon-more-options"></span>
-          </button>
-
-          <div class="navbar-assets">
-            <h1 class="navbar-heading">Mi Perfil</h1>
-            <ul class="navbar-tools">
-              <li class="contribute">
-                <a href="">
-                  <span class="icomoon icon-edit"></span>
-                </a>
-              </li>
-              <li class="notifications">
-                <a href="">
-                  <span class="icomoon icon-antena"></span>
-                </a>
-              </li>
-              <li class="chat">
-                <a href="">
-                  <span class="icomoon icon-chat"></span>
-                </a>
-              </li>
-              <li class="profile">
-                <a href="">
-                  <span class="icomoon icon-emoticon-smile"></span>
-                </a>
-              </li>                
-            </ul>
+            <div class="navbar-assets">
+              <h1 class="navbar-heading"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
+              
+            </div> 
           </div>
+        </div>
+      </div>
+    </nav>
+    <ul class="nav">
+      <li><a ng-href="#/ProgramaDashboard"><i class="icomoon icon-home"></i> Inicio</a></li>
+      <li><a><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
+      <li>
+	  <a class="menu-blue" ng-href="#/ProgramaDashboardEtapa/1">
+	  <i class="icomoon icon-spaceship"></i> Etapa 1</a></li>
+      <li><i class="icomoon icon-arrow fl-right white accsub pointer" data-id="1"></i><a class="menu-green">
+	  <i class="icomoon icon-asterodis">
+				<span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span>
+				</i> Link</a>
+	  <div class="submenu" id="sub1">
+	<ul>
+		<li>Título sin liga</li>
+		<li><a>Bien</a></li>
+		<li><a>Bien 2</a></li>
+		<li><a>Bien 3</a></li>
+		<li><a>Bien 4</a></li>
+	</ul>
+	</div>
+	  </li>
+      <li><i class="icomoon icon-arrow fl-right white accsub pointer" data-id="2"></i><a class="menu-pink">
+<span class="icomoon icon-planet">
+				<span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
+				</span>	  Link</a>
+	  <div class="submenu" id="sub2">
+	<ul>
+		<li>Título sin liga2</li>
+		<li><a>Bien</a></li>
+		<li><a>Bien 2</a></li>
+		<li><a>Bien 3</a></li>
+		<li><a>Bien 4</a></li>
+	</ul>
+	<ul>
+		<li>Título sin liga3</li>
+		<li><a>Bien</a></li>
+		<li><a>Bien 2</a></li>
+		<li><a>Bien 3</a></li>
+		<li><a>Bien 4</a></li>
+	</ul>
+	</div></li>
+      <li><a><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
+      <li><a><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
+      <li><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
+      <li><a><i class="icomoon icon-document"></i> Certificación</a></li>
+      <li><a><i class="icomoon icon-racing-flag "></i> Recuerdos Incluso</a></li>
+      <li><a><i class="icomoon icon-lifesaver"></i> Preguntas frecuentes</a></li>
+      <li><a><i class="icomoon icon-notes"></i> Aviso de privacidad</a></li>
+    </ul>
+  </div>
+  <div id="site-canvas">
 
+    <nav ng-controller="navController">
+      <div class="navbar" id="navBar">
+        <div class="container-fluid">
+          
+          <div class="row">
+
+            <div class="navbar-assets">
+              <h1 class="navbar-heading"><a data-transition="ease" id="menuton"><i class="icomoon icon-more-options"></i> Mi Perfil</a></h1>
+              <ul class="navbar-tools">
+                <li class="contribute">
+                  <a href="">
+                    <i class="icomoon icon-edit"></i>
+                  </a>
+                </li>
+                <li class="notifications">
+                  <a href="">
+                    <i class="icomoon icon-antena"></i>
+                  </a>
+                </li>
+                <li class="chat">
+                  <a href="">
+                    <i class="icomoon icon-chat"></i>
+                  </a>
+                </li>
+                <li class="profile">
+                  <a href="" ng-href="#/Perfil/">
+                    <i class="icomoon icon-emoticon-smile"></i>
+                  </a>
+                </li>                 
+              </ul>
+            </div> 
+          </div>
         </div>
       </div> <!-- /.container-fluid -->
-    </div> <!-- /.navbar -->
-    <div class="navbar-collapse" collapse="isNavCollapsed">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse --> 
-  </nav>
-
+    </nav>
+ 
   <article>
     <section class="component profile-dashboard">
       <div>

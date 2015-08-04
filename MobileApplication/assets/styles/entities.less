@@ -287,6 +287,10 @@
                 background: -ms-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
                 background: radial-gradient(ellipse at center,  #1f2733 0%,#141921 100%);
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f2733', endColorstr='#141921',GradientType=1 );
+                .date{
+                    color: rgba(255, 255, 255, 0.3);
+                   font-size: 70%;
+                }
                 .icomoon{
                     color:@clr-greenLight;
                     font-size:150%;
@@ -321,6 +325,15 @@
                     .icomoon{
                         font-size: 100%;
                     }
+                }
+            }
+            .showmore{
+                background: rgba(28, 28, 28, 0.5) none repeat scroll 0 0;
+                color: rgb(8, 178, 144);
+                justify-content: flex-start;
+                font-size: 4.5vw;
+                i.icomoon{
+                    color: rgb(8, 178, 144);
                 }
             }
             .ordeon{
@@ -434,6 +447,9 @@
                 -moz-transition: opacity 400ms ease-in;
                 transition: opacity 400ms ease-in;
                 pointer-events: none;
+                .txt-renglon{
+                    color: @clr-orangeLighter;
+                }
                 &:target {
                     opacity:1;
                     pointer-events: auto;
@@ -478,6 +494,44 @@
             }
             .close:hover { 
                 border-bottom: 10px solid black;
+            }
+            .sharer{
+                display: inline-block;
+                height: 15vw;
+                margin: 6vw 0;
+                position: relative;
+                .icon{
+                    background-color: @clr-greenMedium;
+                    border: 2px solid gray;
+                    border-radius: 50%;
+                    bottom: 0;
+                    font-size: 7vw;
+                    height: 12vw;
+                    left: -4vw;
+                    line-height: 11vw;
+                    padding: 0vw;
+                    position: absolute;
+                    top: 0;
+                    width: 12vw;
+                    color:black;
+                }
+                .txt{
+                    background-color: gray;
+                    border-radius: 100px;
+                    color: white;
+                    line-height: 8vw;
+                    margin: 2vw 0;
+                    padding: 0 3vw 0 9vw;
+                }
+                &.active{
+                    .icon{
+                        background-color: @clr-orangeDark;
+                        color:white;
+                    }
+                    .txt{
+                        background-color: @clr-gray-asphalt;
+                    }
+                }
             }
 
 

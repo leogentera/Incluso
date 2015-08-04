@@ -127,7 +127,7 @@ private function forgotPassword($data)
 	        	}
 	        	
 	        	
-	        	$this->saveRecoveryTries($id, $currentTries, $passwordRecoveryFirstTryDate);
+	        	$this->saveRecoveryTries($id, $currentTries, $passwordRecoveryFirstTryDate,$data['email'] );
 	        	
 	        	return new JsonModel( $this->throwJSONError("La pregunta o la respuesta secreta son incorrectas"));
 	        }
@@ -157,31 +157,35 @@ private function forgotPassword($data)
     			//$mail= new SMTPClient();
     			//$mail->SMTPClient ('ssl://smtp.gmail.com', 465, 'desarrollo.definityfist@gmail.com','Admin123!', 'desarrollo.definityfist@gmail.com', $data['email'], "hello", "hola");
     			
-    			try {
-    				$transport = new SmtpTransport();
-    				$options   = new SmtpOptions(array(
-    						'name' => 'mtymaildf-v05.sieenasoftware.com',
-    						'host' => 'mail.definityfirst.com',
-    						'port' => 25,
-    						'connection_class'  => 'login',
-    						'connection_config' => array(
-    								'username' => 'gentera',
-    								'password' => 'An15b4r4',
-    								'ssl'      => 'tls',
-    						),
-    				));
-    				$transport->setOptions($options);
+    			
+    			//Anterior codigo para enviar mails
+//     			try {
+//     				$transport = new SmtpTransport();
+//     				$options   = new SmtpOptions(array(
+//     						'name' => 'mtymaildf-v05.sieenasoftware.com',
+//     						'host' => 'mail.definityfirst.com',
+//     						'port' => 25,
+//     						'connection_class'  => 'login',
+//     						'connection_config' => array(
+//     								'username' => 'gentera',
+//     								'password' => 'An15b4r4',
+//     								'ssl'      => 'tls',
+//     						),
+//     				));
+//     				$transport->setOptions($options);
     				 
-    				$message = new Message();
+//     				$message = new Message();
     				 
-    				$message->addTo($data['email'])
-    				->addFrom('gentera@definityfirst.com')
-    				->setSubject('Reseteo de Contraseña Incluso')
-    				->setBody("Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
-    				$transport->send($message);
-    			} catch (\Exception $e) {
-    				return new JsonModel( $this->throwJSONError("Ocurrio un error al momento de enviar el mail con el código de confirmacion, contacte al administrador"));
-    			}
+//     				$message->addTo($data['email'])
+//     				->addFrom('gentera@definityfirst.com')
+//     				->setSubject('Reseteo de Contraseña Incluso')
+//     				->setBody("Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
+//     				$transport->send($message);
+//     			} catch (\Exception $e) {
+//     				return new JsonModel( $this->throwJSONError("Ocurrio un error al momento de enviar el mail con el código de confirmacion, contacte al administrador"));
+//     			}
+
+    				$this->sendEmail($data['email'],'Reseteo de Contraseña Incluso',  "Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
     			
     			
     			return  new JsonModel(array());
@@ -286,7 +290,7 @@ private function forgotPassword($data)
 
     }
     
-    function saveRecoveryTries($id, $currentTries, $passwordRecoveryFirstTryDate){
+    function saveRecoveryTries($id, $currentTries, $passwordRecoveryFirstTryDate, $email){
     	$isFirstTime=$currentTries==0;
     	$tries= $currentTries + 1;
     	$passwordRecoveryExpiration='';
@@ -295,7 +299,8 @@ private function forgotPassword($data)
     	if ($isFirstTime){
     		$passwordRecoveryFirstTryDate=round(microtime(true) * 1000);
     	}
-    	elseif($passwordRecoveryFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+//     	elseif($passwordRecoveryFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+    		elseif($passwordRecoveryFirstTryDate +60000 < round(microtime(true) * 1000)){ //If 4 hours had passed
     	
     		$passwordRecoveryFirstTryDate=round(microtime(true) * 1000); //we reset the code
     		$tries= 1;
@@ -304,9 +309,11 @@ private function forgotPassword($data)
     	
     	
     	if ($tries==3){
-    		$passwordRecoveryExpiration=round(microtime(true) * 1000)+3600000 ;
+//     		$passwordRecoveryExpiration=round(microtime(true) * 1000)+3600000 ;
+    		$passwordRecoveryExpiration=round(microtime(true) * 1000)+60000 ;
     		$tries='0';
     		$passwordRecoveryFirstTryDate='';
+    		$this->sendMailToAdmins($email);
     	}
     	$url = $this->getConfig()['MOODLE_API_URL'].'&users[0][id]=%s'.
     			'&users[0][customfields][0][type]=passwordRecoveryTries&users[0][customfields][0][value]=%s'.
@@ -323,6 +330,54 @@ private function forgotPassword($data)
     	else{
     		return $response;
     	}
+    }
+    
+    function sendEmail($sendTo,$subject,  $text){
+    	try {
+    		$transport = new SmtpTransport();
+    		$options   = new SmtpOptions(array(
+    				'name' => 'mtymaildf-v05.sieenasoftware.com',
+    				'host' => 'mail.definityfirst.com',
+    				'port' => 25,
+    				'connection_class'  => 'login',
+    				'connection_config' => array(
+    						'username' => 'gentera',
+    						'password' => 'An15b4r4',
+    						'ssl'      => 'tls',
+    				),
+    		));
+    		$transport->setOptions($options);
+    			
+    		$message = new Message();
+    			
+    		$message->addTo($sendTo)
+    		->addFrom('gentera@definityfirst.com')
+    		->setSubject($subject)
+    		->setBody($text);
+    		$transport->send($message);
+    	} catch (\Exception $e) {
+    		return $this->throwJSONError("Ocurrio un error al momento de enviar el mail, contacte al administrador");
+    	}
+    }
+    
+    function sendMailToAdmins($emailLocked){
+    	$url = $this->getConfig()['MOODLE_API_URL'] ;
+    	
+    	 
+    	$url = sprintf($url, $this->getToken(), "extra_service_get_admin_emails");
+    	
+    	$response = file_get_contents($url);
+    	$json = json_decode($response,true);
+    	if (strpos($response, "exception") !== false){
+    		return $response;
+    		
+    	}
+    		foreach ($json as $email){
+    			$text= "El usuario $emailLocked intento en mas de 3 intentos en menos de 4 horas desbloquear su contraseña ingresando una pregunta y respuesta secreta incorrecta";
+    			$this->sendEmail($email['email'],'Bloqueo de Olvidar Contraseña',  $text);
+    			 
+    		}
+    	
     }
 }
 

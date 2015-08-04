@@ -611,3 +611,57 @@ class forum_services extends external_api {
 
     
 }
+
+class admin_services extends external_api {
+
+
+
+	public static function get_admin_emails_parameters() {
+		return new external_function_parameters(
+				array()
+		);
+	}
+	public static function get_admin_emails() {
+		global $USER;
+		global $DB;
+		$response = array();
+
+		try {
+			//Parameter validation
+			//REQUIRED
+// 			$params = self::validate_parameters(self::list_chats_parameters(), array('catalogname' => $catalogname));
+
+			//Context validation
+			//OPTIONAL but in most web service it should present
+// 			$context = get_context_instance(CONTEXT_USER, $USER->id);
+// 			self::validate_context($context);
+
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+
+			$sql = 'select email from {user} user 
+					where id in (select value
+					from {config}
+					where name="siteadmins")';
+			//$params = array('fieldname' => $catalogname);
+			$response = $DB->get_records_sql($sql);
+
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+	public static function get_admin_emails_returns() {
+		return new external_multiple_structure(
+				new external_single_structure(
+						array(
+								'email' => new external_value(PARAM_TEXT, 'Admin email'),
+								
+						)
+				)
+		);
+	}
+}
