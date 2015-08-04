@@ -59,6 +59,46 @@ $functions = array(
                         'description' => 'Returns the id and type of activity',
                         'type'        => 'read',
         ),
+
+        'get_assignment' => array(
+                        'classname'   => 'assignment_plugin',
+                        'methodname'  => 'get_assignment',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Returns the assignment data',
+                        'type'        => 'read',
+        ),
+
+        'get_label' => array(
+                        'classname'   => 'label_plugin',
+                        'methodname'  => 'get_label',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Returns the label data',
+                        'type'        => 'read',
+        ),
+
+        'get_page' => array(
+                        'classname'   => 'page_plugin',
+                        'methodname'  => 'get_page',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Returns the page data',
+                        'type'        => 'read',
+        ),
+
+        'get_url' => array(
+                        'classname'   => 'url_plugin',
+                        'methodname'  => 'get_url',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Returns the url data',
+                        'type'        => 'read',
+        ),
+
+        'get_available_chats' => array(
+                        'classname'   => 'chat_plugin',
+                        'methodname'  => 'get_available_chats',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Return a list of the available chats.',
+                        'type'        => 'read',
+        ),
 );
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
@@ -73,6 +113,41 @@ $services = array(
                 'functions' => array(
                         'get_activity_summary',
                         'get_activity_id_and_name'),
+                'restrictedusers' => 0,
+                'enabled'=>1,
+        ),
+
+        'Assignment service' => array(
+                'functions' => array(
+                        'get_assignment'),
+                'restrictedusers' => 0,
+                'enabled'=>1,
+        ),
+
+        'Label service' => array(
+                'functions' => array(
+                        'get_label'),
+                'restrictedusers' => 0,
+                'enabled'=>1,
+        ),
+
+        'Page service' => array(
+                'functions' => array(
+                        'get_page'),
+                'restrictedusers' => 0,
+                'enabled'=>1,
+        ),
+
+        'Url service' => array(
+                'functions' => array(
+                        'get_url'),
+                'restrictedusers' => 0,
+                'enabled'=>1,
+        ),
+
+        'Chat service' => array(
+                'functions' => array(
+                        'get_available_chats'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         )
