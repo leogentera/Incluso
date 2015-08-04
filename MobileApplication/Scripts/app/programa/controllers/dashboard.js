@@ -48,7 +48,11 @@
             $scope.logout = function () {
                 localStorage.removeItem("CurrentUser");
                 $location.path('/');
-            }
+            };
+
+            $scope.navigateToStage = function(){
+                $location.path('/ProgramaDashboardEtapa/' + $scope.stage.stageId);
+            };
 
             function getDataAsync() {
                 //$scope.course = JSON.parse(localStorage.getItem("course"));
