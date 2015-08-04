@@ -33,18 +33,6 @@ angular
                     errorMessages: []
                 }
             };
-
-            /* ViewModel */
-            $scope.userCredentialsModel = {
-                username: "",
-                password: "",
-                rememberCredentials: false
-            };
-
-            $scope.currentUserModel = {
-                token: "",
-                userId: ""
-            };
             
             /* Helpers */
             var isConfirmedPasswordValid = false;
@@ -102,10 +90,6 @@ angular
                     }).success(function(data, status, headers, config) {
 
                         $scope.isRegistered = true;
-
-                        $scope.userCredentialsModel.username = $scope.registerModel.username;
-                        $scope.userCredentialsModel.password = $scope.registerModel.password;
-
                         initModel();
 
                         console.log('successfully register');
@@ -125,57 +109,6 @@ angular
                         $scope.scrollToTop();
                     });
             };
-
-            $scope.autologin = function () {
-                
-                console.log('login in');
-
-                $http(
-                    {
-                        method: 'POST',
-                        url: API_RESOURCE.format("authentication"), 
-                        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                        data: $.param({username: $scope.userCredentialsModel.username, password: $scope.userCredentialsModel.password})
-                    }
-                    ).success(function(data, status, headers, config) {
-
-                        console.log('successfully logged in');
-
-                        //save token for further requests and autologin
-                        $scope.currentUserModel.token = data.token;
-                        $scope.currentUserModel.userId = data.id;
-
-                        localStorage.setItem("CurrentUser", JSON.stringify($scope.currentUserModel));
-
-                        _setToken(data.token);
-                        _setId(data.id);
-
-                        console.log('preparing for syncAll');
-
-                        //succesful credentials
-                        _syncAll($http, function() {
-                            console.log('came back from redirecting...');
-                            $timeout(
-                                function() {
-                                    console.log('redirecting..');
-                                    $location.path('/ProgramaDashboard');
-                                },1000);
-                        });
-
-                        if ($scope.userCredentialsModel.rememberCredentials) {
-                            localStorage.setItem("Credentials", JSON.stringify($scope.userCredentialsModel));
-                        } else {
-                            localStorage.removeItem("Credentials");
-                        }
-
-                    }).error(function(data, status, headers, config) {
-                        var errorMessage = window.atob(data.messageerror);
-
-                        $scope.registerModel.modelState.errorMessages = [errorMessage];
-                        console.log(status + ": " + errorMessage);
-                        $scope.scrollToTop();
-                    });
-            }
 
 
             function validateModel(){

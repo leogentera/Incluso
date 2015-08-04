@@ -55,7 +55,7 @@
     </header>    
 
     <section>
-      <form action="" class="register-form container-fluid" name="registerForm">
+      <form action="" class="register-form container-fluid" name="registerForm" ng-show="!isRegistered">
         <div class="row">
           <div class="col-xs-12">
             <h1>Datos de Registro</h1>
@@ -229,7 +229,7 @@
                       <span class="icomoon icon-help"></span>
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
-                      <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg theme-default" aria-describedby="securityQuestionAddOn">
+                      <select ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg theme-default" aria-describedby="securityQuestionAddOn" data-show-placeholder="$scope.isRegistered">
                         <option value="¿Dónde crecí?">¿Dónde crecí?</option>
                         <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
                         <option value="Nombre de mi mascota">Nombre de mi mascota</option> 
@@ -290,15 +290,23 @@
               </div>
               <div class="col-xs-12" ng-show="!isRegistered">
                 <a type="button" ng-click="login()" class="btn btn-default btn-transparent btn-lg btn-block">Cancelar</a>
-              </div>  
-              <div class="col-xs-12" ng-show="isRegistered">
-                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="autologin()">Entrar</button>
               </div>       
             </div>          
 
           </div>                  
         </div> 
       </form>      
+    </section>
+
+    <section>
+      <div class="row">
+        <div class="col-xs-12" ng-show="isRegistered">
+          <p class="exit-message center-block text-center">
+            ¡Felicidades! Ya puedes comenzar esta fabulosa aventura.
+          </p>
+          <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="autologin()">Entrar</button>
+        </div> 
+      </div>
     </section>
 
   </article> 

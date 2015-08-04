@@ -33,7 +33,8 @@ class UserController extends AbstractRestfulJsonController{
                 '&users[0][customfields][0][type]=secretanswer&users[0][customfields][0][value]=%s'.
                 '&users[0][customfields][1][type]=secretquestion&users[0][customfields][1][value]=%s'.
                 '&users[0][customfields][2][type]=birthday&users[0][customfields][2][value]=%s'.
-                '&users[0][customfields][3][type]=gender&users[0][customfields][3][value]=%s';
+                '&users[0][customfields][3][type]=gender&users[0][customfields][3][value]=%s'.
+        		'&users[0][customfields][4][type]=alias&users[0][customfields][4][value]=%s';
         
         $dateinMilis= $data['birthday'];
 //      $dateinMilis=strtotime($data['birthday']) * 1000;
@@ -49,15 +50,18 @@ class UserController extends AbstractRestfulJsonController{
                 urlencode($data['secretanswer']), 
                 urlencode($data['secretquestion']), 
                 $data['birthday'], 
-                $data['gender']);
+                $data['gender'],
+        		urlencode($data['username']))
+        ;
         
         
         $response = file_get_contents($url);
+        
         $json = json_decode($response,true);
         if (strpos($response, "error") !== false)
         {
             
-            
+        	
             
             if ($json["debuginfo"]=="Email address is invalid"){
                 //$associativeArray ['messageerror'] = ;
@@ -78,14 +82,15 @@ class UserController extends AbstractRestfulJsonController{
         $message=$this->enrol_user($data['username'], $this->getLatestCourse());
         
         if ($message!=""){
-        	new JsonModel($message);
+        	return new JsonModel($message);
         }
         return  new JsonModel(array());
     }
     
     private function enrol_user($username, $courseid){
     	if ($courseid<0){
-    		return new JsonModel( $this->throwJSONError("Ocurrio un error, Contacte al administrador", 404));
+    		
+    		return "Ocurrio un error, contacte al administrador";
     	}
     	 
     	$url = $this->getConfig()['MOODLE_API_URL'].'&field=username&values[0]=%s';
@@ -97,7 +102,7 @@ class UserController extends AbstractRestfulJsonController{
     	if (strpos($response, "exception") !== false || count($json_user)==0 )
     	{
     		
-    		return $this->throwJSONError("Ocurrio un error, Contacte al administrador", 404);
+    		return "Ocurrio un error, contacte al administrador";
     	}
     	$id=$json_user[0]['id'];//id
     	 
@@ -109,7 +114,7 @@ class UserController extends AbstractRestfulJsonController{
     	 
     	if (strpos($response, "exception") !== false  )
     	{
-    		return $this->throwJsonError();
+    		return "Ocurrio un error, contacte al administrador";
     	}
     	
     	
@@ -200,7 +205,6 @@ class UserController extends AbstractRestfulJsonController{
     	
     	$response = file_get_contents($url);
     	$json = json_decode($response,true);
-    	//var_dump($response);
     	if (strpos($response, "exception") !== false)
     	{
     		return array();
@@ -231,7 +235,6 @@ class UserController extends AbstractRestfulJsonController{
     
     	if (strpos($response, "exception") !== false)
     	{
-    		var_dump($response);
     		return -1;
     	}
     	// Good
