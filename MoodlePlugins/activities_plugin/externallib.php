@@ -828,8 +828,8 @@ class activitiesSummary_plugin extends external_api{
 				case 'label':
 					$sql.= "{label}";
 					break;
-				case 'assignment':
-					$sql.= "{assignment}";
+				case 'assign':
+					$sql.= "{assign}";
 					break;
 				case 'lesson':
 					$sql.= "{lesson}";
@@ -892,8 +892,8 @@ class activitiesSummary_plugin extends external_api{
 			// }
 		
 			$sql = "SELECT cm.instance AS id, m.name
-					FROM mdl_course_modules AS cm
-					INNER JOIN mdl_modules AS m
+					FROM {course_modules} AS cm
+					INNER JOIN {modules} AS m
 					ON cm.module = m.id
 					WHERE cm.id = $coursemoduleid";
 			
@@ -915,4 +915,328 @@ class activitiesSummary_plugin extends external_api{
 			)
 		);
 	}	
+}
+
+class assignment_plugin extends external_api{
+
+	public static function get_assignment_parameters(){
+		return new external_function_parameters(
+			array(
+				'assignmentid' => new external_value(PARAM_INT, 'Assigment ID')
+			)
+		);
+	}
+
+	public static function get_assignment($assignmentid){
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_assignment_parameters(), 
+					array(
+						'assignmentid' => $assignmentid
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+		
+			$sql = "SELECT id, name, intro AS description
+					FROM {assign}
+					WHERE id = $assignmentid";
+			
+			$response = $DB->get_records_sql($sql);
+		
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+
+	public static function get_assignment_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'id'          => new external_value(PARAM_INT, 'Assignment ID'),
+					'name'        => new external_value(PARAM_TEXT, 'Assignment name'),
+					'description' => new external_value(PARAM_RAW, 'Assignment Description'),
+					'stars'       => new external_value(PARAM_INT, 'Assignment Stars', VALUE_OPTIONAL)
+				)
+			)
+		);
+	}
+
+}
+
+class chat_plugin extends external_api{
+
+	public static function get_available_chats_parameters(){
+		return new external_function_parameters(
+			array('catalogname' => new external_value(PARAM_TEXT, 'The name of the catalog. By default it is "securityquestions"', VALUE_DEFAULT, 'securityquestions'))
+		);
+	}
+
+	public static function get_available_chats(){
+		global $USER;
+        global $DB;
+        $response = array();
+
+        try {
+            //Parameter validation
+            //REQUIRED
+            $params = self::validate_parameters(
+            		self::get_available_chats_parameters(), 
+            		array('catalogname' => ''));
+
+            //Context validation
+            //OPTIONAL but in most web service it should present
+            $context = get_context_instance(CONTEXT_USER, $USER->id);
+            self::validate_context($context);
+
+            //Capability checking
+            //OPTIONAL but in most web service it should present
+            // if (!has_capability('moodle/user:viewdetails', $context)) {
+            //     throw new moodle_exception('cannotviewprofile');
+            // }
+
+            $sql = 'select * from {chat}';
+            //$params = array('fieldname' => $catalogname);
+            $response = $DB->get_records_sql($sql);
+
+        } catch (Exception $e) {
+            $response = $e;
+        }
+        return $response;
+
+	}
+
+	public static function get_available_chats_returns(){
+		return new external_multiple_structure(
+            new external_single_structure(
+                array(
+                        'id' => new external_value(PARAM_TEXT, 'id of chat'),
+                        'course' => new external_value(PARAM_TEXT, 'id of course'),
+                        'name' => new external_value(PARAM_TEXT, 'Name of course'),
+                        'intro' => new external_value(PARAM_RAW, 'Name of course'),
+                        'introformat' => new external_value(PARAM_TEXT, 'id of chat'),
+                        'keepdays' => new external_value(PARAM_TEXT, 'Days to keep chat'),
+                        'studentlogs' => new external_value(PARAM_TEXT, 'Logs of students'),
+                        'chattime' => new external_value(PARAM_TEXT, 'Time of chat'),
+                        'schedule' => new external_value(PARAM_TEXT, ''),
+                        'timemodified' => new external_value(PARAM_TEXT, '')
+                )
+            )
+        );
+
+	}
+
+}
+
+class forum_plugin extends external_api{
+
+}
+
+class label_plugin extends external_api{
+
+	public static function get_label_parameters(){
+		return new external_function_parameters(
+			array(
+				'labelid' => new external_value(PARAM_INT, 'Label ID')
+			)
+		);
+	}
+
+	public static function get_label($labelid){
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_label_parameters(), 
+					array(
+						'labelid' => $labelid
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+		
+			$sql = "SELECT id, 
+						   intro AS labeltext
+					FROM {label}
+					WHERE id = $labelid";
+			
+			$response = $DB->get_records_sql($sql);
+		
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+
+	public static function get_label_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'id'          => new external_value(PARAM_INT, 'Label ID'),
+					/**'stars'       => new external_value(PARAM_INT, 'Label Stars'),**/
+					'labeltext'   => new external_value(PARAM_RAW, 'Label Text')
+				)
+			)
+		);
+	}
+
+}
+
+class page_plugin extends external_api{
+
+	public static function get_page_parameters(){
+		return new external_function_parameters(
+			array(
+				'pageid' => new external_value(PARAM_INT, 'Page ID')
+			)
+		);
+	}
+
+	public static function get_page($pageid){
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_page_parameters(), 
+					array(
+						'pageid' => $pageid
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+		
+			$sql = "SELECT id, 
+						   name, 
+						   intro   AS description,
+						   content AS pagecontent
+					FROM {page}
+					WHERE id = $pageid";
+			
+			$response = $DB->get_records_sql($sql);
+		
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+
+	public static function get_page_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'id'          => new external_value(PARAM_INT, 'Page ID'),
+					'name'        => new external_value(PARAM_TEXT, 'Page name'),
+					'description' => new external_value(PARAM_RAW, 'Page Description'),
+					/**'stars'       => new external_value(PARAM_INT, 'Page Stars'),**/
+					'pagecontent' => new external_value(PARAM_RAW, 'Page Content')
+				)
+			)
+		);
+	}
+
+}
+
+class url_plugin extends external_api{
+
+	public static function get_url_parameters(){
+		return new external_function_parameters(
+			array(
+				'urlid' => new external_value(PARAM_INT, 'Url ID')
+			)
+		);
+	}
+
+	public static function get_url($urlid){
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_url_parameters(), 
+					array(
+						'urlid' => $urlid
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+		
+			$sql = "SELECT id, 
+						   name, 
+						   intro   AS description,
+						   externalurl AS url
+					FROM {url}
+					WHERE id = $urlid";
+			
+			$response = $DB->get_records_sql($sql);
+		
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+
+	public static function get_url_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'id'          => new external_value(PARAM_INT, 'Url ID'),
+					'name'        => new external_value(PARAM_TEXT, 'Url name'),
+					'description' => new external_value(PARAM_RAW, 'Url Description'),
+					/**'stars'       => new external_value(PARAM_INT, 'Url Stars'),**/
+					'url'         => new external_value(PARAM_RAW, 'Url Content')
+				)
+			)
+		);
+	}
+
 }

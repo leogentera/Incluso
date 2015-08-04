@@ -103,7 +103,7 @@
     <article>
       <div class="container">
 
-        <h1 class="text-center">¡Bienvenido {{user.username}}!</h1>
+        <h1 class="text-center">¡Bienvenido {{user.alias}}!</h1>
         <section class="component video-gallery">
           <h3>- ¿Qué es incluso? -</h3>
           <div class="stage perform">
@@ -121,19 +121,19 @@
         <section class="component global-progress txt-renglon centered">
          <h3>- Avance Global -</h3>
          <div class="spinner">
-           <img src="assets/images/prcnt/{{Math.ceil(usercourse.globalProgress)}}.png"><div class="circle"></div><div class="text">{{usercourse.globalProgress}}%</div>
+           <img src="assets/images/prcnt/{{usercourse == null ? 0 : Math.ceil(usercourse.globalProgress)}}.png"><div class="circle"></div><div class="text">{{usercourse == null ? 0 : usercourse.globalProgress}}%</div>
          </div>
        </section>
 
        <section class="component current-satge">
-        <img  src="assets/images/estacion{{currentStage}}.png">
+        <img  src="assets/images/estacion{{currentStage != null ? currentStage : 1}}.png">
         <h3>- Estación: {{stage.name}} -</h3>
-        <a href="" class="btn btn-primary btn-lg">Iniciar mi aventura</a>
+        <a href="" class="btn btn-primary btn-lg" ng-click="navigateToStage()">Iniciar mi aventura</a>
       </section>
 
       <section class="component my-badges">
         <h3>- Mi Escudo -</h3>
-        <img src="assets/images/{{user.shield}}" alt="">
+        <img src="assets/images/img-badges-blocked.png" alt="">
       </section>
 
         
@@ -158,7 +158,7 @@
               <div>
                 <p>
                   <label for="">1er. Lugar:</label>
-                  <span>{{course.leaderboard[0] != null ? course.leaderboard[0].fullname : ""}}</span>
+                  <span>{{course.leaderboard[0] != null ? course.leaderboard[0].alias : ""}}</span>
                 </p>
                 <ul class="inline-list">
                   <li class="points"><span>{{course.leaderboard[0] != null ? course.leaderboard[0].stars : 0}}</span> <i class="icomoon icon-star"></i></li>
@@ -184,7 +184,7 @@
               <div>
                 <p>
                   <label for="">2do. Lugar:</label>
-                      <span>{{course.leaderboard[1] != null ? course.leaderboard[1].fullname : ""}}</span>
+                      <span>{{course.leaderboard[1] != null ? course.leaderboard[1].alias : ""}}</span>
                 </p>
                 <ul class="inline-list">
                       <li class="points"><span>{{course.leaderboard[1] != null ? course.leaderboard[1].stars : 0}}</span> <i class="icomoon icon-star"></i></li>
@@ -210,7 +210,7 @@
               <div>
                 <p>
                   <label for="">3er. Lugar:</label>
-                  <span>{{course.leaderboard[2] != null ? course.leaderboard[2].fullname : ""}}</span>
+                  <span>{{course.leaderboard[2] != null ? course.leaderboard[2].alias : ""}}</span>
                 </p>
                 <ul class="inline-list">
                   <li class="points"><span>{{course.leaderboard[2] != null ? course.leaderboard[2].stars : 0}}</span> <i class="icomoon icon-star"></i></li>
