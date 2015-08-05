@@ -326,6 +326,21 @@
                         font-size: 100%;
                     }
                 }
+                &.part3{
+                    display: flex;
+                    flex-flow: row wrap;
+                    align-items: stretch;
+                    & > div > div{
+                        display: block;
+                        font-size: 3vw;
+                        text-align: center;
+                        width: 32%;
+                    }
+                }
+                hr{
+                    width:100%;
+                    border-color: rgba(128, 152, 160,.5);;
+                }
             }
             .showmore{
                 background: rgba(28, 28, 28, 0.5) none repeat scroll 0 0;
@@ -429,13 +444,6 @@
                         color:white;
                         padding:0;
                     }
-                }
-            }
-            .paginate, .paginate a{
-                color:@clr-greenicon;
-                margin: 5% 15%;
-                i{
-                    font-size: 300%;
                 }
             }
             .modalDialog {
