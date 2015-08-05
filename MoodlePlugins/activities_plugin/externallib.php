@@ -1045,6 +1045,195 @@ class chat_plugin extends external_api{
 
 class forum_plugin extends external_api{
 
+	public static function get_forum_discussion_posts_parameters() {
+        return new external_function_parameters(
+            array(
+                'discussionid' => new external_value(PARAM_INT, 'discussion ID', VALUE_REQUIRED),
+                'sortby' => new external_value(PARAM_ALPHA, 'sort by this element: id, created or modified', VALUE_DEFAULT, 'created'),
+                'sortdirection' => new external_value(PARAM_ALPHA, 'sort direction: ASC or DESC', VALUE_DEFAULT, 'DESC')
+            )
+        );
+    }
+
+    public static function get_forum_discussion_posts($discussionid, $sortby = "created", $sortdirection = "DESC") {
+        global $CFG, $DB, $USER;
+
+        $warnings = array();
+            //var_dump($_POST["wstoken"]);
+            //var_dump($CFG->wwwroot);
+            
+            $sortallowedvalues = array('id', 'created', 'modified');
+            if (!in_array($sortby, $sortallowedvalues)) {
+                throw new invalid_parameter_exception('Invalid value for sortby parameter (value: ' . $sortby . '),' .
+                    'allowed values are: ' . implode(',', $sortallowedvalues));
+            }
+
+            $sortdirection = strtoupper($sortdirection);
+            $directionallowedvalues = array('ASC', 'DESC');
+            if (!in_array($sortdirection, $directionallowedvalues)) {
+                throw new invalid_parameter_exception('Invalid value for sortdirection parameter (value: ' . $sortdirection . '),' .
+                    'allowed values are: ' . implode(',', $directionallowedvalues));
+            }
+
+            $discussion = $DB->get_record('forum_discussions', array('id' => $discussionid), '*', MUST_EXIST);
+            $forum = $DB->get_record('forum', array('id' => $discussion->forum), '*', MUST_EXIST);            
+            $course = $DB->get_record('course', array('id' => $forum->course), '*', MUST_EXIST);
+            $cm = get_coursemodule_from_instance('forum', $forum->id, $course->id, false, MUST_EXIST);
+            require_once($CFG->dirroot . "/mod/forum/lib.php");
+            
+
+            // Validate the module context. It checks everything that affects the module visibility (including groupings, etc..).
+            $modcontext = context_module::instance($cm->id);
+            self::validate_context($modcontext);
+
+            // This require must be here, see mod/forum/discuss.php.
+            require_once($CFG->dirroot . "/mod/forum/lib.php");
+
+            // Check they have the view forum capability.
+            require_capability('mod/forum:viewdiscussion', $modcontext, null, true, 'noviewdiscussionspermission', 'forum');
+
+            if (! $post = forum_get_post_full($discussion->firstpost)) {
+                throw new moodle_exception('notexists', 'forum');
+            }
+
+            // This function check groups, qanda, timed discussions, etc.
+            if (!forum_user_can_see_post($forum, $discussion, $post, null, $cm)) {
+                throw new moodle_exception('noviewdiscussionspermission', 'forum');
+            }
+
+            //$canviewfullname = has_capability('moodle/site:viewfullnames', $modcontext);
+
+            // We will add this field in the response.
+            $canreply = forum_user_can_post($forum, $discussion, $USER, $cm, $course, $modcontext);
+
+            $forumtracked = forum_tp_is_tracked($forum);
+
+            $sort = 'p.' . $sortby . ' ' . $sortdirection;
+            $posts = forum_get_all_discussion_posts($discussion->id, $sort, $forumtracked);
+
+            foreach ($posts as $pid => $post) {
+
+                if (!forum_user_can_see_post($forum, $discussion, $post, null, $cm)) {
+                    $warning = array();
+                    $warning['item'] = 'post';
+                    $warning['itemid'] = $post->id;
+                    $warning['warningcode'] = '1';
+                    $warning['message'] = 'You can\'t see this post';
+                    $warnings[] = $warning;
+                    continue;
+                }
+
+                // Function forum_get_all_discussion_posts adds postread field.
+                // Note that the value returned can be a boolean or an integer. The WS expects a boolean.
+                if (empty($post->postread)) {
+                    $posts[$pid]->postread = false;
+                } else {
+                    $posts[$pid]->postread = true;
+                }
+
+                $posts[$pid]->canreply = $canreply;
+                if (!empty($posts[$pid]->children)) {
+                    $posts[$pid]->children = array_keys($posts[$pid]->children);
+                } else {
+                    $posts[$pid]->children = array();
+                }
+
+                $user = new stdclass();
+                $user->id = $post->userid;
+
+                //$user = username_load_fields_from_object($user, $post);
+                require_once($CFG->dirroot . "/user/profile/lib.php");
+                $user = profile_user_record($user->id);
+                $post->userfullname = $user->alias;
+
+                // We can have post written by users that are deleted. In this case, those users don't have a valid context.
+                $usercontext = context_user::instance($user->id, IGNORE_MISSING);
+                if ($usercontext) {
+                    $post->userpictureurl = moodle_url::make_webservice_pluginfile_url(
+                            $usercontext->id, 'user', 'icon', null, '/', 'f1')->out(false);
+                } else {
+                    $post->userpictureurl = '';
+                }
+
+                // Rewrite embedded images URLs.
+                list($post->message, $post->messageformat) =
+                    external_format_text($post->message, $post->messageformat, $modcontext->id, 'mod_forum', 'post', $post->id);
+
+                // List attachments.
+                if (!empty($post->attachment)) {
+                    $post->attachments = array();
+
+                    $fs = get_file_storage();
+                    if ($files = $fs->get_area_files($modcontext->id, 'mod_forum', 'attachment', $post->id, "filename", false)) {
+                        foreach ($files as $file) {
+                            $filename = $file->get_filename();
+                            $fileurl = moodle_url::make_webservice_pluginfile_url(
+                                            $modcontext->id, 'mod_forum', 'attachment', $post->id, '/', $filename);
+
+                            $post->attachments[] = array(
+                                'filename' => $filename,
+                                'mimetype' => $file->get_mimetype(),
+                                'fileurl'  => $fileurl->out(false)
+                            );
+                        }
+                    }
+                }
+                // LIKES
+                $post->likes = $DB->count_records('forum_post_like', array('forumpostid' => $post->id));
+                $post->liked_already = $DB->record_exists('forum_post_like', array('forumpostid' => $post->id, "userid" => $USER->id));
+
+                $posts[$pid] = (array) $post;
+            }
+
+            $result = array();
+            $result['posts'] = $posts;
+            $result['warnings'] = $warnings;
+            return $result;
+    }
+
+    public static function get_forum_discussion_posts_returns() {
+        return new external_single_structure(
+            array(
+                'posts' => new external_multiple_structure(
+                        new external_single_structure(
+                            array(
+                                'id' => new external_value(PARAM_INT, 'Post id'),
+                                'discussion' => new external_value(PARAM_INT, 'Discussion id'),
+                                'parent' => new external_value(PARAM_INT, 'Parent id'),
+                                'userid' => new external_value(PARAM_INT, 'User id'),
+                                'created' => new external_value(PARAM_INT, 'Creation time'),
+                                'modified' => new external_value(PARAM_INT, 'Time modified'),
+                                'mailed' => new external_value(PARAM_INT, 'Mailed?'),
+                                'subject' => new external_value(PARAM_TEXT, 'The post subject'),
+                                'message' => new external_value(PARAM_RAW, 'The post message'),
+                                'messageformat' => new external_format_value('message'),
+                                'messagetrust' => new external_value(PARAM_INT, 'Can we trust?'),
+                                'attachment' => new external_value(PARAM_RAW, 'Has attachments?'),
+                                'attachments' => new external_multiple_structure(
+                                    new external_single_structure(
+                                        array (
+                                            'filename' => new external_value(PARAM_FILE, 'file name'),
+                                            'mimetype' => new external_value(PARAM_RAW, 'mime type'),
+                                            'fileurl'  => new external_value(PARAM_URL, 'file download url')
+                                        )
+                                    ), 'attachments', VALUE_OPTIONAL
+                                ),
+                                'totalscore' => new external_value(PARAM_INT, 'The post message total score'),
+                                'mailnow' => new external_value(PARAM_INT, 'Mail now?'),
+                                'children' => new external_multiple_structure(new external_value(PARAM_INT, 'children post id')),
+                                'canreply' => new external_value(PARAM_BOOL, 'The user can reply to posts?'),
+                                'postread' => new external_value(PARAM_BOOL, 'The post was read'),
+                                'userfullname' => new external_value(PARAM_TEXT, 'Post author full name'),
+                                'userpictureurl' => new external_value(PARAM_URL, 'Post author picture.', VALUE_OPTIONAL),
+                                'likes' => new external_value(PARAM_INT, 'Number of post likes', VALUE_OPTIONAL),
+                                'liked_already' => new external_value(PARAM_BOOL, 'If the user has already liked the post.', VALUE_OPTIONAL)
+                            ), 'post'
+                        )
+                    ),
+                'warnings' => new external_warnings()
+            )
+        );
+    }
 }
 
 class label_plugin extends external_api{

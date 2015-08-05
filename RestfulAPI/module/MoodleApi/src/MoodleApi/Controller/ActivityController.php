@@ -6,6 +6,8 @@ use Zend\View\Model\JsonModel;
 
 use MoodleApi\Model\MoodleAssignment;
 use MoodleApi\Model\MoodleForum;
+use MoodleApi\Model\MoodleForumDiscussion;
+use MoodleApi\Model\MoodleForumPost;
 use MoodleApi\Model\MoodleLabel;
 use MoodleApi\Model\MoodlePage;
 use MoodleApi\Model\MoodleQuiz;
@@ -96,23 +98,50 @@ class ActivityController extends AbstractRestfulJsonController {
     }
 
     private function getForum($id){
+        $forum = new MoodleForum();
+        $forum->setId($id);
+        $summary = $this->getActivitySummary($id, 'forum');
+        $forum->setName($summary->name);
+        $forum->setActivityType();
+        $forum->setDescription($summary->intro);
+
         $url = $this->getConfig()['MOODLE_API_URL'].'&forumid=%s';
         $url = sprintf($url, $this->getToken(), "mod_forum_get_forum_discussions_paginated", $id);
 
         $response = file_get_contents($url);
     
         $json = json_decode($response,true);
-    
+
         if (strpos($response, "exception") !== false){
             return array();
         }
 
-        $forum = new MoodleForum();
-        $forum->setId($id);
-        $summary = $this->getActivitySummary($id, 'forum');
-        $forum->setName($summary->name);
-        $forum->setDescription($summary->intro);
-        $forum->setDiscussions($json["discussions"]);
+        $discussions = $json["discussions"];
+
+        foreach($discussions as $discussion){
+            $url = $this->getConfig()['MOODLE_API_URL'].'&discussionid=%s&sortdirection=ASC';
+            $url = sprintf($url, $this->getToken(), "get_forum_discussion_posts", $discussion["id"]);
+
+            $response = file_get_contents($url);
+        
+            $json = json_decode($response,true);
+
+            if (strpos($response, "exception") !== false){
+                return array();
+            }
+
+            $posts = $json["posts"];
+
+            $posts = $this->getTreeDiscussion($posts);
+            
+            $discussion = new MoodleForumDiscussion($discussion);
+
+            $discussion->setPosts($posts);
+
+            $forum->setDiscussions($discussion);
+        }
+
+        
         
         return new JsonModel((array)$forum);
     }
@@ -198,6 +227,33 @@ class ActivityController extends AbstractRestfulJsonController {
         }
 
         return new JsonModel($json[0]);   
+    }
+
+    private function getTreeDiscussion($posts){
+        
+        $new = array();
+
+        foreach ($posts as $a){
+            $new[$a['parent']][] = new MoodleForumPost($a);
+        }
+
+        $tree = $this->createTree($new, $new[0]); // changed
+
+        return $tree;
+    }
+
+    private function createTree(&$list, $parent){
+        $tree = array();
+
+        foreach ($parent as $k=>$l){
+            if(isset($list[$l->id])){
+                $l->replies = $this->createTree($list, $list[$l->id]);
+            }
+
+            $tree[] = $l;
+        } 
+        
+        return $tree;
     }
 
 
