@@ -108,10 +108,16 @@ class quiz_plugin extends external_api{
 			$quizes = array();
 			foreach ($response as $quiz){
 				$quiz->questions=$questions;
-				$quiz->quizType='';
+
+				$quiz->quizType='survey';
+
+				if($quiz->grade > 0){
+					$quiz->quizType='quiz';	
+				}
+				
 				$quiz->stars=-1;
 				$quiz->score=-1;
-				$quiz->activityType="Quiz";
+				$quiz->activityType="quiz";
 				
 				$quiz->status=-1;
 				$quiz->dateIssued="";
