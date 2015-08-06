@@ -22,6 +22,23 @@ class UserController extends AbstractRestfulJsonController{
     // Action used for POST requests
     public function create($data)
     {
+    	$facebookid="";
+    	if (key_exists('facebookid', $data)){
+    		$facebookid=urlencode($data['facebookid']);
+    		
+    		//if it is a facebook user, maybe it is already registered
+    		
+    		if($this->facebookUserExists($facebookid)!=""){
+    			
+    			//If it is registered, we should be transparent and send that the resgistering was successfull
+    			$associativeArray = array();
+        		$associativeArray ['username'] =$this->facebookUserExists($facebookid);
+        		return new JsonModel($associativeArray);
+    		}
+    		
+    	}
+    	
+    	//Mortal registration
         $url = $this->getConfig()['MOODLE_API_URL'].
                 '&users[0][username]=%s'.
                 '&users[0][password]=%s'.
@@ -34,14 +51,26 @@ class UserController extends AbstractRestfulJsonController{
                 '&users[0][customfields][1][type]=secretquestion&users[0][customfields][1][value]=%s'.
                 '&users[0][customfields][2][type]=birthday&users[0][customfields][2][value]=%s'.
                 '&users[0][customfields][3][type]=gender&users[0][customfields][3][value]=%s'.
-        		'&users[0][customfields][4][type]=alias&users[0][customfields][4][value]=%s';
+        		'&users[0][customfields][4][type]=alias&users[0][customfields][4][value]=%s'.
+        		'&users[0][customfields][5][type]=facebookid&users[0][customfields][5][value]=%s';
         
         $dateinMilis= $data['birthday'];
 //      $dateinMilis=strtotime($data['birthday']) * 1000;
 //      $dateinMilis+=3600000;
+
+        $alias=urlencode($data['username']);
+        if (key_exists('alias', $data)){
+        	$alias=urlencode($data['alias']);
+        }
+        $username=urlencode($data['username']);
+        if (key_exists('facebookid', $data)){
+        	//$facebookid=urlencode($data['facebookid']);
+        	$username=$this->generateUser();
+        }
+        
         
         $url = sprintf($url, $this->getToken(), "core_user_create_users", 
-                urlencode($data['username']), 
+                $username, 
                 urlencode($data['password']),
                 /*urlencode($data['firstname']), */ "", //Register page doesn't send firstname and last name
                 /*urlencode($data['lastname']), */ "",
@@ -51,7 +80,8 @@ class UserController extends AbstractRestfulJsonController{
                 urlencode($data['secretquestion']), 
                 $data['birthday'], 
                 $data['gender'],
-        		urlencode($data['username']))
+        		$alias,
+        		$facebookid)
         ;
         
         
@@ -60,8 +90,6 @@ class UserController extends AbstractRestfulJsonController{
         $json = json_decode($response,true);
         if (strpos($response, "error") !== false)
         {
-            
-        	
             
             if ($json["debuginfo"]=="Email address is invalid"){
                 //$associativeArray ['messageerror'] = ;
@@ -79,20 +107,56 @@ class UserController extends AbstractRestfulJsonController{
             
             return new JsonModel($this->throwJSONError($message));
         }
-        $message=$this->enrol_user($data['username'], $this->getLatestCourse());
+        $message=$this->enrol_user($username, $this->getLatestCourse());
         
         if ($message!=""){
-        	return new JsonModel($message);
+        	return new JsonModel($this->throwJSONError($message));
+        }
+        
+        if ($facebookid!=""){
+        	$associativeArray = array();
+        	$associativeArray ['username'] =$this->facebookUserExists($facebookid);
+        		return new JsonModel($associativeArray);
+        
         }
         return  new JsonModel(array());
     }
     
-    private function enrol_user($username, $courseid){
-    	if ($courseid<0){
-    		
-    		return "Ocurrio un error, contacte al administrador";
+    private function generateUser(){
+    	$url = $this->getConfig()['MOODLE_API_URL'];
+    	
+    	$url = sprintf($url, $this->getToken(), "generate_user");
+    	
+    	$response = file_get_contents($url);
+    	$json = json_decode($response,true);
+    	if (strpos($response, "error") !== false)
+    	{
+    		return "";
+    	}
+    	
+    	return $json['username'];
+    }
+    
+    private function facebookUserExists($facebookid){
+    	$url = $this->getConfig()['MOODLE_API_URL'].
+                '&facebookid=%s';
+    	 
+    	$url = sprintf($url, $this->getToken(), "get_user_by_facebookid", $facebookid);
+    	 
+    	$response = file_get_contents($url);
+    	$json = json_decode($response,true);
+    	if (strpos($response, "exception") !== false)
+    	{
+    		return "";
     	}
     	 
+    	return $json['username'];
+    }
+    
+    private function enrol_user($username, $courseid){
+    	if ($courseid<0){
+    		return "Ocurrio un error, contacte al administrador";
+    	}
     	$url = $this->getConfig()['MOODLE_API_URL'].'&field=username&values[0]=%s';
     	$url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $username);
     
@@ -101,9 +165,9 @@ class UserController extends AbstractRestfulJsonController{
     
     	if (strpos($response, "exception") !== false || count($json_user)==0 )
     	{
-    		
     		return "Ocurrio un error, contacte al administrador";
     	}
+    	
     	$id=$json_user[0]['id'];//id
     	 
     	$url = $this->getConfig()['MOODLE_API_URL'].'&enrolments[0][userid]=%s&enrolments[0][courseid]=%s&enrolments[0][roleid]=5';
@@ -116,7 +180,6 @@ class UserController extends AbstractRestfulJsonController{
     	{
     		return "Ocurrio un error, contacte al administrador";
     	}
-    	
     	
     	
     	return $this->updateCurrentCourseId($id, $courseid);
@@ -152,8 +215,7 @@ class UserController extends AbstractRestfulJsonController{
     		else{
     			$json = json_decode($response,true);
     		}
-    		
-    		return $this->throwJSONError();
+    		return "Ocurrio un error, contacte al administrador";
     
     }
     
