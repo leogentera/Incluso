@@ -99,6 +99,14 @@ $functions = array(
                         'description' => 'Return a list of the available chats.',
                         'type'        => 'read',
         ),
+
+        'get_forum_discussion_posts' => array(
+                        'classname'   => 'forum_plugin',
+                        'methodname'  => 'get_forum_discussion_posts',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Returns a list of forum posts for a discussion.',
+                        'type'        => 'read',
+        ),        
 );
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
@@ -148,6 +156,13 @@ $services = array(
         'Chat service' => array(
                 'functions' => array(
                         'get_available_chats'),
+                'restrictedusers' => 0,
+                'enabled'=>1,
+        ),
+
+        'Forum service' => array(
+                'functions' => array(
+                        'get_forum_discussion_posts'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         )
