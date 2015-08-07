@@ -401,6 +401,14 @@ class UserController extends AbstractRestfulJsonController{
     
     //Stars
         $url.= $this->addStars($data, '&users[0][customfields][24][type]=%s&users[0][customfields][24][value]=%s', 'stars');
+        
+
+
+        $additionalEmails=$this->createTableRows($data,  'additionalEmails' );
+        if (trim($additionalEmails)!=""){
+        	$url.=sprintf('&users[0][customfields][25][type]=%s&users[0][customfields][25][value]=%s',
+        			"additionalEmails",$additionalEmails);
+        }
 
     	//$url = sprintf($url, $this->getToken(), $this->function);
     
