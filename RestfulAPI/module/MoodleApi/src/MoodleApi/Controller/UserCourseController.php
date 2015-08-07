@@ -12,37 +12,22 @@ class UserCourseController extends AbstractRestfulJsonController {
     
     private $token = "";
 
-    public function get($userid){
+    public function get($userid){ 
 
         $userCourse = new MoodleUserCourse();
-
         $userCourse->setUser($userid);
 
-        $courseid = $this->getCurrentCourse($userid);
+        $courseAndStatus = $this->getCurrentCourseAndStatus($userid);
+
+        $courseid = $courseAndStatus["courseid"];
 
         $userCourse->setCourse($courseid);
+        $userCourse->setFirstTime($courseAndStatus["firsttime"]);
+        $userCourse->setGlobalProgress($courseAndStatus["percentage_completed"]);
 
-        $userCourse->setFirstTime($this->getIfIsFirstTime($courseid, $userid));
-
-        $userCourse->setGlobalProgress($this->getGlobalProgress($userid, $courseid));
-
-        $stages = $this->getCourseStages($courseid, $userid);
+        $stages = $this->getCourseUserDetail($userid);
 
         $userCourse->setStages($stages);
-
-        for($i = 0; $i < sizeof($stages); $i++){
-            $userCourse->stages[$i]->setChallenges($this->getChallengesStage($userid, $courseid, $userCourse->stages[$i]->section));
-            $userCourse->stages[$i]->setStageProgress($this->getProgressStage($userCourse->stages[$i]->id, $userid));
-
-            $stageStatus = 0;
-
-            if($userCourse->stages[$i]->stageProgress == 100){
-                $stageStatus = 1;                
-            }
-
-            $userCourse->stages[$i]->setStageStatus($stageStatus);
-
-        }
 
         return new JsonModel((array)$userCourse);
     }
@@ -68,169 +53,188 @@ class UserCourseController extends AbstractRestfulJsonController {
         return new JsonModel(array("update"=>true));
     }
 
-    private function getCurrentCourse($userid){
-        $url = $this->getConfig()['MOODLE_API_URL'].'&field=id&values[0]=%s';
-        $url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $userid);
+    private function getCurrentCourseAndStatus($userid){
+
+        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s';
+        $url = sprintf($url, $this->getToken(), "get_current_course_and_status_by_user", $userid);
         
         $response = file_get_contents($url);
 
         $json = json_decode($response, true);
-        
-        if (strpos($response, "exception") !== false)
-        {
-            return new JsonModel( $this->throwJSONError("El usuario no esta registrado"));
-        }
-        else
-        {
-            for($i=0;count($json[0]['customfields'])>$i;$i++){
-                $customFields[$json[0]['customfields'][$i]['name']]=$json[0]['customfields'][$i]['value'];
-            }
 
-            return $customFields["course"];
-      
-        }
-    }
-
-    private function getIfIsFirstTime($courseid, $userid){
-        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s&courseid=%s';
-        $url = sprintf($url, $this->getToken(), "is_first_time_in_course", $userid, $courseid);
-        
-        $response = file_get_contents($url);
-
-        $json = json_decode($response, true);
-        
         if (strpos($response, "exception") !== false){
             return 1;
         }else{
             if(count($json)==0){
                 return 1;
-            }            
-            return $json[0]["firsttime"];
-        }
+            }
+            return $json;
+        } 
     }
 
-    private function getCourseStages($courseid, $userid){
-        $url = $this->getConfig()['MOODLE_API_URL'].'&courseid=%s&userid=%s';
-        $url = sprintf($url, $this->getToken(), "get_stages_by_user_and_course", $courseid, $userid);
+    private function getCourseUserDetail($userid){
 
-        $response = file_get_contents($url);
-    
-        $json = json_decode($response,true);
-    
-        if (strpos($response, "exception") !== false)
-        {
-    
-            return array();
-        }
-        // Good
-        $stages= array();
-
-        foreach($json as $stage){
-            $stage = new MoodleStage($stage);
-            array_push($stages, $stage);
-        }
-        return $stages;
-    }
-
-    private function getChallengesStage($userid, $courseid, $stageid){
-    
-        $url = $this->getConfig()['MOODLE_API_URL'].'&courseid=%s&stageid=%s';
-        $url = sprintf($url, $this->getToken(), "get_challenges_stage", $courseid, $stageid);
-
+        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s';
+        $url = sprintf($url, $this->getToken(), "get_user_course_info", $userid);
+        
         $response = file_get_contents($url);
 
-        $json = json_decode($response,true);
+        $json = json_decode($response, true);
 
         if (strpos($response, "exception") !== false){
-            return array();
-        }
+            return 1;
+        }else{
 
-        $challenges= array();
+            $lastStageId = -1;
+            $lastChallengeId = -1;
+            $stage = null;
+            $challenge = null;
+            $activity = null;
+            $result = array();
 
-        foreach($json as $challenge){
-            $challenge = new MoodleChallenge($challenge);
-            $challenge->setActivityType("ActivityManager");
-            $challenge->setActivities($this->getActivitiesByChallenge($userid, $courseid, $challenge->id));
-            $challenge->setStatus(1);
+            $totalActivityStage = 0;
+            $totalActivityStageCompleted = 0;
 
-            foreach ($challenge->activities as $activity) {
-                if($activity->status == 0){
-                    $challenge->setStatus(0);                    
+            $totalActivityChallenge = 0;
+            $totalActivityChallengeCompleted = 0;
+
+            foreach($json as $row){
+                $activity = new MoodleActivity($row);
+                $activity->setId($row["activityid"]);
+                $activity->setActivityType($row["activitytype"]);
+                $activity->setCourseModuleId($row["coursemoduleid"]);
+                $activity->setStatus($row["completionstate"]);
+                $activity->setTimeModified($row["timemodified"]);
+
+                
+                if($row["stageid"] == $lastStageId){
+
+                    $totalActivityStage++;
+                    if($activity->status == 1){
+                        $totalActivityStageCompleted++;
+                    }
+
+                    if($row["challengeid"] == $lastChallengeId){
+                        
+                        $totalActivityChallenge++;
+                        if($activity->status == 1){
+                            $totalActivityChallengeCompleted++;
+                        }
+
+                        $challenge->setActivities($activity);
+
+                    }else{
+
+                        if($totalActivityChallenge == $totalActivityChallengeCompleted){
+                            $challengeStatus = 1;
+                        }else{
+                            $challengeStatus = 0;
+                        }
+
+                        $challenge->setStatus($challengeStatus);
+                        $stage->setChallenges($challenge);
+                        $lastChallengeId = $row["challengeid"];
+
+                        $totalActivityChallenge = 1;
+                        if($activity->status == 1){
+                            $totalActivityChallengeCompleted++;
+                        }
+
+                        $challenge = new MoodleChallenge($row);
+                        $challenge->setId($row["challengeid"]);
+                        $challenge->setName($row["challenge"]);
+                        $challenge->setDescription($row["challenge_description"]);
+                        $challenge->setActivityType("ActivityManager");
+                        $challenge->setActivities($activity);
+
+                    } 
+                }else{
+                    if($lastStageId != -1){
+                        
+                        if($totalActivityStage != 0 && $totalActivityStageCompleted != 0){
+                            $progress = (int) ($totalActivityStageCompleted*100/$totalActivityStage);
+                        }else{
+                            $progress = 0;
+                        }
+
+                        if($progress == 100){
+                            $stageStatus = 1;
+                        }else{
+                            $stageStatus = 0;
+                        }
+
+                        if($totalActivityChallenge == $totalActivityChallengeCompleted){
+                            $challengeStatus = 1;
+                        }else{
+                            $challengeStatus = 0;
+                        }
+
+                        $totalActivityStage = 0;
+                        $totalActivityStageCompleted = 0;
+                        $totalActivityChallenge = 0;
+                        $totalActivityChallengeCompleted = 0;
+
+                        $challenge->setStatus($challengeStatus);               
+                        $stage->setStageProgress($progress);
+                        $stage->setStageStatus($stageStatus);
+                        $stage->setChallenges($challenge);
+                        array_push($result, $stage);
+                    }
+
+                    $lastStageId = $row["stageid"];
+                    $lastChallengeId = $row["challengeid"];
+
+                    $totalActivityStage++;
+                    $totalActivityChallenge++;
+
+                    if($activity->status == 1){
+                        $totalActivityStageCompleted++;
+                        $totalActivityChallengeCompleted++;
+                    }
+
+                    $stage = new MoodleStage($row);
+                    $stage->setId($row["stageid"]);
+                    $stage->setName($row["stage"]);
+                    $stage->setSection($row["stagesection"]);
+                    $stage->setFirstTime($row["firsttime"]);
+
+                    $challenge = new MoodleChallenge($row);
+                    $challenge->setId($row["challengeid"]);
+                    $challenge->setName($row["challenge"]);
+                    $challenge->setDescription($row["challenge_description"]);
+                    $challenge->setActivityType("ActivityManager");
+                    $challenge->setActivities($activity);
+
                 }
             }
 
-            array_push($challenges, $challenge);
-        }
+            if($totalActivityStage !=0  && $totalActivityStageCompleted != 0){
+                $progress = (int) ($totalActivityStageCompleted*100/$totalActivityStage);
+            }else{
+                $progress = 0;
+            }
 
-        return $challenges;
-    }
+            if($progress == 100){
+                $stageStatus = 1;
+            }else{
+                $stageStatus = 0;
+            }
 
-    private function getActivitiesByChallenge($userid, $courseid, $sectionid){
-        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s&mainActivity=%s&courseid=%s';
-        $url = sprintf($url, $this->getToken(), "get_activities_status_by_challenge", $userid, $sectionid, $courseid);
+            if($totalActivityChallenge == $totalActivityChallengeCompleted){
+                $challengeStatus = 1;
+            }else{
+                $challengeStatus = 0;
+            }
 
-        $response = file_get_contents($url);
+            $challenge->setStatus($challengeStatus);
 
-        $json = json_decode($response,true);
+            $stage->setStageProgress($progress);
+            $stage->setStageStatus($stageStatus);
+            $stage->setChallenges($challenge);
+            array_push($result, $stage);
 
-        if (strpos($response, "exception") !== false){
-            return array();
-        }
-
-        $activities = array();
-
-        foreach($json as $act){
-            $activity = new MoodleActivity($act);
-            $activity->setStatus($act["completionstate"]);
-            $activity->setTimeModified($act["timemodified"]);
-            array_push($activities, $activity);
-        }
-
-        return $activities;
-    }
-
-    private function getGlobalProgress($userid, $courseid){
-    
-        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s&courseid=%s';
-        $url = sprintf($url, $this->getToken(), "get_global_progress", $userid, $courseid);
-
-        $response = file_get_contents($url);
-
-        $json = json_decode($response,true);
-
-        if (strpos($response, "exception") !== false){
-            return array();      
-        }
-        // Good
-        if (count($json)==0){
-            return "-1";
-        }
-
-        $progress=$json[0]['percentage_completed'];
-
-        return $progress;
-
-    }
-
-    private function getProgressStage($stageid, $userid){
-
-        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s&stageid=%s';
-        $url = sprintf($url, $this->getToken(), "get_stage_progress", $userid, $stageid);
-
-        $response = file_get_contents($url);
-
-        $json = json_decode($response,true);
-
-        if (strpos($response, "exception") !== false){
-            return array();
-        }
-            // Good
-        if (count($json)==0){
-            return "-1";
-        }
-        
-        $progress=$json[0]['percentage_completed'];
-        return $progress;
+            return $result;
+        } 
     }
 
     private function setFirstTime($userid, $resource, $typeOfResource){
