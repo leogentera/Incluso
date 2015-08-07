@@ -92,16 +92,16 @@ class course_plugin extends external_api{
 	}
 	
 
-	public static function is_first_time_in_course_parameters(){
+	public static function get_current_course_and_status_by_user_parameters(){
 		return new external_function_parameters(
 			array(
-				'userid'   => new external_value(PARAM_INT, 'User ID'),
-				'courseid' => new external_value(PARAM_INT, 'Course ID')
+				'userid'   => new external_value(PARAM_INT, 'User ID')
 			)
 		);
 	}
 
-	public static function is_first_time_in_course($userid, $courseid){
+	public static function get_current_course_and_status_by_user($userid, $courseid){
+		global $CFG;
 		global $USER;
 		global $DB;
 		$response = array();
@@ -110,10 +110,9 @@ class course_plugin extends external_api{
 			//Parameter validation
 			//REQUIRED
 			$params = self::validate_parameters(
-					self::is_first_time_in_course_parameters(), 
+					self::get_current_course_and_status_by_user_parameters(), 
 					array(
-						'userid' => $userid,
-						'courseid' => $courseid
+						'userid' => $userid
 					));
 		
 			//Context validation
@@ -126,28 +125,75 @@ class course_plugin extends external_api{
 			// if (!has_capability('moodle/user:viewdetails', $context)) {
 			//     throw new moodle_exception('cannotviewprofile');
 			// }
+
+			require_once($CFG->dirroot . "/user/profile/lib.php");
+            $user = profile_user_record($userid);
+            $courseid = $user->course;
 		
 			$sql = "SELECT firsttime
 					FROM {user_resource_visited}
 					WHERE resourceid = $courseid
 					AND typeresource = 'course'
 					AND userid = $userid";
-			
-			$response = $DB->get_records_sql($sql);
+
+			$response = $DB->get_record_sql($sql);
+
+			$result = new stdclass();
+			$result->courseid = $courseid;
+			$result->firsttime = (!empty($response->firsttime)) ? $response->firsttime : 1;
+
+			$sql = "SELECT COUNT(*) total_activities, 
+						   SUM(activities.completed) AS activities_completed, 
+						   TRUNCATE((SUM(activities.completed)/COUNT(*))*100, 0) AS percentage_completed
+					FROM {course_format_options} AS ger,
+						 {course_sections} AS se,
+						 (
+						 	SELECT gerStage.courseid AS courseid, 
+						 	       gerStage.sectionid AS stageid, 
+						 	       seStage.name AS stage, 
+						 	       seStage.section AS section
+							FROM {course_format_options} AS gerStage, 
+							     {course_sections} AS seStage
+							WHERE seStage.id = gerStage.sectionid
+							AND gerStage.courseid = seStage.course
+							AND gerStage.name = 'parent'
+							AND gerStage.value = 0
+						 ) stage,
+						 (
+						 	SELECT mo.course courseid, 
+						 	       compl.userid userid, 
+						 	       IF(ISNULL(compl.timemodified) OR compl.completionstate=0, 0, 1) AS completed, 
+						 	       mo.section sectionid
+							FROM {course_modules} AS mo 
+							LEFT JOIN {course_modules_completion} AS compl 
+							ON mo.id=compl.coursemoduleid 
+							AND (compl.userid=$userid OR ISNULL(compl.userid)) 
+						 ) activities
+					WHERE se.id=ger.sectionid
+					AND ger.courseid=se.course
+					AND ger.name = 'parent'
+					AND ger.value<>0
+					AND ger.value=stage.section
+					AND ger.sectionid=activities.sectionid 
+					AND stage.courseid=$courseid
+					AND activities.courseid=stage.courseid";
+					
+			$response = $DB->get_record_sql($sql);
+			$result->percentage_completed = $response->percentage_completed;
 		
 		} catch (Exception $e) {
-			$response = $e;
+			$result = $e;
 		}
-		
-		return $response;
+
+		return $result;
 	}
 
-	public static function is_first_time_in_course_returns(){
-		return new external_multiple_structure(
-			new external_single_structure(
-				array(
-					'firsttime' => new external_value(PARAM_INT, 'Value if is the first time in course'),
-				)
+	public static function get_current_course_and_status_by_user_returns(){
+		return new external_single_structure(
+			array(
+				'courseid'	=> new external_value(PARAM_INT, 'Course ID'),
+				'firsttime' => new external_value(PARAM_INT, 'Value if is the first time in course'),
+				'percentage_completed' => new external_value(PARAM_TEXT, 'Percentage of progress of the user (completed/total activities)')
 			)
 		);
 	}
@@ -214,5 +260,143 @@ class course_plugin extends external_api{
 		);
 	}
 	
+	public static function get_user_course_info_parameters(){
+		return new external_function_parameters(
+			array(
+				'userid' => new external_value(PARAM_INT, 'User ID')
+			)
+		);
+	}
+
+	public static function get_user_course_info($userid){
+		global $CFG;
+		global $USER;
+		global $DB;
+		$response = array();
+		
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_user_course_info_parameters(), 
+					array(
+						'userid' => $userid
+					));
+		
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+		
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+
+			require_once($CFG->dirroot . "/user/profile/lib.php");
+            $user = profile_user_record($userid);
+            $courseid = $user->course;
+
+			$sql = "SELECT 
+					    c.coursemoduleid,
+					    a.stageid,
+					    a.section AS stagesection,
+					    a.stage,
+					    a.firsttime,
+					    b.sectionid AS challengeid,
+					    b.name AS challenge,
+					    b.summary AS challenge_description,
+					    c.completionstate,
+					    c.instance AS activityid,
+					    c.name AS activitytype,
+					    c.timemodified
+					FROM
+					(SELECT cfo.sectionid AS stageid,
+					        cs.section AS section, 
+					        cs.name AS stage,
+					        IFNULL(urv.firsttime,1) AS firsttime
+					FROM {course_format_options} AS cfo
+					INNER JOIN {course_sections} AS cs 
+					ON (cs.id = cfo.sectionid AND cfo.courseid = cs.course)
+					LEFT JOIN (
+					    SELECT * FROM {user_resource_visited}
+					    WHERE userid = $userid
+					    AND typeresource = 'stage') AS urv
+					ON urv.resourceid = cfo.sectionid
+					WHERE cfo.courseid = $courseid
+					AND cfo.name = 'parent'
+					AND cfo.value = 0
+					AND cs.name <> '') a
+					INNER JOIN 
+						(SELECT cfo.sectionid, 
+						        cs.name, 
+						        cs.summary, 
+						        cfo.value 
+						 FROM {course_format_options} AS cfo 
+						 INNER JOIN {course_sections} AS cs 
+						 ON cfo.sectionid = cs.id 
+						 WHERE cfo.courseid = $courseid 
+						 AND cfo.name = 'parent') b
+					ON a.section = b.value
+					INNER JOIN(
+						SELECT cm.id AS coursemoduleid, 
+					           cm.section, 
+					           IFNULL(cmc.completionstate,0) AS completionstate, 
+					           instance, 
+					           name, 
+					           timemodified 
+					    FROM ( 
+				            SELECT coursemoduleid, 
+				                   userid, 
+				                   completionstate, 
+				                   timemodified 
+				            FROM {course_modules_completion} 
+				            WHERE userid = $userid) cmc 
+					 	RIGHT JOIN ( 
+					     	SELECT cm.id, 
+					               cm.course, 
+					               cm.module, 
+					               cm.instance, 
+					               cm.section, 
+					               m.name 
+						    FROM {course_modules} AS cm 
+						    INNER JOIN {modules} AS m 
+					    	ON cm.module = m.id WHERE cm.course = $courseid) cm 
+					 	ON cm.id = cmc.coursemoduleid) c
+					ON b.sectionid = c.section
+					ORDER BY a.stageid, b.sectionid";
+
+			$response = $DB->get_records_sql($sql);
+		
+		} catch (Exception $e) {
+			$response = $e;
+		}
+
+		return $response;
+	}
+
+	public static function get_user_course_info_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'stageid' => new external_value(PARAM_INT, 'Stage ID'),
+					'stagesection' => new external_value(PARAM_INT, 'Stage Section ID'),
+					'stage' => new external_value(PARAM_TEXT, 'Stage Name'),
+					'firsttime' => new external_value(PARAM_INT, 'Flag First Time in Stage'),
+					'challengeid' => new external_value(PARAM_INT, 'Challenge ID'),
+					'challenge' => new external_value(PARAM_TEXT, 'Challenge Name'),
+					'challenge_description' => new external_value(PARAM_RAW, 'Challenge Description'),
+					'coursemoduleid' => new external_value(PARAM_INT, 'Course_Module ID Activity'),
+					'completionstate' => new external_value(PARAM_INT, 'Activity Completion State'),
+					'activityid' => new external_value(PARAM_INT, 'Activity ID'),
+					'activitytype' => new external_value(PARAM_TEXT, 'Activity Type'),
+					'timemodified' => new external_value(PARAM_RAW, 'Activity Time Modified')
+				)
+			)
+		);
+	}
+
+
 }
 

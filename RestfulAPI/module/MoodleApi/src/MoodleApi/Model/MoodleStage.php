@@ -21,8 +21,20 @@ class MoodleStage
         $this->firstTime = (!empty($data['firsttime'])) ? $data['firsttime'] : null;
     }
 
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function setName($name){
+        $this->name = $name;
+    }
+
+    public function setSection($section){
+        $this->section = $section;
+    }
+
     public function setChallenges($challenges){
-    	$this->challenges = $challenges;
+        array_push($this->challenges, $challenges);
     }
 
     public function setFirstTime($time){
