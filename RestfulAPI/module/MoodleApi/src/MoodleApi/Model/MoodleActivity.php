@@ -21,12 +21,24 @@ class MoodleActivity
     
     }
 
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function setName($name){
+        $this->name = $name;
+    }
+
     public function setDescription($description){
     	$this->description = $description;
     }
 
-    public function setName($name){
-    	$this->name = $name;
+    public function setActivityType($activityType){
+        $this->activityType = $activityType;
+    }
+
+    public function setCourseModuleId($courseModuleId){
+        $this->coursemoduleid = $courseModuleId;
     }
 
     public function setStatus($status){
