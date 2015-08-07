@@ -20,12 +20,25 @@ class MoodleChallenge
         $this->description = (!empty($data['summary'])) ? $data['summary'] : null;        
     }
 
+
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function setName($name){
+        $this->name = $name;
+    }
+
+    public function setDescription($description){
+        $this->description = $description;
+    }
+
     public function setActivityType($type){
         $this->activityType = $type;
     }
 
     public function setActivities($activities){
-    	$this->activities = $activities;
+        array_push($this->activities, $activities);
     }
 
     public function setStatus($status){

@@ -28,11 +28,11 @@ $functions = array(
                 'type'        => 'read',
         ),
 
-        'is_first_time_in_course' => array(
+        'get_current_course_and_status_by_user' => array(
                 'classname'   => 'course_plugin',
-                'methodname'  => 'is_first_time_in_course',
+                'methodname'  => 'get_current_course_and_status_by_user',
                 'classpath'   => 'local/course_plugin/externallib.php',
-                'description' => 'Return 1 or 0 if is the first time in a course',
+                'description' => 'Return the current course of user and if is the first time in the course',
                 'type'        => 'read',
         ),
 
@@ -43,6 +43,14 @@ $functions = array(
                 'description' => 'Update the first time in a resource',
                 'type'        => 'write',
         ),
+
+        'get_user_course_info' => array(
+                'classname'   => 'course_plugin',
+                'methodname'  => 'get_user_course_info',
+                'classpath'   => 'local/course_plugin/externallib.php',
+                'description' => 'Get course information about a user',
+                'type'        => 'read',
+        ),
 );
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
@@ -50,8 +58,9 @@ $services = array(
         'Course Plugin' => array(
                 'functions' => array (
                         'get_latest_course',
-                        'is_first_time_in_course',
-                        'update_first_time_in_resource'
+                        'get_current_course_and_status_by_user',
+                        'update_first_time_in_resource',
+                        'get_user_course_info'
                         ),
                 'restrictedusers' => 0,
                 'enabled'=>1,
