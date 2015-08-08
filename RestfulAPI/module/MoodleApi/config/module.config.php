@@ -6,7 +6,7 @@ return array(
             'MoodleApi\Controller\User' => 'MoodleApi\Controller\UserController',
             'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
             'MoodleApi\Controller\UserCourse' => 'MoodleApi\Controller\UserCourseController',
-        	'MoodleApi\Controller\Catalog' => 'MoodleApi\Controller\CatalogController',
+        	'MoodleApi\Controller\Catalog' => 'MoodleApi\Controller\CatalogController', 
         ),
     ),
     'router' => array(
