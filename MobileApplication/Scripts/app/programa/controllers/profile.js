@@ -10,10 +10,11 @@ angular
 		'$rootScope',
 		'$http',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
-
+            
+            _httpFactory = $http;
+            
             $scope.currentPage = 1;
-            $scope.model = getDataAsync();
-
+            $scope.model = getDataAsync();            
             function getDataAsync(){
 
                 var m = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
@@ -31,7 +32,7 @@ angular
                 if(m.address.city == null){ m.address.city = ""; }
                 if(m.address.town == null){ m.address.town = ""; }
                 if(m.address.state == null){ m.address.state = ""; }
-                if(m.address.postalCode == null){ m.address.postalCode = ""; }
+                if(m.address.postalCode == null){ m.address.postalCode = ""; }                
             }
 
             $scope.navigateToPage = function(pageNumber){
@@ -50,7 +51,7 @@ angular
                 $location.path('/ProgramaDashboard');
             }
 
-            $scope.save = function(){
+            $scope.save = function(){                
                 moodleFactory.Services.PutAsyncProfile(_getItem("userId"), $scope.model,
                     function(){
                         $scope.index();
@@ -70,13 +71,19 @@ angular
             $scope.addPhone = function(){
                 $scope.model.phones.push(new String());
             }
-            $scope.deletePhone = function(index){
+            $scope.deletePhone = function(index){                
                 $scope.model.phones.splice(index, 1);
             }
 
             $scope.addEmail = function(){
+                var existingEmail = $scope.model.email;
+                if (existingEmail) {
+                    $scope.model.additionalEmails.push(new String());
+                }
             }
-            $scope.deleteEmail = function(index){
+            
+            $scope.deleteAdditionalEmails = function(index){                
+                $scope.model.additionalEmails.splice(index,1);
             }
 
             $scope.addSocialNetwork = function(){
