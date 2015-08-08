@@ -53,6 +53,8 @@ class MoodleUserProfile extends Common
     public $allowToSendAdvertisement =false;
     public $course="2";
     
+    public $additionalEmails=array();
+    
     
     public function __construct($data)
     {
@@ -112,6 +114,11 @@ class MoodleUserProfile extends Common
     		$this->studies=$this->studies->get($customFields);
     		if(array_key_exists ( 'phones' , $customFields )){
     			$this->phones=$this->createTableFromCompundField($customFields['phones']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'additionalEmails' , $customFields )){
+    			$this->additionalEmails=$this->createTableFromCompundField($customFields['additionalEmails']);
     			//var_dump($this->phones);
     		}
     		 
