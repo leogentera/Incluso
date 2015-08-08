@@ -6,7 +6,7 @@ return array(
             'MoodleApi\Controller\User' => 'MoodleApi\Controller\UserController',
             'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
             'MoodleApi\Controller\UserCourse' => 'MoodleApi\Controller\UserCourseController',
-            'MoodleApi\Controller\Activity' => 'MoodleApi\Controller\ActivityController',
+        	'MoodleApi\Controller\Catalog' => 'MoodleApi\Controller\CatalogController',
         ),
     ),
     'router' => array(
@@ -65,16 +65,16 @@ return array(
                     ),
                 )
             ),
-
-            'Activity' => array(
-                'type'    => 'segment',
-                'options' => array(
-                    'route'    => '/activity[/:id]',
-                    'defaults' => array(
-                        'controller' => 'MoodleApi\Controller\Activity',
-                    ),
-                )
-            ),
+        		
+        		'Catalog' => array(
+        				'type'    => 'segment',
+        				'options' => array(
+        						'route'    => '/catalog',
+        						'defaults' => array(
+        								'controller' => 'MoodleApi\Controller\Catalog',
+        						),
+        				)
+        		),
         ),
     ),
     'view_manager' => array(
