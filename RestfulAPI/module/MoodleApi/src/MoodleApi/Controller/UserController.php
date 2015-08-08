@@ -46,7 +46,8 @@ class UserController extends AbstractRestfulJsonController{
                 '&users[0][lastname]=%s'.
                 '&users[0][email]=%s'.
                 '&users[0][city]=%s'.
-                '&users[0][country]=%s'.
+                //'&users[0][country]=%s'.
+        		'&users[0][customfields][6][type]=country&users[0][customfields][6][value]=%s';
                 '&users[0][customfields][0][type]=secretanswer&users[0][customfields][0][value]=%s'.
                 '&users[0][customfields][1][type]=secretquestion&users[0][customfields][1][value]=%s'.
                 '&users[0][customfields][2][type]=birthday&users[0][customfields][2][value]=%s'.
@@ -321,7 +322,7 @@ class UserController extends AbstractRestfulJsonController{
     				"address",$address);
     	}
     	$url.=$this->createURLParms($data, '&users[0][%s]=%s', 'city' );
-    	$url.=$this->createURLParms($data, '&users[0][%s]=%s', 'country' );
+    	//$url.=$this->createURLParms($data, '&users[0][%s]=%s', 'country' );
     
     	$url.=$this->createURLParms($data, '&users[0][customfields][1][type]=%s&users[0][customfields][1][value]=%s', 'town' );
     	$url.=$this->createURLParms($data, '&users[0][customfields][2][type]=%s&users[0][customfields][2][value]=%s', 'state' );
@@ -401,6 +402,16 @@ class UserController extends AbstractRestfulJsonController{
     
     //Stars
         $url.= $this->addStars($data, '&users[0][customfields][24][type]=%s&users[0][customfields][24][value]=%s', 'stars');
+        
+
+
+        $additionalEmails=$this->createTableRows($data,  'additionalEmails' );
+        if (trim($additionalEmails)!=""){
+        	$url.=sprintf('&users[0][customfields][25][type]=%s&users[0][customfields][25][value]=%s',
+        			"additionalEmails",$additionalEmails);
+        }
+        
+        $url.=$this->createURLParms($data, '&users[0][customfields][26][type]=%s&users[0][customfields][26][value]=%s', 'country' );
 
     	//$url = sprintf($url, $this->getToken(), $this->function);
     
