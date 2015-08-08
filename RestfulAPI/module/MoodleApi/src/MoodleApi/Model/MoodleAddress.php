@@ -42,11 +42,15 @@ class MoodleAddress
     			if(array_key_exists ( "postalCode" , $customFields )){
     				$this->postalCode=$customFields['postalCode'];
     			}
+    			
+    			if(array_key_exists ( "country" , $customFields )){
+    				$this->country=$customFields['country'];
+    			}
     		//}
     	
     	
     	$this->city =     (!empty($data['city'])) ? $data['city'] : null;
-    	$this->country =     (!empty($data['country'])) ? $data['country'] : null;
+    	//$this->country =     (!empty($data['country'])) ? $data['country'] : null;
         
     }
 }
