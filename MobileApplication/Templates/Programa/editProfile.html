@@ -171,8 +171,8 @@
                 <div class="row">
                   <div class="col-xs-12">
                     <div class="panel panel-default panel-form">
-                      <div class="panel-heading with-icons">
-                        <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                      <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
+                        <span class="icomoon icon-arrow-slim-left" ></span>
                         <span class="icomoon icon-information"></span>
                         <h3 class="panel-title">Mi información</h3>
                       </div>
@@ -316,10 +316,18 @@
 
                           <section>
                             <h5>Correo</h5>
-                            <ul class="block-list">
+                          <ul class="block-list">
                               <li>
                                 <div class="form-group">
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico" ng-model="model.email">
+                                </div>
+                              </li>
+                            </ul>
+                            <ul class="block-list" >
+                              <li>
+                                <div class="form-group" ng-repeat="se in model.additionalEmails track by $index">
+                                  <button type="button" ng-click="deleteAdditionalEmails($index);">Borrar</button>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico Adicional" ng-model="model.additionalEmails[$index]">
                                 </div>
                               </li>
                             </ul> 
