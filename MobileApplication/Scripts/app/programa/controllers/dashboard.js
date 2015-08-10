@@ -20,13 +20,17 @@
             $scope.currentStage = JSON.parse(moodleFactory.Services.GetCacheObject("currentStage"));
             $scope.stage = JSON.parse(moodleFactory.Services.GetCacheObject("stage"));
             getDataAsync();
-
+                
+            
             $scope.logout = function () {
                 localStorage.removeItem("CurrentUser");
                 $location.path('/');
             };
 
             $scope.navigateToStage = function(){
+                var uSt = $scope.stage;
+                debugger;                
+                localStorage.setItem("",uSt);
                 $location.path('/ProgramaDashboardEtapa/' + $scope.stage.stageId);
             };
 
@@ -39,8 +43,7 @@
 
                 moodleFactory.Services.GetAsyncCourse($scope.usercourse.courseId, function(){
                     $scope.course = JSON.parse(localStorage.getItem("course"));
-                    $scope.currentStage = getCurrentStage();
-
+                    $scope.currentStage = getCurrentStage();                
                     localStorage.setItem("currentStage", $scope.currentStage);
                 }, errorCallback);
             }
@@ -48,15 +51,16 @@
             function errorCallback(data){
                 console.log(data);
             }
+                            
 
-            function getCurrentStage(){
+            function getCurrentStage(){                
                 var currentStage = 1;
 
                 for(var i = 0; i < $scope.usercourse.stages.length; i++){
                     var uc = $scope.usercourse.stages[i];
-
+                    
                     localStorage.setItem("stage", uc);
-                    $scope.stage = uc;
+                    $scope.stage = uc;                    
                     if(uc.stageStatus === 0){
                         break;
                     }

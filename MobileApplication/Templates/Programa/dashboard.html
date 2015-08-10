@@ -128,7 +128,7 @@
        <section class="component current-satge">
         <img  src="assets/images/estacion{{currentStage != null ? currentStage : 1}}.png">
         <h3>- Estación: {{stage.name}} -</h3>
-        <a href="" class="btn btn-primary btn-lg" ng-click="navigateToStage()">Iniciar mi aventura</a>
+        <a href="" class="btn btn-primary btn-lg" ng-click="navigateToStage()"><span>{{stage.firstTime == 1 ? "Iniciar Aventura" : "Continuar misión"}}</span></a>
       </section>
 
       <section class="component my-badges">
