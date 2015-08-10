@@ -231,7 +231,10 @@ class UserCourseController extends AbstractRestfulJsonController {
             $stage->setStageProgress($progress);
             $stage->setStageStatus($stageStatus);
             $stage->setChallenges($challenge);
+
             array_push($result, $stage);
+
+            array_shift($result);
 
             return $result;
         } 
@@ -253,7 +256,4 @@ class UserCourseController extends AbstractRestfulJsonController {
     }
 
 }
-
-
-
-
+?>
