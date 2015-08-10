@@ -8,7 +8,8 @@
 		'$timeout',
 		'$rootScope',
 		'$http',
-        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
+        '$modal',
+        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
 
             _httpFactory = $http;
 
@@ -78,4 +79,15 @@
 
                 return currentStage;
             }
+
+            /* open terms and conditions modal */
+            /*$scope.openModal = function (size) {
+                var modalInstance = $modal.open({
+                    animation: $scope.animationsEnabled,
+                    templateUrl: 'tutorialModal.html',
+                    controller: null,
+                    size: size
+                });
+            };*/
+
         }]);
