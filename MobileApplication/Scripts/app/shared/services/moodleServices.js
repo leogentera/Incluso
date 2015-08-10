@@ -7,7 +7,7 @@
             _getAsyncData("profile", API_RESOURCE.format('user/' + userId), successCallback, errorCallback);
         };
 
-        var _putAsyncProfile = function(userId, data, successCallback, errorCallback){
+        var _putAsyncProfile = function(userId, data, successCallback, errorCallback){            
             _putAsyncData("profile", data, API_RESOURCE.format('user/' + userId), successCallback, errorCallback);
         };
 

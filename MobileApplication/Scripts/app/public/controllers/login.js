@@ -125,7 +125,21 @@ angular
             }
 
             $scope.loginWithFacebook = function () {
+                //$location.path('/ProgramaDashboard');
+                 
+                var name="http://incluso.siennasoftware.com/RestfulAPI/public";
+			     cordova.exec(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "connectWithFacebook", [name]);
+            }
+            
+            function sayHelloSuccess(data){                                
+                alert("Ok" + data);
                 $location.path('/ProgramaDashboard');
+		      //document.getElementById("demo").innerHTML = data;
+            }
+ 
+		      function sayHelloFailure(data){
+                  alert("Malito" + data);
+		          //document.getElementById("demo").innerHTML = data;
             }
 
             function validateModel(){
