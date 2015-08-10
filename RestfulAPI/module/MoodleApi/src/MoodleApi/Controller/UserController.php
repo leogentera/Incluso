@@ -47,7 +47,7 @@ class UserController extends AbstractRestfulJsonController{
                 '&users[0][email]=%s'.
                 '&users[0][city]=%s'.
                 //'&users[0][country]=%s'.
-        		'&users[0][customfields][6][type]=country&users[0][customfields][6][value]=%s';
+        		'&users[0][customfields][6][type]=country&users[0][customfields][6][value]=%s'.
                 '&users[0][customfields][0][type]=secretanswer&users[0][customfields][0][value]=%s'.
                 '&users[0][customfields][1][type]=secretquestion&users[0][customfields][1][value]=%s'.
                 '&users[0][customfields][2][type]=birthday&users[0][customfields][2][value]=%s'.
