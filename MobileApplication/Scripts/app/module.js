@@ -13,6 +13,7 @@
 		'incluso.public.login',
         'incluso.public.recoverPassword',
         'incluso.public.register',
+        'incluso.programa.tutorial',
         'incluso.programa.dashboard',
         'incluso.programa.dashboard.etapa',
         'incluso.programa.profile'
@@ -26,6 +27,7 @@
         $http.get('Templates/Programa/profile.html', { cache: $templateCache });
         $http.get('Templates/Programa/editProfile.html', { cache: $templateCache });
         $http.get('Templates/Programa/etapa.html', { cache: $templateCache });
+        $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
 
     })
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -68,6 +70,11 @@
         $routeProvider.when('/Register', {
             templateUrl: 'Templates/Public/Register.html',
             controller: 'publicRegisterController'
+        });
+
+        $routeProvider.when('/Tutorial', {
+            templateUrl: 'Templates/Programa/Tutorial.html',
+            controller: 'programaTutorialController'
         });
 
         $routeProvider.otherwise({
