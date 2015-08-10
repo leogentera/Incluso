@@ -7,8 +7,8 @@
 
             <div class="navbar-assets">
               <h1 class="navbar-heading"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
-              
-            </div> 
+
+            </div>
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@
     <nav ng-controller="navController">
       <div class="navbar" id="navBar">
         <div class="container-fluid">
-          
+
           <div class="row">
 
             <div class="navbar-assets">
@@ -93,9 +93,9 @@
                   <a href="" ng-href="#/Perfil/">
                     <i class="icomoon icon-emoticon-smile"></i>
                   </a>
-                </li>                 
+                </li>
               </ul>
-            </div> 
+            </div>
           </div>
         </div>
       </div> <!-- /.container-fluid -->
@@ -108,15 +108,19 @@
           <h3>- ¿Qué es incluso ? -</h3>
           <div class="stage perform">
             <button class="icon icon-close"></button>
-            <button class="icon icon-play"></button> 
+            <button class="icon icon-play"></button>
             <figure class="player">
-               <video controls  poster="assets/images/ptr-video-0001.jpg" > 
-   <source src="assets/media/480x270.mp4" type="video/mp4"> 
+             <!--  <video controls  poster="assets/images/ptr-video-0001.jpg" >
+   <source src="assets/media/480x270.mp4" type="video/mp4">
                 Ups! Parece que tu dispositivo no soporta video
-</video> 
+</video>-->
+
+ <figure  >
+   <img src="assets/images/ptr-video-0001.jpg" ng-click="playWelcome()"  / >
+</figure|>
             </figure>
           </div>
-		 
+
         </section>
         <section class="component global-progress txt-renglon centered">
          <h3>- Avance Global -</h3>
@@ -136,10 +140,10 @@
         <img src="assets/images/img-badges-blocked.png" alt="">
       </section>
 
-        
+
 
       <section class="component top-users" style="width: 100vw">
-        <h3>- Usuarios top 3 -</h3> 
+        <h3>- Usuarios top 3 -</h3>
         <tabset justified="true">
           <tab>
             <tab-heading>
@@ -190,7 +194,7 @@
                       <li class="points"><span>{{course.leaderboard[1] != null ? course.leaderboard[1].stars : 0}}</span> <i class="icomoon icon-star"></i></li>
                       <li><span>{{course.leaderboard[1] != null ? course.leaderboard[1].progress : 0}}%</span></li>
                 </ul>
-              </div> 
+              </div>
             </div>
           </tab>
 
@@ -216,11 +220,11 @@
                   <li class="points"><span>{{course.leaderboard[2] != null ? course.leaderboard[2].stars : 0}}</span> <i class="icomoon icon-star"></i></li>
                   <li><span>{{course.leaderboard[2] != null ? course.leaderboard[2].progress : 0}}%</span></li>
                 </ul>
-              </div>  
+              </div>
             </div>
           </tab>
         </tabset>
-        
+
         <div class="current-user">
           <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
@@ -230,7 +234,7 @@
                 <img src="assets/images/img-avatar-dummy-01.png" alt="">
                 <figcaption>{{user.place}}</figcaption>
               </figure>
-            </div>                
+            </div>
           </a>
           </div>
           </div>
@@ -244,7 +248,7 @@
                 <li class="points"><span>{{user.stars}}</span> <i class="icomoon icon-star"></i></li>
                 <li><span>{{usercourse.globalProgress}}%</span></li>
               </ul>
-            </div> 
+            </div>
           </div>
         </div>
       </section>
