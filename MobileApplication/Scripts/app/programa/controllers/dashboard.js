@@ -11,7 +11,7 @@
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
 
             _httpFactory = $http;
-
+                    
             $scope.Math = window.Math;
 
             console.log('loading user');
@@ -38,10 +38,8 @@
             };
 
             $scope.navigateToStage = function(){
-                $scope.stage.firstTime = 0;
-                var uSt = $scope.stage;
-                localStorage.setItem("stage",JSON.stringify(uSt));
-                $location.path('/ProgramaDashboardEtapa/' + $scope.stage.stageId);
+                localStorage.setItem("firstTimeStage",0);                
+                $location.path('/ProgramaDashboardEtapa/' + $scope.stage.id);
             };
 
             function getDataAsync() {
@@ -64,14 +62,18 @@
                             
 
             function getCurrentStage(){                
-                var currentStage = 1;
-
-                for(var i = 0; i < $scope.usercourse.stages.length; i++){
+                var currentStage = 1;                                            
+                
+                for(var i = 0; i < $scope.usercourse.stages.length; i++){                    
                     var uc = $scope.usercourse.stages[i];
                     
                     localStorage.setItem("stage", JSON.stringify(uc));
-                    debugger;
-                    $scope.stage = uc;                    
+                    $scope.stage = uc;
+                    var firstTimeStage = localStorage.getItem("firstTimeStage");                    
+                    if (firstTimeStage == 0) {
+                        $scope.stage.firstTime = 0;
+                    }                        
+                    
                     if(uc.stageStatus === 0){
                         break;
                     }
