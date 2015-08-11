@@ -1613,6 +1613,10 @@
   .incluso-app .my-profile-form .button-group .btn {
     margin-top: 0;
   }
+  .incluso-app .my-profile-form .checkbox.checkbox-custom input + span:before {
+    margin-right: 3vw;
+    border-color: rgba(142, 170, 179, 0.5);
+  }
   .incluso-app .my-profile-form .form-group {
     border: none;
     margin-bottom: 0;
