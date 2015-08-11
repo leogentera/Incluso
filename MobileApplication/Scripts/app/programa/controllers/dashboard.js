@@ -114,11 +114,11 @@
                     animation: $scope.animationsEnabled,
                     templateUrl: 'tutorialModal.html',
                     controller: 'tutorialController',
-                    size: size
+                    size: size,
+                    windowClass: 'modal-robot'
                 });
                 console.log("modal open");
-            };            
-
+            };
         }])
         .controller('tutorialController', function ($scope, $modalInstance) {
             $scope.cancel = function () {
