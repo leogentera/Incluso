@@ -34,12 +34,23 @@ $functions = array(
         		'description' => 'Returns a generated user name',
         		'type'        => 'read',
         ),
+
+        'set_token_valid_time' => array(
+                        'classname'   => 'user_services',
+                        'methodname'  => 'set_token_valid_time',
+                        'classpath'   => 'local/users_plugin/externallib.php',
+                        'description' => 'Update token valid time for use.',
+                        'type'        => 'write',
+        ),
         
 );
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
 $services = array(
         'Users Services' => array(
-                'functions' => array ('generate_user', 'get_user_by_facebookid'),
+                'functions' => array (
+                        'generate_user', 
+                        'get_user_by_facebookid',
+                        'set_token_valid_time'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         ),

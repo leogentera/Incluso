@@ -841,7 +841,12 @@ body {
     ****************************************************************************/
     .modal {
         .modal-dialog {}
-        .modal-header {}
+        .modal-content {
+            background-color: transparent;
+        }
+        .modal-header {
+            position: relative;
+        }
         .modal-body {}
         .modal-footer {}
     }
@@ -855,6 +860,52 @@ body {
             p, ol li {
                 font-size: 4.2vw;
             }
+        }
+    }
+    .modal-robot {
+        border: 1pt solid @clr-white;
+        .modal-header {
+            .icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+                padding: 0px;
+                margin: 0px;
+                width: 8vw;
+                height: 8vw;
+                line-height: 6vw;
+                .icomoon {
+                    color: @clr-white;
+                    font-size: 3vw;
+                    text-align: center;
+                }
+            }
+        }
+        .modal-title {
+            position: relative;
+            color: @clr-green;
+            font-size: 6vw;
+            text-align: center;
+        }
+        .modal-body {
+            max-height: 50vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+
+            p, ol li {
+                color: @clr-white;
+                font-size: 4.2vw;
+            }
+        }
+        .modal-footer {display: none;}
+        .icon-close {
+            background-color: @clr-orange;
+            border: 3pt solid @clr-white;
+            .border-radius-circle();
+        }
+
+        &.robot-lg {
+            margin-top: 33vw;
         }
     }
     /***************************************************************************/    
