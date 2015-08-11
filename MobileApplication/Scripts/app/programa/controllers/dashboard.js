@@ -61,6 +61,10 @@
             }
             
 
+            //$scope.navigateTo = function(url){
+              //  $location.path(url);
+            //};
+
             function getDataAsync() {
                 moodleFactory.Services.GetAsyncUserCourse(_getItem("userId"), getDataAsyncCallback, errorCallback);
             }

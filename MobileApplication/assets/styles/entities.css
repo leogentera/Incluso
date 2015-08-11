@@ -103,6 +103,10 @@
          $profile-dashboard
          Description: CSS to represent user's profile dashboard component
         ************************************************************************/
+    /***********************************************************************
+         $acerca-programa
+         Description: CSS to represent acerca-programa content page
+        ************************************************************************/
     /***********************************************************************/
   }
   .incluso-app .to-top {
@@ -1661,6 +1665,23 @@
   .incluso-app .profile-dashboard > .row > div {
     padding-left: 0;
     padding-right: 0;
+  }
+  .incluso-app .acerca-programa a {
+    color: #ffffff;
+  }
+  .incluso-app .acerca-programa .component h3 {
+    text-align: left;
+  }
+  .incluso-app .acerca-programa .component p {
+    text-align: left;
+  }
+  .incluso-app .acerca-programa .component figure img {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+  }
+  .incluso-app .acerca-programa .component button {
+    margin: 15px 0px;
   }
 }
 /* sm viewport */

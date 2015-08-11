@@ -957,7 +957,7 @@ body {
             max-width:60%;
             color: @clr-white;
             font-family: 'Play';   
-            font-size: 6vw;
+            font-size: 5vw;
             font-weight: bold;
             line-height: 18vw;
             text-overflow:ellipsis;
@@ -1236,13 +1236,34 @@ body {
             span {
                 color: @clr-blueTurquoise;
 
-                &:last-child {
+                /*&:last-child {
                     color: @clr-white;
-                }
+                }*/
+            } 
+
+            p span:first-child.icomoon {
+                margin-right: 70px;
+                font-size: 7vw;
+            }
+
+            p span:last-child.icomoon {
+                margin-left: 70px;
+                font-size: 7vw;
+            } 
+
+            .total-number {
+                color: @clr-white;
+            }
+
+            .disabled {
+                cursor: text;   
+                opacity: .2;
+                -moz-opacity: 0.2;                
             }
         }
         .btn {
             margin-bottom: 1.5vw;
+            text-transform: uppercase;
         }
         /*.button-group {
             display: block;
@@ -1263,7 +1284,6 @@ body {
         }*/
     }
     /***************************************************************************/    
-
 
     /****************************************************************************
      $footer
@@ -1300,6 +1320,15 @@ body {
             left: 50%;
             bottom: 0;
             margin-left: -30px;
+        }
+
+        &.pages {
+            background-image: url('@{url-images}/img-footer-texture-lg.png');
+            background-color: #24292B;
+            box-shadow: unset;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
         }
     }
     /***************************************************************************/
