@@ -207,7 +207,7 @@ angular
                 if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
 
                 if(!$scope.registerForm.username.$valid){ errors.push("formato de usuario incorrecto."); }
-                if(!$scope.registerForm.birthday.$valid){ errors.push("Fecha de nacimiento incorrecta."); }
+                //if(!$scope.registerForm.birthday.$valid){ errors.push("Fecha de nacimiento incorrecta."); }
                 if($scope.registerModel.gender.length === 0){ errors.push("Género inválido."); }
                 if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
                 if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválida."); }

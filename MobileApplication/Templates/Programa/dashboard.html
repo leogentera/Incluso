@@ -1,13 +1,11 @@
 <div class="incluso-app start-dashboard" id="site-wrapper">
   <div id="site-menu" >
-<nav class="ng-scope">
+    <nav class="ng-scope">
       <div id="navBar" class="navbar">
         <div class="container-fluid">
           <div class="row">
-
             <div class="navbar-assets">
               <h1 class="navbar-heading"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
-
             </div>
           </div>
         </div>
@@ -101,15 +99,26 @@
       <div class="container">
 
         <h1 class="text-center">¡Bienvenido {{user.alias}}!</h1>
-        <section class="component video-gallery">
-          <h3>- ¿Qué es incluso? -</h3>
-          <div class="stage perform">
-            <button class="icon icon-close"></button>
-            <button class="icon icon-play"></button>
-            <figure class="player">
-              <img src="assets/images/ptr-video-0001.jpg" ng-click="playWelcome()"  / >
-            </figure>
-          </div>
+        <section class="component video-gallery" ng-controller="videoCollapsiblePanelController">
+            <div class="panel panel-video">
+              <div class="panel-heading clearfix" ng-click="isCollapsed = !isCollapsed">
+                <h3>
+                  <span class="icomoon icon-video-file"></span>
+                  <span>¿Qué es incluso?</span>
+                  <span class="icomoon icon-arrow" ng-show="isCollapsed"></span>
+                  <span class="icomoon icon-arrow-up" ng-show="!isCollapsed"></span>
+                </h3>
+              </div>
+              <div class="panel-body" collapse="isCollapsed">
+                <div class="stage perform">
+                  <button class="icon icon-close"></button>
+                  <button class="icon icon-play"></button>
+                  <figure class="player">
+                    <img src="assets/images/ptr-video-0001.jpg" ng-click="playWelcome()"  />
+                  </figure>
+                </div>
+              </div>
+            </div>
         </section>
 
         <section class="component global-progress txt-renglon centered">
