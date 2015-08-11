@@ -14,11 +14,12 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
             
             _httpFactory = $http;
-            
-            
-            var dpValue;    
+            var dpValue;
+                                  
             $("input[name=birthday]").datepicker({
-                dateFormat: "d M, y"
+                dateFormat: "d M, y",
+                changeMonth: true,
+                changeYear: true
             });
                                 
             $scope.scrollToTop();
@@ -62,14 +63,7 @@ angular
             });
             $scope.$watch("registerModel.modelState.errorMessages", function(newValue, oldValue){
                 $scope.registerModel.modelState.isValid = (newValue.length === 0);
-            });
-             
-            $scope.$watch("registerModel.birthday", function(newValue, oldValue){                
-                if (newValue) {
-                    var datePickerValue =  $("input[name=birthday]").datepicker("getDate");
-                    dpValue = moment(datePickerValue).format("L");                    
-                }                            
-            });
+            });                        
 
             $scope.showCalendar = function(){                
               $("#datePicker").toggle();              
@@ -78,7 +72,10 @@ angular
             $scope.register = function() {
                 
                 console.log('register');
-
+                
+                var datePickerValue =  $("input[name=birthday]").datepicker("getDate");
+                dpValue = moment(datePickerValue).format("L");
+                
                 if(validateModel()){
                     registerUser();
                 }else{
@@ -180,10 +177,33 @@ angular
                     });
             };
 
+            function calculate_age()
+            {                
+                var birth_month = dpValue.substring(0,2);
+                var birth_day = dpValue.substring(3,5);
+                var birth_year = dpValue.substring(6,10);
+                today_date = new Date();
+                today_year = today_date.getFullYear();
+                today_month = today_date.getMonth();
+                today_day = today_date.getDate();
+                age = today_year - birth_year;
+            
+                if ( today_month < (birth_month - 1))
+                {
+                    age--;
+                }
+                if (((birth_month - 1) == today_month) && (today_day < birth_day))
+                {
+                    age--;
+                }
+                return age;
+            }
+            
 
             function validateModel(){
                 var errors = [];
-
+                
+                var age = calculate_age(dpValue);
                 if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
 
                 if(!$scope.registerForm.username.$valid){ errors.push("formato de usuario incorrecto."); }
@@ -197,7 +217,8 @@ angular
                 if($scope.registerModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
                 if(!$scope.registerForm.secretAnswer.$valid){ errors.push("respuesta secreta inválida."); }
                 if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }
-
+                if(age > 20) {errors.push("Debe tener máximo 20 años.");}
+                if(age < 10) {errors.push("Debe tener al menos 10 años.");}
                 $scope.registerModel.modelState.errorMessages = errors;
 
                 return (errors.length === 0);
