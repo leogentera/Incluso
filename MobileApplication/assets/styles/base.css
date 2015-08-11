@@ -1663,6 +1663,29 @@ body {
 .incluso-app .form .cs-skin-rotate .cs-selected span {
   opacity: 0.8;
 }
+/***********************************************************************
+         $acerca-programa
+         Description: CSS to represent acerca-programa content page
+        ************************************************************************/
+.acerca-programa a {
+  color: #ffffff;
+}
+.acerca-programa .component h3 {
+  text-align: left;
+}
+.acerca-programa .component p {
+  margin: 0px 0px 10px;
+  text-align: left;
+}
+.acerca-programa .component figure img {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.acerca-programa .component button {
+  margin: 15px 0px;
+}
+/******************************************************************************/
 @keyframes flicker {
   from {
     opacity: 0.5;

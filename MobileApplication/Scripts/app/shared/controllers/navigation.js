@@ -11,8 +11,9 @@ app.controller('menuController', [
 	'$scope',
 	'$location', 
 	function($scope, $location){
+		
 		$scope.navigateTo = function(url){
-                $location.path(url);
+            	$location.path(url);
             };
 }]);
  
