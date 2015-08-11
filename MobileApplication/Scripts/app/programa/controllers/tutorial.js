@@ -36,6 +36,20 @@ angular
                 $location.path('/Perfil');
 
             }
+            
+              $scope.playVideo = function(){                 
+                 var videoAddress = "assets/media";
+                 var videoName = "TutorialTest2.mp4";
+                cordova.exec(Success, Failure, "CallToAndroid", "PlayLocalVideo", [videoAddress,videoName]);
+            };
+            
+              function Success() {
+                
+            }
+            
+            function Failure() {
+                
+            }
 
             $scope.navigateToPage = function(pageNumber){
                 $scope.currentPage = pageNumber;
