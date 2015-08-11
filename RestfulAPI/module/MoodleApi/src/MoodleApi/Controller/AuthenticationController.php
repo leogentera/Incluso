@@ -32,6 +32,9 @@ class AuthenticationController extends AbstractRestfulJsonController {
             case 'forgot':
                 return $this->forgotPassword($data);
                 break;
+            case 'logout':
+                return $this->logout($data);
+                break;
             default:
                 return $this->authentication($data);
                 break;
@@ -378,6 +381,25 @@ private function forgotPassword($data)
     			 
     		}
     	
+    }
+
+    private function logout($data){
+        if(!array_key_exists("token", $data) || !array_key_exists("userid", $data)){
+            return new JsonModel($this->throwJSONError("Parámetros inválidos"));
+        }
+
+        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s&token=%s';
+        $url = sprintf($url, $this->getToken(), "set_token_valid_time", $data["userid"], $data["token"]);
+
+        $response = file_get_contents($url);
+    
+        $json = json_decode($response,true);
+    
+        if (strpos($response, "exception") !== false){
+            return array();
+        }
+        
+        return new JsonModel($json);
     }
 }
 

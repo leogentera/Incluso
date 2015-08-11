@@ -33,9 +33,8 @@
             console.log('finish loading from cache');
             getDataAsync();
 
-            $scope.logout = function () {
-                localStorage.removeItem("CurrentUser");
-                $location.path('/');
+            $scope.logout = function(){
+                logout($http, $scope, $location);
             };
 
             $scope.navigateToStage = function(){
