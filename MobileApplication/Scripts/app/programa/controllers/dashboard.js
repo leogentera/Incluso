@@ -1,4 +1,4 @@
-﻿﻿angular
+﻿angular
     .module('incluso.programa.dashboard', [])
     .controller('programaDashboardController', [
         '$q',
@@ -42,7 +42,8 @@
             };
 
             $scope.navigateToStage = function(){
-                localStorage.setItem("firstTimeStage",0);                
+                localStorage.setItem("firstTimeStage",0);
+                $scope.openModal();
                 $location.path('/ProgramaDashboardEtapa/' + $scope.stage.id);
             };
             
@@ -116,8 +117,7 @@
                     size: size
                 });
                 console.log("modal open");
-            };
-            $scope.openModal();
+            };            
 
         }])
         .controller('tutorialController', function ($scope, $modalInstance) {
