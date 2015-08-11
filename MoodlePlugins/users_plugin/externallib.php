@@ -104,7 +104,59 @@ class user_services extends external_api {
     	);
     }
     
+
+
+public static function set_token_valid_time_parameters(){
+    return new external_function_parameters(
+            array(
+                'userid'  => new external_value(PARAM_INT, 'User ID'),
+                'token'   => new external_value(PARAM_TEXT, 'Token')
+            )
+        );
+}
+
+public static function set_token_valid_time($userid, $token){
+    global $USER;
+    global $DB;
     
+    try {
+
+        $params = self::validate_parameters(
+                self::set_token_valid_time_parameters(),
+                    array(
+                        'userid' => $userid,
+                        'token' => $token
+                    )
+                );
+
+        $sql = "UPDATE {external_tokens}
+                SET validuntil = " ;
+
+        $sql.= time();
+
+        $sql.= " WHERE token ='$token' AND userid = $userid";
+
+        $response = $DB->execute($sql);
+
+        $result = new stdClass();
+        $result->result = $response;
+        
+    } catch (Exception $e) {
+        $result = $e;
+    }
+
+    return $result;
+}
+
+public static function set_token_valid_time_returns(){
+    return new external_single_structure(
+        array(
+            'result' => new external_value(PARAM_BOOL, 'Boolean result of the update action.')
+        )
+            
+    );
+}
+
     
    
 }
