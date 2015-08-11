@@ -59,6 +59,7 @@ angular
                     function(){
                         $scope.index();
                     });
+                $scope.index();
             }
 
             $scope.addStudy = function(){
