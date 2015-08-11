@@ -100,4 +100,10 @@ angular
             $scope.deleteFamiliaCompartamosk = function(index){
                 $scope.model.familiaCompartamos.splice(index, 1);
             }
+
+            var $selects = $('select.form-control');
+            $selects.change(function(){
+                $elem = $(this);
+                $elem.addClass('changed');
+            });
         }]);

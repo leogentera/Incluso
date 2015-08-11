@@ -55,7 +55,7 @@
               <a ng-href="./Templates/Programa/gustypref.shtml"> Mis Gustos</a>
             </li>
             <li>
-              <a  ng-href="#/forcomwall"> Foro común</a>
+              <a  ng-href="#/Forcomwall"> Foro común</a>
             </li>
           </ul>
         </div>
@@ -190,7 +190,7 @@
                   <button class="icon icon-close"></button>
                   <button class="icon icon-play" ng-click="playWelcome()"></button>
                   <figure class="player">
-                    <img src="assets/images/ptr-video-0001.jpg" ng-click="playWelcome()"  />
+                    <img src="assets/images/ptr-video-0001.jpg" ng-click="playWelcome()" alt="video" />
                   </figure>
                 </div>
               </div>
@@ -200,19 +200,19 @@
         <section class="component global-progress txt-renglon centered">
           <h3>- Avance Global -</h3>
           <div class="spinner">
-            <img src="assets/images/prcnt/{{usercourse == null ? 0 : Math.ceil(usercourse.globalProgress)}}.png"><div class="circle"></div><div class="text">{{usercourse == null ? 0 : usercourse.globalProgress}}%</div>
+            <img src="assets/images/prcnt/{{usercourse == null ? 0 : Math.ceil(usercourse.globalProgress)}}.png" alt="progress" /><div class="circle"></div><div class="text">{{usercourse == null ? 0 : usercourse.globalProgress}}%</div>
           </div>
         </section>
 
         <section class="component current-satge">
-          <img  src="assets/images/estacion{{currentStage != null ? currentStage : 1}}.png">
+          <img  src="assets/images/estacion{{currentStage != null ? currentStage : 1}}.png" alt="estacion"/>
           <h3>- Estación: {{stage.name}} -</h3>
           <a href="" class="btn btn-primary btn-lg" ng-click="navigateToStage()"><span>{{stage.firstTime == 1 ? "Iniciar Aventura" : "Continuar misión"}}</span></a>
         </section>
 
         <section class="component my-badges">
           <h3>- Mi Escudo -</h3>
-          <img src="assets/images/img-badges-blocked.png" alt="">
+          <img src="assets/images/img-badges-blocked.png" alt="badges" />
         </section>
 
         <section class="component top-users" style="width: 100vw">
@@ -223,7 +223,7 @@
                 <div class="user-container">
                   <div class="user-avatar">
                     <figure>
-                      <img src="assets/images/img-avatar-dummy-01.png" alt="" />
+                      <img src="assets/images/img-avatar-dummy-01.png" alt="avatar" />
                       <figcaption>1</figcaption>
                       <div class="arrow-up"></div>
                     </figure>
@@ -249,7 +249,7 @@
                 <div class="user-container">
                   <div class="user-avatar">
                     <figure>
-                      <img src="assets/images/img-avatar-dummy-02.png" alt="" />
+                      <img src="assets/images/img-avatar-dummy-02.png" alt="avatar" />
                       <figcaption>2</figcaption>
                       <div class="arrow-up"></div>
                     </figure>
@@ -275,7 +275,7 @@
                 <div class="user-container">
                   <div class="user-avatar">
                     <figure>
-                      <img src="assets/images/img-avatar-dummy-03.png" alt="" />
+                      <img src="assets/images/img-avatar-dummy-03.png" alt="avatar" />
                       <figcaption>3</figcaption>
                       <div class="arrow-up"></div>
                     </figure>
@@ -303,7 +303,7 @@
                 <a href="">
                   <div class="user-avatar">
                     <figure class="user-avatar-">
-                      <img src="assets/images/img-avatar-dummy-01.png" alt="">
+                      <img src="assets/images/img-avatar-dummy-01.png" alt="avatar" />
                       <figcaption>{{user.place}}</figcaption>
                     </figure>
                   </div>
@@ -327,7 +327,7 @@
 
         <section class="ilustration">
           <figure class="space-ship">
-            <img src="assets/images/img-ship-02.png" alt="La nave">
+            <img src="assets/images/img-ship-02.png" alt="La nave" />
           </figure>
         </section>
 
