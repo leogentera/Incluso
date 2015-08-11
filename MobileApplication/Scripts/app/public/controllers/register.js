@@ -252,7 +252,8 @@ angular
                     animation: $scope.animationsEnabled,
                     templateUrl: 'termsAndConditionsModal.html',
                     controller: 'termsAndConditionsController',
-                    size: size
+                    size: size,
+                    windowClass: 'modal-extend-default'
                 });
             };
         }])
