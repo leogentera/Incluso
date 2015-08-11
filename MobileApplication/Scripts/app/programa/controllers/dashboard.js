@@ -8,7 +8,8 @@
 		'$timeout',
 		'$rootScope',
 		'$http',
-        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
+        '$modal',
+        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
 
             _httpFactory = $http;
                     
@@ -41,6 +42,21 @@
                 localStorage.setItem("firstTimeStage",0);                
                 $location.path('/ProgramaDashboardEtapa/' + $scope.stage.id);
             };
+            
+             $scope.playWelcome = function(){                 
+                 var videoAddress = "assets/media";
+                 var videoName = "480x270.mp4";
+                cordova.exec(Success, Failure, "CallToAndroid", "PlayLocalVideo", [videoAddress,videoName]);
+            };
+            
+            function Success() {
+                
+            }
+            
+            function Failure() {
+                
+            }
+            
 
             function getDataAsync() {
                 moodleFactory.Services.GetAsyncUserCourse(_getItem("userId"), getDataAsyncCallback, errorCallback);
@@ -83,4 +99,15 @@
 
                 return currentStage;
             }
+
+            /* open terms and conditions modal */
+            /*$scope.openModal = function (size) {
+                var modalInstance = $modal.open({
+                    animation: $scope.animationsEnabled,
+                    templateUrl: 'tutorialModal.html',
+                    controller: null,
+                    size: size
+                });
+            };*/
+
         }]);
