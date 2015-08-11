@@ -1,13 +1,11 @@
 <div class="incluso-app start-dashboard" id="site-wrapper">
   <div id="site-menu" >
-<nav class="ng-scope">
+    <nav class="ng-scope">
       <div id="navBar" class="navbar">
         <div class="container-fluid">
           <div class="row">
-
             <div class="navbar-assets">
               <h1 class="navbar-heading"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
-
             </div>
           </div>
         </div>
@@ -101,15 +99,26 @@
       <div class="container">
 
         <h1 class="text-center">¡Bienvenido {{user.alias}}!</h1>
-        <section class="component video-gallery">
-          <h3>- ¿Qué es incluso? -</h3>
-          <div class="stage perform">
-            <button class="icon icon-close"></button>
-            <button class="icon icon-play"></button>
-            <figure class="player">
-              <img src="assets/images/ptr-video-0001.jpg" ng-click="playWelcome()"  / >
-            </figure>
-          </div>
+        <section class="component video-gallery" ng-controller="videoCollapsiblePanelController">
+            <div class="panel panel-video">
+              <div class="panel-heading clearfix" ng-click="isCollapsed = !isCollapsed">
+                <h3>
+                  <span class="icomoon icon-video-file"></span>
+                  <span>¿Qué es incluso?</span>
+                  <span class="icomoon icon-arrow" ng-show="isCollapsed"></span>
+                  <span class="icomoon icon-arrow-up" ng-show="!isCollapsed"></span>
+                </h3>
+              </div>
+              <div class="panel-body" collapse="isCollapsed">
+                <div class="stage perform">
+                  <button class="icon icon-close"></button>
+                  <button class="icon icon-play"></button>
+                  <figure class="player">
+                    <img src="assets/images/ptr-video-0001.jpg" ng-click="playWelcome()"  />
+                  </figure>
+                </div>
+              </div>
+            </div>
         </section>
 
         <section class="component global-progress txt-renglon centered">
@@ -257,18 +266,32 @@
       </footer>
 
       <script type="text/ng-template" id="tutorialModal.html">
-        <div class="modal-robot robot-lg" >
+        <div class="modal-robot robot-lg user-help">
           <img src="assets/images/img-robot-lg.png" alt="robot" />
           <div class="modal-header">
-            <h3 class="modal-title">- Conócete -</h3>
             <button class="icon icon-close" ng-click="cancel()">
               <span class="icomoon icon-cross"></span>
             </button>
           </div>
           <div class="modal-body">
-            <p class="text-center-center">Conocerse a uno mismo... es la tarea más difícil, descubres tus miedos y pasiones. Si consigues conocerte a fondo, sabrás comprender a los demás y la realidad que lo te rodea</p>
+            <p class="centered">Has completado satisfactoriamente
+              tu capacitación, ahora puedes aplicar 
+              tus conocimiento para poder
+              lograr tu sueños!
+            </p>
+            <p class="centered">¡Continúa con las estaciones Incluso y gana más estrellas! </p>
+            <figure class="player">
+                <video controls  poster="assets/images/ptr-video-0001.jpg" > 
+                <source src="assets/media/TutorialTest2.mp4" type="video/mp4"> Ups! Parece que tu dispositivo no soporta video</video> 
+            </figure>
           </div>
-          <div class="modal-footer"></div>
+          <!--<div class="modal-footer">
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="button" class="btn btn-primary btn-lg btn-block">Continuar a mi Perfil</button>
+              </div>
+            </div>
+          </div> -->
         </div>
       </script> 
     </article>

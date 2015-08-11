@@ -180,15 +180,21 @@
                         <fieldset class="my-profile-form">
 
                           <section>
-                            <h5>Deseo recibir promoción y publicidad</h5>
+                            <!-- <h5>Deseo recibir promoción y publicidad</h5>
                             <ul class="block-list">
                               <li>
                                 <div class="form-grup">
                                   <input type="checkbox" ng-model="model.allowToSendAdvertisement" /> 
                                 </div>
                               </li>
-                            </ul>
+                            </ul> -->
 
+                            <div class="checkbox checkbox-custom">
+                              <label>
+                                <input type="checkbox" ng-model="model.allowToSendAdvertisement" name="allowToSendAdvertisement" /> 
+                                <span>Deseo recibir promoción y publicidad</span>
+                              </label>
+                            </div>                            
                           </section>
 
 

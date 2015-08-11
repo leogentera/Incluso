@@ -13,6 +13,9 @@
         04. $my-badges
         05. $user-avatar
         06. $top-users
+
+            $acerca-programa
+            $user-help
 ********************************************************************************/
 /****************************************************************************
  LESS Utilities - variables and functions
@@ -945,6 +948,7 @@
     z-index: 2;
   }
   .incluso-app .video-gallery .stage .icon-close {
+    display: none;
     right: -22px;
     top: -22px;
     padding: 0;
@@ -961,7 +965,7 @@
     background-repeat: no-repeat;
   }
   .incluso-app .video-gallery .stage .icon-play {
-    display: none;
+    display: block;
     left: 50%;
     top: 50%;
     padding: 0;
@@ -1611,6 +1615,10 @@
   }
   .incluso-app .my-profile-form .button-group .btn {
     margin-top: 0;
+  }
+  .incluso-app .my-profile-form .checkbox.checkbox-custom input + span:before {
+    margin-right: 3vw;
+    border-color: rgba(142, 170, 179, 0.5);
   }
   .incluso-app .my-profile-form .form-group {
     border: none;

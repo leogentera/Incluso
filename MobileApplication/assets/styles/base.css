@@ -910,52 +910,79 @@ body {
 .incluso-app .modal-extend-default .modal-body ol li {
   font-size: 4.2vw;
 }
-.incluso-app .modal-robot {
-  border: 1pt solid #ffffff;
+.incluso-app .user-help-modal .modal-content {
+  width: 90vw;
+  margin: 0px auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
-.incluso-app .modal-robot .modal-header .icon {
+.incluso-app .user-help-modal .user-help {
+  margin: 0px auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #55666B;
+}
+.incluso-app .user-help-modal .user-help img {
   position: absolute;
-  right: 0;
-  top: 0;
+  top: 10vh;
+}
+.incluso-app .user-help-modal .user-help .modal-header {
+  border: 0px none;
+}
+.incluso-app .user-help-modal .user-help .icon {
+  position: absolute;
+  right: -3.5vw;
+  top: -3.5vh;
   padding: 0px;
   margin: 0px;
   width: 8vw;
   height: 8vw;
   line-height: 6vw;
 }
-.incluso-app .modal-robot .modal-header .icon .icomoon {
+.incluso-app .user-help-modal .user-help .icon .icomoon {
   color: #ffffff;
   font-size: 3vw;
   text-align: center;
 }
-.incluso-app .modal-robot .modal-title {
+.incluso-app .user-help-modal .user-help .modal-title {
   position: relative;
   color: #bcd431;
   font-size: 6vw;
   text-align: center;
 }
-.incluso-app .modal-robot .modal-body {
-  max-height: 50vh;
-  overflow-y: auto;
+.incluso-app .user-help-modal .user-help .modal-body {
+  padding: 5vh 4vw;
   -webkit-overflow-scrolling: touch;
 }
-.incluso-app .modal-robot .modal-body p,
-.incluso-app .modal-robot .modal-body ol li {
+.incluso-app .user-help-modal .user-help .modal-body p,
+.incluso-app .user-help-modal .user-help .modal-body ol li {
   color: #ffffff;
   font-size: 4.2vw;
 }
-.incluso-app .modal-robot .modal-footer {
-  display: none;
+.incluso-app .user-help-modal .user-help .modal-body figure {
+  margin-top: 4vh;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
-.incluso-app .modal-robot .icon-close {
+.incluso-app .user-help-modal .user-help .modal-footer {
+  margin-bottom: 4vh;
+  border: 0px none;
+}
+.incluso-app .user-help-modal .user-help .icon-close {
   background-color: #f5461f;
   border: 3pt solid #ffffff;
   -webkit-border-radius: 90px;
   -moz-border-radius: 90px;
   border-radius: 90px;
 }
-.incluso-app .modal-robot.robot-lg {
-  margin-top: 33vw;
+.incluso-app .user-help-modal .user-help.robot-lg {
+  margin-top: 50vw;
 }
 .incluso-app .navbar {
   position: relative;
@@ -1244,11 +1271,11 @@ body {
                 }*/
 }
 .incluso-app .pages .page-number p span:first-child.icomoon {
-  margin-right: 70px;
+  margin-right: 10vw;
   font-size: 7vw;
 }
 .incluso-app .pages .page-number p span:last-child.icomoon {
-  margin-left: 70px;
+  margin-left: 10vw;
   font-size: 7vw;
 }
 .incluso-app .pages .page-number .total-number {

@@ -862,50 +862,74 @@ body {
             }
         }
     }
-    .modal-robot {
-        border: 1pt solid @clr-white;
-        .modal-header {
-            .icon {
+
+    .user-help-modal {
+        .modal-content {
+            width: 90vw;
+            margin: 0px auto;
+            .box-shadow-reset();
+        }
+        .user-help {
+            
+            margin: 0px auto;
+            .box-shadow-reset();
+            .border-radius(4px);
+            border: 1px solid #55666B;
+            img {
                 position: absolute;
-                right: 0;
-                top: 0;
-                padding: 0px;
-                margin: 0px;
-                width: 8vw;
-                height: 8vw;
-                line-height: 6vw;
-                .icomoon {
+                top: 10vh;
+            }
+            .modal-header {
+                border: 0px none;
+            }
+                .icon {
+                    position: absolute;
+                    right: -3.5vw;
+                    top: -3.5vh;
+                    padding: 0px;
+                    margin: 0px;
+                    width: 8vw;
+                    height: 8vw;
+                    line-height: 6vw;
+                    .icomoon {
+                        color: @clr-white;
+                        font-size: 3vw;
+                        text-align: center;
+                    }
+                
+            }
+            .modal-title {
+                position: relative;
+                color: @clr-green;
+                font-size: 6vw;
+                text-align: center;
+            }
+            .modal-body {
+                padding: 5vh 4vw;
+                -webkit-overflow-scrolling: touch;
+
+                p, ol li {
                     color: @clr-white;
-                    font-size: 3vw;
-                    text-align: center;
+                    font-size: 4.2vw;
+                }
+                figure {
+                    margin-top: 4vh;
+                    .border-radius(4px);
                 }
             }
-        }
-        .modal-title {
-            position: relative;
-            color: @clr-green;
-            font-size: 6vw;
-            text-align: center;
-        }
-        .modal-body {
-            max-height: 50vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-
-            p, ol li {
-                color: @clr-white;
-                font-size: 4.2vw;
+            .modal-footer { 
+                margin-bottom: 4vh;
+                border: 0px none; 
             }
-        }
-        .modal-footer {display: none;}
-        .icon-close {
-            background-color: @clr-orange;
-            border: 3pt solid @clr-white;
-            .border-radius-circle();
-        }
+            .icon-close {
+                background-color: @clr-orange;
+                border: 3pt solid @clr-white;
+                .border-radius-circle();
+            }
 
-        &.robot-lg {
-            margin-top: 33vw;
+            &.robot-lg {
+                margin-top: 50vw;
+            }
         }
     }
     /***************************************************************************/    
@@ -1242,12 +1266,12 @@ body {
             } 
 
             p span:first-child.icomoon {
-                margin-right: 70px;
+                margin-right: 10vw;
                 font-size: 7vw;
             }
 
             p span:last-child.icomoon {
-                margin-left: 70px;
+                margin-left: 10vw;
                 font-size: 7vw;
             } 
 

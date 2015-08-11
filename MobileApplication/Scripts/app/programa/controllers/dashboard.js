@@ -114,7 +114,8 @@
                     animation: $scope.animationsEnabled,
                     templateUrl: 'tutorialModal.html',
                     controller: 'tutorialController',
-                    size: size
+                    size: size,
+                    windowClass: 'user-help-modal'
                 });
                 console.log("modal open");
             };            
@@ -124,4 +125,7 @@
             $scope.cancel = function () {
                 $modalInstance.dismiss('cancel');
             };
+        })
+        .controller('videoCollapsiblePanelController', function ($scope) {
+          $scope.isCollapsed = false;
         });

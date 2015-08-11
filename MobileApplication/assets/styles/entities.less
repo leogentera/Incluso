@@ -13,6 +13,9 @@
         04. $my-badges
         05. $user-avatar
         06. $top-users
+
+            $acerca-programa
+            $user-help
 ********************************************************************************/
 @import "less-utilities.less";
 
@@ -590,6 +593,7 @@
                     z-index: 2;
                 }
                 .icon-close {
+                    display: none;
                     right: -22px; top: -22px;
                     padding: 0;
                     margin: 0;
@@ -603,7 +607,7 @@
                     background-repeat: no-repeat;
                 }
                 .icon-play {
-                    display: none;
+                    display: block;
                     left: 50%; top: 50%;
                     padding: 0;
                     margin: -41px 0 0 -41px;
@@ -1330,6 +1334,12 @@
             .button-group .btn {
                 margin-top: 0;
             }
+            .checkbox.checkbox-custom {
+                input + span:before {
+                    margin-right: 3vw;
+                    .clr-blueGray(border-color, 0.5);
+                }
+            }
             .form-group {
                 border: none;
                 margin-bottom: 0;
@@ -1418,6 +1428,7 @@
             }
         }
 
+        
         /***********************************************************************/
     }
 }
