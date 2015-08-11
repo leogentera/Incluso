@@ -1553,7 +1553,8 @@
     margin: 0;
   }
   .incluso-app .my-profile-form li {
-    margin-top: 15px;
+    /*margin-top: 15px;*/
+    margin-top: 9vw;
   }
   .incluso-app .my-profile-form li:first-child {
     margin-top: 0;
@@ -1621,11 +1622,33 @@
     border-color: rgba(142, 170, 179, 0.5);
   }
   .incluso-app .my-profile-form .form-group {
+    position: relative;
     border: none;
     margin-bottom: 0;
   }
+  .incluso-app .my-profile-form .form-group h5 {
+    margin-bottom: 1vw;
+  }
+  .incluso-app .my-profile-form .form-group h5 span:first-child {
+    color: #3c4448;
+    font-size: 3vw;
+    text-transform: uppercase;
+  }
+  .incluso-app .my-profile-form .form-group h5 .btn-circle {
+    display: inline;
+    float: right;
+    /*position: absolute;
+                        right: 0;*/
+    margin: 0;
+  }
+  .incluso-app .my-profile-form .form-group h5 .btn-circle .icomoon {
+    color: #ffffff;
+    font-size: 2vw;
+    font-weight: 100;
+  }
   .incluso-app .my-profile-form .form-group .form-control {
-    border-top-width: 0;
+    /*border-top-width: 0;*/
+    border-top-width: 1pt;
     text-indent: 3px;
   }
   .incluso-app .my-profile-form .form-group .form-control:first-child {
@@ -1638,6 +1661,12 @@
   }
   .incluso-app .my-profile-form .form-group:first-child .form-control:first-child {
     border-top-width: 1pt;
+  }
+  .incluso-app .my-profile-form .form-group .form-control + .form-control {
+    border-top-width: 0;
+  }
+  .incluso-app .my-profile-form .form-group .form-control.ng-pristine.ng-touched + .custom-placeholder {
+    display: none;
   }
   .incluso-app .profile-dashboard {
     width: 100vw;

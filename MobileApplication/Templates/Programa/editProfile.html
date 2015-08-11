@@ -201,10 +201,18 @@
                           <section>
                             <h5>Mis Estudios</h5>
                             <ul class="block-list">
-                              <li>
-                                <div class="form-group" ng-repeat="s in model.studies">
-                                  <button ng-click="deleteStudy($index);">Borrar</button>
+
+                              <li ng-repeat="s in model.studies">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Estudio {{model.studies.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteStudy($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
                                   <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies">
                                     <option value="Grado">Grado</option>
                                     <option value="Primaria">Primaria</option>
@@ -212,8 +220,11 @@
                                     <option value="Preparatoria">Preparatoria</option>
                                     <option value="Profesional">Profesional</option>
                                   </select>
+                                  <span class="custom-placeholder form-control-lg">Nivel de Estudios</span>
+                                  </p>
                                 </div>
                               </li>
+
                             </ul> 
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addStudy();">
                               <span class="icomoon icon-plus"></span>Agregar nuevo estudio...

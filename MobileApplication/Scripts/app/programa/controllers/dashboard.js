@@ -118,8 +118,7 @@
                     windowClass: 'user-help-modal'
                 });
                 console.log("modal open");
-            };            
-
+            };
         }])
         .controller('tutorialController', function ($scope, $modalInstance) {
             $scope.cancel = function () {
