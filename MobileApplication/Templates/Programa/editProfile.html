@@ -127,7 +127,7 @@
             </p>
           </div>
           <div class="profile-settings">
-            <button class="btn btn-icon-aside left active" ng-click="index();">
+            <button class="btn btn-icon-aside left active" ng-click="save();">
               <div class="btn-icon">
                 <span class="icomoon icon-settings"></span>
               </div>
@@ -393,12 +393,17 @@
                           </div>
 
                           <div class="actions">
+                            <!-- 
                             <div class="button-group">
                               <button type="button" class="btn btn-primary btn-lg">
                                 <span class="icomoon icon-arrow-slim-left"></span>
                               </button>                      
-                              <button type="button" class="btn btn-primary btn-lg" ng-click="save();">Guardar</button>
+                              <button type="button" class="btn btn-primary btn-lg" ng-click="save();">Guardar</button> 
                             </div>
+                            -->
+                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(2);">
+                                <span class="icomoon icon-arrow-slim-left"></span> Regresar
+                              </button>
                             <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
                           </div>
 
@@ -413,9 +418,8 @@
       </section> 
     </article>
 
-<<<<<<< HEAD
   <script type="text/javascript" src="Scripts/scriptmenu.js"></script>
-=======
+
     <footer>
       <ul class="block-list">
         <li><a href="" class="btn-link">Preguntas Frecuentes</a></li>
@@ -427,5 +431,5 @@
       </a>
     </footer>
   </div>
->>>>>>> origin/master
+
 </div>
