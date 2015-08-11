@@ -14,7 +14,13 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
             
             _httpFactory = $http;
-
+            
+            
+            var dpValue;    
+            $("input[name=birthday]").datepicker({
+                dateFormat: "d M, y"
+            });
+                                
             $scope.scrollToTop();
 
             /* ViewModel */
@@ -57,7 +63,18 @@ angular
             $scope.$watch("registerModel.modelState.errorMessages", function(newValue, oldValue){
                 $scope.registerModel.modelState.isValid = (newValue.length === 0);
             });
+             
+            $scope.$watch("registerModel.birthday", function(newValue, oldValue){                
+                if (newValue) {
+                    var datePickerValue =  $("input[name=birthday]").datepicker("getDate");
+                    dpValue = moment(datePickerValue).format("L");                    
+                }                            
+            });
 
+            $scope.showCalendar = function(){                
+              $("#datePicker").toggle();              
+            }                        
+            
             $scope.register = function() {
                 
                 console.log('register');
@@ -124,7 +141,7 @@ angular
             };
 
             var registerUser = function(){
-
+                
                 $http({
                         method: 'POST',
                         url: API_RESOURCE.format("user"), 
@@ -137,7 +154,7 @@ angular
                             country: $scope.registerModel.country,
                             secretanswer: $scope.registerModel.secretAnswer,
                             secretquestion: $scope.registerModel.secretQuestion,
-                            birthday: $scope.registerModel.birthday,
+                            birthday: dpValue,
                             gender: $scope.registerModel.gender
                         })
                     }).success(function(data, status, headers, config) {
