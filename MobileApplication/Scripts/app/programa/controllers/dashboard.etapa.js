@@ -23,7 +23,7 @@ angular
             function getModel(){
                 var currentStage = getCurrentStage();
                 var currentUserStage = getCurrentUserStage();
-                var challenges = getChallenges(currentStage, currentUserStage);
+                var challenges = currentStage.challenges;
 
                 return {
                     Name: currentStage.Name,
@@ -86,7 +86,7 @@ console.log(challenges);
                 var usercourse = JSON.parse(localStorage.getItem("usercourse"));
 
                 for(var i = 0; i < usercourse.stages.length; i++){
-                    if(usercourse.stages[i].stageId == $routeParams.stageId){
+                    if(usercourse.stages[i].id == $routeParams.stageId){
                         stage = usercourse.stages[i];
                         break;
                     }

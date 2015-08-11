@@ -38,7 +38,7 @@
             };
 
             $scope.navigateToStage = function(){
-                $location.path('/ProgramaDashboardEtapa/' + $scope.stage.stageId);
+                $location.path('/ProgramaDashboardEtapa/' + $scope.stage.id);
             };
 
             function getDataAsync() {
