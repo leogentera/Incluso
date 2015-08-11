@@ -53,7 +53,7 @@ syncCacheData();
 var logout = function($http, $scope, $location){
     console.log("Logout function ");
     $scope.currentUser = JSON.parse(moodleFactory.Services.GetCacheObject("CurrentUser"));
-    $http(
+    /*$http(
       {
         method: 'POST',
         url: API_RESOURCE.format("authentication"), 
@@ -66,10 +66,9 @@ var logout = function($http, $scope, $location){
       ).success(function(data, status, headers, config) {
 
         console.log('successfully logout');
-
-        localStorage.removeItem("CurrentUser");
-        $location.path('/');
         }
-      );
+      );*/
+      localStorage.removeItem("CurrentUser");
+      $location.path('/');
     };
 
