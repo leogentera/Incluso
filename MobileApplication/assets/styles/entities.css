@@ -13,6 +13,9 @@
         04. $my-badges
         05. $user-avatar
         06. $top-users
+
+            $acerca-programa
+            $user-help
 ********************************************************************************/
 /****************************************************************************
  LESS Utilities - variables and functions
@@ -106,6 +109,10 @@
     /***********************************************************************
          $acerca-programa
          Description: CSS to represent acerca-programa content page
+        ************************************************************************/
+    /***********************************************************************
+         $user-help
+         Description: CSS to represent the user help in a full modal
         ************************************************************************/
     /***********************************************************************/
   }
@@ -1682,6 +1689,15 @@
   }
   .incluso-app .acerca-programa .component button {
     margin: 15px 0px;
+  }
+  .incluso-app .user-help {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #55666B;
+  }
+  .incluso-app .user-help .modal-header {
+    border: 0px none;
   }
 }
 /* sm viewport */
