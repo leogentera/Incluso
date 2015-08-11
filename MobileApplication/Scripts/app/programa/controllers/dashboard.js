@@ -124,4 +124,7 @@
             $scope.cancel = function () {
                 $modalInstance.dismiss('cancel');
             };
+        })
+        .controller('videoCollapsiblePanelController', function ($scope) {
+          $scope.isCollapsed = false;
         });
