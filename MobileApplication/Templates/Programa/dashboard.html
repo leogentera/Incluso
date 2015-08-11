@@ -121,15 +121,16 @@
             </figure>
           </div>
 
-        </section>
-        <section class="component global-progress txt-renglon centered">
-         <h3>- Avance Global -</h3>
-         <div class="spinner">
-           <img src="assets/images/prcnt/{{usercourse == null ? 0 : Math.ceil(usercourse.globalProgress)}}.png"><div class="circle"></div><div class="text">{{usercourse == null ? 0 : usercourse.globalProgress}}%</div>
-         </div>
-       </section>
+      </section>
 
-       <section class="component current-satge">
+      <section class="component global-progress txt-renglon centered">
+        <h3>- Avance Global -</h3>
+        <div class="spinner">
+          <img src="assets/images/prcnt/{{usercourse == null ? 0 : Math.ceil(usercourse.globalProgress)}}.png"><div class="circle"></div><div class="text">{{usercourse == null ? 0 : usercourse.globalProgress}}%</div>
+        </div>
+      </section>
+
+      <section class="component current-satge">
         <img  src="assets/images/estacion{{currentStage != null ? currentStage : 1}}.png">
         <h3>- Estación: {{stage.name}} -</h3>
         <a href="" class="btn btn-primary btn-lg" ng-click="navigateToStage()"><span>{{stage.firstTime == 1 ? "Iniciar Aventura" : "Continuar misión"}}</span></a>
@@ -139,8 +140,6 @@
         <h3>- Mi Escudo -</h3>
         <img src="assets/images/img-badges-blocked.png" alt="">
       </section>
-
-
 
       <section class="component top-users" style="width: 100vw">
         <h3>- Usuarios top 3 -</h3>
@@ -253,11 +252,11 @@
         </div>
       </section>
 
-        <section class="ilustration">
-          <figure class="space-ship">
-            <img src="assets/images/img-ship-02.png" alt="La nave">
-          </figure>
-        </section>
+      <section class="ilustration">
+        <figure class="space-ship">
+          <img src="assets/images/img-ship-02.png" alt="La nave">
+        </figure>
+      </section>
 
       </div> <!-- /.container -->
 
@@ -268,7 +267,21 @@
         </ul>
         <a class="to-top" ng-click="scrollToTop();"><i class="icomoon icon-double-arrow-up"></i><br/>SUBIR</a>
       </footer>
-
+      
+      <script type="text/ng-template" id="tutorialModal.html">
+        <div class="modal-robot robot-lg">
+          <div class="modal-header">
+            <h3 class="modal-title">- Título -</h3>
+            <button class="icon icon-close" ng-click="cancel()">
+              <span class="icomoon icon-cross"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center-center">Conocerse a uno mismo... es la tarea más difícil, descubres tus miedos y pasiones. Si consigues conocerte a fondo, sabrás comprender a los demás y la realidad que lo te rodea</p>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </script> 
     </article>
 
   </div>
