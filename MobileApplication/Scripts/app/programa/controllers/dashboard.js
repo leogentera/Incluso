@@ -113,7 +113,8 @@
                     animation: $scope.animationsEnabled,
                     templateUrl: 'tutorialModal.html',
                     controller: 'tutorialController',
-                    size: size
+                    size: size,
+                    windowClass: 'user-help-modal'
                 });
                 console.log("modal open");
             };
