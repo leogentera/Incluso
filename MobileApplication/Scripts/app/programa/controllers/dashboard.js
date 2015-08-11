@@ -101,6 +101,6 @@
         }])
         .controller('tutorialController', function ($scope, $modalInstance) {
             $scope.cancel = function () {
-                //$modalInstance.dismiss('cancel');
+                $modalInstance.dismiss('cancel');
             };
         });
