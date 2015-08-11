@@ -115,7 +115,7 @@
                     templateUrl: 'tutorialModal.html',
                     controller: 'tutorialController',
                     size: size,
-                    windowClass: 'modal-robot'
+                    windowClass: 'user-help-modal'
                 });
                 console.log("modal open");
             };

@@ -15,12 +15,20 @@
         <div class="page" data-page="1" ng-class="currentPage === 1 ? 'active' : ''">
 
 
-          <div class="stage perform">
+          <!--<div class="stage perform">
             <figure class="player">
                 <video controls  poster="assets/images/ptr-video-0001.jpg" > 
                 <source src="assets/media/TutorialTest2.mp4" type="video/mp4"> Ups! Parece que tu dispositivo no soporta video</video> 
             </figure>
-          </div>
+          </div>-->
+          
+          
+                <div class="stage perform">
+                  <figure class="player">
+                    <img src="assets/images/ptr-video-0001.jpg" ng-click="playVideo()"  />
+                  </figure>
+                </div>
+          
 
           <section>
             <div>
