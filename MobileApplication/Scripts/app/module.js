@@ -53,6 +53,12 @@
             controller: 'programaEtapaController'
         });
 
+        $routeProvider.when('/Foro', {
+            templateUrl: 'Templates/Programa/foro.html',
+            controller: 'programaForoController'
+        });
+
+
         $routeProvider.when('/', {
             templateUrl: 'Templates/Public/Login.html',
             controller: 'publicLoginController'
