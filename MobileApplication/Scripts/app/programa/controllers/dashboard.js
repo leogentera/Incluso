@@ -1,13 +1,13 @@
-﻿angular
+﻿﻿angular
     .module('incluso.programa.dashboard', [])
     .controller('programaDashboardController', [
         '$q',
         '$scope',
         '$location',
         '$routeParams',
-		'$timeout',
-		'$rootScope',
-		'$http',
+        '$timeout',
+        '$rootScope',
+        '$http',
         '$modal',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
 
@@ -25,10 +25,15 @@
             $scope.currentStage = JSON.parse(moodleFactory.Services.GetCacheObject("currentStage"));
             console.log('loading stage');
             
-            if(moodleFactory.Services.GetCacheObject("stage")){
-                $scope.stage = JSON.parse(moodleFactory.Services.GetCacheObject("stage"));                
-            }else{                
-                $scope.stage = {};
+            try {
+                if(moodleFactory.Services.GetCacheObject("stage")){
+                    $scope.stage = JSON.parse(moodleFactory.Services.GetCacheObject("stage"));                
+                }else{                
+                    $scope.stage = {};
+                }
+            }
+            catch (e) {
+                console.log(e);
             }
             getDataAsync();
 
@@ -55,6 +60,10 @@
                 
             }
             
+
+            //$scope.navigateTo = function(url){
+              //  $location.path(url);
+            //};
 
             function getDataAsync() {
                 moodleFactory.Services.GetAsyncUserCourse(_getItem("userId"), getDataAsyncCallback, errorCallback);
@@ -99,13 +108,20 @@
             }
 
             /* open terms and conditions modal */
-            /*$scope.openModal = function (size) {
+            $scope.openModal = function (size) {
                 var modalInstance = $modal.open({
                     animation: $scope.animationsEnabled,
                     templateUrl: 'tutorialModal.html',
-                    controller: null,
+                    controller: 'tutorialController',
                     size: size
                 });
-            };*/
+                console.log("modal open");
+            };
+            $scope.openModal();
 
-        }]);
+        }])
+        .controller('tutorialController', function ($scope, $modalInstance) {
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        });
