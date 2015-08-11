@@ -28,6 +28,7 @@
         $http.get('Templates/Programa/editProfile.html', { cache: $templateCache });
         $http.get('Templates/Programa/etapa.html', { cache: $templateCache });
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
+        $http.get('Templates/Programa/AcercaPrograma.html', { cache: $templateCache });
 
     })
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -75,6 +76,11 @@
         $routeProvider.when('/Tutorial', {
             templateUrl: 'Templates/Programa/Tutorial.html',
             controller: 'programaTutorialController'
+        });
+
+        $routeProvider.when('/AcercaPrograma', {
+            templateUrl: 'Templates/Programa/AcercaPrograma.html'
+            //controller: 'programaAcercaProgramaController'
         });
 
         $routeProvider.otherwise({

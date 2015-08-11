@@ -36,26 +36,27 @@ angular
             function getChallenges(stage, currentUserStage){
 
                 var challenges = new Array();
+                if(currentUserStage.activities){
+                    for(ua = 0; ua < currentUserStage.activities.length; ua++){
 
-                for(ua = 0; ua < currentUserStage.activities.length; ua++){
+                        var challenge = currentUserStage.activities[ua];
 
-                    var challenge = currentUserStage.activities[ua];
+                        for(ci = 0; ci < stage.challenges.length; ci++){
 
-                    for(ci = 0; ci < stage.challenges.length; ci++){
+                            var challengeInformation = stage.challenges[ci];
 
-                        var challengeInformation = stage.challenges[ci];
+                            if(challenge.activityId === challengeInformation.id){
 
-                        if(challenge.activityId === challengeInformation.id){
+                                challenges.push({
+                                    Id: challenge.id,
+                                    Name: challengeInformation.name,
+                                    Description: challengeInformation.description,
+                                    Passed: status === 1,
+                                    Image: challengeInformation.image
+                                });
 
-                            challenges.push({
-                                Id: challenge.id,
-                                Name: challengeInformation.name,
-                                Description: challengeInformation.description,
-                                Passed: status === 1,
-                                Image: challengeInformation.image
-                            });
-
-                            break;
+                                break;
+                            }
                         }
                     }
                 }

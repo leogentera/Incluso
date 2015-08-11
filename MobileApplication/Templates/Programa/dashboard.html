@@ -13,9 +13,9 @@
         </div>
       </div>
     </nav>
-    <ul class="nav">
+    <ul class="nav" ng-controller="menuController">
       <li><a ng-href="#/ProgramaDashboard"><i class="icomoon icon-home"></i> Inicio</a></li>
-      <li><a><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
+      <li><a ng-click="navigateTo('/Tutorial')"><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
       <li>
 	  <a class="menu-blue" ng-href="#/ProgramaDashboardEtapa/1">
 	  <i class="icomoon icon-spaceship"></i> Etapa 1</a></li>
@@ -53,7 +53,7 @@
 		<li><a>Bien 4</a></li>
 	</ul>
 	</div></li>
-      <li><a><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
+      <li><a ng-click="navigateTo('/AcercaPrograma')"><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
       <li><a><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
       <li><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
       <li><a><i class="icomoon icon-document"></i> Certificación</a></li>

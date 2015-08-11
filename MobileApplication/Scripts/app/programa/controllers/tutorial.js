@@ -22,10 +22,10 @@ angular
             $scope.currentPage = 1;
             $scope.loading = false;
 
-            if ($scope.hasSeenTutorial && $scope.hasSeenTutorial == "true")
-            {
-                $location.path('/ProgramaDashboard');
-            }
+            //if ($scope.hasSeenTutorial && $scope.hasSeenTutorial == "true")
+            //{
+                //$location.path('/ProgramaDashboard');
+            //}
 
             $scope.continue = function() {
                 

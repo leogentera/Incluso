@@ -41,6 +41,10 @@
                 $location.path('/ProgramaDashboardEtapa/' + $scope.stage.stageId);
             };
 
+            //$scope.navigateTo = function(url){
+              //  $location.path(url);
+            //};
+
             function getDataAsync() {
                 console.log('loading async user course');
                 moodleFactory.Services.GetAsyncUserCourse(_getItem("userId"), getDataAsyncCallback, errorCallback);

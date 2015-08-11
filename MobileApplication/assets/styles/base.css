@@ -264,6 +264,12 @@ body {
 .incluso-app #site-menu .nav > li > a:hover {
   background-color: rgba(255, 255, 255, 0.28);
 }
+.incluso-app #site-menu .nav > li > a > .icomoon {
+  margin-right: 1vw;
+}
+.incluso-app #site-menu .nav > li > a > .glyphicon {
+  margin-right: 1vw;
+}
 .incluso-app #site-menu .nav > li a.menu-blue {
   color: #39a6dd;
 }
@@ -414,79 +420,69 @@ body {
   display: inline-block;
   position: relative;
   height: 2em;
-  /*42px;*/
-  margin-top: 18%;
-  /*41px;*/
+  margin: 0 auto;
   padding: 2px 12px;
+  /* + */
   background-color: #2a3333;
   -webkit-border-radius: 32px;
   -moz-border-radius: 32px;
   border-radius: 32px;
+  /* + */
+}
+.incluso-app .btn-icon-aside .btn-icon {
+  display: block;
+  position: absolute;
+  top: -0.3em;
+  width: 11.6vw;
+  height: 11.6vw;
+  background-color: #bcd431;
+  border: 0.42em solid #2a3333;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  border-radius: 32px;
+  /* + */
+  text-align: center;
+}
+.incluso-app .btn-icon-aside .icomoon {
+  color: #1c374a;
+  font-size: 5vw;
+  line-height: 9.6vw;
+}
+.incluso-app .btn-icon-aside > span {
+  color: #ffffff;
+  font-size: 3.3vw;
+  font-weight: 700;
+  line-height: 1;
 }
 .incluso-app .btn-icon-aside.left {
-  padding-right: 15px;
+  float: left;
+  padding: 0 4vw 0 12.9vw;
+  margin-left: 9vw;
   text-align: left;
 }
 .incluso-app .btn-icon-aside.left > span {
-  margin-left: 30px;
-  color: #ffffff;
-  font-size: 1em;
-  /*20px;*/
-  font-weight: 700;
-  line-height: 1;
   text-align: right;
 }
 .incluso-app .btn-icon-aside.left .btn-icon {
-  display: block;
-  position: absolute;
   left: 0;
-  top: -0.3em;
-  width: 36px;
-  height: 36px;
-  background-color: #bcd431;
-  border: 3px solid #2a3333;
-  -webkit-border-radius: 32px;
-  -moz-border-radius: 32px;
-  border-radius: 32px;
-  text-align: center;
-}
-.incluso-app .btn-icon-aside.left .icomoon {
-  color: #1c374a;
-  font-size: 1.2em;
-  line-height: 32px;
 }
 .incluso-app .btn-icon-aside.right {
-  padding-left: 15px;
-  text-align: right;
+  float: right;
+  padding: 0 12.9vw 0 4vw;
+  margin-right: 9vw;
+  text-align: left;
 }
 .incluso-app .btn-icon-aside.right > span {
-  margin-right: 30px;
-  color: #ffffff;
-  font-size: 1em;
-  /*20px;*/
-  font-weight: 700;
-  line-height: 1;
   text-align: left;
 }
 .incluso-app .btn-icon-aside.right .btn-icon {
-  display: block;
-  position: absolute;
   right: 0;
-  top: -0.3em;
-  width: 36px;
-  height: 36px;
-  background-color: #bcd431;
-  border: 3px solid #2a3333;
-  -webkit-border-radius: 32px;
-  -moz-border-radius: 32px;
-  border-radius: 32px;
-  text-align: center;
 }
-.incluso-app .btn-icon-aside.right .icomoon {
-  color: #1c374a;
-  font-size: 22px;
-  font-size: 1.2em;
-  line-height: 32px;
+.incluso-app .btn-icon-aside.active .btn-icon {
+  background-color: #f5461f;
+}
+.incluso-app .btn-icon-aside.active .btn-icon .icomoon {
+  color: #ffffff;
 }
 .incluso-app .btn-back-to-top {
   color: #bcd431;
@@ -518,6 +514,7 @@ body {
   width: 75%;
   height: 55px;
   height: auto;
+  margin-top: 0;
 }
 .incluso-app .button-group .btn:first-child {
   width: 20%;
@@ -646,6 +643,16 @@ body {
 }
 .incluso-app .custom-placeholder-wrapper {
   position: relative;
+  /*.form-control[data-show-placeholder="false"] + .custom-placeholder {
+            display: none;
+        }
+        .ng-dirty[data-show-placeholder="false"] + .custom-placeholder {
+            display: none; 
+        }        
+        .form-control[data-show-placeholder="true"] + .custom-placeholder {
+            display: block;
+        }*/
+  /* reset model */
 }
 .incluso-app .custom-placeholder-wrapper .custom-placeholder {
   position: absolute;
@@ -668,10 +675,12 @@ body {
 .incluso-app .custom-placeholder-wrapper .form-control.ng-dirty + .custom-placeholder {
   display: none;
 }
-.incluso-app .custom-placeholder-wrapper .form-control.ng-pristine + .custom-placeholder {
-  display: block;
-}
 .incluso-app .custom-placeholder-wrapper .theme-default.ng-pristine + .custom-placeholder {
+  color: #ffffff;
+  font-weight: 100;
+}
+.incluso-app .custom-placeholder-wrapper .form-control.ng-dirty[data-show-placeholder="true"] + .custom-placeholder {
+  display: block;
   color: #ffffff;
   font-weight: 100;
 }
@@ -940,7 +949,7 @@ body {
   max-width: 60%;
   color: #ffffff;
   font-family: 'Play';
-  font-size: 6vw;
+  font-size: 5vw;
   font-weight: bold;
   line-height: 18vw;
   text-overflow: ellipsis;
@@ -1053,9 +1062,9 @@ body {
 .incluso-app .list-group.separate-items .list-group-item {
   padding: 0;
   margin: 12px 0 0 0;
-  -webkit-border-radius: 9px;
-  -moz-border-radius: 9px;
-  border-radius: 9px;
+  -webkit-border-radius: 1.5vw;
+  -moz-border-radius: 1.5vw;
+  border-radius: 1.5vw;
 }
 .incluso-app .list-group.separate-items .list-group-item a {
   display: block;
@@ -1177,12 +1186,29 @@ body {
 }
 .incluso-app .pages .page-number span {
   color: #08b290;
+  /*&:last-child {
+                    color: @clr-white;
+                }*/
 }
-.incluso-app .pages .page-number span:last-child {
+.incluso-app .pages .page-number p span:first-child.icomoon {
+  margin-right: 70px;
+  font-size: 7vw;
+}
+.incluso-app .pages .page-number p span:last-child.icomoon {
+  margin-left: 70px;
+  font-size: 7vw;
+}
+.incluso-app .pages .page-number .total-number {
   color: #ffffff;
+}
+.incluso-app .pages .page-number .disabled {
+  cursor: text;
+  opacity: .2;
+  -moz-opacity: 0.2;
 }
 .incluso-app .pages .btn {
   margin-bottom: 1.5vw;
+  text-transform: uppercase;
 }
 .incluso-app .footer {
   background-image: url('../images/bg-footer-ship.gif');
@@ -1214,6 +1240,14 @@ body {
   left: 50%;
   bottom: 0;
   margin-left: -30px;
+}
+.incluso-app .footer.pages {
+  background-image: url('../images/img-footer-texture-lg.png');
+  background-color: #24292B;
+  box-shadow: unset;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .incluso-app .form label {
   cursor: pointer;
