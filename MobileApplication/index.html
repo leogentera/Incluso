@@ -7,7 +7,7 @@
     <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
     <title>Incluso Digital</title>
     <link href="assets/styles/dev-css.css" rel='stylesheet' type='text/css' />
-
+    <link href="assets/styles/jquery-ui.css" rel="stylesheet" type="text/css">
     <style>
         body:after {
             content: url(assets/images/img-ship-02.png)
@@ -36,18 +36,19 @@
     </div>
     <div id="view-container" ng-view></div>
 
-    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>    
+    <script src="Scripts/Plugins/jquery-ui.js"></script>
     <script src="Scripts/Plugins/underscore-min.js"></script>
     <script src="Scripts/backbone.js"></script>
     <script src="Scripts/backbone_offline.js"></script>
- 
+   
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular-route.js"></script>
     <script src="Scripts/angular-sanitize.js"></script>
     <script src="Scripts/angular-resource.js"></script>
     <script src="Scripts/angular-ui/ui-bootstrap.js"></script>
     <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script> 
-
+    <script src="Scripts/moment.js"></script>
     <script src="Scripts/owl.carousel.min.js"></script>
 
 
@@ -69,7 +70,8 @@
     <script src="Scripts/app/programa/controllers/dashboard.js"></script>
     <script src="Scripts/app/programa/controllers/dashboard.etapa.js"></script>
     <script src="Scripts/app/programa/controllers/profile.js"></script>
-    <script src="Scripts/app/programa/controllers/tutorial.js"></script>
-    <script src="Scripts/cordova.js"></script> 
+    <!--<script src="Scripts/cordova.js"></script>-->
+    <script src="Scripts/app/programa/controllers/tutorial.js"></script>    
+
 </body>
 </html>

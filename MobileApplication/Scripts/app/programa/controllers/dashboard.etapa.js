@@ -14,7 +14,7 @@ angular
 
             $scope.Math = window.Math;
 
-            getDataAsync();
+            $scope.scrollToTop();
 
             function getDataAsync() {
                 $scope.model = getModel();
@@ -23,15 +23,19 @@ angular
             function getModel(){
                 var currentStage = getCurrentStage();
                 var currentUserStage = getCurrentUserStage();
-                var challenges = currentStage.challenges;
+
+                console.log("# of challengues:" + currentUserStage.challenges.length);
 
                 return {
                     Name: currentStage.Name,
-                    Description: currentStage.Description,
+                    Description: currentUserStage.name,
                     StageProgress: currentUserStage.stageProgress,
-                    Challenges: challenges
+                    Challenges: currentUserStage.challenges
                 };
             }
+
+
+            getDataAsync();
 
             function getChallenges(stage, currentUserStage){
 
