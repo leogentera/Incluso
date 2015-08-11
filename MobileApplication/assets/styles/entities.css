@@ -95,13 +95,13 @@
         ************************************************************************/
     /***********************************************************************/
     /***********************************************************************
-         $profile-dashboard
-         Description: CSS to represent user's profile dashboard landing page
+         $my-profile-form
+         Description: CSS to represent user's profile editable form
         ************************************************************************/
     /***********************************************************************/
     /***********************************************************************
-         $my-profile-form
-         Description: CSS to represent user's profile editable form
+         $profile-dashboard
+         Description: CSS to represent user's profile dashboard component
         ************************************************************************/
     /***********************************************************************/
   }
@@ -693,6 +693,21 @@
   .incluso-app .part.part2 .icomoon {
     font-size: 100%;
   }
+  .incluso-app .part.part3 {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+  }
+  .incluso-app .part.part3 > div > div {
+    display: block;
+    font-size: 3vw;
+    text-align: center;
+    width: 32%;
+  }
+  .incluso-app .part hr {
+    width: 100%;
+    border-color: rgba(128, 152, 160, 0.5);
+  }
   .incluso-app .showmore {
     background: rgba(28, 28, 28, 0.5) none repeat scroll 0 0;
     color: #08b290;
@@ -795,15 +810,6 @@
   .incluso-app .wall .vermas i {
     color: white;
     padding: 0;
-  }
-  .incluso-app .paginate,
-  .incluso-app .paginate a {
-    color: #08b190;
-    margin: 5% 15%;
-  }
-  .incluso-app .paginate i,
-  .incluso-app .paginate a i {
-    font-size: 300%;
   }
   .incluso-app .modalDialog {
     position: relative;
@@ -1134,7 +1140,8 @@
     display: block;
     position: absolute;
     top: 41%;
-    right: -50px;
+    /*right: -50px;*/
+    right: -32%;
     padding: 5px;
     margin: 0;
     background: none transparent;
@@ -1143,7 +1150,8 @@
   }
   .incluso-app .user-avatar button .icomoon {
     color: #bcd431;
-    font-size: 28px;
+    /*font-size: 28px;*/
+    font-size: 6vw;
     font-weight: bold;
   }
   .incluso-app .user-data {
@@ -1334,6 +1342,7 @@
   }
   .incluso-app .profile-data {
     height: 228px;
+    height: 72vw;
     margin-top: 24px;
     font-weight: bold;
     text-align: center;
@@ -1347,6 +1356,7 @@
   }
   .incluso-app .profile-data .user-name {
     padding: 10px 0 32px;
+    padding: 2vw 0 7vw;
     margin: 0;
     color: #ffffff;
     font-size: 1.8em;
@@ -1356,56 +1366,47 @@
   .incluso-app .profile-data .user-points {
     width: auto;
     padding: 1px 12px;
+    padding: 0.222vw 2.5vw;
     margin: 0;
+    border-width: 0.21em;
+    -webkit-border-radius: 0.888em;
+    -moz-border-radius: 0.888em;
+    border-radius: 0.888em;
     color: #bcd431;
     font-size: 24px;
+    font-size: 5vw;
     font-weight: 600;
   }
   .incluso-app .profile-settings {
     position: relative;
     z-index: 2;
     margin: 0;
-    height: 132px;
+    height: 32vw;
     background-attachment: scroll;
-    /*background-image:url('@{url-images}/img-profile-spaceship-dashboard-settings.png');*/
-    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png');
-    /*background-color: @clr-gray-asphalt;*/
-    background-position: center 100px;
+    background-image: url('../images/img-profile-spaceship-dashboard-settings.png');
+    background-position: center top;
     background-repeat: no-repeat;
     -webkit-background-size: 100% auto;
     -moz-background-size: 100% auto;
     background-size: 100% auto;
-    /*&:after {
-                display:block;
-                position:absolute;
-                z-index: 0;
-                bottom: 0;
-                width: 100%; 
-                height: 12px;
-                background-attachment: scroll;
-                background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
-                background-color: @clr-gray-asphalt;
-                background-position: center 0;
-                background-repeat: no-repeat;
-                .background-size(100%, auto);
-                content: " ";
-            }*/
   }
   .incluso-app .profile-settings .user-avatar {
     margin-top: 10px;
   }
   .incluso-app .profile-settings .btn {
     display: block;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    width: auto;
+    height: 10vw;
+    margin-top: 6vw;
+  }
+  .incluso-app .profile-settings .btn.btn-icon-aside {
+    width: 36vw;
   }
   .incluso-app .profile-settings > .container {
     position: relative;
     height: inherit;
     background-attachment: scroll;
     background-image: url('../images/img-profile-spaceship-dashboard-settings.png');
-    /*background:none;*/
     background-color: transparent;
     background-position: center 0;
     background-repeat: no-repeat;
@@ -1415,13 +1416,30 @@
   }
   .incluso-app .profile-options {
     margin: 0;
-    padding: 32px 0 15px;
+    /*padding:32px 0 15px;*/
+    padding: 12vw 0 6vw;
     height: auto;
+    min-height: 120vw;
     background-attachment: scroll;
-    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png');
-    background-color: #444d53;
+    /*background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
+            background-color: @clr-gray-asphalt;*/
     background-position: center 0;
     background-repeat: no-repeat;
+    background-color: #3c4448;
+    /* Old browsers */
+    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png');
+    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png'), -moz-linear-gradient(top, #444d53 0%, #3c4448 92%);
+    /* FF3.6+ */
+    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png'), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #444d53), color-stop(92%, #3c4448));
+    /* Chrome,Safari4+ */
+    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png'), -webkit-linear-gradient(top, #444d53 0%, #3c4448 92%);
+    /* Chrome10+,Safari5.1+ */
+    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png'), -o-linear-gradient(top, #444d53 0%, #3c4448 92%);
+    /* Opera 11.10+ */
+    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png'), -ms-linear-gradient(top, #444d53 0%, #3c4448 92%);
+    /* IE10+ */
+    background-image: url('../images/img-profile-spaceship-dashboard-bottom.png'), linear-gradient(to bottom, #444d53 0%, #3c4448 92%);
+    /* W3C */
     -webkit-background-size: 100% auto;
     -moz-background-size: 100% auto;
     background-size: 100% auto;
@@ -1494,26 +1512,6 @@
   }
   .incluso-app .profile-options .list-group .no-badge .icomoon.icon-star {
     display: none;
-  }
-  .incluso-app .profile-dashboard {
-    width: 100vw;
-    margin: 0;
-    background-attachment: scroll;
-    background-image: url('../images/bg-xs-profile-sky.jpg');
-    background-position: center -98px;
-    background-repeat: no-repeat;
-  }
-  .incluso-app .profile-dashboard .user-avatar {
-    margin-top: 10px;
-  }
-  .incluso-app .profile-dashboard > .row {
-    padding: 0 5%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .incluso-app .profile-dashboard > .row > div {
-    padding-left: 0;
-    padding-right: 0;
   }
   .incluso-app .my-profile-form {
     display: block;
@@ -1607,6 +1605,9 @@
   .incluso-app .my-profile-form .btn.btn-add .icomoon {
     padding: 0.1vw 3vw;
   }
+  .incluso-app .my-profile-form .button-group .btn {
+    margin-top: 0;
+  }
   .incluso-app .my-profile-form .form-group {
     border: none;
     margin-bottom: 0;
@@ -1625,6 +1626,41 @@
   }
   .incluso-app .my-profile-form .form-group:first-child .form-control:first-child {
     border-top-width: 1pt;
+  }
+  .incluso-app .profile-dashboard {
+    width: 100vw;
+    margin: 0;
+    background-attachment: scroll;
+    background-color: #000000;
+    background-image: url('../images/bg-xs-profile-sky.jpg');
+    background-position: center -98px;
+    background-position: center -18vw;
+    background-repeat: no-repeat;
+    -webkit-background-size: auto 100%;
+    -moz-background-size: auto 100%;
+    background-size: auto 100%;
+  }
+  .incluso-app .profile-dashboard .user-avatar {
+    width: 33.3vw;
+    margin-top: 3vw;
+  }
+  .incluso-app .profile-dashboard .user-avatar figcaption {
+    width: 9vw;
+    height: 9vw;
+    margin: -6vw auto 0;
+    border: 0.3em solid #bcd431;
+    box-sizing: content-box;
+    font-size: 5.1vw;
+    line-height: 9vw;
+  }
+  .incluso-app .profile-dashboard > .row {
+    padding: 0 5%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .incluso-app .profile-dashboard > .row > div {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 /* sm viewport */
