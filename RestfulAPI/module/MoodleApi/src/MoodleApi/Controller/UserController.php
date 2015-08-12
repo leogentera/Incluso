@@ -434,7 +434,14 @@ class UserController extends AbstractRestfulJsonController{
     	
     	
     	$url.=$this->createURLParms($data, '&users[0][customfields][29][type]=%s&users[0][customfields][29][value]=%s', 'iLiveWith' );
-    	$url.=$this->createURLParms($data, '&users[0][customfields][30][type]=%s&users[0][customfields][30][value]=%s', 'currentStudies' );
+    	
+    	$currentStudies=$this->createTableObject($data, "currentStudies",   "", 'level', 'grade', 'period' );
+    	if (trim($currentStudies)!=""){
+    		$url.=sprintf('&users[0][customfields][30][type]=%s&users[0][customfields][30][value]=%s',
+    				"currentStudies",$currentStudies);
+    	}
+    	
+    	//$url.=$this->createURLParms($data, '&users[0][customfields][30][type]=%s&users[0][customfields][30][value]=%s', 'currentStudies', 'level', 'grade', 'period' );
     	$url.=$this->createURLParms($data, '&users[0][customfields][31][type]=%s&users[0][customfields][31][value]=%s', 'children' );
     	$url.=$this->createURLParms($data, '&users[0][customfields][32][type]=%s&users[0][customfields][32][value]=%s', 'gotMoneyIncome' );
     	$url.=$this->createURLParms($data, '&users[0][customfields][33][type]=%s&users[0][customfields][33][value]=%s', 'medicalCoverage' );
@@ -453,13 +460,33 @@ class UserController extends AbstractRestfulJsonController{
     				"moneyIncome",$moneyIncome);
     	}
     	
-    	$url.=$this->createURLParms($data, '&users[0][customfields][37][type]=%s&users[0][customfields][37][value]=%s', 'knownDevices' );
-    	$url.=$this->createURLParms($data, '&users[0][customfields][38][type]=%s&users[0][customfields][38][value]=%s', 'ownDevices' );
-    	$url.=$this->createURLParms($data, '&users[0][customfields][39][type]=%s&users[0][customfields][39][value]=%s', 'phoneUsage' );
-    	$url.=$this->createURLParms($data, '&users[0][customfields][40][type]=%s&users[0][customfields][40][value]=%s', 'playVideogames' );
+    	$knownDevices=$this->createTableRows($data,  'knownDevices' );
+    	if (trim($knownDevices)!=""){
+    		$url.=sprintf('&users[0][customfields][37][type]=%s&users[0][customfields][37][value]=%s',
+    				"knownDevices",$knownDevices);
+    	}
+    	
+    	$ownDevices=$this->createTableRows($data,  'ownDevices' );
+    	if (trim($ownDevices)!=""){
+    		$url.=sprintf('&users[0][customfields][38][type]=%s&users[0][customfields][38][value]=%s',
+    				"ownDevices",$ownDevices);
+    	}
+    	
+    	$phoneUsage=$this->createTableRows($data,  'phoneUsage' );
+    	if (trim($phoneUsage)!=""){
+    		$url.=sprintf('&users[0][customfields][39][type]=%s&users[0][customfields][39][value]=%s',
+    				"phoneUsage",$phoneUsage);
+    	}
+    	
+    	$url.=$this->createURLParms($data, '&users[0][customfields][40][type]=%s&users[0][customfields][40][value]=%s', 'playVideogames' );    	
     	$url.=$this->createURLParms($data, '&users[0][customfields][41][type]=%s&users[0][customfields][41][value]=%s', 'videogamesFrecuency' );
     	$url.=$this->createURLParms($data, '&users[0][customfields][42][type]=%s&users[0][customfields][42][value]=%s', 'videogamesHours' );
-    	$url.=$this->createURLParms($data, '&users[0][customfields][43][type]=%s&users[0][customfields][43][value]=%s', 'kindOfVideogames' );
+    	
+    	$kindOfVideogames=$this->createTableRows($data,  'kindOfVideogames' );
+    	if (trim($kindOfVideogames)!=""){
+    		$url.=sprintf('&users[0][customfields][43][type]=%s&users[0][customfields][43][value]=%s',
+    				"kindOfVideogames",$kindOfVideogames);
+    	}
     	
     //Stars
        // $url.= $this->addStars($data, '&users[0][customfields][24][type]=%s&users[0][customfields][24][value]=%s', 'stars');
@@ -497,6 +524,7 @@ class UserController extends AbstractRestfulJsonController{
     
     	$response = file_get_contents($url);
     
+    	
     
     	if ($response=="null"){
     		return  new JsonModel(array());
@@ -537,6 +565,7 @@ class UserController extends AbstractRestfulJsonController{
     		 		$variable=1;
     		 	}
     		 }
+    		 
     		return sprintf($format, $key, urlencode($variable));
     
     	}
@@ -547,10 +576,18 @@ class UserController extends AbstractRestfulJsonController{
     function createTableRow($array, $sufix, ...$keys ){
     	$result="";
     	$i=0;
+    	//If by mistake we enter a key as Array, we should make that arraya as our keys
+    	if (count($keys)>0){
+    		if(gettype($keys[0])=="array"){
+    			$keys=$keys[0];
+    		}
+    	}
+    	
     	foreach ($keys as $key){
     		if($i>0){
     			$result.="\t";
     		}
+    		
     		if(array_key_exists ( $key.$sufix , $array )){
     			$result.=$array[$key.$sufix];
     			$i++;
@@ -566,13 +603,26 @@ class UserController extends AbstractRestfulJsonController{
     
     }
     
+    function createTableObject($array,$nameOfTheObject , $sufix, ...$keys ){
+    	$result="";
+    	$i=0;
+    	if (array_key_exists($nameOfTheObject, $array)){
+    		$array=$array[$nameOfTheObject];
+    		return $this->createTableRow($array, $sufix, $keys );
+    	}
+    	
+    
+    	return $result;
+    
+    }
+    
     function createTableRows($array, $arrayname, ...$keys ){
     	$result="";
     	$i=0;
     	$subarray=array();
     	 
     	//foreach ($keys as $key){
-    	 
+    	
     	if (array_key_exists ( $arrayname , $array )){
     		$subarray=$array[$arrayname];
     

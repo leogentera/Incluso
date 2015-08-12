@@ -74,9 +74,9 @@ class MoodleUserProfile extends Common
     public $medicalCoverage="";
     public $medicalInsurance="";
     
-    public $knownDevices="";
-    public $ownDevices="";
-    public $phoneUsage="";
+    public $knownDevices=array();
+    public $ownDevices=array();
+    public $phoneUsage=array();
     public $playVideogames="";
     public $videogamesFrecuency="";
     public $videogamesHours="";
@@ -177,7 +177,7 @@ class MoodleUserProfile extends Common
     		}
     		
     		if(array_key_exists ( 'children' , $customFields )){
-    			$this->children=$$customFields['children'];
+    			$this->children=$customFields['children'];
     			//var_dump($this->phones);
     		}
     		
