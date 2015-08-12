@@ -82,9 +82,9 @@
 
             function errorCallback(data){
                 console.log(data);
-            }
+            }                                    
                             
-
+                            
             function getCurrentStage(){                
                 var currentStage = 1;                                            
                 
