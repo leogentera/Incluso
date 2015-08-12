@@ -255,7 +255,7 @@
 .incluso-app.start-dashboard h1 {
   display: block;
   padding: 0;
-  margin: 42px 0 15px;
+  margin: 7vw 0;
   color: #FFF;
   font-family: Roboto, Arial;
   font-size: 1.4em;
@@ -285,6 +285,45 @@
 }
 .incluso-app.start-dashboard .current-satge .btn {
   text-transform: uppercase;
+}
+.incluso-app.start-dashboard .panel-video {
+  display: block;
+  background-color: transparent;
+}
+.incluso-app.start-dashboard .panel-video .panel-heading {
+  padding: 3.3vw 2.6vw;
+  /*background-color: @clr-blueDark;*/
+  background-color: #0d0f14;
+  -webkit-border-radius: 3vw 3vw 0 0;
+  -moz-border-radius: 3vw 3vw 0 0;
+  border-radius: 3vw 3vw 0 0;
+  color: #bcd431;
+}
+.incluso-app.start-dashboard .panel-video .panel-heading h3 {
+  margin: 0 auto;
+  text-align: left;
+}
+.incluso-app.start-dashboard .panel-video .panel-heading span {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 6vw;
+}
+.incluso-app.start-dashboard .panel-video .panel-heading span:first-child {
+  font-size: 6vw;
+}
+.incluso-app.start-dashboard .panel-video .panel-heading span:first-child + span {
+  padding-left: 1vw;
+  font-size: 4.3vw;
+  /*line-height: 4vw;*/
+}
+.incluso-app.start-dashboard .panel-video .panel-heading .icon-arrow,
+.incluso-app.start-dashboard .panel-video .panel-heading .icon-arrow-up {
+  float: right;
+  font-size: 5vw;
+}
+.incluso-app.start-dashboard .panel-video .panel-body {
+  /*.clr-blueDark(background-color, 0.9);*/
+  background-color: rgba(13, 15, 20, 0.5);
 }
 .incluso-app.start-dashboard .active .user-avatar figcaption {
   background-color: #121b1c;

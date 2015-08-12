@@ -1,4 +1,4 @@
-﻿﻿angular
+﻿angular
     .module('incluso.programa.dashboard', [])
     .controller('programaDashboardController', [
         '$q',
@@ -42,7 +42,8 @@
             };
 
             $scope.navigateToStage = function(){
-                localStorage.setItem("firstTimeStage",0);                
+                localStorage.setItem("firstTimeStage",0);
+                $scope.openModal();
                 $location.path('/ProgramaDashboardEtapa/' + $scope.stage.id);
             };
             
@@ -81,9 +82,9 @@
 
             function errorCallback(data){
                 console.log(data);
-            }
+            }                                    
                             
-
+                            
             function getCurrentStage(){                
                 var currentStage = 1;                                            
                 
@@ -109,19 +110,23 @@
 
             /* open terms and conditions modal */
             $scope.openModal = function (size) {
-                var modalInstance = $modal.open({
-                    animation: $scope.animationsEnabled,
-                    templateUrl: 'tutorialModal.html',
-                    controller: 'tutorialController',
-                    size: size
-                });
-                console.log("modal open");
+                setTimeout(function(){ 
+                    var modalInstance = $modal.open({
+                        animation: $scope.animationsEnabled,
+                        templateUrl: 'tutorialModal.html',
+                        controller: 'tutorialController',
+                        size: size,
+                        windowClass: 'user-help-modal'
+                    });
+                    console.log("modal open");
+                }, 1000);
             };
-            $scope.openModal();
-
         }])
         .controller('tutorialController', function ($scope, $modalInstance) {
             $scope.cancel = function () {
                 $modalInstance.dismiss('cancel');
             };
+        })
+        .controller('videoCollapsiblePanelController', function ($scope) {
+          $scope.isCollapsed = false;
         });

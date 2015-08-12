@@ -53,6 +53,12 @@
             controller: 'programaEtapaController'
         });
 
+        $routeProvider.when('/Foro', {
+            templateUrl: 'Templates/Programa/foro.html',
+            controller: 'programaForoController'
+        });
+
+
         $routeProvider.when('/', {
             templateUrl: 'Templates/Public/Login.html',
             controller: 'publicLoginController'
@@ -343,5 +349,12 @@
             elem.bind('blur', function () {
                 scope.$apply(attrs.ngBlur);
             });
+        };
+    })
+    .directive('menuComponent', function(){
+        return {
+          restrict: 'E',
+          scope: false,
+          templateUrl: 'Templates/Programa/menu.html'
         };
     });
