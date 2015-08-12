@@ -919,6 +919,7 @@ body {
         .modal-content {
             width: 90vw;
             margin: 0px auto;
+            background: transparent;;
             .box-shadow-reset();
         }
         .user-help {
@@ -1743,6 +1744,28 @@ body {
     }
 }
 
+        /***********************************************************************
+         $acerca-programa
+         Description: CSS to represent acerca-programa content page
+        ************************************************************************/
+        .acerca-programa {
+            a { color: @clr-white; }
+            .component {
+                h3 {
+                    text-align: left;
+                }
+                p {
+                    margin: 0px 0px 10px;
+                    text-align: left;
+                }
+                figure img {
+                    .border-radius(4px);
+                }
+                button { margin: 15px 0px; }
+            }
+        }
+
+        /******************************************************************************/
 
 @keyframes flicker {
     from {

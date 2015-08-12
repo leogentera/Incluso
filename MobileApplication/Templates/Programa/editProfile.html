@@ -220,7 +220,7 @@
                                     <option value="Preparatoria">Preparatoria</option>
                                     <option value="Profesional">Profesional</option>
                                   </select>
-                                  <span class="custom-placeholder form-control-lg">Nivel de Estudios</span>
+                                  <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>
                                   </p>
                                 </div>
                               </li>
@@ -317,10 +317,11 @@
                       <div class="panel-body">
                         <fieldset class="my-profile-form">
                           <section>
+
                             <h5>Teléfono</h5>
                             <ul class="block-list">
-                              <li>
-                                <div class="form-group" ng-repeat="p in model.phones track by $index">
+                              <li ng-repeat="p in model.phones track by $index">
+                                <div class="form-group theme-form">
                                   <button type="button" ng-click="deletePhone($index);">Borrar</button>
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Número Telefónico" ng-model="model.phones[$index]">
                                 </div>
@@ -329,6 +330,7 @@
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addPhone();">
                               <span class="icomoon icon-plus"></span>Agregar nuevo número...
                             </button>
+
                           </section>
 
                           <section>
