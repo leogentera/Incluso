@@ -153,7 +153,7 @@
 
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
                                   <p class="form-group-control custom-placeholder-wrapper">
-                                  <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies">
+                                  <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
                                     <option value="Grado">Grado</option>
                                     <option value="Primaria">Primaria</option>
                                     <option value="Secundaria">Secundaria</option>
@@ -257,39 +257,49 @@
                       <div class="panel-body">
                         <fieldset class="my-profile-form">
                           <section>
-
                             <h5>Teléfono</h5>
                             <ul class="block-list">
                               <li ng-repeat="p in model.phones track by $index">
                                 <div class="form-group theme-form">
-                                  <button type="button" ng-click="deletePhone($index);">Borrar</button>
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Número Telefónico" ng-model="model.phones[$index]">
+                                  <h5>
+                                    <span>Teléfono {{model.phones.indexOf(p) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deletePhone($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <!-- <button type="button" ng-click="deletePhone($index);">Borrar</button> -->
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Número Telefónico" ng-model="model.phones[$index]" />
+
                                 </div>
                               </li>
                             </ul> 
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addPhone();">
                               <span class="icomoon icon-plus"></span>Agregar nuevo número...
                             </button>
-
                           </section>
 
                           <section>
                             <h5>Correo</h5>
-                          <ul class="block-list">
+                            <ul class="block-list">
                               <li>
-                                <div class="form-group">
+                                <div class="form-group theme-form">
+                                  <h5><span>Correo 1</span></h5>
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico" ng-model="model.email">
                                 </div>
                               </li>
-                            </ul>
-                            <ul class="block-list" >
-                              <li>
-                                <div class="form-group" ng-repeat="se in model.additionalEmails track by $index">
-                                  <button type="button" ng-click="deleteAdditionalEmails($index);">Borrar</button>
+                              <li ng-repeat="se in model.additionalEmails track by $index">
+                                <div class="form-group" >
+                                  <!-- <button type="button" ng-click="deleteAdditionalEmails($index);">Borrar</button> -->
+                                  <h5>
+                                    <span>Correo {{model.additionalEmails.indexOf(se) + 2}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteAdditionalEmails($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>                                  
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico Adicional" ng-model="model.additionalEmails[$index]">
                                 </div>
                               </li>
-                            </ul> 
+                            </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addEmail();">
                               <span class="icomoon icon-plus"></span>Agregar nuevo correo...
                             </button>
@@ -297,10 +307,16 @@
 
                           <section>
                             <h5>Redes sociales</h5>
-                            <ul class="block-list" ng-repeat="sn in model.socialNetworks">
-                              <li>
-                                <div class="form-group">
-                                  <button type="button" ng-click="deleteSocialNetwork($index);">Borrar</button>
+                            <ul class="block-list">
+                              <li ng-repeat="sn in model.socialNetworks">
+                                <div class="form-group theme-form">
+                                  <!-- <button type="button" ng-click="deleteSocialNetwork($index);">Borrar</button> -->
+                                  <h5>
+                                    <span>Red Social {{model.socialNetworks.indexOf(sn) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteSocialNetwork($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
                                   <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="sn.socialNetwork">
                                     <option disabled>Red Social</option>
                                     <option value="Facebook">Facebook</option>
@@ -320,22 +336,32 @@
 
                           <section>
                             <h5>Familiares Compartamos</h5>
-                            <ul class="block-list" ng-repeat="fc in model.familiaCompartamos">
-                              <li>
-                                <div class="form-group">
-                                  <button type="button" ng-click="deleteFamiliaCompartamos($index);">Borrar</button>
+                            <ul class="block-list">
+                              <li ng-repeat="fc in model.familiaCompartamos">
+                                <div class="form-group theme-form">
+                                  <!-- <button type="button" ng-click="deleteFamiliaCompartamos($index);">Borrar</button> -->
+                                  <h5>
+                                    <span>Familiar Compartamos {{model.familiaCompartamos.indexOf(fc) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteFamiliaCompartamos($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" ng-model="fc.idClient" />
-                                </div>
-                                <div class="form-group">
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" ng-model="fc.relativeName" />
-                                </div>                              
-                                <div class="form-group">
-                                  <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="fc.relationship">
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="fc.relationship">
                                     <option disabled>Parentesco</option>
                                     <option value="Mamá">Mamá</option>
                                     <option value="Papá">Papá</option>
                                   </select> 
+                                  </p>
                                 </div>
+                                <!-- <div class="form-group">
+                                  
+                                </div> -->                              
+                                <!-- <div class="form-group">
+                                  
+                                </div> -->
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFamiliaCompartamos();">
