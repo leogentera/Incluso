@@ -164,6 +164,7 @@ angular
 
                         console.log('successfully register');
                         $scope.scrollToTop();
+                         $scope.autologin();
 
                     }).error(function(data, status, headers, config) {
                         var errorMessage;
