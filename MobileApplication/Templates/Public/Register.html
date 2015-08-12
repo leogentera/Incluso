@@ -71,7 +71,7 @@
                     <p class="input-group-addon" id="aliasAddOn">
                       <span class="icomoon icon-user"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg theme-default" placeholder="Alias" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required style="text-transform: lowercase"/>
+                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg theme-default" placeholder="Alias" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required />
                   </div>
                 </div>
               </div>
@@ -99,10 +99,10 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg theme-default" aria-describedby="genderAddOn">
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option> 
+                        <option value="Masculino">Hombre</option>
+                        <option value="Femenino">Mujer</option> 
                       </select>
-                      <span class="custom-placeholder form-control-lg">Sexo</span>
+                      <span class="custom-placeholder form-control-lg">Género</span>
                     </p>
                   </div>
                 </div>
@@ -118,11 +118,7 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
-                        <option value="Guatemala">Guatemala</option>
-                        <option value="Costa Rica">Costa Rica</option> 
-                        <option value="Perú">Peú</option> 
                         <option value="México">México</option> 
-                        <option value="Brasil">Brasil</option>
                       </select>
                       <span class="custom-placeholder form-control-lg">País</span>
                     </p>
@@ -140,13 +136,8 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.city" name="city" class="form-control form-control-lg theme-default" aria-describedby="cityAddOn">
-                        <option value="Bogotá">Bogotá</option>
-                        <option value="Buenos Aires">Buenos Aires</option>
-                        <option value="La Paz">La Paz</option> 
                         <option value="México D.F.">México D.F.</option> 
                         <option value="Monterrey">Monterrey</option> 
-                        <option value="Montevideo">Montevideo</option> 
-                        <option value="Rosario">Rosario</option> 
                       </select>
                       <span class="custom-placeholder form-control-lg">Ciudad</span>
                     </p>                    

@@ -219,8 +219,8 @@
                 line-height: 6vw;*/
   vertical-align: bottom;
 }
-.incluso-app.public .register #emailAddOn {
-  /*line-height: 10vw;*/
+.incluso-app.public .pages .btn-transparent {
+  text-transform: capitalize;
 }
 /* Dashboard */
 .incluso-app.start-dashboard {

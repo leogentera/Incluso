@@ -113,8 +113,11 @@ angular
                             console.log('came back from redirecting...');
                             $timeout(
                                 function() {
-                                    console.log('redirecting..');
-                                    $location.path('/ProgramaDashboard');
+                                    //console.log('redirecting..');
+                                    //$location.path('/ProgramaDashboard');
+                                    
+                                    console.log('redirecting to tutorial..');
+                                    $location.path('/Tutorial');
                                 },1000);
                         });
 
