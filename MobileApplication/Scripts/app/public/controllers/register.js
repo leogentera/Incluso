@@ -113,8 +113,11 @@ angular
                             console.log('came back from redirecting...');
                             $timeout(
                                 function() {
-                                    console.log('redirecting..');
-                                    $location.path('/ProgramaDashboard');
+                                    //console.log('redirecting..');
+                                    //$location.path('/ProgramaDashboard');
+                                    
+                                    console.log('redirecting to tutorial..');
+                                    $location.path('/Tutorial');
                                 },1000);
                         });
 
@@ -212,7 +215,7 @@ angular
                 if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
                 if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválida."); }
                 if(!$scope.registerForm.email.$valid){ errors.push("formato de correo incorrecto."); }
-                if(!$scope.registerForm.password.$valid){ errors.push("formato de contraseña incorrecto."); }
+                if(!$scope.registerForm.password.$valid){ errors.push("formato de contraseña incorrecto. La contraseña debe incluir al menos un caracter especial, una letra mayúscula y una minúscula"); }
                 if(!$scope.registerForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto."); }
                 if($scope.registerModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
                 if(!$scope.registerForm.secretAnswer.$valid){ errors.push("respuesta secreta inválida."); }

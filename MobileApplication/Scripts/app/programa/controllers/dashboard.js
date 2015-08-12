@@ -82,9 +82,9 @@
 
             function errorCallback(data){
                 console.log(data);
-            }
+            }                                    
                             
-
+                            
             function getCurrentStage(){                
                 var currentStage = 1;                                            
                 
@@ -110,14 +110,16 @@
 
             /* open terms and conditions modal */
             $scope.openModal = function (size) {
-                var modalInstance = $modal.open({
-                    animation: $scope.animationsEnabled,
-                    templateUrl: 'tutorialModal.html',
-                    controller: 'tutorialController',
-                    size: size,
-                    windowClass: 'user-help-modal'
-                });
-                console.log("modal open");
+                setTimeout(function(){ 
+                    var modalInstance = $modal.open({
+                        animation: $scope.animationsEnabled,
+                        templateUrl: 'tutorialModal.html',
+                        controller: 'tutorialController',
+                        size: size,
+                        windowClass: 'user-help-modal'
+                    });
+                    console.log("modal open");
+                }, 1000);
             };
         }])
         .controller('tutorialController', function ($scope, $modalInstance) {
