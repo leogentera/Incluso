@@ -14,10 +14,7 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
             _httpFactory = $http;
-            $scope.actionProcessingModel = {
-                isLogginIn: false,
-                message: 'Procesando..'
-            };
+            $scope.PreloaderModalInstance = null;
 
             $scope.scrollToTop();
 
@@ -79,11 +76,9 @@ angular
 
                 if (validateModel()) {
 
-                // reflect loading state at UI
-                $scope.openProcessingActionModal();
-                $scope.isLogginIn = true;
-                $scope.loginButtonLabel = 'Procesando...';
-  
+                    // reflect loading state at UI
+                    $scope.openProcessingActionModal();
+                    $scope.isLogginIn = true;  
 
                     $http(
                         {
@@ -95,7 +90,7 @@ angular
                         ).success(function (data, status, headers, config) {
 
                             console.log('successfully logged in');
-                            $scope.loginButtonLabel = 'Iniciando Sesión...';
+                            $scope.PreloaderModalInstance.dismiss();
 
                             //save token for further requests and autologin
                             $scope.currentUserModel.token = data.token;
@@ -113,6 +108,7 @@ angular
                                 console.log('came back from redirecting...');
                                 $timeout(
                                     function () {
+                                        //possible line for modal dismiss
                                         console.log('redirecting..');
                                         $location.path('/ProgramaDashboard');
                                     }, 1000);
@@ -229,6 +225,7 @@ angular
                     windowClass: 'modal-theme-default modal-preloader',
                     backdrop: 'static'
                 });
+                $scope.PreloaderModalInstance = modalInstance;
             };            
 
         }])
