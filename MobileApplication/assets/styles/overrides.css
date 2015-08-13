@@ -284,9 +284,6 @@
   background-position: 50% 0;
   box-shadow: unset;
 }
-.incluso-app .modal.ng-isolate-scope {
-  background-color: rgba(18, 27, 28, 0.9);
-}
 /* Profile Dashboard */
 .incluso-app.profile {
   background: #13171c;

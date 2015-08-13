@@ -258,7 +258,8 @@ angular
                     templateUrl: 'termsAndConditionsModal.html',
                     controller: 'termsAndConditionsController',
                     size: size,
-                    windowClass: 'modal-extend-default'
+                    windowClass: 'modal-theme-default',
+                    backdrop: 'static'
                 });
             };
         }])

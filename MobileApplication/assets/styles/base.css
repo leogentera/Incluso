@@ -41,6 +41,11 @@ body {
   height: inherit;
   font-size: 4vw;
 }
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  x-index: 1;
+}
 /****************************************************************************
      $menu 
      Description: CSS rules to make the off canvas without javascript.
@@ -1030,23 +1035,59 @@ body {
 .incluso-app .alert ul li:first-letter {
   text-transform: capitalize;
 }
-.incluso-app .modal .modal-content {
-  /*background-color: transparent;*/
-}
 .incluso-app .modal .modal-header {
   position: relative;
+}
+.incluso-app .modal .modal-backdrop {
+  position: fixed;
+}
+.incluso-app .modal.ng-isolate-scope {
+  background-color: rgba(18, 27, 28, 0.966);
+  position: fixed;
+  z-index: 2050 !important;
 }
 .incluso-app .modal-extend-default .modal-title {
   font-size: 6vw;
 }
 .incluso-app .modal-extend-default .modal-body {
-  max-height: 50vh;
+  height: 100vw;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 .incluso-app .modal-extend-default .modal-body p,
 .incluso-app .modal-extend-default .modal-body ol li {
   font-size: 4.2vw;
+}
+.incluso-app .modal-theme-default .modal-content {
+  background-color: rgba(18, 27, 28, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+  border-width: 1pt;
+  border-style: solid;
+}
+.incluso-app .modal-theme-default .modal-header {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.incluso-app .modal-theme-default .modal-title {
+  color: #bcd431;
+  font-size: 6vw;
+}
+.incluso-app .modal-theme-default .modal-body {
+  height: 100vw;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.incluso-app .modal-theme-default .modal-body p,
+.incluso-app .modal-theme-default .modal-body ol li {
+  color: #ffffff;
+  font-size: 4.2vw;
+}
+.incluso-app .modal-theme-default .modal-footer {
+  padding: 3.3vw;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.incluso-app .modal-theme-default .modal-footer .btn {
+  padding: 2vw 6vw;
+  font-size: 3.9vw;
 }
 .incluso-app .user-help-modal .modal-content {
   width: 90vw;

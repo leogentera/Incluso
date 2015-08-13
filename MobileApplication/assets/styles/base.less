@@ -34,6 +34,12 @@ body {
     width: 100%;
     height: inherit;
     font-size: 4vw;
+
+    &.modal-open {
+        overflow: hidden;
+        position:fixed;
+        x-index: 1;
+    }
 }
     /****************************************************************************
      $menu 
@@ -951,19 +957,25 @@ body {
     ****************************************************************************/
     .modal {
         .modal-dialog {}
-        .modal-content {
-            /*background-color: transparent;*/
-        }
+        .modal-content {}
         .modal-header {
             position: relative;
         }
         .modal-body {}
         .modal-footer {}
+        .modal-backdrop {
+            position:fixed;
+        }
+        &.ng-isolate-scope {
+            background-color: rgba(18, 27, 28, 0.966);
+            position: fixed;
+            z-index: 2050 !important;
+        }
     }
     .modal-extend-default {
         .modal-title {font-size: 6vw;}
         .modal-body {
-            max-height: 50vh;
+            height: 100vw;
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
 
@@ -972,7 +984,40 @@ body {
             }
         }
     }
+    .modal-theme-default {
+        .modal-content {
+            .clr-blueDark(background-color, 0.9);
+            .clr-white(border-color, 0.3);
+            border-width:1pt;
+            border-style: solid;
+        }
+        .modal-header {
+            .clr-white(border-color, 0.3);
+        }
+        .modal-title {
+            color:@clr-green;
+            font-size: 6vw;
+        }
+        .modal-body {
+            height: 100vw;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
 
+            p, ol li {
+                color: @clr-white;
+                font-size: 4.2vw;
+            }
+        }  
+        .modal-footer {
+            padding: 3.3vw;
+            .clr-white(border-color, 0.3);
+
+            .btn {
+                padding: 2vw 6vw;
+                font-size: 3.9vw;
+            }
+        }
+    }
     .user-help-modal {
         .modal-content {
             width: 90vw;
