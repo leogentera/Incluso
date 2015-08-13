@@ -59,7 +59,7 @@
         <form action="" class="register-form container-fluid" name="registerForm" >
         <div class="row">
           <div class="col-xs-12">
-            <h1>Datos de Registro</h1>
+            <h1>Datos de registro</h1>
           </div>
         </div>
         <div class="pages">
@@ -72,7 +72,7 @@
                     <p class="input-group-addon" id="aliasAddOn">
                       <span class="icomoon icon-user"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg theme-default" placeholder="Alias" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required />
+                    <input type="text" ng-model="registerModel.username" name="username" class="form-control form-control-lg theme-default" placeholder="Nombre de usuario" aria-describedby="aliasAddOn" pattern="[a-z0-9]+" required />
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@
                     <p class="input-group-addon" id="birthDateAddOn">
                       <span class="icomoon icon-calendar"></span>
                     </p>                    
-                    <input type="text" ng-model="registerModel.birthday" ng-click="showCalendar()" name="birthday" class="form-control form-control-lg theme-default" placeholder="Fecha de nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required />
+                    <input type="date" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg theme-default" placeholder="Fecha de nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required />
                   </div>
                 </div>
               </div>
@@ -240,7 +240,7 @@
                     <p class="input-group-addon" id="securityAnswerAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <input type="text" ng-disabled="isRegistered" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg theme-default" placeholder="Respuesta de Seguridad" aria-describedby="securityAnswerAddOn" required />
+                    <input type="text" ng-disabled="isRegistered" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg theme-default" placeholder="Respuesta de seguridad" aria-describedby="securityAnswerAddOn" required />
                   </div>
                 </div>            
               </div>
