@@ -13,7 +13,7 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll) {
 
             $anchorScroll();
-
+            
             /* ViewModel */
             $scope.recoverPasswordModel = {
                 email: "",
@@ -33,6 +33,7 @@ angular
             $scope.currentPage = 1;
             $scope.successMessage = "";
             $scope.recoveredPassword = false;
+            $scope.readOnly = false;
 
             /* Watchers */
             $scope.$watch("recoverPasswordModel.confirmPassword", function(newValue, oldValue){
@@ -135,9 +136,10 @@ angular
                         $scope.successMessage = "Se ha restablecido su contraseña, ahora puedes iniciar sesión.";
                         $anchorScroll();
 
-                        $scope.recoverPasswordModel.password = "";
-                        $scope.recoverPasswordModel.confirmPassword = "";
-                        $scope.recoverPasswordModel.code = "";
+                        //$scope.recoverPasswordModel.password = "";
+                        //$scope.recoverPasswordModel.confirmPassword = "";
+                        //$scope.recoverPasswordModel.code = "";
+                        $scope.readOnly = true;
 
                     }).error(function(data, status, headers, config) {
                         var errorMessage;
