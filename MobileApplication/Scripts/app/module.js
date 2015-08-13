@@ -29,7 +29,7 @@
         $http.get('Templates/Programa/etapa.html', { cache: $templateCache });
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
         $http.get('Templates/Programa/AcercaPrograma.html', { cache: $templateCache });  
-             
+
 
     })
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -102,7 +102,7 @@
     .controller('RootController', ['$scope', '$route', '$routeParams', '$location', function ($scope, $route, $routeParams, $location) {
         $scope.$on('$routeChangeSuccess', function (e, current, previous) {
             $scope.activeViewPath = $location.path();
-            alert($(".main-title").text());
+            
             $("#menuton span").text($(".main-title").text());    
         });
         

@@ -35,6 +35,8 @@
             catch (e) {
                 console.log(e);
             }
+
+            $(".navbar").removeClass("etapa-uno");
             getDataAsync();
 
             $scope.logout = function(){

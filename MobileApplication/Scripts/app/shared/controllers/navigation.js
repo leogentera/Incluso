@@ -11,7 +11,18 @@ app.controller('menuController', [
 	'$scope',
 	'$location', 
 	function($scope, $location, $http){
-		
+
+		$(".accsub").unbind("click");
+		$(".accsub").bind("click",function(e){
+			e.stopPropagation();
+			$(this).toggleClass('icon-arrow');
+			$(this).toggleClass('icon-arrow-up');
+			$(this).toggleClass('green');
+			$(this).toggleClass('white');
+			var cual = $(this).attr('data-id');
+			  $('#sub' + cual).toggle();
+
+		});
 		$scope.navigateTo = function(url,name){
             	$("body").removeClass("sidebar-left-visible sidebar-left-in");
             	$location.path(url);
