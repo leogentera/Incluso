@@ -72,6 +72,7 @@ angular
             $scope.register = function() {
                 
                 console.log('register');
+                localStorage.removeItem("Credentials");
                 
                 var datePickerValue =  $("input[name=birthday]").datepicker("getDate");
                 dpValue = moment(datePickerValue).format("L");
