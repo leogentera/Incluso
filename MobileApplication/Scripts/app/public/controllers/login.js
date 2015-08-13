@@ -90,7 +90,7 @@ angular
                             method: 'POST',
                             url: API_RESOURCE.format("authentication"),
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                            data: $.param({ username: $scope.userCredentialsModel.username, password: $scope.userCredentialsModel.password })
+                            data: $.param({ username: $scope.userCredentialsModel.username.toString().toLowerCase(), password: $scope.userCredentialsModel.password })
                         }
                         ).success(function (data, status, headers, config) {
 
@@ -106,14 +106,14 @@ angular
                             _setToken(data.token);
                             _setId(data.id);
 
-                            console.log('preparing for syncAll');
-
+                            console.log('preparing for syncAll');                            
+                            
                             //succesful credentials
                             _syncAll(function () {
                                 console.log('came back from redirecting...');
                                 $timeout(
-                                    function () {
-                                        console.log('redirecting..');
+                                    function () {                                       
+                                        console.log('redirecting..');                                        
                                         $location.path('/ProgramaDashboard');
                                     }, 1000);
                             });
