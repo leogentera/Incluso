@@ -24,7 +24,7 @@
             console.log('loading currentStage');
             $scope.currentStage = JSON.parse(moodleFactory.Services.GetCacheObject("currentStage"));
             console.log('loading stage');
-            
+            $(".navbar-absolute-top").show();
             try {
                 if(moodleFactory.Services.GetCacheObject("stage")){
                     $scope.stage = JSON.parse(moodleFactory.Services.GetCacheObject("stage"));                

@@ -37,6 +37,8 @@ angular
                 $scope.userCredentialsModel.modelState.isValid = (newValue.length === 0);
             });
 
+            $(".navbar-absolute-top").hide();
+
             $scope.loadCredentials = function () {
 
                 var txtCredentials = localStorage.getItem("Credentials");

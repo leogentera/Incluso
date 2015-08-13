@@ -711,20 +711,6 @@ body.modal-open {
   padding: 6px 16px;
   font-size: 12px;
 }
-/*.incluso-app .form-control::-webkit-input-placeholder {
-  text-transform: capitalize;
-}*/
-/*.incluso-app .form-control:-moz-placeholder {
-  /* Firefox 18- */
-  /*text-transform: capitalize;*/
-}*/
-/*.incluso-app .form-control::-moz-placeholder {
-  /* Firefox 19+ */
-  /*text-transform: capitalize;*/
-}*/
-/*.incluso-app .form-control.select-wrapper select + .placeholder-fallback {
-  text-transform: capitalize;
-}*/
 .incluso-app .form-control.theme-form {
   background-color: transparent;
   border-left: none;
@@ -1199,6 +1185,10 @@ body.modal-open {
   font-size: 6vw;
   line-height: 13vw;
   vertical-align: top;
+}
+.incluso-app .navbar.etapa-uno {
+  background-color: #138BCB;
+  border-color: #138BCB;
 }
 .incluso-app .step-dashboard .navbar {
   background-color: #158ccd;

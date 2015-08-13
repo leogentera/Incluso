@@ -10,14 +10,18 @@ app.controller('navController', function($scope){
 app.controller('menuController', [
 	'$scope',
 	'$location', 
-	function($scope, $location){
+	function($scope, $location, $http){
 		
 		$scope.navigateTo = function(url,name){
-				console.log("navigate");
             	$("body").removeClass("sidebar-left-visible sidebar-left-in");
             	$location.path(url);
             	$("#menuton span").text(name);
             };
+
+            $scope.logout = function(){
+            	$("body").removeClass("sidebar-left-visible sidebar-left-in");
+                logout($http, $scope, $location);
+            }; 
 }]);
  
  app.controller('menuOffCanvas',[
