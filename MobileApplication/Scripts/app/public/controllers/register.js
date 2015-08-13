@@ -72,6 +72,7 @@ angular
             $scope.register = function() {
                 
                 console.log('register');
+                localStorage.removeItem("Credentials");
                 
                 var datePickerValue =  $("input[name=birthday]").datepicker("getDate");
                 dpValue = moment(datePickerValue).format("L");
@@ -113,8 +114,11 @@ angular
                             console.log('came back from redirecting...');
                             $timeout(
                                 function() {
-                                    console.log('redirecting..');
-                                    $location.path('/ProgramaDashboard');
+                                    //console.log('redirecting..');
+                                    //$location.path('/ProgramaDashboard');
+                                    
+                                    console.log('redirecting to tutorial..');
+                                    $location.path('/Tutorial');
                                 },1000);
                         });
 
@@ -161,6 +165,7 @@ angular
 
                         console.log('successfully register');
                         $scope.scrollToTop();
+                         $scope.autologin();
 
                     }).error(function(data, status, headers, config) {
                         var errorMessage;
@@ -203,8 +208,25 @@ angular
             function validateModel(){
                 var errors = [];
                 
-                var age = calculate_age(dpValue);
-                if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
+                var age = calculate_age(dpValue);         
+                var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número";       
+                
+                if(!$scope.registerForm.password.$valid)
+                { 
+                    errors.push("formato de contraseña incorrecto. La contraseña " + passwordPolicy); 
+                }
+                else
+                {
+                    if(!$scope.registerForm.confirmPassword.$valid)
+                    { 
+                        errors.push("formato de confirmación de contraseña incorrecto. La confirmacion de contraseña " + passwordPolicy); 
+                    }
+                    else
+                    {
+                        if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
+                    }     
+                }
+                
 
                 if(!$scope.registerForm.username.$valid){ errors.push("formato de usuario incorrecto."); }
                 //if(!$scope.registerForm.birthday.$valid){ errors.push("Fecha de nacimiento incorrecta."); }
@@ -212,8 +234,7 @@ angular
                 if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
                 if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválida."); }
                 if(!$scope.registerForm.email.$valid){ errors.push("formato de correo incorrecto."); }
-                if(!$scope.registerForm.password.$valid){ errors.push("formato de contraseña incorrecto."); }
-                if(!$scope.registerForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto."); }
+                
                 if($scope.registerModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
                 if(!$scope.registerForm.secretAnswer.$valid){ errors.push("respuesta secreta inválida."); }
                 if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }
@@ -253,7 +274,8 @@ angular
                     templateUrl: 'termsAndConditionsModal.html',
                     controller: 'termsAndConditionsController',
                     size: size,
-                    windowClass: 'modal-extend-default'
+                    windowClass: 'modal-theme-default',
+                    backdrop: 'static'
                 });
             };
         }])

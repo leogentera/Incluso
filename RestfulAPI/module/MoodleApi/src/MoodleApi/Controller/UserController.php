@@ -399,24 +399,132 @@ class UserController extends AbstractRestfulJsonController{
     	$url.=$this->createURLParms($data, '&users[0][customfields][21][type]=%s&users[0][customfields][21][value]=%s', 'alias' );
     	$url.=$this->createURLParms($data, '&users[0][customfields][22][type]=%s&users[0][customfields][22][value]=%s', 'termsAndConditions' );
     	$url.=$this->createURLParms($data, '&users[0][customfields][23][type]=%s&users[0][customfields][23][value]=%s', 'informationUsage' );
-    
+    	
+    	
+    	
+    	$artisticActivities=$this->createTableRows($data,  'artisticActivities' );
+    	if (trim($artisticActivities)!=""){
+    		$url.=sprintf('&users[0][customfields][24][type]=%s&users[0][customfields][24][value]=%s',
+    				"artisticActivities",$artisticActivities);
+    	}
+    	
+    	$hobbies=$this->createTableRows($data,  'hobbies' );
+    	if (trim($hobbies)!=""){
+    		$url.=sprintf('&users[0][customfields][25][type]=%s&users[0][customfields][25][value]=%s',
+    				"hobbies",$hobbies);
+    	}
+    	
+    	$talents=$this->createTableRows($data,  'talents' );
+    	if (trim($talents)!=""){
+    		$url.=sprintf('&users[0][customfields][26][type]=%s&users[0][customfields][26][value]=%s',
+    				"talents",$talents);
+    	}
+    	
+    	$values=$this->createTableRows($data,  'values' );
+    	if (trim($values)!=""){
+    		$url.=sprintf('&users[0][customfields][27][type]=%s&users[0][customfields][27][value]=%s',
+    				"values",$values);
+    	}
+    	
+    	$habilities=$this->createTableRows($data,  'habilities' );
+    	if (trim($habilities)!=""){
+    		$url.=sprintf('&users[0][customfields][28][type]=%s&users[0][customfields][28][value]=%s',
+    				"habilities",$habilities);
+    	}
+    	
+    	
+    	$url.=$this->createURLParms($data, '&users[0][customfields][29][type]=%s&users[0][customfields][29][value]=%s', 'iLiveWith' );
+    	
+    	$currentStudies=$this->createTableObject($data, "currentStudies",   "", 'level', 'grade', 'period' );
+    	if (trim($currentStudies)!=""){
+    		$url.=sprintf('&users[0][customfields][30][type]=%s&users[0][customfields][30][value]=%s',
+    				"currentStudies",$currentStudies);
+    	}
+    	
+    	//$url.=$this->createURLParms($data, '&users[0][customfields][30][type]=%s&users[0][customfields][30][value]=%s', 'currentStudies', 'level', 'grade', 'period' );
+    	$url.=$this->createURLParms($data, '&users[0][customfields][31][type]=%s&users[0][customfields][31][value]=%s', 'children' );
+    	$url.=$this->createURLParms($data, '&users[0][customfields][32][type]=%s&users[0][customfields][32][value]=%s', 'gotMoneyIncome' );
+    	$url.=$this->createURLParms($data, '&users[0][customfields][33][type]=%s&users[0][customfields][33][value]=%s', 'medicalCoverage' );
+    	$url.=$this->createURLParms($data, '&users[0][customfields][34][type]=%s&users[0][customfields][34][value]=%s', 'medicalInsurance' );
+    	
+    	
+    	$mainActivity=$this->createTableRows($data,  'mainActivity' );
+    	if (trim($mainActivity)!=""){
+    		$url.=sprintf('&users[0][customfields][35][type]=%s&users[0][customfields][35][value]=%s',
+    				"mainActivity",$mainActivity);
+    	}
+    	 
+    	$moneyIncome=$this->createTableRows($data,  'moneyIncome' );
+    	if (trim($moneyIncome)!=""){
+    		$url.=sprintf('&users[0][customfields][36][type]=%s&users[0][customfields][36][value]=%s',
+    				"moneyIncome",$moneyIncome);
+    	}
+    	
+    	$knownDevices=$this->createTableRows($data,  'knownDevices' );
+    	if (trim($knownDevices)!=""){
+    		$url.=sprintf('&users[0][customfields][37][type]=%s&users[0][customfields][37][value]=%s',
+    				"knownDevices",$knownDevices);
+    	}
+    	
+    	$ownDevices=$this->createTableRows($data,  'ownDevices' );
+    	if (trim($ownDevices)!=""){
+    		$url.=sprintf('&users[0][customfields][38][type]=%s&users[0][customfields][38][value]=%s',
+    				"ownDevices",$ownDevices);
+    	}
+    	
+    	$phoneUsage=$this->createTableRows($data,  'phoneUsage' );
+    	if (trim($phoneUsage)!=""){
+    		$url.=sprintf('&users[0][customfields][39][type]=%s&users[0][customfields][39][value]=%s',
+    				"phoneUsage",$phoneUsage);
+    	}
+    	
+    	$url.=$this->createURLParms($data, '&users[0][customfields][40][type]=%s&users[0][customfields][40][value]=%s', 'playVideogames' );    	
+    	$url.=$this->createURLParms($data, '&users[0][customfields][41][type]=%s&users[0][customfields][41][value]=%s', 'videogamesFrecuency' );
+    	$url.=$this->createURLParms($data, '&users[0][customfields][42][type]=%s&users[0][customfields][42][value]=%s', 'videogamesHours' );
+    	
+    	$kindOfVideogames=$this->createTableRows($data,  'kindOfVideogames' );
+    	if (trim($kindOfVideogames)!=""){
+    		$url.=sprintf('&users[0][customfields][43][type]=%s&users[0][customfields][43][value]=%s',
+    				"kindOfVideogames",$kindOfVideogames);
+    	}
+    	
     //Stars
-        $url.= $this->addStars($data, '&users[0][customfields][24][type]=%s&users[0][customfields][24][value]=%s', 'stars');
+       // $url.= $this->addStars($data, '&users[0][customfields][24][type]=%s&users[0][customfields][24][value]=%s', 'stars');
         
 
 
         $additionalEmails=$this->createTableRows($data,  'additionalEmails' );
         if (trim($additionalEmails)!=""){
-        	$url.=sprintf('&users[0][customfields][25][type]=%s&users[0][customfields][25][value]=%s',
+        	$url.=sprintf('&users[0][customfields][44][type]=%s&users[0][customfields][44][value]=%s',
         			"additionalEmails",$additionalEmails);
         }
         
-        $url.=$this->createURLParms($data, '&users[0][customfields][26][type]=%s&users[0][customfields][26][value]=%s', 'country' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][45][type]=%s&users[0][customfields][45][value]=%s', 'country' );
 
     	//$url = sprintf($url, $this->getToken(), $this->function);
+    	
+
+        $inspirationalCharacters=$this->createTableRows($data,  'inspirationalCharacters', 'characterName', 'characterType' );
+        if (trim($inspirationalCharacters)!=""){
+        	$url.=sprintf('&users[0][customfields][46][type]=%s&users[0][customfields][46][value]=%s',
+        			"inspirationalCharacters",$inspirationalCharacters);
+        }
+         
+        $favoriteGames=$this->createTableRows($data,  'favoriteGames' );
+        if (trim($favoriteGames)!=""){
+        	$url.=sprintf('&users[0][customfields][47][type]=%s&users[0][customfields][47][value]=%s',
+        			"favoriteGames",$favoriteGames);
+        }
+         
+        $favoriteSports=$this->createTableRows($data,  'favoriteSports' );
+        if (trim($favoriteSports)!=""){
+        	$url.=sprintf('&users[0][customfields][48][type]=%s&users[0][customfields][48][value]=%s',
+        			"favoriteSports",$favoriteSports);
+        }
     
     	$response = file_get_contents($url);
     
+    	
     
     	if ($response=="null"){
     		return  new JsonModel(array());
@@ -457,6 +565,7 @@ class UserController extends AbstractRestfulJsonController{
     		 		$variable=1;
     		 	}
     		 }
+    		 
     		return sprintf($format, $key, urlencode($variable));
     
     	}
@@ -467,10 +576,18 @@ class UserController extends AbstractRestfulJsonController{
     function createTableRow($array, $sufix, ...$keys ){
     	$result="";
     	$i=0;
+    	//If by mistake we enter a key as Array, we should make that arraya as our keys
+    	if (count($keys)>0){
+    		if(gettype($keys[0])=="array"){
+    			$keys=$keys[0];
+    		}
+    	}
+    	
     	foreach ($keys as $key){
     		if($i>0){
     			$result.="\t";
     		}
+    		
     		if(array_key_exists ( $key.$sufix , $array )){
     			$result.=$array[$key.$sufix];
     			$i++;
@@ -486,13 +603,26 @@ class UserController extends AbstractRestfulJsonController{
     
     }
     
+    function createTableObject($array,$nameOfTheObject , $sufix, ...$keys ){
+    	$result="";
+    	$i=0;
+    	if (array_key_exists($nameOfTheObject, $array)){
+    		$array=$array[$nameOfTheObject];
+    		return $this->createTableRow($array, $sufix, $keys );
+    	}
+    	
+    
+    	return $result;
+    
+    }
+    
     function createTableRows($array, $arrayname, ...$keys ){
     	$result="";
     	$i=0;
     	$subarray=array();
     	 
     	//foreach ($keys as $key){
-    	 
+    	
     	if (array_key_exists ( $arrayname , $array )){
     		$subarray=$array[$arrayname];
     

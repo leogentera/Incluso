@@ -43,12 +43,25 @@ angular
                 cordova.exec(Success, Failure, "CallToAndroid", "PlayLocalVideo", [videoAddress,videoName]);
             };
             
+            $scope.avatar = function(){
+                var name="{\"UserId\": 103,\"Alias\": \"Laura Giaccone\"\"PathImagen\": \"Android/data/<app-id>/images\",\"Color Cabello\": \"\",\"Estilo Cabello\": \"\",\"Traje color principal\": \"\",\"Traje color secundario\": \"\",\"Rostro\": \"\",\"Color de piel\": \"\",\"Imagen Recortada\": \"\"}";
+                cordova.exec(SuccessAvatar, FailureAvatar, "CallToAndroid", "openApp", [name]);
+            };
+            
               function Success() {
                 
             }
             
             function Failure() {
                 
+            }
+            
+            function SuccessAvatar() {
+                 $timeout($location.path('/ProgramaDashboard'), 10);
+                
+            }
+            
+            function FailureAvatar() {
             }
 
             $scope.navigateToPage = function(pageNumber){

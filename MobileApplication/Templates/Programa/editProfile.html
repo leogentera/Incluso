@@ -1,66 +1,6 @@
 <div class="incluso-app profile edit-profile"  id="site-wrapper">
   <div id="site-menu" >
-    <nav class="ng-scope">
-      <div id="navBar" class="navbar">
-        <div class="container-fluid">
-          <div class="row">
-
-            <div class="navbar-assets">
-              <h1 class="navbar-heading"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
-              
-            </div> 
-          </div>
-        </div>
-      </div>
-    </nav>
-    <ul class="nav">
-      <li><a ng-href="#/ProgramaDashboard"><i class="icomoon icon-home"></i> Inicio</a></li>
-      <li><a><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
-      <li>
-       <a class="menu-blue" ng-href="#/ProgramaDashboardEtapa/1">
-         <i class="icomoon icon-spaceship"></i> Etapa 1</a></li>
-         <li><i class="icomoon icon-arrow fl-right white accsub pointer" data-id="1"></i><a class="menu-green">
-           <i class="icomoon icon-asterodis">
-            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span><span class="path17"></span><span class="path18"></span><span class="path19"></span><span class="path20"></span><span class="path21"></span><span class="path22"></span><span class="path23"></span><span class="path24"></span><span class="path25"></span><span class="path26"></span><span class="path27"></span><span class="path28"></span><span class="path29"></span>
-          </i> Link</a>
-          <div class="submenu" id="sub1">
-           <ul>
-            <li>Título sin liga</li>
-            <li><a>Bien</a></li>
-            <li><a>Bien 2</a></li>
-            <li><a>Bien 3</a></li>
-            <li><a>Bien 4</a></li>
-          </ul>
-        </div>
-      </li>
-      <li><i class="icomoon icon-arrow fl-right white accsub pointer" data-id="2"></i><a class="menu-pink">
-        <span class="icomoon icon-planet">
-          <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
-        </span>	  Link</a>
-        <div class="submenu" id="sub2">
-         <ul>
-          <li>Título sin liga2</li>
-          <li><a>Bien</a></li>
-          <li><a>Bien 2</a></li>
-          <li><a>Bien 3</a></li>
-          <li><a>Bien 4</a></li>
-        </ul>
-        <ul>
-          <li>Título sin liga3</li>
-          <li><a>Bien</a></li>
-          <li><a>Bien 2</a></li>
-          <li><a>Bien 3</a></li>
-          <li><a>Bien 4</a></li>
-        </ul>
-      </div></li>
-      <li><a><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
-      <li><a><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
-      <li><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
-      <li><a><i class="icomoon icon-document"></i> Certificación</a></li>
-      <li><a><i class="icomoon icon-racing-flag "></i> Recuerdos Incluso</a></li>
-      <li><a><i class="icomoon icon-lifesaver"></i> Preguntas frecuentes</a></li>
-      <li><a><i class="icomoon icon-notes"></i> Aviso de privacidad</a></li>
-    </ul>
+    <menu-component></menu-component>
   </div>
   <div id="site-canvas">
     <nav ng-controller="navController">
@@ -148,7 +88,7 @@
         <form action="">
           <div class="pages">
             <div class="page" ng-class="currentPage == 1 ? 'active' : ''">
-              <div class="container">
+              <div class="container-fluid">
                 <div class="row">
                   <div class="col-xs-12">
                     <ul class="list-group separate-items">
@@ -167,7 +107,7 @@
             </div>
 
             <div class="page" ng-class="currentPage == 2 ? 'active' : ''">
-              <div class="container">
+              <div class="container-fluid">
                 <div class="row">
                   <div class="col-xs-12">
                     <div class="panel panel-default panel-form">
@@ -213,7 +153,7 @@
 
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
                                   <p class="form-group-control custom-placeholder-wrapper">
-                                  <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies">
+                                  <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
                                     <option value="Grado">Grado</option>
                                     <option value="Primaria">Primaria</option>
                                     <option value="Secundaria">Secundaria</option>
@@ -305,7 +245,7 @@
             </div>
 
             <div class="page " ng-class="currentPage == 3 ? 'active' : ''">
-              <div class="container">
+              <div class="container-fluid">
                 <div class="row">
                   <div class="col-xs-12">
                     <div class="panel panel-default panel-form">
@@ -317,39 +257,49 @@
                       <div class="panel-body">
                         <fieldset class="my-profile-form">
                           <section>
-
                             <h5>Teléfono</h5>
                             <ul class="block-list">
                               <li ng-repeat="p in model.phones track by $index">
                                 <div class="form-group theme-form">
-                                  <button type="button" ng-click="deletePhone($index);">Borrar</button>
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Número Telefónico" ng-model="model.phones[$index]">
+                                  <h5>
+                                    <span>Teléfono {{model.phones.indexOf(p) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deletePhone($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <!-- <button type="button" ng-click="deletePhone($index);">Borrar</button> -->
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Número Telefónico" ng-model="model.phones[$index]" />
+
                                 </div>
                               </li>
                             </ul> 
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addPhone();">
                               <span class="icomoon icon-plus"></span>Agregar nuevo número...
                             </button>
-
                           </section>
 
                           <section>
                             <h5>Correo</h5>
-                          <ul class="block-list">
+                            <ul class="block-list">
                               <li>
-                                <div class="form-group">
+                                <div class="form-group theme-form">
+                                  <h5><span>Correo 1</span></h5>
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico" ng-model="model.email">
                                 </div>
                               </li>
-                            </ul>
-                            <ul class="block-list" >
-                              <li>
-                                <div class="form-group" ng-repeat="se in model.additionalEmails track by $index">
-                                  <button type="button" ng-click="deleteAdditionalEmails($index);">Borrar</button>
+                              <li ng-repeat="se in model.additionalEmails track by $index">
+                                <div class="form-group" >
+                                  <!-- <button type="button" ng-click="deleteAdditionalEmails($index);">Borrar</button> -->
+                                  <h5>
+                                    <span>Correo {{model.additionalEmails.indexOf(se) + 2}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteAdditionalEmails($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>                                  
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico Adicional" ng-model="model.additionalEmails[$index]">
                                 </div>
                               </li>
-                            </ul> 
+                            </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addEmail();">
                               <span class="icomoon icon-plus"></span>Agregar nuevo correo...
                             </button>
@@ -357,10 +307,16 @@
 
                           <section>
                             <h5>Redes sociales</h5>
-                            <ul class="block-list" ng-repeat="sn in model.socialNetworks">
-                              <li>
-                                <div class="form-group">
-                                  <button type="button" ng-click="deleteSocialNetwork($index);">Borrar</button>
+                            <ul class="block-list">
+                              <li ng-repeat="sn in model.socialNetworks">
+                                <div class="form-group theme-form">
+                                  <!-- <button type="button" ng-click="deleteSocialNetwork($index);">Borrar</button> -->
+                                  <h5>
+                                    <span>Red Social {{model.socialNetworks.indexOf(sn) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteSocialNetwork($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
                                   <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="sn.socialNetwork">
                                     <option disabled>Red Social</option>
                                     <option value="Facebook">Facebook</option>
@@ -380,22 +336,32 @@
 
                           <section>
                             <h5>Familiares Compartamos</h5>
-                            <ul class="block-list" ng-repeat="fc in model.familiaCompartamos">
-                              <li>
-                                <div class="form-group">
-                                  <button type="button" ng-click="deleteFamiliaCompartamos($index);">Borrar</button>
+                            <ul class="block-list">
+                              <li ng-repeat="fc in model.familiaCompartamos">
+                                <div class="form-group theme-form">
+                                  <!-- <button type="button" ng-click="deleteFamiliaCompartamos($index);">Borrar</button> -->
+                                  <h5>
+                                    <span>Familiar Compartamos {{model.familiaCompartamos.indexOf(fc) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteFamiliaCompartamos($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" ng-model="fc.idClient" />
-                                </div>
-                                <div class="form-group">
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" ng-model="fc.relativeName" />
-                                </div>                              
-                                <div class="form-group">
-                                  <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="fc.relationship">
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="fc.relationship">
                                     <option disabled>Parentesco</option>
                                     <option value="Mamá">Mamá</option>
                                     <option value="Papá">Papá</option>
                                   </select> 
+                                  </p>
                                 </div>
+                                <!-- <div class="form-group">
+                                  
+                                </div> -->                              
+                                <!-- <div class="form-group">
+                                  
+                                </div> -->
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFamiliaCompartamos();">
@@ -436,9 +402,6 @@
         </form>
       </section> 
     </article>
-
-  <script type="text/javascript" src="Scripts/scriptmenu.js"></script>
-
     <footer>
       <ul class="block-list">
         <li><a href="" class="btn-link">Preguntas Frecuentes</a></li>

@@ -350,4 +350,11 @@
                 scope.$apply(attrs.ngBlur);
             });
         };
+    })
+    .directive('menuComponent', function(){
+        return {
+          restrict: 'E',
+          scope: false,
+          templateUrl: 'Templates/Programa/menu.html'
+        };
     });

@@ -42,6 +42,11 @@ body {
   font-size: 4vw;
   background-color: #000;
 }
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  x-index: 1;
+}
 /****************************************************************************
      $menu 
      Description: CSS rules to make the off canvas without javascript.
@@ -125,6 +130,21 @@ body {
   margin: 0 auto;
   max-width: 100vw;
   font-family: Play, Sans-serif, Arial;
+  /***************************************************************************/
+  /****************************************************************************
+     $container-fluid
+     Description: CSS overrides for bootstrap's container-fluid class
+    ****************************************************************************/
+  /***************************************************************************/
+  /****************************************************************************
+     $row
+     Description: CSS overrides for bootstrap's row class
+    ****************************************************************************/
+  /***************************************************************************/
+  /****************************************************************************
+     $col
+     Description: CSS overrides for bootstrap's column series of classes
+    ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
      $nav-tabs
@@ -249,6 +269,65 @@ body {
 .incluso-app ol {
   list-style: outside none decimal-leading-zero;
   padding-left: 7vw;
+}
+.incluso-app .container-fluid {
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+.incluso-app .row {
+  margin-left: -3vw;
+  margin-right: -3vw;
+}
+.incluso-app .col-xs-1,
+.incluso-app .col-sm-1,
+.incluso-app .col-md-1,
+.incluso-app .col-lg-1,
+.incluso-app .col-xs-2,
+.incluso-app .col-sm-2,
+.incluso-app .col-md-2,
+.incluso-app .col-lg-2,
+.incluso-app .col-xs-3,
+.incluso-app .col-sm-3,
+.incluso-app .col-md-3,
+.incluso-app .col-lg-3,
+.incluso-app .col-xs-4,
+.incluso-app .col-sm-4,
+.incluso-app .col-md-4,
+.incluso-app .col-lg-4,
+.incluso-app .col-xs-5,
+.incluso-app .col-sm-5,
+.incluso-app .col-md-5,
+.incluso-app .col-lg-5,
+.incluso-app .col-xs-6,
+.incluso-app .col-sm-6,
+.incluso-app .col-md-6,
+.incluso-app .col-lg-6,
+.incluso-app .col-xs-7,
+.incluso-app .col-sm-7,
+.incluso-app .col-md-7,
+.incluso-app .col-lg-7,
+.incluso-app .col-xs-8,
+.incluso-app .col-sm-8,
+.incluso-app .col-md-8,
+.incluso-app .col-lg-8,
+.incluso-app .col-xs-9,
+.incluso-app .col-sm-9,
+.incluso-app .col-md-9,
+.incluso-app .col-lg-9,
+.incluso-app .col-xs-10,
+.incluso-app .col-sm-10,
+.incluso-app .col-md-10,
+.incluso-app .col-lg-10,
+.incluso-app .col-xs-11,
+.incluso-app .col-sm-11,
+.incluso-app .col-md-11,
+.incluso-app .col-lg-11,
+.incluso-app .col-xs-12,
+.incluso-app .col-sm-12,
+.incluso-app .col-md-12,
+.incluso-app .col-lg-12 {
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 .incluso-app .nav-tabs {
   border: 0;
@@ -392,6 +471,7 @@ body {
   background: transparent;
   color: #ffffff;
   font-size: 4.2vw;
+  text-transform: capitalize;
 }
 .incluso-app .btn-default.btn-transparent:active {
   -webkit-box-shadow: none;
@@ -404,11 +484,14 @@ body {
 }
 .incluso-app .btn-link {
   display: block;
-  padding: 9px 3px;
+  /*padding: 9px 3px;*/
+  padding: 1.8vw 0px;
   color: #ffffff;
-  font-size: 21px;
+  /*font-size: 21px;*/
+  font-size: 4.4vw;
   font-weight: 600;
-  letter-spacing: 1px;
+  /*letter-spacing: 1px;*/
+  letter-spacing: 0.06em;
   text-align: center;
 }
 .incluso-app .btn-link:hover,
@@ -532,13 +615,15 @@ body {
 }
 .incluso-app .btn-back-to-top {
   color: #bcd431;
-  font-size: 16px;
+  /*font-size: 16px;*/
+  font-size: 3.3vw;
   font-weight: bold;
   text-align: center;
 }
 .incluso-app .btn-back-to-top span {
   display: block;
-  padding: 6px 0 0;
+  /*padding: 6px 0 0;*/
+  padding: 1vw 0px 0px;
   width: auto;
   text-transform: uppercase;
 }
@@ -625,6 +710,20 @@ body {
   height: 30px;
   padding: 6px 16px;
   font-size: 12px;
+}
+.incluso-app .form-control::-webkit-input-placeholder {
+  text-transform: capitalize;
+}
+.incluso-app .form-control:-moz-placeholder {
+  /* Firefox 18- */
+  text-transform: capitalize;
+}
+.incluso-app .form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  text-transform: capitalize;
+}
+.incluso-app .form-control.select-wrapper select + .placeholder-fallback {
+  text-transform: capitalize;
 }
 .incluso-app .form-control.theme-form {
   background-color: transparent;
@@ -960,23 +1059,59 @@ body {
 .incluso-app .alert ul li:first-letter {
   text-transform: capitalize;
 }
-.incluso-app .modal .modal-content {
-  /*background-color: transparent;*/
-}
 .incluso-app .modal .modal-header {
   position: relative;
+}
+.incluso-app .modal .modal-backdrop {
+  position: fixed;
+}
+.incluso-app .modal.ng-isolate-scope {
+  background-color: rgba(18, 27, 28, 0.966);
+  position: fixed;
+  z-index: 2050 !important;
 }
 .incluso-app .modal-extend-default .modal-title {
   font-size: 6vw;
 }
 .incluso-app .modal-extend-default .modal-body {
-  max-height: 50vh;
+  height: 100vw;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 .incluso-app .modal-extend-default .modal-body p,
 .incluso-app .modal-extend-default .modal-body ol li {
   font-size: 4.2vw;
+}
+.incluso-app .modal-theme-default .modal-content {
+  background-color: rgba(18, 27, 28, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+  border-width: 1pt;
+  border-style: solid;
+}
+.incluso-app .modal-theme-default .modal-header {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.incluso-app .modal-theme-default .modal-title {
+  color: #bcd431;
+  font-size: 6vw;
+}
+.incluso-app .modal-theme-default .modal-body {
+  height: 100vw;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.incluso-app .modal-theme-default .modal-body p,
+.incluso-app .modal-theme-default .modal-body ol li {
+  color: #ffffff;
+  font-size: 4.2vw;
+}
+.incluso-app .modal-theme-default .modal-footer {
+  padding: 3.3vw;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.incluso-app .modal-theme-default .modal-footer .btn {
+  padding: 2vw 6vw;
+  font-size: 3.9vw;
 }
 .incluso-app .user-help-modal .modal-content {
   width: 90vw;
@@ -1225,12 +1360,14 @@ body {
 }
 .incluso-app .list-group.separate-items .list-group-item a {
   display: block;
-  height: 77px;
+  /*height: 77px;*/
+  height: 16vw;
   padding: 0;
   margin: 0;
   font-size: 1.2em;
   font-weight: bold;
-  line-height: 77px;
+  /*line-height: 77px;*/
+  line-height: 16vw;
 }
 .incluso-app .list-group.separate-items .list-group-item .icomoon {
   font-weight: normal;

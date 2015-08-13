@@ -55,6 +55,33 @@ class MoodleUserProfile extends Common
     
     public $additionalEmails=array();
     
+    public $inspirationalCharacters=array();
+    public $favoriteGames=array();
+    public $favoriteSports=array();
+    
+    public $artisticActivities=array();
+    public $hobbies=array();
+    public $talents=array();
+    public $values=array();
+    public $habilities=array();
+    
+    public $iLiveWith="";
+    public $mainActivity=array();
+    public $currentStudies="";
+    public $children="";
+    public $gotMoneyIncome="";
+    public $moneyIncome=array();
+    public $medicalCoverage="";
+    public $medicalInsurance="";
+    
+    public $knownDevices=array();
+    public $ownDevices=array();
+    public $phoneUsage=array();
+    public $playVideogames="";
+    public $videogamesFrecuency="";
+    public $videogamesHours="";
+    public $kindOfVideogames="";
+    
     
     public function __construct($data)
     {
@@ -117,6 +144,10 @@ class MoodleUserProfile extends Common
     			//var_dump($this->phones);
     		}
     		
+    		$this->currentStudies=new MoodleCurrentStudies();
+    		
+    		$this->currentStudies= $this->currentStudies->get($customFields);
+    		
     		if(array_key_exists ( 'additionalEmails' , $customFields )){
     			$this->additionalEmails=$this->createTableFromCompundField($customFields['additionalEmails']);
     			//var_dump($this->phones);
@@ -130,6 +161,91 @@ class MoodleUserProfile extends Common
     		if(array_key_exists ( 'stage' , $customFields )){
     			$this->stage=$customFields['stage'];
     		}
+    		
+    		$this->inspirationalCharacters=new MoodleCharacters();
+    		
+    		$this->inspirationalCharacters=$this->inspirationalCharacters->get($customFields);
+    		
+    		if(array_key_exists ( 'favoriteGames' , $customFields )){
+    			$this->favoriteGames=$this->createTableFromCompundField($customFields['favoriteGames']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'iLiveWith' , $customFields )){
+    			$this->iLiveWith=$customFields['iLiveWith'];
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'children' , $customFields )){
+    			$this->children=$customFields['children'];
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'gotMoneyIncome' , $customFields )){
+    			$this->gotMoneyIncome=$customFields['gotMoneyIncome'];
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'medicalCoverage' , $customFields )){
+    			$this->medicalCoverage=$customFields['medicalCoverage'];
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'medicalInsurance' , $customFields )){
+    			$this->medicalInsurance=$customFields['medicalInsurance'];
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'mainActivity' , $customFields )){
+    			$this->mainActivity=$this->createTableFromCompundField($customFields['mainActivity']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'moneyIncome' , $customFields )){
+    			$this->moneyIncome=$this->createTableFromCompundField($customFields['moneyIncome']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'knownDevices' , $customFields )){
+    			$this->knownDevices=$this->createTableFromCompundField($customFields['knownDevices']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'ownDevices' , $customFields )){
+    			$this->ownDevices=$this->createTableFromCompundField($customFields['ownDevices']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'phoneUsage' , $customFields )){
+    			$this->phoneUsage=$this->createTableFromCompundField($customFields['phoneUsage']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		if(array_key_exists ( 'playVideogames' , $customFields )){
+    			$this->playVideogames=$this->createTableFromCompundField($customFields['playVideogames']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		
+    		if(array_key_exists ( 'videogamesFrecuency' , $customFields )){
+    			$this->videogamesFrecuency=$this->createTableFromCompundField($customFields['videogamesFrecuency']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		
+    		if(array_key_exists ( 'videogamesHours' , $customFields )){
+    			$this->videogamesHours=$this->createTableFromCompundField($customFields['videogamesHours']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		
+    		if(array_key_exists ( 'kindOfVideogames' , $customFields )){
+    			$this->kindOfVideogames=$this->createTableFromCompundField($customFields['kindOfVideogames']);
+    			//var_dump($this->phones);
+    		}
+    		
+    		
+    		
     	}
     	else{
     		$this->address=new MoodleAddress();
@@ -150,11 +266,45 @@ class MoodleUserProfile extends Common
         
         if( $this->showAttributesAndQualities && array_key_exists ( 'attributesAndQualities' , $customFields )){
         	$this->attributesAndQualities=$this->createTableFromCompundField($customFields['attributesAndQualities']);
+
+        	if(array_key_exists ( 'talents' , $customFields )){
+        		$this->talents=$this->createTableFromCompundField($customFields['talents']);
+        	}
+        	 
+        	if(array_key_exists ( 'values' , $customFields )){
+        		$this->values=$this->createTableFromCompundField($customFields['values']);
+        		//var_dump($this->phones);
+        	}
+        	 
+        	if(array_key_exists ( 'habilities' , $customFields )){
+        		$this->habilities=$this->createTableFromCompundField($customFields['habilities']);
+        		//var_dump($this->phones);
+        	}
+        	
         	//var_dump($this->phones);
         }
         
-    	if($this->showLikesAndPreferences && array_key_exists ( 'strengths' , $customFields )){
-        	$this->strengths=$this->createTableFromCompundField($customFields['strengths']);
+    	if($this->showLikesAndPreferences ){
+        	
+        	if(array_key_exists ( 'favoriteSports' , $customFields )){
+        		$this->favoriteSports=$this->createTableFromCompundField($customFields['favoriteSports']);
+        		//var_dump($this->phones);
+        	}
+        	 
+        	if(array_key_exists ( 'hobbies' , $customFields )){
+        		$this->hobbies=$this->createTableFromCompundField($customFields['hobbies']);
+        		//var_dump($this->phones);
+        	}
+        	 
+        	if(array_key_exists ( 'artisticActivities' , $customFields )){
+        		$this->artisticActivities=$this->createTableFromCompundField($customFields['artisticActivities']);
+        		//var_dump($this->phones);
+        	}
+        	 
+        	if( array_key_exists ( 'likesAndPreferences' , $customFields )){
+        		$this->likesAndPreferences=$this->createTableFromCompundField($customFields['likesAndPreferences']);
+        		//var_dump($this->phones);
+        	}
         	//var_dump($this->phones);
         }
         
@@ -163,10 +313,11 @@ class MoodleUserProfile extends Common
         	//var_dump($this->phones);
         }
         
-        if($this->showStrengths && array_key_exists ( 'likesAndPreferences' , $customFields )){
-        	$this->likesAndPreferences=$this->createTableFromCompundField($customFields['likesAndPreferences']);
-        	//var_dump($this->phones);
+        if($this->showStrengths && array_key_exists ( 'strengths' , $customFields )){
+        	$this->strengths=$this->createTableFromCompundField($customFields['strengths']);
         }
+        
+        
         
 //         if(array_key_exists ( 'likesAndPreferences' , $customFields )){
 //         	$this->likesAndPreferences=$this->createTableFromCompundField($customFields['likesAndPreferences']);
@@ -220,6 +371,8 @@ class MoodleUserProfile extends Common
         	$this->allowToSendAdvertisement=$customFields['allowToSendAdvertisement']==0?true:false;
         	//var_dump($this->phones);
         }
+        
+        
         
         	
     }
