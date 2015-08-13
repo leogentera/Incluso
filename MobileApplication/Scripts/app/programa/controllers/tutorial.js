@@ -44,6 +44,8 @@ angular
             };
             
             $scope.avatar = function(){
+                  $scope.scrollToTop();                
+                $location.path('/ProgramaDashboard');
                 var name="{\"UserId\": 103,\"Alias\": \"Laura Giaccone\"\"PathImagen\": \"Android/data/<app-id>/images\",\"Color Cabello\": \"\",\"Estilo Cabello\": \"\",\"Traje color principal\": \"\",\"Traje color secundario\": \"\",\"Rostro\": \"\",\"Color de piel\": \"\",\"Imagen Recortada\": \"\"}";
                 cordova.exec(SuccessAvatar, FailureAvatar, "CallToAndroid", "openApp", [name]);
             };
@@ -57,8 +59,8 @@ angular
             }
             
             function SuccessAvatar() {
-                 $timeout($location.path('/ProgramaDashboard'), 10);
-                
+                 //$timeout($location.path('/ProgramaDashboard'), 10);
+
             }
             
             function FailureAvatar() {
