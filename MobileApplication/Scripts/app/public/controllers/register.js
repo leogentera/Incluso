@@ -202,22 +202,16 @@ angular
                 
                 var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número";       
                 
-                if(!$scope.registerForm.password.$valid)
-                { 
+                if(!$scope.registerForm.password.$valid){ 
                     errors.push("formato de contraseña incorrecto. La contraseña " + passwordPolicy); 
-                }
-                else
-                {
-                    if(!$scope.registerForm.confirmPassword.$valid)
-                    { 
+                }else{
+                    if(!$scope.registerForm.confirmPassword.$valid){ 
                         errors.push("formato de confirmación de contraseña incorrecto. La confirmacion de contraseña " + passwordPolicy); 
-                    }
-                    else
-                    {
+                    }else{
                         if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
                     }     
                 }
-
+                
                 if(!$scope.registerForm.username.$valid){ errors.push("formato de usuario incorrecto."); }                
                 if($scope.registerModel.gender.length === 0){ errors.push("Género inválido."); }
                 if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
