@@ -188,7 +188,7 @@ private function forgotPassword($data)
 //     				return new JsonModel( $this->throwJSONError("Ocurrio un error al momento de enviar el mail con el código de confirmacion, contacte al administrador"));
 //     			}
 
-    				$this->sendEmail($data['email'],'Reseteo de Contraseña Incluso',  "Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
+    				$this->sendEmail($data['email'],'Incluso - Recupera tu contraseña',  "¡Hola!\n\n Olvidaste tu contraseña. Usa el código $recoverycode para cambiarla por una nueva.");
     			
     			
     			return  new JsonModel(array());

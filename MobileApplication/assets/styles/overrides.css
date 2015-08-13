@@ -143,8 +143,7 @@
   color: #ffffff;
   font-size: 4.1vw;
   font-weight: bold;
-  letter-spacing: 0.037em;
-  text-transform: capitalize;
+  letter-spacing: 0.037em;  
 }
 .incluso-app.public .login {
   position: relative;
@@ -185,9 +184,7 @@
 .incluso-app.public .pages .btn-transparent {
   text-transform: capitalize;
 }
-.incluso-app.public input[name="username"] {
-  text-transform: lowercase;
-}
+
 /* Dashboard */
 .incluso-app.start-dashboard {
   background-attachment: scroll;

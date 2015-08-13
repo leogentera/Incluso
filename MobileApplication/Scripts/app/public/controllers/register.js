@@ -13,15 +13,9 @@ angular
         '$modal',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
             
-            _httpFactory = $http;
+            _httpFactory = $http;            
             var dpValue;
-                                  
-            $("input[name=birthday]").datepicker({
-                dateFormat: "d M, y",
-                changeMonth: true,
-                changeYear: true
-            });
-                                
+                                           
             $scope.scrollToTop();
 
             /* ViewModel */
@@ -64,18 +58,12 @@ angular
             $scope.$watch("registerModel.modelState.errorMessages", function(newValue, oldValue){
                 $scope.registerModel.modelState.isValid = (newValue.length === 0);
             });                        
-
-            $scope.showCalendar = function(){                
-              $("#datePicker").toggle();              
-            }                        
+                                
             
             $scope.register = function() {
                 
                 console.log('register');
-                localStorage.removeItem("Credentials");
-                
-                var datePickerValue =  $("input[name=birthday]").datepicker("getDate");
-                dpValue = moment(datePickerValue).format("L");
+                localStorage.removeItem("Credentials");                            
                 
                 if(validateModel()){
                     registerUser();
@@ -155,6 +143,7 @@ angular
                             country: $scope.registerModel.country,
                             secretanswer: $scope.registerModel.secretAnswer,
                             secretquestion: $scope.registerModel.secretQuestion,
+                            //birthday: $scope.registerModel.birthday,
                             birthday: dpValue,
                             gender: $scope.registerModel.gender
                         })
@@ -207,23 +196,29 @@ angular
 
             function validateModel(){
                 var errors = [];
+                var datePickerValue =  $("input[name=birthday]").val();
+                dpValue = moment(datePickerValue).format("DD/MM/YYYY");
                 
-                var age = calculate_age(dpValue);
-                if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
-
-                if(!$scope.registerForm.username.$valid){ errors.push("formato de usuario incorrecto."); }
-                //if(!$scope.registerForm.birthday.$valid){ errors.push("Fecha de nacimiento incorrecta."); }
+                var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número";       
+                
+                if(!$scope.registerForm.password.$valid){ 
+                    errors.push("formato de contraseña incorrecto. La contraseña " + passwordPolicy); 
+                }else{
+                    if(!$scope.registerForm.confirmPassword.$valid){ 
+                        errors.push("formato de confirmación de contraseña incorrecto. La confirmacion de contraseña " + passwordPolicy); 
+                    }else{
+                        if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
+                    }     
+                }
+                
+                if(!$scope.registerForm.username.$valid){ errors.push("formato de usuario incorrecto."); }                
                 if($scope.registerModel.gender.length === 0){ errors.push("Género inválido."); }
                 if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
                 if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválida."); }
-                if(!$scope.registerForm.email.$valid){ errors.push("formato de correo incorrecto."); }
-                if(!$scope.registerForm.password.$valid){ errors.push("formato de contraseña incorrecto. La contraseña debe incluir al menos un caracter especial, una letra mayúscula y una minúscula"); }
-                if(!$scope.registerForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto."); }
+                if(!$scope.registerForm.email.$valid){ errors.push("formato de correo incorrecto."); }                
                 if($scope.registerModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
                 if(!$scope.registerForm.secretAnswer.$valid){ errors.push("respuesta secreta inválida."); }
-                if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }
-                if(age > 20) {errors.push("Debe tener máximo 20 años.");}
-                if(age < 10) {errors.push("Debe tener al menos 10 años.");}
+                if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }                
                 $scope.registerModel.modelState.errorMessages = errors;
 
                 return (errors.length === 0);
