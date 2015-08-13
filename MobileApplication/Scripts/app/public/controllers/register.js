@@ -136,7 +136,7 @@ angular
                         url: API_RESOURCE.format("user"), 
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
-                            username: $scope.registerModel.username,
+                            username: $scope.registerModel.username.toString().toLowerCase(),
                             password: $scope.registerModel.password,
                             email: $scope.registerModel.email,
                             city: $scope.registerModel.city,
@@ -194,7 +194,7 @@ angular
             }
             
 
-            function validateModel(){
+            function validateModel(){                
                 var errors = [];
                 var datePickerValue =  $("input[name=birthday]").val();
                 dpValue = moment(datePickerValue).format("DD/MM/YYYY");

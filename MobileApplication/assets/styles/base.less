@@ -1004,6 +1004,39 @@ body {
                 font-size: 3.9vw;
             }
         }
+
+        &.modal-preloader {
+            position: fixed;
+            height: 100vh;
+            background-color: rgba(18, 27, 28, 0.8);
+
+            .modal-content {
+                border:none;
+                background:none;
+                .box-shadow-reset()
+            }
+            .modal-body {
+                height: 100vh;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: auto;
+            }
+            .preloader {
+                display: block;
+                width: 6vw;
+                height: 6vw;
+                padding: 0;
+                margin:0 auto;
+                margin-top: 60vh;
+
+                img {
+                    display: block;
+                    padding: 0;
+                    margin:0;
+                    width:inherit;
+                    height:inherit;
+                }
+            }
+        }
     }
     .user-help-modal {
         .modal-content {
