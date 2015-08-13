@@ -81,7 +81,10 @@ class MoodleUserProfile extends Common
     public $videogamesFrecuency="";
     public $videogamesHours="";
     public $kindOfVideogames="";
-    
+    public $gender="";
+    public $birthday="";
+    public $maritalStatus="";
+    public $age="";
     
     public function __construct($data)
     {
@@ -241,9 +244,23 @@ class MoodleUserProfile extends Common
     		
     		if(array_key_exists ( 'kindOfVideogames' , $customFields )){
     			$this->kindOfVideogames=$this->createTableFromCompundField($customFields['kindOfVideogames']);
-    			//var_dump($this->phones);
     		}
     		
+    		if(array_key_exists ( 'gender' , $customFields )){
+    			$this->gender=$customFields['gender'];
+    		}
+    		
+    		if(array_key_exists ( 'birthday' , $customFields )){
+    			$this->birthday=$customFields['birthday'];
+    		}
+    		
+    		if(array_key_exists ( 'maritalStatus' , $customFields )){
+    			$this->maritalStatus=$customFields['maritalStatus'];
+    		}
+    		
+    		if(array_key_exists ( 'birthCountry' , $customFields )){
+    			$this->birthCountry=$customFields['birthCountry'];
+    		}
     		
     		
     	}
