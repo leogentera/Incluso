@@ -90,7 +90,7 @@ angular
                         ).success(function (data, status, headers, config) {
 
                             console.log('successfully logged in');
-                            $scope.PreloaderModalInstance.dismiss();
+                            //$scope.PreloaderModalInstance.dismiss();
 
                             //save token for further requests and autologin
                             $scope.currentUserModel.token = data.token;
@@ -110,6 +110,8 @@ angular
                                     function () {
                                         //possible line for modal dismiss
                                         console.log('redirecting..');
+                                        $scope.PreloaderModalInstance.dismiss();
+
                                         $location.path('/ProgramaDashboard');
                                     }, 1000);
                             });
@@ -121,8 +123,9 @@ angular
                             }
 
                         }).error(function (data, status, headers, config) {
-                            var errorMessage = window.atob(data.messageerror);
-
+                            
+                            $scope.PreloaderModalInstance.dismiss();
+                            var errorMessage = window.atob(data.messageerror);                            
                             $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
                             console.log(status + ": " + errorMessage);
                             $scope.scrollToTop();

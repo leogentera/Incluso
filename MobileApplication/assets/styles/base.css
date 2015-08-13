@@ -447,7 +447,6 @@ body.modal-open {
   background: transparent;
   color: #ffffff;
   font-size: 4.2vw;
-  text-transform: capitalize;
 }
 .incluso-app .btn-default.btn-transparent:active {
   -webkit-box-shadow: none;
