@@ -15,10 +15,12 @@ app.controller('menuController', [
 		$(".accsub").unbind("click");
 		$(".accsub").bind("click",function(e){
 			e.stopPropagation();
-			$(this).toggleClass('icon-arrow');
+			$(this).siblings("i").toggleClass("icon-arrow icon-arrow-up green white blue")
+			/*$(this).toggleClass('icon-arrow');
 			$(this).toggleClass('icon-arrow-up');
 			$(this).toggleClass('green');
 			$(this).toggleClass('white');
+			*/
 			var cual = $(this).attr('data-id');
 			  $('#sub' + cual).toggle();
 
