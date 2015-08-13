@@ -72,6 +72,7 @@ angular
             $scope.register = function() {
                 
                 console.log('register');
+                localStorage.removeItem("Credentials");
                 
                 var datePickerValue =  $("input[name=birthday]").datepicker("getDate");
                 dpValue = moment(datePickerValue).format("L");
@@ -164,6 +165,7 @@ angular
 
                         console.log('successfully register');
                         $scope.scrollToTop();
+                         $scope.autologin();
 
                     }).error(function(data, status, headers, config) {
                         var errorMessage;
@@ -256,7 +258,8 @@ angular
                     templateUrl: 'termsAndConditionsModal.html',
                     controller: 'termsAndConditionsController',
                     size: size,
-                    windowClass: 'modal-extend-default'
+                    windowClass: 'modal-theme-default',
+                    backdrop: 'static'
                 });
             };
         }])

@@ -129,16 +129,20 @@ angular
                 debugger
                 var name = API_RESOURCE.format("")
                 name = name.substring(0, name.length - 1);
-                //alert(name);
+                alert(name);
                 //var url = "http://incluso.sieenasoftware.com/RestfulAPI/public";
                 
                 cordova.exec(FacebookLoginSuccess, FacebookLoginFailure, "SayHelloPlugin", "connectWithFacebook", [name]);
             }
 
             function FacebookLoginSuccess(data) {
+                
+                alert(data);
                 console.log('successfully logged in');
-
+                
                 var userFacebook = JSON.parse(data);
+
+                alert(userFacebook);
 
                 //save token for further requests and autologin
                 $scope.currentUserModel.token = userFacebook.token;
@@ -170,6 +174,9 @@ angular
 
             function FacebookLoginFailure(data) {
                 var errorMessage = window.atob("Could not authenticate with facebook")//window.atob(data.messageerror);
+
+                alert(data);
+                alert('Could not authenticate with facebook ' + data);
 
                 $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
                 console.log(status + ": " + errorMessage);
