@@ -40,6 +40,8 @@ body {
   width: 100%;
   height: inherit;
   font-size: 4vw;
+  background-color: #000;
+  overflow-y: auto;
 }
 /****************************************************************************
      $menu 
@@ -76,16 +78,22 @@ body {
   -moz-transition: all 300ms ease;
   -o-transition: all 300ms ease;
   transition: all 300ms ease;
-  width: 80%;
+  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
-  left: -80%;
+  /*left: -80%;*/
   background-color: #040203;
   padding: 0px;
   background-image: url('../images/bg-menu.jpg');
   background-repeat: no-repeat;
   background-size: 100% auto;
+}
+.sidebar-left {
+  width: 85vw;
+  transition: width 400ms ease 0s;
+  margin-left: 0px;
+  z-index: 10;
 }
 .ease {
   -webkit-transition: 300ms ease all;
@@ -1033,6 +1041,8 @@ body {
   position: relative;
   margin-bottom: 0;
   border-radius: 0px;
+  background-color: #EE4823;
+  border-color: #EE4823;
 }
 .incluso-app .navbar .icomoon {
   font-size: 6vw;
@@ -1087,8 +1097,8 @@ body {
   display: inline-block;
   float: right;
   margin: 0;
-  width: 45vw;
-  max-width: 48%;
+  /*width: 45vw;  
+            max-width:48%;  */
   list-style-type: none;
   padding: 0 9px 0 0;
 }

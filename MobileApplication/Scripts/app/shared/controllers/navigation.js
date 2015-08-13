@@ -17,3 +17,21 @@ app.controller('menuController', [
             };
 }]);
  
+ app.controller('menuOffCanvas',[
+ 	'$scope',
+ 	'$location',
+ 	function($scope, $location){
+
+ 		$scope.sideToggle = function(action){ 	
+ 		
+ 			if(action == 'in')
+ 				$("body").addClass("sidebar-left-visible sidebar-left-in");
+ 			else
+ 				$("body").removeClass("sidebar-left-visible sidebar-left-in");
+ 		};
+
+ 		$scope.sideToggleOut = function () {
+ 			console.log("out");
+ 			$("body").removeClass("sidebar-left-visible sidebar-left-in");
+ 		};
+ }]);
