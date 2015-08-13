@@ -121,12 +121,54 @@ body {
 
 
     /****************************************************************************
+     $container-fluid
+     Description: CSS overrides for bootstrap's container-fluid class
+    ****************************************************************************/
+    .container-fluid {
+        padding-left: 3vw;
+        padding-right: 3vw;
+    }
+    /***************************************************************************/ 
+
+
+    /****************************************************************************
+     $row
+     Description: CSS overrides for bootstrap's row class
+    ****************************************************************************/
+    .row {
+        margin-left: -3vw;
+        margin-right: -3vw;
+    }
+    /***************************************************************************/    
+
+
+    /****************************************************************************
+     $col
+     Description: CSS overrides for bootstrap's column series of classes
+    ****************************************************************************/
+    .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, 
+    .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, 
+    .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, 
+    .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, 
+    .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, 
+    .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, 
+    .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, 
+    .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, 
+    .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, 
+    .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, 
+    .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, 
+    .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+        padding-left: 3vw;
+        padding-right: 3vw;
+    }
+    /***************************************************************************/     
+
+
+    /****************************************************************************
      $nav-tabs
      Description: CSS rules for menu.
     ****************************************************************************/     
-    .nav-tabs{
-        border: 0;
-    }
+    .nav-tabs{border: 0;}
     .nav-tabs.nav-justified{
         display: flex;
         justify-content:space-between;
@@ -134,7 +176,8 @@ body {
             display: inline-flex;
         }
     }
-    .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, 
+    .nav-tabs.nav-justified > .active > a, 
+    .nav-tabs.nav-justified > .active > a:hover, 
     .nav-tabs.nav-justified > .active > a:focus,
     .nav-tabs > li > a, 
     .nav-tabs > li.active > a, 
@@ -798,7 +841,6 @@ body {
                 color:@clr-white;
             }             
         }
-
     }
     /***************************************************************************/
 
@@ -1200,12 +1242,12 @@ body {
 
                 a {
                     display: block;
-                    height: 77px;
+                    /*height: 77px;*/ height: 16vw;
                     padding: 0;
                     margin: 0;
                     font-size: 1.2em;
                     font-weight: bold;
-                    line-height: 77px;
+                    /*line-height: 77px;*/ line-height: 16vw;
                 }
                 .icomoon {font-weight: normal;}
             }
