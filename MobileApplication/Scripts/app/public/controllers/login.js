@@ -87,7 +87,7 @@ angular
                             method: 'POST',
                             url: API_RESOURCE.format("authentication"),
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                            data: $.param({ username: $scope.userCredentialsModel.username, password: $scope.userCredentialsModel.password })
+                            data: $.param({ username: $scope.userCredentialsModel.username.toString().toLowerCase(), password: $scope.userCredentialsModel.password })
                         }
                         ).success(function (data, status, headers, config) {
 
@@ -103,8 +103,8 @@ angular
                             _setToken(data.token);
                             _setId(data.id);
 
-                            console.log('preparing for syncAll');
-
+                            console.log('preparing for syncAll');                            
+                            
                             //succesful credentials
                             _syncAll(function () {
                                 console.log('came back from redirecting...');
@@ -113,6 +113,7 @@ angular
                                         //possible line for modal dismiss
                                         console.log('redirecting..');
                                         $scope.PreloaderModalInstance.dismiss();
+
                                         $location.path('/ProgramaDashboard');
                                     }, 1000);
                             });
@@ -124,8 +125,9 @@ angular
                             }
 
                         }).error(function (data, status, headers, config) {
-                            var errorMessage = window.atob(data.messageerror);
-
+                            
+                            $scope.PreloaderModalInstance.dismiss();
+                            var errorMessage = window.atob(data.messageerror);                            
                             $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
                             console.log(status + ": " + errorMessage);
                             $scope.scrollToTop();
