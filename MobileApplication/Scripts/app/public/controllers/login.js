@@ -10,9 +10,11 @@ angular
         '$rootScope',
         '$http',
         '$anchorScroll',
-        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll) {
+        '$modal',
+        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
             _httpFactory = $http;
+            $scope.PreloaderModalInstance = null;
 
             $scope.scrollToTop();
 
@@ -76,6 +78,10 @@ angular
 
                 if (validateModel()) {
 
+                    // reflect loading state at UI
+                    $scope.openProcessingActionModal();
+                    $scope.isLogginIn = true;  
+
                     $http(
                         {
                             method: 'POST',
@@ -86,6 +92,7 @@ angular
                         ).success(function (data, status, headers, config) {
 
                             console.log('successfully logged in');
+                            //$scope.PreloaderModalInstance.dismiss();
 
                             //save token for further requests and autologin
                             $scope.currentUserModel.token = data.token;
@@ -103,7 +110,9 @@ angular
                                 console.log('came back from redirecting...');
                                 $timeout(
                                     function () {
+                                        //possible line for modal dismiss
                                         console.log('redirecting..');
+                                        $scope.PreloaderModalInstance.dismiss();
                                         $location.path('/ProgramaDashboard');
                                     }, 1000);
                             });
@@ -120,6 +129,7 @@ angular
                             $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
                             console.log(status + ": " + errorMessage);
                             $scope.scrollToTop();
+                            $scope.isLogginIn = false;
                         });
                 } else {
                     $scope.scrollToTop();
@@ -208,4 +218,20 @@ angular
 
             // $location.path('/ProgramaDashboardEtapa/' + 1);
 
-        }]);
+            /* open processing action modal */
+            $scope.openProcessingActionModal = function (size) {
+                var modalInstance = $modal.open({
+                    animation: true,
+                    templateUrl: 'processingActionModal.html',
+                    controller: 'processingActionModalController',
+                    size: size,
+                    windowClass: 'modal-theme-default modal-preloader',
+                    backdrop: 'static'
+                });
+                $scope.PreloaderModalInstance = modalInstance;
+            };            
+
+        }])
+        .controller('processingActionModalController', function ($scope, $modalInstance) {
+
+        });

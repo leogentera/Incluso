@@ -158,6 +158,29 @@
                 line-height: 6vw;*/
   vertical-align: bottom;
 }
+.incluso-app.public .login .btn-primary[disabled],
+.incluso-app.public .login .btn-primary.disabled {
+  position: relative;
+  /*background-attachment: scroll;
+            background-image: url('@{url-images}/img-preloader-32.gif');
+            .clr-white(background-color, 0.6);
+            background-position: right top;
+            background-repeat: no-repeat; */
+}
+.incluso-app.public .login .btn-primary[disabled] .preloader,
+.incluso-app.public .login .btn-primary.disabled .preloader {
+  display: block;
+  position: absolute;
+  right: 3vw;
+  top: 50%;
+  width: 6vw;
+  height: 6vw;
+  margin-top: -3vw;
+  background-attachment: scroll;
+  background-image: url('../images/img-preloader-32.gif');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 .incluso-app.public .pages .btn-transparent {
   text-transform: capitalize;
 }
@@ -304,6 +327,9 @@
   background-color: #ee4823;
   border-color: #ee4823;
 }
+.incluso-app.profile h4 {
+  color: white;
+}
 .incluso-app.profile footer {
   padding-bottom: 30px;
   background-color: #3c4448;
@@ -336,6 +362,9 @@
 .incluso-app.profile .panel .panel-body h5 {
   color: #08b290;
   text-align: left;
+}
+.incluso-app.profile .panel .panel-body h4 {
+  color: white;
 }
 .incluso-app.profile .panel .panel-body p:not(.text-center) {
   width: auto;
