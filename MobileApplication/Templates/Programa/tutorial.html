@@ -4,23 +4,20 @@
       <form action="" class="container-fluid" name="registerForm" ng-show="!isRegistered">
         <div class="row">
           <div class="col-xs-12">
-            <div class="subtitle centered">VIDEO TUTORIAL</div>
+            <div class="subtitle centered">Guía de uso</div>
           </div>
         </div>
         <div class="pages">
           <div class="page" data-page="1" ng-class="currentPage === 1 ? 'active' : ''">
             <div class="stage perform">
+              <button class="icon icon-play" ng-click="playVideo()"></button>
               <figure class="player">
                 <img src="assets/images/ptr-video-0001.jpg" ng-click="playVideo()" />
               </figure>
             </div>
             <section>
               <div>
-                <p class="txt-renglon centered">En nuestro video tutorial encontraras los tips indispensables para usar la plataforma incluso.</p>
-                <p class="txt-renglon centered">Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia
-                  odio sem nec elit. Integer posuere erat a ante venenatis apibus posuere velit aliquet. Duis mollis, est non commodo luctus,
-                  nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante est non.</p>
-                <p class="txt-renglon centered">Tambien, puedes descargar las aplicaciones de Juegos dando clic en el siguiente boton</p>
+              <p></p>
               </div>
             </section>
             <div class="row">
@@ -38,23 +35,18 @@
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(2)">Continuar a mi Perfil</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(2)">Continuar</button>
               </div>
             </div>
           </div>
           <div class="page" data-page="2" ng-class="currentPage === 2 ? 'active' : ''">
             <section>
               <div class="txt-renglon centered">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sapien at lobortis vestibulum. Aenean iaculis commodo
-                  sapien vitae mollis. Quisque in sollicitudin velit. Aenean nec ultrices metus, ac volutpat augue. Sed sem ligula, facilisis
-                  eu ultrices a, laoreet auctor urna. Etiam nec tortor egestas, fringilla metus vitae, blandit turpis. Maecenas mattis elementum
-                  egestas. Sed euismod leo sed metus accumsan hendrerit.</p>
-                <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras suscipit ornare nibh, sed condimentum tortor rhoncus
-                  eget.</p>
-                <p>Donec vel lorem risus. Vestibulum eget dui imperdiet, efficitur nisl id, fermentum lorem. Vivamus quis gravida urna. Aenean
-                  rhoncus lacus tellus, ut ullamcorper dui placerat eget. Maecenas finibus est vel mollis pretium. Suspendisse imperdiet turpis
-                  sapien, vel euismod dui convallis vel. Phasellus lobortis mi non libero euismod, eu blandit tellus eleifend. Etiam vehicula
-                  pellentesque leo ut elementum. Cras vel commodo eros. Quisque sed mi tellus. Quisque viverra ultricies euismod.</p>
+                <p>Instrucciones</p>
+                <p>Para continuar con la misión debes de realizar los siguientes pasos:</p>
+                <p>1. Da clic en el botón de "Obtén incluso interactivo" para poder personalizar tu avatar.</p>
+                <p>2. Personaliza tu avatar para distinguirte en la misión.</p>
+                <p>3. Inicia tu misión.</p>
               </div>
             </section>
             <div class="row">
@@ -72,7 +64,7 @@
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="avatar()">Continuar a mi Perfil</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="avatar()">Obtén incluso interactivo</button>
               </div>
             </div>
           </div>
