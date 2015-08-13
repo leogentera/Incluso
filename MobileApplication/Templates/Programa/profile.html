@@ -1,10 +1,10 @@
 <div class="incluso-app profile" id="site-wrapper">
     <div id="site-menu">
-        <menu-component></menu-component>
+        <!--<menu-component></menu-component>-->
     </div>
     <div id="site-canvas">
 
-        <nav ng-controller="navController">
+        <!--<nav ng-controller="navController">
             <div class="navbar" id="Div1">
                 <div class="container-fluid">
 
@@ -38,8 +38,8 @@
                     </div>
                 </div>
             </div>
-            <!-- /.container-fluid -->
-        </nav>
+            <!-- /.container-fluid 
+        </nav>-->
 
         <article>
             <section class="component profile-dashboard">
@@ -104,7 +104,7 @@
                                         <li class="list-group-item" ng-click="navigateToPage(3)">
                                             <a href="">
                                                 <span class="icomoon icon-document"></span>
-                                                <span>Cualidades y Talentos</span>
+                                                <span>Mi personalidad</span>
                                                 <span class="icomoon icon-star"></span>
                                                 <span class="icomoon icon-arrow-slim-right"></span>
                                             </a>
@@ -113,7 +113,7 @@
                                         <li class="list-group-item" ng-click="navigateToPage(4)">
                                             <a href="">
                                                 <span class="icomoon icon-required"></span>
-                                                <span>Gustos y Preferencias</span>
+                                                <span>Socioeconómicos</span>
                                                 <span class="icomoon icon-star"></span>
                                                 <span class="icomoon icon-arrow-slim-right"></span>
                                             </a>
@@ -193,18 +193,14 @@
                                                         <h5>País de nacimiento</h5>
                                                         <p></p>
                                                         <hr />
-                                                        <hr />
                                                         <h5>Fecha de nacimiento</h5>
                                                         <p></p>
-                                                        <hr />
                                                         <hr />
                                                         <h5>Edad</h5>
                                                         <p></p>
                                                         <hr />
-                                                        <hr />
                                                         <h5>Estado civil</h5>
                                                         <p></p>
-                                                        <hr />
                                                         <hr />
                                                         <h4>Educación</h4>
                                                         <h5>Mis estudios</h5>
@@ -217,7 +213,6 @@
                                                         <h4>Dirección</h4>
                                                         <h5>País</h5>
                                                         <p ng-bind="model.address.country"></p>
-                                                        <hr />
                                                         <hr />
                                                         <h5>Ciudad</h5>
                                                         <p ng-bind="model.address.city"></p>
@@ -237,16 +232,16 @@
                                                         <h5>Colonia</h5>
                                                         <p ng-bind="model.address.colony"></p>
                                                         <hr />
-                                                        <h4>Teléfonos</h4>                                                        
-                                                          <ul class="block-list" ng-repeat="s in model.phones">
+                                                        <h4>Teléfonos</h4>
+                                                        <ul class="block-list" ng-repeat="s in model.phones">
                                                             <li>
                                                                 <h5>Teléfono</h5>
                                                                 <p ng-bind="s"></p>
                                                                 <hr />
                                                             </li>
-                                                        </ul>                                                        
+                                                        </ul>
                                                         <hr />
-                                                        <h4>Redes sociales</h4>                                                        
+                                                        <h4>Redes sociales</h4>
                                                         <ul class="block-list" ng-repeat="s in model.socialNetworks">
                                                             <li>
                                                                 <h5>Red social</h5>
@@ -267,8 +262,7 @@
                                                                 <p ng-bind="s.school"></p>
                                                                 <p ng-bind="s.levelOfStudies"></p>
                                                             </li>
-                                                        </ul>-->
-
+                                                        </ul>
 
                                                         <h5>Domicilio</h5>
                                                         <p ng-bind="model.address.street + ' ' + model.address.num_ext + ' ' + model.address.num_int + ' ' + model.address.colony + ' ' + model.address.city + ' ' + model.address.town + ' ' + model.address.state + ' ' + model.address.country + ' ' + model.address.postalCode"></p>
@@ -313,6 +307,7 @@
                                                             </li>
                                                         </ul>
                                                         <br />
+                                                        -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -332,17 +327,69 @@
                                         <div class="panel-heading" ng-click="navigateToPage(1)">
                                             <span class="icomoon icon-arrow-slim-left"></span>
                                             <span class="icomoon icon-information"></span>
-                                            <h3 class="panel-title">Cualidades y Talentos</h3>
+                                            <h3 class="panel-title">Mi personalidad</h3>
                                         </div>
                                         <div class="panel-body">
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <ul class="block-list" ng-repeat="aq in model.attributesAndQualities">
+                                                        <h4>Mis gustos</h4>
+                                                        <h5>Mis deportes preferidos</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.favoriteSports">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <h5>Actividades artísticas</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.artisticActivities">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <h5>Hobbies</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.hobbies">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <h4>Mis cualidades</h4>
+                                                        <h5>Talentos</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.talents">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <h5>Valores</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.values">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <h5>Habilidades</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.habilities">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <h4>A quién admiro</h4>
+                                                        <h5>Personajes</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.inspirationalCharacters">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <!--<ul class="block-list" ng-repeat="aq in model.attributesAndQualities">
                                                             <li>
                                                                 <p ng-bind="aq"></p>
                                                             </li>
-                                                        </ul>
+                                                        </ul>-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -362,12 +409,54 @@
                                         <div class="panel-heading" ng-click="navigateToPage(1)">
                                             <span class="icomoon icon-arrow-slim-left"></span>
                                             <span class="icomoon icon-information"></span>
-                                            <h3 class="panel-title">Gustos y Preferencias</h3>
+                                            <h3 class="panel-title">Socioeconómicos</h3>
                                         </div>
                                         <div class="panel-body">
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-xs-12">
+                                                        <h4>Vivienda</h4>
+                                                        <h5>Vivo con</h5>
+                                                        <p ng-bind="model.iLiveWith"></p>
+                                                        <hr />
+                                                        <h4>Actividad</h4>
+                                                        <h5>Mi actividad principal</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.mainActivity">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <h4>Actualmente estudio</h4>
+                                                        <h5>Nivel</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.currentStudies">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <h4>Familiar</h4>
+                                                        <h5>Tengo hijos</h5>
+                                                        <p ng-bind="model.children"></p>
+                                                        <hr />
+                                                        <h4>Ingresos</h4>
+                                                        <h5>Recibo ingresos</h5>
+                                                        <p ng-bind="model.gotMoneyIncome"></p>
+                                                        <hr />
+                                                        <h5>Fuente de ingresos</h5>
+                                                        <ul class="block-list" ng-repeat="s in model.moneyIncome">
+                                                            <li>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>
+                                                        <hr />
+                                                        <h4>Salud</h4>
+                                                        <h5>Cuento con seguro médico</h5>
+                                                        <p ng-bind="model.medicalCoverage"></p>
+                                                        <hr />
+                                                        <h5>Mi seguro es</h5>
+                                                        <p ng-bind="model.medicalInsurance"></p>
+                                                        <hr />
                                                     </div>
                                                 </div>
                                             </div>
