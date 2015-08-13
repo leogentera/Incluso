@@ -196,8 +196,7 @@ angular
 
             function validateModel(){
                 var errors = [];
-
-                var datePickerValue =  $("input[name=birthday]").text();
+                var datePickerValue =  $("input[name=birthday]").val();
                 dpValue = moment(datePickerValue).format("DD/MM/YYYY");
                 
                 var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número";       
