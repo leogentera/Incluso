@@ -57,12 +57,12 @@
                       </div>
                     </div>
                   </nav>
-                  <ul class="nav" ng-controller="menuController">
+                  <ul class="nav" ng-controller="menuController" ng-controller="logoutController">
                <li>
-                      <a ng-href="#/ProgramaDashboard"><i class="icomoon icon-home"></i> Inicio</a>
+                      <a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso')"><i class="icomoon icon-home"></i> Inicio</a>
                     </li>
                     <li>
-                      <a ng-href="#/Tutorial"><i class="icomoon icon-video-file"></i> Guía de uso</a>
+                      <a ng-click="navigateTo('Tutorial','Guia de Uso')"><i class="icomoon icon-video-file"></i> Guía de uso</a>
                     </li>
                     <li>
                       <i class="icomoon icon-arrow fl-right white accsub pointer" data-id="0"></i>
@@ -156,7 +156,7 @@
                       </div>
                     </li>-->
                     <li>
-                      <a ng-href="#/AcercaPrograma"><i class="icomoon icon-books "></i> Acerca de Incluso</a>
+                      <a ng-click="navigateTo('AcercaPrograma','Acerca del Programa')"><i class="icomoon icon-books "></i> Acerca de Incluso</a>
                     </li>
                     <li>
                       <a><i class="icomoon icon-cup"></i> Salón de la fama</a>
@@ -193,8 +193,8 @@
       <div class="navbar navbar-app navbar-absolute-top" >
         <div class="navbar-brand navbar-brand-center navbar-assets" ui-yield-to="title">
             <div class="btn-group pull-left">
-              <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle" ng-click="sideToggle('in')">
-                <h1 class="navbar-heading"><a id="menuton"><i class="icomoon icon-more-options"></i> Inicio</a></h1>
+              <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle" ng-click="sideToggle('toggle')">
+                <h1 class="navbar-heading"><a id="menuton"><i class="icomoon icon-more-options"></i> <span>Mision Incluso</span></a></h1>
                 <!--<i class="fa fa-bars"></i> Menu-->
               </div>
             </div>

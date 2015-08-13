@@ -1713,6 +1713,7 @@
     padding-right: 0;
   }
   .incluso-app .app {
+    background: #000;
     transition: transform 500ms ease 0s;
     -webkit-transition: transform 500ms ease 0s;
     -moz-transition: transform 500ms ease 0s;

@@ -1237,15 +1237,16 @@ body.modal-open {
   overflow: hidden;
   /*float: left;*/
   margin: 0;
-  width: 47vw;
-  max-width: 60%;
+  width: 50vw;
+  max-width: 55vw;
   color: #ffffff;
   font-family: 'Play';
-  font-size: 5vw;
+  font-size: 4vw;
   font-weight: bold;
   line-height: 14vw;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 .incluso-app .navbar-assets .navbar-heading a {
   color: #ffffff;
