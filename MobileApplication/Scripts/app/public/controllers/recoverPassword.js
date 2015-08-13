@@ -84,7 +84,7 @@ angular
 
                         $scope.currentPage = 2;
                         $scope.scrollToTop();
-                        $scope.successMessage = "¡Tu correo se ha enviado correctamente!";
+                        $scope.successMessage = "Te hemos enviado un correo con un código para recuperar tu contraseña.";
 
                     }).error(function(data, status, headers, config) {
                         var errorMessage;
