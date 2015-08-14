@@ -44,6 +44,7 @@ class UserController extends AbstractRestfulJsonController{
                 '&users[0][password]=%s'.
                 '&users[0][firstname]=%s'.
                 '&users[0][lastname]=%s'.
+                '&users[0][customfields][7][type]=mothername&users[0][customfields][7][value]=%s'.
                 '&users[0][email]=%s'.
                 '&users[0][city]=%s'.
                 //'&users[0][country]=%s'.
@@ -73,8 +74,9 @@ class UserController extends AbstractRestfulJsonController{
         $url = sprintf($url, $this->getToken(), "core_user_create_users", 
                 $username, 
                 urlencode($data['password']),
-                /*urlencode($data['firstname']), */ "", //Register page doesn't send firstname and last name
-                /*urlencode($data['lastname']), */ "",
+                urlencode($data['firstname']), 
+                urlencode($data['lastname']),
+        		urlencode($data['mothername']),
                 urlencode($data['email']),
                 urlencode($data['city']), urlencode($data['country']), 
                 urlencode($data['secretanswer']), 
@@ -152,6 +154,21 @@ class UserController extends AbstractRestfulJsonController{
     	}
     	 
     	return $json['username'];
+    }
+    
+    private function getId(){
+    	$url = $this->getConfig()['MOODLE_API_URL'];
+    
+    	$url = sprintf($url, $this->getToken(), "core_webservice_get_site_info");
+    
+    	$response = file_get_contents($url);
+    	$json = json_decode($response,true);
+    	if (strpos($response, "exception") !== false)
+    	{
+    		return "-1";
+    	}
+    
+    	return $json['userid'];
     }
     
     private function enrol_user($username, $courseid){
@@ -241,7 +258,7 @@ class UserController extends AbstractRestfulJsonController{
         }
             // Good
         	
-            $user = new MoodleUserProfile($json[0]);
+            $user = new MoodleUserProfile($json[0], getId());
             
             $badgesEarned=$this->getBadgesByMethod($id, "earned_badges");
             $badgesToEarn=$this->getBadgesByMethod($id, "posible_badges_to_earn",$user->course );
@@ -525,7 +542,24 @@ class UserController extends AbstractRestfulJsonController{
         $url.=$this->createURLParms($data, '&users[0][customfields][49][type]=%s&users[0][customfields][49][value]=%s', 'maritalStatus' );
         $url.=$this->createURLParms($data, '&users[0][customfields][50][type]=%s&users[0][customfields][50][value]=%s', 'birthCountry' );
     
-    	$response = file_get_contents($url);
+        $url.=$this->createURLParms($data, '&users[0][customfields][51][type]=%s&users[0][customfields][51][value]=%s', 'showGeneralData' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][52][type]=%s&users[0][customfields][52][value]=%s', 'showEducation' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][53][type]=%s&users[0][customfields][53][value]=%s', 'showAddress' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][54][type]=%s&users[0][customfields][54][value]=%s', 'showSocialNetworks' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][55][type]=%s&users[0][customfields][55][value]=%s', 'showFamiliaCompartamos' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][56][type]=%s&users[0][customfields][56][value]=%s', 'showInspirationalCharacters' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][57][type]=%s&users[0][customfields][57][value]=%s', 'showILiveWith' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][58][type]=%s&users[0][customfields][58][value]=%s', 'showMainActivity' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][59][type]=%s&users[0][customfields][59][value]=%s', 'showCurrentEducation' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][60][type]=%s&users[0][customfields][60][value]=%s', 'showFamiliar' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][57][type]=%s&users[0][customfields][57][value]=%s', 'showMoneyIncome' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][58][type]=%s&users[0][customfields][58][value]=%s', 'showHealth' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][59][type]=%s&users[0][customfields][59][value]=%s', 'showDevices' );
+        $url.=$this->createURLParms($data, '&users[0][customfields][60][type]=%s&users[0][customfields][60][value]=%s', 'showVideogames' );
+        
+        $url.=$this->createURLParms($data, '&users[0][customfields][61][type]=%s&users[0][customfields][61][value]=%s', 'mothername' );
+        
+        $response = file_get_contents($url);
     
     	
     
