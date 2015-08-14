@@ -11,12 +11,18 @@
         '$modal',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
 
+            
             _httpFactory = $http;
                     
             $scope.Math = window.Math;
 
             console.log('loading user');
             $scope.user = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
+            
+            if (!$scope.user) {
+                $location.path('/');
+            }
+            
             console.log('loading usercourse');
             $scope.usercourse = JSON.parse(moodleFactory.Services.GetCacheObject("usercourse"));
             console.log('loading course');
