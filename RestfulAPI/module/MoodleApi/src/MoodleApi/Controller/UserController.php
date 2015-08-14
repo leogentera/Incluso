@@ -15,7 +15,7 @@ use Zend\Mail\Message;
 
 class UserController extends AbstractRestfulJsonController{
 	
-
+	
 	private $token = "";
 	//private $function = "core_user_get_users_by_field";
 	
@@ -241,6 +241,7 @@ class UserController extends AbstractRestfulJsonController{
 	// Action used for GET requests with resource Id
 	public function get($id)
 	{
+		//var$this->getRequest()));
 		
         $url = $this->getConfig()['MOODLE_API_URL'].'&field=id&values[0]=%s';
         $url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $id);
@@ -558,6 +559,8 @@ class UserController extends AbstractRestfulJsonController{
         $url.=$this->createURLParms($data, '&users[0][customfields][60][type]=%s&users[0][customfields][60][value]=%s', 'showVideogames' );
         
         $url.=$this->createURLParms($data, '&users[0][customfields][61][type]=%s&users[0][customfields][61][value]=%s', 'mothername' );
+        
+        $url.=$this->createURLParms($data, '&users[0][customfields][62][type]=%s&users[0][customfields][62][value]=%s', 'gender' );
         
         $response = file_get_contents($url);
     
