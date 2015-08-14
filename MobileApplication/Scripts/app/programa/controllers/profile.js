@@ -83,6 +83,10 @@ angular
                 }
             }
             
+            $scope.logout = function(){
+                logout($http, $scope, $location);
+            };
+            
             $scope.deleteAdditionalEmails = function(index){                
                 $scope.model.additionalEmails.splice(index,1);
             }

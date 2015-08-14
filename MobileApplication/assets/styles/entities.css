@@ -105,6 +105,10 @@
          $profile-dashboard
          Description: CSS to represent user's profile dashboard component
         ************************************************************************/
+    /***********************************************************************
+         $app
+         Description: CSS to represent mobileangularui component for main layout
+        ************************************************************************/
     /***********************************************************************/
   }
   .incluso-app .to-top {
@@ -1707,6 +1711,21 @@
   .incluso-app .profile-dashboard > .row > div {
     padding-left: 0;
     padding-right: 0;
+  }
+  .incluso-app .app {
+    background: #000;
+    transition: transform 500ms ease 0s;
+    -webkit-transition: transform 500ms ease 0s;
+    -moz-transition: transform 500ms ease 0s;
+    z-index: 1200;
+  }
+  .incluso-app .app,
+  .incluso-app .app-body {
+    overflow: auto;
+  }
+  .incluso-app .app-content,
+  .incluso-app .app-body {
+    height: auto;
   }
 }
 /* sm viewport */

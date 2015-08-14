@@ -34,7 +34,7 @@ body {
     width: 100%;
     height: inherit;
     font-size: 4vw;
-
+    background-color: #000;
     &.modal-open {
         overflow: hidden;
         position:fixed;
@@ -76,20 +76,47 @@ body {
     left: 0px;
 }
 #site-menu {
-    -webkit-transition: all 300ms ease;
+    /*-webkit-transition: all 300ms ease;
     -moz-transition: all 300ms ease;
     -o-transition: all 300ms ease;
-    transition: all 300ms ease;
-    width: 80%;
+    transition: all 300ms ease;*/
+    width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
-    left: -80%;
+    /*left: -80%;*/
     background-color: #040203;
     padding: 0px;
     background-image: url('../images/bg-menu.jpg');
     background-repeat: no-repeat;
     background-size: 100% auto;
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+.sidebar-left-in .sidebar-left {
+    width: 85vw;
+    transition: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    margin-left: 0px;
+    z-index: 10;
+}
+
+.incluso-app .sidebar-left {
+    display: block;
+}
+
+.incluso-app .sidebar-left .navbar-assets {
+    width: auto;
+}
+
+.sidebar-left-in .app {
+    height: auto;
+    transform: translate(85vw, 0px);
+    -webkit-transform: translate(85vw, 0px);
+    -moz-transform: translate(85vw, 0px);
 }
 
 .ease { 
@@ -197,9 +224,9 @@ body {
         display: block;
         margin-right: 6vw;
         position: relative;
-        padding: 3vw 0;
+        padding: 1vw 0;
         & > i{
-            padding: 2vw 1vw;
+            padding: 3vw 1vw;
         }
         & > a{
             color: white;
@@ -207,7 +234,7 @@ body {
             font-size: 5vw;
             padding: 1vw 3vw;
             position: relative;
-            width:90%;
+            width: 100%;
             &:focus, &:hover{
                 background-color: rgba(255, 255, 255, 0.28);
             }
@@ -902,7 +929,7 @@ body {
             left:16px; left: 3.3vw;
             top:16px; top: 3.3vw;
             color:@clr-white;
-            font-size:28px; font-size: 6vw;
+            font-size: 5vw;
         }
         .icomoon + p {
             margin-top: 0;
@@ -1118,11 +1145,18 @@ body {
         position: relative;
         margin-bottom: 0;
         border-radius: 0px;
-
+        background-color: #EE4823;
+        border-color: #EE4823;
         .icomoon {
             font-size: 6vw;
-            line-height:18vw;
-        }        
+            line-height:13vw;
+            vertical-align: top;
+        }   
+
+        &.etapa-uno {
+            background-color: #138BCB;
+            border-color: #138BCB;
+        }     
     }
     .step-dashboard{   
         .navbar{     
@@ -1146,21 +1180,29 @@ body {
         position: static;
         padding: 0; 
         margin: 0 2vw;
-        height: 18vw; width: auto;
+        height: 14vw; 
+        width: 95vw;
+
+        .sidebar-toggle {
+            padding: 0px 1vw;
+            text-align: left;
+            line-height: inherit;
+        }
         .navbar-heading {
             display: inline-block;
             overflow: hidden;
-            float: left;
+            /*float: left;*/
             margin: 0;
-            width: 47vw;
-            max-width:60%;
+            width: 46vw;
+            max-width:50vw;
             color: @clr-white;
             font-family: 'Play';   
-            font-size: 5vw;
+            font-size: 4vw;
             font-weight: bold;
-            line-height: 18vw;
+            line-height: 14vw;
             text-overflow:ellipsis;
             white-space: nowrap;
+            text-transform: capitalize;
             a{
                 color: @clr-white;            
             }
@@ -1170,7 +1212,7 @@ body {
             float: right;
             margin: 0;
             width: 45vw;  
-            max-width:48%;  
+            max-width:48vw;
             list-style-type: none;   
             padding: 0 9px 0 0;
         }
@@ -1181,7 +1223,7 @@ body {
             padding: 0; 
             margin: 0 0 0 8px; 
             margin: 0 0 0 .5vw;
-            width:9vw; 
+            width: 9vw; 
             height: 9vw;
 
             &.active {

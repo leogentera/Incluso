@@ -34,7 +34,7 @@ angular
                 };
             }
 
-
+            $(".navbar").addClass("etapa-uno");
             getDataAsync();
 
             function getChallenges(stage, currentUserStage){
