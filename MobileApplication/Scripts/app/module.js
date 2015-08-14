@@ -14,6 +14,7 @@
         'incluso.public.recoverPassword',
         'incluso.public.register',
         'incluso.programa.tutorial',
+        'incluso.juegos.avatar',
         'incluso.programa.dashboard',
         'incluso.programa.dashboard.etapa',
         'incluso.programa.profile'
@@ -28,6 +29,7 @@
         $http.get('Templates/Programa/editProfile.html', { cache: $templateCache });
         $http.get('Templates/Programa/etapa.html', { cache: $templateCache });
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
+        $http.get('Templates/Juegos/Avatar.html', { cache: $templateCache });
         $http.get('Templates/Programa/AcercaPrograma.html', { cache: $templateCache });  
 
 
@@ -83,6 +85,11 @@
         $routeProvider.when('/Tutorial', {
             templateUrl: 'Templates/Programa/Tutorial.html',
             controller: 'programaTutorialController'
+        });
+
+        $routeProvider.when('/Juegos/Avatar', {
+            templateUrl: 'Templates/Juegos/Avatar.html',
+            controller: 'juegosAvatarController'
         });
 
         $routeProvider.when('/AcercaPrograma', {

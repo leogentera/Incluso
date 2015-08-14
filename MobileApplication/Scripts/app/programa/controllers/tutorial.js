@@ -17,10 +17,30 @@ angular
 
             /* Models */
             $scope.hasSeenTutorial = moodleFactory.Services.GetCacheObject("HasSeenTutorial");
+            $scope.avatarInfo = moodleFactory.Services.GetCacheJson("avatarInfo");
+            $scope.user = moodleFactory.Services.GetCacheJson("profile");
 
             /* Helpers */
             $scope.currentPage = 1;
             $scope.loading = false;
+
+            if ($scope.avatarInfo == null) {
+                $scope.avatarInfo = {
+                    "UserId": $scope.user.UserId,
+                    "Alias": $scope.user.Alias,
+                    "Aplicacion": "Mi Avatar",
+                    "Estrellas": $scope.user.Estrellas,
+                    "PathImagen": "Android/data/<app-id>/images",
+                    "Color Cabello": "amarillo",
+                    "Estilo Cabello": "",
+                    "Traje color principal": "",
+                    "Traje color secundario": "",
+                    "Rostro": "",
+                    "Color de piel": "",
+                    "Escudo:": "",
+                    "Imagen Recortada": "",
+                };             
+            }
 
             //if ($scope.hasSeenTutorial && $scope.hasSeenTutorial == "true")
             //{
@@ -28,8 +48,6 @@ angular
             //}
 
             $scope.continue = function() {
-                
-
 				$scope.hasSeenTutorial = true;
                 localStorage.setItem("HasSeenTutorial", "true");
                 $scope.scrollToTop();
@@ -44,10 +62,16 @@ angular
             };
             
             $scope.avatar = function(){
-                  $scope.scrollToTop();                
-                $location.path('/ProgramaDashboard');
-                var name="{\"UserId\": 103,\"Alias\": \"Laura Giaccone\"\"PathImagen\": \"Android/data/<app-id>/images\",\"Color Cabello\": \"\",\"Estilo Cabello\": \"\",\"Traje color principal\": \"\",\"Traje color secundario\": \"\",\"Rostro\": \"\",\"Color de piel\": \"\",\"Imagen Recortada\": \"\"}";
-                cordova.exec(SuccessAvatar, FailureAvatar, "CallToAndroid", "openApp", [name]);
+                localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
+
+                $scope.scrollToTop();         
+                $location.path('/Juegos/Avatar');
+
+                //the next lines are related to the actual java integatration
+                //$location.path('/ProgramaDashboard');
+                //cordova.exec(SuccessAvatar, FailureAvatar, "CallToAndroid", "openApp",[JSON.stringify($scope.avatarInfo)]);
+
+
             };
             
               function Success() {
@@ -58,9 +82,8 @@ angular
                 
             }
             
-            function SuccessAvatar() {
-                 //$timeout($location.path('/ProgramaDashboard'), 10);
-
+            function SuccessAvatar(data) {
+                  localStorage.setItem("avatarInfo", JSON.stringify(data));
             }
             
             function FailureAvatar() {

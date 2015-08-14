@@ -23,6 +23,15 @@
             return localStorage.getItem(key);
         };
 
+        var _getCacheJson = function(key){
+            var str = localStorage.getItem(key);
+            if (str == null) {
+                return null;
+            } else {
+                return JSON.parse(str);
+            }
+        };
+
         var _getAsyncData = function(key, url, successCallback, errorCallback){
             _httpFactory({
                 method: 'GET',
@@ -71,7 +80,8 @@
             PutAsyncProfile: _putAsyncProfile,
             GetAsyncUserCourse: _getAsyncUserCourse,
             GetAsyncCourse: _getAsyncCourse,
-            GetCacheObject: _getCacheObject
+            GetCacheObject: _getCacheObject,
+            GetCacheJson: _getCacheJson,
         };
     })();
 }).call(this);
