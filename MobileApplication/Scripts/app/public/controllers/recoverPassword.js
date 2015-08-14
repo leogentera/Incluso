@@ -61,9 +61,9 @@ angular
 
                 console.log('getting password recovery code');
 
-                if(!$scope.recoverPasswordForm.email.$valid){ errors.push("formato de correo incorrecto."); }
+                if(!$scope.recoverPasswordForm.email.$valid){ errors.push("Rormato de correo incorrecto."); }
                 if($scope.recoverPasswordModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
-                if(!$scope.recoverPasswordForm.secretAnswer.$valid){ errors.push("respuesta secreta inválida."); }
+                if(!$scope.recoverPasswordForm.secretAnswer.$valid){ errors.push("Respuesta secreta inválida."); }
 
                 $scope.recoverPasswordModel.modelState.errorMessages = errors;
 
@@ -75,7 +75,7 @@ angular
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
                             email: $scope.recoverPasswordModel.email,
-                            secretanswer: $scope.recoverPasswordModel.secretAnswer,
+                            secretanswer: $scope.recoverPasswordModel.secretAnswer.toString().toLowerCase(),
                             secretquestion: $scope.recoverPasswordModel.secretQuestion,
                             action: "forgot"
                         })
