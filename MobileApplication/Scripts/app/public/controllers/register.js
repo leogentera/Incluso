@@ -21,6 +21,9 @@ angular
             /* ViewModel */
             $scope.registerModel = {
                 username: "",
+                firstname: "",
+                lastname: "",
+                mothername: "",
                 birthday: "",
                 gender: "",
                 country: "",
@@ -137,13 +140,15 @@ angular
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         data: $.param({
                             username: $scope.registerModel.username.toString().toLowerCase(),
+                            firstname: $scope.registerModel.firstname,
+                            lastname: $scope.registerModel.lastname,
+                            mothername: $scope.registerModel.mothername,
                             password: $scope.registerModel.password,
                             email: $scope.registerModel.email,
                             city: $scope.registerModel.city,
                             country: $scope.registerModel.country,
                             secretanswer: $scope.registerModel.secretAnswer.toString().toLowerCase(),
                             secretquestion: $scope.registerModel.secretQuestion,
-                            //birthday: $scope.registerModel.birthday,
                             birthday: dpValue,
                             gender: $scope.registerModel.gender
                         })
@@ -194,24 +199,27 @@ angular
             }
             
 
-            function validateModel(){                
+            function validateModel(){
                 var errors = [];
                 var datePickerValue =  $("input[name=birthday]").val();
                 dpValue = moment(datePickerValue).format("DD/MM/YYYY");
                 
-                var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número";       
+                var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número";
                 
-                if(!$scope.registerForm.password.$valid){ 
-                    errors.push("Formato de contraseña incorrecto. La contraseña " + passwordPolicy); 
+                if(!$scope.registerForm.password.$valid){
+                    errors.push("Formato de contraseña incorrecto. La contraseña " + passwordPolicy);
                 }else{
-                    if(!$scope.registerForm.confirmPassword.$valid){ 
-                        errors.push("Formato de confirmación de contraseña incorrecto. La confirmacion de contraseña " + passwordPolicy); 
+                    if(!$scope.registerForm.confirmPassword.$valid){
+                        errors.push("Formato de confirmación de contraseña incorrecto. La confirmacion de contraseña " + passwordPolicy);
                     }else{
                         if(!isConfirmedPasswordValid) { errors.push("La confirmación de contraseña no coincide con la contraseña."); }
-                    }     
+                    }
                 }
                 
-                if(!$scope.registerForm.username.$valid){ errors.push("Formato de usuario incorrecto."); }                
+                if(!$scope.registerForm.username.$valid){ errors.push("Formato de usuario incorrecto."); }
+                if(!$scope.registerForm.firstname.$valid){ errors.push("Formato de nombre incorrecto."); }
+                if(!$scope.registerForm.lastname.$valid){ errors.push("Formato de apellido paterno incorrecto."); }
+                if(!$scope.registerForm.mothername.$valid) {errors.push("Formato de apellido materno incorrecto."); }
                 if($scope.registerModel.gender.length === 0){ errors.push("Género inválido."); }
                 if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
                 if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválida."); }
