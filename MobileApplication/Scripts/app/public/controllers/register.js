@@ -202,7 +202,8 @@ angular
             function validateModel(){
                 var errors = [];
                 var datePickerValue =  $("input[name=birthday]").val();
-                dpValue = moment(datePickerValue).format("DD/MM/YYYY");
+                dpValue = moment(datePickerValue).format("MM/DD/YYYY");
+                var age = calculate_age();
                 
                 var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número";
                 
@@ -228,7 +229,7 @@ angular
                 if(!$scope.registerForm.secretAnswer.$valid){ errors.push("Respuesta secreta inválida."); }
                 if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }                
                 $scope.registerModel.modelState.errorMessages = errors;
-
+                if(age < 13 || age > 19){ errors.push("Debes tener entre 13 y 19 años para poder registrarte."); }
                 return (errors.length === 0);
             }
 
