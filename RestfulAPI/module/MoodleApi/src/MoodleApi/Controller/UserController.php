@@ -258,7 +258,7 @@ class UserController extends AbstractRestfulJsonController{
         }
             // Good
         	
-            $user = new MoodleUserProfile($json[0], getId());
+            $user = new MoodleUserProfile($json[0], $this->getId());
             
             $badgesEarned=$this->getBadgesByMethod($id, "earned_badges");
             $badgesToEarn=$this->getBadgesByMethod($id, "posible_badges_to_earn",$user->course );

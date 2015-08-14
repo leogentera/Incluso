@@ -51,7 +51,6 @@ class MoodleUserProfile extends Common {
 	public $showSocialNetworks = true;
 	public $showFamiliaCompartamos = true;
 	public $showInspirationalCharacters = true;
-	public $showMyDreams = true;
 	public $showILiveWith = true;
 	public $showMainActivity = true;
 	public $showCurrentEducation = true;
@@ -269,10 +268,10 @@ class MoodleUserProfile extends Common {
 			$this->mothername = $customFields ['mothername'] == 0 ? true : false;
 		}
 		
-		if ($requestinguserid==$this->id) {
+		if ($requestinguserid == $this->id) {
 			// if( $this->showMyInformation){
 			$this->address = new MoodleAddress ( $data, $customFields );
-			$this->email = (! empty ( $data ['email'] )) ? $data ['email'] : null;
+			$this->email = (! empty ( $data ['email'] )) ? $data ['email'] : "";
 			$this->studies = new MoodleStudies ();
 			$this->studies = $this->studies->get ( $customFields );
 			if (array_key_exists ( 'phones', $customFields )) {
@@ -440,19 +439,19 @@ class MoodleUserProfile extends Common {
 			// var_dump($this->phones);
 			// }
 			
-			// if($this->showRecomendedBachelorDegrees && array_key_exists ( 'recomendedBachelorDegrees' , $customFields )){
-			$this->recomendedBachelorDegrees = $this->createTableFromCompundField ( $customFields ['recomendedBachelorDegrees'] );
-			// var_dump($this->phones);
-			// }
+			if (array_key_exists ( 'recomendedBachelorDegrees', $customFields )) {
+				$this->recomendedBachelorDegrees = $this->createTableFromCompundField ( $customFields ['recomendedBachelorDegrees'] );
+				// var_dump($this->phones);
+			}
 			
-			// if($this->showStrengths && array_key_exists ( 'strengths' , $customFields )){
-			$this->strengths = $this->createTableFromCompundField ( $customFields ['strengths'] );
-			// }
+			if (array_key_exists ( 'strengths', $customFields )) {
+				$this->strengths = $this->createTableFromCompundField ( $customFields ['strengths'] );
+			}
 			
-			// if(array_key_exists ( 'likesAndPreferences' , $customFields )){
-			// $this->likesAndPreferences=$this->createTableFromCompundField($customFields['likesAndPreferences']);
-			// //var_dump($this->phones);
-			// }
+			if (array_key_exists ( 'likesAndPreferences', $customFields )) {
+				$this->likesAndPreferences = $this->createTableFromCompundField ( $customFields ['likesAndPreferences'] );
+				// //var_dump($this->phones);
+			}
 			
 			// if($this->showMyDreams){
 			if (array_key_exists ( 'dreamsToBe', $customFields )) {
@@ -470,6 +469,8 @@ class MoodleUserProfile extends Common {
 				// var_dump($this->phones);
 			}
 			// }
+		} else {
+			$this->address = new MoodleAddress ();
 		}
 	}
 	public function setRank($rank) {
