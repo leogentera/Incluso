@@ -1010,8 +1010,7 @@ body.modal-open {
   top: 16px;
   top: 3.3vw;
   color: #ffffff;
-  font-size: 28px;
-  font-size: 6vw;
+  font-size: 5vw;
 }
 .incluso-app .alert .icomoon + p {
   margin-top: 0;
@@ -1258,8 +1257,8 @@ body.modal-open {
   overflow: hidden;
   /*float: left;*/
   margin: 0;
-  width: 50vw;
-  max-width: 55vw;
+  width: 46vw;
+  max-width: 50vw;
   color: #ffffff;
   font-family: 'Play';
   font-size: 4vw;
@@ -1276,8 +1275,8 @@ body.modal-open {
   display: inline-block;
   float: right;
   margin: 0;
-  /*width: 45vw;  
-            max-width:48%;  */
+  width: 45vw;
+  max-width: 48vw;
   list-style-type: none;
   padding: 0 9px 0 0;
 }

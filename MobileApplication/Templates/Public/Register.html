@@ -240,7 +240,7 @@
                     <p class="input-group-addon" id="securityAnswerAddOn">
                       <span class="icomoon icon-help"></span>
                     </p>
-                    <input type="text" ng-disabled="isRegistered" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg theme-default" placeholder="Respuesta de seguridad" aria-describedby="securityAnswerAddOn" required />
+                    <input type="text" ng-disabled="isRegistered" ng-model="registerModel.secretAnswer" name="secretAnswer" class="form-control form-control-lg theme-default" placeholder="Respuesta de seguridad" aria-describedby="securityAnswerAddOn" patern="[A-Za-z0-9]" required />
                   </div>
                 </div>            
               </div>

@@ -141,7 +141,7 @@ angular
                             email: $scope.registerModel.email,
                             city: $scope.registerModel.city,
                             country: $scope.registerModel.country,
-                            secretanswer: $scope.registerModel.secretAnswer,
+                            secretanswer: $scope.registerModel.secretAnswer.toString().toLowerCase(),
                             secretquestion: $scope.registerModel.secretQuestion,
                             //birthday: $scope.registerModel.birthday,
                             birthday: dpValue,
@@ -202,22 +202,22 @@ angular
                 var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número";       
                 
                 if(!$scope.registerForm.password.$valid){ 
-                    errors.push("formato de contraseña incorrecto. La contraseña " + passwordPolicy); 
+                    errors.push("Formato de contraseña incorrecto. La contraseña " + passwordPolicy); 
                 }else{
                     if(!$scope.registerForm.confirmPassword.$valid){ 
-                        errors.push("formato de confirmación de contraseña incorrecto. La confirmacion de contraseña " + passwordPolicy); 
+                        errors.push("Formato de confirmación de contraseña incorrecto. La confirmacion de contraseña " + passwordPolicy); 
                     }else{
-                        if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
+                        if(!isConfirmedPasswordValid) { errors.push("La confirmación de contraseña no coincide con la contraseña."); }
                     }     
                 }
                 
-                if(!$scope.registerForm.username.$valid){ errors.push("formato de usuario incorrecto."); }                
+                if(!$scope.registerForm.username.$valid){ errors.push("Formato de usuario incorrecto."); }                
                 if($scope.registerModel.gender.length === 0){ errors.push("Género inválido."); }
                 if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
                 if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválida."); }
-                if(!$scope.registerForm.email.$valid){ errors.push("formato de correo incorrecto."); }                
+                if(!$scope.registerForm.email.$valid){ errors.push("Formato de correo incorrecto."); }                
                 if($scope.registerModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
-                if(!$scope.registerForm.secretAnswer.$valid){ errors.push("respuesta secreta inválida."); }
+                if(!$scope.registerForm.secretAnswer.$valid){ errors.push("Respuesta secreta inválida."); }
                 if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }                
                 $scope.registerModel.modelState.errorMessages = errors;
 

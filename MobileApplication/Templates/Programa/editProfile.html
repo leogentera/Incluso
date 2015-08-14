@@ -1,5 +1,5 @@
-<div class="incluso-app profile edit-profile"  id="site-wrapper">
-  <div id="site-menu" >
+<div class="incluso-app profile edit-profile" id="site-wrapper">
+  <div id="site-menu">
     <menu-component></menu-component>
   </div>
   <div id="site-canvas">
@@ -27,16 +27,17 @@
                     <i class="icomoon icon-chat"></i>
                   </a>
                 </li>
-                <li class="profile">
+                <li class="profile active">
                   <a href="" ng-href="#/Perfil/">
                     <i class="icomoon icon-emoticon-smile"></i>
                   </a>
-                </li>                 
+                </li>
               </ul>
-            </div> 
+            </div>
           </div>
         </div>
-      </div> <!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </nav>
 
     <article>
@@ -47,15 +48,15 @@
           </figure>
         </div>
         <div>
-        <div class="user-avatar">
-          <figure>
-            <img src="assets/images/img-avatar-dummy-01.png" alt="" class="img-responsive" />
-            <figcaption ng-bind="model.rank >= 0 ? model.rank : '?'"></figcaption>
-          </figure>
-          <button type="button" id="editProfile">
-            <span class="icomoon icon-edit"></span>
-          </button>
-        </div>
+          <div class="user-avatar">
+            <figure>
+              <img src="assets/images/img-avatar-dummy-01.png" alt="" class="img-responsive" />
+              <figcaption ng-bind="model.rank >= 0 ? model.rank : '?'"></figcaption>
+            </figure>
+            <button type="button" id="editProfile">
+              <span class="icomoon icon-edit"></span>
+            </button>
+          </div>
         </div>
         <div>
           <div class="profile-data">
@@ -100,7 +101,34 @@
                           <span class="icomoon icon-arrow-slim-right"></span>
                         </a>
                       </li>
-                    </ul>                    
+
+                      <li class="list-group-item" ng-click="navigateToPage(3)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi personalidad</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(4)">
+                        <a href="">
+                          <span class="icomoon icon-required"></span>
+                          <span>Socioeconómicos</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item no-badge" ng-click="navigateToPage(5)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Uso tecnología</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -112,7 +140,7 @@
                   <div class="col-xs-12">
                     <div class="panel panel-default panel-form">
                       <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
-                        <span class="icomoon icon-arrow-slim-left" ></span>
+                        <span class="icomoon icon-arrow-slim-left"></span>
                         <span class="icomoon icon-information"></span>
                         <h3 class="panel-title">Mi información</h3>
                       </div>
@@ -129,116 +157,152 @@
                               </li>
                             </ul> -->
 
-                            <div class="checkbox checkbox-custom">
+                            <!--<div class="checkbox checkbox-custom">
                               <label>
-                                <input type="checkbox" ng-model="model.allowToSendAdvertisement" name="allowToSendAdvertisement" /> 
+                                <input type="checkbox" ng-model="model.allowToSendAdvertisement" name="allowToSendAdvertisement" />
                                 <span>Deseo recibir promoción y publicidad</span>
                               </label>
-                            </div>                            
-                          </section>
+                            </div>
+                          </section>-->
 
+                            <section>
+                              <h5>Datos generales</h5>
+                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname" />
+                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName"
+                              />
+                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.secondSurName"
+                              />
+                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Alias" ng-model="model.alias" />
 
-                          <section>
-                            <h5>Mis Estudios</h5>
-                            <ul class="block-list">
+                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
+                              <p class="form-group-control custom-placeholder-wrapper">
+                                <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
+                                  <option value="Grado">Grado</option>
+                                  <option value="Primaria">Primaria</option>
+                                  <option value="Secundaria">Secundaria</option>
+                                  <option value="Preparatoria">Preparatoria</option>
+                                  <option value="Profesional">Profesional</option>
+                                </select>
+                                <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>
+                              </p>
 
-                              <li ng-repeat="s in model.studies">
-                                <div class="form-group theme-form">
-                                  <h5>
+                              <div class="form-group">
+                                <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="model.address.country">
+                                  <option disabled selected>País</option>
+                                  <option value="BO">Bolivia</option>
+                                  <option value="CO">Colombia</option>
+                                  <option value="EC">Ecuador</option>
+                                  <option value="ME">México</option>
+                                  <option value="PE">Perú</option>
+                                  <option value="UR">Uruguay</option>
+                                  <option value="VE">Venezuela</option>
+                                </select>
+                              </div>
+                              ---------------------
+                              <ul class="block-list">
+
+                                <li ng-repeat="s in model.studies">
+                                  <div class="form-group theme-form">
+                                    <h5>
                                     <span>Estudio {{model.studies.indexOf(s) + 1}}</span>
                                     <button class="btn btn-circle" ng-click="deleteStudy($index);">
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
 
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
-                                  <p class="form-group-control custom-placeholder-wrapper">
-                                  <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
-                                    <option value="Grado">Grado</option>
-                                    <option value="Primaria">Primaria</option>
-                                    <option value="Secundaria">Secundaria</option>
-                                    <option value="Preparatoria">Preparatoria</option>
-                                    <option value="Profesional">Profesional</option>
-                                  </select>
-                                  <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>
-                                  </p>
-                                </div>
-                              </li>
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
+                                    <p class="form-group-control custom-placeholder-wrapper">
+                                      <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
+                                        <option value="Grado">Grado</option>
+                                        <option value="Primaria">Primaria</option>
+                                        <option value="Secundaria">Secundaria</option>
+                                        <option value="Preparatoria">Preparatoria</option>
+                                        <option value="Profesional">Profesional</option>
+                                      </select>
+                                      <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>
+                                    </p>
+                                  </div>
+                                </li>
 
-                            </ul> 
-                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addStudy();">
-                              <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
-                            </button>
-                          </section>
+                              </ul>
+                              <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addStudy();">
+                                <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
+                              </button>
+                            </section>
 
-                          <section>
-                            <h5>Domicilio</h5>
-                            <ul class="block-list">
-                              <li>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Calle" ng-model="model.address.street" />
-                                </div>
-                                <div class="form-group col-2">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Ext." ng-model="model.address.num_ext"  />
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Int." ng-model="model.address.num_int"  />
-                                </div> 
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Colonia" ng-model="model.address.colony"  />
-                                </div>
-                                <div class="form-group">
-                                  <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="model.address.country">
-                                    <option disabled selected>País</option>
-                                    <option value="BO">Bolivia</option>
-                                    <option value="CO">Colombia</option> 
-                                    <option value="EC">Ecuador</option> 
-                                    <option value="ME">México</option> 
-                                    <option value="PE">Perú</option> 
-                                    <option value="UR">Uruguay</option> 
-                                    <option value="VE">Venezuela</option> 
-                                  </select> 
-                                </div> 
-                                <div class="form-group">
-                                  <select name="state" id="state" class="form-control form-control-lg theme-form" ng-model="model.address.state">
-                                    <option disabled selected>Estado</option>
-                                    <option value="Coahuila">Coahuila</option>
-                                    <option value="Jalisco">Jalisco</option>
-                                    <option value="México">México</option>
-                                    <option value="Nuevo León">Nuevo León</option>
-                                  </select> 
-                                </div> 
-                                <div class="form-group">
-                                  <select name="" id="ciudad" class="form-control form-control-lg theme-form" ng-model="model.address.city">
-                                    <option disabled selected>Ciudad</option>
-                                    <option value="Guadalajara">Guadalajara</option>
-                                    <option value="México D.F.">México D.F.</option>
-                                    <option value="Monterrey">Monterrey</option>
-                                  </select> 
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Municipio / Delegación" ng-model="model.address.town" />
-                                </div>
-                                <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" ng-model="model.address.postalCode" />
-                                </div>
-                              </li>
-                            </ul> 
-                          </section>
+                            <section>
+                              <h5>Domicilio</h5>
+                              <ul class="block-list">
+                                <li>
+                                  <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Calle" ng-model="model.address.street" />
+                                  </div>
+                                  <div class="form-group col-2">
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Ext." ng-model="model.address.num_ext"
+                                    />
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Int." ng-model="model.address.num_int"
+                                    />
+                                  </div>
+                                  <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Colonia" ng-model="model.address.colony"
+                                    />
+                                  </div>
+                                  <div class="form-group">
+                                    <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="model.address.country">
+                                      <option disabled selected>País</option>
+                                      <option value="BO">Bolivia</option>
+                                      <option value="CO">Colombia</option>
+                                      <option value="EC">Ecuador</option>
+                                      <option value="ME">México</option>
+                                      <option value="PE">Perú</option>
+                                      <option value="UR">Uruguay</option>
+                                      <option value="VE">Venezuela</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <select name="state" id="state" class="form-control form-control-lg theme-form" ng-model="model.address.state">
+                                      <option disabled selected>Estado</option>
+                                      <option value="Coahuila">Coahuila</option>
+                                      <option value="Jalisco">Jalisco</option>
+                                      <option value="México">México</option>
+                                      <option value="Nuevo León">Nuevo León</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <select name="" id="ciudad" class="form-control form-control-lg theme-form" ng-model="model.address.city">
+                                      <option disabled selected>Ciudad</option>
+                                      <option value="Guadalajara">Guadalajara</option>
+                                      <option value="México D.F.">México D.F.</option>
+                                      <option value="Monterrey">Monterrey</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Municipio / Delegación" ng-model="model.address.town"
+                                    />
+                                  </div>
+                                  <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" ng-model="model.address.postalCode"
+                                    />
+                                  </div>
+                                </li>
+                              </ul>
+                            </section>
 
-                          <div class="page-number">
-                            <p class="text-center">
-                              <span>1</span>
-                              <span>/</span>
-                              <span>2</span>
-                            </p>
-                          </div>
+                            <div class="page-number">
+                              <p class="text-center">
+                                <span>1</span>
+                                <span>/</span>
+                                <span>2</span>
+                              </p>
+                            </div>
 
-                          <div class="actions">
-                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(3)">Continuar</button>
-                            <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
-                          </div>
+                            <div class="actions">
+                              <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(3)">Continuar</button>
+                              <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                            </div>
                         </fieldset>
                       </div>
-                    </div>                    
+                    </div>
                   </div>
                 </div>
               </div>
@@ -268,11 +332,12 @@
                                     </button>
                                   </h5>
                                   <!-- <button type="button" ng-click="deletePhone($index);">Borrar</button> -->
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Número Telefónico" ng-model="model.phones[$index]" />
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Número Telefónico" ng-model="model.phones[$index]"
+                                  />
 
                                 </div>
                               </li>
-                            </ul> 
+                            </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addPhone();">
                               <span class="icomoon icon-plus"></span>Agregar nuevo número...
                             </button>
@@ -288,14 +353,14 @@
                                 </div>
                               </li>
                               <li ng-repeat="se in model.additionalEmails track by $index">
-                                <div class="form-group" >
+                                <div class="form-group">
                                   <!-- <button type="button" ng-click="deleteAdditionalEmails($index);">Borrar</button> -->
                                   <h5>
                                     <span>Correo {{model.additionalEmails.indexOf(se) + 2}}</span>
                                     <button class="btn btn-circle" ng-click="deleteAdditionalEmails($index);">
                                       <span class="icomoon icon-cross"></span>
                                     </button>
-                                  </h5>                                  
+                                  </h5>
                                   <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico Adicional" ng-model="model.additionalEmails[$index]">
                                 </div>
                               </li>
@@ -322,16 +387,17 @@
                                     <option value="Facebook">Facebook</option>
                                     <option value="Instagram">Instagram</option>
                                     <option value="Twitter">Twitter</option>
-                                  </select> 
-                                </div>                               
+                                  </select>
+                                </div>
                                 <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre de Usuario" ng-model="sn.socialNetworkId" />
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre de Usuario" ng-model="sn.socialNetworkId"
+                                  />
                                 </div>
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addSocialNetwork();">
                               <span class="icomoon icon-plus"></span>Agregar nueva red social...
-                            </button>                          
+                            </button>
                           </section>
 
                           <section>
@@ -346,19 +412,21 @@
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" ng-model="fc.idClient" />
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" ng-model="fc.relativeName" />
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" ng-model="fc.idClient"
+                                  />
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" ng-model="fc.relativeName"
+                                  />
                                   <p class="form-group-control custom-placeholder-wrapper">
                                     <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="fc.relationship">
-                                    <option disabled>Parentesco</option>
-                                    <option value="Mamá">Mamá</option>
-                                    <option value="Papá">Papá</option>
-                                  </select> 
+                                      <option disabled>Parentesco</option>
+                                      <option value="Mamá">Mamá</option>
+                                      <option value="Papá">Papá</option>
+                                    </select>
                                   </p>
                                 </div>
                                 <!-- <div class="form-group">
                                   
-                                </div> -->                              
+                                </div> -->
                                 <!-- <div class="form-group">
                                   
                                 </div> -->
@@ -387,20 +455,20 @@
                             </div>
                             -->
                             <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(2);">
-                                <span class="icomoon icon-arrow-slim-left"></span> Regresar
-                              </button>
+                              <span class="icomoon icon-arrow-slim-left"></span> Regresar
+                            </button>
                             <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
                           </div>
 
                         </fieldset>
                       </div>
-                    </div>                    
+                    </div>
                   </div>
                 </div>
               </div>
-          </div>
+            </div>
         </form>
-      </section> 
+        </section>
     </article>
     <footer>
       <ul class="block-list">
@@ -412,6 +480,6 @@
         <span>Subir</span>
       </a>
     </footer>
-  </div>
+    </div>
 
-</div>
+  </div>
