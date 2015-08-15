@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/games_plugin/db" VERSION="20150815" COMMENT="XMLDB file for Moodle local/games_plugin"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_games_plugin" COMMENT="Default comment for local_games_plugin, please edit me">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="avatar_log" COMMENT="This table contains the avatar log entries">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="9" NOTNULL="true" SEQUENCE="false" COMMENT="UserId"/>
+        <FIELD NAME="alias" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="alias"/>
+        <FIELD NAME="aplicacion" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="aplicacion"/>
+        <FIELD NAME="estrellas" TYPE="int" LENGTH="9" NOTNULL="false" SEQUENCE="false" COMMENT="estrellas"/>
+        <FIELD NAME="color_cabello" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="color_cabello"/>
+        <FIELD NAME="estilo_cabello" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="estilo_cabello"/>
+        <FIELD NAME="traje_color_principal" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="traje_color_principal"/>
+        <FIELD NAME="traje_color_secundario" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="traje_color_secundario"/>
+        <FIELD NAME="rostro" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="rostro"/>
+        <FIELD NAME="color_de_piel" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="color_de_piel"/>
+        <FIELD NAME="escudo" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="escudo"/>
+        <FIELD NAME="imagen_recortada" TYPE="binary" NOTNULL="false" SEQUENCE="false" COMMENT="imagen_recortada"/>
+        <FIELD NAME="ultima_modificacion" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="ultima_modificacion"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

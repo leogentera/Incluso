@@ -12,16 +12,17 @@
  */
 
 return array (
-// 	'MOODLE_API_URL' => 'http://incluso.sieenasoftware.com/moodle/webservice/rest/server.php?wstoken=%s&wsfunction=%s&moodlewsrestformat=json',
-// 	'TOKEN_GENERATION_URL' => 'http://incluso.sieenasoftware.com/moodle/login/token.php?username=%s&password=%s&service=%s',
-// 	'MOODLE_SERVICE_NAME' => 'profile',
-// 	'MOODLE_API_URL_NO_TOKEN' => 'http://incluso.sieenasoftware.com/moodle/webservice/rest/server.php?wsfunction=%s&moodlewsrestformat=json',
+ 	'MOODLE_API_URL' => 'http://incluso.sieenasoftware.com/moodle/webservice/rest/server.php?wstoken=%s&wsfunction=%s&moodlewsrestformat=json',
+ 	'TOKEN_GENERATION_URL' => 'http://incluso.sieenasoftware.com/moodle/login/token.php?username=%s&password=%s&service=%s',
+ 	'MOODLE_SERVICE_NAME' => 'profile',
+ 	'MOODLE_API_URL_NO_TOKEN' => 'http://incluso.sieenasoftware.com/moodle/webservice/rest/server.php?wsfunction=%s&moodlewsrestformat=json',
+	'MOODLE_URL' => 'http://incluso.sieenasoftware.com/moodle',
 		
-		'MOODLE_API_URL' => 'http://localhost/moodle/webservice/rest/server.php?wstoken=%s&wsfunction=%s&moodlewsrestformat=json',
-		'TOKEN_GENERATION_URL' => 'http://localhost/moodle/login/token.php?username=%s&password=%s&service=%s',
-		'MOODLE_SERVICE_NAME' => 'profile',
-		'MOODLE_API_URL_NO_TOKEN' => 'http://localhost/moodle/webservice/rest/server.php?wsfunction=%s&moodlewsrestformat=json',
-		'MOODLE_URL' => 'http://localhost/moodle',
+//		'MOODLE_API_URL' => 'http://localhost/moodle/webservice/rest/server.php?wstoken=%s&wsfunction=%s&moodlewsrestformat=json',
+//		'TOKEN_GENERATION_URL' => 'http://localhost/moodle/login/token.php?username=%s&password=%s&service=%s',
+//		'MOODLE_SERVICE_NAME' => 'profile',
+//		'MOODLE_API_URL_NO_TOKEN' => 'http://localhost/moodle/webservice/rest/server.php?wsfunction=%s&moodlewsrestformat=json',
+//		'MOODLE_URL' => 'http://localhost/moodle',
 );
 
 // return array (

@@ -27,9 +27,9 @@ angular
             if ($scope.avatarInfo == null) {
                 $scope.avatarInfo = {
                     "UserId": $scope.user.UserId,
-                    "Alias": $scope.user.Alias,
+                    "Alias": $scope.user.username,
                     "Aplicacion": "Mi Avatar",
-                    "Estrellas": $scope.user.Estrellas,
+                    "Estrellas": $scope.user.stars,
                     "PathImagen": "Android/data/<app-id>/images",
                     "Color Cabello": "amarillo",
                     "Estilo Cabello": "",
@@ -62,6 +62,9 @@ angular
             };
             
             $scope.avatar = function(){
+                $scope.avatarInfo.UserId = $scope.user.UserId;
+                $scope.avatarInfo.Alias = $scope.user.username;
+                $scope.avatarInfo.Estrellas = $scope.user.stars;
                 localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
 
                 $scope.scrollToTop();         
