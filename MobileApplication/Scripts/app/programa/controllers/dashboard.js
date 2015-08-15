@@ -15,8 +15,14 @@
                     
             $scope.Math = window.Math;
 
-            console.log('loading user');
+            console.log('loading user');            
             $scope.user = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
+            
+            if (!$scope.user) {
+                $location.path('/');
+                return "";
+            }
+                        
             console.log('loading usercourse');
             $scope.usercourse = JSON.parse(moodleFactory.Services.GetCacheObject("usercourse"));
             console.log('loading course');
@@ -25,6 +31,7 @@
             $scope.currentStage = JSON.parse(moodleFactory.Services.GetCacheObject("currentStage"));
             console.log('loading stage');
             $(".navbar-absolute-top").show();
+            
             try {
                 if(moodleFactory.Services.GetCacheObject("stage")){
                     $scope.stage = JSON.parse(moodleFactory.Services.GetCacheObject("stage"));                

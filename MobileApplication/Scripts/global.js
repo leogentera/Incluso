@@ -70,6 +70,11 @@ var logout = function($http, $scope, $location){
         }
       );*/
       localStorage.removeItem("CurrentUser");
+      localStorage.removeItem("profile");
+      localStorage.removeItem("course");
+      localStorage.removeItem("stage");
+      localStorage.removeItem("usercourse");
+      localStorage.removeItem("currentStage");
       $location.path('/');
     };
 
