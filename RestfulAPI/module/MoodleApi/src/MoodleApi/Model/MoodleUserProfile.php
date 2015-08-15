@@ -395,8 +395,9 @@ class MoodleUserProfile extends Common {
 			// $this->address=new MoodleAddress();
 			// }
 			
-			// if( $this->showAttributesAndQualities && array_key_exists ( 'attributesAndQualities' , $customFields )){
-			$this->attributesAndQualities = $this->createTableFromCompundField ( $customFields ['attributesAndQualities'] );
+			 if( $this->showAttributesAndQualities && array_key_exists ( 'attributesAndQualities' , $customFields )){
+					$this->attributesAndQualities = $this->createTableFromCompundField ( $customFields ['attributesAndQualities'] );
+			 }
 			
 			if (array_key_exists ( 'talents', $customFields )) {
 				$this->talents = $this->createTableFromCompundField ( $customFields ['talents'] );

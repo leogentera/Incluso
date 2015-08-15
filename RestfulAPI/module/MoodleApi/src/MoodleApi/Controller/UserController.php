@@ -237,7 +237,7 @@ class UserController extends AbstractRestfulJsonController{
     
     }
     
-	
+    
 	// Action used for GET requests with resource Id
 	public function get($id)
 	{
