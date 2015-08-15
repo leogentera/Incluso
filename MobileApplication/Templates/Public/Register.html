@@ -158,7 +158,8 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
-                        <option value="México">México</option> 
+                        <option disabled></option>  <!-- Temporal patch: should be ng-init properly -->
+                        <option value="México">México</option>
                       </select>
                       <span class="custom-placeholder form-control-lg">País</span>
                     </p>
