@@ -15,27 +15,27 @@ angular
 
             $scope.scrollToTop();
             $scope.avatarInfo = moodleFactory.Services.GetCacheJson("avatarInfo");
-            $scope.imageSrc =  $scope.avatarInfo["Color Cabello"];
+            $scope.imageSrc =  $scope.avatarInfo[0]["color_cabello"];
 
             $scope.selectAvatarCabelloAmarillo = function() {
-                $scope.avatarInfo["Color Cabello"] = "amarillo";
+                $scope.avatarInfo[0]["color_cabello"] = "amarillo";
                 $('#avatarControl').attr("src", 'assets/images/avatar/create_avatar_cabello_amarillo.jpg');
             }
             
             $scope.selectAvatarCabelloRojo = function() {
-                $scope.avatarInfo["Color Cabello"] = "rojo";
+                $scope.avatarInfo[0]["color_cabello"] = "rojo";
                 $('#avatarControl').attr("src", 'assets/images/avatar/create_avatar_cabello_rojo.jpg');
             }
 
 
             $scope.selectAvatarCabelloVerde = function() {
-                $scope.avatarInfo["Color Cabello"] = "verde";
+                $scope.avatarInfo[0]["color_cabello"] = "verde";
                 $('#avatarControl').attr("src", 'assets/images/avatar/create_avatar_cabello_verde.jpg');
             }
 
 
             $scope.selectAvatarCabelloCafe= function() {
-                $scope.avatarInfo["Color Cabello"] = "cafe";
+                $scope.avatarInfo[0]["color_cabello"] = "cafe";
                 $('#avatarControl').attr("src", 'assets/images/avatar/create_avatar_cabello_cafe.jpg');
 
             }
