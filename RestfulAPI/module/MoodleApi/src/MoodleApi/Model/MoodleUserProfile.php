@@ -93,6 +93,7 @@ class MoodleUserProfile extends Common {
 	public $birthday = "";
 	public $maritalStatus = "";
 	public $age = "";
+	public $birthCountry;
 	public function __construct($data, $requestinguserid) {
 		$customFields = array ();
 		// We turn the custom fields to an array because otherwise, we should do a for loop to search for each value
