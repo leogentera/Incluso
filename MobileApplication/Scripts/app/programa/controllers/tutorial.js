@@ -36,7 +36,7 @@ angular
 
                 $scope.avatarInfo = moodleFactory.Services.GetCacheJson("avatarInfo");
 
-                if ($scope.avatarInfo == null) {
+                if ($scope.avatarInfo == null || $scope.avatarInfo.length == 0) {
                     $scope.avatarInfo = [{
                         "userid": $scope.user.UserId,
                         "alias": $scope.user.username,
