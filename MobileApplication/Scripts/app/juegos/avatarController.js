@@ -19,26 +19,28 @@ angular
 
             $scope.selectAvatarCabelloAmarillo = function() {
                 $scope.avatarInfo["Color Cabello"] = "amarillo";
-                localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
-                $location.path('/ProgramaDashboard');
+                $('#avatarControl').attr("src", 'assets/images/avatar/create_avatar_cabello_amarillo.jpg');
             }
             
             $scope.selectAvatarCabelloRojo = function() {
                 $scope.avatarInfo["Color Cabello"] = "rojo";
-                localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
-                $location.path('/ProgramaDashboard');
+                $('#avatarControl').attr("src", 'assets/images/avatar/create_avatar_cabello_rojo.jpg');
             }
 
 
             $scope.selectAvatarCabelloVerde = function() {
                 $scope.avatarInfo["Color Cabello"] = "verde";
-                localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
-                $location.path('/ProgramaDashboard');
+                $('#avatarControl').attr("src", 'assets/images/avatar/create_avatar_cabello_verde.jpg');
             }
 
 
             $scope.selectAvatarCabelloCafe= function() {
                 $scope.avatarInfo["Color Cabello"] = "cafe";
+                $('#avatarControl').attr("src", 'assets/images/avatar/create_avatar_cabello_cafe.jpg');
+
+            }
+
+            $scope.selectAvatar= function() {
                 localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
                 $location.path('/ProgramaDashboard');
             }
