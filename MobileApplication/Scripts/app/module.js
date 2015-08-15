@@ -368,4 +368,11 @@
           scope: false,
           templateUrl: 'Templates/Programa/menu.html'
         };
-    });
+    })
+    .directive('toolbarComponent', function(){
+        return {
+          restrict: 'E',
+          scope: false,
+          templateUrl: 'Templates/Programa/toolbar.html'
+    };
+});

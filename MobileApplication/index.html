@@ -36,50 +36,17 @@
     
   </head>
 
-  <body ng-controller="homeCtrl" class="incluso-app ng-scope has-sidebar-left">
+  <body ng-controller="homeCtrl" class="incluso-app ng-scope has-sidebar-left" ng-class="{'sidebar-left-active': sidebar}">
     <!-- Main menu / sidebar -->
    <menu-component></menu-component>
 
-    <div class="app" ng-controller="menuOffCanvas">
+    <div class="app">
       <!-- Navbars -->
 
-      <div class="navbar navbar-app navbar-absolute-top" ng-controller="menuController" >
-        <div class="navbar-brand navbar-brand-center navbar-assets" ui-yield-to="title">
-            <div class="btn-group pull-left">
-              <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle" ng-click="sideToggle('toggle')">
-                <h1 class="navbar-heading"><a id="menuton"><i class="icomoon icon-more-options"></i> <span>Mision Incluso</span></a></h1>
-                <!--<i class="fa fa-bars"></i> Menu-->
-              </div>
-            </div>
-            <ul class="navbar-tools">
-                <li class="contribute">
-                  <a href="">
-                    <i class="icomoon icon-edit"></i>
-                  </a>
-                </li>
-                <li class="notifications">
-                  <a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso')">
-                    <i class="icomoon icon-antena"></i>
-                  </a>
-                </li>
-                <li class="chat">
-                  <a href="">
-                    <i class="icomoon icon-chat"></i>
-                  </a>
-                </li>
-                <li class="profile">
-                  <a href="" ng-href="#/Perfil/">
-                    <i class="icomoon icon-emoticon-smile"></i>
-                  </a>
-                </li>
-              </ul>
-        </div>
-        
-        
-      </div>
+      <toolbar-component></toolbar-component>
 
       <!-- App Body -->
-      <div class="app-body" ng-click="sideToggleOut('out')">
+      <div class="app-body" ng-click="sideToggle('outside')">
         <!--<div ng-show="loading" class="app-content-loading">
           <i class="fa fa-spinner fa-spin loading-spinner"></i>
         </div>-->
@@ -107,7 +74,7 @@
     <script src="Scripts/moment.js"></script>
     <script src="Scripts/owl.carousel.min.js"></script>
 
-
+    <script src="Scripts/angular-ui/compoenents/sidebars.js"></script>
     <script src="Scripts/utils.js"></script>
     <script src="Scripts/global.js"></script>
 

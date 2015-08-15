@@ -1,23 +1,23 @@
  <!-- Sidebars -->
-    <div ui-track-as-search-param='true' class="sidebar sidebar-left">
+    <div ui-track-as-search-param='true' class="sidebar sidebar-left ng-scope">
         <div ui-track-as-search-param="true" class="sidebar sidebar-left ng-scope"><div class="scrollable ng-scope">
           <div class="scrollable-content">
             <div class="list-group" ui-turn-off="uiSidebarLeft">
               <div id="site-menu" >
-                  <nav class="ng-scope" ng-controller="menuOffCanvas">
+                  <nav class="ng-scope">
                     <div id="navBar" class="navbar">
                       <div class="container-fluid">
                         <div class="row">
                           <div class="navbar-assets">
-                            <h1 class="navbar-heading" ng-click="sideToggle('out')"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
+                            <h1 class="navbar-heading" ng-click="sideToggle()"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
                           </div>
                         </div>
                       </div>
                     </div>
                   </nav>
-                  <ul class="nav" ng-controller="menuController" ng-controller="logoutController">
-                    <li><a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso')"><i class="icomoon icon-home"></i> Inicio</a></li>
-                    <li><a ng-click="navigateTo('Tutorial','Guia de Uso')"><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
+                  <ul class="nav" ng-controller="menuController">
+                    <li><a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso', 'sideToggle')"><i class="icomoon icon-home"></i> Inicio</a></li>
+                    <li><a ng-click="navigateTo('Tutorial','Guia de Uso', 'sideToggle')"><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
                     <li>
                         <i class="icomoon icon-arrow fl-right white pointer" ></i>
                         <a class="menu-blue accsub" data-id="0">
@@ -50,7 +50,7 @@
                     </li>
                     <li><a class="menu-green" ng-href="#"><i class="icomoon icon-asterodis"></i>Zona de Navegación</a></li>
                     <li><a class="menu-pink" ng-href="#"><i class="icomoon icon-planet"></i>Zona de Aterrizaje</a></li>
-                    <li><a ng-click="navigateTo('AcercaPrograma','Acerca del Programa')"><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
+                    <li><a ng-click="navigateTo('AcercaPrograma', 'Acerca del Programa', 'sideToggle')"><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
                     <li><a><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
                     <li><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
                     <li><a><i class="icomoon icon-document"></i> Certificación</a></li>

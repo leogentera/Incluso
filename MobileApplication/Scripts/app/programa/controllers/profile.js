@@ -19,7 +19,7 @@ angular
 
                 var m = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
 
-                debugger;
+              
                 if (!m) {
                     $location.path('/');
                     return "";

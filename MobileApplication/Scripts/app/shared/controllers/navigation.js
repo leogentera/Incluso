@@ -8,33 +8,23 @@ app.controller('navController', function($scope){
 });
 
 app.controller('menuController', [
+	'$rootScope',
 	'$scope',
 	'$location', 
-	function($scope, $location, $http){
+	function($rootScope, $scope, $location, $http){
 
 		$(".accsub").unbind("click");
 		$(".accsub").bind("click",function(e){
 			e.stopPropagation();
 			$(this).siblings("i").toggleClass("icon-arrow icon-arrow-up green white blue")
-			/*$(this).toggleClass('icon-arrow');
-			$(this).toggleClass('icon-arrow-up');
-			$(this).toggleClass('green');
-			$(this).toggleClass('white');
-			*/
 			var cual = $(this).attr('data-id');
 			  $('#sub' + cual).toggle();
 
-		});
-		$scope.navigateTo = function(url,name){
-            	$("body").removeClass("sidebar-left-visible sidebar-left-in");
-            	$location.path(url);
-            	$("#menuton span").text(name);
-            };
-
-            $scope.logout = function(){
-            	$("body").removeClass("sidebar-left-visible sidebar-left-in");
-                logout($http, $scope, $location);
-            }; 
+		});	
+        $scope.logout = function(){
+        	$rootScope.sidebar = false;
+            logout($http, $scope, $location);
+        }; 
 }]);
  
  app.controller('menuOffCanvas',[

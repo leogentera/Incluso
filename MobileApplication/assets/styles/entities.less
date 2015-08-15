@@ -1440,21 +1440,27 @@
          $app
          Description: CSS to represent mobileangularui component for main layout
         ************************************************************************/
+        .sidebar-left-active .app {
+           margin-left: 85vw;            
+        }
+
         .app {
             background: #000;
-            transition: transform 500ms ease 0s;
-            -webkit-transition: transform 500ms ease 0s;
-            -moz-transition: transform 500ms ease 0s;
-            z-index: 1200;
+            -webkit-transition: all 500ms ease;
+            -moz-transition: all 500ms ease;
+            -o-transition: all 500ms ease;
+            transition: all 500ms ease;
+            z-index: 20;
         }
+
         .app, .app-body {
             overflow: auto;
         }
+
         .app-content, .app-body {
             height: auto;
         }
         
-
         /***********************************************************************/
     }
 }

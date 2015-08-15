@@ -95,17 +95,10 @@ body.modal-open {
   overflow-y: auto;
   overflow-x: hidden;
 }
-.sidebar-left-in .sidebar-left {
-  width: 85vw;
-  transition: none;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  margin-left: 0px;
-  z-index: 10;
-}
-.incluso-app .sidebar-left {
+.sidebar-left {
   display: block;
+  width: 85vw;
+  pointer-events: all;
 }
 .incluso-app .sidebar-left .navbar-assets {
   width: auto;
