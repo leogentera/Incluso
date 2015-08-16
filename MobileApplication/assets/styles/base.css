@@ -1215,7 +1215,7 @@ body.modal-open {
   border-color: #138BCB;
 }
 .incluso-app .navbar-absolute-top {
-  /*display: none;*/
+  display: none;
 }
 .incluso-app .navbar.navbar-orange {
   background-color: #EE4823;
