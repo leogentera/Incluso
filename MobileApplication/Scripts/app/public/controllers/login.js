@@ -139,12 +139,17 @@ angular
             }
 
             $scope.loginWithFacebook = function () {
+                
                 //$location.path('/ProgramaDashboard');
                 debugger
                 var name = API_RESOURCE.format("")
                 name = name.substring(0, name.length - 1);                                
                 
                 cordova.exec(FacebookLoginSuccess, FacebookLoginFailure, "SayHelloPlugin", "connectWithFacebook", [name]);
+            }
+            
+            $scope.scrollToTop = function(){
+                $anchorScroll();
             }
 
             function FacebookLoginSuccess(data) {

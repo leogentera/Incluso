@@ -25,15 +25,23 @@
           <h3 class="modal-title">Términos y Condiciones</h3>
         </div>
         <div class="modal-body">
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          <ol>
-            <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-            <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
-            <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-            <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
-            <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-          </ol>
+          <p>Todos los elementos que conforman el contenido de esta aplicación, identificado por el
+            nombre de “Misión Incluso”, incluyendo de manera enunciativa más no limitativa, los
+            nombres comerciales, marcas u otros signos distintivos que figuren en la misma son
+            propiedad de Gentera, S.A.B. y se encuentran protegidos bajo las leyes de Propiedad
+            Industrial. Los derechos de Propiedad Intelectual sobre los contenidos, diseño gráfico,
+            estructura, elementos audiovisuales y demás elementos de este sitio web son
+            propiedad exclusivamente de Gentera, S.A.B., quedando expresamente prohibido su
+            reenvío, transmisión, modificación, reproducción, distribución, comercialización o
+            cualquier otro tipo de explotación comercial en términos de las leyes aplicables sin el
+            previo consentimiento y autorización expresa para ello, por parte del titular de los
+            derechos patrimoniales mencionado previamente.
+            En virtud de lo anterior, salvo el uso que se llegue a dar para fines personales o
+            privados, a los cuales se encuentra autorizado el usuario, cualquier uso distinto que se
+            dé a cualquiera de los elementos de propiedad intelectual e industrial mencionados en
+            el párrafo previo constituirá en sí mismo una infracción a los derechos de propiedad
+            intelectual e industrial por lo que el titular de los mismos, podrá proceder civil e incluso
+            penalmente de acuerdo a las leyes aplicables.</p>        
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" ng-click="cancel()">Cerrar</button>
@@ -158,7 +166,8 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
-                        <option value="México">México</option> 
+                        <option disabled></option>  <!-- Temporal patch: should be ng-init properly -->
+                        <option value="México">México</option>
                       </select>
                       <span class="custom-placeholder form-control-lg">País</span>
                     </p>

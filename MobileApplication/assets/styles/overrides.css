@@ -143,7 +143,8 @@
   color: #ffffff;
   font-size: 4.1vw;
   font-weight: bold;
-  letter-spacing: 0.037em;  
+  letter-spacing: 0.037em;
+  text-transform: capitalize;
 }
 .incluso-app.public .login {
   position: relative;
@@ -184,7 +185,9 @@
 .incluso-app.public .pages .btn-transparent {
   text-transform: capitalize;
 }
-
+.incluso-app.public input[name="username"] {
+  text-transform: lowercase;
+}
 /* Dashboard */
 .incluso-app.start-dashboard {
   background-attachment: scroll;
@@ -255,12 +258,12 @@
 }
 .incluso-app.start-dashboard .panel-video .panel-heading {
   padding: 3.3vw 2.6vw;
-  /*background-color: @clr-blueDark;*/
   background-color: #0d0f14;
   -webkit-border-radius: 3vw 3vw 0 0;
   -moz-border-radius: 3vw 3vw 0 0;
   border-radius: 3vw 3vw 0 0;
   color: #bcd431;
+  cursor: pointer;
 }
 .incluso-app.start-dashboard .panel-video .panel-heading h3 {
   margin: 0 auto;
@@ -326,9 +329,6 @@
 .incluso-app.profile .navbar {
   background-color: #ee4823;
   border-color: #ee4823;
-}
-.incluso-app.profile h4 {
-  color: white;
 }
 .incluso-app.profile footer {
   padding-bottom: 30px;
