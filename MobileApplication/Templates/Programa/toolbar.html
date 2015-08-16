@@ -1,4 +1,4 @@
-<div class="navbar navbar-app navbar-absolute-top"  >
+<div id="navBar" class="navbar navbar-app navbar-absolute-top" ng-class="{'navbar-blue': navbarBlue, 'navbar-orange': navbarOrange}">
   <div class="navbar-brand navbar-brand-center navbar-assets" ui-yield-to="title">
       <div class="btn-group pull-left">
         <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle" ng-click="sideToggle()">
@@ -8,22 +8,22 @@
       </div>
       <ul class="navbar-tools">
           <li class="contribute">
-            <a href="">
+            <a ng-click="navigateTo('Perfil/Editar', 'Mision Incluso', 'null', 'navbarblue')">
               <i class="icomoon icon-edit"></i>
             </a>
           </li>
           <li class="notifications">
-            <a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso')">
+            <a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso', 'null', 'navbarorange')">
               <i class="icomoon icon-antena"></i>
             </a>
           </li>
           <li class="chat">
-            <a href="">
+            <a ng-click="navigateTo('Foro', 'Estación: Conócete', 'null', 'navbarblue')">
               <i class="icomoon icon-chat"></i>
             </a>
           </li>
           <li class="profile">
-            <a href="" ng-href="#/Perfil/">
+            <a ng-click="navigateTo('Perfil', 'My perfil', 'null', 'navbarblue')">
               <i class="icomoon icon-emoticon-smile"></i>
             </a>
           </li>
