@@ -5,7 +5,7 @@
             <div class="list-group" ui-turn-off="uiSidebarLeft">
               <div id="site-menu" >
                   <nav class="ng-scope">
-                    <div id="navBar" class="navbar">
+                    <div id="navBar" class="navbar" ng-class="{'navbar-blue': navbarBlue, 'navbar-orange': navbarOrange}">
                       <div class="container-fluid">
                         <div class="row">
                           <div class="navbar-assets">
@@ -16,8 +16,8 @@
                     </div>
                   </nav>
                   <ul class="nav" ng-controller="menuController">
-                    <li><a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso', 'sideToggle')"><i class="icomoon icon-home"></i> Inicio</a></li>
-                    <li><a ng-click="navigateTo('Tutorial','Guia de Uso', 'sideToggle')"><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
+                    <li><a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-home"></i> Inicio</a></li>
+                    <li><a ng-click="navigateTo('Tutorial','Guia de Uso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
                     <li>
                         <i class="icomoon icon-arrow fl-right white pointer" ></i>
                         <a class="menu-blue accsub" data-id="0">
@@ -50,7 +50,7 @@
                     </li>
                     <li><a class="menu-green" ng-href="#"><i class="icomoon icon-asterodis"></i>Zona de Navegación</a></li>
                     <li><a class="menu-pink" ng-href="#"><i class="icomoon icon-planet"></i>Zona de Aterrizaje</a></li>
-                    <li><a ng-click="navigateTo('AcercaPrograma', 'Acerca del Programa', 'sideToggle')"><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
+                    <li><a ng-click="navigateTo('AcercaPrograma', 'Acerca del Programa', 'sideToggle', 'navbarorange')"><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
                     <li><a><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
                     <li><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
                     <li><a><i class="icomoon icon-document"></i> Certificación</a></li>

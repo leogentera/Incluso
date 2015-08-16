@@ -1217,8 +1217,13 @@ body.modal-open {
 .incluso-app .navbar-absolute-top {
   /*display: none;*/
 }
-.incluso-app .navbar-absolute-top.navbarBlue {
+.incluso-app .navbar.navbar-orange {
+  background-color: #EE4823;
+  border-color: #EE4823;
+}
+.incluso-app .navbar.navbar-blue {
   background-color: #158CCD;
+  border-color: #158CCD;
 }
 .incluso-app .step-dashboard .navbar {
   background-color: #158ccd;

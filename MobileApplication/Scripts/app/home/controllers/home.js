@@ -26,10 +26,16 @@
 
             $scope.navigateTo = function(url,name,sideToggle,navbarColor){
                 $location.path(url);
-                if(navbarColor == 'blue')
-                    $rootScope.navbarBlue = true;
-                if(navbarColor == 'orange')
+
+                if(navbarColor == 'navbarorange'){
                     $rootScope.navbarOrange = true;
+                    $rootScope.navbarBlue = false;
+                }
+                if(navbarColor == 'navbarblue'){
+                    $rootScope.navbarOrange = false;
+                    $rootScope.navbarBlue = true;
+                }
+
                 $("#menuton span").text(name);
                 
                 if(sideToggle == "sideToggle")
@@ -37,10 +43,9 @@
             };
 
             $scope.scrollToTop = function(element){
-                
-                $("html, body").animate({ scrollTop: 0 }, "slow");
-                $location.$hash(element);
+              
+                $location.hash(element);
                 $anchorScroll();
-                console.log($location.$$hash);
+               
             }
         }]);
