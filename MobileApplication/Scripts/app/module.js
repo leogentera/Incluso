@@ -382,4 +382,11 @@
           scope: false,
           templateUrl: 'Templates/Programa/footer.html'
         };
-    });
+    })
+    .directive('preloaderComponent', function(){
+        return {
+          restrict: 'E',
+          scope: false,
+          templateUrl: 'Templates/Shared/_preloader.html'
+        };
+    }); 
