@@ -374,5 +374,12 @@
           restrict: 'E',
           scope: false,
           templateUrl: 'Templates/Programa/toolbar.html'
-    };
-});
+        };
+    })
+    .directive('footerComponent', function(){
+        return {
+          restrict: 'E',
+          scope: false,
+          templateUrl: 'Templates/Programa/footer.html'
+        };
+    });

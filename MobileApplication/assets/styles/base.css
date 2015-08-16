@@ -391,6 +391,7 @@ body.modal-open {
 }
 .incluso-app #site-menu .nav > li .submenu a {
   color: white;
+  line-height: 20px;
 }
 .incluso-app #site-menu .nav > li .submenu ul {
   list-style: none;
@@ -1214,7 +1215,10 @@ body.modal-open {
   border-color: #138BCB;
 }
 .incluso-app .navbar-absolute-top {
-  display: none;
+  /*display: none;*/
+}
+.incluso-app .navbar-absolute-top.navbarBlue {
+  background-color: #158CCD;
 }
 .incluso-app .step-dashboard .navbar {
   background-color: #158ccd;
