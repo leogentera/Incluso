@@ -42,6 +42,10 @@
                     $rootScope.sidebar = !$rootScope.sidebar;
             };
 
+			$scope.playVideo = function(videoAddress, videoName){
+                 playVideo(videoAddress, videoName);
+            };
+			
             $scope.scrollToTop = function(element){
               
                 $location.hash(element);

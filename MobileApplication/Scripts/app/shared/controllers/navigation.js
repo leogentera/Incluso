@@ -21,9 +21,10 @@ app.controller('menuController', [
 			  $('#sub' + cual).toggle();
 
 		});	
+
         $scope.logout = function(){
         	$rootScope.sidebar = false;
-            logout( $scope, $location);
+            logout($scope, $location);
         }; 
 }]);
  
