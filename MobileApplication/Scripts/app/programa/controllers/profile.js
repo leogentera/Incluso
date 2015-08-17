@@ -18,9 +18,11 @@ angular
             $rootScope.pageName = "Mi perfil"
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
-            $rootScope.showFooter = true;           
+            $rootScope.showFooter = true;
+
             function getDataAsync(){
 
+                moodleFactory.Services.GetAsyncAvatar(_getItem("userId"), getAvatarInfoCallback);
                 var m = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
 
               
@@ -42,6 +44,29 @@ angular
                 if(m.address.town == null){ m.address.town = ""; }
                 if(m.address.state == null){ m.address.state = ""; }
                 if(m.address.postalCode == null){ m.address.postalCode = ""; }                
+            }
+
+            function getAvatarInfoCallback(){
+
+                $scope.avatarInfo = moodleFactory.Services.GetCacheJson("avatarInfo");
+
+                if ($scope.avatarInfo == null || $scope.avatarInfo.length == 0) {
+                    $scope.avatarInfo = [{
+                        "userid": $scope.model.UserId,
+                        "alias": $scope.model.username,
+                        "aplicacion": "Mi Avatar",
+                        "estrellas": $scope.model.stars,
+                        "PathImagen": "Android/data/<app-id>/images",
+                        "color_cabello": "amarillo",
+                        "estilo_cabello": "",
+                        "traje_color_principal": "",
+                        "traje_color_secundario": "",
+                        "rostro": "",
+                        "color_de_piel": "",
+                        "escudo:": "",
+                        "imagen_recortada": "",
+                    }];             
+                }
             }
 
             $scope.navigateToPage = function(pageNumber){
@@ -112,6 +137,16 @@ angular
             }
             $scope.deleteFamiliaCompartamosk = function(index){
                 $scope.model.familiaCompartamos.splice(index, 1);
+            }
+
+            $scope.avatar = function(){
+                $scope.avatarInfo[0].UserId = $scope.model.UserId;
+                $scope.avatarInfo[0].Alias = $scope.model.username;
+                $scope.avatarInfo[0].Estrellas = $scope.model.stars;
+                localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
+
+                $scope.scrollToTop();         
+                $location.path('/Juegos/Avatar');
             }
 
             var $selects = $('select.form-control');
