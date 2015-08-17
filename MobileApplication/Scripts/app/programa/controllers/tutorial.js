@@ -29,9 +29,11 @@ angular
             }
 
             console.log($scope.showFooter);
-            $rootScope.showFooter = false;
-            $rootScope.hideFooter = true;
 
+            $rootScope.pageName = "Guia de uso"
+            $rootScope.navbarBlue = false;
+            $rootScope.showToolbar = false;
+            $rootScope.showFooter = false; 
             function getDataAsync() {
                 moodleFactory.Services.GetAsyncAvatar(_getItem("userId"), getAvatarInfoCallback);
             }

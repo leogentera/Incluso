@@ -2,13 +2,13 @@
   <div class="navbar-brand navbar-brand-center navbar-assets" ui-yield-to="title">
       <div class="btn-group pull-left">
         <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle" ng-click="sideToggle()">
-          <h1 class="navbar-heading"><a id="menuton"><i class="icomoon icon-more-options"></i> <span>Mision Incluso</span></a></h1>
+          <h1 class="navbar-heading"><a id="menuton"><i class="icomoon icon-more-options"></i> <span>{{pageName}}</span></a></h1>
           <!--<i class="fa fa-bars"></i> Menu-->
         </div>
       </div>
       <ul class="navbar-tools">
           <li class="contribute">
-            <a ng-click="navigateTo('Perfil/Editar', 'Mision Incluso', 'null', 'navbarblue')">
+            <a ng-click="navigateTo('Perfil/Editar', 'Mi perfil', 'null', 'navbarorange')">
               <i class="icomoon icon-edit"></i>
             </a>
           </li>
@@ -23,7 +23,7 @@
             </a>
           </li>
           <li class="profile">
-            <a ng-click="navigateTo('Perfil', 'My perfil', 'null', 'navbarblue')">
+            <a ng-click="navigateTo('Perfil', 'Mi perfil', 'null', 'navbarblue')">
               <i class="icomoon icon-emoticon-smile"></i>
             </a>
           </li>

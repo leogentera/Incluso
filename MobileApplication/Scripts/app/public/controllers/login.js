@@ -15,10 +15,6 @@ angular
 
             _httpFactory = $http;
             $scope.PreloaderModalInstance = null;
-                        
-            $rootScope.showFooter = false;
-            $rootScope.hideFooter = true;
-
             $scope.scrollToTop();
 
             /* ViewModel */
@@ -42,8 +38,6 @@ angular
                 $scope.userCredentialsModel.modelState.isValid = (newValue.length === 0);
             });
 
-            //$(".navbar-absolute-top").hide();
-            $rootScope.showToolbar = false;
             $scope.loadCredentials = function () {
 
                 var txtCredentials = localStorage.getItem("Credentials");
