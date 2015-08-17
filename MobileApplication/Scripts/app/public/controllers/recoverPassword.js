@@ -10,7 +10,8 @@ angular
 		'$rootScope',
 		'$http',
         '$anchorScroll',
-        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll) {
+        '$modal',
+        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
             $anchorScroll();
             
@@ -34,6 +35,7 @@ angular
             $scope.successMessage = "";
             $scope.recoveredPassword = false;
             $scope.readOnly = false;
+            $scope.PreloaderModalInstance = null;
 
             /* Watchers */
             $scope.$watch("recoverPasswordModel.confirmPassword", function(newValue, oldValue){
@@ -57,17 +59,18 @@ angular
             };
 
             $scope.getPasswordRecoveryCode = function() {
+                console.log('Start Code Recovery'); //- debug
+                console.log('fetching errors list'); //- debug
                 var errors = [];
-
-                console.log('getting password recovery code');
-
-                if(!$scope.recoverPasswordForm.email.$valid){ errors.push("Rormato de correo incorrecto."); }
+                if(!$scope.recoverPasswordForm.email.$valid){ errors.push("Formato de correo incorrecto."); }
                 if($scope.recoverPasswordModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
                 if(!$scope.recoverPasswordForm.secretAnswer.$valid){ errors.push("Respuesta secreta inválida."); }
-
                 $scope.recoverPasswordModel.modelState.errorMessages = errors;
 
+                console.log('validating'); //- debug
                 if(errors.length === 0){
+                    console.log('errors: ' + errors.length); //- debug
+                    $scope.openProcessingActionModal();
 
                     $http({
                         method: 'POST',
@@ -81,15 +84,18 @@ angular
                         })
                     }).success(function(data, status, headers, config) {
 
-                        console.log('successfully code recovery');
-
+                        console.log('SUCCESS. code recovered'); //- debug
+                        $scope.PreloaderModalInstance.dismiss();
                         $scope.currentPage = 2;
                         $scope.scrollToTop();
                         $scope.successMessage = "Te hemos enviado un correo con un código para recuperar tu contraseña.";
+                        $scope.scrollToTop();
 
                     }).error(function(data, status, headers, config) {
+                        
+                        console.log('ERROR. code not recovered'); //- debug
+                        $scope.PreloaderModalInstance.dismiss();
                         var errorMessage;
-
                         if((data != null && data.messageerror != null)){
                             errorMessage = window.atob(data.messageerror);
                         }else{
@@ -97,28 +103,31 @@ angular
                         }
 
                         $scope.recoverPasswordModel.modelState.errorMessages = [errorMessage];
-                        console.log('data' + errorMessage);
+                        console.log('message: ' + errorMessage); //- debug
                         $scope.scrollToTop();
                     });
                 }else{
+                    console.log('errors: ' + errors.length); //- debug
+                    console.log('End'); //- debug
                     $scope.scrollToTop();
                 }
             }
 
             $scope.recover = function() {
+                console.log('Start Password Reset'); //- debug
+                console.log('fetching errors list'); //- debug
                 var errors = [];
-
-                console.log('recovering password');
-
                 if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
-
                 if(!$scope.recoverPasswordForm.password.$valid){ errors.push("formato de contraseña incorrecto."); }
                 if(!$scope.recoverPasswordForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto."); }
                 if(!$scope.recoverPasswordForm.code.$valid){ errors.push("código requerido."); }
-
                 $scope.recoverPasswordModel.modelState.errorMessages = errors;
 
+                console.log('validating'); //- debug
                 if(errors.length === 0){
+                    console.log('errors: ' + errors.length); //- debug
+                    $scope.openProcessingActionModal();
+
                     $http({
                         method: 'PUT',
                         url: API_RESOURCE.format("authentication"), 
@@ -130,8 +139,8 @@ angular
                         })
                     }).success(function(data, status, headers, config) {
 
-                        console.log('successfully reset password');
-
+                        console.log('SUCCESS. password reset'); //- debug
+                        $scope.PreloaderModalInstance.dismiss();
                         $scope.recoveredPassword = true;
                         $scope.successMessage = "Se ha restablecido su contraseña, ahora puedes iniciar sesión.";
                         $anchorScroll();
@@ -142,8 +151,10 @@ angular
                         $scope.readOnly = true;
 
                     }).error(function(data, status, headers, config) {
+                        
+                        console.log('ERROR. password not reset'); //- debug
+                        $scope.PreloaderModalInstance.dismiss();
                         var errorMessage;
-
                         if((data != null && data.messageerror != null)){
                             errorMessage = window.atob(data.messageerror);
                         }else{
@@ -151,13 +162,32 @@ angular
                         }
 
                         $scope.recoverPasswordModel.modelState.errorMessages = [errorMessage];
-                        console.log('data' + errorMessage);
+                        console.log('message: ' + errorMessage); //- debug
                         $scope.scrollToTop();
                     });
                 }else{
+                    console.log('errors: ' + errors.length); //- debug
+                    console.log('End'); //- debug
                     $scope.scrollToTop();
                 }
             };
-        }]);
+
+            /* open processing action modal */
+            $scope.openProcessingActionModal = function (size) {
+                $scope.PreloaderModalInstance = $modal.open({
+                    templateUrl: 'processingActionModal.html',
+                    controller: 'processingActionModalController',
+                    windowClass: 'modal-theme-default modal-preloader',
+                    size: size,
+                    backdrop: 'static',
+                    keyboard: true,
+                    animation: true,
+                });
+                //$scope.PreloaderModalInstance = modalInstance;
+            };            
+        }])
+        .controller('processingActionModalController', function ($scope, $modalInstance) {
+            
+        });
 
 

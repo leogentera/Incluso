@@ -242,5 +242,5 @@ angular
 
         }])
         .controller('processingActionModalController', function ($scope, $modalInstance) {
-
+            
         });
