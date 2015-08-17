@@ -10,23 +10,55 @@ use MoodleApi\Model\MoodleLeader;
 use MoodleApi\Model\MoodleStage;
 use MoodleApi\Model\MoodleChallenge;
 
+use Zend\Cache\StorageFactory;
+
 class CourseController extends AbstractRestfulJsonController {
     
     private $token = "";
     private $function = "core_course_get_contents";
 
-    public function get($id)
-    {
-        $course = new MoodleCourse();
-        $leaders = $this->getLeaderboard($id);
-        $stages = $this->getCourseStages($id);
-        
-        $course->setLeaderboard($leaders);
+    public function get($id){
 
-        $course->setStages($stages);
+        $cache = StorageFactory::factory(array(
+            'adapter' => array(
+                'name' => 'filesystem',
+                'options' => array(
+                    'ttl' => 86400,
+                    'cache_dir' => __DIR__."\..\Cache"),
+            ),
+            'plugins' => array(
+                // Don't throw exceptions on cache errors
+                'exception_handler' => array(
+                    'throw_exceptions' => false
+                ),
+            )
+        ));
 
-        for($i = 0; $i < sizeof($stages); $i++){
-            $course->stages[$i]->setChallenges($this->getChallengesStage($id, $course->stages[$i]->section));
+        // see if a cache already exists:
+        $course = $cache->getItem('course', $success);
+
+        if (!$success) {
+         
+            // cache miss
+            
+            $course = new MoodleCourse();
+            $leaders = $this->getLeaderboard($id);
+            $stages = $this->getCourseStages($id);
+            
+            $course->setLeaderboard($leaders);
+
+            $course->setStages($stages);
+
+            for($i = 0; $i < sizeof($stages); $i++){
+                $course->stages[$i]->setChallenges($this->getChallengesStage($id, $course->stages[$i]->section));
+            }
+
+            $cache->setItem('course', $course);
+
+        }else{
+
+            $course = json_decode($course);
+
         }
 
         return new JsonModel((array)$course);

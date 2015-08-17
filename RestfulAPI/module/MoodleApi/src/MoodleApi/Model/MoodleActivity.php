@@ -48,4 +48,59 @@ class MoodleActivity
     public function setTimeModified($time){
         $this->timemodified = $time;
     }
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function getName(){
+        return $this->name;
+    }
+
+    public function getDescription(){
+        return $this->description;
+    }
+
+    public function getActivityType(){
+        return $this->activityType;
+    }
+
+    public function getCourseModuleId(){
+        return $this->coursemoduleid;
+    }
+
+    public function getStatus(){
+        return $this->status;
+    }
+
+    public function getTimeModified(){
+        return $this->timemodified;
+    }
+
+    public function __toString(){
+        $returnString = '{';
+        $returnString.= '"id":'.$this->getId().',';
+        $returnString.= '"name":"'.$this->getName().'",';
+        $returnString.= '"description":"'.$this->getDescription().'",';
+        $returnString.= '"activityType":"'.$this->getActivityType().'",';
+        $returnString.= '"coursemoduleid":'.$this->getCourseModuleId().',';
+        $returnString.= '"status":';
+
+        if($this->getStatus() == null){
+            $returnString.= '"",';
+        }else{
+            $returnString.= $this->getStatus().',';
+        }
+
+        $returnString.= '"timemodified":';
+
+        if($this->getTimeModified() == null){
+            $returnString.= '""';
+        }else{
+            $returnString.=$this->getTimeModified().'';
+        }
+
+        $returnString.= '}';
+        return $returnString;
+    }
 }
