@@ -41,6 +41,7 @@ class AuthenticationController extends AbstractRestfulJsonController {
         }
 
     }
+    return new JsonModel();
 	
 }
 
