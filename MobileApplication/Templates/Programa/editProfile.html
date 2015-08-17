@@ -129,14 +129,67 @@
 
                             <section>
                               <h5>Datos generales</h5>
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname" />
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName"
-                              />
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.secondSurName"
-                              />
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Alias" ng-model="model.alias" />
+                              <!-- <ul class="block-list">
+                                <li>
+                                  <div class="form-group theme-form">
+                                    <h5><span>Correo 1</span></h5>
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Correo Electrónico" ng-model="model.email">
+                                  </div>
+                                </li>
+                              </ul> -->
 
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
+                              <ul class="block-list">
+                                <li>
+                                  <div class="form-group theme-form">
+                                    <h5>
+                                      <!-- <span>Familiar Compartamos {{model.familiaCompartamos.indexOf(fc) + 1}}</span> -->
+                                      <button class="btn btn-circle" ng-click="deleteFamiliaCompartamos($index);">
+                                        <span class="icomoon icon-cross"></span>
+                                      </button>
+                                    </h5>
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname" />
+
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName" />
+
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.secondSurName" /> 
+
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Alias" ng-model="model.alias" /> 
+
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
+
+                                    <p class="form-group-control custom-placeholder-wrapper">
+                                      <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="fc.relationship">
+                                        <option disabled>Parentesco</option>
+                                        <option value="Mamá">Mamá</option>
+                                        <option value="Papá">Papá</option>
+                                      </select>
+                                    </p>
+                                  </div>                              
+                                <li>
+                              </ul>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname" />
+                              </div>
+                              
+                              <div class="form-group">
+                                <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName"
+                              />
+                              </div>
+                              
+                              <div class="form-group">
+                                <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.secondSurName" />
+                              </div>
+                              
+                              <div class="form-group">
+                                <input type="text" class="form-control form-control-lg theme-form" placeholder="Alias" ng-model="model.alias" />
+                              </div>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
+                              </div>
+
+                              <div class="form-group">
                               <p class="form-group-control custom-placeholder-wrapper">
                                 <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
                                   <option value="Grado">Grado</option>
@@ -147,6 +200,7 @@
                                 </select>
                                 <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>
                               </p>
+                              </div>
 
                               <div class="form-group">
                                 <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="model.address.country">
@@ -161,8 +215,11 @@
                                 </select>
                               </div>
                               ---------------------
-                              <ul class="block-list">
+                            </section>
 
+                            <section>
+                              <h5>Estudios</h5>
+                              <ul class="block-list">
                                 <li ng-repeat="s in model.studies">
                                   <div class="form-group theme-form">
                                     <h5>
@@ -170,7 +227,7 @@
                                     <button class="btn btn-circle" ng-click="deleteStudy($index);">
                                       <span class="icomoon icon-cross"></span>
                                     </button>
-                                  </h5>
+                                    </h5>
 
                                     <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
                                     <p class="form-group-control custom-placeholder-wrapper">
@@ -185,7 +242,6 @@
                                     </p>
                                   </div>
                                 </li>
-
                               </ul>
                               <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addStudy();">
                                 <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
