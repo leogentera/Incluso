@@ -133,7 +133,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             @Override
             public void onCancel() {
                 // App code
-                listener.finishPost("{\"messageerror\":\""+Base64.encodeToString("Se ha cancelado el login".getBytes(), Base64.DEFAULT)+"\"}", SayHelloPlugin.ERROR);
+                listener.finishPost("{\"messageerror\":\""+Base64.encodeToString("Se ha cancelado el login".getBytes(), Base64.NO_WRAP)+"\"}", SayHelloPlugin.ERROR);
             }
 
             @Override
