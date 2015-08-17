@@ -954,6 +954,7 @@ body.modal-open {
 }
 .incluso-app .form-group {
   width: 100%;
+  padding: 0;
   /* by theme */
 }
 .incluso-app .form-group .form-group-control {
