@@ -16,6 +16,9 @@ angular
             _httpFactory = $http;
             $scope.PreloaderModalInstance = null;
             
+            $rootScope.showFooter = false;
+            $rootScope.hideFooter = true;
+
             $scope.scrollToTop();
 
             /* ViewModel */
@@ -39,8 +42,8 @@ angular
                 $scope.userCredentialsModel.modelState.isValid = (newValue.length === 0);
             });
 
-            $(".navbar-absolute-top").hide();
-
+            //$(".navbar-absolute-top").hide();
+            $rootScope.showToolbar = false;
             $scope.loadCredentials = function () {
 
                 var txtCredentials = localStorage.getItem("Credentials");
@@ -198,7 +201,7 @@ angular
 
                  var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número.";
                 
-                if (!$scope.loginForm.username.$valid) { errors.push("formato de usuario incorrecto."); }
+                if (!$scope.loginForm.userName.$valid) { errors.push("formato de usuario incorrecto."); }
                 if (!$scope.loginForm.password.$valid) { errors.push("formato de contraseña incorrecto. La contraseña " + passwordPolicy); }
 
                 $scope.userCredentialsModel.modelState.errorMessages = errors;
@@ -228,7 +231,7 @@ angular
 
             /* open processing action modal */
             $scope.openProcessingActionModal = function (size) {
-                var modalInstance = $modal.open({
+                $scope.PreloaderModalInstance = $modal.open({
                     animation: true,
                     templateUrl: 'processingActionModal.html',
                     controller: 'processingActionModalController',
@@ -236,7 +239,7 @@ angular
                     windowClass: 'modal-theme-default modal-preloader',
                     backdrop: 'static'
                 });
-                $scope.PreloaderModalInstance = modalInstance;
+                //$scope.PreloaderModalInstance = modalInstance;
             };            
 
         }])

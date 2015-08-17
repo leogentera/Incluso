@@ -217,10 +217,10 @@ angular
                     }
                 }
                 
-                if(!$scope.registerForm.username.$valid){ errors.push("Formato de usuario incorrecto."); }
-                if(!$scope.registerForm.firstname.$valid){ errors.push("Formato de nombre incorrecto."); }
-                if(!$scope.registerForm.lastname.$valid){ errors.push("Formato de apellido paterno incorrecto."); }
-                if(!$scope.registerForm.mothername.$valid) {errors.push("Formato de apellido materno incorrecto."); }
+                if(!$scope.registerForm.userName.$valid){ errors.push("Formato de usuario incorrecto."); }
+                if(!$scope.registerForm.firstName.$valid){ errors.push("Formato de nombre incorrecto."); }
+                if(!$scope.registerForm.lastName.$valid){ errors.push("Formato de apellido paterno incorrecto."); }
+                if(!$scope.registerForm.motherName.$valid) {errors.push("Formato de apellido materno incorrecto."); }
                 if($scope.registerModel.gender.length === 0){ errors.push("Género inválido."); }
                 if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
                 if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválida."); }
