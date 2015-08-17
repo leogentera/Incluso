@@ -15,8 +15,8 @@ angular
 
             _httpFactory = $http;
             $scope.PreloaderModalInstance = null;
-            $rootScope.showFooter = false;
-            $rootScope.hideFooter = true;
+            $rootScope.showToolbar = false;
+            $rootScope.showFooter = false;            
 
             $scope.scrollToTop();
 

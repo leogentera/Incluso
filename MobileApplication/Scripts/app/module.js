@@ -84,7 +84,7 @@
 
         $routeProvider.when('/Tutorial', {
             templateUrl: 'Templates/Programa/Tutorial.html',
-            controller: 'programaTutorialController'            
+            controller: 'programaTutorialController'
         });
 
         $routeProvider.when('/Juegos/Avatar', {
@@ -108,9 +108,11 @@
     }])
     .controller('RootController', ['$scope', '$route', '$routeParams', '$location', function ($scope, $route, $routeParams, $location) {
         $scope.$on('$routeChangeSuccess', function (e, current, previous) {
+            console.log($location.path());  
             $scope.activeViewPath = $location.path();
             
-            $("#menuton span").text($(".main-title").text());    
+            $("#menuton span").text($(".main-title").text()); 
+
         });
         
     }])

@@ -64,7 +64,7 @@
                         </a>
                       </li>
 
-                      <li class="list-group-item" ng-click="navigateToPage(3)">
+                      <li class="list-group-item" ng-click="navigateToPage(5)">
                         <a href="">
                           <span class="icomoon icon-document"></span>
                           <span>Mi personalidad</span>
@@ -73,7 +73,7 @@
                         </a>
                       </li>
 
-                      <li class="list-group-item" ng-click="navigateToPage(4)">
+                      <li class="list-group-item" ng-click="navigateToPage(8)">
                         <a href="">
                           <span class="icomoon icon-required"></span>
                           <span>Socioeconómicos</span>
@@ -82,7 +82,7 @@
                         </a>
                       </li>
 
-                      <li class="list-group-item no-badge" ng-click="navigateToPage(5)">
+                      <li class="list-group-item" ng-click="navigateToPage(10)">
                         <a href="">
                           <span class="icomoon icon-badge"></span>
                           <span>Uso tecnología</span>
@@ -119,7 +119,7 @@
                               </li>
                             </ul> -->
 
-                            <!--<div class="checkbox checkbox-custom">
+                          <!--<div class="checkbox checkbox-custom">
                               <label>
                                 <input type="checkbox" ng-model="model.allowToSendAdvertisement" name="allowToSendAdvertisement" />
                                 <span>Deseo recibir promoción y publicidad</span>
@@ -127,153 +127,183 @@
                             </div>
                           </section>-->
 
-                            <section>
-                              <h5>Datos generales</h5>
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname" />
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName"
-                              />
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.secondSurName"
-                              />
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Alias" ng-model="model.alias" />
+                          <section>
+                            <h5>Datos generales</h5>
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname" required/>
 
-                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
-                              <p class="form-group-control custom-placeholder-wrapper">
-                                <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
-                                  <option value="Grado">Grado</option>
-                                  <option value="Primaria">Primaria</option>
-                                  <option value="Secundaria">Secundaria</option>
-                                  <option value="Preparatoria">Preparatoria</option>
-                                  <option value="Profesional">Profesional</option>
-                                </select>
-                                <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>
-                              </p>
+                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName"
+                            required />
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.mothername"
+                            required />
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Alias" ng-model="model.alias" required/>
 
-                              <div class="form-group">
-                                <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="model.address.country">
-                                  <option disabled selected>País</option>
-                                  <option value="BO">Bolivia</option>
-                                  <option value="CO">Colombia</option>
-                                  <option value="EC">Ecuador</option>
-                                  <option value="ME">México</option>
-                                  <option value="PE">Perú</option>
-                                  <option value="UR">Uruguay</option>
-                                  <option value="VE">Venezuela</option>
-                                </select>
-                              </div>
-                              ---------------------
-                              <ul class="block-list">
+                            <p class="form-group">
+                              <select ng-model="model.gender" ng-options="item for item in genderItems" ng-init="model.gender == null" class="form-control form-control-lg theme-form"
+                              required>
+                                <option value="" ng-disabled="!!model.gender">Sexo</option>
+                              </select>
+                            </p>
 
-                                <li ng-repeat="s in model.studies">
-                                  <div class="form-group theme-form">
-                                    <h5>
+                            <p class="form-group">
+                              <select ng-model="model.birthCountry" ng-options="item for item in countryItems" ng-init="model.birthCountry == null" class="form-control form-control-lg theme-form">
+                                <option value="" ng-disabled="!!model.birthCountry">País de nacimiento</option>
+                              </select>
+                            </p>-->
+
+                            <!--birthday: {{model.birthday}}-->
+                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="model.birthday"
+                            required />-->
+                            <!--<input type="date" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento 2" ng-model="model.birthday" />-->
+
+                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Edad" ng-model="model.age" readonly/>
+
+                            <p class="form-group">
+                              <select ng-model="model.maritalStatus" ng-options="item for item in maritalStatusItems" ng-init="model.maritalStatus == null"
+                              class="form-control form-control-lg theme-form">
+                                <option value="" ng-disabled="!!model.maritalStatus">Estado civil</option>
+                              </select>
+                            </p>-->
+                          </section>
+
+                          <section>
+                            <h5>Educación</h5>
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.studies">
+                                <div class="form-group theme-form">
+                                  <h5>
                                     <span>Estudio {{model.studies.indexOf(s) + 1}}</span>
                                     <button class="btn btn-circle" ng-click="deleteStudy($index);">
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
 
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
-                                    <p class="form-group-control custom-placeholder-wrapper">
-                                      <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
-                                        <option value="Grado">Grado</option>
-                                        <option value="Primaria">Primaria</option>
-                                        <option value="Secundaria">Secundaria</option>
-                                        <option value="Preparatoria">Preparatoria</option>
-                                        <option value="Profesional">Profesional</option>
-                                      </select>
-                                      <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>
-                                    </p>
-                                  </div>
-                                </li>
-
-                              </ul>
-                              <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addStudy();">
-                                <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
-                              </button>
-                            </section>
-
-                            <section>
-                              <h5>Domicilio</h5>
-                              <ul class="block-list">
-                                <li>
-                                  <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Calle" ng-model="model.address.street" />
-                                  </div>
-                                  <div class="form-group col-2">
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Ext." ng-model="model.address.num_ext"
-                                    />
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Int." ng-model="model.address.num_int"
-                                    />
-                                  </div>
-                                  <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Colonia" ng-model="model.address.colony"
-                                    />
-                                  </div>
-                                  <div class="form-group">
-                                    <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="model.address.country">
-                                      <option disabled selected>País</option>
-                                      <option value="BO">Bolivia</option>
-                                      <option value="CO">Colombia</option>
-                                      <option value="EC">Ecuador</option>
-                                      <option value="ME">México</option>
-                                      <option value="PE">Perú</option>
-                                      <option value="UR">Uruguay</option>
-                                      <option value="VE">Venezuela</option>
+                                  <!--Inicio Viejo-->
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
+                                      <option value="Grado">Grado</option>
+                                      <option value="Primaria">Primaria</option>
+                                      <option value="Secundaria">Secundaria</option>
+                                      <option value="Preparatoria">Preparatoria</option>
+                                      <option value="Profesional">Profesional</option>
                                     </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <select name="state" id="state" class="form-control form-control-lg theme-form" ng-model="model.address.state">
-                                      <option disabled selected>Estado</option>
-                                      <option value="Coahuila">Coahuila</option>
-                                      <option value="Jalisco">Jalisco</option>
-                                      <option value="México">México</option>
-                                      <option value="Nuevo León">Nuevo León</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <select name="" id="ciudad" class="form-control form-control-lg theme-form" ng-model="model.address.city">
-                                      <option disabled selected>Ciudad</option>
-                                      <option value="Guadalajara">Guadalajara</option>
-                                      <option value="México D.F.">México D.F.</option>
-                                      <option value="Monterrey">Monterrey</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Municipio / Delegación" ng-model="model.address.town"
-                                    />
-                                  </div>
-                                  <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" ng-model="model.address.postalCode"
-                                    />
-                                  </div>
-                                </li>
-                              </ul>
-                            </section>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>                                    -----------------
+                                  </p>
+                                  <!--Fin Viejo-->
 
-                            <div class="page-number">
-                              <p class="text-center">
-                                <span>1</span>
-                                <span>/</span>
-                                <span>2</span>
-                              </p>
-                            </div>
+                                  <!--<p class="form-group">
+                                    <select ng-model="model.studies" ng-options="item for item in studiesList" ng-init="model.studies == null" class="form-control form-control-lg theme-form">
+                                      <option value="" ng-disabled="!!model.studies">Nivel de Estudios</option>
+                                    </select>
+                                  </p>-->
 
-                            <div class="actions">
-                              <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(3)">Continuar</button>
-                              <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
-                            </div>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addStudy();">
+                              <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
+                            </button>
+                          </section>
+
+
+
+
+                          <!--Inicio Viejo-->
+                          <!--<section>
+                            <ul class="block-list">
+
+                              <li ng-repeat="s in model.studies">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Estudio {{model.studies.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteStudy($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
+                                      <option value="Grado">Grado</option>
+                                      <option value="Primaria">Primaria</option>
+                                      <option value="Secundaria">Secundaria</option>
+                                      <option value="Preparatoria">Preparatoria</option>
+                                      <option value="Profesional">Profesional</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>
+                                  </p>
+                                </div>
+                              </li>
+
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addStudy();">
+                              <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
+                            </button>
+                          </section>-->
+                          <!--Fin Viejo-->
+
+
+                          <div class="page-number">
+                            <p class="text-center">
+                              <span>1</span>
+                              <span>/</span>
+                              <span>3</span>
+                            </p>
+                          </div>
+
+                          <div class="actions">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(3)">Continuar</button>
+                            <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                          </div>
+
+
                         </fieldset>
                       </div>
                     </div>
+
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(5)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi personalidad</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(8)">
+                        <a href="">
+                          <span class="icomoon icon-required"></span>
+                          <span>Socioeconómicos</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(10)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Uso tecnología</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
+
               </div>
             </div>
+
+
+
 
             <div class="page " ng-class="currentPage == 3 ? 'active' : ''">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-xs-12">
+
                     <div class="panel panel-default panel-form">
                       <div class="panel-heading with-icons">
                         <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
@@ -282,6 +312,78 @@
                       </div>
                       <div class="panel-body">
                         <fieldset class="my-profile-form">
+
+                          <section>
+                            <h5>Dirección</h5>
+                            <ul class="block-list">
+                              <li>
+                                <div class="form-group">
+                                  <select ng-model="model.address.country" ng-options="item for item in countryItems" ng-init="model.address.country == null"
+                                  class="form-control form-control-lg theme-form">
+                                    <option value="" ng-disabled="!!model.address.country">País</option>
+                                  </select>
+
+                                  <!--<select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="model.address.country">
+                                    <option disabled selected>País</option>
+                                    <option value="BO">Bolivia</option>
+                                    <option value="CO">Colombia</option>
+                                    <option value="EC">Ecuador</option>
+                                    <option value="ME">México</option>
+                                    <option value="PE">Perú</option>
+                                    <option value="UR">Uruguay</option>
+                                    <option value="VE">Venezuela</option>
+                                  </select>-->
+                                </div>
+                                <div class="form-group">
+                                  <select ng-model="model.address.city" ng-options="item for item in cityItems" ng-init="model.address.city == null" class="form-control form-control-lg theme-form">
+                                    <option value="" ng-disabled="!!model.address.city">Ciudad</option>
+                                  </select>
+
+
+                                  <!--<select name="" id="ciudad" class="form-control form-control-lg theme-form" ng-model="model.address.city">
+                                    <option disabled selected>Ciudad</option>
+                                    <option value="Guadalajara">Guadalajara</option>
+                                    <option value="México D.F.">México D.F.</option>
+                                    <option value="Monterrey">Monterrey</option>
+                                  </select>-->
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Municipio / Delegación" ng-model="model.address.town"
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Código Postal" ng-model="model.address.postalCode"
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Calle" ng-model="model.address.street" />
+                                </div>
+                                <div class="form-group col-2">
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Ext." ng-model="model.address.num_ext"
+                                  />
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Núm. Int." ng-model="model.address.num_int"
+                                  />
+                                </div>
+                                <div class="form-group">
+                                  <select ng-model="model.address.state" ng-options="item for item in stateItems" ng-init="model.address.state == null" class="form-control form-control-lg theme-form">
+                                    <option value="" ng-disabled="!!model.address.state">Estado</option>
+                                  </select>
+                                  <!--<select name="state" id="state" class="form-control form-control-lg theme-form" ng-model="model.address.state">
+                                    <option disabled selected>Estado</option>
+                                    <option value="Coahuila">Coahuila</option>
+                                    <option value="Jalisco">Jalisco</option>
+                                    <option value="México">México</option>
+                                    <option value="Nuevo León">Nuevo León</option>
+                                  </select>-->
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Colonia" ng-model="model.address.colony"
+                                  />
+                                </div>
+                              </li>
+                            </ul>
+                          </section>
+
                           <section>
                             <h5>Teléfono</h5>
                             <ul class="block-list">
@@ -358,10 +460,107 @@
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addSocialNetwork();">
-                              <span class="icomoon icon-plus"></span>Agregar nueva red social...
+                              <span class="icomoon icon-plus"></span>Agregar nueva red...
                             </button>
                           </section>
 
+                          <!--<section>
+                            <h5>Familiares Compartamos</h5>
+                            <ul class="block-list">
+                              <li ng-repeat="fc in model.familiaCompartamos">
+                                <div class="form-group theme-form">-->
+                          <!-- <button type="button" ng-click="deleteFamiliaCompartamos($index);">Borrar</button> -->
+                          <!--<h5>
+                                    <span>Familiar Compartamos {{model.familiaCompartamos.indexOf(fc) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteFamiliaCompartamos($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" ng-model="fc.idClient"
+                                  />
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" ng-model="fc.relativeName"
+                                  />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="fc.relationship">
+                                      <option disabled>Parentesco</option>
+                                      <option value="Mamá">Mamá</option>
+                                      <option value="Papá">Papá</option>
+                                    </select>
+                                  </p>
+                                </div>                           
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFamiliaCompartamos();">
+                              <span class="icomoon icon-plus"></span>Agregar familiar...
+                            </button>
+                          </section>-->
+
+                          <div class="page-number">
+                            <p class="text-center">
+                              <span>2</span>
+                              <span>/</span>
+                              <span>3</span>
+                            </p>
+                          </div>
+
+                          <div class="button-group">
+                            <button type="button" ng-disabled="isRegistered" class="btn btn-primary btn-lg" ng-click="navigateToPage(2)">
+                              <span class="icomoon icon-arrow-slim-left"></span>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(4)">Continuar</button>
+                            <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                          </div>
+
+                        </fieldset>
+                      </div>
+                    </div>
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(5)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi personalidad</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(8)">
+                        <a href="">
+                          <span class="icomoon icon-required"></span>
+                          <span>Socioeconómicos</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(10)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Uso tecnología</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="page " ng-class="currentPage == 4 ? 'active' : ''">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="panel panel-default panel-form">
+                      <div class="panel-heading with-icons">
+                        <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
+                        <span class="icomoon icon-information"></span>
+                        <h3 class="panel-title">Mi información</h3>
+                      </div>
+                      <div class="panel-body">
+                        <fieldset class="my-profile-form">
                           <section>
                             <h5>Familiares Compartamos</h5>
                             <ul class="block-list">
@@ -386,42 +585,1105 @@
                                     </select>
                                   </p>
                                 </div>
-                                <!-- <div class="form-group">
-                                  
-                                </div> -->
-                                <!-- <div class="form-group">
-                                  
-                                </div> -->
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFamiliaCompartamos();">
-                              <span class="icomoon icon-plus"></span>Agregar familiar compartamos...
+                              <span class="icomoon icon-plus"></span>Agregar familiar...
                             </button>
                           </section>
 
                           <div class="page-number">
                             <p class="text-center">
-                              <span>2</span>
+                              <span>3</span>
+                              <span>/</span>
+                              <span>3</span>
+                            </p>
+                          </div>
+
+                          <div class="button-group">
+                            <button type="button" ng-disabled="isRegistered" class="btn btn-primary btn-lg" ng-click="navigateToPage(3)">
+                              <span class="icomoon icon-arrow-slim-left"></span>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(1)">Continuar</button>
+                            <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(5)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi personalidad</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(8)">
+                        <a href="">
+                          <span class="icomoon icon-required"></span>
+                          <span>Socioeconómicos</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(10)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Uso tecnología</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="page" ng-class="currentPage == 5 ? 'active' : ''">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(2)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi información</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+
+                    <div class="panel panel-default panel-form">
+                      <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
+                        <span class="icomoon icon-arrow-slim-left"></span>
+                        <span class="icomoon icon-information"></span>
+                        <h3 class="panel-title">Mi personalidad</h3>
+                      </div>
+                      <div class="panel-body">
+                        <fieldset class="my-profile-form">
+                          <section>
+                            <h5>Mis Gustos</h5>
+                            <h4>Mis deportes</h4>
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.favoriteSports">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Deporte {{model.favoriteSports.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteFavoriteSports($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Deportes" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Grado">Grado</option>
+                                      <option value="Ciclismo">Ciclismo</option>
+                                      <option value="Patinaje/skateboarding">Patinaje/skateboarding</option>
+                                      <option value="FutbolSoccer">Futbol soccer</option>
+                                      <option value="Basquetbol">Basquetbol</option>
+                                      <option value="ArtesMarciales">Artes marciales</option>
+                                      <option value="Yoga">Yoga</option>
+                                      <option value="Natación">Natación</option>
+                                      <option value="FutbolAmericano">Futbol americano</option>
+                                      <option value="Basebol">Basebol</option>
+                                      <option value="Carreras">Carreras</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.favoriteSports.lenght > 0">Mis deportes preferidos</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFavoriteSports();">
+                              <span class="icomoon icon-plus"></span>Agregar deporte...
+                            </button>
+                            <h4>Actividades artísticas</h4>
+                            <ul class="block-list">
+
+                              <li ng-repeat="s in model.artisticActivities">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Actividad {{model.artisticActivities.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteArtisticActivities($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Deportes" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Pintura">Pintura</option>
+                                      <option value="Música">Música</option>
+                                      <option value="Danza">Danza</option>
+                                      <option value="Fotografia">Fotografía</option>
+                                      <option value="Graffiti">Graffiti</option>
+                                      <option value="DisenoDigital">Diseño digital</option>
+                                      <option value="Artesanias">Artesanías</option>
+                                      <option value="Teatro">Teatro</option>
+                                      <option value="Modelado">Modelado</option>
+                                      <option value="Dibujo">Dibujo</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.artisticActivities.lenght > 0">Actividades artísticas</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <h4>Hobbies</h4>
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.hobbies">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Hobbies {{model.hobbies.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteHobbies($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Hobiies" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Ir a fiestas">Ir a fiestas</option>
+                                      <option value="Leer">Leer</option>
+                                      <option value="Pasar tiempo con amigos">Pasar tiempo con amigos</option>
+                                      <option value="Cocinar">Cocinar</option>
+                                      <option value="Jugar videojuegos">Jugar videojuegos</option>
+                                      <option value="Visitar museos">Visitar museos</option>
+                                      <option value="Ver películas/series">Ver películas/series</option>
+                                      <option value="Ver televisión">Ver televisión</option>
+                                      <option value="Modelado">Modelado</option>
+                                      <option value="Pasar tiempo en redes sociales">Pasar tiempo en redes sociales</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.hobbies.lenght > 0">Hobbies</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addArtisticActivities();">
+                              <span class="icomoon icon-plus"></span>Agregar hobbie...
+                            </button>
+
+
+
+                            <div class="page-number">
+                              <p class="text-center">
+                                <span>1</span>
+                                <span>/</span>
+                                <span>3</span>
+                              </p>
+                            </div>
+
+                            <div class="actions">
+                              <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(6)">Continuar</button>
+                              <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                            </div>
+
+                          </section>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <ul class="list-group separate-items">
+                      <li class="list-group-item" ng-click="navigateToPage(8)">
+                        <a href="">
+                          <span class="icomoon icon-required"></span>
+                          <span>Socioeconómicos</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(10)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Uso tecnología</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="page" ng-class="currentPage == 6 ? 'active' : ''">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(2)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi información</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+
+                    <div class="panel panel-default panel-form">
+                      <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
+                        <span class="icomoon icon-arrow-slim-left"></span>
+                        <span class="icomoon icon-information"></span>
+                        <h3 class="panel-title">Mi personalidad</h3>
+                      </div>
+                      <div class="panel-body">
+                        <fieldset class="my-profile-form">
+                          <section>
+                            <h5>Mis cualidades</h5>
+                            <h4>Talentos</h4>
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.talents">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Actividad {{model.talents.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteTalents($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Talentos" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Ir a fiestas">Cantar</option>
+                                      <option value="Leer">Llevar ritmos</option>
+                                      <option value="Hablar frente a otros">Hablar frente a otros</option>
+                                      <option value="Dibujar">Dibujar</option>
+                                      <option value="Hacer amigos">Hacer amigos</option>
+                                      <option value="Hacer operaciones matemáticas">Hacer operaciones matemáticas</option>
+                                      <option value="Aprender cosas rápido">Aprender cosas rápido</option>
+                                      <option value="Ubicar lugares ">Ubicar lugares </option>
+                                      <option value="Memorizar">Memorizar</option>
+                                      <option value="Hacer manualidades">Hacer manualidades</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.talents.lenght > 0">Talentos</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addTalents();">
+                              <span class="icomoon icon-plus"></span>Agregar talento...
+                            </button>
+
+                            <h4>Valores</h4>
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.values">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Valor {{model.values.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteValue($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Valores" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Hacer manualidades">Hacer manualidades</option>
+                                      <option value="Tolerancia">Tolerancia</option>
+                                      <option value="Respeto">Respeto</option>
+                                      <option value="Honestidad">Honestidad</option>
+                                      <option value="Responsabilidad">Responsabilidad</option>
+                                      <option value="Confiabilidad">Confiabilidad</option>
+                                      <option value="Igualdad">Igualdad</option>
+                                      <option value="Lealtad">Lealtad</option>
+                                      <option value="Amistad">Amistad</option>
+                                      <option value="Generosidad">Generosidad</option>
+                                      <option value="Esfuerzo">Esfuerzo</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.values.lenght > 0">Valores</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addValue();">
+                              <span class="icomoon icon-plus"></span>Agregar valor...
+                            </button>
+
+                            <h4>Habilidades</h4>
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.habilities">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Habilidades {{model.habilities.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteHabilitie($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Valores" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Empatía">Empatía</option>
+                                      <option value="Creatividad">Creatividad</option>
+                                      <option value="Liderazgo">Liderazgo</option>
+                                      <option value="Comunicación">Comunicación</option>
+                                      <option value="Negociación">Negociación</option>
+                                      <option value="Trabajo en equipo">Trabajo en equipo</option>
+                                      <option value="Innovación">Innovación</option>
+                                      <option value="Iniciativa">Iniciativa</option>
+                                      <option value="Toma de decisiones">Toma de decisiones</option>
+                                      <option value="Planeación">Planeación</option>
+                                      <option value="Organización">Organización</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.habilities.lenght > 0">Habilidades</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addHabilitie();">
+                              <span class="icomoon icon-plus"></span>Agregar habilidad...
+                            </button>
+
+                            <div class="page-number">
+                              <p class="text-center">
+                                <span>2</span>
+                                <span>/</span>
+                                <span>3</span>
+                              </p>
+                            </div>
+
+                            <div class="button-group">
+                              <button type="button" ng-disabled="isRegistered" class="btn btn-primary btn-lg" ng-click="navigateToPage(5)">
+                                <span class="icomoon icon-arrow-slim-left"></span>
+                              </button>
+                              <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(7)">Continuar</button>
+                              <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                            </div>
+                          </section>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <ul class="list-group separate-items">
+                      <li class="list-group-item" ng-click="navigateToPage(8)">
+                        <a href="">
+                          <span class="icomoon icon-required"></span>
+                          <span>Socioeconómicos</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(10)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Uso tecnología</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="page" ng-class="currentPage == 7 ? 'active' : ''">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs-12">
+
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(2)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi información</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="panel panel-default panel-form">
+                      <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
+                        <span class="icomoon icon-arrow-slim-left"></span>
+                        <span class="icomoon icon-information"></span>
+                        <h3 class="panel-title">Personas que admiras</h3>
+                      </div>
+                      <div class="panel-body">
+                        <fieldset class="my-profile-form">
+                          <section>
+                            <h5>A quién admiro</h5>
+                            <h4>Personajes</h4>
+
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.inspirationalCharacters">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Personaje {{model.inspirationalCharacters.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteInspirationalCharacter($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Personajes" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Empatía">Personajes</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.inspirationalCharacters.lenght > 0">Personajes</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addInspirationalCharacter();">
+                              <span class="icomoon icon-plus"></span>Agregar personaje...
+                            </button>
+
+                            <div class="page-number">
+                              <p class="text-center">
+                                <span>3</span>
+                                <span>/</span>
+                                <span>3</span>
+                              </p>
+                            </div>
+
+                            <div class="button-group">
+                              <button type="button" ng-disabled="isRegistered" class="btn btn-primary btn-lg" ng-click="navigateToPage(6)">
+                                <span class="icomoon icon-arrow-slim-left"></span>
+                              </button>
+                              <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(1)">Continuar</button>
+                              <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                            </div>
+                          </section>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <ul class="list-group separate-items">
+                      <li class="list-group-item" ng-click="navigateToPage(8)">
+                        <a href="">
+                          <span class="icomoon icon-required"></span>
+                          <span>Socioeconómicos</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(10)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Uso tecnología</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="page" ng-class="currentPage == 8 ? 'active' : ''">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(2)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi información</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(5)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi personalidad</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(10)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Uso tecnología</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+
+                    </ul>
+
+                    <div class="panel panel-default panel-form">
+
+                      <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
+                        <span class="icomoon icon-arrow-slim-left"></span>
+                        <span class="icomoon icon-information"></span>
+                        <h3 class="panel-title">Socioeconómicos</h3>
+                      </div>
+
+                      <div class="panel-body">
+                        <fieldset class="my-profile-form">
+                          <section>
+                            <h5>Vivienda</h5>
+                            <h4>Vivo con</h4>
+
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.iLiveWith" />
+                            <p class="form-group-control custom-placeholder-wrapper">
+                              <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.iLiveWith" ng-init="form.type='Vivo con'">
+                                <option value="Vivo con">Vivo con</option>
+                                <option value="Ambo padres">Ambo padres</option>
+                                <option value="Padre">Padre</option>
+                                <option value="Madre">Madre</option>
+                                <option value="Tíos">Tíos</option>
+                                <option value="Esposo(a)">Esposo(a)</option>
+                                <option value="Esposo(a)">Abuelos</option>
+                                <option value="Esposo(a)">Amigos</option>
+                              </select>
+                              <span class="custom-placeholder form-control-lg" ng-show="s.iLiveWith.lenght > 0">Vivo con</span>
+                            </p>
+
+                            <h5>Actividad</h5>
+                            <h4>Mi actividad principal</h4>
+
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.mainActivity">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Actividad {{model.mainActivity.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteMainActivity($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Mi actividad principal" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Estudias">Estudias</option>
+                                      <option value="Trabajas">Trabajas</option>
+                                      <option value="Ni estudias ni trabajas">Ni estudias ni trabajas</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.mainActivity.lenght > 0">Mi actividad principal</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addMainActivity();">
+                              <span class="icomoon icon-plus"></span>Agregar actividad...
+                            </button>
+
+                            <h5>Actualmente estudio</h5>
+                            <h4>Nivel</h4>
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Nivel" ng-model="s.level" />
+                            <p class="form-group-control custom-placeholder-wrapper">
+                              <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.level" ng-init="form.type='Nivel'">
+                                <option value="Primaria">Primaria</option>
+                                <option value="Secundaria">Secundaria</option>
+                                <option value="Preparatoria">Preparatoria</option>
+                                <option value="Universidad">Universidad</option>
+                              </select>
+                              <span class="custom-placeholder form-control-lg" ng-show="s.level.lenght > 0">Nivel</span>
+                            </p>
+
+                            <h4>Grado</h4>
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Grado" ng-model="s.grade" />
+                            <p class="form-group-control custom-placeholder-wrapper">
+                              <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.grade" ng-init="form.type='Grado'">
+                                <option value="1er">1er</option>
+                                <option value="2do">2do</option>
+                                <option value="3ro">3ro</option>
+                                <option value="4to">4to</option>
+                                <option value="5to">5to</option>
+                                <option value="6to">6to</option>
+                              </select>
+                              <span class="custom-placeholder form-control-lg" ng-show="s.grade.lenght > 0">Grado</span>
+                            </p>
+
+                            <h4>Periodo</h4>
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Periodo" ng-model="s.period" />
+                            <p class="form-group-control custom-placeholder-wrapper">
+                              <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.period" ng-init="form.type='Periodo'">
+                                <option value="Año">Año</option>
+                                <option value="Semestre">Semestre</option>
+                                <option value="Cuatrimestre">Cuatrimestre</option>
+                                <option value="Trimestre">Trimestre</option>
+                                <option value="Bimestre">Bimestre</option>
+                              </select>
+                              <span class="custom-placeholder form-control-lg" ng-show="s.period.lenght > 0">Periodo</span>
+                            </p>
+
+                            <div class="page-number">
+                              <p class="text-center">
+                                <span>1</span>
+                                <span>/</span>
+                                <span>2</span>
+                              </p>
+                            </div>
+
+                            <div class="actions">
+                              <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(9)">Continuar</button>
+                              <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                            </div>
+
+                          </section>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <ul class="list-group separate-items">
+                      <li class="list-group-item" ng-click="navigateToPage(10)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Uso tecnología</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="page" ng-class="currentPage == 9 ? 'active' : ''">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(2)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi información</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(5)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi personalidad</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <div class="panel panel-default panel-form">
+
+                        <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
+                          <span class="icomoon icon-arrow-slim-left"></span>
+                          <span class="icomoon icon-information"></span>
+                          <h3 class="panel-title">Socioeconómicos</h3>
+                        </div>
+
+                        <div class="panel-body">
+                          <fieldset class="my-profile-form">
+                            <section>
+                              <h5>Familiar</h5>
+                              <h4>Tengo hijos</h4>
+                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Familiar" ng-model="s.children" />
+                              <p class="form-group-control custom-placeholder-wrapper">
+                                <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.children" ng-init="form.type='Familiar'">
+                                  <option value="Si">Si</option>
+                                  <option value="No">No</option>
+                                </select>
+                                <span class="custom-placeholder form-control-lg" ng-show="s.children.lenght > 0">Familiar</span>
+                              </p>
+
+                              <h5>Ingresos</h5>
+                              <h4>Recibo ingresos?</h4>
+                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Recibo ingresos?" ng-model="s.moneyIncome"
+                              />
+                              <p class="form-group-control custom-placeholder-wrapper">
+                                <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.moneyIncome" ng-init="form.type='Recibo ingresos?'">
+                                  <option value="Si">Si</option>
+                                  <option value="No">No</option>
+                                </select>
+                                <span class="custom-placeholder form-control-lg" ng-show="s.moneyIncome.lenght > 0">Recibo ingresos?</span>
+                              </p>
+
+                              <h4>Fuente de ingresos</h4>
+                              <ul class="block-list">
+                                <li ng-repeat="s in model.moneyIncome">
+                                  <div class="form-group theme-form">
+                                    <h5>
+                                      <span>Ingreso {{model.moneyIncome.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteMoneyIncome($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Fuente de ingresos" ng-model="s" />
+                                    <p class="form-group-control custom-placeholder-wrapper">
+                                      <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                        <option value="Padres">Padres</option>
+                                        <option value="Trabajo">Trabajo</option>
+                                        <option value="Ni estudias ni trabajas">Ni estudias ni trabajas</option>
+                                      </select>
+                                      <span class="custom-placeholder form-control-lg" ng-show="s.moneyIncome.lenght > 0">Fuente de ingresos</span>
+                                    </p>
+                                  </div>
+                                </li>
+                              </ul>
+                              <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addMoneyIncome();">
+                                <span class="icomoon icon-plus"></span>Agregar ingreso...
+                              </button>
+
+                              <h5>Salud</h5>
+                              <h4>Cuento con seguro médico</h4>
+                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Cuento con seguro médico" ng-model="s.medicalCoverage"
+                              />
+                              <p class="form-group-control custom-placeholder-wrapper">
+                                <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.medicalCoverage" ng-init="form.type='Cuento con seguro médico'">
+                                  <option value="Si">Si</option>
+                                  <option value="No">No</option>
+                                </select>
+                                <span class="custom-placeholder form-control-lg" ng-show="s.medicalCoverage.lenght > 0">Cuento con seguro médico</span>
+                              </p>
+
+                              <h5>Salud</h5>
+                              <h4>Mi seguro es</h4>
+                              <input type="text" class="form-control form-control-lg theme-form" placeholder="Mi seguro es" ng-model="s.medicalInsurance"
+                              />
+                              <p class="form-group-control custom-placeholder-wrapper">
+                                <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.medicalInsurance" ng-init="form.type='Mi seguro es'">
+                                  <option value="IMSS">IMSS</option>
+                                  <option value="Privado">Privado</option>
+                                  <option value="Seguro Popular">Seguro Popular</option>
+                                </select>
+                                <span class="custom-placeholder form-control-lg" ng-show="s.medicalInsurance.lenght > 0">Mi seguro es</span>
+                              </p>
+
+                              <div class="page-number">
+                                <p class="text-center">
+                                  <span>2</span>
+                                  <span>/</span>
+                                  <span>2</span>
+                                </p>
+                              </div>
+
+                              <div class="button-group">
+                                <button type="button" ng-disabled="isRegistered" class="btn btn-primary btn-lg" ng-click="navigateToPage(8)">
+                                  <span class="icomoon icon-arrow-slim-left"></span>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(1)">Continuar</button>
+                                <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                              </div>
+
+                            </section>
+                          </fieldset>
+                        </div>
+                      </div>
+                      <ul class="list-group separate-items">
+                        <li class="list-group-item" ng-click="navigateToPage(10)">
+                          <a href="">
+                            <span class="icomoon icon-badge"></span>
+                            <span>Uso tecnología</span>
+                            <span class="icomoon icon-star"></span>
+                            <span class="icomoon icon-arrow-slim-right"></span>
+                          </a>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="page" ng-class="currentPage == 10 ? 'active' : ''">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(2)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi información</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(5)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi personalidad</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(8)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Socioeconómicos</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="panel panel-default panel-form">
+                    <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
+                      <span class="icomoon icon-arrow-slim-left"></span>
+                      <span class="icomoon icon-information"></span>
+                      <h3 class="panel-title">Uso Tecnología</h3>
+                    </div>
+                    <div class="panel-body">
+                      <fieldset class="my-profile-form">
+                        <section>
+                          <h5>Dispositivos</h5>
+                          <h4>¿Qué dispositivo sabes usar?</h4>
+                          <ul class="block-list">
+                            <li ng-repeat="s in model.knownDevices">
+                              <div class="form-group theme-form">
+                                <h5>
+                                    <span>Dispositivo {{model.knownDevices.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteKnownDevice($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                <input type="text" class="form-control form-control-lg theme-form" placeholder="Dispositivos" ng-model="s" />
+                                <p class="form-group-control custom-placeholder-wrapper">
+                                  <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                    <option value="Laptop">Laptop</option>
+                                    <option value="Tableta">Tableta</option>
+                                    <option value="Celular">Celular</option>
+                                    <option value="Computadora">Computadora</option>
+                                  </select>
+                                  <span class="custom-placeholder form-control-lg" ng-show="s.knownDevices.lenght > 0">Dispositivos</span>
+                                </p>
+                              </div>
+                            </li>
+                          </ul>
+                          <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addKnownDevice();">
+                            <span class="icomoon icon-plus"></span>Agregar dispositivo...
+                          </button>
+
+                          <h4>¿Con qué dispositivos móviles cuentas?</h4>
+                          <ul class="block-list">
+                            <li ng-repeat="s in model.ownDevices">
+                              <div class="form-group theme-form">
+                                <h5>
+                                    <span>Dispositivo {{model.ownDevices.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteOwnDevice($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                <input type="text" class="form-control form-control-lg theme-form" placeholder="Dispositivos" ng-model="s" />
+                                <p class="form-group-control custom-placeholder-wrapper">
+                                  <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                    <option value="Laptop">Laptop</option>
+                                    <option value="Tableta">Tableta</option>
+                                    <option value="Celular">Celular</option>
+                                    <option value="Computadora">Computadora</option>
+                                  </select>
+                                  <span class="custom-placeholder form-control-lg" ng-show="s.ownDevices.lenght > 0">Dispositivos</span>
+                                </p>
+                              </div>
+                            </li>
+                          </ul>
+                          <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addKnOwnDevice();">
+                            <span class="icomoon icon-plus"></span>Agregar dispositivo...
+                          </button>
+
+                          <h4>¿Qué es lo que más haces con un celular?</h4>
+                          <ul class="block-list">
+                            <li ng-repeat="s in model.phoneUsage">
+                              <div class="form-group theme-form">
+                                <h5>
+                                    <span>Actividad {{model.phoneUsage.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deletePhoneUsage($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                <input type="text" class="form-control form-control-lg theme-form" placeholder="Actividad" ng-model="s" />
+                                <p class="form-group-control custom-placeholder-wrapper">
+                                  <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                    <option value="Hacer llamadas">Hacer llamadas</option>
+                                    <option value="Mensajes">Mensajes</option>
+                                    <option value="Música">Música</option>
+                                    <option value="Videos">Videos</option>
+                                    <option value="Fotos">Fotos</option>
+                                    <option value="Descargas">Descargas</option>
+                                    <option value="Investigación">Investigación</option>
+                                    <option value="Juegos">Juegos</option>
+                                    <option value="LapRedes socialestop">Redes sociales</option>
+                                    <option value="Tomar selfies">Tomar selfies</option>
+                                    <option value="Grabar videos">Grabar videos</option>
+                                  </select>
+                                  <span class="custom-placeholder form-control-lg" ng-show="s.phoneUsage.lenght > 0">Actividad</span>
+                                </p>
+                              </div>
+                            </li>
+                          </ul>
+                          <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addPhoneUsage();">
+                            <span class="icomoon icon-plus"></span>Agregar dispositivo...
+                          </button>
+
+
+
+
+                          <div class="page-number">
+                            <p class="text-center">
+                              <span>1</span>
                               <span>/</span>
                               <span>2</span>
                             </p>
                           </div>
 
                           <div class="actions">
-                            <!-- 
-                            <div class="button-group">
-                              <button type="button" class="btn btn-primary btn-lg">
-                                <span class="icomoon icon-arrow-slim-left"></span>
-                              </button>                      
-                              <button type="button" class="btn btn-primary btn-lg" ng-click="save();">Guardar</button> 
-                            </div>
-                            -->
-                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(2);">
-                              <span class="icomoon icon-arrow-slim-left"></span> Regresar
-                            </button>
+                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(11)">Continuar</button>
                             <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
                           </div>
 
+                        </section>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="page" ng-class="currentPage == 11 ? 'active' : ''">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <ul class="list-group separate-items">
+
+                      <li class="list-group-item" ng-click="navigateToPage(2)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi información</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(5)">
+                        <a href="">
+                          <span class="icomoon icon-document"></span>
+                          <span>Mi personalidad</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+
+                      <li class="list-group-item" ng-click="navigateToPage(8)">
+                        <a href="">
+                          <span class="icomoon icon-badge"></span>
+                          <span>Socioeconómicos</span>
+                          <span class="icomoon icon-star"></span>
+                          <span class="icomoon icon-arrow-slim-right"></span>
+                        </a>
+                      </li>
+                    </ul>
+
+                    <div class="panel panel-default panel-form">
+                      <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
+                        <span class="icomoon icon-arrow-slim-left"></span>
+                        <span class="icomoon icon-information"></span>
+                        <h3 class="panel-title">Uso Tecnología</h3>
+                      </div>
+                      <div class="panel-body">
+                        <fieldset class="my-profile-form">
+                          <section>
+                            <h5>Videojuegos</h5>
+                            <h4>¿Juegas videojuegos?</h4>
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="¿Juegas videojuegos?" ng-model="s.playVideogames"
+                            />
+                            <p class="form-group-control custom-placeholder-wrapper">
+                              <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.playVideogames" ng-init="form.type='¿Juegas videojuegos?'">
+                                <option value="Si">Si</option>
+                                <option value="No">No</option>
+                              </select>
+                              <span class="custom-placeholder form-control-lg" ng-show="s.playVideogames.lenght > 0">¿Juegas videojuegos?</span>
+                            </p>
+
+                            <h4>¿Con qué frecuencia juegas videojuegos?</h4>
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="¿Con qué frecuencia juegas videojuegos?"
+                            ng-model="s.videoGamesFrecuency" />
+                            <p class="form-group-control custom-placeholder-wrapper">
+                              <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.videoGamesFrecuency" ng-init="form.type='¿Con qué frecuencia juegas videojuegos?'">
+                                <option value="Diario">Diario</option>
+                                <option value="3 veces a la semana">3 veces a la semana</option>
+                                <option value="1 vez a la semana">1 vez a la semana</option>
+                                <option value="1 o 2 veces al mes">1 o 2 veces al mes</option>
+                                <option value="Nunca">Nunca</option>
+                              </select>
+                              <span class="custom-placeholder form-control-lg" ng-show="s.videoGamesFrecuency.lenght > 0">¿Con qué frecuencia juegas videojuegos?</span>
+                            </p>
+
+                            <h4>¿Qué tipo de videojuegos te gustan más?</h4>
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.kindOfVideoGames">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Videojuejo {{model.kindOfVideoGames.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteKindOfVideoGame($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Videojuego" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Acción">Acción</option>
+                                      <option value="Deportes">Deportes</option>
+                                      <option value="Violencia">Violencia</option>
+                                      <option value="Aventura">Aventura</option>
+                                      <option value="Estrategia">Estrategia</option>
+                                      <option value="Educativos">Educativos</option>
+                                      <option value="Peleas">Peleas</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.phoneUsage.lenght > 0">Videojuego</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addKindOfVideoGame();">
+                              <span class="icomoon icon-plus"></span>Agregar videojuego...
+                            </button>
+
+                            <h4>¿Cuáles son tus juegos favoritos?</h4>
+                            <ul class="block-list">
+                              <li ng-repeat="s in model.favoriteGames">
+                                <div class="form-group theme-form">
+                                  <h5>
+                                    <span>Juego {{model.favoriteGames.indexOf(s) + 1}}</span>
+                                    <button class="btn btn-circle" ng-click="deleteFavoriteGame($index);">
+                                      <span class="icomoon icon-cross"></span>
+                                    </button>
+                                  </h5>
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Juego" ng-model="s" />
+                                  <p class="form-group-control custom-placeholder-wrapper">
+                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
+                                      <option value="Hacer llamadas">None</option>
+                                    </select>
+                                    <span class="custom-placeholder form-control-lg" ng-show="s.favoriteGames.lenght > 0">Juego</span>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFavoriteGame();">
+                              <span class="icomoon icon-plus"></span>Agregar juego...
+                            </button>
+
+                            <div class="page-number">
+                              <p class="text-center">
+                                <span>2</span>
+                                <span>/</span>
+                                <span>2</span>
+                              </p>
+                            </div>
+
+                            <div class="button-group">
+                              <button type="button" ng-disabled="isRegistered" class="btn btn-primary btn-lg" ng-click="navigateToPage(10)">
+                                <span class="icomoon icon-arrow-slim-left"></span>
+                              </button>
+                              <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(1)">Continuar</button>
+                              <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                            </div>
+
+                          </section>
                         </fieldset>
                       </div>
                     </div>
