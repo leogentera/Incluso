@@ -11,7 +11,7 @@ app.controller('menuController', [
 	'$rootScope',
 	'$scope',
 	'$location', 
-	function($rootScope, $scope, $location, $http){
+	function($rootScope, $scope, $location){
 
 		$(".accsub").unbind("click");
 		$(".accsub").bind("click",function(e){
