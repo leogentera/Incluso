@@ -36,6 +36,8 @@ angular
             $scope.recoveredPassword = false;
             $scope.readOnly = false;
             $scope.PreloaderModalInstance = null;
+            $rootScope.showToolbar = false;
+            $rootScope.showFooter = false;
 
             /* Watchers */
             $scope.$watch("recoverPasswordModel.confirmPassword", function(newValue, oldValue){

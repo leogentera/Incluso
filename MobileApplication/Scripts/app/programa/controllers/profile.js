@@ -14,7 +14,11 @@ angular
             _httpFactory = $http;
             
             $scope.currentPage = 1;
-            $scope.model = getDataAsync();            
+            $scope.model = getDataAsync(); 
+            $rootScope.pageName = "Mi perfil"
+            $rootScope.navbarBlue = false;
+            $rootScope.showToolbar = true;
+            $rootScope.showFooter = true;           
             function getDataAsync(){
 
                 var m = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));

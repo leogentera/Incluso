@@ -84,7 +84,7 @@
 
         $routeProvider.when('/Tutorial', {
             templateUrl: 'Templates/Programa/Tutorial.html',
-            controller: 'programaTutorialController'
+            controller: 'programaTutorialController'            
         });
 
         $routeProvider.when('/Juegos/Avatar', {
