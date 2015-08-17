@@ -19,4 +19,36 @@ class MoodleLeader
         $this->progress = (!empty($data['percentage_completed'])) ? $data['percentage_completed'] : 0;
         
     }
+
+    public function getUserId(){
+        return $this->userId;
+    }
+
+    public function getRank(){
+        return $this->rank;
+    }
+
+    public function getFullname(){
+        return $this->fullname;
+    }
+
+    public function getProgress(){
+        return $this->progress;
+    }
+
+    public function getStars(){
+        return $this->stars();
+    }
+
+    public function __toString(){
+        $returnString = "{";
+        $returnString.= '"userId":'.$this->getUserId().",";
+        $returnString.= '"rank":'.$this->getRank().",";
+        $returnString.= '"fullname":"'.$this->getFullname().'",';
+        $returnString.= '"progress":'.$this->getProgress().",";
+        $returnString.= '"stars":'.$this->getStars();
+        $returnString.= "}";
+
+        return $returnString;
+    }
 }
