@@ -75,8 +75,11 @@ angular
             $scope.login = function (username, password) {
 
                 console.log('login in');
+                var isValid = validateModel();
 
-                if (validateModel()) {
+                if (isValid) {
+
+                    console.log('no local errors'); //- debug
 
                     // reflect loading state at UI
                     $scope.openProcessingActionModal();
@@ -197,7 +200,7 @@ angular
             function validateModel() {
                 var errors = [];
 
-                if (!$scope.loginForm.username.$valid) { errors.push("formato de usuario incorrecto."); }
+                if (!$scope.loginForm.userName.$valid) { errors.push("formato de usuario incorrecto."); }
                 if (!$scope.loginForm.password.$valid) { errors.push("formato de contraseña incorrecto."); }
 
                 $scope.userCredentialsModel.modelState.errorMessages = errors;
