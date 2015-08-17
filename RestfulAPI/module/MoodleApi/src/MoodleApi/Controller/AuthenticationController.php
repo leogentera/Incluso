@@ -302,8 +302,8 @@ private function forgotPassword($data)
     	if ($isFirstTime){
     		$passwordRecoveryFirstTryDate=round(microtime(true) * 1000);
     	}
-//     	elseif($passwordRecoveryFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
-    		elseif($passwordRecoveryFirstTryDate +60000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+     	elseif($passwordRecoveryFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+//    		elseif($passwordRecoveryFirstTryDate +60000 < round(microtime(true) * 1000)){ //If 4 hours had passed
     	
     		$passwordRecoveryFirstTryDate=round(microtime(true) * 1000); //we reset the code
     		$tries= 1;
@@ -312,8 +312,8 @@ private function forgotPassword($data)
     	
     	
     	if ($tries==3){
-//     		$passwordRecoveryExpiration=round(microtime(true) * 1000)+3600000 ;
-    		$passwordRecoveryExpiration=round(microtime(true) * 1000)+60000 ;
+     		$passwordRecoveryExpiration=round(microtime(true) * 1000)+3600000 ;
+//    		$passwordRecoveryExpiration=round(microtime(true) * 1000)+60000 ;
     		$tries='0';
     		$passwordRecoveryFirstTryDate='';
     		$this->sendMailToAdmins($email);

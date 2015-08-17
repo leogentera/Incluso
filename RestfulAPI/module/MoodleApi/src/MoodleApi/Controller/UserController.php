@@ -562,6 +562,8 @@ class UserController extends AbstractRestfulJsonController{
         
         $url.=$this->createURLParms($data, '&users[0][customfields][62][type]=%s&users[0][customfields][62][value]=%s', 'gender' );
         
+        $url.=$this->createURLParms($data, '&users[0][customfields][63][type]=%s&users[0][customfields][63][value]=%s', 'birthday' );
+        
         $response = file_get_contents($url);
     
     	

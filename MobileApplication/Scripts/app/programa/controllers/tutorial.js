@@ -74,10 +74,10 @@ angular
 
             }
             
-              $scope.playVideo = function(){                 
-                 var videoAddress = "assets/media";
-                 var videoName = "TutorialTest2.mp4";
-                cordova.exec(Success, Failure, "CallToAndroid", "PlayLocalVideo", [videoAddress,videoName]);
+              $scope.playVideo = function(videoAddress, videoName){                 
+                 //var videoAddress = "assets/media";
+                 //var videoName = "TutorialTest2.mp4";
+                playVideo(videoAddress, videoName);
             };
             
             $scope.avatar = function(){
@@ -111,13 +111,6 @@ angular
 
             };
             
-              function Success() {
-                
-            }
-            
-            function Failure() {
-                
-            }
             
             function SuccessAvatar(data) {
                     $scope.avatarInfo = [{
