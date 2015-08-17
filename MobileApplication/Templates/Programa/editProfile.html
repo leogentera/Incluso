@@ -23,8 +23,7 @@
         </div>
         <div>
           <div class="profile-data">
-            <h4 class="user-name" ng-bind="model.alias"></h4>
-            <!-- <h4 class="user-name">leonardo garza r.</h4> -->
+            <h4 class="user-name" ng-bind="model.alias"></h4>            
             <p class="user-points">
               <span ng-bind="model.stars"></span>
               <span class="icomoon icon-star"></span>
@@ -131,7 +130,7 @@
                             <h5>Datos generales</h5>
                             <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname" required/>
 
-                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName"
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName"
                             required />
                             <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.mothername"
                             required />
@@ -148,21 +147,21 @@
                               <select ng-model="model.birthCountry" ng-options="item for item in countryItems" ng-init="model.birthCountry == null" class="form-control form-control-lg theme-form">
                                 <option value="" ng-disabled="!!model.birthCountry">País de nacimiento</option>
                               </select>
-                            </p>-->
+                            </p>
 
                             <!--birthday: {{model.birthday}}-->
-                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="model.birthday"
-                            required />-->
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="model.birthday"
+                            required />
                             <!--<input type="date" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento 2" ng-model="model.birthday" />-->
 
-                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Edad" ng-model="model.age" readonly/>
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Edad" ng-model="model.age" readonly/>
 
                             <p class="form-group">
                               <select ng-model="model.maritalStatus" ng-options="item for item in maritalStatusItems" ng-init="model.maritalStatus == null"
                               class="form-control form-control-lg theme-form">
                                 <option value="" ng-disabled="!!model.maritalStatus">Estado civil</option>
                               </select>
-                            </p>-->
+                            </p>
                           </section>
 
                           <section>
