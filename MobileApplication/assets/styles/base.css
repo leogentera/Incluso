@@ -385,9 +385,12 @@ body.modal-open {
   display: none;
   padding: 6vw 0 6vw 6vw;
 }
+.incluso-app #site-menu .nav > li .submenu li {
+  margin: 1vh 0px;
+}
 .incluso-app #site-menu .nav > li .submenu li:first-child {
   color: #39a6dd;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 .incluso-app #site-menu .nav > li .submenu a {
   color: white;
@@ -395,7 +398,7 @@ body.modal-open {
 }
 .incluso-app #site-menu .nav > li .submenu ul {
   list-style: none;
-  padding: 4vw 0;
+  padding: 3vw 0;
 }
 .incluso-app .btn {
   border: none;
@@ -1577,6 +1580,23 @@ body.modal-open {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: contain;
+}
+.incluso-app .footer::before {
+  position: absolute;
+  width: 100vw;
+  height: 26vh;
+  content: " ";
+  background-image: url('../images/img-footer-texture-lg.png');
+  background-color: transparent;
+  box-shadow: unset;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.incluso-app .footer.db-bg {
+  background-image: url("../images/bg-footer-rocks.png");
+  background-position: 50% 0;
+  box-shadow: unset;
 }
 .incluso-app .form label {
   cursor: pointer;

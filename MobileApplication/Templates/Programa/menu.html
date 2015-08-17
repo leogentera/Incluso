@@ -17,6 +17,7 @@
                   </nav>
                   <ul class="nav" ng-controller="menuController">
                     <li><a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-home"></i> Inicio</a></li>
+                    <li><a ng-click="navigateTo('AcercaPrograma', 'Acerca del Programa', 'sideToggle', 'navbarorange')"><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
                     <li><a ng-click="navigateTo('Tutorial','Guia de Uso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
                     <li>
                         <i class="icomoon icon-arrow fl-right white pointer" ></i>
@@ -30,33 +31,42 @@
                         </a>
                         <div class="submenu" id="sub0">
                             <ul>
-                                <li>DESCUBRE MÁS</li>
-                                <li><a ng-href="./Templates/Programa/etapa-1.shtml"> Descubre más</a></li>
+                              <li>Cuarto de recursos</li>
+                              <li><a ng-click="navigateTo('etapa-1','Estacion: Conocete', 'sideToggle', 'navbarblue')">Fuente de energía</a></li>
                             </ul>
                             <ul>
-                                <li>AUTOCONOCIMIENTO</li>
-                                <li><a ng-href="./Templates/Programa/etapa-1.shtml"> Descubre más</a></li>
-                                <li><a> Inteligencias múltiples</a></li>
-                                <li><a  ng-href="./Templates/Programa/forocom.shtml"> Foro común</a></li>
+                                <li>Conócete</li>
+                                <li><a ng-click="navigateTo('etapa-1.shtml','Estacion: Conocete', 'sideToggle', 'navbarblue')">Fuente de energía</a></li>
+                                <li><a ng-click="navigateTo('juego.shtml','Reto múltiple', 'sideToggle', 'navbarorange')">Reto múltiple </a></li>
+                                <li><a ng-click="navigateTo('foro.html','Punto de encuentro', 'sideToggle', 'navbarorange')">Punto de encuentro </a></li>
+                                <li><a ng-click="navigateTo('foro.html','Zona de contacto', 'sideToggle', 'navbarorange')">Zona de contacto</a></li>
+                            </ul>
+                            
+                            <ul>
+                                <li>Mis sueños </li>
+                                <li><a ng-click="navigateTo('etapa-1.shtml','Estacion: Conocete', 'sideToggle', 'navbarblue')">Fuente de energía</a></li>
+                                <li><a ng-click="navigateTo('gustypref.shtml','Mis gustos', 'sideToggle', 'navbarorange')">Mis gustos</a></li>
+                                <li><a ng-click="navigateTo('cuaytal.shtml','Mis cualidades', 'sideToggle', 'navbarorange')">Mis Cualidades</a></li>
+                                <li><a ng-click="navigateTo('cuaytal.shtml','Sueña', 'sideToggle', 'navbarorange')">Sueña</a></li>
+                                <li><a ng-click="navigateTo('foro.html','Punto de encuentro', 'sideToggle', 'navbarorange')">Punto de encuentro </a></li>
                             </ul>
                             <ul>
-                                <li>MIS SUEÑOS</li>
-                                <li><a ng-href="./Templates/Programa/etapa-1.shtml"> Descubre más</a></li>
-                                <li><a ng-href="./Templates/Programa/cuaytal.shtml"> Mis Cualidades</a></li>
-                                <li><a ng-href="./Templates/Programa/gustypref.shtml"> Mis Gustos</a></li>
-                                <li><a  ng-href="#/Forcomwall"> Foro común</a></li>
+                                <li>Cabina de soporte</li>
+                                <li><a ng-click="navigateTo('juego.shtml','Reto múltiple', 'sideToggle', 'navbarorange')">Chat</a></li>
+                                
+                                <!--<li><a  ng-href="./Templates/Programa/forocom.shtml"> Foro común</a></li>-->
                             </ul>
                         </div>
                     </li>
-                    <li><a class="menu-green" ng-href="#"><i class="icomoon icon-asterodis"></i>Zona de Navegación</a></li>
-                    <li><a class="menu-pink" ng-href="#"><i class="icomoon icon-planet"></i>Zona de Aterrizaje</a></li>
-                    <li><a ng-click="navigateTo('AcercaPrograma', 'Acerca del Programa', 'sideToggle', 'navbarorange')"><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
+                    <li class="hidden"><a class="menu-green" ng-href="#"><i class="icomoon icon-asterodis"></i>Zona de Navegación</a></li>
+                    <li class="hidden"><a class="menu-pink" ng-href="#"><i class="icomoon icon-planet"></i>Zona de Aterrizaje</a></li>                    
                     <li><a><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
-                    <li><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
-                    <li><a><i class="icomoon icon-document"></i> Certificación</a></li>
-                    <li><a><i class="icomoon icon-racing-flag "></i> Recuerdos Incluso</a></li>
-                    <li><a><i class="icomoon icon-lifesaver"></i> Preguntas frecuentes</a></li>
+                    <li class="hidden"><a><i class="icomoon icon-racing-flag "></i> Recuerdos Incluso</a></li>
+                    <li class="hidden"><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
+                    <li class="hidden"><a><i class="icomoon icon-document"></i> Certificación</a></li>                    
+                    <li class="hidden"><a><i class="icomoon icon-lifesaver"></i> Preguntas frecuentes</a></li>
                     <li><a><i class="icomoon icon-notes"></i> Aviso de privacidad</a></li>
+                    <li><a><i class="icomoon icon-notes"></i> Condiciones de uso</a></li>
                     <li><a ng-click="logout()"><i class="glyphicon glyphicon-off"></i> Salir</a></li>                    
                   </ul>
                 </div>

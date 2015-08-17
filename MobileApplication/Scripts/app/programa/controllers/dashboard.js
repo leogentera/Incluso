@@ -35,6 +35,7 @@
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true; 
+            $rootScope.showFooterRocks = true; 
 
             try {
                 if(moodleFactory.Services.GetCacheObject("stage")){
