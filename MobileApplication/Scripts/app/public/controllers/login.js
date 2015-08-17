@@ -15,7 +15,7 @@ angular
 
             _httpFactory = $http;
             $scope.PreloaderModalInstance = null;
-            
+                        
             $rootScope.showFooter = false;
             $rootScope.hideFooter = true;
 
@@ -75,8 +75,7 @@ angular
                 }
             }
 
-            $scope.login = function (username, password) {
-
+            $scope.login = function (username, password) {                
                 console.log('login in');
 
                 if (validateModel()) {
