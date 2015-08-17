@@ -205,7 +205,7 @@ angular
                 dpValue = moment(datePickerValue).format("MM/DD/YYYY");
                 var age = calculate_age();
                 
-                var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número";
+                var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número.";
                 
                 if(!$scope.registerForm.password.$valid){
                     errors.push("Formato de contraseña incorrecto. La contraseña " + passwordPolicy);
