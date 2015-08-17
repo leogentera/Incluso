@@ -30,11 +30,11 @@
             console.log('loading currentStage');
             $scope.currentStage = JSON.parse(moodleFactory.Services.GetCacheObject("currentStage"));
             console.log('loading stage');
-            //$(".navbar-absolute-top").show();            
-            //$("footer").show();
+
+            $rootScope.pageName = "Mision incluso"
+            $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
-            $rootScope.showFooter = true;
-            $rootScope.hideFooter = false;
+            $rootScope.showFooter = true; 
 
             try {
                 if(moodleFactory.Services.GetCacheObject("stage")){

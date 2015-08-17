@@ -23,8 +23,7 @@
         </div>
         <div>
           <div class="profile-data">
-            <h4 class="user-name" ng-bind="model.alias"></h4>
-            <!-- <h4 class="user-name">leonardo garza r.</h4> -->
+            <h4 class="user-name" ng-bind="model.alias"></h4>            
             <p class="user-points">
               <span ng-bind="model.stars"></span>
               <span class="icomoon icon-star"></span>
@@ -131,7 +130,7 @@
                             <h5>Datos generales</h5>
                             <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname" required/>
 
-                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName"
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastName"
                             required />
                             <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.mothername"
                             required />
@@ -148,21 +147,21 @@
                               <select ng-model="model.birthCountry" ng-options="item for item in countryItems" ng-init="model.birthCountry == null" class="form-control form-control-lg theme-form">
                                 <option value="" ng-disabled="!!model.birthCountry">País de nacimiento</option>
                               </select>
-                            </p>-->
+                            </p>
 
                             <!--birthday: {{model.birthday}}-->
-                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="model.birthday"
-                            required />-->
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="model.birthday"
+                            required />
                             <!--<input type="date" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento 2" ng-model="model.birthday" />-->
 
-                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Edad" ng-model="model.age" readonly/>
+                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Edad" ng-model="model.age" readonly/>
 
                             <p class="form-group">
                               <select ng-model="model.maritalStatus" ng-options="item for item in maritalStatusItems" ng-init="model.maritalStatus == null"
                               class="form-control form-control-lg theme-form">
                                 <option value="" ng-disabled="!!model.maritalStatus">Estado civil</option>
                               </select>
-                            </p>-->
+                            </p>
                           </section>
 
                           <section>
@@ -205,9 +204,6 @@
                             </button>
                           </section>
 
-
-
-
                           <!--Inicio Viejo-->
                           <!--<section>
                             <ul class="block-list">
@@ -242,7 +238,6 @@
                           </section>-->
                           <!--Fin Viejo-->
 
-
                           <div class="page-number">
                             <p class="text-center">
                               <span>1</span>
@@ -256,48 +251,13 @@
                             <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
                           </div>
 
-
                         </fieldset>
                       </div>
-                    </div>
-
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(5)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi personalidad</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(8)">
-                        <a href="">
-                          <span class="icomoon icon-required"></span>
-                          <span>Socioeconómicos</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(10)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Uso tecnología</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                    </div>                  
                   </div>
                 </div>
-
               </div>
             </div>
-
-
-
 
             <div class="page " ng-class="currentPage == 3 ? 'active' : ''">
               <div class="container-fluid">
@@ -514,40 +474,11 @@
                         </fieldset>
                       </div>
                     </div>
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(5)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi personalidad</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(8)">
-                        <a href="">
-                          <span class="icomoon icon-required"></span>
-                          <span>Socioeconómicos</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(10)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Uso tecnología</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                   
                   </div>
                 </div>
               </div>
             </div>
-
 
             <div class="page " ng-class="currentPage == 4 ? 'active' : ''">
               <div class="container-fluid">
@@ -610,58 +541,16 @@
                         </fieldset>
                       </div>
                     </div>
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(5)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi personalidad</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(8)">
-                        <a href="">
-                          <span class="icomoon icon-required"></span>
-                          <span>Socioeconómicos</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(10)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Uso tecnología</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                  
                   </div>
                 </div>
               </div>
             </div>
 
-
-
-
             <div class="page" ng-class="currentPage == 5 ? 'active' : ''">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="col-xs-12">
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(2)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi información</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                  <div class="col-xs-12">                   
 
                     <div class="panel panel-default panel-form">
                       <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
@@ -770,8 +659,6 @@
                               <span class="icomoon icon-plus"></span>Agregar hobbie...
                             </button>
 
-
-
                             <div class="page-number">
                               <p class="text-center">
                                 <span>1</span>
@@ -789,25 +676,7 @@
                         </fieldset>
                       </div>
                     </div>
-                    <ul class="list-group separate-items">
-                      <li class="list-group-item" ng-click="navigateToPage(8)">
-                        <a href="">
-                          <span class="icomoon icon-required"></span>
-                          <span>Socioeconómicos</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(10)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Uso tecnología</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                   
                   </div>
                 </div>
               </div>
@@ -818,17 +687,6 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-xs-12">
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(2)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi información</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
 
                     <div class="panel panel-default panel-form">
                       <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
@@ -960,25 +818,7 @@
                         </fieldset>
                       </div>
                     </div>
-                    <ul class="list-group separate-items">
-                      <li class="list-group-item" ng-click="navigateToPage(8)">
-                        <a href="">
-                          <span class="icomoon icon-required"></span>
-                          <span>Socioeconómicos</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(10)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Uso tecnología</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                   
                   </div>
                 </div>
               </div>
@@ -988,18 +828,7 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-xs-12">
-
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(2)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi información</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                  
                     <div class="panel panel-default panel-form">
                       <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
                         <span class="icomoon icon-arrow-slim-left"></span>
@@ -1054,25 +883,7 @@
                         </fieldset>
                       </div>
                     </div>
-                    <ul class="list-group separate-items">
-                      <li class="list-group-item" ng-click="navigateToPage(8)">
-                        <a href="">
-                          <span class="icomoon icon-required"></span>
-                          <span>Socioeconómicos</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(10)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Uso tecnología</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                   
                   </div>
                 </div>
               </div>
@@ -1081,38 +892,7 @@
             <div class="page" ng-class="currentPage == 8 ? 'active' : ''">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="col-xs-12">
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(2)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi información</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(5)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi personalidad</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(10)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Uso tecnología</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-
-                    </ul>
+                  <div class="col-xs-12">                   
 
                     <div class="panel panel-default panel-form">
 
@@ -1228,16 +1008,7 @@
                         </fieldset>
                       </div>
                     </div>
-                    <ul class="list-group separate-items">
-                      <li class="list-group-item" ng-click="navigateToPage(10)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Uso tecnología</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                  
                   </div>
                 </div>
               </div>
@@ -1247,25 +1018,6 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-xs-12">
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(2)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi información</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(5)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi personalidad</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
 
                       <div class="panel panel-default panel-form">
 
@@ -1372,16 +1124,6 @@
                           </fieldset>
                         </div>
                       </div>
-                      <ul class="list-group separate-items">
-                        <li class="list-group-item" ng-click="navigateToPage(10)">
-                          <a href="">
-                            <span class="icomoon icon-badge"></span>
-                            <span>Uso tecnología</span>
-                            <span class="icomoon icon-star"></span>
-                            <span class="icomoon icon-arrow-slim-right"></span>
-                          </a>
-                        </li>
-                      </ul>
                   </div>
                 </div>
               </div>
@@ -1391,35 +1133,7 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-xs-12">
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(2)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi información</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(5)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi personalidad</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(8)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Socioeconómicos</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
+                   
                   </div>
                   <div class="panel panel-default panel-form">
                     <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
@@ -1519,9 +1233,6 @@
                             <span class="icomoon icon-plus"></span>Agregar dispositivo...
                           </button>
 
-
-
-
                           <div class="page-number">
                             <p class="text-center">
                               <span>1</span>
@@ -1543,41 +1254,10 @@
               </div>
             </div>
 
-
             <div class="page" ng-class="currentPage == 11 ? 'active' : ''">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-xs-12">
-                    <ul class="list-group separate-items">
-
-                      <li class="list-group-item" ng-click="navigateToPage(2)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi información</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(5)">
-                        <a href="">
-                          <span class="icomoon icon-document"></span>
-                          <span>Mi personalidad</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-
-                      <li class="list-group-item" ng-click="navigateToPage(8)">
-                        <a href="">
-                          <span class="icomoon icon-badge"></span>
-                          <span>Socioeconómicos</span>
-                          <span class="icomoon icon-star"></span>
-                          <span class="icomoon icon-arrow-slim-right"></span>
-                        </a>
-                      </li>
-                    </ul>
-
                     <div class="panel panel-default panel-form">
                       <div class="panel-heading with-icons" ng-click="navigateToPage(1)">
                         <span class="icomoon icon-arrow-slim-left"></span>
@@ -1694,15 +1374,5 @@
         </form>
       </section>
     </article>
-    <footer>
-      <ul class="block-list">
-        <li><a href="" class="btn-link">Preguntas Frecuentes</a></li>
-        <li><a href="" class="btn-link">Ayuda y Soporte</a></li>
-      </ul>
-      <a class="btn-back-to-top" ng-click="scrollToTop();">
-        <span class="icomoon icon-double-arrow-up"></span>
-        <span>Subir</span>
-      </a>
-    </footer>
   </div>
 </div>

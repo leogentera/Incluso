@@ -53,11 +53,9 @@ function syncCacheData (){
 syncCacheData();
 var logout = function($http, $scope, $location){
     console.log("Logout function ");
-    //$rootScope.showToolbar = false;
     $scope.currentUser = JSON.parse(moodleFactory.Services.GetCacheObject("CurrentUser"));
-
-    if (!_IsOffline()){
-
+    
+    if(!_IsOffline()){
       $http(
         {
           method: 'POST',
@@ -69,11 +67,11 @@ var logout = function($http, $scope, $location){
                 action: "logout"})
         }
         ).success(function(data, status, headers, config) {
-            console.log('successfully logout');
+
+          console.log('successfully logout');
           }
         );
     }
-
       localStorage.removeItem("CurrentUser");
       localStorage.removeItem("profile");
       localStorage.removeItem("course");
@@ -81,5 +79,5 @@ var logout = function($http, $scope, $location){
       localStorage.removeItem("usercourse");
       localStorage.removeItem("currentStage");
       $location.path('/');
-};
+    };
 

@@ -50,6 +50,8 @@ angular
             var isConfirmedPasswordValid = false;
             $scope.currentPage = 1;
             $scope.isRegistered = false;
+            $rootScope.showToolbar = false;
+            $rootScope.showFooter = false;
 
             /* Watchers */
             $scope.$watch("registerModel.confirmPassword", function(newValue, oldValue){

@@ -10,6 +10,7 @@ app.controller('navController', function($scope){
 app.controller('menuController', [
 	'$rootScope',
 	'$scope',
+	'$http',
 	'$location', 
 	function($rootScope, $scope, $location, $http){
 

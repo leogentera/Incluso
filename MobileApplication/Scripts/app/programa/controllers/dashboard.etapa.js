@@ -13,7 +13,10 @@ angular
             _httpFactory = $http;
 
             $scope.Math = window.Math;
-
+            $rootScope.pageName = "Conocete"
+            $rootScope.navbarBlue = true;
+            $rootScope.showToolbar = true;
+            $rootScope.showFooter = true; 
             $scope.scrollToTop();
 
             function getDataAsync() {

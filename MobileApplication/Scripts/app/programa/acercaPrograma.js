@@ -1,6 +1,6 @@
-﻿angular
-    .module('incluso.programa.foro', [])
-    .controller('programaForoController', [
+angular
+    .module('incluso.programa.acercaPrograma', [])
+    .controller('programaAcercaProgramaController', [
         '$q',
         '$scope',
         '$location',
@@ -10,8 +10,10 @@
         '$http',
         '$modal',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
-            $rootScope.showToolbar = false;
-            $rootScope.showFooter = true;
+            $rootScope.pageName = "Mision incluso"
+            $rootScope.navbarBlue = false;
+            $rootScope.showToolbar = true;
+            $rootScope.showFooter = true;  
             $scope.back = function () {
                 $location.path('/ProgramaDashboard');
             }
