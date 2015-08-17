@@ -10,7 +10,6 @@ app.controller('navController', function($scope){
 app.controller('menuController', [
 	'$rootScope',
 	'$scope',
-	'$http',
 	'$location', 
 	function($rootScope, $scope, $location, $http){
 
@@ -22,9 +21,10 @@ app.controller('menuController', [
 			  $('#sub' + cual).toggle();
 
 		});	
+
         $scope.logout = function(){
         	$rootScope.sidebar = false;
-            logout($http, $scope, $location);
+            logout($scope, $location);
         }; 
 }]);
  

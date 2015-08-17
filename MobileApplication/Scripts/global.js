@@ -51,12 +51,12 @@ function syncCacheData (){
 }
 
 syncCacheData();
-var logout = function($http, $scope, $location){
+var logout = function($scope, $location){
     console.log("Logout function ");
     $scope.currentUser = JSON.parse(moodleFactory.Services.GetCacheObject("CurrentUser"));
     
     if(!_IsOffline()){
-      $http(
+      _httpFactory(
         {
           method: 'POST',
           url: API_RESOURCE.format("authentication"), 
