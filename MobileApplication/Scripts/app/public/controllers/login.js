@@ -197,8 +197,10 @@ angular
             function validateModel() {
                 var errors = [];
 
+                 var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número.";
+                
                 if (!$scope.loginForm.username.$valid) { errors.push("formato de usuario incorrecto."); }
-                if (!$scope.loginForm.password.$valid) { errors.push("formato de contraseña incorrecto."); }
+                if (!$scope.loginForm.password.$valid) { errors.push("formato de contraseña incorrecto. La contraseña " + passwordPolicy); }
 
                 $scope.userCredentialsModel.modelState.errorMessages = errors;
 
