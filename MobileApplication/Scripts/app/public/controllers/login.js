@@ -41,9 +41,6 @@ angular
                 $scope.userCredentialsModel.modelState.isValid = (newValue.length === 0);
             });
 
-            $rootScope.showToolbar = false;
-            $rootScope.showFooter = true;
-
             $scope.loadCredentials = function () {
 
                 var txtCredentials = localStorage.getItem("Credentials");
