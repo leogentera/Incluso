@@ -51,27 +51,27 @@ function syncCacheData (){
 }
 
 syncCacheData();
-var logout = function($http, $scope, $location){
+var logout = function($scope, $location){
     console.log("Logout function ");
     $scope.currentUser = JSON.parse(moodleFactory.Services.GetCacheObject("CurrentUser"));
-    
-    if(!_IsOffline()){
-      $http(
-        {
-          method: 'POST',
-          url: API_RESOURCE.format("authentication"), 
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          data: $.param(
-              { token: $scope.currentUser.token,
-                userid: $scope.currentUser.userId,
-                action: "logout"})
-        }
-        ).success(function(data, status, headers, config) {
-
-          console.log('successfully logout');
-          }
-        );
-    }
+      
+      //if(!_IsOffline()){
+      //  _httpFactory(
+      //    {
+      //      method: 'POST',
+      //      url: API_RESOURCE.format("authentication"), 
+      //      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      //      data: $.param(
+      //          { token: $scope.currentUser.token,
+      //            userid: $scope.currentUser.userId,
+      //            action: "logout"})
+      //    }
+      //    ).success(function(data, status, headers, config) {
+      //
+      //      console.log('successfully logout');
+      //      }
+      //    );
+      //}
       localStorage.removeItem("CurrentUser");
       localStorage.removeItem("profile");
       localStorage.removeItem("course");

@@ -10,9 +10,8 @@ app.controller('navController', function($scope){
 app.controller('menuController', [
 	'$rootScope',
 	'$scope',
-	'$http',
 	'$location', 
-	function($rootScope, $scope, $location, $http){
+	function($rootScope, $scope, $location){
 
 		$(".accsub").unbind("click");
 		$(".accsub").bind("click",function(e){
@@ -24,7 +23,7 @@ app.controller('menuController', [
 		});	
         $scope.logout = function(){
         	$rootScope.sidebar = false;
-            logout($http, $scope, $location);
+            logout( $scope, $location);
         }; 
 }]);
  
