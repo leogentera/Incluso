@@ -93,8 +93,7 @@ angular
                         $scope.successMessage = "Te hemos enviado un correo con un código para recuperar tu contraseña.";
                         $scope.scrollToTop();
 
-                    }).error(function(data, status, headers, config) {
-                        
+                    }).error(function(data, status, headers, config) {                                            
                         console.log('ERROR. code not recovered'); //- debug
                         $scope.PreloaderModalInstance.dismiss();
                         var errorMessage;

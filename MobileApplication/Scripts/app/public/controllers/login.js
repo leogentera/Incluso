@@ -15,9 +15,6 @@ angular
 
             _httpFactory = $http;
             $scope.PreloaderModalInstance = null;
-            $rootScope.showToolbar = false;
-            $rootScope.showFooter = false;            
-
             $scope.scrollToTop();
 
             /* ViewModel */
@@ -72,8 +69,7 @@ angular
                 }
             }
 
-            $scope.login = function (username, password) {
-
+            $scope.login = function (username, password) {                
                 console.log('login in');
 
                 if (validateModel()) {
@@ -124,8 +120,7 @@ angular
                                 localStorage.removeItem("Credentials");
                             }
 
-                        }).error(function (data, status, headers, config) {
-                            
+                        }).error(function (data, status, headers, config) {                            
                             $scope.PreloaderModalInstance.dismiss();
                             var errorMessage = window.atob(data.messageerror);                            
                             $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
@@ -140,12 +135,11 @@ angular
 
             $scope.loginWithFacebook = function () {
                 
-                //$location.path('/ProgramaDashboard');
-                debugger
-                var name = API_RESOURCE.format("")
-                name = name.substring(0, name.length - 1);                                
-                
+                //$location.path('/ProgramaDashboard');                
+                var name = API_RESOURCE.format("");
+                name = name.substring(0, name.length - 1);
                 cordova.exec(FacebookLoginSuccess, FacebookLoginFailure, "SayHelloPlugin", "connectWithFacebook", [name]);
+                
             }
             
             $scope.scrollToTop = function(){
@@ -153,6 +147,7 @@ angular
             }
 
             function FacebookLoginSuccess(data) {
+                alert(data);
                 console.log('successfully logged in ' + data);
                 
                 var userFacebook = JSON.parse(data);
@@ -186,10 +181,10 @@ angular
             }
 
             function FacebookLoginFailure(data) {
-                var errorMessage = window.atob(data.messageerror);//window.atob("Could not authenticate with facebook");
-                console.log('Could not authenticate with facebook ' + data);
-                
-                $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
+                var errorMessage = window.atob(data.messageerror);
+                $timeout(function () {                                                            
+                    $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
+                }, 1000);                
                 console.log(status + ": " + errorMessage);
                 $scope.scrollToTop();
             }

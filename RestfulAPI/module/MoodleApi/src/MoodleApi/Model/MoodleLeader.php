@@ -37,7 +37,7 @@ class MoodleLeader
     }
 
     public function getStars(){
-        return $this->stars();
+        return $this->stars;
     }
 
     public function __toString(){

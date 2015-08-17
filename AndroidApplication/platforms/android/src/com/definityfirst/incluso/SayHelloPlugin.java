@@ -82,7 +82,7 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
 							if (finalJsonObj!=null){
 								if (finalJsonObj.has("messageerror")){
 									//Toast.makeText(global.getMainActivity(), new String(Base64.decode(finalJsonObj.getString("messageerror"), Base64.DEFAULT)), Toast.LENGTH_LONG).show();
-                                    callbackContext.error(result);
+                                    callbackContext.error(new JSONObject(result));
 
                                      LoginManager.getInstance().logOut();
 								}
@@ -96,7 +96,7 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
 
 							}
             else{
-                callbackContext.error("{\"messageerror\":\""+ Base64.encodeToString("Ocurrio un error, no se puso registrar al sistema".getBytes(), Base64.DEFAULT)+"\"}");
+                callbackContext.error(new JSONObject("{\"messageerror\":\""+ Base64.encodeToString("Ocurrio un error, no se puso registrar al sistema".getBytes(), Base64.DEFAULT)+"\"}"));
             }
 
 
@@ -110,7 +110,7 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
 							if (finalJsonObj!=null){
 								if (finalJsonObj.has("messageerror")){
 									//Toast.makeText(global.getMainActivity(), new String(Base64.decode(finalJsonObj.getString("messageerror"), Base64.DEFAULT)), Toast.LENGTH_LONG).show();
-                                    callbackContext.error(result);
+									callbackContext.error(new JSONObject(result));
 									LoginManager.getInstance().logOut();
 								}
 								else{
@@ -122,7 +122,8 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
 
 							}
                 else{
-                                callbackContext.error("{\"messageerror\":\""+ Base64.encodeToString("Ocurrio un error, error al momento de ingresar".getBytes(), Base64.DEFAULT)+"\"}");
+
+                                callbackContext.error(new JSONObject("{\"messageerror\":\""+ Base64.encodeToString("Ocurrio un error, error al momento de ingresar".getBytes(), Base64.DEFAULT)+"\"}"));
                             }
 
 
@@ -133,7 +134,7 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
                 callbackContext.success(result);
             }
             else if (RequestCode==ERROR){
-                callbackContext.error(result);
+                callbackContext.error(new JSONObject(result));
             }
 		} catch (JSONException e) {
 			e.printStackTrace();

@@ -41,6 +41,7 @@ class AuthenticationController extends AbstractRestfulJsonController {
         }
 
     }
+    return new JsonModel();
 	
 }
 
@@ -51,6 +52,31 @@ public function replaceList($data){
 }
 
 private function authentication($data){
+	
+	$url = $this->getConfig()['MOODLE_API_URL'].'&field=username&values[0]=%s';
+	$url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $data['username']);
+	 
+	$response = file_get_contents($url);
+	$json_user = json_decode($response,true);
+	 
+	if (strpos($response, "exception") !== false || count($json_user)==0 )
+	{
+		return new JsonModel( $this->throwJSONError("Verifique el usuario", 401));
+	}
+	
+	
+	for($i=0;count($json_user[0]['customfields'])>$i;$i++){
+    			$customFields[$json_user[0]['customfields'][$i]['name']]=$json_user[0]['customfields'][$i]['value'];
+    }
+	
+	$authenticationExpiration='';
+	if (key_exists('authenticationExpiration', $customFields)){
+		$authenticationExpiration=$customFields['authenticationExpiration'];
+	}
+	 
+	if  ($authenticationExpiration!='' && $authenticationExpiration>round(microtime(true) * 1000)) {
+		return new JsonModel( $this->throwJSONError("Ha superado la cantidad de intentos para ingresar al sistema, intente en una hora", 401));
+	}
 
     $url = $this->getConfig()['TOKEN_GENERATION_URL'];
     $url = sprintf($url, $data['username'], $data['password'], $this->getConfig()['MOODLE_SERVICE_NAME']);
@@ -59,19 +85,23 @@ private function authentication($data){
     $json = json_decode($response,true);
     if (strpos($response, "error") !== false)
     {
+    	$currentTries=0;
+    	$authenticationFirstTryDate='';
+    	if (key_exists('authenticationTries', $customFields)){
+    		$currentTries=$customFields['authenticationTries'];
+    	}
+    	
+    	if (key_exists('authenticationFirstTryDate', $customFields)){
+    		$authenticationFirstTryDate=$customFields['authenticationFirstTryDate'];
+    	}
+    	
+    	
+    	$this->saveAuthenticationTries($json_user[0]['id'], $currentTries, $authenticationFirstTryDate );
+    	
         return new JsonModel ($this->throwJSONError("Verifique usuario y contraseña", 401));
     }
     
-    $url = $this->getConfig()['MOODLE_API_URL'].'&field=username&values[0]=%s';
-    $url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $data['username']);
-     
-    $response = file_get_contents($url);
-    $json_user = json_decode($response,true);
-     
-    if (strpos($response, "exception") !== false || count($json_user)==0 )
-    {
-        return new JsonModel( $this->throwJSONError("Ocurrio un error, Contacte al administrador", 401));
-    }
+   
     $json['id']=$json_user[0]['id'];
     return new JsonModel($json);
 }
@@ -302,8 +332,8 @@ private function forgotPassword($data)
     	if ($isFirstTime){
     		$passwordRecoveryFirstTryDate=round(microtime(true) * 1000);
     	}
-//     	elseif($passwordRecoveryFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
-    		elseif($passwordRecoveryFirstTryDate +60000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+     	elseif($passwordRecoveryFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+//    		elseif($passwordRecoveryFirstTryDate +60000 < round(microtime(true) * 1000)){ //If 4 hours had passed
     	
     		$passwordRecoveryFirstTryDate=round(microtime(true) * 1000); //we reset the code
     		$tries= 1;
@@ -312,8 +342,8 @@ private function forgotPassword($data)
     	
     	
     	if ($tries==3){
-//     		$passwordRecoveryExpiration=round(microtime(true) * 1000)+3600000 ;
-    		$passwordRecoveryExpiration=round(microtime(true) * 1000)+60000 ;
+     		$passwordRecoveryExpiration=round(microtime(true) * 1000)+3600000 ;
+//    		$passwordRecoveryExpiration=round(microtime(true) * 1000)+60000 ;
     		$tries='0';
     		$passwordRecoveryFirstTryDate='';
     		$this->sendMailToAdmins($email);
@@ -396,11 +426,54 @@ private function forgotPassword($data)
         $json = json_decode($response,true);
     
         if (strpos($response, "exception") !== false){
-            return array();
+            return JsonModel(array());
         }
         
         return new JsonModel($json);
     }
+    
+    function saveAuthenticationTries($id, $currentTries, $authenticationFirstTryDate){
+    	$isFirstTime=$currentTries==0;
+    	$tries= $currentTries + 1;
+    	$authenticationExpiration='';
+    	 
+    	 
+    	if ($isFirstTime){
+    		$authenticationFirstTryDate=round(microtime(true) * 1000);
+    	}
+    	elseif($passwordRecoveryFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+    	//elseif($authenticationFirstTryDate +60000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+    		 
+    		$authenticationFirstTryDate=round(microtime(true) * 1000); //we reset the code
+    		$tries= 1;
+    		$authenticationExpiration='';
+    	}
+    	 
+    	 
+    	if ($tries==4){
+    		$passwordRecoveryExpiration=round(microtime(true) * 1000)+3600000 ;
+    		//    		$authenticationExpiration=round(microtime(true) * 1000)+60000 ;
+    		$tries='0';
+    		$authenticationFirstTryDate='';
+    		//$this->sendMailToAdmins($email);
+    	}
+    	$url = $this->getConfig()['MOODLE_API_URL'].'&users[0][id]=%s'.
+    			'&users[0][customfields][0][type]=authenticationTries&users[0][customfields][0][value]=%s'.
+    			'&users[0][customfields][1][type]=authenticationFirstTryDate&users[0][customfields][1][value]='.$authenticationFirstTryDate.
+    			'&users[0][customfields][2][type]=authenticationExpiration&users[0][customfields][2][value]='.$authenticationExpiration ;
+    
+    	 
+    	$url = sprintf($url, $this->getToken(), "core_user_update_users", $id, $tries);
+    
+    	$response = file_get_contents($url);
+    	if ($response=="null"){
+    		return "";
+    	}
+    	else{
+    		return $response;
+    	}
+    }
+    
 }
 
 
