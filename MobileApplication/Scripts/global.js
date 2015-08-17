@@ -80,4 +80,16 @@ var logout = function($scope, $location){
       localStorage.removeItem("currentStage");
       $location.path('/');
     };
-
+$scope.playVideo = function(videoAddress, videoName){                 
+                 //var videoAddress = "assets/media";
+                 //var videoName = "TutorialTest2.mp4";
+                cordova.exec(SuccessVideo, FailureVideo, "CallToAndroid", "PlayLocalVideo", [videoAddress,videoName]);
+            };
+            
+            function SuccessVideo() {
+                
+            }
+            
+            function FailureVideo() {
+                
+            }
