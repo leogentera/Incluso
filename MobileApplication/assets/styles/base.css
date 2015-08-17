@@ -1,4 +1,3 @@
-
 /********************************************************************************
     Incluso Digital CSS Base Styles
 
@@ -955,6 +954,7 @@ body.modal-open {
 }
 .incluso-app .form-group {
   width: 100%;
+  padding: 0;
   /* by theme */
 }
 .incluso-app .form-group .form-group-control {
@@ -3347,4 +3347,3 @@ body.modal-open {
   -moz-animation: fadeIn .7s both ease;
   animation: fadeIn .7s both ease;
 }
->>>>>>> origin/master
