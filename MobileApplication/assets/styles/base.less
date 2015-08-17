@@ -256,6 +256,7 @@ body {
             }
             a{
                 color: white;
+                line-height: 20px;
             }
             ul{
                 list-style: none;
@@ -1155,6 +1156,24 @@ body {
         display: none;
     }
 
+    .navbar.navbar-orange {
+        background-color: #EE4823;
+        border-color: #EE4823;
+        -webkit-transition: all 700ms ease;
+            -moz-transition: all 700ms ease;
+            -o-transition: all 700ms ease;
+            transition: all 700ms ease;
+    }
+
+    .navbar.navbar-blue {
+        background-color: #158CCD;
+        border-color: #158CCD;
+        -webkit-transition: all 700ms ease;
+            -moz-transition: all 700ms ease;
+            -o-transition: all 700ms ease;
+            transition: all 700ms ease;
+    }
+
     .step-dashboard{   
         .navbar{     
         background-color: @clr-bluenav;
@@ -1528,10 +1547,10 @@ body {
      Description: CSS class for a page wrapper with pages and buttons
     ****************************************************************************/
    .footer {
+        display: none;
         background-image:url('../images/bg-footer-ship.gif');
         background-position: 0 99%;
         background-size: cover;
-        display: block;
         position: relative;
         padding: 20px 0 0;
         margin: 0;

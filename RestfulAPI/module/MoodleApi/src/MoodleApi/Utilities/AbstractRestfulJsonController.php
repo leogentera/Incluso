@@ -111,7 +111,6 @@ class AbstractRestfulJsonController extends AbstractRestfulController
     	if ($this->hasToken()) {
     		//$token = $request->getCookie()->MOODLE_TOKEN;
     		$token=$this->getRequest()->getHeaders()->get('Authorization')->getFieldValue();
-    		var_dump($token);
     	} else {
     		$token = $this->generateToken();
     	}

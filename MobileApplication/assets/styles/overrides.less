@@ -17,7 +17,7 @@
 .incluso-app.public {
     min-height: 90vh;
     background-attachment: fixed;
-    background-image:url('../images/bg-sm-public-page.jpg');
+    background-image:url('@{url-images}/bg-sm-public-page.jpg');
     background-position: center -23px;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -58,18 +58,54 @@
     section {
         margin: 0 auto;
         width: 92%;
+    }
+    form {
+        h1 {
+            margin: 2.1vw 0 5vw;
+            color: @clr-white;
+            font-size: 4.1vw;
+            font-weight: bold;
+            letter-spacing: 0.037em;
+            text-transform: none;
         }
+        input[name="userName"] {
+            text-transform: lowercase;
+
+            &::-webkit-input-placeholder {
+                text-transform: none;
+            }
+            &:-moz-placeholder { /* Firefox 18- */
+                text-transform: none;
+            }
+            &::-moz-placeholder {  /* Firefox 19+ */   
+                text-transform: none;
+            }            
+        }
+    }
+    footer {
+        padding: 12vw 0 15vw;
+
+        a {
+            display: inline-block;
+            padding: 1.8vw 0;
+            margin: 0;
+            color:@clr-white;
+            font-size: 20px;
+            font-weight: normal;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }    
     .exit-message {
         margin:6vw auto;
         width: 90%;        
         color: @clr-white;
         font-size: 6vw;
     }
-    .form-group {
-        margin-bottom: 0;
-    }
-
-    /* checkbox overrides */
+    .form-group {margin-bottom: 0;}
     .checkbox {
         /*width: 66%;*/
         /*margin:28px 0;*/
@@ -93,11 +129,7 @@
           /*margin-left: 20px;*/
         }
     }
-    
-    /* buttons overrides and some decoration */
-    .btn-primary {
-        text-transform: uppercase;
-    }
+    .btn-primary {text-transform: uppercase;}
     .btn-spacer {
         height: auto;
         padding: 4vw 0;
@@ -118,83 +150,17 @@
             font-size:6vw;
         }
     }
+    .pages .btn-transparent {text-transform: none;}
 
-    footer {
-        /*padding: 64px 0; padding: 15vw 0;*/
-        padding: 12vw 0 15vw;
-
-        a {
-            display: inline-block;
-            padding: 1.8vw 0;
-            margin: 0;
-            color:@clr-white;
-            font-size: 20px;
-            font-weight: normal;
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-    form {
-        h1 {
-            margin: 2.1vw 0 5vw;
-            color: @clr-white;
-            font-size: 4.1vw;
-            font-weight: bold;
-            letter-spacing: 0.037em;
-            text-transform: capitalize;
-        }
-    }
-
+    /* login view overrides */
     .login {
         position: relative;
-
         .input-group {
-            .input-group-addon.addon-lg {
-                /*font-size: 6vw;
-                line-height: 6vw;*/
-                /*vertical-align: top;  -unused */
-            }
             .form-control {
-                /*font-size: 6vw;
-                line-height: 6vw;*/
                 vertical-align: bottom;
             }
         }
-
-        .btn-primary[disabled], 
-        .btn-primary.disabled {
-            position: relative;
-            .preloader {
-                display: block;
-                position: absolute;
-                right: 3vw;
-                top: 50%;
-                width:6vw;
-                height: 6vw;
-                margin-top: -3vw;
-
-                background-attachment: scroll;
-                background-image: url('@{url-images}/img-preloader-32.gif');
-                background-position: center center;
-                background-repeat: no-repeat; 
-            }
-            /*background-attachment: scroll;
-            background-image: url('@{url-images}/img-preloader-32.gif');
-            .clr-white(background-color, 0.6);
-            background-position: right top;
-            background-repeat: no-repeat; */           
-        }
     }  
-    .pages .btn-transparent {
-        text-transform: capitalize;
-    }
-
-    input[name="username"] {
-        text-transform: lowercase;
-    }
 }
 
 /* Dashboard */
@@ -271,10 +237,10 @@
 
         .panel-heading {
             padding: 3.3vw 2.6vw;
-            /*background-color: @clr-blueDark;*/
             background-color: rgb(13,15,20);
             .border-radius(3vw, 3vw, 0, 0);
             color: @clr-green;
+            cursor: pointer;
 
             h3 {
                 margin: 0 auto;
@@ -332,7 +298,6 @@
     }
     .gradient-sky ();
 
-    h4 {color:white;}
     footer {
         padding-bottom: 30px;
         background-color: @clr-gray-asphalt2;

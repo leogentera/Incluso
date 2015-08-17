@@ -15,6 +15,10 @@
             _getAsyncData("usercourse", API_RESOURCE.format('usercourse/' + userId), successCallback, errorCallback);
         };
 
+        var _getAsyncAvatarInfo = function(userId, successCallback, errorCallback){
+            _getAsyncData("avatarInfo", API_RESOURCE.format('avatar/' + userId), successCallback, errorCallback);
+        };
+
         var _getAsyncCourse = function(courseId, successCallback, errorCallback){
             _getAsyncData("course", API_RESOURCE.format('course/' + courseId), successCallback, errorCallback);
         };
@@ -79,6 +83,7 @@
             GetAsyncProfile: _getAsyncProfile,
             PutAsyncProfile: _putAsyncProfile,
             GetAsyncUserCourse: _getAsyncUserCourse,
+            GetAsyncAvatar: _getAsyncAvatarInfo,
             GetAsyncCourse: _getAsyncCourse,
             GetCacheObject: _getCacheObject,
             GetCacheJson: _getCacheJson,

@@ -6,7 +6,9 @@ return array(
             'MoodleApi\Controller\User' => 'MoodleApi\Controller\UserController',
             'MoodleApi\Controller\Authentication' => 'MoodleApi\Controller\AuthenticationController',
             'MoodleApi\Controller\UserCourse' => 'MoodleApi\Controller\UserCourseController',
+            'MoodleApi\Controller\Avatar' => 'MoodleApi\Controller\AvatarController',
         	'MoodleApi\Controller\Catalog' => 'MoodleApi\Controller\CatalogController', 
+            'MoodleApi\Controller\Cache' => 'MoodleApi\Controller\CacheController', 
         ),
     ),
     'router' => array(
@@ -33,6 +35,19 @@ return array(
                     ),
                 ),
             ),
+            'avatar' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/avatar[/:id]',
+                    'constraints' => array(
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'MoodleApi\Controller\Avatar',
+                    ),
+                ),
+            ),
+
         	'user' => array(
                 'type'    => 'segment',
                 'options' => array(
@@ -66,15 +81,25 @@ return array(
                 )
             ),
         		
-        		'Catalog' => array(
-        				'type'    => 'segment',
-        				'options' => array(
-        						'route'    => '/catalog',
-        						'defaults' => array(
-        								'controller' => 'MoodleApi\Controller\Catalog',
-        						),
-        				)
-        		),
+    		'Catalog' => array(
+				'type'    => 'segment',
+				'options' => array(
+					'route'    => '/catalog',
+					'defaults' => array(
+							'controller' => 'MoodleApi\Controller\Catalog',
+					),
+				)
+    		),
+
+            'Cache' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/cache',
+                    'defaults' => array(
+                            'controller' => 'MoodleApi\Controller\Cache',
+                    ),
+                )
+            ),
         ),
     ),
     'view_manager' => array(

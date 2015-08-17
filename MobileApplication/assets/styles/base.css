@@ -391,6 +391,7 @@ body.modal-open {
 }
 .incluso-app #site-menu .nav > li .submenu a {
   color: white;
+  line-height: 20px;
 }
 .incluso-app #site-menu .nav > li .submenu ul {
   list-style: none;
@@ -1216,6 +1217,22 @@ body.modal-open {
 .incluso-app .navbar-absolute-top {
   display: none;
 }
+.incluso-app .navbar.navbar-orange {
+  background-color: #EE4823;
+  border-color: #EE4823;
+  -webkit-transition: all 700ms ease;
+  -moz-transition: all 700ms ease;
+  -o-transition: all 700ms ease;
+  transition: all 700ms ease;
+}
+.incluso-app .navbar.navbar-blue {
+  background-color: #158CCD;
+  border-color: #158CCD;
+  -webkit-transition: all 700ms ease;
+  -moz-transition: all 700ms ease;
+  -o-transition: all 700ms ease;
+  transition: all 700ms ease;
+}
 .incluso-app .step-dashboard .navbar {
   background-color: #158ccd;
   border-color: #158ccd;
@@ -1522,10 +1539,10 @@ body.modal-open {
   text-transform: uppercase;
 }
 .incluso-app .footer {
+  display: none;
   background-image: url('../images/bg-footer-ship.gif');
   background-position: 0 99%;
   background-size: cover;
-  display: block;
   position: relative;
   padding: 20px 0 0;
   margin: 0;
