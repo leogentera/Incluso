@@ -28,6 +28,10 @@ angular
                 getDataAsync();
             }
 
+            console.log($scope.showFooter);
+            $rootScope.showFooter = false;
+            $rootScope.hideFooter = true;
+
             function getDataAsync() {
                 moodleFactory.Services.GetAsyncAvatar(_getItem("userId"), getAvatarInfoCallback);
             }

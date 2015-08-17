@@ -53,6 +53,7 @@ function syncCacheData (){
 syncCacheData();
 var logout = function($http, $scope, $location){
     console.log("Logout function ");
+    //$rootScope.showToolbar = false;
     $scope.currentUser = JSON.parse(moodleFactory.Services.GetCacheObject("CurrentUser"));
     /*$http(
       {
