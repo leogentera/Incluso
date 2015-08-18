@@ -896,6 +896,7 @@ body.modal-open {
   display: table-cell;
   padding: 0;
   border: none;
+  vertical-align: middle;
 }
 .incluso-app .input-group .form-control:hover,
 .incluso-app .input-group .form-control:focus,

@@ -80,7 +80,7 @@
                     <p class="input-group-addon" id="userNameAddOn">
                       <span class="icomoon icon-user"></span>
                     </p>
-                    <input type="text" ng-model="registerModel.username" name="userName" class="form-control form-control-lg theme-default" placeholder="Usuario" aria-describedby="userNameAddOn" pattern="[A-Za-z0-9]+" required />
+                    <input type="text" ng-model="registerModel.username" name="userName" class="form-control form-control-lg theme-default" placeholder="Nombre de usuario" aria-describedby="userNameAddOn" pattern="[A-Za-z0-9]+" required />
                   </div>
                 </div>
               </div>
@@ -132,7 +132,11 @@
                     <p class="input-group-addon" id="birthDateAddOn">
                       <span class="icomoon icon-calendar"></span>
                     </p>                    
-                    <input type="date" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg theme-default" placeholder="Fecha de nacimiento" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required />
+                    
+                    <p class="input-group-control custom-placeholder-wrapper">
+                      <input type="date" ng-model="registerModel.birthday" name="birthday" class="form-control form-control-lg theme-default" aria-describedby="birthDateAddOn" minlength="10" maxlength="10" required />
+                      <span class="custom-placeholder form-control-lg">Fecha de nacimiento</span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -147,6 +151,7 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.gender" name="gender" class="form-control form-control-lg theme-default" aria-describedby="genderAddOn">
+                        <option value="" disabled></option>
                         <option value="Masculino">Hombre</option>
                         <option value="Femenino">Mujer</option> 
                       </select>
@@ -166,7 +171,7 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.country" name="country" class="form-control form-control-lg theme-default" aria-describedby="countryAddOn">
-                        <option disabled></option>  <!-- Temporal patch: should be ng-init properly -->
+                        <option value="" disabled></option>  <!-- Temporal patch: should be ng-init properly -->
                         <option value="México">México</option>
                       </select>
                       <span class="custom-placeholder form-control-lg">País</span>
@@ -185,6 +190,7 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-model="registerModel.city" name="city" class="form-control form-control-lg theme-default" aria-describedby="cityAddOn">
+                        <option value="" disabled></option>
                         <option value="México D.F.">México D.F.</option> 
                         <option value="Monterrey">Monterrey</option> 
                       </select>
@@ -268,6 +274,7 @@
                     </p>
                     <p class="input-group-control custom-placeholder-wrapper">
                       <select ng-disabled="isRegistered" ng-model="registerModel.secretQuestion" name="securityQuestion" class="form-control form-control-lg theme-default" aria-describedby="securityQuestionAddOn" data-show-placeholder="$scope.isRegistered">
+                        <option value="" disabled></option>
                         <option value="¿Dónde crecí?">¿Dónde crecí?</option>
                         <option value="Nombre de mi mejor amigo">Nombre de mi mejor amigo</option> 
                         <option value="Nombre de mi mascota">Nombre de mi mascota</option> 
