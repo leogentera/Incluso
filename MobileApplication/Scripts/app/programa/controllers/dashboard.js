@@ -45,7 +45,8 @@
             }
             catch (e) {
                 console.log(e);
-                $scope.$emit('HidePreloader');
+                $scope.$emit('HidePreloader'); //hide preloader
+                $scope.$emit('scrollTop'); //- scroll
             }
 
             $(".navbar").removeClass("etapa-uno");
@@ -92,12 +93,14 @@
                     $scope.currentStage = getCurrentStage();                
                     localStorage.setItem("currentStage", $scope.currentStage);
                     $scope.$emit('HidePreloader'); //hide preloader
+                    $scope.$emit('scrollTop'); //- scroll
                 }, errorCallback);
             }
 
             function errorCallback(data){
                 console.log(data);
                 $scope.$emit('HidePreloader'); //hide preloader
+                $scope.$emit('scrollTop'); //- scroll
             }                                    
                             
                             

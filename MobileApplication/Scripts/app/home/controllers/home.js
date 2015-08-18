@@ -46,12 +46,19 @@
                  playVideo(videoAddress, videoName);
             };
 			
-            $scope.scrollToTop = function(element){
-              
+            $scope.scrollToTop = function(element){         
                 $location.hash(element);
-                $anchorScroll();
-               
+                $anchorScroll();      
             }
+
+
+            /* scroll to top function and listener */
+            $scope.scrollTo = function(element) {
+                $location.hash('top');
+                $anchorScroll();
+                console.log("scrolled to top");
+            } 
+            $scope.$on('scrollTop', $scope.scrollTo);
 
             /* Preloader default callbacks and listeners */
             var _showPreloader = function() {

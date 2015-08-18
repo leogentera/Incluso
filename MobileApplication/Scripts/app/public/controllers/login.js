@@ -15,7 +15,8 @@ angular
 
             _httpFactory = $http;
             //$scope.PreloaderModalInstance = null;
-            $scope.scrollToTop();
+            //$scope.scrollToTop();
+            $scope.$emit('scrollTop'); //- scroll
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false;
             // $scope.preloader = angular.element(document.getElementById('spinner')).scope();
@@ -134,12 +135,14 @@ angular
                             var errorMessage = window.atob(data.messageerror);                            
                             $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
                             console.log(status + ": " + errorMessage);
-                            $scope.scrollToTop();
+                            //$scope.scrollToTop();
+                            $scope.$emit('scrollTop'); //- scroll
                             $scope.isLogginIn = false;
                         });
                 } else {
                     console.log('End'); //- debug
-                    $scope.scrollToTop();
+                    //$scope.scrollToTop();
+                    $scope.$emit('scrollTop'); //- scroll
                 }
             }
 
@@ -198,7 +201,8 @@ angular
                     $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
                 }, 1000);                
                 console.log(status + ": " + errorMessage);
-                $scope.scrollToTop();
+                //$scope.scrollToTop();
+                $scope.$emit('scrollTop'); //- scroll
             }
 
             function validateModel() {

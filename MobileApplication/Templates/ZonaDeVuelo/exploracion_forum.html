@@ -1,32 +1,36 @@
 <div class="incluso-app step-dashboard" id="site-wrapper">
   <div id="site-menu" >
-	<!--<menu-component></menu-component>-->
   </div>
   <div id="site-canvas">
 
-
- 
-<article class="blueprint">
+   <article class="blueprint">
 
   <section>
 <div class="txt-renglon centered txt-bigger"></div> 
-<div class="subtitle">SubTitle</div>
-<div class="txt-renglon txt-bigger">Description</div> 
+<div class="subtitle">Foro Común</div>
+<div class="txt-renglon"> Participa en las siguientes discusiones.</div>  
 </section>
 
-
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
+<section class="">
+  <div class="part"><span>¿Cómo te sientes cuando ves
+que varias personas tienen
+sueños similares a los tuyos?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
+  <div class="part"><span>¿Cuál ha sido tu avance para
+alcanzar tus sueños?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
+  <div class="part"><span>¿Crees que en algún momento
+del proceso te rindas?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
+  <div class="part"><span>¿Qué te motiva para lograr
+conseguir tus sueños?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
+  <div class="part"><span>¿Crees que pedir ayuda es algo
+positivo o negativo?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
+  <div class="part"><span>
+¿Considerarías apoyarte en
+alguien para lograr tus sueños?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
+</section>
+<section>
+<button class="btn btn-primary btn-lg btn-cnt" type="button">Regresar</button>
+<div class="txt-renglon centered txt-bigger"></div> 
+</section>
 
   </article>
 
@@ -35,59 +39,10 @@
       <li><a href="" class="centered txt-title">Preguntas Frecuentes</a></li>
       <li><a href="" class="centered txt-title">Ayuda y Soporte</a></li>
     </ul>
-    <a class="to-top" ng-click="scrollToTop();"><i class="icomoon icon-double-arrow-up"></i><br/>SUBIR</a>
+    <a href="#navBar" class="to-top"><i class="icomoon icon-double-arrow-up"></i><br/>SUBIR</a>
   </footer>
-		</div>
-		</div>
+    </div>
+    </div>
   <!-- html -->
   <!-- scripts -->
-
-    
-  <script>
-  $(document).ready(function() {
-
-    setTimeout(function(){
-
-      var hits = 1;
-      var owl = $("#owl-demo");
-      owl.owlCarousel({
-        navigation:false,
-        pagination:false,
-        paginationSpeed : 1000,
-        goToFirstSpeed : 2000,
-        singleItem : true,
-        autoHeight : true,
-        afterMove: callback2
-      });
-      var owl2 = $("#owl-demo2");
-      owl2.owlCarousel({
-        navigation:false,
-        pagination:false,
-        paginationSpeed : 1000,
-        goToFirstSpeed : 2000,
-        singleItem : true,
-        autoHeight : true,
-        afterMove: callback1
-      });
-      function callback1(event) {
-        var item      = this.currentItem;
-        owl.trigger("owl.goTo",item);
-      }
-      function callback2(event) {
-        var item      = this.currentItem;
-        owl2.trigger("owl.goTo",item);
-      }
-
-      $("#next").click(function(){
-        owl.trigger('owl.next');
-        return false;
-      })
-      $("#prev").click(function(){
-        owl.trigger('owl.prev');
-        return false;
-      })
-    }, 1000);
-
-});
-</script>
-
+<script type="text/javascript" src="Scripts/scriptmenu.js"></script>
