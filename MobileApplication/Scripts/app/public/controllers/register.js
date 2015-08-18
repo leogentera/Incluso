@@ -218,13 +218,9 @@ angular
                 
                 if(!$scope.registerForm.password.$valid){
                     errors.push("Formato de contraseña incorrecto. La contraseña " + passwordPolicy);
-                }else{
-                    if(!$scope.registerForm.confirmPassword.$valid){
-                        errors.push("Formato de confirmación de contraseña incorrecto. La confirmación de contraseña " + passwordPolicy);
-                    }else{
-                        if(!isConfirmedPasswordValid) { errors.push("La confirmación de contraseña no coincide con la contraseña."); }
-                    }
-                }
+                }else{                    
+                    if(!isConfirmedPasswordValid) { errors.push("Las contraseñas capturadas no coinciden."); }
+                }                
                 
                 if(!$scope.registerForm.userName.$valid){ errors.push("Formato de usuario incorrecto."); }
                 if(!$scope.registerForm.firstName.$valid){ errors.push("Formato de nombre incorrecto."); }
