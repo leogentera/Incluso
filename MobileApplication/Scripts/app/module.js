@@ -30,6 +30,7 @@
         'incluso.stage.gameretomultiplecontroller',
         'incluso.stage.quizcontroller',
         'incluso.stage.chatcontroller',
+        'incluso.program.alerts',
         'incluso.program.myInterests',
         'incluso.program.myStrengths',
         'incluso.program.hallOfFame',
@@ -49,6 +50,7 @@
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
         $http.get('Templates/Programa/acercaPrograma.html', { cache: $templateCache });  
         $http.get('Templates/Juegos/Avatar.html', { cache: $templateCache });
+        $http.get('Templates/Programa/Alerts.html', { cache: $templateCache });  
         $http.get('Templates/Programa/MyInterests.html', { cache: $templateCache });
         $http.get('Templates/Programa/MyStrengths.html', { cache: $templateCache });
         $http.get('Templates/Programa/HallOfFame.html', { cache: $templateCache });
@@ -56,8 +58,7 @@
         $http.get('Templates/Programa/TermsOfUse.html', { cache: $templateCache });
         $http.get('Templates/Programa/HelpAndSupport.html', { cache: $templateCache });
 
-        $http.get('Templates/Juegos/Game.html', { cache: $templateCache });
-        $http.get('Templates/Notifications.html', { cache: $templateCache });  
+        $http.get('Templates/Juegos/Game.html', { cache: $templateCache });        
         $http.get('Templates/NotificationDetails.html', { cache: $templateCache });  
         $http.get('Templates/Programa/Dashboard.html', { cache: $templateCache });  
         $http.get('Templates/Chat/index.html', { cache: $templateCache });  
@@ -104,7 +105,7 @@
             controller: 'programaProfileController'
         });
 
-        $routeProvider.when('/Perfil', {
+        $routeProvider.when('/Profile', {
             templateUrl: 'Templates/Programa/profile.html',
             controller: 'programaProfileController'
         });
@@ -195,9 +196,9 @@
             controller: 'GameController'
         });
        
-        $routeProvider.when('/Notifications', { 
-            templateUrl: 'Templates/Notifications.html',
-            controller: 'programaNotificationController'
+        $routeProvider.when('/Alerts', { 
+            templateUrl: 'Templates/Programa/Alerts.html',
+            controller: 'AlertsController'
         });
 
         $routeProvider.when('/Notifications/Details', { 

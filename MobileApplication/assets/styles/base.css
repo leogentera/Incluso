@@ -1324,8 +1324,16 @@ body.modal-open {
   width: 9vw;
   height: 9vw;
 }
+.incluso-app .navbar-tools li:hover .icomoon,
 .incluso-app .navbar-tools li.active .icomoon {
   color: #bf2a09;
+  -webkit-transition: all 700ms ease;
+  -moz-transition: all 700ms ease;
+  -o-transition: all 700ms ease;
+  transition: all 700ms ease;
+}
+.incluso-app .navbar-tools li.disabled {
+  pointer-events: none;
 }
 .incluso-app .navbar-tools a {
   color: white;

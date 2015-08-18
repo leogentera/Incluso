@@ -14,6 +14,13 @@ angular
             _httpFactory = $http;
 
             $scope.currentPage = 1;
+            $rootScope.pageName = "Mi perfil"
+            $rootScope.navbarBlue = false;
+            $rootScope.showToolbar = true;
+            $rootScope.showFooter = true; 
+            $rootScope.showFooterRocks = false; 
+
+            $scope.$emit('HidePreloader');
 
             $scope.model = getDataAsync();
             $rootScope.pageName = "Mi perfil"
