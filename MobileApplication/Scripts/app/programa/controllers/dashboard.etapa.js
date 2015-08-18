@@ -103,5 +103,11 @@ console.log(challenges);
 
                 return stage;
             }
+            
+            $scope.playVideo = function(videoAddress, videoName){                 
+                 //var videoAddress = "assets/media";
+                 //var videoName = "TutorialTest2.mp4";
+                playVideo(videoAddress, videoName);
+            };
 
         }]);

@@ -62,8 +62,8 @@
 
         $http.get('Templates/Leaderboard/index.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/dashboard.html', { cache: $templateCache });  
-        $http.get('Templates/ZonaDeVuelo/exploracion_forum.html', { cache: $templateCache });  
-        $http.get('Templates/ZonaDeVuelo/exploracion_message.html', { cache: $templateCache });  
+        $http.get('Templates/ZonaDeVuelo/ExploracionInicial.html', { cache: $templateCache });  
+        $http.get('Templates/ZonaDeVuelo/ExploracionInicialCierre.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/CuartoDeRecursos/MensajeDeCierre.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/Conocete/FuenteDeEnergia.html', { cache: $templateCache });  
@@ -215,13 +215,13 @@
         });
 
         $routeProvider.when('/ZonaDeVuelo/ExploracionInicial/:moodleid', { 
-            templateUrl: 'Templates/ZonaDeVuelo/exploracion_forum.html',
-            controller: 'stageForumController'
+            templateUrl: 'Templates/ZonaDeVuelo/ExploracionInicial.html',
+            controller: 'stageQuizController'
         });
     
         $routeProvider.when('/ZonaDeVuelo/ExploracionInicialCierre', { 
-            templateUrl: 'Templates/ZonaDeVuelo/exploracion_message.html',
-            controller: 'stageForumController'
+            templateUrl: 'Templates/ZonaDeVuelo/ExploracionInicialCierre.html',
+            controller: 'stageQuizController'
         });
     
         $routeProvider.when('/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia/:moodleid', { 
