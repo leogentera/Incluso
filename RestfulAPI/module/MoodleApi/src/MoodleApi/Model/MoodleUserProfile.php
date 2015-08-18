@@ -266,7 +266,7 @@ class MoodleUserProfile extends Common {
 		}
 		
 		if (array_key_exists ( 'mothername', $customFields )) {
-			$this->mothername = $customFields ['mothername'] == 0 ? true : false;
+			$this->mothername = $customFields ['mothername'];
 		}
 		
 		if ($requestinguserid == $this->id) {
@@ -357,17 +357,17 @@ class MoodleUserProfile extends Common {
 			}
 			
 			if (array_key_exists ( 'playVideogames', $customFields )) {
-				$this->playVideogames = $this->createTableFromCompundField ( $customFields ['playVideogames'] );
+				$this->playVideogames =  $customFields ['playVideogames'] ;
 				// var_dump($this->phones);
 			}
 			
 			if (array_key_exists ( 'videogamesFrecuency', $customFields )) {
-				$this->videogamesFrecuency = $this->createTableFromCompundField ( $customFields ['videogamesFrecuency'] );
+				$this->videogamesFrecuency = $customFields ['videogamesFrecuency'] ;
 				// var_dump($this->phones);
 			}
 			
 			if (array_key_exists ( 'videogamesHours', $customFields )) {
-				$this->videogamesHours = $this->createTableFromCompundField ( $customFields ['videogamesHours'] );
+				$this->videogamesHours = $customFields ['videogamesHours'] ;
 				// var_dump($this->phones);
 			}
 			

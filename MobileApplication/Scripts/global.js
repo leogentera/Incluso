@@ -51,29 +51,27 @@ function syncCacheData (){
 }
 
 syncCacheData();
-var logout = function($http, $scope, $location){
+var logout = function($scope, $location){
     console.log("Logout function ");
-    //$rootScope.showToolbar = false;
     $scope.currentUser = JSON.parse(moodleFactory.Services.GetCacheObject("CurrentUser"));
 
-    if (!_IsOffline()){
-
-      $http(
-        {
-          method: 'POST',
-          url: API_RESOURCE.format("authentication"), 
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          data: $.param(
-              { token: $scope.currentUser.token,
-                userid: $scope.currentUser.userId,
-                action: "logout"})
-        }
+      if(!_IsOffline()){
+        _httpFactory(
+          {
+            method: 'POST',
+            url: API_RESOURCE.format("authentication"), 
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            data: $.param(
+                { token: $scope.currentUser.token,
+                  userid: $scope.currentUser.userId,
+                  action: "logout"})
+          }
         ).success(function(data, status, headers, config) {
-            console.log('successfully logout');
+
+          console.log('successfully logout');
           }
         );
-    }
-
+      }
       localStorage.removeItem("CurrentUser");
       localStorage.removeItem("profile");
       localStorage.removeItem("course");
@@ -81,5 +79,18 @@ var logout = function($http, $scope, $location){
       localStorage.removeItem("usercourse");
       localStorage.removeItem("currentStage");
       $location.path('/');
-};
-
+    };
+    
+      playVideo = function(videoAddress, videoName){                 
+                 //var videoAddress = "assets/media";
+                 //var videoName = "TutorialTest2.mp4";
+                cordova.exec(SuccessVideo, FailureVideo, "CallToAndroid", "PlayLocalVideo", [videoAddress,videoName]);
+            };
+            
+            function SuccessVideo() {
+                
+            }
+            
+            function FailureVideo() {
+                
+            }

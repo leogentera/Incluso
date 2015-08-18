@@ -13,7 +13,11 @@ angular
             _httpFactory = $http;
 
             $scope.Math = window.Math;
-
+            $rootScope.pageName = "Estación: Conócete";
+            $rootScope.navbarBlue = true;
+            $rootScope.showToolbar = true;
+            $rootScope.showFooter = true;
+            $rootScope.showFooterRocks = false;
             $scope.scrollToTop();
 
             function getDataAsync() {

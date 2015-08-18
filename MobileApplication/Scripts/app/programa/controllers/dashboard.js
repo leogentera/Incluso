@@ -12,17 +12,16 @@
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
 
             _httpFactory = $http;
-                    
             $scope.Math = window.Math;
+            $scope.$emit('ShowPreloader'); //show preloader
 
-            console.log('loading user');            
+            console.log('loading user'); 
             $scope.user = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
-            
             if (!$scope.user) {
                 $location.path('/');
                 return "";
             }
-                        
+
             console.log('loading usercourse');
             $scope.usercourse = JSON.parse(moodleFactory.Services.GetCacheObject("usercourse"));
             console.log('loading course');
@@ -30,11 +29,12 @@
             console.log('loading currentStage');
             $scope.currentStage = JSON.parse(moodleFactory.Services.GetCacheObject("currentStage"));
             console.log('loading stage');
-            //$(".navbar-absolute-top").show();            
-            //$("footer").show();
+
+            $rootScope.pageName = "Mision incluso"
+            $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
-            $rootScope.showFooter = true;
-            $rootScope.hideFooter = false;
+            $rootScope.showFooter = true; 
+            $rootScope.showFooterRocks = true; 
 
             try {
                 if(moodleFactory.Services.GetCacheObject("stage")){
@@ -45,6 +45,7 @@
             }
             catch (e) {
                 console.log(e);
+                $scope.$emit('HidePreloader');
             }
 
             $(".navbar").removeClass("etapa-uno");
@@ -90,11 +91,13 @@
                     $scope.course = JSON.parse(localStorage.getItem("course"));
                     $scope.currentStage = getCurrentStage();                
                     localStorage.setItem("currentStage", $scope.currentStage);
+                    $scope.$emit('HidePreloader'); //hide preloader
                 }, errorCallback);
             }
 
             function errorCallback(data){
                 console.log(data);
+                $scope.$emit('HidePreloader'); //hide preloader
             }                                    
                             
                             

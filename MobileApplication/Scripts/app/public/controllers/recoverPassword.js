@@ -14,7 +14,8 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
             $anchorScroll();
-            
+            $rootScope.showToolbar = false;
+            $rootScope.showFooter = false;
             /* ViewModel */
             $scope.recoverPasswordModel = {
                 email: "",
@@ -36,6 +37,8 @@ angular
             $scope.recoveredPassword = false;
             $scope.readOnly = false;
             $scope.PreloaderModalInstance = null;
+            $rootScope.showToolbar = false;
+            $rootScope.showFooter = false;
 
             /* Watchers */
             $scope.$watch("recoverPasswordModel.confirmPassword", function(newValue, oldValue){
@@ -91,8 +94,7 @@ angular
                         $scope.successMessage = "Te hemos enviado un correo con un código para recuperar tu contraseña.";
                         $scope.scrollToTop();
 
-                    }).error(function(data, status, headers, config) {
-                        
+                    }).error(function(data, status, headers, config) {                                            
                         console.log('ERROR. code not recovered'); //- debug
                         $scope.PreloaderModalInstance.dismiss();
                         var errorMessage;
@@ -117,9 +119,10 @@ angular
                 console.log('Start Password Reset'); //- debug
                 console.log('fetching errors list'); //- debug
                 var errors = [];
+                var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número.";
                 if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }
-                if(!$scope.recoverPasswordForm.password.$valid){ errors.push("formato de contraseña incorrecto."); }
-                if(!$scope.recoverPasswordForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto."); }
+                if(!$scope.recoverPasswordForm.password.$valid){ errors.push("formato de contraseña incorrecto.  La contraseña " + passwordPolicy); }
+                if(!$scope.recoverPasswordForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto. La confirmación de contraseña " + passwordPolicy); }
                 if(!$scope.recoverPasswordForm.code.$valid){ errors.push("código requerido."); }
                 $scope.recoverPasswordModel.modelState.errorMessages = errors;
 

@@ -14,11 +14,12 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
             _httpFactory = $http;
-            $scope.PreloaderModalInstance = null;
-            $rootScope.showFooter = false;
-            $rootScope.hideFooter = true;
-
+            //$scope.PreloaderModalInstance = null;
             $scope.scrollToTop();
+            $rootScope.showToolbar = false;
+            $rootScope.showFooter = false;
+            // $scope.preloader = angular.element(document.getElementById('spinner')).scope();
+            // $scope.preloader.loading = true;
 
             /* ViewModel */
             $scope.userCredentialsModel = {
@@ -41,8 +42,6 @@ angular
                 $scope.userCredentialsModel.modelState.isValid = (newValue.length === 0);
             });
 
-            //$(".navbar-absolute-top").hide();
-            $rootScope.showToolbar = false;
             $scope.loadCredentials = function () {
 
                 var txtCredentials = localStorage.getItem("Credentials");
@@ -72,17 +71,23 @@ angular
                 if (currentUser && currentUser.token && currentUser.token != "") {
                     $location.path('/ProgramaDashboard');
                 }
+
+                //$scope.preloader.loading = false;  //- test
+                $scope.$emit('HidePreloader');
+                console.log('preloader hidden');
             }
 
-            $scope.login = function (username, password) {
+            $scope.login = function (username, password) {  
+                console.log('Login action started'); //- debug
 
-                console.log('login in');
+                var isModelValid = validateModel();
+                console.log('isValid: ' + isModelValid); //- debug
 
-                if (validateModel()) {
+                if (isModelValid) {
 
                     // reflect loading state at UI
-                    $scope.openProcessingActionModal();
-                    $scope.isLogginIn = true;  
+                    $scope.$emit('ShowPreloader'); //show preloader
+                    console.log('preloading...'); //- debug
 
                     $http(
                         {
@@ -94,7 +99,6 @@ angular
                         ).success(function (data, status, headers, config) {
 
                             console.log('successfully logged in');
-                            //$scope.PreloaderModalInstance.dismiss();
 
                             //save token for further requests and autologin
                             $scope.currentUserModel.token = data.token;
@@ -112,10 +116,8 @@ angular
                                 console.log('came back from redirecting...');
                                 $timeout(
                                     function () {
-                                        //possible line for modal dismiss
                                         console.log('redirecting..');
-                                        $scope.PreloaderModalInstance.dismiss();
-
+                                        $scope.$emit('HidePreloader'); //hide preloader
                                         $location.path('/ProgramaDashboard');
                                     }, 1000);
                             });
@@ -126,9 +128,9 @@ angular
                                 localStorage.removeItem("Credentials");
                             }
 
-                        }).error(function (data, status, headers, config) {
-                            
-                            $scope.PreloaderModalInstance.dismiss();
+                        }).error(function (data, status, headers, config) { 
+                            $scope.$emit('HidePreloader'); //hide preloader
+
                             var errorMessage = window.atob(data.messageerror);                            
                             $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
                             console.log(status + ": " + errorMessage);
@@ -136,25 +138,26 @@ angular
                             $scope.isLogginIn = false;
                         });
                 } else {
+                    console.log('End'); //- debug
                     $scope.scrollToTop();
                 }
             }
 
             $scope.loginWithFacebook = function () {
-                
-                //$location.path('/ProgramaDashboard');
-                debugger
-                var name = API_RESOURCE.format("")
-                name = name.substring(0, name.length - 1);                                
-                
+                $scope.$emit('ShowPreloader'); //show preloader
+                //$location.path('/ProgramaDashboard');                
+                var name = API_RESOURCE.format("");
+                name = name.substring(0, name.length - 1);
                 cordova.exec(FacebookLoginSuccess, FacebookLoginFailure, "SayHelloPlugin", "connectWithFacebook", [name]);
+                
             }
             
             $scope.scrollToTop = function(){
-                $anchorScroll();
+                $anchorScroll(0);
             }
 
             function FacebookLoginSuccess(data) {
+                alert(data);
                 console.log('successfully logged in ' + data);
                 
                 var userFacebook = JSON.parse(data);
@@ -177,6 +180,7 @@ angular
                         function () {
                             console.log('redirecting..');
                             $location.path('/ProgramaDashboard');
+                            //$scope.$emit('HidePreloader');
                         }, 1000);
                 });
 
@@ -188,10 +192,11 @@ angular
             }
 
             function FacebookLoginFailure(data) {
-                var errorMessage = window.atob(data.messageerror);//window.atob("Could not authenticate with facebook");
-                console.log('Could not authenticate with facebook ' + data);
-                
-                $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
+                $scope.$emit('HidePreloader');
+                var errorMessage = window.atob(data.messageerror);
+                $timeout(function () {                                                            
+                    $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
+                }, 1000);                
                 console.log(status + ": " + errorMessage);
                 $scope.scrollToTop();
             }
@@ -210,39 +215,19 @@ angular
             }
 
             function keepUserInformation(userId) {
-
                 $http(
-                    {
-                        method: 'GET',
-                        url: API_RESOURCE.format("userprofile/" + userId),
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    }
-                    ).success(function (data, status, headers, config) {
+                {
+                    method: 'GET',
+                    url: API_RESOURCE.format("userprofile/" + userId),
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                }
+                ).success(function (data, status, headers, config) {
+                    localStorage.setItem("profile", JSON.stringify(data));
+                }).error(function (data, status, headers, config) {
 
-                        localStorage.setItem("profile", JSON.stringify(data));
-                    }).error(function (data, status, headers, config) {
-                    });
-
+                });
             }
 
             $scope.loadCredentials();
-
-            // $location.path('/ProgramaDashboardEtapa/' + 1);
-
-            /* open processing action modal */
-            $scope.openProcessingActionModal = function (size) {
-                $scope.PreloaderModalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: 'processingActionModal.html',
-                    controller: 'processingActionModalController',
-                    size: size,
-                    windowClass: 'modal-theme-default modal-preloader',
-                    backdrop: 'static'
-                });
-                //$scope.PreloaderModalInstance = modalInstance;
-            };            
-
-        }])
-        .controller('processingActionModalController', function ($scope, $modalInstance) {
-            
-        });
+            // $location.path('/ProgramaDashboardEtapa/' + 1); 
+        }]);

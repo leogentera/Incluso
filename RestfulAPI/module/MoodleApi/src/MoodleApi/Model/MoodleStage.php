@@ -82,7 +82,14 @@ class MoodleStage
         $returnString = "{";
         $returnString.= '"id":'.$this->getId().',';
         $returnString.= '"name":"'.$this->getName().'",';
-        $returnString.= '"section":'.$this->getSection().',';
+        $returnString.= '"section":';
+
+        if($this->getSection() == null){
+            $returnString.= '"",';
+        }else{
+            $returnString.=$this->getSection().',';
+        }
+        
         $returnString.= '"challenges":[';
 
         $quantityOfChallengues = count($this->getChallenges());

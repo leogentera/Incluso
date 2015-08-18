@@ -17,7 +17,9 @@
                   </nav>
                   <ul class="nav" ng-controller="menuController">
                     <li><a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-home"></i> Inicio</a></li>
+                    <li><a ng-click="navigateTo('AcercaPrograma', 'Acerca del Programa', 'sideToggle', 'navbarorange')"><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
                     <li><a ng-click="navigateTo('Tutorial','Guia de Uso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-video-file"></i> Guía de uso</a></li>
+                    <li><a ng-click="playVideo('assets/media', 'TutorialTest2.mp4')"><i class="icomoon icon-video-file"></i> Ver video tutorial</a></li>
                     <li>
                         <i class="icomoon icon-arrow fl-right white pointer" ></i>
                         <a class="menu-blue accsub" data-id="0">
@@ -30,33 +32,50 @@
                         </a>
                         <div class="submenu" id="sub0">
                             <ul>
-                                <li>DESCUBRE MÁS</li>
-                                <li><a ng-href="./Templates/Programa/etapa-1.shtml"> Descubre más</a></li>
+                                <li>Exploración inicial</li> 
+                                <li><a ng-click="navigateTo('ExplorationInitial','Exploración inicial', 'sideToggle', 'navbarorange')">Exploración inicial</a></li>
                             </ul>
                             <ul>
-                                <li>AUTOCONOCIMIENTO</li>
-                                <li><a ng-href="./Templates/Programa/etapa-1.shtml"> Descubre más</a></li>
-                                <li><a> Inteligencias múltiples</a></li>
-                                <li><a  ng-href="./Templates/Programa/forocom.shtml"> Foro común</a></li>
+                              <li>Cuarto de recursos</li>
+                              <li><a ng-click="navigateTo('/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia','Descubre más', 'sideToggle', 'navbarorange')">Fuente de energía</a></li>
                             </ul>
                             <ul>
-                                <li>MIS SUEÑOS</li>
-                                <li><a ng-href="./Templates/Programa/etapa-1.shtml"> Descubre más</a></li>
-                                <li><a ng-href="./Templates/Programa/cuaytal.shtml"> Mis Cualidades</a></li>
-                                <li><a ng-href="./Templates/Programa/gustypref.shtml"> Mis Gustos</a></li>
-                                <li><a  ng-href="#/Forcomwall"> Foro común</a></li>
+                                <li>Conócete</li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/Conocete/FuenteDeEnergia','Descubre más', 'sideToggle', 'navbarblue')">Fuente de energía</a></li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/Conocete/RetoMultiple','Reto múltiple', 'sideToggle', 'navbarorange')">Reto múltiple </a></li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos','Punto de encuentro', 'sideToggle', 'navbarorange')">Punto de encuentro </a></li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Comentarios','Zona de contacto', 'sideToggle', 'navbarorange')">Zona de contacto</a></li>
+                            </ul>
+                            
+                            <ul>
+                                <li>Mis sueños </li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/MisSuenos/FuenteDeEnergia','Descubre más', 'sideToggle', 'navbarblue')">Fuente de energía</a></li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/MisSuenos/MisGustos','Mis gustos', 'sideToggle', 'navbarorange')">Mis gustos</a></li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/MisSuenos/MisCualidades','Mis cualidades', 'sideToggle', 'navbarorange')">Mis Cualidades</a></li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/MisSuenos/Suena','Sueña', 'sideToggle', 'navbarorange')">Sueña</a></li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/MisSuenos/PuntosDeEncuentro/Topicos','Punto de encuentro', 'sideToggle', 'navbarorange')">Punto de encuentro </a></li>
+                            </ul>
+                            <ul>
+                                <li>Cabina de soporte</li>
+                                <li><a ng-click="navigateTo('/ZonaDeVuelo/CabinaDeSoporte','Reto múltiple', 'sideToggle', 'navbarorange')">Chat</a></li>
+                                
+                                <!--<li><a  ng-href="./Templates/Programa/forocom.shtml"> Foro común</a></li>-->
+                            </ul>
+                            <ul>
+                                <li>Exploración final</li> 
+                                <li><a ng-click="navigateTo('ExplorationFinal','Exploración final', 'sideToggle', 'navbarorange')">Exploración final</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a class="menu-green" ng-href="#"><i class="icomoon icon-asterodis"></i>Zona de Navegación</a></li>
-                    <li><a class="menu-pink" ng-href="#"><i class="icomoon icon-planet"></i>Zona de Aterrizaje</a></li>
-                    <li><a ng-click="navigateTo('AcercaPrograma', 'Acerca del Programa', 'sideToggle', 'navbarorange')"><i class="icomoon icon-books "></i> Acerca de Incluso</a></li>
-                    <li><a><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
-                    <li><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
-                    <li><a><i class="icomoon icon-document"></i> Certificación</a></li>
-                    <li><a><i class="icomoon icon-racing-flag "></i> Recuerdos Incluso</a></li>
-                    <li><a><i class="icomoon icon-lifesaver"></i> Preguntas frecuentes</a></li>
-                    <li><a><i class="icomoon icon-notes"></i> Aviso de privacidad</a></li>
+                    <li class="hidden"><a class="menu-green" ng-href="#"><i class="icomoon icon-asterodis"></i>Zona de Navegación</a></li>
+                    <li class="hidden"><a class="menu-pink" ng-href="#"><i class="icomoon icon-planet"></i>Zona de Aterrizaje</a></li>                    
+                    <li><a ng-click="navigateTo('HallOfFame','Salón de la fama', 'sideToggle', 'navbarorange')"><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
+                    <li class="hidden"><a><i class="icomoon icon-racing-flag "></i> Recuerdos Incluso</a></li>
+                    <li class="hidden"><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
+                    <li class="hidden"><a><i class="icomoon icon-document"></i> Certificación</a></li>                    
+                    <li class="hidden"><a><i class="icomoon icon-lifesaver"></i> Preguntas frecuentes</a></li>
+                    <li><a ng-click="navigateTo('PrivacyNotice','Aviso de privacidad', 'sideToggle', 'navbarorange')"><i class="icomoon icon-notes"></i> Aviso de privacidad</a></li>
+                    <li><a ng-click="navigateTo('TermsOfUse','Condiciones de uso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-notes"></i> Condiciones de uso</a></li>
                     <li><a ng-click="logout()"><i class="glyphicon glyphicon-off"></i> Salir</a></li>                    
                   </ul>
                 </div>

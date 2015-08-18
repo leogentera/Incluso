@@ -42,10 +42,27 @@
                     $rootScope.sidebar = !$rootScope.sidebar;
             };
 
+			$scope.playVideo = function(videoAddress, videoName){
+                 playVideo(videoAddress, videoName);
+            };
+			
             $scope.scrollToTop = function(element){
               
                 $location.hash(element);
                 $anchorScroll();
                
             }
+
+            /* Preloader default callbacks and listeners */
+            var _showPreloader = function() {
+                $scope.loading = true;
+                //$scope.modalTransitionIn = true;
+            };
+            var _hidePreloader = function() {
+                $scope.loading = false;
+                //$scope.modalTransitionIn = false;
+            };
+            $scope.$on('ShowPreloader', _showPreloader);
+            $scope.$on('HidePreloader', _hidePreloader);
+
         }]);
