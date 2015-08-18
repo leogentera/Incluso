@@ -70,7 +70,7 @@ class ActivityController extends AbstractRestfulJsonController {
         $json = json_decode($response,true);
     
         if (strpos($response, "exception") !== false){
-            return array();
+            return array("error" => "error");
         }
 
         if(count($json) == 0){
