@@ -53,11 +53,16 @@
                
             }
 
-            $scope.$on('ShowPreloader', function() {
+            /* Preloader default callbacks and listeners */
+            var _showPreloader = function() {
                 $scope.loading = true;
-            });
-            $scope.$on('HidePreloader', function() {
+                //$scope.modalTransitionIn = true;
+            };
+            var _hidePreloader = function() {
                 $scope.loading = false;
-            });
+                //$scope.modalTransitionIn = false;
+            };
+            $scope.$on('ShowPreloader', _showPreloader);
+            $scope.$on('HidePreloader', _hidePreloader);
 
         }]);
