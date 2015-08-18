@@ -17,26 +17,48 @@ angular
             $scope.model = getDataAsync();
             $scope.genderItems = ['Masculino', 'Femenino'];
             $scope.countryItems = ['México', 'Guatemala', 'Costa Rica', 'Perú', 'Brasil'];
-            $scope.cityItems = ['DF', 'Guadalajara', 'Monterrey', 'Villa hermosa'];
-            $scope.stateItems = ['Coahuila', 'Jalisco', 'México', 'Nuevo León'];
+            $scope.cityItems = ['México D.F.', 'Guadalajara', 'Monterrey', 'Villa hermosa'];
+            $scope.stateItems = ['Distrito Federal','Coahuila', 'Jalisco', 'México', 'Nuevo León'];
             $scope.maritalStatusItems = ['Soltero(a)', 'Casado(a)', 'Unión libre'];
-            $scope.studiesList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
+            $scope.studiesList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];            
+            $scope.favoritSportsList = ['Grado', 'Ciclismo','Ciclismo\r', 'Patinaje/skateboarding', 'Universidad', 'FutbolSoccer', 'Basquetbol', 'ArtesMarciales', 'Yoga', 'Natación', 'FutbolAmericano', 'Basebol', 'Carreras'];
+            $scope.artisticActivitiesList = ['Pintura','Música','Danza','Fotografia','Graffiti','DisenoDigital','Artesanias','Teatro','Modelado','Dibujo'];
+            $scope.hobbiesList = ['Ir a fiestas','Leer','Pasar tiempo con amigos','Cocinar','Jugar videojuegos','Visitar museos','Ver películas/series','Ver televisión','Modelado','Pasar tiempo en redes sociales'];
+            $scope.talentsList = ['Cantar','Llevar ritmos','Bailar','Hablar frente a otros','Dibujar','Hacer amigos','Hacer operaciones matemáticas','Aprender cosas rápido','Ubicar lugares','Memorizar','Hacer manualidades'];
+            $scope.valuesList = ['Tolerancia','Respeto','Honestidad','Responsabilidad','Confiabilidad','Solidaridad','Igualdad','Lealtad','Amistad','Generosidad','Esfuerzo'];
+            $scope.habilitiesList = ['Empatía','Creatividad','Liderazgo','Comunicación','Negociación','Trabajo en equipo','Innovación','Iniciativa','Toma de decisiones','Planeación','Organización'];
+            $scope.iLiveWithList = ['Ambo padres','Padre','Madre','Tíos','Esposo(a)','Abuelos','Amigos'];
+            $scope.mainActivityList = ['Estudias','Trabajas','Ni estudias ni trabajas'];
+            $scope.levelList = ['Primaria','Secundaria','Preparatoria','Universidad'];
+            $scope.gradeList = ['1er','2do','3ro','4to','5to','6to'];
+            $scope.periodList = ['Año','Semestre','Cuatrimestre','Trimestre','Bimestre'];
+            $scope.yesNoList = ['Sí','No'];
+            $scope.moneyIncomeList = ['Padres','Trabajo'];
+            $scope.medicalInsuranceList = ['IMSS','Privado','Seguro Popular']   
+                     
+            $scope.knownDevicesList = ['Laptop','Tableta','Celular','Computadora']
+            $scope.phoneUsageList = ['Hacer llamadas','Mensajes','Música','Videos','Fotos','Descargas','Investigación','Juegos','Redes sociales','Tomar selfies','Grabar videos']
+            $scope.videoGamesFrecuencyList = ['Diario','3 veces a la semana','1 vez a la semana','1 o 2 veces al mes','Nunca']
+            $scope.kindOfVideoGamesList = ['Acción','Deportes','Violencia','Aventura','Reto','Estrategia','Educativos','Peleas']
 
 
 
 
+            
+            
 
 
 
+            
 
 
-            formatDate($scope.model.birthday);
-
+            
+            
+            $scope.birthdate_Dateformat = formatDate($scope.model.birthday);            
 
             function getDataAsync() {
 
                 var m = JSON.parse(moodleFactory.Services.GetCacheObject("profile"));
-
 
                 if (!m) {
                     $location.path('/');
@@ -46,21 +68,17 @@ angular
 
                 return m;
             }
-
+            
             function formatDate(date) {
                 var splitDate = date.split("/");
-                var newDate = splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0];
-                //var newDate = new Date(splitDate[2], splitDate[1], splitDate[0]);
+                var userBirthDate = new Date(splitDate[2], splitDate[0]-1, splitDate[1]);
+                getAge(userBirthDate);
                 
-                getAge(newDate);
-
-                $scope.model.birthday = newDate;
+                return userBirthDate;
             }
 
-            function getAge(date) {
-                if (date != null || date != '') {
-                    var splitDate = date.split("-");
-                    var birthDate = new Date(splitDate[0], splitDate[1], splitDate[2]);
+            function getAge(birthDate) {
+                if (birthDate != null || birthDate != '') {                   
                     var cur = new Date();
                     var diff = cur - birthDate;
                     var age = Math.floor(diff / 31536000000);
@@ -98,11 +116,11 @@ angular
             $scope.save = function () {
                 moodleFactory.Services.PutAsyncProfile(_getItem("userId"), $scope.model,
                     function (data) {
-                        alert("1: " + data)
+                        console.log('Save profile successful...');
                         $scope.index();
                     },
                     function (date) {
-                        alert("1: " + date)
+                        console.log('Save profile fail...');
                         $scope.index();
                     });
             }
@@ -135,6 +153,14 @@ angular
 
             $scope.deleteArtisticActivities = function (index) {
                 $scope.model.artisticActivities.splice(index, 1);
+            }
+            
+              $scope.addHobbies = function (index) {
+                $scope.model.hobbies.push(new String());
+            }
+
+            $scope.deleteHobbies = function (index) {
+                $scope.model.hobbies.splice(index, 1);
             }
 
             $scope.addTalents = function (index) {
