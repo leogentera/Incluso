@@ -53,6 +53,8 @@ angular
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false;
 
+            $scope.$emit('HidePreloader'); //- hide preloader
+
             /* Watchers */
             $scope.$watch("registerModel.confirmPassword", function(newValue, oldValue){
                 isConfirmedPasswordValid = (newValue === $scope.registerModel.password);
