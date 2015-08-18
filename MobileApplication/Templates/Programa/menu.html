@@ -33,7 +33,7 @@
                         <div class="submenu" id="sub0">
                             <ul>
                                 <li>Exploración inicial</li> 
-                                <li><a>Exploración inicial</a></li>
+                                <li><a ng-click="navigateTo('ExplorationInitial','Exploración inicial', 'sideToggle', 'navbarorange')">Exploración inicial</a></li>
                             </ul>
                             <ul>
                               <li>Cuarto de recursos</li>
@@ -63,19 +63,19 @@
                             </ul>
                             <ul>
                                 <li>Exploración final</li> 
-                                <li><a>Exploración final</a></li>
+                                <li><a ng-click="navigateTo('ExplorationFinal','Exploración final', 'sideToggle', 'navbarorange')">Exploración final</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="hidden"><a class="menu-green" ng-href="#"><i class="icomoon icon-asterodis"></i>Zona de Navegación</a></li>
                     <li class="hidden"><a class="menu-pink" ng-href="#"><i class="icomoon icon-planet"></i>Zona de Aterrizaje</a></li>                    
-                    <li><a ng-click="navigateTo('HallOfFame',' Salón de la fama', 'sideToggle', 'navbarorange')"><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
+                    <li><a ng-click="navigateTo('HallOfFame','Salón de la fama', 'sideToggle', 'navbarorange')"><i class="icomoon icon-cup"></i> Salón de la fama</a></li>
                     <li class="hidden"><a><i class="icomoon icon-racing-flag "></i> Recuerdos Incluso</a></li>
                     <li class="hidden"><a><i class="icomoon icon-loop"></i> Seguimiento</a></li>
                     <li class="hidden"><a><i class="icomoon icon-document"></i> Certificación</a></li>                    
                     <li class="hidden"><a><i class="icomoon icon-lifesaver"></i> Preguntas frecuentes</a></li>
-                    <li><a><i class="icomoon icon-notes"></i> Aviso de privacidad</a></li>
-                    <li><a><i class="icomoon icon-notes"></i> Condiciones de uso</a></li>
+                    <li><a ng-click="navigateTo('PrivacyNotice','Aviso de privacidad', 'sideToggle', 'navbarorange')"><i class="icomoon icon-notes"></i> Aviso de privacidad</a></li>
+                    <li><a ng-click="navigateTo('TermsOfUse','Condiciones de uso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-notes"></i> Condiciones de uso</a></li>
                     <li><a ng-click="logout()"><i class="glyphicon glyphicon-off"></i> Salir</a></li>                    
                   </ul>
                 </div>

@@ -1,6 +1,6 @@
 angular
-    .module('incluso.program.hallOfFame', [])
-    .controller('HallOfFameController', [
+    .module('incluso.program.explorationInitial', [])
+    .controller('ExplorationInitialController', [
         '$q',
         '$scope',
         '$location',
@@ -10,7 +10,7 @@ angular
         '$http',
         '$modal',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
-            $rootScope.pageName = "Salón de la fama"
+            $rootScope.pageName = "Exploración inicial"
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true; 
