@@ -50,6 +50,21 @@ function syncCacheData (){
 
 }
 
+var _endActivity = function(userId,activityId){
+  
+    moodleFactory.Services.PutAsyncActivity(userId,activityId,
+                                            
+                                              function (data){
+                                                //on successCallback;
+                                                console.log('Activity successfuly updated');
+                                                },
+                                                
+                                              function(data){
+                                                //on errorCallback
+                                                console.log('Error updating activity');
+                                                });    
+};
+
 syncCacheData();
 var logout = function($scope, $location){
     console.log("Logout function ");

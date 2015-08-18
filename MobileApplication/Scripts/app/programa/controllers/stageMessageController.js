@@ -16,7 +16,9 @@ angular
             $rootScope.navbarBlue = true;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true; 
-            $rootScope.showFooterRocks = false; 
+            $rootScope.showFooterRocks = false;
+            $rootScope.activityId = 1;
+            $rootScope.userId = 45;
 
             $scope.scrollToTop();
             $scope.$emit('HidePreloader'); //hide preloader
@@ -25,4 +27,8 @@ angular
                 $location.path('/ProgramaDashboard');
             }
 
+            $scope.endActivity = function(){
+                
+                _endActivity($rootScope.userId, $rootScope.activityId);
+            }                    
         }]);
