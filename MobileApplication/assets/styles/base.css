@@ -1341,8 +1341,16 @@ body.modal-open {
   width: 9vw;
   height: 9vw;
 }
+.incluso-app .navbar-tools li:hover .icomoon,
 .incluso-app .navbar-tools li.active .icomoon {
   color: #bf2a09;
+  -webkit-transition: all 700ms ease;
+  -moz-transition: all 700ms ease;
+  -o-transition: all 700ms ease;
+  transition: all 700ms ease;
+}
+.incluso-app .navbar-tools li.disabled {
+  pointer-events: none;
 }
 .incluso-app .navbar-tools a {
   color: white;
@@ -1496,7 +1504,6 @@ body.modal-open {
   font-size: 1.1em;
   font-weight: 700;
   text-align: center;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 .incluso-app .component p {

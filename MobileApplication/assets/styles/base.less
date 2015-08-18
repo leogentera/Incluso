@@ -1271,10 +1271,19 @@ body {
             width: 9vw; 
             height: 9vw;
 
+            &:hover,
             &.active {
                 .icomoon {
                     color: darken(@clr-orange, 15%);
+                    -webkit-transition: all 700ms ease;
+                    -moz-transition: all 700ms ease;
+                    -o-transition: all 700ms ease;
+                    transition: all 700ms ease;
                 }
+            }
+
+            &.disabled {
+                pointer-events: none;
             }
         }
         a {
@@ -1473,7 +1482,6 @@ body {
             font-size: 1.1em;
             font-weight: 700;
             text-align: center;
-            text-transform: uppercase;
             letter-spacing: 1px;
         }
         p {

@@ -1,7 +1,7 @@
 <footer class="footer" ng-class="{'db-bg': showFooterRocks ,'show': showFooter}">
     <ul class="block-list">
-      <li><a href="" class="centered txt-title">Preguntas Frecuentes</a></li>
-      <li><a href="" class="centered txt-title">Ayuda y Soporte</a></li>
+      <li class="hidden"><a href="" class="centered txt-title">Preguntas Frecuentes</a></li>
+      <li><a ng-click="navigateTo('HelpAndSupport', 'Ayuda y soporte', 'sidebar', 'navbarorange')" class="centered txt-title">Ayuda y Soporte</a></li>
     </ul>
-    <div class="to-top" ng-click="scrollToTop('navbar');"><i class="icomoon icon-double-arrow-up"></i><br/>SUBIR</div>
+    <a class="to-top" ng-click="scrollToTop('navbar');"><i class="icomoon icon-double-arrow-up"></i><br/>SUBIR</div>
 </footer>
