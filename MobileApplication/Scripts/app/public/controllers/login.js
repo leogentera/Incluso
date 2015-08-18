@@ -18,6 +18,8 @@ angular
             $scope.scrollToTop();
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false;
+	    // $scope.preloader = angular.element(document.getElementById('spinner')).scope();
+            // $scope.preloader.loading = true;
             /* ViewModel */
             $scope.userCredentialsModel = {
                 username: "",
@@ -68,16 +70,29 @@ angular
                 if (currentUser && currentUser.token && currentUser.token != "") {
                     $location.path('/ProgramaDashboard');
                 }
+
+                //$scope.preloader.loading = false;  //- test
+                $scope.$emit('HidePreloader');
             }
 
-            $scope.login = function (username, password) {                
-                console.log('login in');
+            $scope.login = function (username, password) {  
+            //$scope.preloader.loading = true;              
+                //console.log('login in');
+                console.log('Login action started'); //- debug
 
-                if (validateModel()) {
+                var isModelValid = validateModel();
+                console.log('isValid: ' + isModelValid); //- debug
+
+                if (isModelValid) {
+                //if (validateModel()) {
 
                     // reflect loading state at UI
-                    $scope.openProcessingActionModal();
-                    $scope.isLogginIn = true;  
+                    //$scope.openProcessingActionModal();
+                    //$scope.isLogginIn = true;
+                    //$scope.preloader.loading = true;
+                    //console.log('showPreloader: ' + $scope.loading); //- debug
+                    $scope.$emit('ShowPreloader')
+                    console.log('showPreloader'); //- debug
 
                     $http(
                         {
@@ -90,6 +105,7 @@ angular
 
                             console.log('successfully logged in');
                             //$scope.PreloaderModalInstance.dismiss();
+                            //$scope.preloader.loading = false;
 
                             //save token for further requests and autologin
                             $scope.currentUserModel.token = data.token;
@@ -109,7 +125,9 @@ angular
                                     function () {
                                         //possible line for modal dismiss
                                         console.log('redirecting..');
-                                        $scope.PreloaderModalInstance.dismiss();
+                                        //$scope.PreloaderModalInstance.dismiss();
+                                        //$scope.preloader.loading = false;
+                                        $scope.$emit('HidePreloader');
 
                                         $location.path('/ProgramaDashboard');
                                     }, 1000);
@@ -122,7 +140,10 @@ angular
                             }
 
                         }).error(function (data, status, headers, config) {                            
-                            $scope.PreloaderModalInstance.dismiss();
+                            //$scope.PreloaderModalInstance.dismiss();
+                            //$scope.preloader.loading = false;
+                            $scope.$emit('HidePreloader');
+
                             var errorMessage = window.atob(data.messageerror);                            
                             $scope.userCredentialsModel.modelState.errorMessages = [errorMessage];
                             console.log(status + ": " + errorMessage);
@@ -130,6 +151,7 @@ angular
                             $scope.isLogginIn = false;
                         });
                 } else {
+                    console.log('End'); //- debug
                     $scope.scrollToTop();
                 }
             }
@@ -144,7 +166,7 @@ angular
             }
             
             $scope.scrollToTop = function(){
-                $anchorScroll();
+                $anchorScroll(0);
             }
 
             function FacebookLoginSuccess(data) {
@@ -233,7 +255,7 @@ angular
                     windowClass: 'modal-theme-default modal-preloader',
                     backdrop: 'static'
                 });
-                //$scope.PreloaderModalInstance = modalInstance;
+                $scope.PreloaderModalInstance = modalInstance;
             };            
 
         }])

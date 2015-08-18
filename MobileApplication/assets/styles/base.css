@@ -240,8 +240,8 @@ body.modal-open {
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
-     16. $spinner
-     Description: CSS class to positionante, show and hide the preloader image
+     16. $app-preloader
+     Description: CSS class to represent a backdrop layer and an animation
     ****************************************************************************/
   /***************************************************************************/
   /****************************************************************************
@@ -1597,6 +1597,60 @@ body.modal-open {
   background-image: url("../images/bg-footer-rocks.png");
   background-position: 50% 0;
   box-shadow: unset;
+}
+.incluso-app .app-preloader {
+  overflow: hidden;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(18, 27, 28, 0.9);
+  /* Spinner Circle Rotation */
+}
+.incluso-app .app-preloader img {
+  display: none;
+  position: relative;
+  top: 50%;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0 auto;
+  margin-top: -16px;
+}
+.incluso-app .app-preloader .spinner {
+  clear: both;
+  position: relative;
+  top: 50%;
+  padding: 0;
+  margin: -3vw auto 0.1vw auto;
+  width: 32px;
+  height: 32px;
+}
+.incluso-app .app-preloader .spinner-circle {
+  border: 4px rgba(255, 255, 255, 0.25) solid;
+  border-top: 4px #ffffff solid;
+  border-radius: 50%;
+  -webkit-animation: rotateSpinner .6s infinite linear;
+  animation: rotateSpinner .6s infinite linear;
+}
+@-webkit-keyframes rotateSpinner {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@keyframes rotateSpinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 .incluso-app .form label {
   cursor: pointer;
