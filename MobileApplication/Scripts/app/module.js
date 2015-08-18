@@ -36,8 +36,6 @@
         'incluso.program.hallOfFame',
         'incluso.program.privacyNotice',
         'incluso.program.termsOfUse',
-        'incluso.program.explorationInitial',
-        'incluso.program.explorationFinal',
     ])
     .run(function ($templateCache, $http) {
         $http.get('Templates/Public/Login.html', { cache: $templateCache });
@@ -57,14 +55,13 @@
         $http.get('Templates/Programa/HallOfFame.html', { cache: $templateCache });
         $http.get('Templates/Programa/PrivacyNotice.html', { cache: $templateCache });
         $http.get('Templates/Programa/TermsOfUse.html', { cache: $templateCache });
-        $http.get('Templates/Programa/ExplorationInitial.html', { cache: $templateCache });
-        $http.get('Templates/Programa/ExplorationFinal.html', { cache: $templateCache });
 
         $http.get('Templates/Juegos/Game.html', { cache: $templateCache });
         $http.get('Templates/Notifications.html', { cache: $templateCache });  
         $http.get('Templates/NotificationDetails.html', { cache: $templateCache });  
         $http.get('Templates/Programa/Dashboard.html', { cache: $templateCache });  
         $http.get('Templates/Chat/index.html', { cache: $templateCache });  
+
         $http.get('Templates/Leaderboard/index.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/dashboard.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/exploracion_forum.html', { cache: $templateCache });  
@@ -234,7 +231,7 @@
             controller: 'stageDashboardController'
         });
 
-        $routeProvider.when('/ZonaDeVuelo/ExploracionInicial?moodleid=zv_exploracionInicial', { 
+        $routeProvider.when('/ZonaDeVuelo/ExploracionInicial', { 
             templateUrl: 'Templates/ZonaDeVuelo/exploracion_forum.html',
             controller: 'stageForumController'
         });
