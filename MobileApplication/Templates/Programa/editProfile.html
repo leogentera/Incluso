@@ -149,13 +149,8 @@
                               <select ng-model="model.birthCountry" ng-options="item for item in countryItems" ng-init="model.birthCountry == null" class="form-control form-control-lg theme-form">
                                 <option value="" ng-disabled="!!model.birthCountry">País de nacimiento</option>
                               </select>
-                            </p>
-
-                            <!--birthday: {{model.birthday}}-->
-                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="model.birthday"
-                            required />-->
+                            </p>                 
                             
-                            birthday: {{model.birthday}}
                             <input type="date" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="birthdate_Dateformat" ng-change="birthdayChanged()"/>
 
                             <input type="text" class="form-control form-control-lg theme-form" placeholder="Edad" ng-model="model.age" readonly/>
