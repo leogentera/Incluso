@@ -183,16 +183,6 @@
             controller: 'TermsOfUseController'
         });
 
-        $routeProvider.when('/ExplorationInitial', {
-            templateUrl: 'Templates/Programa/ExplorationInitial.html',
-            controller: 'ExplorationInitialController'
-        });
-
-        $routeProvider.when('/ExplorationFinal', {
-            templateUrl: 'Templates/Programa/ExplorationFinal.html',
-            controller: 'ExplorationFinalController'
-        });
-
         $routeProvider.when('/Juegos/Game', {
             templateUrl: 'Templates/Juegos/Game.html',
             controller: 'GameController'
@@ -224,7 +214,7 @@
             controller: 'stageDashboardController'
         });
 
-        $routeProvider.when('/ZonaDeVuelo/ExploracionInicial', { 
+        $routeProvider.when('/ZonaDeVuelo/ExploracionInicial/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/exploracion_forum.html',
             controller: 'stageForumController'
         });
@@ -234,7 +224,7 @@
             controller: 'stageForumController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia', { 
+        $routeProvider.when('/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia.html',
             controller: 'stageContentsController'
         });
@@ -244,12 +234,12 @@
             controller: 'stageMessageController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/Conocete/FuenteDeEnergia', { 
+        $routeProvider.when('/ZonaDeVuelo/Conocete/FuenteDeEnergia/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/FuenteDeEnergia.html',
             controller: 'stageContentsController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/Conocete/RetoMultiple', { 
+        $routeProvider.when('/ZonaDeVuelo/Conocete/RetoMultiple/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/RetoMultiple.html',
             controller: 'stageGameRetoMultipleController'
         });
@@ -259,7 +249,7 @@
             controller: 'stageGameRetoMultipleController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos', { 
+        $routeProvider.when('/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos.html',
             controller: 'stageForumController'
         });
@@ -269,12 +259,12 @@
             controller: 'stageForumController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/Conocete/ZonaDeContacto/dashboard.html', { 
+        $routeProvider.when('/ZonaDeVuelo/Conocete/ZonaDeContacto', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/ZonaDeContacto/dashboard.html',
-            controller: ''
+            controller: 'stageDashboardController'  //this may need to be change to another type of controller
         });
     
-        $routeProvider.when('/ZonaDeVuelo/Conocete/ZonaDeContacto/Logicos/Topicos', { 
+        $routeProvider.when('/ZonaDeVuelo/Conocete/ZonaDeContacto/Logicos/Topicos/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/ZonaDeContacto/Logicos/Topicos.html',
             controller: 'stageForumController'
         });
@@ -284,7 +274,7 @@
             controller: 'stageForumController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/Conocete/ZonaDeContacto/Artisticos/Topicos', { 
+        $routeProvider.when('/ZonaDeVuelo/Conocete/ZonaDeContacto/Artisticos/Topicos/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/ZonaDeContacto/Artisticos/Topicos.html',
             controller: 'stageForumController'
         });
@@ -299,12 +289,12 @@
             controller: 'stageMessageController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/MisSuenos/FuenteDeEnergia', { 
+        $routeProvider.when('/ZonaDeVuelo/MisSuenos/FuenteDeEnergia/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/MisSuenos/FuenteDeEnergia.html',
             controller: 'stageContentsController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/MisSuenos/MisCualidades', { 
+        $routeProvider.when('/ZonaDeVuelo/MisSuenos/MisCualidades/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/MisSuenos/MisCualidades.html',
             controller: 'stageQuizController'
         });
@@ -314,7 +304,7 @@
             controller: 'stageMessageController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/MisSuenos/MisGustos', { 
+        $routeProvider.when('/ZonaDeVuelo/MisSuenos/MisGustos/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/MisSuenos/MisGustos.html',
             controller: 'stageuizController'
         });
@@ -324,7 +314,7 @@
             controller: 'stageMessageController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/MisSuenos/Suena', { 
+        $routeProvider.when('/ZonaDeVuelo/MisSuenos/Suena/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/MisSuenos/Suena.html',
             controller: 'stageuizController'
         });
@@ -334,7 +324,7 @@
             controller: 'stageMessageController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/MisSuenos/PuntosDeEncuentro/Topicos', { 
+        $routeProvider.when('/ZonaDeVuelo/MisSuenos/PuntosDeEncuentro/Topicos/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/MisSuenos/PuntosDeEncuentro/Topicos.html',
             controller: 'stageForumController'
         });
@@ -349,7 +339,7 @@
             controller: 'stageMessageController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/CabinaDeSoporte', { 
+        $routeProvider.when('/ZonaDeVuelo/CabinaDeSoporte/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/CabinaDeSoporte.html',
             controller: 'stageChatController'
         });
@@ -359,7 +349,7 @@
             controller: 'stageMessageController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/ExploracionFinal', { 
+        $routeProvider.when('/ZonaDeVuelo/ExploracionFinal/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/ExploracionFinal.html',
             controller: 'stageQuizController'
         });
@@ -369,7 +359,7 @@
             controller: 'stageMessageController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/Cierre', { 
+        $routeProvider.when('/ZonaDeVuelo/Cierre/:moodleid', { 
             templateUrl: 'Templates/ZonaDeVuelo/Cierre.html',
             controller: 'programaEndController'
         });

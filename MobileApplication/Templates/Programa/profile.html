@@ -156,28 +156,32 @@
                                                         <p ng-bind="model.lastname"></p>
                                                         <hr />
                                                         <h5>Alias</h5>
-                                                        <p ng-bind="model.username"></p>
+                                                        <p ng-bind="model.alias"></p>
                                                         <hr />
                                                         <h5>Sexo</h5>
-                                                        <p></p>
+                                                        <p ng-bind="model.gender"></p>
                                                         <hr />
                                                         <h5>País de nacimiento</h5>
-                                                        <p></p>
+                                                        <p ng-bind="model.birthCountry"></p>
                                                         <hr />
                                                         <h5>Fecha de nacimiento</h5>
-                                                        <p></p>
+                                                        <p ng-bind="model.birthday"></p>
+                                                        <p {{ng-bind="model.birthday" | date: "MM/dd/yyyy"}}></p>
+
                                                         <hr />
                                                         <h5>Edad</h5>
-                                                        <p></p>
+                                                        <p ng-bind="model.age"></p>
                                                         <hr />
                                                         <h5>Estado civil</h5>
-                                                        <p></p>
+                                                        <p ng-bind="model.maritalStatus"></p>
                                                         <hr />
                                                         <h4>Educación</h4>
                                                         <h5>Mis estudios</h5>
                                                         <ul class="block-list" ng-repeat="s in model.studies">
                                                             <li>
-                                                                <p ng-bind="s"></p>
+                                                                <p ng-bind="s.school"></p>
+                                                                <br>
+                                                                <p ng-bind="s.levelOfStudies"></p>
                                                             </li>
                                                         </ul>
                                                         <hr />
@@ -208,7 +212,6 @@
                                                             <li>
                                                                 <h5>Teléfono</h5>
                                                                 <p ng-bind="s"></p>
-                                                                <hr />
                                                             </li>
                                                         </ul>
                                                         <hr />
@@ -217,6 +220,7 @@
                                                             <li>
                                                                 <h5>Red social</h5>
                                                                 <p ng-bind="s.socialNetwork"></p>
+                                                                <p ng-bind="s.socialNetworkId"></p>
                                                             </li>
                                                         </ul>
                                                         <hr />
@@ -227,14 +231,17 @@
                                                                 <p ng-bind="s"></p>
                                                             </li>
                                                         </ul>
-
+                                                        <hr />
                                                         <!--<ul class="block-list" ng-repeat="s in model.studies">
                                                             <li>
+                                                                <h5>Estudio</h5>
                                                                 <p ng-bind="s.school"></p>
                                                                 <p ng-bind="s.levelOfStudies"></p>
                                                             </li>
                                                         </ul>
+                                                        <hr />-->
 
+                                                        <!--
                                                         <h5>Domicilio</h5>
                                                         <p ng-bind="model.address.street + ' ' + model.address.num_ext + ' ' + model.address.num_int + ' ' + model.address.colony + ' ' + model.address.city + ' ' + model.address.town + ' ' + model.address.state + ' ' + model.address.country + ' ' + model.address.postalCode"></p>
                                                         <hr />
@@ -716,7 +723,7 @@
             </section>
         </article>
 
-       <!-- <footer>
+        <!-- <footer>
             <ul class="block-list">
                 <li><a href="" class="btn-link">Preguntas Frecuentes</a></li>
                 <li><a href="" class="btn-link">Ayuda y Soporte</a></li>
