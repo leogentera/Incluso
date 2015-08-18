@@ -26,12 +26,11 @@ angular
             $scope.activity = null;
 
             function getDataAsync() {
-                moodleFactory.Services.GetAsyncActivity(_getItem($routeParams.moodleId), getActivityInfoCallback);
+                moodleFactory.Services.GetAsyncActivity($routeParams.moodleid, getActivityInfoCallback);
             }
 
             function getActivityInfoCallback() {
-                debugger;
-                $scope.activity = JSON.parse(moodleFactory.Services.GetCacheObject("activity/" + $routeParams.moodleId));
+                $scope.activity = JSON.parse(moodleFactory.Services.GetCacheObject("activity/" + $routeParams.moodleid));
             }
 
             getDataAsync();
