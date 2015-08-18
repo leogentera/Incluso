@@ -35,6 +35,7 @@
         'incluso.program.hallOfFame',
         'incluso.program.privacyNotice',
         'incluso.program.termsOfUse',
+        'incluso.program.helpAndSupport',
     ])
     .run(function ($templateCache, $http) {
         $http.get('Templates/Public/Login.html', { cache: $templateCache });
@@ -53,6 +54,7 @@
         $http.get('Templates/Programa/HallOfFame.html', { cache: $templateCache });
         $http.get('Templates/Programa/PrivacyNotice.html', { cache: $templateCache });
         $http.get('Templates/Programa/TermsOfUse.html', { cache: $templateCache });
+        $http.get('Templates/Programa/HelpAndSupport.html', { cache: $templateCache });
 
         $http.get('Templates/Juegos/Game.html', { cache: $templateCache });
         $http.get('Templates/Notifications.html', { cache: $templateCache });  
@@ -178,9 +180,14 @@
             controller: 'PrivacyNoticeController'
         });
 
-         $routeProvider.when('/TermsOfUse', {
+        $routeProvider.when('/TermsOfUse', {
             templateUrl: 'Templates/Programa/TermsOfUse.html',
             controller: 'TermsOfUseController'
+        });
+
+        $routeProvider.when('/HelpAndSupport', {
+            templateUrl: 'Templates/Programa/HelpAndSupport.html',
+            controller: 'HelpAndSupportController'
         });
 
         $routeProvider.when('/Juegos/Game', {
@@ -188,7 +195,6 @@
             controller: 'GameController'
         });
        
-
         $routeProvider.when('/Notifications', { 
             templateUrl: 'Templates/Notifications.html',
             controller: 'programaNotificationController'
