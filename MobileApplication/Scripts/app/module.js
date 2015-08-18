@@ -114,6 +114,8 @@
             $("#menuton span").text($(".main-title").text()); 
 
         });
+        // $scope.preloader = angular.element(document.getElementById('spinner')).scope();
+        // $scope.preloader.loading = true;
         
     }])
     // Not sure why there's 2 required names

@@ -52,4 +52,12 @@
                 $anchorScroll();
                
             }
+
+            $scope.$on('ShowPreloader', function() {
+                $scope.loading = true;
+            });
+            $scope.$on('HidePreloader', function() {
+                $scope.loading = false;
+            });
+
         }]);

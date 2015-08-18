@@ -1543,6 +1543,7 @@ body {
     }
     /***************************************************************************/    
 
+
     /****************************************************************************
      $footer
      Description: CSS class for a page wrapper with pages and buttons
@@ -1591,11 +1592,61 @@ body {
     }
     /***************************************************************************/
 
+
     /****************************************************************************
-     16. $spinner
-     Description: CSS class to positionante, show and hide the preloader image
+     16. $app-preloader
+     Description: CSS class to represent a backdrop layer and an animation
     ****************************************************************************/
-    .spinner {}
+    .app-preloader {
+        overflow: hidden;
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 30;
+        width: 100vw;
+        height: 100vh;
+        .clr-blueDark(background-color, 0.9);
+
+        img {
+            display:none;
+            position: relative;
+            top: 50%;
+            width:auto;
+            height:auto;
+            padding:0;
+            margin: 0 auto;
+            margin-top: -16px; 
+        }
+
+        .spinner {
+            clear: both;
+            position: relative;
+            top: 50%;
+            padding:0;
+            margin: -3vw auto 0.1vw auto;
+            width: 32px;
+            height: 32px;
+        }
+
+
+        /* Spinner Circle Rotation */
+        .spinner-circle {
+            border: 4px rgba(255,255,255,0.25) solid;
+            border-top: 4px rgba(255,255,255,1) solid;
+            border-radius: 50%;
+            -webkit-animation: rotateSpinner .6s infinite linear;
+            animation: rotateSpinner .6s infinite linear;
+        }
+        @-webkit-keyframes rotateSpinner {
+            from { -webkit-transform: rotate(0deg); }
+            to { -webkit-transform: rotate(359deg); }
+        }
+        @keyframes rotateSpinner {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(359deg); }
+        }        
+    }
     /***************************************************************************/
  
 
