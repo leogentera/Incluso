@@ -894,9 +894,27 @@ body.modal-open {
 }
 .incluso-app .input-group .input-group-control {
   display: table-cell;
+  position: relative;
   padding: 0;
   border: none;
   vertical-align: middle;
+}
+.incluso-app .input-group .input-group-control:before {
+  display: block;
+  position: absolute;
+  z-index: 30;
+  right: 3vw;
+  top: 50%;
+  width: 3vw;
+  height: 3vw;
+  padding: 0;
+  margin: 0 0 0 0;
+  width: 0;
+  height: 0;
+  border-left: 1vw solid transparent;
+  border-right: 1vw solid transparent;
+  border-top: 1vw solid #ffffff;
+  content: "";
 }
 .incluso-app .input-group .form-control:hover,
 .incluso-app .input-group .form-control:focus,
@@ -1461,7 +1479,6 @@ body.modal-open {
   font-size: 1.1em;
   font-weight: 700;
   text-align: center;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 .incluso-app .component p {

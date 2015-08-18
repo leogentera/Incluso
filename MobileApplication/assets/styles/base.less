@@ -786,9 +786,24 @@ body {
         } 
         .input-group-control {
             display: table-cell;
+            position: relative;
             padding: 0;
             border: none;
             vertical-align: middle;
+
+            &:before {
+                display: block;
+                position: absolute;
+                z-index: 30;
+                right: 3vw;
+                top: 50%;
+                width:3vw;
+                height: 3vw;
+                padding: 0;
+                margin: 0 0 0 0;
+                .css-arrow-down(1vw, @clr-white);
+                content:"";
+            }
         }
         .form-control:hover, 
         .form-control:focus,
@@ -1449,7 +1464,6 @@ body {
             font-size: 1.1em;
             font-weight: 700;
             text-align: center;
-            text-transform: uppercase;
             letter-spacing: 1px;
         }
         p {

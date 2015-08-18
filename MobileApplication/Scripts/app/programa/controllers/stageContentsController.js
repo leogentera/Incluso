@@ -21,6 +21,17 @@ angular
             $scope.scrollToTop();
             $scope.$emit('HidePreloader'); //hide preloader
 
+            $scope.activities = null;
+            function getDataAsync() {
+                moodleFactory.Services.GetAsyncActivities($routeParams.moodleid, getActivityInfoCallback);
+            }
+
+            function getActivityInfoCallback() {
+                $scope.activities = JSON.parse(moodleFactory.Services.GetCacheObject("activity/" + $routeParams.moodleid));
+            }
+
+            //getDataAsync();
+
             $scope.back = function () {
                 $location.path('/ProgramaDashboard');
             }

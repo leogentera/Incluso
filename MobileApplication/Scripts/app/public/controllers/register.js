@@ -238,7 +238,7 @@ angular
                 if(!$scope.registerForm.secretAnswer.$valid){ errors.push("Respuesta secreta inválida."); }
                 if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }                
                 $scope.registerModel.modelState.errorMessages = errors;
-                if(age < 13 || age > 19){ errors.push("Debes tener entre 13 y 19 años para poder registrarte."); }
+                if(age < 13){ errors.push("Debes ser mayor de 13 años para poder registrarte."); }
                 return (errors.length === 0);
             }
 
