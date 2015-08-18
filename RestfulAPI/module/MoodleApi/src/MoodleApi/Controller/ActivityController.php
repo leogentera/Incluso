@@ -59,6 +59,32 @@ class ActivityController extends AbstractRestfulJsonController {
         }
     }
 
+    public function getList(){
+
+        if(array_key_exists("courseid", $_GET)){
+            return new JsonModel($this->throwJSONError("Curso inválido, Contacte al administrador"));
+        }
+
+        $courseid = $_GET["course"];
+
+        $url = $this->getConfig()['MOODLE_API_URL'].'&courseid=%s';
+        $url = sprintf($url, $this->getToken(), "get_all_activities_by_course", $courseid);
+
+        $response = file_get_contents($url);
+    
+        $json = json_decode($response,true);
+    
+        if (strpos($response, "exception") !== false){
+            return new JsonModel();
+        }
+
+        if(count($json) == 0){
+            return new JsonModel();
+        }
+        
+        return new JsonModel((array)$json);
+    }
+
     private function getIdAndTypeOfActivity($coursemoduleid){
         $url = $this->getConfig()['MOODLE_API_URL'].'&coursemoduleid=%s';
         $url = sprintf($url, $this->getToken(), "get_activity_id_and_name", $coursemoduleid);

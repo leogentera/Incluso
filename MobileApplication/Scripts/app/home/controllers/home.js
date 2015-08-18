@@ -42,6 +42,13 @@
                     $rootScope.sidebar = !$rootScope.sidebar;
             };
 
+            $scope.toolbarOptionActive = function (path) {
+                if($location.path().substr(0, path.length) === path)
+                    return "active disabled";
+                else
+                    return "";
+            }
+
 			$scope.playVideo = function(videoAddress, videoName){
                  playVideo(videoAddress, videoName);
             };
