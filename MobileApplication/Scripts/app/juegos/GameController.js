@@ -14,5 +14,9 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
             $scope.scrollToTop();
-           
+            //$scope.preloader.loading = false;
+            $rootScope.pageName = "Reto multiple"
+            $rootScope.navbarBlue = false;
+            $rootScope.showToolbar = true;
+            $rootScope.showFooter = true; 
         }]);

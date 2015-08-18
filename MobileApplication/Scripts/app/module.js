@@ -19,6 +19,7 @@
         'incluso.programa.dashboard',
         'incluso.programa.dashboard.etapa',
         'incluso.programa.profile',
+        'incluso.program.findMore',
         'incluso.juegos.game'
     ])
     .run(function ($templateCache, $http) {
@@ -33,6 +34,7 @@
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
         $http.get('Templates/Programa/acercaPrograma.html', { cache: $templateCache });  
         $http.get('Templates/Juegos/Avatar.html', { cache: $templateCache });
+        $http.get('Templates/Programa/FindMore.html', { cache: $templateCache });
         $http.get('Templates/Juegos/Game.html', { cache: $templateCache });
         
     })
@@ -97,6 +99,11 @@
         $routeProvider.when('/Juegos/Avatar', {
             templateUrl: 'Templates/Juegos/Avatar.html',
             controller: 'juegosAvatarController'
+        });
+
+        $routeProvider.when('/FindMore', {
+            templateUrl: 'Templates/Programa/FindMore.html',
+            controller: 'FindMoreController'
         });
 
         $routeProvider.when('/Juegos/Game', {

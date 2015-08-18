@@ -31,6 +31,7 @@
             $scope.currentStage = JSON.parse(moodleFactory.Services.GetCacheObject("currentStage"));
             console.log('loading stage');
 
+            $scope.loading = false;
             $rootScope.pageName = "Mision incluso"
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
