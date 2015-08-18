@@ -154,10 +154,9 @@
                             <!--birthday: {{model.birthday}}-->
                             <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="model.birthday"
                             required />-->
-
-                            birthday: {{model.birthdate_Dateformat}}
-                            <input type="date" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="$scope.birthdate_Dateformat"
-                            />
+                            
+                            birthday: {{model.birthday}}
+                            <input type="date" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="birthdate_Dateformat" ng-change="birthdayChanged()"/>
 
                             <input type="text" class="form-control form-control-lg theme-form" placeholder="Edad" ng-model="model.age" readonly/>
 

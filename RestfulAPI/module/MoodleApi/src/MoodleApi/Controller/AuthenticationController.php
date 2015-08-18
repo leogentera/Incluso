@@ -41,7 +41,6 @@ class AuthenticationController extends AbstractRestfulJsonController {
         }
 
     }
-    return new JsonModel();
 	
 }
 
@@ -441,7 +440,7 @@ private function forgotPassword($data)
     	if ($isFirstTime){
     		$authenticationFirstTryDate=round(microtime(true) * 1000);
     	}
-    	elseif($passwordRecoveryFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
+    	elseif($authenticationFirstTryDate +14400000 < round(microtime(true) * 1000)){ //If 4 hours had passed
     	//elseif($authenticationFirstTryDate +60000 < round(microtime(true) * 1000)){ //If 4 hours had passed
     		 
     		$authenticationFirstTryDate=round(microtime(true) * 1000); //we reset the code
