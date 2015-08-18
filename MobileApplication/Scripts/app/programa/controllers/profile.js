@@ -37,29 +37,16 @@ angular
             $scope.levelList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
             $scope.gradeList = ['1er', '2do', '3ro', '4to', '5to', '6to'];
             $scope.periodList = ['Año', 'Semestre', 'Cuatrimestre', 'Trimestre', 'Bimestre'];
-            $scope.yesNoList = ['Sí', 'No'];
+            $scope.yesNoList = ['Si', 'No'];
             $scope.moneyIncomeList = ['Padres', 'Trabajo'];
             $scope.medicalInsuranceList = ['IMSS', 'Privado', 'Seguro Popular']
-
             $scope.knownDevicesList = ['Laptop', 'Tableta', 'Celular', 'Computadora']
             $scope.phoneUsageList = ['Hacer llamadas', 'Mensajes', 'Música', 'Videos', 'Fotos', 'Descargas', 'Investigación', 'Juegos', 'Redes sociales', 'Tomar selfies', 'Grabar videos']
             $scope.videoGamesFrecuencyList = ['Diario', '3 veces a la semana', '1 vez a la semana', '1 o 2 veces al mes', 'Nunca']
             $scope.kindOfVideoGamesList = ['Acción', 'Deportes', 'Violencia', 'Aventura', 'Reto', 'Estrategia', 'Educativos', 'Peleas']
 
-
-
-
-
-
-
-
-
-
-
-
-
-            $scope.birthdate_Dateformat = '';
-            //$scope.birthdate_Dateformat = formatDate($scope.model.birthday);
+            $scope.birthdate_Dateformat = formatDate($scope.model.birthday);
+            getAge();
 
             function getDataAsync() {
 
@@ -106,26 +93,36 @@ angular
                         "escudo:": "",
                         "imagen_recortada": "",
                     }];
-
                 }
             }
 
-
             function formatDate(date) {
                 var splitDate = date.split("/");
-                var userBirthDate = new Date(splitDate[2], splitDate[0] - 1, splitDate[1]);
-                //getAge(userBirthDate);
-
+                var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);                
                 return userBirthDate;
             }
 
-            function getAge(birthDate) {
+            function getAge() {
+                var splitDate = $scope.model.birthday.split("/");
+                var birthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);                
                 if (birthDate != null || birthDate != '') {
                     var cur = new Date();
                     var diff = cur - birthDate;
                     var age = Math.floor(diff / 31536000000);
                     $scope.model.age = age;
                 }
+            }
+
+            $scope.birthdayChanged = function () {
+                var d = new Date($scope.birthdate_Dateformat),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+                var newBirthday = [month, day, year].join('/');  
+                $scope.model.birthday =   newBirthday;           
             }
 
             $scope.navigateToPage = function (pageNumber) {
