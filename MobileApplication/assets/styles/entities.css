@@ -105,6 +105,12 @@
          $profile-dashboard
          Description: CSS to represent user's profile dashboard component
         ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
+         $terms-and-conditions
+         Description: CSS to represent modal for terms and conditionss
+        ************************************************************************/
+    /***********************************************************************/
     /***********************************************************************
          $app
          Description: CSS to represent mobileangularui component for main layout
@@ -1715,6 +1721,16 @@
   .incluso-app .profile-dashboard > .row > div {
     padding-left: 0;
     padding-right: 0;
+  }
+  .incluso-app .modal.terms-and-conditions .modal-dialog {
+    margin-top: 15vh;
+  }
+  .incluso-app .modal.terms-and-conditions .modal-body {
+    height: 50vh;
+    padding-top: 0;
+  }
+  .incluso-app .modal.terms-and-conditions .modal-footer {
+    display: none;
   }
   .incluso-app .sidebar-left-active .app {
     margin-left: 85vw;
