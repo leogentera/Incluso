@@ -30,7 +30,6 @@
         'incluso.stage.gameretomultiplecontroller',
         'incluso.stage.quizcontroller',
         'incluso.stage.chatcontroller',
-        'incluso.program.findMore',
         'incluso.program.myInterests',
         'incluso.program.myStrengths',
         'incluso.program.hallOfFame',
@@ -49,7 +48,6 @@
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
         $http.get('Templates/Programa/acercaPrograma.html', { cache: $templateCache });  
         $http.get('Templates/Juegos/Avatar.html', { cache: $templateCache });
-        $http.get('Templates/Programa/FindMore.html', { cache: $templateCache });
         $http.get('Templates/Programa/MyInterests.html', { cache: $templateCache });
         $http.get('Templates/Programa/MyStrengths.html', { cache: $templateCache });
         $http.get('Templates/Programa/HallOfFame.html', { cache: $templateCache });
@@ -159,11 +157,6 @@
             templateUrl: 'Templates/Programa/acercaPrograma.html',
             controller: 'programaAcercaProgramaController'
         });
-
-        $routeProvider.when('/FindMore', {
-            templateUrl: 'Templates/Programa/FindMore.html',
-            controller: 'FindMoreController'
-        }); 
 
         $routeProvider.when('/MyInterests', {
             templateUrl: 'Templates/Programa/MyInterests.html',
