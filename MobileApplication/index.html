@@ -32,14 +32,11 @@
 
     <body ng-controller="homeCtrl" class="incluso-app ng-scope has-sidebar-left" ng-class="{'sidebar-left-active': sidebar}">
         <!-- preloader -->
-        <div class="app-preloader" id="spinner" ng-show="loading">
-            <div class="spinner spinner-circle"></div>
-        </div>
         <preloader-component></preloader-component>
         <!-- Main menu / sidebar -->
         <menu-component></menu-component> 
         <!-- app wrapper -->
-        <div class="app" ng-cloak>
+        <div class="app">
             <!-- toolbar for private views -->
             <toolbar-component></toolbar-component>
 
@@ -49,7 +46,7 @@
                   <ng-view></ng-view>
                 </div>
             </div>
-            <footer-component></footer-component>
+      <footer-component></footer-component>
         </div><!-- ~ .app -->
  
         <script src="Scripts/jquery-2.1.4.min.js"></script>    
@@ -73,12 +70,12 @@
         <script src="Scripts/utils.js"></script>
         <script src="Scripts/global.js"></script>
 
+    
         <script src="Scripts/app/shared/services/moodleServices.js"></script>
         <script src="Scripts/app/models/Profile.js"></script>
         <script src="Scripts/app/models/Dashboard.js"></script>
         <script src="Scripts/app/models/Course.js"></script>
         <script src="Scripts/app/models/Courses.js"></script>
-
         <script src="Scripts/app/shared/controllers/navigation.js"></script>
         <script src="Scripts/app/home/controllers/home.js"></script>
         <script src="Scripts/app/public/controllers/login.js"></script>
@@ -88,11 +85,25 @@
         <script src="Scripts/app/programa/controllers/dashboard.etapa.js"></script>
         <script src="Scripts/app/programa/controllers/profile.js"></script>
         <script src="Scripts/app/programa/controllers/foro.js"></script>
-        <script src="Scripts/cordova.js"></script> 
-        <script src="Scripts/app/programa/controllers/tutorial.js"></script>
-        <script src="Scripts/app/programa/controllers/acercaPrograma.js"></script>
-        <script src="Scripts/app/juegos/avatarController.js"></script>
+
         <script src="Scripts/app/programa/controllers/FindMore.js"></script>
-        <script src="Scripts/app/juegos/GameController.js"></script>
+        <script src="Scripts/app/programa/controllers/acercaPrograma.js"></script>
+
+        <script src="Scripts/app/programa/controllers/tutorial.js"></script>   
+        <script src="Scripts/app/programa/controllers/stageDashboardController.js"></script>   
+        <script src="Scripts/app/programa/controllers/programaChatController.js"></script>
+        <script src="Scripts/app/programa/controllers/programaDashboardController.js"></script>
+        <script src="Scripts/app/programa/controllers/programaLeaderBoard.js"></script>
+        <script src="Scripts/app/programa/controllers/programaNotificationController.js"></script>
+        <script src="Scripts/app/programa/controllers/stageGameRetoMultipleController.js"></script>
+        <script src="Scripts/app/programa/controllers/stageChatController.js"></script>
+        <script src="Scripts/app/programa/controllers/stageContentsController.js"></script>
+        <script src="Scripts/app/programa/controllers/stageDashboardController.js"></script>
+        <script src="Scripts/app/programa/controllers/stageForumController.js"></script>
+        <script src="Scripts/app/programa/controllers/stageMessageController.js"></script>
+        <script src="Scripts/app/programa/controllers/stageQuizController.js"></script>
+        <script src="Scripts/app/programa/controllers/tutorial.js"></script>
+        <script src="Scripts/app/juegos/avatarController.js"></script>
+        <script src="Scripts/cordova.js"></script> 
     </body>
 </html>
