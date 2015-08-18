@@ -9,6 +9,7 @@ return array(
             'MoodleApi\Controller\Avatar' => 'MoodleApi\Controller\AvatarController',
         	'MoodleApi\Controller\Catalog' => 'MoodleApi\Controller\CatalogController', 
             'MoodleApi\Controller\Cache' => 'MoodleApi\Controller\CacheController', 
+            'MoodleApi\Controller\Activity' => 'MoodleApi\Controller\ActivityController', 
         ),
     ),
     'router' => array(
@@ -47,6 +48,18 @@ return array(
                     ),
                 ),
             ),
+            'activity' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/activity[/:id]',
+                    'constraints' => array(
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'MoodleApi\Controller\Activity',
+                    ),
+                ),
+            ),            
 
         	'user' => array(
                 'type'    => 'segment',

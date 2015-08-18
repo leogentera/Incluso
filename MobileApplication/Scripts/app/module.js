@@ -35,6 +35,7 @@
         'incluso.program.hallOfFame',
         'incluso.program.privacyNotice',
         'incluso.program.termsOfUse',
+        'incluso.program.helpAndSupport',
     ])
     .run(function ($templateCache, $http) {
         $http.get('Templates/Public/Login.html', { cache: $templateCache });
@@ -53,6 +54,7 @@
         $http.get('Templates/Programa/HallOfFame.html', { cache: $templateCache });
         $http.get('Templates/Programa/PrivacyNotice.html', { cache: $templateCache });
         $http.get('Templates/Programa/TermsOfUse.html', { cache: $templateCache });
+        $http.get('Templates/Programa/HelpAndSupport.html', { cache: $templateCache });
 
         $http.get('Templates/Juegos/Game.html', { cache: $templateCache });
         $http.get('Templates/Notifications.html', { cache: $templateCache });  
@@ -62,8 +64,8 @@
 
         $http.get('Templates/Leaderboard/index.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/dashboard.html', { cache: $templateCache });  
-        $http.get('Templates/ZonaDeVuelo/exploracion_forum.html', { cache: $templateCache });  
-        $http.get('Templates/ZonaDeVuelo/exploracion_message.html', { cache: $templateCache });  
+        $http.get('Templates/ZonaDeVuelo/ExploracionInicial.html', { cache: $templateCache });  
+        $http.get('Templates/ZonaDeVuelo/ExploracionInicialCierre.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/CuartoDeRecursos/MensajeDeCierre.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/Conocete/FuenteDeEnergia.html', { cache: $templateCache });  
@@ -178,9 +180,14 @@
             controller: 'PrivacyNoticeController'
         });
 
-         $routeProvider.when('/TermsOfUse', {
+        $routeProvider.when('/TermsOfUse', {
             templateUrl: 'Templates/Programa/TermsOfUse.html',
             controller: 'TermsOfUseController'
+        });
+
+        $routeProvider.when('/HelpAndSupport', {
+            templateUrl: 'Templates/Programa/HelpAndSupport.html',
+            controller: 'HelpAndSupportController'
         });
 
         $routeProvider.when('/Juegos/Game', {
@@ -188,7 +195,6 @@
             controller: 'GameController'
         });
        
-
         $routeProvider.when('/Notifications', { 
             templateUrl: 'Templates/Notifications.html',
             controller: 'programaNotificationController'
@@ -215,13 +221,13 @@
         });
 
         $routeProvider.when('/ZonaDeVuelo/ExploracionInicial/:moodleid', { 
-            templateUrl: 'Templates/ZonaDeVuelo/exploracion_forum.html',
-            controller: 'stageForumController'
+            templateUrl: 'Templates/ZonaDeVuelo/ExploracionInicial.html',
+            controller: 'stageQuizController'
         });
     
         $routeProvider.when('/ZonaDeVuelo/ExploracionInicialCierre', { 
-            templateUrl: 'Templates/ZonaDeVuelo/exploracion_message.html',
-            controller: 'stageForumController'
+            templateUrl: 'Templates/ZonaDeVuelo/ExploracionInicialCierre.html',
+            controller: 'stageQuizController'
         });
     
         $routeProvider.when('/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia/:moodleid', { 

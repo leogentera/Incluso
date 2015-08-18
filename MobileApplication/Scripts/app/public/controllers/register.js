@@ -15,8 +15,7 @@ angular
             
             _httpFactory = $http;            
             var dpValue;
-                                           
-            $scope.scrollToTop();
+            $scope.$emit('scrollTop'); //- scroll
 
             /* ViewModel */
             $scope.registerModel = {
@@ -68,14 +67,14 @@ angular
                                 
             
             $scope.register = function() {
-                
                 console.log('register');
-                localStorage.removeItem("Credentials");                            
+                localStorage.removeItem("Credentials");
                 
                 if(validateModel()){
+                    $scope.$emit('ShowPreloader'); //show preloader
                     registerUser();
                 }else{
-                    $scope.scrollToTop();
+                    $scope.$emit('scrollTop'); //- scroll
                 }
             }
 
@@ -102,6 +101,8 @@ angular
                         _setToken(data.token);
                         _setId(data.id);
 
+                        $scope.$emit('HidePreloader'); //hide preloader
+
                         console.log('preparing for syncAll');
 
                         //succesful credentials
@@ -111,7 +112,6 @@ angular
                                 function() {
                                     //console.log('redirecting..');
                                     //$location.path('/ProgramaDashboard');
-                                    
                                     console.log('redirecting to tutorial..');
                                     $location.path('/Tutorial');
                                 },1000);
@@ -122,7 +122,9 @@ angular
 
                         $scope.registerModel.modelState.errorMessages = [errorMessage];
                         console.log(status + ": " + errorMessage);
-                        $scope.scrollToTop();
+                        
+                        $scope.$emit('HidePreloader'); //hide preloader
+                        $scope.$emit('scrollTop'); //- scroll
                     });
 
             }
@@ -133,7 +135,7 @@ angular
 
             $scope.navigateToPage = function(pageNumber){
                 $scope.currentPage = pageNumber;
-                $scope.scrollToTop();
+                $scope.$emit('scrollTop'); //- scroll
             };
 
             var registerUser = function(){
@@ -162,8 +164,8 @@ angular
                         //initModel();
 
                         console.log('successfully register');
-                        $scope.scrollToTop();
-                         $scope.autologin();
+                        $scope.$emit('scrollTop'); //- scroll
+                        $scope.autologin();
 
                     }).error(function(data, status, headers, config) {
                         var errorMessage;
@@ -176,7 +178,9 @@ angular
 
                         $scope.registerModel.modelState.errorMessages = [errorMessage];
                         console.log('data' + errorMessage);
-                        $scope.scrollToTop();
+                        
+                        $scope.$emit('HidePreloader'); //hide preloader
+                        $scope.$emit('scrollTop'); //- scroll
                     });
             };
 
@@ -204,6 +208,7 @@ angular
             
 
             function validateModel(){
+                console.log('fetching errors list'); //- debug
                 var errors = [];
                 var datePickerValue =  $("input[name=birthday]").val();
                 dpValue = moment(datePickerValue).format("MM/DD/YYYY");
@@ -233,7 +238,7 @@ angular
                 if(!$scope.registerForm.secretAnswer.$valid){ errors.push("Respuesta secreta inválida."); }
                 if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }                
                 $scope.registerModel.modelState.errorMessages = errors;
-                if(age < 13 || age > 19){ errors.push("Debes tener entre 13 y 19 años para poder registrarte."); }
+                if(age < 13){ errors.push("Debes ser mayor de 13 años para poder registrarte."); }
                 return (errors.length === 0);
             }
 

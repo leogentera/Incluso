@@ -520,6 +520,7 @@
 }
 .pointer,
 a {
+  position: relative;
   cursor: pointer;
 }
 .no-padding {
