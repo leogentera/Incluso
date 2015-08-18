@@ -39,13 +39,16 @@
         <menu-component></menu-component> 
         <!-- app wrapper -->
         <div class="app">
+            <a style="visibility:hidden; display:block; height: 1px;" id="top"></a>
+            
             <!-- toolbar for private views -->
             <toolbar-component></toolbar-component>
 
             <!-- App Body -->
             <div class="app-body" ng-click="sideToggle('outside')">
                 <div class="app-content">
-                  <ng-view></ng-view>
+                    
+                    <ng-view></ng-view>
                 </div>
             </div>
             <footer-component></footer-component>
