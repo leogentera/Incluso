@@ -20,6 +20,8 @@
         'incluso.programa.dashboard.etapa',
         'incluso.programa.profile',
         'incluso.program.findMore',
+        'incluso.program.myInterests',
+        'incluso.program.myStrengths',
         'incluso.juegos.game'
     ])
     .run(function ($templateCache, $http) {
@@ -35,6 +37,8 @@
         $http.get('Templates/Programa/acercaPrograma.html', { cache: $templateCache });  
         $http.get('Templates/Juegos/Avatar.html', { cache: $templateCache });
         $http.get('Templates/Programa/FindMore.html', { cache: $templateCache });
+        $http.get('Templates/Programa/MyInterests.html', { cache: $templateCache });
+        $http.get('Templates/Programa/myStrengths.html', { cache: $templateCache });
         $http.get('Templates/Juegos/Game.html', { cache: $templateCache });
         
     })
@@ -104,6 +108,16 @@
         $routeProvider.when('/FindMore', {
             templateUrl: 'Templates/Programa/FindMore.html',
             controller: 'FindMoreController'
+        }); 
+
+        $routeProvider.when('/MyInterests', {
+            templateUrl: 'Templates/Programa/MyInterests.html',
+            controller: 'MyInterestsController'
+        }); 
+
+        $routeProvider.when('/MyStrengths', {
+            templateUrl: 'Templates/Programa/MyStrengths.html',
+            controller: 'MyStrengthsController'
         });
 
         $routeProvider.when('/Juegos/Game', {
