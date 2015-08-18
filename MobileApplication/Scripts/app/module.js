@@ -14,10 +14,12 @@
         'incluso.public.recoverPassword',
         'incluso.public.register',
         'incluso.programa.tutorial',
+        'incluso.programa.acercaPrograma',
         'incluso.juegos.avatar',
         'incluso.programa.dashboard',
         'incluso.programa.dashboard.etapa',
-        'incluso.programa.profile'
+        'incluso.programa.profile',
+        'incluso.juegos.game'
     ])
     .run(function ($templateCache, $http) {
         $http.get('Templates/Public/Login.html', { cache: $templateCache });
@@ -29,10 +31,10 @@
         $http.get('Templates/Programa/editProfile.html', { cache: $templateCache });
         $http.get('Templates/Programa/etapa.html', { cache: $templateCache });
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
+        $http.get('Templates/Programa/acercaPrograma.html', { cache: $templateCache });  
         $http.get('Templates/Juegos/Avatar.html', { cache: $templateCache });
-        $http.get('Templates/Programa/AcercaPrograma.html', { cache: $templateCache });  
-
-
+        $http.get('Templates/Juegos/Game.html', { cache: $templateCache });
+        
     })
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
@@ -87,16 +89,21 @@
             controller: 'programaTutorialController'
         });
 
+        $routeProvider.when('/AcercaPrograma', {
+            templateUrl: 'Templates/Programa/acercaPrograma.html',
+            controller: 'programaAcercaProgramaController'
+        });
+
         $routeProvider.when('/Juegos/Avatar', {
             templateUrl: 'Templates/Juegos/Avatar.html',
             controller: 'juegosAvatarController'
         });
 
-        $routeProvider.when('/AcercaPrograma', {
-            templateUrl: 'Templates/Programa/AcercaPrograma.html'
-            //controller: 'programaAcercaProgramaController'
+        $routeProvider.when('/Juegos/Game', {
+            templateUrl: 'Templates/Juegos/Game.html',
+            controller: 'GameController'
         });
-
+       
         $routeProvider.otherwise({
         	redirectTo: '/'
         });

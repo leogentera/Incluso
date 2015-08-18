@@ -13,7 +13,8 @@ angular
             $rootScope.pageName = "Mision incluso"
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
-            $rootScope.showFooter = true;  
+            $rootScope.showFooter = true; 
+            $rootScope.showFooterRocks = false; 
             $scope.back = function () {
                 $location.path('/ProgramaDashboard');
             }

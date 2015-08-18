@@ -250,9 +250,12 @@ body {
             border-top: 2px solid rgba(255, 255, 255, 0.28);
             display: none;
             padding: 6vw 0 6vw 6vw;
+            li {
+                margin: 1vh 0px; 
+            }
             li:first-child{
                 color:  @clr-bluemenu;
-                text-transform: uppercase;
+                /*text-transform: uppercase;*/
             }
             a{
                 color: white;
@@ -260,7 +263,7 @@ body {
             }
             ul{
                 list-style: none;
-                padding:4vw 0;
+                padding:3vw 0;
             }
         }
     }
@@ -1588,7 +1591,28 @@ body {
             background-position: 50% 50%;
             background-repeat: no-repeat;
             background-size: contain;
+            
         }
+        &::before {
+            position: absolute;
+            width: 100vw;
+            height: 26vh;
+            content: " ";
+            background-image: url('@{url-images}/img-footer-texture-lg.png');
+            background-color: transparent;
+            box-shadow: unset;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            
+        }
+
+        &.db-bg{
+            background-image: url("@{url-images}/bg-footer-rocks.png");
+            background-position: 50% 0;
+            box-shadow: unset;
+        }
+
     }
     /***************************************************************************/
 

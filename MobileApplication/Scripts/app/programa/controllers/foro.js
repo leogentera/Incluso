@@ -10,8 +10,11 @@
         '$http',
         '$modal',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
-            $rootScope.showToolbar = false;
-            $rootScope.showFooter = true;
+            $rootScope.pageName = "Estación: Conócete"
+            $rootScope.navbarBlue = true;
+            $rootScope.showToolbar = true;
+            $rootScope.showFooter = true; 
+            
             $scope.back = function () {
                 $location.path('/ProgramaDashboard');
             }

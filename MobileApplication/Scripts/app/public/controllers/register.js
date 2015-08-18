@@ -213,7 +213,7 @@ angular
                     errors.push("Formato de contraseña incorrecto. La contraseña " + passwordPolicy);
                 }else{
                     if(!$scope.registerForm.confirmPassword.$valid){
-                        errors.push("Formato de confirmación de contraseña incorrecto. La confirmacion de contraseña " + passwordPolicy);
+                        errors.push("Formato de confirmación de contraseña incorrecto. La confirmación de contraseña " + passwordPolicy);
                     }else{
                         if(!isConfirmedPasswordValid) { errors.push("La confirmación de contraseña no coincide con la contraseña."); }
                     }
