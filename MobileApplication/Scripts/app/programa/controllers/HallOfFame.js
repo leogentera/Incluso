@@ -1,6 +1,6 @@
 angular
-    .module('incluso.program.findMore', [])
-    .controller('FindMoreController', [
+    .module('incluso.program.hallOfFame', [])
+    .controller('HallOfFameController', [
         '$q',
         '$scope',
         '$location',
@@ -19,4 +19,4 @@ angular
                 $location.path('/ProgramaDashboard');
             }
 
-}]);
+        }]);

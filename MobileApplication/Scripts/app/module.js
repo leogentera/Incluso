@@ -33,6 +33,7 @@
         'incluso.program.findMore',
         'incluso.program.myInterests',
         'incluso.program.myStrengths',
+        'incluso.program.hallOfFame'
     ])
     .run(function ($templateCache, $http) {
         $http.get('Templates/Public/Login.html', { cache: $templateCache });
@@ -49,6 +50,7 @@
         $http.get('Templates/Programa/FindMore.html', { cache: $templateCache });
         $http.get('Templates/Programa/MyInterests.html', { cache: $templateCache });
         $http.get('Templates/Programa/myStrengths.html', { cache: $templateCache });
+        $http.get('Templates/Programa/HallOfFame.html', { cache: $templateCache });
         $http.get('Templates/Juegos/Game.html', { cache: $templateCache });
         $http.get('Templates/Notifications.html', { cache: $templateCache });  
         $http.get('Templates/NotificationDetails.html', { cache: $templateCache });  
@@ -165,6 +167,11 @@
         $routeProvider.when('/MyStrengths', {
             templateUrl: 'Templates/Programa/MyStrengths.html',
             controller: 'MyStrengthsController'
+        });
+
+        $routeProvider.when('/HallOfFame', {
+            templateUrl: 'Templates/Programa/HallOfFame.html',
+            controller: 'HallOfFameController'
         });
 
         $routeProvider.when('/Juegos/Game', {
