@@ -43,9 +43,8 @@
             };
 
             $scope.toolbarOptionActive = function (path) {
-                console.log($location.path().substr(0, path.length + 1));
                 if($location.path().substr(0, path.length) === path)
-                    return "active";
+                    return "active disabled";
                 else
                     return "";
             }
