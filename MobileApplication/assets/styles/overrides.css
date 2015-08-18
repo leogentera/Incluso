@@ -43,10 +43,13 @@
 .incluso-app.public header img {
   display: block;
   margin: 0 auto;
+  margin: 0px auto 5vw auto;
   width: auto;
   width: 55vw;
+  width: 70vw;
 }
 .incluso-app.public header figcaption {
+  display: none;
   margin: 10px auto;
   margin: 0;
   padding: 24px 0 10px 0;
