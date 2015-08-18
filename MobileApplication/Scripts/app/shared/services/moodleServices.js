@@ -23,6 +23,10 @@
             _getAsyncData("activity/" + activityId, API_RESOURCE.format('activity/' + activityId), successCallback, errorCallback);
         };
 
+        var _getAsyncActivitiesInfo = function(activityId, successCallback, errorCallback){
+            _getAsyncData("activities/" + activityId, API_RESOURCE.format('activities/' + activityId), successCallback, errorCallback);
+        };
+
         var _getAsyncCourse = function(courseId, successCallback, errorCallback){
             _getAsyncData("course", API_RESOURCE.format('course/' + courseId), successCallback, errorCallback);
         };
@@ -91,7 +95,9 @@
             GetAsyncCourse: _getAsyncCourse,
             GetCacheObject: _getCacheObject,
             GetCacheJson: _getCacheJson,
-            GetAsyncActivity: _getAsyncActivityInfo
+            GetAsyncActivity: _getAsyncActivityInfo,
+            GetAsyncActivities: _getAsyncActivitiesInfo
+
         };
     })();
 }).call(this);
