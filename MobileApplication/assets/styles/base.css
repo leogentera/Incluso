@@ -1126,23 +1126,16 @@ body.modal-open {
 }
 .incluso-app .modal-theme-default .modal-header .icon {
   position: absolute;
-  right: -3.2vw;
   right: -3.6vw;
-  top: -3.2vw;
   top: -3.6vw;
   padding: 0px;
   margin: 0px;
-  width: 7.3vw;
   width: 9vw;
-  height: 7.3vw;
   height: 9vw;
-  line-height: 2.3vw;
   line-height: 6vw;
 }
 .incluso-app .modal-theme-default .modal-header .icon .icomoon {
   color: #ffffff;
-  font-size: 2.3vw;
-  font-size: 2.5vw;
   font-size: 2.8vw;
   text-align: center;
 }
@@ -1156,7 +1149,6 @@ body.modal-open {
 .incluso-app .modal-theme-default .modal-body ol li {
   height: auto;
   color: #ffffff;
-  font-size: 3.9vw;
   font-size: 5vw;
   text-align: justify;
 }
