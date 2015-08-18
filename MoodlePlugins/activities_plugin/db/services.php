@@ -60,6 +60,14 @@ $functions = array(
                         'type'        => 'read',
         ),
 
+        'get_all_activities_by_course' => array(
+                        'classname'   => 'activitiesSummary_plugin',
+                        'methodname'  => 'get_all_activities_by_course',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Returns all the activities in a course',
+                        'type'        => 'read',
+        ),
+
         'get_assignment' => array(
                         'classname'   => 'assignment_plugin',
                         'methodname'  => 'get_assignment',
@@ -107,6 +115,14 @@ $functions = array(
                         'description' => 'Returns a list of forum posts for a discussion.',
                         'type'        => 'read',
         ),        
+
+        'create_forum_discussion_post' => array(
+                        'classname'   => 'forum_plugin',
+                        'methodname'  => 'create_forum_discussion_post',
+                        'classpath'   => 'local/activities_plugin/externallib.php',
+                        'description' => 'Save a new post on db',
+                        'type'        => 'write',
+        ),
 );
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
@@ -120,7 +136,8 @@ $services = array(
         'ActivitySummary service' => array(
                 'functions' => array(
                         'get_activity_summary',
-                        'get_activity_id_and_name'),
+                        'get_activity_id_and_name',
+                        'get_all_activities_by_course'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         ),
@@ -162,7 +179,8 @@ $services = array(
 
         'Forum service' => array(
                 'functions' => array(
-                        'get_forum_discussion_posts'),
+                        'get_forum_discussion_posts',
+                        'create_forum_discussion_post'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
         )
