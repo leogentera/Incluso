@@ -334,5 +334,5 @@ angular
                     $elem = $(this);
                     $elem.addClass('changed');
                 });
-
-            }]);
+            }
+        }]);
