@@ -7,24 +7,24 @@
         </div>
       </div>
       <ul class="navbar-tools">
-          <li class="contribute">
-            <a ng-click="navigateTo('Perfil/Editar', 'Mi perfil', 'null', 'navbarorange')">
-              <i class="icomoon icon-edit"></i>
+          <li class="contribute hidden" ng-class="toolbarOptionActive('/Community')">
+            <a ng-click="navigateTo('Community', 'Comunidad', 'null', 'navbarblue')">
+              <i class="icomoon icon-community"></i>
             </a>
           </li>
-          <li class="notifications">
-            <a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso', 'null', 'navbarorange')">
+          <li class="notifications" ng-class="toolbarOptionActive('/Alerts')">          <!-- sending name of view to validate if this is the current view -->
+            <a ng-click="navigateTo('Alerts', 'Notificaciones', 'null', 'navbarorange')">
               <i class="icomoon icon-antena"></i>
             </a>
           </li>
-          <li class="chat">
+          <li class="chat" ng-class="toolbarOptionActive('/Foro')">
             <a ng-click="navigateTo('Foro', 'Estación: Conócete', 'null', 'navbarblue')">
-              <i class="icomoon icon-chat"></i>
+              <i class="icomoon icon-headset"></i>
             </a>
           </li>
-          <li class="profile">
-            <a ng-click="navigateTo('Perfil', 'Mi perfil', 'null', 'navbarblue')">
-              <i class="icomoon icon-emoticon-smile"></i>
+          <li class="profile" ng-class="toolbarOptionActive('/Profile')">
+            <a ng-click="navigateTo('Profile', 'Mi perfil', 'null', 'navbarblue')">
+              <i class="icomoon icon-profile"></i>
             </a>
           </li>
         </ul>
