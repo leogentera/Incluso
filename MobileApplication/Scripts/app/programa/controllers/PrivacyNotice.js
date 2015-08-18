@@ -1,6 +1,6 @@
 angular
-    .module('incluso.program.findMore', [])
-    .controller('FindMoreController', [
+    .module('incluso.program.privacyNotice', [])
+    .controller('PrivacyNoticeController', [
         '$q',
         '$scope',
         '$location',
@@ -10,7 +10,7 @@ angular
         '$http',
         '$modal',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
-            $rootScope.pageName = "Descubre más"
+            $rootScope.pageName = "Aviso de privacidad"
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true; 
@@ -19,4 +19,4 @@ angular
                 $location.path('/ProgramaDashboard');
             }
 
-        }]);
+}]);
