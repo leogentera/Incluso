@@ -16,7 +16,8 @@ angular
             _httpFactory = $http;
             $scope.PreloaderModalInstance = null;
             $scope.scrollToTop();
-
+            $rootScope.showToolbar = false;
+            $rootScope.showFooter = false;
             /* ViewModel */
             $scope.userCredentialsModel = {
                 username: "",

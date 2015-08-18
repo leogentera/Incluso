@@ -14,7 +14,8 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
             $anchorScroll();
-            
+            $rootScope.showToolbar = false;
+            $rootScope.showFooter = false;
             /* ViewModel */
             $scope.recoverPasswordModel = {
                 email: "",

@@ -13,13 +13,6 @@ angular
             _httpFactory = $http;
 
             $scope.Math = window.Math;
-            /*$rootScope.components {
-                pageName:  = "Estación: Conócete",
-                navbarBlue = true,
-                showToolbar = true,
-                showFooter = true,
-                showFooterRocks = false
-            }*/
             $rootScope.pageName = "Estación: Conócete";
             $rootScope.navbarBlue = true;
             $rootScope.showToolbar = true;
