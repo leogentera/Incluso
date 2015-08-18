@@ -921,6 +921,51 @@ class activitiesSummary_plugin extends external_api{
 			)
 		);
 	}	
+
+	public static function get_all_activities_by_course_parameters(){
+		return new external_function_parameters(
+			array(
+				'courseid' => new external_value(PARAM_INT, 'Course ID')
+			)
+		);
+	}
+
+	public static function get_all_activities_by_course($courseid){
+		global $USER;
+	    global $DB;
+	    
+	    try {
+
+	        $params = self::validate_parameters(
+	                self::get_all_activities_by_course_parameters(),
+	                    array(
+	                        'courseid' => $courseid
+	                    )
+	                );
+
+	        $sql = "CALL all_activities($courseid)";
+
+	        $response = $DB->get_records_sql($sql);
+
+	    } catch (Exception $e) {
+	        $response = $e;
+	    }
+
+	    return $response;
+	}
+
+	public static function get_all_activities_by_course_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'coursemoduleid' => new external_value(PARAM_INT, 'Activity ID'),
+					'activitytype' => new external_value(PARAM_TEXT, 'Type of the activity'),
+					'name' => new external_value(PARAM_TEXT, 'Name of the activity'),
+					'intro' => new external_value(PARAM_RAW, 'Description of the activity')
+				)
+			)
+		);
+	}
 }
 
 class assignment_plugin extends external_api{
@@ -1239,6 +1284,89 @@ class forum_plugin extends external_api{
                 'warnings' => new external_warnings()
             )
         );
+    }
+
+    public static function create_forum_discussion_post_parameters() {
+        return new external_function_parameters(
+            array(  
+            	'discussionid' => new external_value(PARAM_INTEGER, 'The id of the discussion of the forum.'),
+                'parentid'     => new external_value(PARAM_TEXT, 'The id of the parent post. If it is a discussion post, defualt is 0.'),
+                'message'      => new external_value(PARAM_TEXT, 'The content mmesage of the post.'),
+                'createdtime'  => new external_value(PARAM_INT, 'The time of creation. Time as Unix timestamp.'),
+                'modifiedtime' => new external_value(PARAM_INT, 'The time of modification. Time as Unix timestamp.'))
+        );
+    }
+
+    public static function create_forum_discussion_post($discussionid, $parentid, $message, $createdtime, $modifiedtime) {
+        global $USER;
+        global $DB;
+
+        $response = true;
+        try {
+            //Parameter validation
+            //REQUIRED
+            $params = self::validate_parameters(
+            	self::create_forum_discussion_post_parameters(), array(
+            		'discussionid' => $discussionid, 
+            		'parentid'     => $parentid, 
+            		'message'      => $message,
+            		'createdtime'  => $createdtime,
+            		'modifiedtime' => $modifiedtime));
+
+            //Context validation
+            //OPTIONAL but in most web service it should present
+            $context = get_context_instance(CONTEXT_USER, $USER->id);
+            self::validate_context($context);
+
+
+            //Capability checking
+            //OPTIONAL but in most web service it should present
+            // if (!has_capability('moodle/user:viewdetails', $context)) {
+            //     throw new moodle_exception('cannotviewprofile');
+            // }
+
+            $record = new stdClass();
+            $record->discussion = $discussionid;
+            $record->parent = $parentid;
+            $record->userid = $USER->id;
+
+            $sql = "SELECT subject
+            		FROM {forum_posts}
+            		WHERE id = $parentid";
+
+            $subject = $DB->get_record_sql($sql);
+
+            $record->subject = 'Re: '.$subject->subject;
+            $record->message = $message;
+            $record->created = $createdtime;
+            $record->modified = $modifiedtime;
+            $record->messageformat = 1;
+
+            $lastinsert = $DB->insert_record('forum_posts', $record, false);            
+            
+            $response = $lastinsert;
+
+            var_dump($response);
+
+        } catch (Exception $e) {
+            $response = $e;
+        }
+
+        return $response;
+    }
+
+    public static function create_forum_discussion_post_returns() {
+        return  new external_single_structure(
+                        array(
+                            'discussion' => new external_value(PARAM_TEXT, 'id of the discussion.'),
+                            'parent' => new external_value(PARAM_TEXT, 'id of the parent post.'),
+                            'userid' => new external_value(PARAM_TEXT, 'id of the posting user.'),
+                            'subject' => new external_value(PARAM_RAW, 'Subject of the post.'),
+                            'message' => new external_value(PARAM_TEXT, 'The message of the post.'),
+                            'created' => new external_value(PARAM_TEXT, 'Datetime of post creation.'),
+                            'modified' => new external_value(PARAM_INTEGER, 'Datetime of post last modification.')
+                        )
+                    );
     }
 }
 
