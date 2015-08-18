@@ -19,7 +19,7 @@
         'incluso.programa.dashboard',
         'incluso.programa.dashboard.etapa',
         'incluso.programa.profile',
-        //'incluso.programa.game'
+        'incluso.juegos.game'
     ])
     .run(function ($templateCache, $http) {
         $http.get('Templates/Public/Login.html', { cache: $templateCache });
@@ -33,7 +33,7 @@
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
         $http.get('Templates/Programa/acercaPrograma.html', { cache: $templateCache });  
         $http.get('Templates/Juegos/Avatar.html', { cache: $templateCache });
-        //$http.get('Templates/Juegos/Game.html', { cache: $templateCache });
+        $http.get('Templates/Juegos/Game.html', { cache: $templateCache });
         
     })
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -99,10 +99,10 @@
             controller: 'juegosAvatarController'
         });
 
-        //$routeProvider.when('/Juegos/Game', {
-            //templateUrl: 'Templates/Juegos/Game.html'
-            //controller: 'gameController'
-        //});
+        $routeProvider.when('/Juegos/Game', {
+            templateUrl: 'Templates/Juegos/Game.html',
+            controller: 'GameController'
+        });
        
         $routeProvider.otherwise({
         	redirectTo: '/'
