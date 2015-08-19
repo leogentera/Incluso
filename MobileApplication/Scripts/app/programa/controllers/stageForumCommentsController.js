@@ -309,7 +309,8 @@ angular
 //            getDataAsync();
 
             $scope.back = function () {
-                $location.path('/ProgramaDashboard');
+               $location.path('ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos/zv_puntodeencuentro#top');
+               //$location.path('/ProgramaDashboard');
             }
 
         }]);

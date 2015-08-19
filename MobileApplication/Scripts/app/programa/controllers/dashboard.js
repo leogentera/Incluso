@@ -102,8 +102,7 @@
                 $scope.$emit('HidePreloader'); //hide preloader
                 $scope.$emit('scrollTop'); //- scroll
             }                                    
-                            
-                            
+                                                        
             function getCurrentStage(){                
                 var currentStage = 1;                                            
                 
@@ -140,12 +139,13 @@
                     console.log("modal open");
                 }, 1000);
             };
+           
         }])
         .controller('tutorialController', function ($scope, $modalInstance) {
             $scope.cancel = function () {
                 $modalInstance.dismiss('cancel');
             };
-        })
+        })        
         .controller('videoCollapsiblePanelController', function ($scope) {
           $scope.isCollapsed = false;
         });

@@ -6,7 +6,8 @@
         '$location',
         '$anchorScroll',
         '$window',
-        function ($rootScope, $scope, $location, $anchorScroll, $window ) {
+        '$modal',
+        function ($rootScope, $scope, $location, $anchorScroll, $window, $modal ) {
         	// http://stackoverflow.com/questions/15033195/showing-spinner-gif-during-http-request-in-angular
 			// To handle page reloads
 
@@ -43,13 +44,13 @@
             };
 
             $scope.toolbarOptionActive = function (path) {
-                console.log($location.path().substr(0, path.length + 1));
+                //console.log($location.path().substr(0, path.length + 1));
                 if($location.path().substr(0, path.length) === path)
                     return "active disabled";
                 else
                     return "";
             }
-
+           
 			$scope.playVideo = function(videoAddress, videoName){
                  playVideo(videoAddress, videoName);
             };
