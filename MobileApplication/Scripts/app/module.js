@@ -29,6 +29,7 @@
         'incluso.stage.contentscontroller',
         'incluso.stage.messagecontroller',
         'incluso.stage.gameretomultiplecontroller',
+        'incluso.stage.gameretomultipleresultscontroller',
         'incluso.stage.quizcontroller',
         'incluso.stage.chatcontroller',
         'incluso.program.alerts',
@@ -58,6 +59,7 @@
         $http.get('Templates/Programa/PrivacyNotice.html', { cache: $templateCache });
         $http.get('Templates/Programa/TermsOfUse.html', { cache: $templateCache });
         $http.get('Templates/Programa/HelpAndSupport.html', { cache: $templateCache });
+        $http.get('Templates/Programa/ClosingStage.html', { cache: $templateCache });
 
         $http.get('Templates/Juegos/Game.html', { cache: $templateCache });        
         $http.get('Templates/NotificationDetails.html', { cache: $templateCache });  
@@ -254,7 +256,7 @@
     
         $routeProvider.when('/ZonaDeVuelo/Conocete/RetoMultipleFichaDeResultados', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/RetoMultipleFichaDeResultados.html',
-            controller: 'stageGameRetoMultipleController'
+            controller: 'stageGameRetoMultipleResultsController'
         });
     
         $routeProvider.when('/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos/:moodleid', { 

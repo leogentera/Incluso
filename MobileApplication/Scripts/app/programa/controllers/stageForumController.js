@@ -347,12 +347,11 @@ angular
 //            getDataAsync();
 
             $scope.showComentarios = function (discussionId) {
-              alert(discussionId);
               $location.path("/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Comentarios/" + $routeParams.moodleid + "/" + discussionId);
             }
 
             $scope.back = function () {
-                $location.path('/ProgramaDashboard');
+                $location.path('/ZonaDeVuelo/Dashboard');
             }
 
         }]);

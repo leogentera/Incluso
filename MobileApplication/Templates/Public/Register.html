@@ -1,7 +1,7 @@
 <div class="incluso-app public" ng-app>
   <article class="register" ng-controller="publicRegisterController">
 
-    <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered">      
+    <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered" ng-cloak>      
       <div class="alert-message">
         <div class="icomoon icon-warning"></div>
         <p>¡Error! Verifica tus datos</p>
@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class="alert alert-success" role="alert" ng-show="isRegistered">
+    <div class="alert alert-success" role="alert" ng-show="isRegistered" ng-cloak>
       <div class="alert-message">
         <div class="icomoon icon-checked-clip"></div>
         <p>¡Te has registrado correctamente!</p> 
