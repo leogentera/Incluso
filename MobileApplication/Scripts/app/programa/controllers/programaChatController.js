@@ -13,7 +13,7 @@ angular
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
             $rootScope.pageName = "Estación: Conócete"
-            $rootScope.navbarBlue = true;
+            $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true; 
             $rootScope.showFooterRocks = false; 
