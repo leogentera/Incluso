@@ -126,9 +126,15 @@
     text-align: center;
     color: #e1e455;
   }
-  .incluso-app img {
-    width: 100%;
+  .incluso-app img.badgesviews {
+    cursor:pointer;
   }
+  .incluso-app img {
+    /* width: 100%;  */
+  }
+   .incluso-app div.badgename {
+    color: white;
+  }  
   .incluso-app .txt-title {
     color: white;
     font-weight: bold;
