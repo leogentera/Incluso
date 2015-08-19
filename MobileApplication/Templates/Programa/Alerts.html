@@ -18,12 +18,12 @@
       <div id="carousel" class="owl-carousel">
 		<!--Todas las notificaciones -->
         <div class="item">		
-          <section class="starcontain">
-            <div class="{{notif.read == 'true' ? 'part' : 'part bord'}}" ng-repeat="notif in notifications">
+          <section class="starcontain">			
+			<div class="{{notif.read == 'true' ? 'part' : 'part bord'}}" ng-repeat="notif in notifications" ng-click="showAlertDetail(notif.notificationId)">
 			  <i class="icomoon icon-antena fl-left no-padding pink"></i>
 			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
 			  <i class="{{notif.read == 'true' ? 'icomoon icon-checked-join fl-right no-padding green' : 'icomoon icon-gauge fl-right no-padding gray'}}"></i>
-            </div>
+			</div>			
 			<div class="part showmore">
 			  <i class="icomoon  icon-show-more fl-right"></i> Mostrar más notificaciones...
 			</div>			
@@ -32,7 +32,7 @@
 		<!--No leídas -->
         <div class="item">
           <section class="starcontain">
-			<div class="part bord" ng-repeat="notif in notifications | filter: {read:'false'} ">
+			<div class="part bord" ng-repeat="notif in notifications | filter: {read:'false'}" ng-click="showAlertDetail(notif.notificationId)">
 			  <i class="icomoon icon-antena fl-left no-padding pink"></i>
 			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
 			  <i class="icomoon icon-gauge fl-right no-padding gray"></i>
@@ -45,7 +45,7 @@
 		<!--Leídas -->
         <div class="item">
           <section class="starcontain">
-			<div class="part" ng-repeat="notif in notifications | filter: {read : 'true'}">
+			<div class="part" ng-repeat="notif in notifications | filter: {read : 'true'}"  ng-click="showAlertDetail(notif.notificationId)">
 			  <i class="icomoon icon-antena fl-left no-padding pink"></i>
 			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
 			  <i class="icomoon  icon-checked-join fl-right no-padding green"></i>
