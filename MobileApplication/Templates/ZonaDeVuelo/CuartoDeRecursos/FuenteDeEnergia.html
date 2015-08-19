@@ -1,23 +1,90 @@
 <div class="incluso-app start-dashboard acerca-programa" id="site-wrapper">
   <div id="site-menu" >
+  <!--<menu-component></menu-component>-->
+  </div>
 
   </div>
   <div id="site-canvas">
 
-    <article>
-      <div class="container">
 
-        <section class="component">
-          <h3 ng-class="main-title">Descubre más - Fuente de Energia</h3>
-              <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+<article class="blueprint">
 
-              <p>Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean lacinia bibendum nulla sed consectetur. </p> 
-        </section>
-        
-      </div> <!-- /.container -->
+  <section>
+<div class="txt-renglon centered txt-bigger"></div> 
+<div class="subtitle">Descrubre más</div>
+<div class="txt-renglon txt-bigger">¡Descúbre, diviértete y gana estrellas!</div>  
+</section>
 
-    </article>
+<section class="txt-renglon distribuido">
 
+
+
+
+<select name="filter" class="form-control form-control-lg theme-default" ng-model="filter">
+  <option value="" disabled>Filtrar contenido por...</option>
+  <option value="VerTodo">Ver Todo</option>
+  <option value="Obligatorio">Obligatorio</option> 
+  <option value="File">Fotografías</option> 
+  <option value="Videos">Videos</option> 
+  <option value="Page">Textos</option> 
+  <option value="Frases">Frases</option> 
+  <option value="URL">Enlaces</option> 
+</select>
+</section>
+
+<section class="wall">
+<div class="part" ng-repeat="content in activities">
+  <div ng-if="filter == content.activityType || filter == 'VerTodo' || !filter">
+
+
+    <div ng-if="content.activityType == 'URL'">
+      <div class="author"><img src="assets/images/avatar.svg">
+        <div>   
+          Visita el sitio web!
+        </div>
+      </div>
+    </div>
+    <div ng-if="content.activityType == 'Page'">
+      <div class="author"><img src="assets/images/avatar.svg">
+        <div>   
+          Texto
+        </div>
+      </div>
+    </div>
+    <div ng-if="content.activityType == 'File'">
+      <div class="author"><img src="assets/images/avatar.svg">
+        <div>   
+          Fotografía
+        </div>
+      </div>
+    </div>
+  <div class="block">  
+    <img ng-src="{{content.file.path}}">
+    <div>{{content.url}}
+          {{content.pageContent}}
+    </div>
   </div>
 </div>
-  
+</div>
+
+
+</section>
+<section>
+<button class="btn btn-primary btn-lg btn-cnt" type="button" ng-click="back()">Regresar</button>
+<div class="txt-renglon centered txt-bigger"></div> 
+</section>
+
+  </article>
+
+  <footer class="footer">
+    <ul class="block-list">
+      <li><a href="" class="centered txt-title">Preguntas Frecuentes</a></li>
+      <li><a href="" class="centered txt-title">Ayuda y Soporte</a></li>
+    </ul>
+    <a href="#navBar" class="to-top"><i class="icomoon icon-double-arrow-up"></i><br/>SUBIR</a>
+  </footer>
+    </div>
+    </div>
+  <!-- html -->
+
+

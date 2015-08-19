@@ -18,6 +18,9 @@ class MoodleSocialNetworks extends Common
     			}
     			$networks_temp=$this->createTableFromCompundField($networks_temp);
     			foreach ($networks_temp as $network){
+    				if ($network===""){
+    					continue;
+    				}
     				array_push($networks, new MoodleSocialNetwork($network[0], $network[1]));
     			}
     			

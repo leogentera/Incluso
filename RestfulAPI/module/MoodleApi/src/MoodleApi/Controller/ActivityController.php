@@ -137,36 +137,33 @@ class ActivityController extends AbstractRestfulJsonController {
         $json = json_decode($response,true);
 
         if (strpos($response, "exception") !== false){
-            return array();
+            return new JsonModel((array)$forum);
         }
 
         $discussions = $json["discussions"];
 
         foreach($discussions as $discussion){
+            $discussionObj = new MoodleForumDiscussion($discussion);
+
             $url = $this->getConfig()['MOODLE_API_URL'].'&discussionid=%s&sortdirection=ASC';
-            $url = sprintf($url, $this->getToken(), "get_forum_discussion_posts", $discussion["id"]);
+            $url = sprintf($url, $this->getToken(), "get_forum_discussion_posts", $discussion["discussion"]);
 
             $response = file_get_contents($url);
         
             $json = json_decode($response,true);
 
-            if (strpos($response, "exception") !== false){
-                break;
+            if (strpos($response, "exception") == false){
+
+                $posts = $json["posts"];
+
+                $posts = $this->getTreeDiscussion($posts);
+
+                $discussionObj->setPosts($posts);
             }
 
-            $posts = $json["posts"];
-
-            $posts = $this->getTreeDiscussion($posts);
-            
-            $discussion = new MoodleForumDiscussion($discussion);
-
-            $discussion->setPosts($posts);
-
-            $forum->setDiscussions($discussion);
+            $forum->setDiscussions($discussionObj);
         }
 
-        
-        
         return new JsonModel((array)$forum);
     }
 

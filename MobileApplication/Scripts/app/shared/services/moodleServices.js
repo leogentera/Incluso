@@ -9,8 +9,8 @@
 
         var _putAsyncProfile = function(userId, data, successCallback, errorCallback){            
             _putAsyncData("profile", data, API_RESOURCE.format('user/' + userId), successCallback, errorCallback);
-        };
-
+        };    
+        
         var _getAsyncUserCourse = function(userId, successCallback, errorCallback){
             _getAsyncData("usercourse", API_RESOURCE.format('usercourse/' + userId), successCallback, errorCallback);
         };
@@ -23,10 +23,14 @@
             _getAsyncData("activity/" + activityId, API_RESOURCE.format('activity/' + activityId), successCallback, errorCallback);
         };
 
+        var _putAsyncActivityInfo = function(activityId, successCallback,errorCallback){
+            _putAsyncData("activity", API_RESOURCE.format('activityId' + activityId + 'user/' + userId ), successCallback,errorCallback);
+        };
+        
         var _getAsyncActivitiesInfo = function(activityId, successCallback, errorCallback){
             _getAsyncData("activities/" + activityId, API_RESOURCE.format('activities/' + activityId), successCallback, errorCallback);
         };
-
+            
         var _getAsyncCourse = function(courseId, successCallback, errorCallback){
             _getAsyncData("course", API_RESOURCE.format('course/' + courseId), successCallback, errorCallback);
         };
@@ -87,6 +91,20 @@
             });
         };
 
+        var _endActivity = function(userId,activityId){            
+             _httpFactory({
+                method: 'PUT',
+                url: "activity/" + activityId + "userId/" + userId,                
+                headers: {'Content-Type': 'application/json'},
+                }).success(function(data, status, headers, config) {
+                    localStorage.setItem(key, JSON.stringify(data));
+                    successCallback();
+                }).error(function(data, status, headers, config) {
+                    localStorage.setItem(key, JSON.stringify(data));
+                    errorCallback();
+            });
+        }
+        
         return {
             GetAsyncProfile: _getAsyncProfile,
             PutAsyncProfile: _putAsyncProfile,
@@ -96,7 +114,8 @@
             GetCacheObject: _getCacheObject,
             GetCacheJson: _getCacheJson,
             GetAsyncActivity: _getAsyncActivityInfo,
-            GetAsyncActivities: _getAsyncActivitiesInfo
+            GetAsyncActivities: _getAsyncActivitiesInfo,
+            PutAsyncActivity: _putAsyncActivityInfo
 
         };
     })();

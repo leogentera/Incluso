@@ -18,6 +18,9 @@ class MoodleStudies  extends Common
     			}
     			$studies_tmp=$this->createTableFromCompundField($studies_tmp);
     			foreach ($studies_tmp as $study){
+    				if ($study===""){
+    					continue;
+    				}
     				array_push($studies, new MoodleSchool($study[0], $study[1]));
     			}
     		}
