@@ -76,6 +76,7 @@ angular
                 //$scope.preloader.loading = false;  //- test
                 $scope.$emit('HidePreloader');
                 console.log('preloader hidden');
+
             }
 
             $scope.login = function (username, password) {  
