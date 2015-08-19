@@ -32,21 +32,25 @@
 
     <body ng-controller="homeCtrl" class="incluso-app ng-scope has-sidebar-left" ng-class="{'sidebar-left-active': sidebar}">
         <!-- preloader -->
-        <preloader-component></preloader-component>
+        <div class="app-preloader" id="spinner" ng-show="loading">
+            <div class="spinner spinner-circle"></div>
+        </div> 
         <!-- Main menu / sidebar -->
         <menu-component></menu-component> 
         <!-- app wrapper -->
         <div class="app">
+            <a style="visibility:hidden; display:block; height: 1px;" id="top"></a>
+            
             <!-- toolbar for private views -->
             <toolbar-component></toolbar-component>
 
             <!-- App Body -->
             <div class="app-body" ng-click="sideToggle('outside')">
                 <div class="app-content">
-                  <ng-view></ng-view>
+                    <ng-view></ng-view>
                 </div>
             </div>
-      <footer-component></footer-component>
+            <footer-component></footer-component>
         </div><!-- ~ .app -->
  
         <script src="Scripts/jquery-2.1.4.min.js"></script>    
@@ -85,20 +89,37 @@
         <script src="Scripts/app/programa/controllers/dashboard.etapa.js"></script>
         <script src="Scripts/app/programa/controllers/profile.js"></script>
         <script src="Scripts/app/programa/controllers/foro.js"></script>
-        <script src="Scripts/app/programa/controllers/tutorial.js"></script>   
+
+        <script src="Scripts/app/programa/controllers/acercaPrograma.js"></script>
+        <script src="Scripts/app/programa/controllers/MyInterests.js"></script>
+        <script src="Scripts/app/programa/controllers/MyStrengths.js"></script> 
+        <script src="Scripts/app/programa/controllers/HallOfFame.js"></script> 
+        <script src="Scripts/app/programa/controllers/PrivacyNotice.js"></script> 
+        <script src="Scripts/app/programa/controllers/TermsOfUse.js"></script>
+        <script src="Scripts/app/programa/controllers/ExplorationInitial.js"></script> 
+        <script src="Scripts/app/programa/controllers/ExplorationFinal.js"></script> 
+        <script src="Scripts/app/programa/controllers/HelpAndSupport.js"></script> 
+        <script src="Scripts/app/programa/controllers/Alerts.js"></script>
+        <script src="Scripts/app/juegos/GameController.js"></script> 
+          
         <script src="Scripts/app/programa/controllers/stageDashboardController.js"></script>   
         <script src="Scripts/app/programa/controllers/programaChatController.js"></script>
         <script src="Scripts/app/programa/controllers/programaDashboardController.js"></script>
         <script src="Scripts/app/programa/controllers/programaLeaderBoard.js"></script>
+        
+
         <script src="Scripts/app/programa/controllers/programaNotificationController.js"></script>
         <script src="Scripts/app/programa/controllers/stageGameRetoMultipleController.js"></script>
+        <script src="Scripts/app/programa/controllers/stageGameRetoMultipleResultsController.js"></script>
         <script src="Scripts/app/programa/controllers/stageChatController.js"></script>
         <script src="Scripts/app/programa/controllers/stageContentsController.js"></script>
         <script src="Scripts/app/programa/controllers/stageDashboardController.js"></script>
         <script src="Scripts/app/programa/controllers/stageForumController.js"></script>
+        <script src="Scripts/app/programa/controllers/stageForumCommentsController.js"></script>
         <script src="Scripts/app/programa/controllers/stageMessageController.js"></script>
         <script src="Scripts/app/programa/controllers/stageQuizController.js"></script>
         <script src="Scripts/app/programa/controllers/tutorial.js"></script>
         <script src="Scripts/app/juegos/avatarController.js"></script>
+
     </body>
 </html>

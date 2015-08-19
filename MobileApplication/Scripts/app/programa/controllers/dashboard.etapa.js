@@ -8,7 +8,8 @@ angular
 		'$timeout',
 		'$rootScope',
 		'$http',
-        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http) {
+        '$modal',
+        function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $modal) {
             /* $routeParams.stageId */
             _httpFactory = $http;
 
@@ -19,6 +20,7 @@ angular
             $rootScope.showFooter = true;
             $rootScope.showFooterRocks = false;
             $scope.scrollToTop();
+            $scope.$emit('HidePreloader'); //hide preloader
 
             function getDataAsync() {
                 $scope.model = getModel();
@@ -68,7 +70,7 @@ angular
                         }
                     }
                 }
-console.log(challenges);
+
                 return challenges;
             }
 
@@ -110,4 +112,23 @@ console.log(challenges);
                 playVideo(videoAddress, videoName);
             };
 
-        }]);
+            $scope.openClosingStageModal = function (size) {
+                console.log("opening");
+                //setTimeout(function(){ 
+                    var modalInstance = $modal.open({
+                        animation: $scope.animationsEnabled,
+                        templateUrl: 'ClosingStage.html',
+                        controller: 'closingStageController',
+                        size: size,
+                        windowClass: 'closing-stage-modal user-help-modal'
+                    });
+                    console.log("modal open closing");
+                //}, 1000);
+            };
+
+        }])
+        .controller('closingStageController', function ($scope, $modalInstance) {
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        });
