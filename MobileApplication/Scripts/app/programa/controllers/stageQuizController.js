@@ -33,7 +33,7 @@ angular
                 $scope.activity = JSON.parse(moodleFactory.Services.GetCacheObject("activity/" + $routeParams.moodleid));
             }
 
-            getDataAsync();
+            //getDataAsync();
 
             $scope.back = function () {
                 $location.path('/ProgramaDashboard');
