@@ -21,7 +21,7 @@
           <section class="starcontain">
             <div class="{{notif.read == 'true' ? 'part' : 'part bord'}}" ng-repeat="notif in notifications">
 			  <i class="icomoon icon-antena fl-left no-padding pink"></i>
-			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationDetail }}</div>
+			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
 			  <i class="{{notif.read == 'true' ? 'icomoon icon-checked-join fl-right no-padding green' : 'icomoon icon-gauge fl-right no-padding gray'}}"></i>
             </div>
 			<div class="part showmore">
@@ -34,7 +34,7 @@
           <section class="starcontain">
 			<div class="part bord" ng-repeat="notif in notifications | filter: {read:'false'} ">
 			  <i class="icomoon icon-antena fl-left no-padding pink"></i>
-			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationDetail }}</div>
+			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
 			  <i class="icomoon icon-gauge fl-right no-padding gray"></i>
             </div>
 			<div class="part showmore">
@@ -47,7 +47,7 @@
           <section class="starcontain">
 			<div class="part" ng-repeat="notif in notifications | filter: {read : 'true'}">
 			  <i class="icomoon icon-antena fl-left no-padding pink"></i>
-			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationDetail }}</div>
+			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
 			  <i class="icomoon  icon-checked-join fl-right no-padding green"></i>
             </div>
 			<div class="part showmore">
