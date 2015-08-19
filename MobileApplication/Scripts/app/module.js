@@ -29,6 +29,7 @@
         'incluso.stage.contentscontroller',
         'incluso.stage.messagecontroller',
         'incluso.stage.gameretomultiplecontroller',
+        'incluso.stage.gameretomultipleresultscontroller',
         'incluso.stage.quizcontroller',
         'incluso.stage.chatcontroller',
         'incluso.program.alerts',
@@ -254,7 +255,7 @@
     
         $routeProvider.when('/ZonaDeVuelo/Conocete/RetoMultipleFichaDeResultados', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/RetoMultipleFichaDeResultados.html',
-            controller: 'stageGameRetoMultipleController'
+            controller: 'stageGameRetoMultipleResultsController'
         });
     
         $routeProvider.when('/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos/:moodleid', { 
