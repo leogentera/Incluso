@@ -52,17 +52,11 @@ function syncCacheData (){
 
 var _endActivity = function(userId,activityId){
   
-    moodleFactory.Services.PutAsyncActivity(userId,activityId,
-                                            
-                                              function (data){
-                                                //on successCallback;
-                                                console.log('Activity successfuly updated');
-                                                },
-                                                
-                                              function(data){
-                                                //on errorCallback
-                                                console.log('Error updating activity');
-                                                });    
+    moodleFactory.Services.PutAsyncActivity(userId,activityId,function(data){
+        //LocalStorage.setItem("notifications",data.notifications);
+      },function(data){
+        //console.log(error on getting notifications data);
+        });
 };
 
 syncCacheData();

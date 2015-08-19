@@ -30,5 +30,5 @@ angular
             $scope.endActivity = function(){
                 
                 _endActivity($rootScope.userId, $rootScope.activityId);
-            }                    
+            }
         }]);
