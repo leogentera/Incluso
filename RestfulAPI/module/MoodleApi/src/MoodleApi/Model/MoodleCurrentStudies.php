@@ -11,11 +11,15 @@ class MoodleCurrentStudies  extends Common
     	//var_dump($data);
     	//for($i=0;count($data)>$i;$i++){
     	$currentStudy= new \stdClass();
+    	$currentStudy->level="";
+    	$currentStudy->grade="";
+    	$currentStudy->period="";
     		if(array_key_exists ( 'currentStudies' , $data )){
     			$studies_tmp=$data['currentStudies'];
     			
     			if (trim($studies_tmp)==""){
-    				return array();
+    				
+    				return $currentStudy;
     			}
     			
     			$studies_tmp=$this->createTableFromCompundField($studies_tmp);
