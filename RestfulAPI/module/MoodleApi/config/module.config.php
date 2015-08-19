@@ -10,6 +10,7 @@ return array(
         	'MoodleApi\Controller\Catalog' => 'MoodleApi\Controller\CatalogController', 
             'MoodleApi\Controller\Cache' => 'MoodleApi\Controller\CacheController', 
             'MoodleApi\Controller\Activity' => 'MoodleApi\Controller\ActivityController', 
+            'MoodleApi\Controller\Forum' => 'MoodleApi\Controller\ForumController', 
         ),
     ),
     'router' => array(
@@ -110,6 +111,16 @@ return array(
                     'route'    => '/cache',
                     'defaults' => array(
                             'controller' => 'MoodleApi\Controller\Cache',
+                    ),
+                )
+            ),
+
+            'Forum' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/forum',
+                    'defaults' => array(
+                            'controller' => 'MoodleApi\Controller\Forum',
                     ),
                 )
             ),
