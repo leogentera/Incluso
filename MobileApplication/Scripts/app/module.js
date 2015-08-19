@@ -57,6 +57,7 @@
         $http.get('Templates/Programa/PrivacyNotice.html', { cache: $templateCache });
         $http.get('Templates/Programa/TermsOfUse.html', { cache: $templateCache });
         $http.get('Templates/Programa/HelpAndSupport.html', { cache: $templateCache });
+        $http.get('Templates/Programa/ClosingStage.html', { cache: $templateCache });
 
         $http.get('Templates/Juegos/Game.html', { cache: $templateCache });        
         $http.get('Templates/NotificationDetails.html', { cache: $templateCache });  
