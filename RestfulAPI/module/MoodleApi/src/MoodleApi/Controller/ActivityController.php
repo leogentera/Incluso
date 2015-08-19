@@ -151,7 +151,7 @@ class ActivityController extends AbstractRestfulJsonController {
             $json = json_decode($response,true);
 
             if (strpos($response, "exception") !== false){
-                return array();
+                break;
             }
 
             $posts = $json["posts"];
