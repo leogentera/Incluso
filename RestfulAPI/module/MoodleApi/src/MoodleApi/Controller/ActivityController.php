@@ -137,7 +137,7 @@ class ActivityController extends AbstractRestfulJsonController {
         $json = json_decode($response,true);
 
         if (strpos($response, "exception") !== false){
-            return array();
+            return new JsonModel((array)$forum);
         }
 
         $discussions = $json["discussions"];
@@ -165,8 +165,6 @@ class ActivityController extends AbstractRestfulJsonController {
             $forum->setDiscussions($discussion);
         }
 
-        
-        
         return new JsonModel((array)$forum);
     }
 
