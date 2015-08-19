@@ -119,8 +119,7 @@ angular
                 console.log('fetching errors list'); //- debug
                 var errors = [];
                 var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número.";
-                if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }                
-                if(!$scope.recoverPasswordForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto. La confirmación de contraseña " + passwordPolicy); }
+                if(!isConfirmedPasswordValid) { errors.push("Las contraseñas capturadas no coinciden."); }
                 if(!$scope.recoverPasswordForm.code.$valid){ errors.push("código requerido."); }
                 $scope.recoverPasswordModel.modelState.errorMessages = errors;
 

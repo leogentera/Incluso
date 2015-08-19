@@ -22,6 +22,10 @@ angular
             $scope.scrollToTop();
             $scope.$emit('HidePreloader'); //hide preloader
 
+            $scope.downloadGame = function () {
+                $location.path('/ZonaDeVuelo/Conocete/RetoMultipleExternalApp');
+            }
+
             $scope.back = function () {
                 $location.path('/ProgramaDashboard');
             }

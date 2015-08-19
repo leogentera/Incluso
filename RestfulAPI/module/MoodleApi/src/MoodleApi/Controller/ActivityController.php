@@ -146,7 +146,7 @@ class ActivityController extends AbstractRestfulJsonController {
             $discussionObj = new MoodleForumDiscussion($discussion);
 
             $url = $this->getConfig()['MOODLE_API_URL'].'&discussionid=%s&sortdirection=ASC';
-            $url = sprintf($url, $this->getToken(), "get_forum_discussion_posts", $discussion["id"]);
+            $url = sprintf($url, $this->getToken(), "get_forum_discussion_posts", $discussion["discussion"]);
 
             $response = file_get_contents($url);
         
