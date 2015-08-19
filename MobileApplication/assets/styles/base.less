@@ -986,9 +986,14 @@ body {
         .modal-content {}
         .modal-header {
             position: relative;
+            padding: 3vw;
         }
-        .modal-body {}
-        .modal-footer {}
+        .modal-body {
+            padding: 3vw;
+        }
+        .modal-footer {
+            padding: 3vw;
+        }
         .modal-backdrop {
             position:fixed;
         }
@@ -1011,70 +1016,74 @@ body {
         }
     }
     .modal-theme-default {
+        .clr-blueDark(background-color, 0.9);
+
+        .modal-dialog {
+            width: 90vw;
+            height: auto;
+            margin: 0 auto;
+            margin-top:3vh;
+        }
         .modal-content {
-            .clr-blueDark(background-color, 0.9);
+            height: auto;
+            margin: 0 auto;
+            .box-shadow-reset();
+            /*.clr-blueDark(background-color, 0.9);*/
+            background-color: transparent;
             .clr-white(border-color, 0.3);
             border-width:1pt;
             border-style: solid;
         }
-        .modal-header {
-            .clr-white(border-color, 0.3);
-        }
         .modal-title {
+            padding: 3.6vw 0 0 0;
             color:@clr-green;
-            font-size: 6vw;
+            font-family: Play, Sans-serif;
+            font-size: 6.3vw;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;                 
+        }
+        .modal-header {
+            border:none;
+
+            .icon {
+                position: absolute;
+                right: -3.6vw;
+                top: -3.6vw;
+                padding: 0px;
+                margin: 0px;
+                width: 9vw;
+                height: 9vw;
+                line-height: 6vw;
+                .icomoon {
+                    color: @clr-white;
+                    font-size: 2.8vw;
+                    text-align: center;
+                }
+            }             
         }
         .modal-body {
-            height: 100vw;
-            overflow-y: scroll;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            height: 60vh;
+            border:none;
 
             p, ol li {
+                height: auto;
                 color: @clr-white;
-                font-size: 4.2vw;
-            }
-        }  
-        .modal-footer {
-            padding: 3.3vw;
-            .clr-white(border-color, 0.3);
-
-            .btn {
-                padding: 2vw 6vw;
-                font-size: 3.9vw;
-            }
+                font-size: 5vw; 
+                text-align: justify;
+            }                
         }
-
-        &.modal-preloader {
-            position: fixed;
-            height: 100vh;
-            background-color: rgba(18, 27, 28, 0.8);
-
-            .modal-content {
-                border:none;
-                background:none;
-                .box-shadow-reset()
-            }
-            .modal-body {
-                height: 100vh;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: auto;
-            }
-            .preloader {
-                display: block;
-                width: 6vw;
-                height: 6vw;
-                padding: 0;
-                margin:0 auto;
-                margin-top: 60vh;
-
-                img {
-                    display: block;
-                    padding: 0;
-                    margin:0;
-                    width:inherit;
-                    height:inherit;
-                }
-            }
+        .modal-footer {
+            border:none;
+            margin: 0;
+        }
+        .icon-close {
+            background-color: @clr-orange;
+            border: 0.23em solid @clr-white;
+            .border-radius-circle();
         }
     }
     .user-help-modal {
@@ -1238,7 +1247,7 @@ body {
             line-height: 14vw;
             text-overflow:ellipsis;
             white-space: nowrap;
-            text-transform: capitalize;
+            text-transform: none;
             a{
                 color: @clr-white;            
             }
@@ -1265,7 +1274,7 @@ body {
             &:hover,
             &.active {
                 .icomoon {
-                    color: darken(@clr-orange, 15%);
+                    color: rgba(185, 85, 120, 0.6);/*darken(@clr-orange, 15%);*/
                     -webkit-transition: all 700ms ease;
                     -moz-transition: all 700ms ease;
                     -o-transition: all 700ms ease;

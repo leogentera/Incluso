@@ -1,5 +1,4 @@
 <div class="incluso-app public" ng-app>
-
   <article class="register" ng-controller="publicRegisterController">
 
     <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered">      
@@ -20,38 +19,38 @@
     </div>
 
     <script type="text/ng-template" id="termsAndConditionsModal.html">
-      <div class="">
-        <div class="modal-header">
-          <h3 class="modal-title">Términos y Condiciones</h3>
-        </div>
-        <div class="modal-body">
-          <p>Todos los elementos que conforman el contenido de esta aplicación, identificado por el
-            nombre de “Misión Incluso”, incluyendo de manera enunciativa más no limitativa, los
-            nombres comerciales, marcas u otros signos distintivos que figuren en la misma son
-            propiedad de Gentera, S.A.B. y se encuentran protegidos bajo las leyes de Propiedad
-            Industrial. Los derechos de Propiedad Intelectual sobre los contenidos, diseño gráfico,
-            estructura, elementos audiovisuales y demás elementos de este sitio web son
-            propiedad exclusivamente de Gentera, S.A.B., quedando expresamente prohibido su
-            reenvío, transmisión, modificación, reproducción, distribución, comercialización o
-            cualquier otro tipo de explotación comercial en términos de las leyes aplicables sin el
-            previo consentimiento y autorización expresa para ello, por parte del titular de los
-            derechos patrimoniales mencionado previamente.
-            En virtud de lo anterior, salvo el uso que se llegue a dar para fines personales o
-            privados, a los cuales se encuentra autorizado el usuario, cualquier uso distinto que se
-            dé a cualquiera de los elementos de propiedad intelectual e industrial mencionados en
-            el párrafo previo constituirá en sí mismo una infracción a los derechos de propiedad
-            intelectual e industrial por lo que el titular de los mismos, podrá proceder civil e incluso
-            penalmente de acuerdo a las leyes aplicables.</p>        
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" ng-click="cancel()">Cerrar</button>
-        </div>
+      <div class="modal-header">
+        <h3 class="modal-title"> -Términos y Condiciones- </h3>
+        <button class="icon icon-close" ng-click="cancel()">
+          <span class="icomoon icon-cross"></span>
+        </button>
       </div>
+      <div class="modal-body">
+        <p>Todos los elementos que conforman el contenido de esta aplicación, identificado por el
+              nombre de “Misión Incluso”, incluyendo de manera enunciativa más no limitativa, los
+              nombres comerciales, marcas u otros signos distintivos que figuren en la misma son
+              propiedad de Gentera, S.A.B. y se encuentran protegidos bajo las leyes de Propiedad
+              Industrial. Los derechos de Propiedad Intelectual sobre los contenidos, diseño gráfico,
+              estructura, elementos audiovisuales y demás elementos de este sitio web son
+              propiedad exclusivamente de Gentera, S.A.B., quedando expresamente prohibido su
+              reenvío, transmisión, modificación, reproducción, distribución, comercialización o
+              cualquier otro tipo de explotación comercial en términos de las leyes aplicables sin el
+              previo consentimiento y autorización expresa para ello, por parte del titular de los
+              derechos patrimoniales mencionado previamente.
+              En virtud de lo anterior, salvo el uso que se llegue a dar para fines personales o
+              privados, a los cuales se encuentra autorizado el usuario, cualquier uso distinto que se
+              dé a cualquiera de los elementos de propiedad intelectual e industrial mencionados en
+              el párrafo previo constituirá en sí mismo una infracción a los derechos de propiedad
+              intelectual e industrial por lo que el titular de los mismos, podrá proceder civil e incluso
+              penalmente de acuerdo a las leyes aplicables.</p>        
+      </div>
+      <div class="modal-footer"></div>
     </script>
 
     <header>
       <figure>
-        <img src="assets/images/img-logo-gentera.svg" alt="" class="login-logo">
+        <!-- <img src="assets/images/img-logo-gentera.svg" alt="" class="login-logo"> -->
+        <img src="assets/images/img-logo-gentera-lg.png" alt="" class="login-logo">
         <figcaption class="center-block text-center">
           <span>Estudia</span>
           <span>|</span>
@@ -63,8 +62,7 @@
     </header>    
 
     <section>
-      <!--<form action="" class="register-form container-fluid" name="registerForm" ng-show="!isRegistered">-->
-        <form action="" class="register-form container-fluid" name="registerForm" >
+      <form action="" class="register-form container-fluid" name="registerForm" >
         <div class="row">
           <div class="col-xs-12">
             <h1>Datos de registro</h1>
@@ -338,22 +336,10 @@
               </div>       
             </div>          
 
-          </div>                  
+          </div> 
         </div> 
       </form>      
     </section>
 
-    <!--<section>
-      <div class="row">
-        <div class="col-xs-12" ng-show="isRegistered">
-          <p class="exit-message center-block text-center">
-            ¡Felicidades! Ya puedes comenzar esta fabulosa aventura.
-          </p>
-          <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="autologin()">Continuar</button>
-        </div> 
-      </div>
-    </section>-->
-
-  </article> 
-
+  </article>
 </div>

@@ -1062,6 +1062,13 @@ body.modal-open {
 }
 .incluso-app .modal .modal-header {
   position: relative;
+  padding: 3vw;
+}
+.incluso-app .modal .modal-body {
+  padding: 3vw;
+}
+.incluso-app .modal .modal-footer {
+  padding: 3vw;
 }
 .incluso-app .modal .modal-backdrop {
   position: fixed;
@@ -1083,68 +1090,78 @@ body.modal-open {
 .incluso-app .modal-extend-default .modal-body ol li {
   font-size: 4.2vw;
 }
-.incluso-app .modal-theme-default .modal-content {
+.incluso-app .modal-theme-default {
   background-color: rgba(18, 27, 28, 0.9);
+}
+.incluso-app .modal-theme-default .modal-dialog {
+  width: 90vw;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 3vh;
+}
+.incluso-app .modal-theme-default .modal-content {
+  height: auto;
+  margin: 0 auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  /*.clr-blueDark(background-color, 0.9);*/
+  background-color: transparent;
   border-color: rgba(255, 255, 255, 0.3);
   border-width: 1pt;
   border-style: solid;
 }
-.incluso-app .modal-theme-default .modal-header {
-  border-color: rgba(255, 255, 255, 0.3);
-}
 .incluso-app .modal-theme-default .modal-title {
+  padding: 3.6vw 0 0 0;
   color: #bcd431;
-  font-size: 6vw;
+  font-family: Play, Sans-serif;
+  font-size: 6.3vw;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.incluso-app .modal-theme-default .modal-header {
+  border: none;
+}
+.incluso-app .modal-theme-default .modal-header .icon {
+  position: absolute;
+  right: -3.6vw;
+  top: -3.6vw;
+  padding: 0px;
+  margin: 0px;
+  width: 9vw;
+  height: 9vw;
+  line-height: 6vw;
+}
+.incluso-app .modal-theme-default .modal-header .icon .icomoon {
+  color: #ffffff;
+  font-size: 2.8vw;
+  text-align: center;
 }
 .incluso-app .modal-theme-default .modal-body {
-  height: 100vw;
-  overflow-y: scroll;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  height: 60vh;
+  border: none;
 }
 .incluso-app .modal-theme-default .modal-body p,
 .incluso-app .modal-theme-default .modal-body ol li {
+  height: auto;
   color: #ffffff;
-  font-size: 4.2vw;
+  font-size: 5vw;
+  text-align: justify;
 }
 .incluso-app .modal-theme-default .modal-footer {
-  padding: 3.3vw;
-  border-color: rgba(255, 255, 255, 0.3);
-}
-.incluso-app .modal-theme-default .modal-footer .btn {
-  padding: 2vw 6vw;
-  font-size: 3.9vw;
-}
-.incluso-app .modal-theme-default.modal-preloader {
-  position: fixed;
-  height: 100vh;
-  background-color: rgba(18, 27, 28, 0.8);
-}
-.incluso-app .modal-theme-default.modal-preloader .modal-content {
   border: none;
-  background: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-.incluso-app .modal-theme-default.modal-preloader .modal-body {
-  height: 100vh;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: auto;
-}
-.incluso-app .modal-theme-default.modal-preloader .preloader {
-  display: block;
-  width: 6vw;
-  height: 6vw;
-  padding: 0;
-  margin: 0 auto;
-  margin-top: 60vh;
-}
-.incluso-app .modal-theme-default.modal-preloader .preloader img {
-  display: block;
-  padding: 0;
   margin: 0;
-  width: inherit;
-  height: inherit;
+}
+.incluso-app .modal-theme-default .icon-close {
+  background-color: #f5461f;
+  border: 0.23em solid #ffffff;
+  -webkit-border-radius: 90px;
+  -moz-border-radius: 90px;
+  border-radius: 90px;
 }
 .incluso-app .user-help-modal .modal-content {
   width: 90vw;
@@ -1302,7 +1319,7 @@ body.modal-open {
   line-height: 14vw;
   text-overflow: ellipsis;
   white-space: nowrap;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .incluso-app .navbar-assets .navbar-heading a {
   color: #ffffff;
@@ -1326,7 +1343,8 @@ body.modal-open {
 }
 .incluso-app .navbar-tools li:hover .icomoon,
 .incluso-app .navbar-tools li.active .icomoon {
-  color: #bf2a09;
+  color: rgba(185, 85, 120, 0.6);
+  /*darken(@clr-orange, 15%);*/
   -webkit-transition: all 700ms ease;
   -moz-transition: all 700ms ease;
   -o-transition: all 700ms ease;

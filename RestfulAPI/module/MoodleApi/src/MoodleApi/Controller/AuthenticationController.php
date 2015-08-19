@@ -450,7 +450,7 @@ private function forgotPassword($data)
     	 
     	 
     	if ($tries==4){
-    		$passwordRecoveryExpiration=round(microtime(true) * 1000)+3600000 ;
+    		$authenticationExpiration=round(microtime(true) * 1000)+3600000 ;
     		//    		$authenticationExpiration=round(microtime(true) * 1000)+60000 ;
     		$tries='0';
     		$authenticationFirstTryDate='';
