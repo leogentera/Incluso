@@ -31,16 +31,19 @@
             </ul>
           </tab>
           <tab heading="No leídas" class="item">
-            <section class="starcontain">
-              <div class="part bord" ng-repeat="notif in notifications | filter: {read:'false'} ">
-                <i class="icomoon icon-antena fl-left no-padding pink"></i>
-                <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
-                <i class="icomoon icon-gauge fl-right no-padding gray"></i>
-              </div>
-              <div class="part showmore">
-                <i class="icomoon  icon-show-more fl-right"></i> Mostrar más notificaciones...
-              </div>
-            </section>
+            <ul class="green-lantern-theme">
+              <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | filter: {read:'false'} ">
+                <span class="icomoon icon-antena pull-left no-padding pink"></span>
+                <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
+                <span class="icomoon icon-gauge fl-right no-padding gray"></span>
+              </li>
+              <li class="list-item rounded-item showmore">
+                <span class="icomoon  icon-show-more fl-right"></span>
+                <div> 
+                  Mostrar más notificaciones...
+                </div>
+              </li>
+            </ul>
           </tab>
           <tab heading="Leídas" class="item">
               <section class="starcontain">
