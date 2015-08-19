@@ -88,7 +88,7 @@ class MoodleUserProfile extends Common {
 	public $playVideogames = "";
 	public $videogamesFrecuency = "";
 	public $videogamesHours = "";
-	public $kindOfVideogames = "";
+	public $kindOfVideogames = array ();
 	public $gender = "";
 	public $birthday = "";
 	public $maritalStatus = "";
