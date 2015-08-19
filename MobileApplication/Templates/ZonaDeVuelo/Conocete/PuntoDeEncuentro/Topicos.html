@@ -12,25 +12,16 @@
 </section>
 
 <section class="">
-  <div class="part"><span>¿Cómo te sientes cuando ves
-que varias personas tienen
-sueños similares a los tuyos?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
-  <div class="part"><span>¿Cuál ha sido tu avance para
-alcanzar tus sueños?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
-  <div class="part"><span>¿Crees que en algún momento
-del proceso te rindas?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
-  <div class="part"><span>¿Qué te motiva para lograr
-conseguir tus sueños?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
-  <div class="part"><span>¿Crees que pedir ayuda es algo
-positivo o negativo?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
-  <div class="part"><span>
-¿Considerarías apoyarte en
-alguien para lograr tus sueños?</span><i class="icomoon icon-arrow-right-aligned fl-right"></i></div>
-</section>
-<section>
-<button class="btn btn-primary btn-lg btn-cnt" type="button">Regresar</button>
-<div class="txt-renglon centered txt-bigger"></div> 
-</section>
+
+    <div id="item{{$index}}" ng-repeat="t in activity.discussions">
+      <div class="part"><span>{{t.message}}</span><a href="" ng-click="showComentarios(t.id)"><i class="icomoon icon-arrow-right-aligned fl-right"></i></a></div>
+    </div>
+
+    </section>
+    <section>
+    <button class="btn btn-primary btn-lg btn-cnt" type="button">Regresar</button>
+    <div class="txt-renglon centered txt-bigger"></div> 
+    </section>
 
   </article>
 

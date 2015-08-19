@@ -25,6 +25,7 @@
 
         'incluso.stage.dashboardcontroller',
         'incluso.stage.forumcontroller',
+        'incluso.stage.forumcommentscontroller',
         'incluso.stage.contentscontroller',
         'incluso.stage.messagecontroller',
         'incluso.stage.gameretomultiplecontroller',
@@ -261,9 +262,9 @@
             controller: 'stageForumController'
         });
     
-        $routeProvider.when('/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Comentarios', { 
+        $routeProvider.when('/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Comentarios/:moodleid/:discussionId', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Comentarios.html',
-            controller: 'stageForumController'
+            controller: 'stageForumCommentsController'
         });
     
         $routeProvider.when('/ZonaDeVuelo/Conocete/ZonaDeContacto', { 
@@ -271,7 +272,7 @@
             controller: 'stageDashboardController'  //this may need to be change to another type of controller
         });
     
-        $routeProvider.when('/ZonaDeVuelo/Conocete/ZonaDeContacto/Logicos/Topicos/:moodleid', { 
+        $routeProvider.when('/ZonaDeVuelo/Conocete/ZonaDeContacto/Logicos/Topicos/:moodleid/:discussionId', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/ZonaDeContacto/Logicos/Topicos.html',
             controller: 'stageForumController'
         });
