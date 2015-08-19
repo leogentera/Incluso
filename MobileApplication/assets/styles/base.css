@@ -1319,7 +1319,7 @@ body.modal-open {
   line-height: 14vw;
   text-overflow: ellipsis;
   white-space: nowrap;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .incluso-app .navbar-assets .navbar-heading a {
   color: #ffffff;

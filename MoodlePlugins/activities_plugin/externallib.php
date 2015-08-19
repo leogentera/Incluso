@@ -1344,10 +1344,9 @@ class forum_plugin extends external_api{
 
             $lastinsert = $DB->insert_record('forum_posts', $record, false);            
             
-            $response = $lastinsert;
-
-            var_dump($response);
-
+            $response = new stdClass();
+        	$response->result = $lastinsert;
+        
         } catch (Exception $e) {
             $response = $e;
         }
@@ -1356,17 +1355,11 @@ class forum_plugin extends external_api{
     }
 
     public static function create_forum_discussion_post_returns() {
-        return  new external_single_structure(
-                        array(
-                            'discussion' => new external_value(PARAM_TEXT, 'id of the discussion.'),
-                            'parent' => new external_value(PARAM_TEXT, 'id of the parent post.'),
-                            'userid' => new external_value(PARAM_TEXT, 'id of the posting user.'),
-                            'subject' => new external_value(PARAM_RAW, 'Subject of the post.'),
-                            'message' => new external_value(PARAM_TEXT, 'The message of the post.'),
-                            'created' => new external_value(PARAM_TEXT, 'Datetime of post creation.'),
-                            'modified' => new external_value(PARAM_INTEGER, 'Datetime of post last modification.')
-                        )
-                    );
+        return new external_single_structure(
+	        array(
+	            'result' => new external_value(PARAM_BOOL, 'Boolean result of the update action.')
+	        )    
+    	);
     }
 }
 
