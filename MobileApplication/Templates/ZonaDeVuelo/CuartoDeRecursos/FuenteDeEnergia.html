@@ -1,4 +1,5 @@
 <div class="incluso-app start-dashboard acerca-programa" id="site-wrapper">
+
   <div id="site-menu" >
   <!--<menu-component></menu-component>-->
   </div>
@@ -22,46 +23,60 @@
 
 <select name="filter" class="form-control form-control-lg theme-default" ng-model="filter">
   <option value="" disabled>Filtrar contenido por...</option>
-  <option value="VerTodo">Ver Todo</option>
+  <option value="">Ver Todo</option>
   <option value="Obligatorio">Obligatorio</option> 
-  <option value="File">Fotografías</option> 
-  <option value="Videos">Videos</option> 
-  <option value="Page">Textos</option> 
+  <option value="file">Fotografías</option> 
+  <option value="video">Videos</option> 
+  <option value="page">Textos</option> 
   <option value="Frases">Frases</option> 
-  <option value="URL">Enlaces</option> 
+  <option value="url">Enlaces</option> 
 </select>
 </section>
 
 <section class="wall">
 <div class="part" ng-repeat="content in activities">
-  <div ng-if="filter == content.activityType || filter == 'VerTodo' || !filter">
+  <div ng-if="filter == content.activityType || !filter || filter == 'Obligatorio' && content.mandatory">
 
 
-    <div ng-if="content.activityType == 'URL'">
+    <div ng-if="content.activityType == 'url'">
       <div class="author"><img src="assets/images/avatar.svg">
         <div>   
           Visita el sitio web!
         </div>
+        <div ng-if="content.mandatory">*</div>
       </div>
     </div>
-    <div ng-if="content.activityType == 'Page'">
+    <div ng-if="content.activityType == 'video' ">
       <div class="author"><img src="assets/images/avatar.svg">
         <div>   
-          Texto
+
+          Video tutorial incluso
         </div>
+        <div ng-if="content.mandatory">*</div>
       </div>
     </div>
-    <div ng-if="content.activityType == 'File'">
+    <div ng-if="content.activityType == 'page'">
+      <div class="author"><img src="assets/images/avatar.svg">
+        <div>   
+
+          Texto
+        </div>
+        <div ng-if="content.mandatory">*</div>
+      </div>
+    </div>
+    <div ng-if="content.activityType == 'file'">
       <div class="author"><img src="assets/images/avatar.svg">
         <div>   
           Fotografía
-        </div>
-      </div>
+        </div>        
+        <div ng-if="content.mandatory">*</div>
+      </div>      
     </div>
   <div class="block">  
     <img ng-src="{{content.file.path}}">
-    <div>{{content.url}}
-          {{content.pageContent}}
+    <div>
+        <a ng-hide="content.isVideo" href={{content.url}} target="_blank">{{content.url}}</a>
+        {{content.pageContent}}
     </div>
   </div>
 </div>
