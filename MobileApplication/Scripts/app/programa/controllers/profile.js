@@ -38,7 +38,7 @@ angular
             $scope.cityItems = ['México D.F.', 'Guadalajara', 'Monterrey', 'Villa hermosa'];
             $scope.stateItems = ['Distrito Federal', 'Coahuila', 'Jalisco', 'México', 'Nuevo León'];
             $scope.maritalStatusItems = ['Soltero(a)', 'Casado(a)', 'Unión libre'];
-            $scope.studiesList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
+            /*unir1*/ $scope.studiesList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
             $scope.educationStatusList = ['Terminada', 'En proceso', 'Inconclusa'];
             $scope.favoritSportsList = ['Grado', 'Ciclismo', 'Ciclismo\r', 'Patinaje/skateboarding', 'Universidad', 'FutbolSoccer', 'Basquetbol', 'ArtesMarciales', 'Yoga', 'Natación', 'FutbolAmericano', 'Basebol', 'Carreras'];
             $scope.artisticActivitiesList = ['Pintura', 'Música', 'Danza', 'Fotografia', 'Graffiti', 'DisenoDigital', 'Artesanias', 'Teatro', 'Modelado', 'Dibujo'];
@@ -48,7 +48,7 @@ angular
             $scope.habilitiesList = ['Empatía', 'Creatividad', 'Liderazgo', 'Comunicación', 'Negociación', 'Trabajo en equipo', 'Innovación', 'Iniciativa', 'Toma de decisiones', 'Planeación', 'Organización'];
             $scope.iLiveWithList = ['Ambo padres', 'Padre', 'Madre', 'Tíos', 'Esposo(a)', 'Abuelos', 'Amigos'];
             $scope.mainActivityList = ['Estudias', 'Trabajas', 'Ni estudias ni trabajas'];
-            $scope.levelList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
+            /*unir1*/$scope.levelList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
             $scope.gradeList = ['1er', '2do', '3ro', '4to', '5to', '6to'];
             $scope.periodList = ['Año', 'Semestre', 'Cuatrimestre', 'Trimestre', 'Bimestre'];
             $scope.yesNoList = ['Si', 'No'];
@@ -59,8 +59,9 @@ angular
             $scope.videoGamesFrecuencyList = ['Diario', '3 veces a la semana', '1 vez a la semana', '1 o 2 veces al mes', 'Nunca'];
             $scope.kindOfVideoGamesList = ['Acción', 'Deportes', 'Violencia', 'Aventura', 'Reto', 'Estrategia', 'Educativos', 'Peleas'];
             $scope.socialNetworksList = ['Facebook','Instagram','Twitter'];
-            $scope.inspirationalCharactersList = ['Familiar','Artista','Deportista','Figura social','Figura política']
-
+            $scope.inspirationalCharactersList = ['Familiar','Artista','Deportista','Figura social','Figura política'];
+            $scope.familiaCompartamosList = ['Madre','Padre','Tío(a)','Abuelo(a)','Primo(a)','Hermano(a)'];
+                     
             $scope.birthdate_Dateformat = formatDate($scope.model.birthday);
             getAge();
 
@@ -114,7 +115,7 @@ angular
 
             function formatDate(date) {
                 var splitDate = date.split("/");
-                var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
+                var userBirthDate = new Date(splitDate[2], splitDate[0]-1, splitDate[1]);
                 return userBirthDate;
             }
 
@@ -202,8 +203,6 @@ angular
                     $scope.$emit('scrollTop'); 
                 }
             }
-
-
 
             $scope.addStudy = function () {
                 $scope.model.studies.push({});
@@ -355,7 +354,7 @@ angular
             $scope.addFamiliaCompartamos = function () {
                 $scope.model.familiaCompartamos.push({});
             }
-            $scope.deleteFamiliaCompartamosk = function (index) {
+            $scope.deleteFamiliaCompartamos = function (index) {
                 $scope.model.familiaCompartamos.splice(index, 1);
             }
 
