@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="local/activitites_plugin/db" VERSION="20150710" COMMENT="Script to add tables needed to work in Moodle Database."
+<XMLDB PATH="local/activitites_plugin/db" VERSION="20150820" COMMENT="Script to add tables needed to work in Moodle Database."
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
   <TABLES>
-    <TABLE NAME="forum_post_like" COMMENT="Keeps registry of all the likes to posts made on a forum. Comes from local/activitites_plugin plugin.">
+    <TABLE NAME="forum_posts_like" COMMENT="Keeps registry of all the likes to posts made on a forum. Comes from local/activitites_plugin plugin.">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="forumpostid" TYPE="int" LENGTH="20" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="The id of the liked post."/>
@@ -14,6 +14,17 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
         <KEY NAME="fk-forumpost-like" TYPE="foreign" FIELDS="forumpostid" REFTABLE="forum_posts" REFFIELDS="id"/>
         <KEY NAME="fk-user-like" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="forum_posts_types" COMMENT="Posts Types (Text, link, video, attachment)">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="forumpostsid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" COMMENT="Forum_posts ID"/>
+        <FIELD NAME="type" TYPE="int" LENGTH="1" NOTNULL="false" SEQUENCE="false" COMMENT="Type of post (1,2,3,4)"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="fk-forum_posts" TYPE="foreign" FIELDS="forumpostsid" REFTABLE="forum_posts" REFFIELDS="id" COMMENT="Forum_posts ID"/>
       </KEYS>
     </TABLE>
   </TABLES>
