@@ -2,7 +2,15 @@
     Incluso Digital CSS Styles
 
     Parallel work file for UI Developer 02
+
+    Color Palette:  Please look at base.css
+    Index:
+        01. $_Base
+        02. $_Entities
+        03. $_Overrrides
 ********************************************************************************/
+
+/*******************************************************************************/
 @import "less-utilities.less";
 
 
@@ -13,11 +21,83 @@
     ********************************************************************************/
     /* Start writing base classes here */
 
-
     /********************************************************************************
      Entities styles (if needed)
     ********************************************************************************/
     /* Start writing base classes here */
 
   
+    /********************************************************************************
+     Overrides styles (if needed)
+    ********************************************************************************/
+    /* Start writing base classes here */
+
+    /* Mis Logros */    
+    .achievements .panel-body .badge-item {
+        height: 40vw;
+        padding: 10px;
+        margin: 10px 0 0;
+        border-bottom: 1px solid rgb(139,168,177);
+        cursor: pointer;
+    }
+    .achievements .panel-body .badge-item img {
+        height: auto;
+        width: 100%;
+    }
+    .achievements .panel-body .badge-item .badgename {
+        color: #fff;
+        font-family: Play;
+        font-size: 4vw;
+        line-height: 5vw;
+        text-align: center;
+    }
+
+    /* Detalle de Logro */  
+    .achievement-detail .panel-body .text-center .achievement-badge {
+        border-bottom: 1px solid rgb(139,168,177);
+        margin-bottom: 5vw;
+    }
+    .achievement-detail .panel-body .text-center .achievement-badge img {
+        width: 50vw;
+        height: 50vw;
+    }
+    .achievement-detail .panel-body .text-center .achievement-badge .badgename {
+        color: #fff;
+        font-family: Play;
+        font-size: 8vw;
+        line-height: 7vw;
+        text-align: center;
+        padding: 4vw 0;
+    }
+    .achievement-detail .panel-body .text-center .achievement-description {
+        color: #fff;
+        font-family: Play;
+        font-size: 5vw;
+        line-height: 7vw;
+        padding: 4vw 0;
+    }
+    .achievement-detail .panel-body .text-center .earned-info {
+        color: rgb(99,119,125);
+        font-family: Play;
+        font-size: 4vw;
+        padding: 4vw 0;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    .achievement-detail .panel-body .text-center .earned-info .users {
+        color: rgb(184,207,51);
+    }
+    .achievement-detail .panel-body .text-center .share-achievement {
+        position: relative;
+        overflow: visible;
+    }
+        .achievement-detail .panel-body .text-center .share-achievement .icon-share {
+            .border-radius-circle();
+            background: rgb(184,207,51);
+        }
+        .achievement-detail .panel-body .text-center .share-achievement .share-text {
+            background: rgb(72,81,87);
+            .border-radius(12px);
+        }
+
 }
