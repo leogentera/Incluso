@@ -618,17 +618,20 @@
                                             <span class="icomoon icon-information"></span>
                                             <h3 class="panel-title">Mis Logros</h3>
                                         </div>
-                                        <div class="panel-body">This is the Body
+                                        <div class="panel-body">
                                             <div class="container-fluid">
                                                 <div class="row">
-
-                                                    <div ng-repeat="badge in model.badgesToEarn">         
+                                                    <span style="color:white;">Página: <span class="badgename" ng-bind="badgePage"></span></span>
+                                                    
+                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]">         
                                                         
-                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />      
+                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />  
+
                                                         <div class="badgename" ng-bind="badge.name"></div>
                                                         <br />
                                                     </div>
-
+                                                    <div style="color:white;" ng-click="changepage(-1)">Back</div>
+                                                    <div style="color:white;" ng-click="changepage(1)">Forward</div>
 
                                                     <!--
                                                     <div class="col-xs-12" ng-repeat="s in model.strengths">

@@ -23,6 +23,39 @@ angular
             $scope.$emit('HidePreloader');
 
             $scope.model = getDataAsync();
+            $scope.wholeBadges = {};
+            $scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
+            $scope.totalBadges = $scope.wholeBadges.badges.length;
+            $scope.totalBadgePages = Math.ceil( $scope.totalBadges / 12);
+            alert("En scope: " + $scope.totalBadgePages);
+            $scope.badgePage = 0;
+            
+            $scope.wholeBadgesPages = [];
+            
+            for(var i = 0; i < $scope.totalBadgePages; i++) {
+                var top = Math.min(12, $scope.totalBadges - 12*i); 
+                $scope.wholeBadgesPages[i] = []; 
+                for(var j = 0; j < top; j++) {
+                    var elem = $scope.wholeBadges.badges.shift(); //extracts first element of remaining array                    
+                    $scope.wholeBadgesPages[i].push(elem);                
+                }
+            }
+            
+            alert($scope.wholeBadgesPages[0].length + "-" + $scope.wholeBadgesPages[1].length + "-" + $scope.wholeBadgesPages.length);
+
+            $scope.changepage = function(delta) {
+                $scope.badgePage += delta;
+
+                if ($scope.badgePage < 0) {
+                    $scope.badgePage = 0;
+                }
+
+                if ($scope.badgePage > $scope.totalBadgePages - 1) {
+                    $scope.badgePage = $scope.totalBadgePages - 1;
+                }
+            }
+            
+
             $rootScope.pageName = "Mi perfil"
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
@@ -65,6 +98,8 @@ angular
                     return "";
                 }
                 initFields(m);
+
+                //alert(m.badgesToEarn.toString());
 
                 return m;
             }
