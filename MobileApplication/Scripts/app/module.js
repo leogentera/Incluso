@@ -41,7 +41,7 @@
         'incluso.program.termsOfUse',
         'incluso.program.helpAndSupport',
     ])
-    .run(function ($templateCache, $http) {
+    .run(function ($templateCache, $http, $rootScope) {
         $http.get('Templates/Public/Login.html', { cache: $templateCache });
         $http.get('Templates/Public/RecoverPassword.html', { cache: $templateCache });
         $http.get('Templates/Public/Register.html', { cache: $templateCache });
@@ -102,7 +102,15 @@
         $http.get('Templates/ZonaDeVuelo/ExploracionFinalCierre.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/Cierre.html', { cache: $templateCache });  
 
-        
+         document.addEventListener("keyup", function(e) {
+            if (e.keyCode === 27)
+                $rootScope.$broadcast("escapePressed", e.target);
+        });
+
+        document.addEventListener("click", function(e) {
+            $rootScope.$broadcast("documentClicked", e.target);
+
+        });
     })
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
@@ -675,4 +683,56 @@
           scope: false,
           templateUrl: 'Templates/Shared/_preloader.html'
         };
-    }); 
+    })
+    .directive("menu", function() {
+        return {
+            restrict: "E",
+            template: "<div ng-class='{ show: visible, left: alignment === \"left\", right: alignment === \"right\" }' ng-transclude></div>",
+            transclude: true,
+            scope: {
+                visible: "=",
+                alignment: "@"
+            }
+        };
+    })    
+    .directive("menuItem", function() {
+         return {
+             restrict: "E",
+             template: "<div ng-click='navigateTo()' ng-transclude></div>",
+             transclude: true,
+             scope: {
+                 hash: "@",
+                 
+             },
+             link: function($scope, $location) {
+                
+                 $scope.navigateTo = function() {
+                    //console.log($location);
+                    
+                     window.location.hash = $scope.hash;
+                     
+                                     }
+             }
+         }
+     })
+    .directive("submenu", function(){
+        return {
+            restrict: "E",
+            template: "<div class='submenu' ng-transclude><ul></ul></div>",
+            transclude: true,
+            scope: {
+
+            }
+        };
+    })
+    .directive("submenuItem", function(){
+        return {
+            restrict: "E",
+            template: "<li ng-click='navigateTo()' ng-transclude></li>",
+            transclude: true,
+            scope: {
+
+            }
+        };
+    });
+     

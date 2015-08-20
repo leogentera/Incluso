@@ -37,17 +37,80 @@
             <div class="spinner spinner-circle"></div>
         </div> 
         <!-- Main menu / sidebar -->
-        <menu-component></menu-component> 
+        <menu-component></menu-component>
+        
+
         <!-- app wrapper -->
         <div class="app">
             <a class="anchor-top" id="top"></a>
             
             <!-- toolbar for private views -->
             <toolbar-component></toolbar-component>
+            
+            
 
             <!-- App Body -->
             <div class="app-body" ng-click="sideToggle('outside')">
                 <div class="app-content">
+                    
+                    <menu visible="leftVisible" alignment="left">
+
+                            <menu-item id="navBar" class="navbar" ng-class="{'navbar-blue': navbarBlue, 'navbar-orange': navbarOrange}">
+                              <div class="container-fluid">
+                                <div class="row">
+                                  <div class="navbar-assets">
+                                    <h1 class="navbar-heading" ng-click="sideToggle()"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
+                                  </div>
+                                </div>
+                              </div>
+                            </menu-item>
+                        
+                        <menu-item hash="ProgramaDashboard">Inicio></menu-item>
+                        <menu-item hash="AcercaPrograma">Acerca de Incluso></menu-item>
+                        <menu-item ng-click="playVideo('assets/media', 'TutorialTest2.mp4')">Guía de uso></menu-item>
+                        <menu-item>
+                            <i class="icomoon icon-arrow fl-right white pointer" ></i>
+                            <a class="menu-blue accsub" data-id="0">
+                              <i class="icomoon icon-spaceship">
+                                  <span class="path1"></span>
+                                  <span class="path2"></span>
+                                  <span class="path3"></span>        
+                              </i>
+                              Zona de Vuelo
+                            </a>
+                            <submenu id="sub0">
+            
+                                    <span>Exploración inicial</span> 
+                                    <submenu-item hash="/ZonaDeVuelo/ExploracionInicial/zv_exploracionInicial">Exploración inicial</submenu-item>
+                                
+                                    <span>Cuarto de recursos</span>
+                                    <submenu-item hash="/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia/zv_cuartoderecursos_fuentedeenergia">Fuente de energía</submenu-item>
+                                
+                                    <span>Conócete</span>
+                                    <submenu-item hash="/ZonaDeVuelo/Conocete/FuenteDeEnergia/zv_conocete_fuentedeenergia">Fuente de energía</submenu-item>
+                                    <submenu-item hash="/ZonaDeVuelo/Conocete/RetoMultiple/zv_conocete_retomultiple">Reto múltiple</submenu-item>
+                                    <submenu-item hash="/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos/zv_puntodeencuentro">Punto de encuentro</submenu-item>
+                                    <submenu-item hash="/ZonaDeVuelo/Conocete/ZonaDeContacto">Zona de contacto</submenu-item>
+                                
+                                
+                                    <span>Mis sueños </span>
+                                    <submenu-item hash="/ZonaDeVuelo/MisSuenos/FuenteDeEnergia/zv_missuenos_fuentedeenergia">Fuente de energía</submenu-item>
+                                    <submenu-item hash="/ZonaDeVuelo/MisSuenos/MisGustos/zv_missuenos_misgustos">Mis gustos</submenu-item>
+                                    <submenu-item hash="/ZonaDeVuelo/MisSuenos/MisCualidades/zv_missuenos_miscualidades">Mis Cualidades</submenu-item>
+                                    <submenu-item hash="/ZonaDeVuelo/MisSuenos/Suena/zv_missuenos_suena">Sueña</submenu-item>
+                                    <submenu-item hash="/ZonaDeVuelo/MisSuenos/PuntosDeEncuentro/Topicos/zv_missuenos_puntosdeencuentro">Punto de encuentro</submenu-item>
+                                
+                                    <span>Cabina de soporte</span>
+                                    <submenu-item hash="/ZonaDeVuelo/CabinaDeSoporte/zv_cabinadesoporte_chat">Chat</submenu-item>
+                                    
+                                    <!--<li><a  ng-href="./Templates/Programa/forocom.shtml"> Foro común</a></li>-->
+                                
+                                    <span>Exploración final</span> 
+                                    <submenu-item hash="/ZonaDeVuelo/ExploracionFinal/zv_exploracionfinal">Exploración final</submenu-item>
+                            </submenu>
+                        </menu-item>
+                    </menu>
+                    <button ng-click="showLeft($event)">Show Left Menu!</button>
                     <ng-view></ng-view>
                 </div>
             </div>

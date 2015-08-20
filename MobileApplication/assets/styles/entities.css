@@ -1941,6 +1941,76 @@
     /*.clr-blueDark(background-color, 0.9);*/
     background-color: rgba(13, 15, 20, 0.5);
   }
+  .incluso-app .border-box {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  .incluso-app menu {
+    display: block;
+    z-index: 100;
+  }
+  .incluso-app menu > div {
+    position: absolute;
+    z-index: 1100;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-transition: -webkit-transform ease 250ms;
+    -moz-transition: -webkit-transform ease 250ms;
+    -ms-transition: -webkit-transform ease 250ms;
+    -o-transition: -webkit-transform ease 250ms;
+    transition: -webkit-transform ease 250ms;
+    -webkit-transition: transform ease 250ms;
+    -moz-transition: transform ease 250ms;
+    -ms-transition: transform ease 250ms;
+    -o-transition: transform ease 250ms;
+    transition: transform ease 250ms;
+  }
+  .incluso-app menu > div.left {
+    background: #273D7A;
+    left: -250px;
+  }
+  .incluso-app menu > div.show.left {
+    transform: translate3d(250px, 0, 0);
+    -ms-transform: translate3d(250px, 0, 0);
+    -webkit-transform: translate3d(250px, 0, 0);
+    -o-transform: translate3d(250px, 0, 0);
+    -moz-transform: translate3d(250px, 0, 0);
+  }
+  .incluso-app menu > div.right {
+    background: #6B1919;
+    right: -250px;
+  }
+  .incluso-app menu > div.show.right {
+    transform: translate3d(-250px, 0, 0);
+    -ms-transform: translate3d(-250px, 0, 0);
+    -webkit-transform: translate3d(-250px, 0, 0);
+    -o-transform: translate3d(-250px, 0, 0);
+    -moz-transform: translate3d(-250px, 0, 0);
+  }
+  .incluso-app menu > div > menu-item {
+    display: block;
+  }
+  .incluso-app menu > div > menu-item > div {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 10px 15px;
+    border-bottom: solid 1px #555;
+    cursor: pointer;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #B0B0B0;
+  }
+  .incluso-app menu > div > menu-item > div:hover {
+    color: #F0F0F0;
+  }
+  .incluso-app menu > div > menu-item > div > span {
+    float: left;
+    color: inherit;
+  }
 }
 /* sm viewport */
 /* md viewport */
