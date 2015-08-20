@@ -548,3 +548,6 @@ section.part.inbloq div {
   width: 100%;
   text-align: justify;
 }
+section.part.inbloq .actions {
+  margin-top: 10vh;
+}

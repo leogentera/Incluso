@@ -10,76 +10,35 @@
         <section class="component">
           <h3 ng-class="main-title">Mis fortalezas</h3>
         </section>
+
   <section class="txt-renglon up-line">
   <h4>Escudo</h4>
   <img src="assets/images/img-rotator-05-lg.png" class="centered">
   </section>  
+
+
   <section class="txt-renglon up-line">
-  <h4>Fortalezas</h4>
+    <h4>Fortalezas</h4>
   </section>
-  <div class="part gr-bg">
-  <div><i class="icomoon icon-checked-join white"></i> Musical</div> 
-  <div><span>Alto</span><i class="icomoon icon-required white txt-small acc" data-id="1"></i></div>
-  </div>
-  <div class="part part2" id="ord1">
-  Si en clase de ciencias, mate y biologÃ­a
-  haces ritmos con tus plumas en vez de
-  apuntar, el ipod es tu mejor compaÃ±Ã­a
-  y cantas a todo pulmÃ³n en la ducha.
-  Sigue tu ritmo porque esta es tu 
-  inteligencia.
-  </div>
-  <div class="part">
-  <div><i class="icomoon icon-checked-join white"></i> Interpersonal</div> 
-  <div><span>Alto</span><i class="icomoon icon-arrow-down white txt-small acc" data-id="2"></i></div>
-  </div>
-  <div class="part part2 ordeon" id="ord2">
-  Si en clase de ciencias, mate y biologÃ­a
-  haces ritmos con tus plumas en vez de
-  apuntar, el ipod es tu mejor compaÃ±Ã­a
-  y cantas a todo pulmÃ³n en la ducha.
-  Sigue tu ritmo porque esta es tu 
-  inteligencia.
-  </div>
-  <div class="part">
-  <div><i class="icomoon icon-checked-join white"></i> Naturalista</div> 
-  <div><span>Alto</span><i class="icomoon icon-arrow-down white txt-small acc" data-id="3"></i></div>
-  </div>
-  <div class="part part2 ordeon" id="ord3">
-  Si en clase de ciencias, mate y biologÃ­a
-  haces ritmos con tus plumas en vez de
-  apuntar, el ipod es tu mejor compaÃ±Ã­a
-  y cantas a todo pulmÃ³n en la ducha.
-  Sigue tu ritmo porque esta es tu 
-  inteligencia.
-  </div>
-  <section class="txt-renglon">
-  <h4>Inteligencias a fortalecer</h4>
-  </section>
-  <div class="part">
-  <div><i class="icomoon icon-checked-join white"></i> Intrapersonal</div> 
-  <div><span>Medio</span><i class="icomoon icon-arrow-down white txt-small"></i></div>
-  </div>
-  <div class="part">
-  <div><i class="icomoon icon-checked-join white"></i> CinÃ©tico-corporal</div> 
-  <div><span>Medio</span><i class="icomoon icon-arrow-down white txt-small"></i></div>
-  </div>
-  <div class="part">
-  <div><i class="icomoon icon-checked-join white"></i> Espacial</div> 
-  <div><span>Bajo</span><i class="icomoon icon-arrow-down white txt-small"></i></div>
-  </div>
-  <div class="part">
-  <div><i class="icomoon icon-checked-join white"></i> LÃ³gico-matemÃ¡tica</div> 
-  <div><span>Bajo</span><i class="icomoon icon-arrow-down white txt-small"></i></div>
-  </div>
-  <div class="part">
-  <div><i class="icomoon icon-checked-join white"></i> LingÃ¼Ã­stica</div> 
-  <div><span>Bajo</span><i class="icomoon icon-arrow-down white txt-small"></i></div>
-  </div> <br/><br/>
-  <button class="btn btn-primary btn-lg btn-cnt" type="button">Regresar</button>
-  <br/><br/>
-  <img src="assets/images/img-lines-ftr.png" class="centered">
-  <br/>  
+
+
+    <div id="item{{index}}" ng-repeat="a in activityDetails">
+
+      <div class="part gr-bg">
+      <div><i class="icomoon icon-checked-join white"></i>{{a.sub_actividad}}</div> 
+      <div><span>xxx</span><i class="icomoon icon-required white txt-small acc" data-id="1"></i></div>
+      </div>
+      <div class="part part2" id="ord1">
+      --description--
+      </div>
+
+    </div>
+
+    <br/><br/>
+    <button class="btn btn-primary btn-lg btn-cnt" type="button" ng-click="back()">Regresar</button>
+    <br/><br/>
+    <img src="assets/images/img-lines-ftr.png" class="centered">
+    <br/>  
 
         
       </div> <!-- /.container -->
