@@ -12,19 +12,17 @@
             <div class="item"><span>Leídas</span></div>
           </div>
       </div>-->
-	   
-      
         <tabset class="notifications txt-renglon green-lantern-theme">          
           <tab heading="Todas" class="item">    
             <ul class="green-lantern-theme">
-              <li class="{{notif.read == 'true' ? 'list-item rounded-item' : 'rounded-item list-item highlight'}}" ng-repeat="notif in notifications">
+              <li class="{{notif.read == 'true' ? 'list-item rounded-item' : 'rounded-item list-item highlight'}}" ng-repeat="notif in notifications" ng-show="qty(notif)" ng-click="showAlertDetail(notif.notificationId)">
                 <span class="icomoon icon-antena pull-left no-padding pink"></span>
                 <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
                 <span class="{{notif.read == 'true' ? 'icomoon icon-checked-join pull-right no-padding green' : 'icomoon icon-gauge pull-right no-padding gray'}}"></span>
               </li>
               <li class="list-item rounded-item showmore">
                 <span class="icomoon icon-show-more"></span> 
-                <div>
+                <div ng-click="showMore()">
                   Mostrar más notificaciones...
                 </div>
               </li>      
@@ -32,7 +30,7 @@
           </tab>
           <tab heading="No leídas" class="item">
             <ul class="green-lantern-theme">
-              <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | filter: {read:'false'} ">
+              <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | filter: {read:'false'} " ng-click="showAlertDetail(notif.notificationId)">
                 <span class="icomoon icon-antena pull-left no-padding pink"></span>
                 <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
                 <span class="icomoon icon-gauge fl-right no-padding gray"></span>
@@ -47,66 +45,20 @@
           </tab>
           <tab heading="Leídas" class="item">
               <ul class="green-lantern-theme">
-                <div class="list-item rounded-item" ng-repeat="notif in notifications | filter: {read : 'true'}">
-                  <span class="icomoon icon-antena ull-left no-padding pink"></span>
+                <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | filter: {read:'true'} " ng-click="showAlertDetail(notif.notificationId)">
+				  <span class="icomoon icon-antena pull-left no-padding pink"></span>
                   <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
-                  <span class="icomoon  icon-checked-join pull-right no-padding green"></span>
-                </div>
-                <div class="list-item rounded-item showmore">
-                  <span class="icomoon  icon-show-more pull-right"></span> 
-                  <div>
-                    Mostrar más notificaciones...
-                  </div>
-                </div>
+				  <span class="icomoon icon-gauge fl-right no-padding green"></span>
+				</li>
+                <li class="list-item rounded-item showmore">
+				  <span class="icomoon  icon-show-more fl-right"></span>
+				  <div> 
+					Mostrar más notificaciones...
+				  </div>
+				</li>
               </ul>
           </tab>
         </tabset>
-      
-      
-      
-
-     <!-- <div id="carousel" class="owl-carousel">
-		<!--Todas las notificaciones 
-        <div class="item">		
-          <section class="starcontain">
-            <div class="{{notif.read == 'true' ? 'part' : 'part bord'}}" ng-repeat="notif in notifications">
-			  <i class="icomoon icon-antena fl-left no-padding pink"></i>
-			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
-			  <i class="{{notif.read == 'true' ? 'icomoon icon-checked-join fl-right no-padding green' : 'icomoon icon-gauge fl-right no-padding gray'}}"></i>
-            </div>
-			<div class="part showmore">
-			  <i class="icomoon  icon-show-more fl-right"></i> Mostrar más notificaciones...
-			</div>			
-          </section>
-        </div>
-		<!--No leídas 
-        <div class="item">
-          <section class="starcontain">
-    			<div class="part bord" ng-repeat="notif in notifications | filter: {read:'false'} ">
-    			  <i class="icomoon icon-antena fl-left no-padding pink"></i>
-    			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
-    			  <i class="icomoon icon-gauge fl-right no-padding gray"></i>
-                </div>
-    			<div class="part showmore">
-    			  <i class="icomoon  icon-show-more fl-right"></i> Mostrar más notificaciones...
-            </div>
-          </section>
-        </div>
-		<!--Leídas 
-        <div class="item">
-          <section class="starcontain">
-    			<div class="part" ng-repeat="notif in notifications | filter: {read : 'true'}">
-    			  <i class="icomoon icon-antena fl-left no-padding pink"></i>
-    			  <div class="fl-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
-    			  <i class="icomoon  icon-checked-join fl-right no-padding green"></i>
-                </div>
-    			<div class="part showmore">
-			       <i class="icomoon  icon-show-more fl-right"></i> Mostrar más notificaciones...
-            </div>
-          </section>
-        </div>
-      </div>-->
-
 	  <div><img src="assets/images/img-lines-ftr.png"></div>
     </article>  
   </div>
