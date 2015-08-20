@@ -39,6 +39,8 @@ angular
             $scope.readOnly = false;
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false;
+            
+            $scope.securityquestionItems = ['¿Dónde crecí?','Nombre de mi mejor amigo','Nombre de mi mascota','Personaje favorito','Banda musical favorita'];
 
             /* Watchers */
             $scope.$watch("recoverPasswordModel.confirmPassword", function(newValue, oldValue){
@@ -66,7 +68,7 @@ angular
                 console.log('fetching errors list'); //- debug
                 var errors = [];
                 if(!$scope.recoverPasswordForm.email.$valid){ errors.push("Formato de correo incorrecto."); }
-                if($scope.recoverPasswordModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
+                if(!$scope.recoverPasswordModel.secretQuestion){ errors.push("Pregunta secreta inválida."); }
                 if(!$scope.recoverPasswordForm.secretAnswer.$valid){ errors.push("Respuesta secreta inválida."); }
                 $scope.recoverPasswordModel.modelState.errorMessages = errors;
 

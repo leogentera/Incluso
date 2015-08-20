@@ -232,7 +232,8 @@ class MoodleUserProfile extends Common {
 		$this->fullname = (! empty ( $data ['fullname'] )) ? $data ['fullname'] : null;
 		$this->id = (! empty ( $data ['id'] )) ? $data ['id'] : null;
 		$this->lastname = (! empty ( $data ['lastname'] )) ? $data ['lastname'] : null;
-		$this->profileimageurl = (! empty ( $data ['profileimageurl'] )) ? $data ['profileimageurl'] : null;
+		//$this->profileimageurl = (! empty ( $data ['profileimageurl'] )) ? $data ['profileimageurl'] : null;
+		$this->profileimageurl = "http://incluso.definityfirst.com/moodle/pluginfile.php/42/user/icon/f1";
 		$this->profileimageurlsmall = (! empty ( $data ['profileimageurlsmall'] )) ? $data ['profileimageurlsmall'] : null;
 		$this->username = (! empty ( $data ['username'] )) ? $data ['username'] : null;
 		
