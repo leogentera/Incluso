@@ -274,7 +274,7 @@
                 border-radius: 5px;
                 color: white;
                 font-size: 120%;
-                margin: 2% 10%;
+                margin: 2vh 10%;
                 padding: 3% 5%;
                 width: 80%;
                 position: relative;
@@ -765,20 +765,6 @@
          05. $user-avatar
          Description: CSS to represent a user avatar picture with info
         ************************************************************************/  
-        .user-container{
-            display: flex; 
-            justify-content: center;
-        }
-        .active {
-            .user-avatar{
-                figure {
-                    border:0px solid #171f20;
-                }
-                figcaption{
-                    border-color: #171f20;
-                }
-            }
-        }
         .user-avatar {
             display: block;
             position: relative;
@@ -834,6 +820,20 @@
                 }
             }
         }
+        .user-container{
+            display: flex; 
+            justify-content: center;
+        }
+        .active {
+            .user-avatar{
+                figure {
+                    border:0px solid #171f20;
+                }
+                figcaption{
+                    border-color: #171f20;
+                }
+            }
+        }        
         /***********************************************************************/   
 
 
@@ -1145,18 +1145,84 @@
 
 
         /***********************************************************************
+         $profile-info-asset
+         Description: CSS to represent a block or asset of a user information 
+         at the read only mode of profile view. 
+        ************************************************************************/
+        .profile-info-asset {
+            display: block;
+            padding: 0;
+            margin: 6vw 0 0;
+            border-top-style: solid;
+            border-top-width: 0.1em;
+            .clr-white(border-top-color, 0.5); 
+
+            &:first-child {
+                margin-top: 0;
+                border-top-style: none;
+
+                h4 {
+                    margin-top: 0;
+                }
+            }
+
+            h4 {
+                color: @clr-green !important; 
+                font-size: 4.1vw; font-size: 1.5em;
+                font-weight: bold;
+                text-align: left;
+                margin: 6vw 0 0;
+            }
+            label {
+                color: @clr-blueTurquoise;
+                font-size: 3.9vw;
+                text-align: left;
+                padding: 0;
+                margin:  0;
+            }
+            p {
+                min-height: 8.5vw;
+                color: @clr-white;
+                font-size: 3.9vw; font-size:6vw;
+                font-weight: normal;
+                text-align: left; 
+                padding: 0;
+                margin:  0;                
+            }
+            .from-group {
+                padding: 1.5vw 0 0;
+                margin: 1.5vw 0 0;
+            }
+            .block-list {
+                p {
+                    margin:0;
+                    overflow:hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    span {
+                        padding-right: 1vw;
+                    }
+                    em {
+                        color: @clr-gray-platinum;
+                        font-style: normal;
+                    }
+                }
+            }
+        }
+        /***********************************************************************/
+
+
+        /***********************************************************************
          $profile-options
-         Description: CSS to represent user's profile dashboard landing page
+         Description: CSS to represent user's profile options area
         ************************************************************************/
         .profile-options {
             margin:0;
-            /*padding:32px 0 15px;*/
             padding: 12vw 0 6vw;
             height: auto;
             min-height: 120vw;
             background-attachment: scroll;
-            /*background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
-            background-color: @clr-gray-asphalt;*/
             background-position: center 0;
             background-repeat: no-repeat;
             .gradient-custom('img-profile-spaceship-dashboard-bottom.png', @clr-gray-asphalt, @clr-gray-asphalt2);
@@ -1168,14 +1234,7 @@
                     border: none;
                 }
                 a {
-                    /*display: block;*/
                     position: relative;
-                    /*height: 77px;*/
-                    /*padding: 0;*/
-                    /*margin: 0;*/
-                    /*font-size: 24px;*/
-                    /*font-weight: bold;/
-                    /*line-height: 77px;*/
                 }
                 span {
                     color: @clr-white;
@@ -1186,7 +1245,7 @@
                     overflow: hidden;
                     width:auto;
                     padding: 0;
-                    /*margin: 0 72px 0 48px;*/ margin: 0px 18vw 0px 11vw;
+                    margin: 0px 18vw 0px 11vw;
                     text-overflow:ellipsis;
                     white-space: nowrap;
                 }
@@ -1194,11 +1253,10 @@
                     display: block;
                     position: absolute;
                     z-index: 1;
-                    /*padding: 0 0 0 12px;*/ padding: 0px 0px 0px 2.6vw;
+                    padding: 0px 0px 0px 2.6vw;
                     margin: 0;
                     color: @clr-green;
-                    /*font-size: 1.4em;*/ font-size: 1.1em;
-                    /*font-weight: normal;*/
+                    font-size: 1.1em;
                 }
                 .icomoon.icon-arrow-slim-right {
                     top: 0; right: 0;
@@ -1225,7 +1283,7 @@
                 }
             }
         }
-        /***********************************************************************/           
+        /***********************************************************************/
 
 
         /***********************************************************************
@@ -1486,7 +1544,154 @@
             height: auto;
         }
         
+
+ 
+        /***********************************************************************
+         $green-lantern-theme
+         Description: CSS to represent look of a list of items with colors green and dark
+        ************************************************************************/
+        .green-lantern-theme {
+            padding: 0px;
+            .list-item { 
+                display: inline-flex;  
+                width: 100%;
+                margin: 2% 0px;
+                padding: 3% 5%;
+                z-index: 2;  
+                align-items: center;    
+                justify-content: space-between;
+                background: #1f2733;
+                cursor: pointer;
+                color: white;
+                font-size: 120%;                
+                position: relative;
+                background: -moz-radial-gradient(center, ellipse cover,  #1f2733 0%, #141921 100%);
+                background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#1f2733), color-stop(100%,#141921));
+                background: -webkit-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: -o-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: -ms-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: radial-gradient(ellipse at center,  #1f2733 0%,#141921 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f2733', endColorstr='#141921',GradientType=1 );
+                .date{
+                    color: rgba(255, 255, 255, 0.3);
+                   font-size: 70%;
+                }
+                .icomoon{
+                    color:@clr-greenLight;
+                    font-size:150%;
+                    padding-right: 5%;
+                }
+                .icon-checked-join{
+                    color:@clr-greenicon;
+                }
+                .icon-wrong{
+                    color:gray;
+                }
+                div{
+                    display: block;
+                    font-size: 86%;
+                }
+                span{
+                    line-height: normal;
+                    display: inline-flex;   
+                }
+                &.showmore {
+                    div {
+                        color: #08B290;
+                    }
+                    .icomoon {
+                        color: #08B290;
+                    }
+                }
+             }
+            .highlight {
+                border: 1px solid #08B190;
+            }
+            .rounded-item { 
+                .border-radius(5px);
+            }
+
+            &.notifications {
+                .nav-tabs {
+                    margin: 2.5vh 0px;
+                    .item {
+                        width: 26.5vw;
+                        text-align: center;
+                        font-weight: lighter;                        
+                        border: 1px solid #08B190;                        
+                        cursor: pointer;
+                        a {
+                            color: #08B190;
+                        }
+                        &.active {
+                            background-color: #08B190;                            
+                            a {
+                                color: #FFF;    
+                            }
+                        }
+
+                    }
+                    &.item:first-child {
+                        border-radius: 5px 0px 0px 5px;
+                    }
+                    li:first-child {
+                        .border-radius(5px,0px,0px,5px);
+                    }
+                    li:last-child {
+                        .border-radius(0px,5px,5px,0px);
+                    }
+                }
+            }
+        }
         /***********************************************************************/
+
+        /***********************************************************************
+         $media-collapse
+         Description: CSS to represent look collapsible panel with the content as media [video/image]
+        ************************************************************************/
+        .collapse-media {
+            .panel {
+                display:block;
+                margin-bottom: 0px;
+                background-color: transparent;
+
+                .panel-heading {
+                    padding: 3.3vw 2.6vw;
+                    background-color: rgb(13,15,20);
+                    .border-radius(3vw, 3vw, 0, 0);
+                    color: @clr-green;
+                    cursor: pointer;
+
+                    h3 {
+                        margin: 0 auto;
+                        text-align: left;
+                    }
+                    span {
+                        display:inline-block;
+                        vertical-align: top;
+                        line-height: 6vw;
+                    }
+                    span:first-child {
+                        font-size: 6vw;
+                    }
+                    span:first-child + span {
+                        padding-left: 1vw;
+                        font-size: 4.3vw;
+                        /*line-height: 4vw;*/
+                    }
+                    .icon-arrow, .icon-arrow-up {
+                        float: right;
+                        font-size: 5vw;
+                    }
+                }
+                .panel-body {
+                    /*.clr-blueDark(background-color, 0.9);*/
+                    background-color: rgba(13,15,20,0.5);
+                }
+            }
+
+        }
+        /*********************************************************************/
     }
 }
 

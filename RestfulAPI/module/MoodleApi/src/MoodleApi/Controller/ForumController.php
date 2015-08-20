@@ -12,7 +12,8 @@ class ForumController extends AbstractRestfulJsonController {
             !array_key_exists("parentid", $data)     ||
             !array_key_exists("message", $data)      ||
             !array_key_exists("createdtime", $data)  ||
-            !array_key_exists("modifiedtime", $data)){
+            !array_key_exists("modifiedtime", $data) ||
+            !array_key_exists("posttype", $data)){
             return new JsonModel($this->throwJSONError("Parámetros inválidos, Contacte al administrador"));
         }
 
@@ -21,8 +22,9 @@ class ForumController extends AbstractRestfulJsonController {
         $message = urlencode($data["message"]);
         $createdtime = strtotime($data["createdtime"]);
         $modifiedtime = strtotime($data["modifiedtime"]);
+        $posttype = $data["posttype"];
 
-        $url = $this->getConfig()['MOODLE_API_URL'].'&discussionid=%s&parentid=%s&createdtime=%s&modifiedtime=%s&message=%s';
+        $url = $this->getConfig()['MOODLE_API_URL'].'&discussionid=%s&parentid=%s&createdtime=%s&modifiedtime=%s&posttype=%s&message=%s';
         $url = sprintf(
                     $url, 
                     $this->getToken(), 
@@ -31,6 +33,7 @@ class ForumController extends AbstractRestfulJsonController {
                     $parentid,
                     $createdtime,
                     $modifiedtime,
+                    $posttype,
                     $message);
 
         $response = file_get_contents($url);

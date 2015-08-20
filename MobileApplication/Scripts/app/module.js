@@ -53,7 +53,8 @@
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
         $http.get('Templates/Programa/acercaPrograma.html', { cache: $templateCache });  
         $http.get('Templates/Juegos/Avatar.html', { cache: $templateCache });
-        $http.get('Templates/Programa/Alerts.html', { cache: $templateCache });  
+        $http.get('Templates/Programa/Alerts.html', { cache: $templateCache });
+        $http.get('Templates/Programa/AlertsDetail.html', { cache: $templateCache });
         $http.get('Templates/Programa/MyInterests.html', { cache: $templateCache });
         $http.get('Templates/Programa/MyStrengths.html', { cache: $templateCache });
         $http.get('Templates/Programa/HallOfFame.html', { cache: $templateCache });
@@ -205,9 +206,9 @@
             templateUrl: 'Templates/Programa/Alerts.html',
             controller: 'AlertsController'
         });
-
-        $routeProvider.when('/Notifications/Details', { 
-            templateUrl: 'Templates/NotificationDetails.html',
+       
+        $routeProvider.when('/AlertsDetail/:notificationId', { 
+            templateUrl: function(params){ return 'Templates/Programa/AlertsDetail.html?notificationId=' + params.notificationId; },
             controller: 'programaNotificationController'
         });
             

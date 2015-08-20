@@ -18,11 +18,16 @@ angular
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true;
+
             $rootScope.showFooterRocks = false;
+
+            $rootScope.showFooterRocks = false;            
+
 
             $scope.$emit('HidePreloader');
 
             $scope.model = getDataAsync();
+
             $scope.wholeBadges = {};
             $scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
             $scope.totalBadges = $scope.wholeBadges.badges.length;
@@ -59,6 +64,13 @@ angular
                 }
             }
 
+=======
+
+            $scope.model.modelState = {
+                isValid: null,
+                errorMessages: []
+            };
+>>>>>>> 43fad01e7fb2d41ea6fe62ecdaf207daa8410554
 
             $rootScope.pageName = "Mi perfil"
             $rootScope.navbarBlue = false;
@@ -69,7 +81,8 @@ angular
             $scope.cityItems = ['México D.F.', 'Guadalajara', 'Monterrey', 'Villa hermosa'];
             $scope.stateItems = ['Distrito Federal', 'Coahuila', 'Jalisco', 'México', 'Nuevo León'];
             $scope.maritalStatusItems = ['Soltero(a)', 'Casado(a)', 'Unión libre'];
-            $scope.studiesList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
+            /*unir1*/ $scope.studiesList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
+            $scope.educationStatusList = ['Terminada', 'En proceso', 'Inconclusa'];
             $scope.favoritSportsList = ['Grado', 'Ciclismo', 'Ciclismo\r', 'Patinaje/skateboarding', 'Universidad', 'FutbolSoccer', 'Basquetbol', 'ArtesMarciales', 'Yoga', 'Natación', 'FutbolAmericano', 'Basebol', 'Carreras'];
             $scope.artisticActivitiesList = ['Pintura', 'Música', 'Danza', 'Fotografia', 'Graffiti', 'DisenoDigital', 'Artesanias', 'Teatro', 'Modelado', 'Dibujo'];
             $scope.hobbiesList = ['Ir a fiestas', 'Leer', 'Pasar tiempo con amigos', 'Cocinar', 'Jugar videojuegos', 'Visitar museos', 'Ver películas/series', 'Ver televisión', 'Modelado', 'Pasar tiempo en redes sociales'];
@@ -78,17 +91,20 @@ angular
             $scope.habilitiesList = ['Empatía', 'Creatividad', 'Liderazgo', 'Comunicación', 'Negociación', 'Trabajo en equipo', 'Innovación', 'Iniciativa', 'Toma de decisiones', 'Planeación', 'Organización'];
             $scope.iLiveWithList = ['Ambo padres', 'Padre', 'Madre', 'Tíos', 'Esposo(a)', 'Abuelos', 'Amigos'];
             $scope.mainActivityList = ['Estudias', 'Trabajas', 'Ni estudias ni trabajas'];
-            $scope.levelList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
+            /*unir1*/$scope.levelList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
             $scope.gradeList = ['1er', '2do', '3ro', '4to', '5to', '6to'];
             $scope.periodList = ['Año', 'Semestre', 'Cuatrimestre', 'Trimestre', 'Bimestre'];
             $scope.yesNoList = ['Si', 'No'];
             $scope.moneyIncomeList = ['Padres', 'Trabajo'];
-            $scope.medicalInsuranceList = ['IMSS', 'Privado', 'Seguro Popular']
-            $scope.knownDevicesList = ['Laptop', 'Tableta', 'Celular', 'Computadora']
-            $scope.phoneUsageList = ['Hacer llamadas', 'Mensajes', 'Música', 'Videos', 'Fotos', 'Descargas', 'Investigación', 'Juegos', 'Redes sociales', 'Tomar selfies', 'Grabar videos']
-            $scope.videoGamesFrecuencyList = ['Diario', '3 veces a la semana', '1 vez a la semana', '1 o 2 veces al mes', 'Nunca']
-            $scope.kindOfVideoGamesList = ['Acción', 'Deportes', 'Violencia', 'Aventura', 'Reto', 'Estrategia', 'Educativos', 'Peleas']
-
+            $scope.medicalInsuranceList = ['IMSS', 'Privado', 'Seguro Popular'];
+            $scope.knownDevicesList = ['Laptop', 'Tableta', 'Celular', 'Computadora'];
+            $scope.phoneUsageList = ['Hacer llamadas', 'Mensajes', 'Música', 'Videos', 'Fotos', 'Descargas', 'Investigación', 'Juegos', 'Redes sociales', 'Tomar selfies', 'Grabar videos'];
+            $scope.videoGamesFrecuencyList = ['Diario', '3 veces a la semana', '1 vez a la semana', '1 o 2 veces al mes', 'Nunca'];
+            $scope.kindOfVideoGamesList = ['Acción', 'Deportes', 'Violencia', 'Aventura', 'Reto', 'Estrategia', 'Educativos', 'Peleas'];
+            $scope.socialNetworksList = ['Facebook','Instagram','Twitter'];
+            $scope.inspirationalCharactersList = ['Familiar','Artista','Deportista','Figura social','Figura política'];
+            $scope.familiaCompartamosList = ['Madre','Padre','Tío(a)','Abuelo(a)','Primo(a)','Hermano(a)'];
+                     
             $scope.birthdate_Dateformat = formatDate($scope.model.birthday);
             getAge();
 
@@ -142,7 +158,11 @@ angular
 
             function formatDate(date) {
                 var splitDate = date.split("/");
+<<<<<<< HEAD
                 var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
+=======
+                var userBirthDate = new Date(splitDate[2], splitDate[0]-1, splitDate[1]);
+>>>>>>> 43fad01e7fb2d41ea6fe62ecdaf207daa8410554
                 return userBirthDate;
             }
 
@@ -194,7 +214,21 @@ angular
                 $location.path('/ProgramaDashboard');
             }
 
-            $scope.save = function () {
+            function validateModel() {
+                console.log('fetching editProfile errors list');
+                var errors = [];
+
+                if (!$scope.editForm.firstname.$valid) { errors.push("Formato de nombre incorrecto."); }
+                if (!$scope.editForm.lastname.$valid) { errors.push("Formato de apellido paterno incorrecto."); }
+                if (!$scope.editForm.mothername.$valid) { errors.push("Formato de apellido materno incorrecto."); }
+                if (!$scope.editForm.alias.$valid) { errors.push("Formato de alias incorrecto."); }
+
+                $scope.model.modelState.errorMessages = errors;
+
+                return (errors.length === 0);
+            }
+
+            var saveUser = function () {
                 moodleFactory.Services.PutAsyncProfile(_getItem("userId"), $scope.model,
 
                     function (data) {
@@ -204,6 +238,17 @@ angular
                     function (date) {
                         console.log('Save profile fail...');
                     });
+            }
+
+            $scope.save = function () {
+                var validationResult = validateModel();
+                //validationResult = true;
+                if (validationResult) {
+                    $scope.$emit('ShowPreloader'); 
+                    saveUser();
+                } else {
+                    $scope.$emit('scrollTop'); 
+                }
             }
 
             $scope.addStudy = function () {
@@ -356,7 +401,7 @@ angular
             $scope.addFamiliaCompartamos = function () {
                 $scope.model.familiaCompartamos.push({});
             }
-            $scope.deleteFamiliaCompartamosk = function (index) {
+            $scope.deleteFamiliaCompartamos = function (index) {
                 $scope.model.familiaCompartamos.splice(index, 1);
             }
 
