@@ -1,4 +1,3 @@
-// http://weblogs.asp.net/dwahlin/archive/2013/09/18/building-an-angularjs-modal-service.aspx
 angular
     .module('incluso.programa.tutorial', [])
     .controller('programaTutorialController', [
@@ -35,7 +34,22 @@ angular
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false; 
             function getDataAsync() {
-                moodleFactory.Services.GetAsyncAvatar(_getItem("userId"), getAvatarInfoCallback);
+                //moodleFactory.Services.GetAsyncAvatar(_getItem("userId"), getAvatarInfoCallback);
+                $scope.avatarInfo = [{
+                    "userid": "",//$scope.user.UserId,
+                    "alias": "", //$scope.user.username,
+                    "aplicacion": "Mi Avatar",
+                    "estrellas": 0,//$scope.user.stars,
+                    "PathImagen": "Android/data/<app-id>/images",
+                    "color_cabello": "amarillo",
+                    "estilo_cabello": "",
+                    "traje_color_principal": "",
+                    "traje_color_secundario": "",
+                    "rostro": "",
+                    "color_de_piel": "",
+                    "escudo:": "",
+                    "imagen_recortada": "",
+                }];
             }
 
             function getAvatarInfoCallback(){
@@ -44,10 +58,10 @@ angular
 
                 if ($scope.avatarInfo == null || $scope.avatarInfo.length == 0) {
                     $scope.avatarInfo = [{
-                        "userid": $scope.user.UserId,
-                        "alias": $scope.user.username,
+                        "userid": "",//$scope.user.UserId,
+                        "alias": "", //$scope.user.username,
                         "aplicacion": "Mi Avatar",
-                        "estrellas": $scope.user.stars,
+                        "estrellas": 0,//$scope.user.stars,
                         "PathImagen": "Android/data/<app-id>/images",
                         "color_cabello": "amarillo",
                         "estilo_cabello": "",
@@ -80,10 +94,12 @@ angular
                 playVideo(videoAddress, videoName);
             };
             
-            $scope.avatar = function(){
-                $scope.avatarInfo[0].UserId = $scope.user.UserId;
-                $scope.avatarInfo[0].Alias = $scope.user.username;
-                $scope.avatarInfo[0].Estrellas = $scope.user.stars;
+              $scope.avatar = function () {
+                  if ($scope.user != null) {
+                      $scope.avatarInfo[0].UserId = $scope.user.UserId;
+                      $scope.avatarInfo[0].Alias = $scope.user.username;
+                      $scope.avatarInfo[0].Estrellas = $scope.user.stars;
+                  }
                 localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
 
                 $scope.scrollToTop();         
