@@ -637,19 +637,22 @@
                                                     
                                                     <div ng-repeat="badge in wholeBadgesPages[badgePage]">         
                                                         
-                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />  
-
-
-
-                                                    <div ng-repeat="badge in model.badgesToEarn">
-
-                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px"
-                                                        height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)"
-                                                        />
-
+                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />
                                                         <div class="badgename" ng-bind="badge.name"></div>
                                                         <br />
+                                                        
                                                     </div>
+                                                            <!--
+                                                        <div ng-repeat="badge in model.badgesToEarn">
+    
+                                                            <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px"
+                                                            height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)"
+                                                            />
+    
+                                                            
+                                                        </div>
+                                                        
+                                                        -->
                                                     <div style="color:white;" ng-click="changepage(-1)">Back</div>
                                                     <div style="color:white;" ng-click="changepage(1)">Forward</div>
 
