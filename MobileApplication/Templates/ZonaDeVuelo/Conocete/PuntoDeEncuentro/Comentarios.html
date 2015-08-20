@@ -8,9 +8,10 @@
 <article class="blueprint">
 
   <section>
-    <div class="txt-renglon centered txt-bigger"></div> 
+    <div class="txt-renglon centered txt-bigger"></div>
     <div class="subtitle">Foro Común</div>
-    <div class="txt-renglon txt-bigger">{{discussion.message}}</div>  
+    <div class="txt-renglon txt-bigger">{{discussion.message}}</div>
+      <div> <img src="{{ discussion.image[0].fileurl }}" alt="{{ discussion.image[0].filename }}"> </div>
 </section>
 
 <section class="txt-renglon distribuido">
@@ -69,12 +70,15 @@
 
         <div class="part">
           <div class="author"><img src="assets/images/avatar.svg">
-          <div>{{p.postAutor}}<span>publicó:</span>   
-          <div>{{p.created}}</div>
+          <div>{{p.postAutor}} <span>publicó:</span>
+          <div>{{p.created | date: 'dd MMMM yyyy'}}</div>
           </div>
         </div>
         <div class="block">  
             {{p.message}}
+            <div ng-repeat="attachment in p.attachments">
+                <a href="{{ attachmentsfileurl }}"><i class="icomoon icon-required"></i> {{ attachment.filename }} </a>
+            </div>
           <div>A <span class="green">{{p.likes}}</span> jóvenes les gusta esto</div></div>
 
 
@@ -84,7 +88,6 @@
               <div>{{r.postAutor}}<span>publicó:</span>   <div>{{r.message}}</div>
               </div>
             </div>
-
           </div>
 
         <div class="vermas">
@@ -98,12 +101,7 @@
         </div>
         </div>
         </div>
-
-
-
     </div>
-
-
 
 
 <section>
