@@ -2,7 +2,14 @@
     Incluso Digital CSS Styles
 
     Parallel work file for UI Developer 02
+
+    Color Palette:  Please look at base.css
+    Index:
+        01. $_Base
+        02. $_Entities
+        03. $_Overrrides
 ********************************************************************************/
+/*******************************************************************************/
 /****************************************************************************
  LESS Utilities - variables and functions
 ****************************************************************************/
@@ -20,4 +27,78 @@
      Entities styles (if needed)
     ********************************************************************************/
   /* Start writing base classes here */
+  /********************************************************************************
+     Overrides styles (if needed)
+    ********************************************************************************/
+  /* Start writing base classes here */
+  /* Mis Logros */
+  /* Detalle de Logro */
+}
+.incluso-app .achievements .panel-body .badge-item {
+  height: 40vw;
+  padding: 10px;
+  margin: 10px 0 0;
+  border-bottom: 1px solid #8ba8b1;
+  cursor: pointer;
+}
+.incluso-app .achievements .panel-body .badge-item img {
+  height: auto;
+  width: 100%;
+}
+.incluso-app .achievements .panel-body .badge-item .badgename {
+  color: #fff;
+  font-family: Play;
+  font-size: 4vw;
+  line-height: 5vw;
+  text-align: center;
+}
+.incluso-app .achievement-detail .panel-body .text-center .achievement-badge {
+  border-bottom: 1px solid #8ba8b1;
+  margin-bottom: 5vw;
+}
+.incluso-app .achievement-detail .panel-body .text-center .achievement-badge img {
+  width: 50vw;
+  height: 50vw;
+}
+.incluso-app .achievement-detail .panel-body .text-center .achievement-badge .badgename {
+  color: #fff;
+  font-family: Play;
+  font-size: 8vw;
+  line-height: 7vw;
+  text-align: center;
+  padding: 4vw 0;
+}
+.incluso-app .achievement-detail .panel-body .text-center .achievement-description {
+  color: #fff;
+  font-family: Play;
+  font-size: 5vw;
+  line-height: 7vw;
+  padding: 4vw 0;
+}
+.incluso-app .achievement-detail .panel-body .text-center .earned-info {
+  color: #63777d;
+  font-family: Play;
+  font-size: 4vw;
+  padding: 4vw 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.incluso-app .achievement-detail .panel-body .text-center .earned-info .users {
+  color: #b8cf33;
+}
+.incluso-app .achievement-detail .panel-body .text-center .share-achievement {
+  position: relative;
+  overflow: visible;
+}
+.incluso-app .achievement-detail .panel-body .text-center .share-achievement .icon-share {
+  -webkit-border-radius: 90px;
+  -moz-border-radius: 90px;
+  border-radius: 90px;
+  background: #b8cf33;
+}
+.incluso-app .achievement-detail .panel-body .text-center .share-achievement .share-text {
+  background: #485157;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
 }

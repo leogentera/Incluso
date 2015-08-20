@@ -18,11 +18,54 @@ angular
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true;
+
+
             $rootScope.showFooterRocks = false;
+
+            $rootScope.showFooterRocks = false;            
+
+            $rootScope.showFooterRocks = false;
+
+
 
             $scope.$emit('HidePreloader');
 
             $scope.model = getDataAsync();
+
+            $scope.wholeBadges = {};
+            $scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
+            $scope.totalBadges = $scope.wholeBadges.badges.length;
+            $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);            
+            $scope.badgePage = 0;
+            $scope.normalBadgePage = $scope.badgePage + 1;
+
+            $scope.wholeBadgesPages = [];
+
+            for (var i = 0; i < $scope.totalBadgePages; i++) {
+                var top = Math.min(12, $scope.totalBadges - 12 * i);
+                $scope.wholeBadgesPages[i] = [];
+                for (var j = 0; j < top; j++) {
+                    var elem = $scope.wholeBadges.badges.shift(); //extracts first element of remaining array                    
+                    $scope.wholeBadgesPages[i].push(elem);
+                }
+            }
+            
+            $scope.changepage = function (delta) {
+                $scope.badgePage += delta;
+                $scope.normalBadgePage = $scope.badgePage + 1;
+
+                if ($scope.badgePage < 0) {
+                    $scope.badgePage = 0;
+                    $scope.normalBadgePage = 1;
+                }
+
+                if ($scope.badgePage > $scope.totalBadgePages - 1) {
+                    $scope.badgePage = $scope.totalBadgePages - 1;
+                    $scope.normalBadgePage = $scope.badgePage + 1;
+                }
+            }
+
+
 
             $scope.model.modelState = {
                 isValid: null,
@@ -74,7 +117,7 @@ angular
                     $location.path('/');
                     return "";
                 }
-                initFields(m);
+                initFields(m);              
 
                 return m;
             }
@@ -115,7 +158,13 @@ angular
 
             function formatDate(date) {
                 var splitDate = date.split("/");
+
+                var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
+
+                var userBirthDate = new Date(splitDate[2], splitDate[0]-1, splitDate[1]);
+
                 var userBirthDate = new Date(splitDate[2], splitDate[0] - 1, splitDate[1]);
+
                 return userBirthDate;
             }
 
