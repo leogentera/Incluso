@@ -1,7 +1,7 @@
 <div class="incluso-app public" ng-app>
   <article class="register" ng-controller="publicRegisterController">
 
-    <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered">      
+    <div class="alert alert-warning" role="alert" ng-show="!registerModel.modelState.isValid && !isRegistered" ng-cloak>      
       <div class="alert-message">
         <div class="icomoon icon-warning"></div>
         <p>¡Error! Verifica tus datos</p>
@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class="alert alert-success" role="alert" ng-show="isRegistered">
+    <div class="alert alert-success" role="alert" ng-show="isRegistered" ng-cloak>
       <div class="alert-message">
         <div class="icomoon icon-checked-clip"></div>
         <p>¡Te has registrado correctamente!</p> 
@@ -231,7 +231,7 @@
                     <p class="input-group-addon" id="emailAddOn">
                       <span class="icomoon icon-envelope"></span>                      
                     </p>
-                    <input type="email" ng-disabled="isRegistered" ng-model="registerModel.email" name="email" class="form-control form-control-lg theme-default" placeholder="Correo" aria-describedby="emailAddOn" patern="[^@]+@[^@]+\.[a-zA-Z]{2,}"  required/>
+                    <input type="email" ng-disabled="isRegistered" ng-model="registerModel.email" name="email" class="form-control form-control-lg theme-default" placeholder="Correo" aria-describedby="emailAddOn" required/>
                   </div>
                 </div>
               </div>
@@ -257,7 +257,7 @@
                     <p class="input-group-addon" id="confirmPasswordAddOn">
                       <span class="icomoon icon-lock"></span> 
                     </p>
-                    <input type="password" ng-disabled="isRegistered" ng-model="registerModel.confirmPassword" name="confirmPassword" class="form-control form-control-lg theme-default" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W|_).{8,}" required />
+                    <input type="password" ng-disabled="isRegistered" ng-model="registerModel.confirmPassword" name="confirmPassword" class="form-control form-control-lg theme-default" placeholder="Repetir contraseña" aria-describedby="confirmPasswordAddOn" required />
                   </div>
                 </div>
               </div>

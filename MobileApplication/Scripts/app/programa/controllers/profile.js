@@ -17,12 +17,18 @@ angular
             $rootScope.pageName = "Mi perfil"
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
-            $rootScope.showFooter = true; 
-            $rootScope.showFooterRocks = false; 
+            $rootScope.showFooter = true;
+            $rootScope.showFooterRocks = false;            
 
             $scope.$emit('HidePreloader');
 
             $scope.model = getDataAsync();
+
+            $scope.model.modelState = {
+                isValid: null,
+                errorMessages: []
+            };
+
             $rootScope.pageName = "Mi perfil"
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
@@ -33,6 +39,7 @@ angular
             $scope.stateItems = ['Distrito Federal', 'Coahuila', 'Jalisco', 'México', 'Nuevo León'];
             $scope.maritalStatusItems = ['Soltero(a)', 'Casado(a)', 'Unión libre'];
             $scope.studiesList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
+            $scope.educationStatusList = ['Terminada', 'En proceso', 'Inconclusa'];
             $scope.favoritSportsList = ['Grado', 'Ciclismo', 'Ciclismo\r', 'Patinaje/skateboarding', 'Universidad', 'FutbolSoccer', 'Basquetbol', 'ArtesMarciales', 'Yoga', 'Natación', 'FutbolAmericano', 'Basebol', 'Carreras'];
             $scope.artisticActivitiesList = ['Pintura', 'Música', 'Danza', 'Fotografia', 'Graffiti', 'DisenoDigital', 'Artesanias', 'Teatro', 'Modelado', 'Dibujo'];
             $scope.hobbiesList = ['Ir a fiestas', 'Leer', 'Pasar tiempo con amigos', 'Cocinar', 'Jugar videojuegos', 'Visitar museos', 'Ver películas/series', 'Ver televisión', 'Modelado', 'Pasar tiempo en redes sociales'];
@@ -46,11 +53,13 @@ angular
             $scope.periodList = ['Año', 'Semestre', 'Cuatrimestre', 'Trimestre', 'Bimestre'];
             $scope.yesNoList = ['Si', 'No'];
             $scope.moneyIncomeList = ['Padres', 'Trabajo'];
-            $scope.medicalInsuranceList = ['IMSS', 'Privado', 'Seguro Popular']
-            $scope.knownDevicesList = ['Laptop', 'Tableta', 'Celular', 'Computadora']
-            $scope.phoneUsageList = ['Hacer llamadas', 'Mensajes', 'Música', 'Videos', 'Fotos', 'Descargas', 'Investigación', 'Juegos', 'Redes sociales', 'Tomar selfies', 'Grabar videos']
-            $scope.videoGamesFrecuencyList = ['Diario', '3 veces a la semana', '1 vez a la semana', '1 o 2 veces al mes', 'Nunca']
-            $scope.kindOfVideoGamesList = ['Acción', 'Deportes', 'Violencia', 'Aventura', 'Reto', 'Estrategia', 'Educativos', 'Peleas']
+            $scope.medicalInsuranceList = ['IMSS', 'Privado', 'Seguro Popular'];
+            $scope.knownDevicesList = ['Laptop', 'Tableta', 'Celular', 'Computadora'];
+            $scope.phoneUsageList = ['Hacer llamadas', 'Mensajes', 'Música', 'Videos', 'Fotos', 'Descargas', 'Investigación', 'Juegos', 'Redes sociales', 'Tomar selfies', 'Grabar videos'];
+            $scope.videoGamesFrecuencyList = ['Diario', '3 veces a la semana', '1 vez a la semana', '1 o 2 veces al mes', 'Nunca'];
+            $scope.kindOfVideoGamesList = ['Acción', 'Deportes', 'Violencia', 'Aventura', 'Reto', 'Estrategia', 'Educativos', 'Peleas'];
+            $scope.socialNetworksList = ['Facebook','Instagram','Twitter'];
+            $scope.inspirationalCharactersList = ['Familiar','Artista','Deportista','Figura social','Figura política']
 
             $scope.birthdate_Dateformat = formatDate($scope.model.birthday);
             getAge();
@@ -105,13 +114,13 @@ angular
 
             function formatDate(date) {
                 var splitDate = date.split("/");
-                var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);                
+                var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
                 return userBirthDate;
             }
 
             function getAge() {
                 var splitDate = $scope.model.birthday.split("/");
-                var birthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);                
+                var birthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
                 if (birthDate != null || birthDate != '') {
                     var cur = new Date();
                     var diff = cur - birthDate;
@@ -128,12 +137,21 @@ angular
 
                 if (month.length < 2) month = '0' + month;
                 if (day.length < 2) day = '0' + day;
-                var newBirthday = [month, day, year].join('/');  
-                $scope.model.birthday =   newBirthday;           
+                var newBirthday = [month, day, year].join('/');
+                $scope.model.birthday = newBirthday;
             }
 
             $scope.navigateToPage = function (pageNumber) {
                 $scope.currentPage = pageNumber;
+            };
+
+            $scope.showDetailBadge = function (badgeId, badgeBadgeimage, badgeName, badgeDateIssued, earnedTimes) {
+                $scope.currentPage = 10;
+                $scope.badgeId = badgeId;
+                $scope.badgeBadgeimage = badgeBadgeimage;
+                $scope.badgeName = badgeName;
+                $scope.badgeDateIssued = badgeDateIssued;
+                $scope.earnedTimes = earnedTimes;
             };
 
             $scope.edit = function () {
@@ -148,7 +166,21 @@ angular
                 $location.path('/ProgramaDashboard');
             }
 
-            $scope.save = function () {
+            function validateModel() {
+                console.log('fetching editProfile errors list');
+                var errors = [];
+
+                if (!$scope.editForm.firstname.$valid) { errors.push("Formato de nombre incorrecto."); }
+                if (!$scope.editForm.lastname.$valid) { errors.push("Formato de apellido paterno incorrecto."); }
+                if (!$scope.editForm.mothername.$valid) { errors.push("Formato de apellido materno incorrecto."); }
+                if (!$scope.editForm.alias.$valid) { errors.push("Formato de alias incorrecto."); }
+
+                $scope.model.modelState.errorMessages = errors;
+
+                return (errors.length === 0);
+            }
+
+            var saveUser = function () {
                 moodleFactory.Services.PutAsyncProfile(_getItem("userId"), $scope.model,
 
                     function (data) {
@@ -159,6 +191,19 @@ angular
                         console.log('Save profile fail...');
                     });
             }
+
+            $scope.save = function () {
+                var validationResult = validateModel();
+                //validationResult = true;
+                if (validationResult) {
+                    $scope.$emit('ShowPreloader'); 
+                    saveUser();
+                } else {
+                    $scope.$emit('scrollTop'); 
+                }
+            }
+
+
 
             $scope.addStudy = function () {
                 $scope.model.studies.push({});

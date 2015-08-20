@@ -1319,7 +1319,7 @@ body.modal-open {
   line-height: 14vw;
   text-overflow: ellipsis;
   white-space: nowrap;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .incluso-app .navbar-assets .navbar-heading a {
   color: #ffffff;
@@ -1628,7 +1628,7 @@ body.modal-open {
 .incluso-app .footer::before {
   position: absolute;
   width: 100vw;
-  height: 26vh;
+  height: 18vh;
   content: " ";
   background-image: url('../images/img-footer-texture-lg.png');
   background-color: transparent;

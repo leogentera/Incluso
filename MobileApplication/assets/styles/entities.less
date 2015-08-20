@@ -1479,13 +1479,113 @@
         }
 
         .app, .app-body {
-            overflow: auto;
+            overflow-y: auto;
         }
 
         .app-content, .app-body {
             height: auto;
         }
         
+
+ 
+        /***********************************************************************
+         $green-lantern-theme
+         Description: CSS to represent look of a list of items with colors green and dark
+        ************************************************************************/
+        .green-lantern-theme {
+            padding: 0px;
+            .list-item { 
+                display: inline-flex;  
+                width: 100%;
+                margin: 2% 0px;
+                padding: 3% 5%;
+                z-index: 2;  
+                align-items: center;    
+                justify-content: space-between;
+                background: #1f2733;
+                
+                color: white;
+                font-size: 120%;                
+                position: relative;
+                background: -moz-radial-gradient(center, ellipse cover,  #1f2733 0%, #141921 100%);
+                background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#1f2733), color-stop(100%,#141921));
+                background: -webkit-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: -o-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: -ms-radial-gradient(center, ellipse cover,  #1f2733 0%,#141921 100%);
+                background: radial-gradient(ellipse at center,  #1f2733 0%,#141921 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f2733', endColorstr='#141921',GradientType=1 );
+                .date{
+                    color: rgba(255, 255, 255, 0.3);
+                   font-size: 70%;
+                }
+                .icomoon{
+                    color:@clr-greenLight;
+                    font-size:150%;
+                    padding-right: 5%;
+                }
+                .icon-checked-join{
+                    color:@clr-greenicon;
+                }
+                .icon-wrong{
+                    color:gray;
+                }
+                div{
+                    display: block;
+                    font-size: 86%;
+                }
+                span{
+                    line-height: normal;
+                    display: inline-flex;   
+                }
+                &.showmore {
+                    div {
+                        color: #08B290;
+                    }
+                    .icomoon {
+                        color: #08B290;
+                    }
+                }
+             }
+            .highlight {
+                border: 1px solid #08B190;
+            }
+            .rounded-item { 
+                .border-radius(5px);
+            }
+
+            &.notifications {
+                .nav-tabs {
+                    margin: 2.5vh 0px;
+                    .item {
+                        width: 26.5vw;
+                        text-align: center;
+                        font-weight: lighter;                        
+                        border: 1px solid #08B190;                        
+                        cursor: pointer;
+                        a {
+                            color: #08B190;
+                        }
+                        &.active {
+                            background-color: #08B190;                            
+                            a {
+                                color: #FFF;    
+                            }
+                        }
+
+                    }
+                    &.item:first-child {
+                        border-radius: 5px 0px 0px 5px;
+                    }
+                    li:first-child {
+                        .border-radius(5px,0px,0px,5px);
+                    }
+                    li:last-child {
+                        .border-radius(0px,5px,5px,0px);
+                    }
+                }
+            }
+        }
+
         /***********************************************************************/
     }
 }

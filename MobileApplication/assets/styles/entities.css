@@ -115,6 +115,10 @@
          $app
          Description: CSS to represent mobileangularui component for main layout
         ************************************************************************/
+    /***********************************************************************
+         $green-lantern-theme
+         Description: CSS to represent look of a list of items with colors green and dark
+        ************************************************************************/
     /***********************************************************************/
   }
   .incluso-app .to-top {
@@ -126,9 +130,15 @@
     text-align: center;
     color: #e1e455;
   }
-  .incluso-app img {
-    width: 100%;
+  .incluso-app img.badgesviews {
+    cursor:pointer;
   }
+  .incluso-app img {
+    /* width: 100%;  */
+  }
+   .incluso-app div.badgename {
+    color: white;
+  }  
   .incluso-app .txt-title {
     color: white;
     font-weight: bold;
@@ -1744,11 +1754,103 @@
   }
   .incluso-app .app,
   .incluso-app .app-body {
-    overflow: auto;
+    overflow-y: auto;
   }
   .incluso-app .app-content,
   .incluso-app .app-body {
     height: auto;
+  }
+  .incluso-app .green-lantern-theme {
+    padding: 0px;
+  }
+  .incluso-app .green-lantern-theme .list-item {
+    display: inline-flex;
+    width: 100%;
+    margin: 2% 0px;
+    padding: 3% 5%;
+    z-index: 2;
+    align-items: center;
+    justify-content: space-between;
+    background: #1f2733;
+    color: white;
+    font-size: 120%;
+    position: relative;
+    background: -moz-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #1f2733), color-stop(100%, #141921));
+    background: -webkit-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+    background: -o-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+    background: -ms-radial-gradient(center, ellipse cover, #1f2733 0%, #141921 100%);
+    background: radial-gradient(ellipse at center, #1f2733 0%, #141921 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1f2733', endColorstr='#141921', GradientType=1);
+  }
+  .incluso-app .green-lantern-theme .list-item .date {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 70%;
+  }
+  .incluso-app .green-lantern-theme .list-item .icomoon {
+    color: #e1e455;
+    font-size: 150%;
+    padding-right: 5%;
+  }
+  .incluso-app .green-lantern-theme .list-item .icon-checked-join {
+    color: #08b190;
+  }
+  .incluso-app .green-lantern-theme .list-item .icon-wrong {
+    color: gray;
+  }
+  .incluso-app .green-lantern-theme .list-item div {
+    display: block;
+    font-size: 86%;
+  }
+  .incluso-app .green-lantern-theme .list-item span {
+    line-height: normal;
+    display: inline-flex;
+  }
+  .incluso-app .green-lantern-theme .list-item.showmore div {
+    color: #08B290;
+  }
+  .incluso-app .green-lantern-theme .list-item.showmore .icomoon {
+    color: #08B290;
+  }
+  .incluso-app .green-lantern-theme .highlight {
+    border: 1px solid #08B190;
+  }
+  .incluso-app .green-lantern-theme .rounded-item {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  .incluso-app .green-lantern-theme.notifications .nav-tabs {
+    margin: 2.5vh 0px;
+  }
+  .incluso-app .green-lantern-theme.notifications .nav-tabs .item {
+    width: 26.5vw;
+    text-align: center;
+    font-weight: lighter;
+    border: 1px solid #08B190;
+    cursor: pointer;
+  }
+  .incluso-app .green-lantern-theme.notifications .nav-tabs .item a {
+    color: #08B190;
+  }
+  .incluso-app .green-lantern-theme.notifications .nav-tabs .item.active {
+    background-color: #08B190;
+  }
+  .incluso-app .green-lantern-theme.notifications .nav-tabs .item.active a {
+    color: #FFF;
+  }
+  .incluso-app .green-lantern-theme.notifications .nav-tabs.item:first-child {
+    border-radius: 5px 0px 0px 5px;
+  }
+  .incluso-app .green-lantern-theme.notifications .nav-tabs li:first-child {
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    border-radius: 5px 0px 0px 5px;
+  }
+  .incluso-app .green-lantern-theme.notifications .nav-tabs li:last-child {
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
   }
 }
 /* sm viewport */
