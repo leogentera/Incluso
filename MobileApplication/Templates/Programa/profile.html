@@ -631,9 +631,10 @@
                                         <div class="panel-body">
                                             <div class="container-fluid">
                                                 <div class="row">
-                                                    <span style="color:white;">Página: <span class="badgename" ng-bind="normalBadgePage"></span></span>
-                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]">
-                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />  
+                                                    <span style="color:white;">Página: <span ng-bind="normalBadgePage"></span></span>
+                                                    
+                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]">         
+                                                          <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />  
 														<div ng-repeat="badge in model.badgesToEarn" class="col-xs-4 badge-item">
                                                         <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />      
                                                         <div class="badgename" ng-bind="badge.name"></div>
