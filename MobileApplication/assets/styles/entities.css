@@ -1815,6 +1815,7 @@
     align-items: center;
     justify-content: space-between;
     background: #1f2733;
+    cursor: pointer;
     color: white;
     font-size: 120%;
     position: relative;

@@ -142,7 +142,8 @@ angular
             }
             
             $scope.showAlertDetail = function (alertId) {                
-                $location.path('/AlertsDetail/'+ alertId );                
+                $location.path('/AlertsDetail/'+ alertId );       
+                    
             }
         }
 ]);
