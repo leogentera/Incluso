@@ -359,7 +359,7 @@ class UserController extends AbstractRestfulJsonController{
     				"familiaCompartamos",$familiaCompartamos);
     	}
     
-    	$phones=$this->createTableRows($data,  'phone' );
+    	$phones=$this->createTableRows($data,  'phones' );
     	if (trim($phones)!=""){
     		$url.=sprintf('&users[0][customfields][6][type]=%s&users[0][customfields][6][value]=%s',
     				"phones",$phones);
