@@ -51,7 +51,7 @@ angular
                 var currentUser = null;
 
                 console.log('loading..');
-
+                
 
                 if (txtCredentials) {
                     userCredentials = JSON.parse(txtCredentials);
