@@ -100,7 +100,7 @@ class course_plugin extends external_api{
 		);
 	}
 
-	public static function get_current_course_and_status_by_user($userid, $courseid){
+	public static function get_current_course_and_status_by_user($userid){
 		global $CFG;
 		global $USER;
 		global $DB;
@@ -142,45 +142,25 @@ class course_plugin extends external_api{
 			$result->courseid = $courseid;
 			$result->firsttime = (!empty($response->firsttime)) ? $response->firsttime : 1;
 
-			$sql = "SELECT COUNT(*) total_activities, 
-						   SUM(activities.completed) AS activities_completed, 
-						   TRUNCATE((SUM(activities.completed)/COUNT(*))*100, 0) AS percentage_completed
-					FROM {course_format_options} AS ger,
-						 {course_sections} AS se,
-						 (
-						 	SELECT gerStage.courseid AS courseid, 
-						 	       gerStage.sectionid AS stageid, 
-						 	       seStage.name AS stage, 
-						 	       seStage.section AS section
-							FROM {course_format_options} AS gerStage, 
-							     {course_sections} AS seStage
-							WHERE seStage.id = gerStage.sectionid
-							AND gerStage.courseid = seStage.course
-							AND gerStage.name = 'parent'
-							AND gerStage.value = 0
-						 ) stage,
-						 (
-						 	SELECT mo.course courseid, 
-						 	       compl.userid userid, 
-						 	       IF(ISNULL(compl.timemodified) OR compl.completionstate=0, 0, 1) AS completed, 
-						 	       mo.section sectionid
-							FROM {course_modules} AS mo 
-							LEFT JOIN {course_modules_completion} AS compl 
-							ON mo.id=compl.coursemoduleid 
-							AND (compl.userid=$userid OR ISNULL(compl.userid)) 
-						 ) activities
-					WHERE se.id=ger.sectionid
-					AND ger.courseid=se.course
-					AND ger.name = 'parent'
-					AND ger.value<>0
-					AND ger.value=stage.section
-					AND ger.sectionid=activities.sectionid 
-					AND stage.courseid=$courseid
-					AND activities.courseid=stage.courseid";
+			$sql = "CALL all_activities($courseid, $userid)";
 					
-			$response = $DB->get_record_sql($sql);
-			$result->percentage_completed = $response->percentage_completed;
-		
+			$response = $DB->get_records_sql($sql);
+
+			$total_activities = count($response);
+			$completed_activities = 0;
+
+			foreach($response as $row){
+				if($row->completionstate == "1"){
+					$completed_activities = $completed_activities + 1;
+				}
+			}
+
+			if($total_activities == 0){
+				$result->percentage_completed = 0;	
+			}else{
+				$result->percentage_completed = intval($completed_activities*100/$total_activities);
+			}
+
 		} catch (Exception $e) {
 			$result = $e;
 		}
