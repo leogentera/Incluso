@@ -1486,9 +1486,16 @@
   }
   .incluso-app .profile-info-asset .block-list p {
     margin: 0;
-    /*overflow:hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .incluso-app .profile-info-asset .block-list p span {
+    padding-right: 1vw;
+  }
+  .incluso-app .profile-info-asset .block-list p em {
+    color: #8098a0;
+    font-style: normal;
   }
   .incluso-app .profile-options {
     margin: 0;

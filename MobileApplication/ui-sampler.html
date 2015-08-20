@@ -246,19 +246,20 @@
 
                                                                         <div class="profile-info-asset">
                                                                             <h4>Educación</h4>
-                                                                            <div class="from-group">
-                                                                                <label>Mis estudios</label>
-                                                                                <ul class="block-list">
-                                                                                    <li>
+                                                                            <ul class="block-list">
+                                                                                <li>
+                                                                                    <div class="from-group">
+                                                                                        <label>Secundaria</label>
                                                                                         <p>Colegio Franco Mexicano</p>
-                                                                                        <p>Secundaria</p>
-                                                                                    </li>
-                                                                                    <li>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="from-group">
+                                                                                        <label>Preparatoria</label>
                                                                                         <p>Colegio Cristobal Colón</p>
-                                                                                        <p>Preparatoria</p>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
                                                                         </div>
 
                                                                         <div class="profile-info-asset">
@@ -328,137 +329,45 @@
                                                                             <ul class="block-list">
                                                                                 <li>
                                                                                     <div class="from-group">
-                                                                                        <label>Red Social 1</label>
-                                                                                        <p><span>Twitter.</span>@leogarza995</p>
+                                                                                        <label>Twitter</label>
+                                                                                        <p>@leogarza995</p>
                                                                                     </div>
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="from-group">
-                                                                                        <label>Teléfono 2</label>
-                                                                                        <p>(81) 1352-9000</p>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div class="from-group">
-                                                                                        <label>Teléfono 3</label>
-                                                                                        <p>(81) 1352-9000</p>
+                                                                                        <label>Facebook</label>
+                                                                                        <p>/leogarza995</p>
                                                                                     </div>
                                                                                 </li>
                                                                             </ul>
-                                                                        </div>                                                                         
+                                                                        </div> 
 
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Familia Compartamos</h4>
+                                                                            <ul class="block-list">
+                                                                                <li>
+                                                                                    <div class="from-group">
+                                                                                        <label>Papá</label>
+                                                                                        <p>Leonardo Garza Sada</p>
+                                                                                        <p>
+                                                                                            <em>No. Cliente:</em>
+                                                                                            <span>8920093</span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="from-group">
+                                                                                        <label>Mamá</label>
+                                                                                        <p>María Guadalupe González Roque</p>
+                                                                                        <p>
+                                                                                            <em>No. Cliente:</em>
+                                                                                            <span>8920094</span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
 
-                                                                        <h4>Educación</h4>
-                                                                        <h5>Mis estudios</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.studies">
-                                                                            <li>
-                                                                                <p ng-bind="s.school"></p>
-                                                                                <br>
-                                                                                <p ng-bind="s.levelOfStudies"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h4>Dirección</h4>
-                                                                        <h5>País</h5>
-                                                                        <p ng-bind="model.address.country"></p>
-                                                                        <hr />
-                                                                        <h5>Ciudad</h5>
-                                                                        <p ng-bind="model.address.city"></p>
-                                                                        <hr />
-                                                                        <h5>Delegación/Municipio</h5>
-                                                                        <p ng-bind="model.address.state"></p>
-                                                                        <hr />
-                                                                        <h5>Código postal</h5>
-                                                                        <p ng-bind="model.address.postalCode"></p>
-                                                                        <hr />
-                                                                        <h5>Calle</h5>
-                                                                        <p ng-bind="model.address.street"></p>
-                                                                        <hr />
-                                                                        <h5>Número</h5>
-                                                                        <p ng-bind="model.address.num_ext"></p>
-                                                                        <hr />
-                                                                        <h5>Colonia</h5>
-                                                                        <p ng-bind="model.address.colony"></p>
-                                                                        <hr />
-                                                                        <h4>Teléfonos</h4>
-                                                                        <ul class="block-list" ng-repeat="s in model.phones">
-                                                                            <li>
-                                                                                <h5>Teléfono</h5>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h4>Redes sociales</h4>
-                                                                        <ul class="block-list" ng-repeat="s in model.socialNetworks">
-                                                                            <li>
-                                                                                <h5>Red social</h5>
-                                                                                <p ng-bind="s.socialNetwork"></p>
-                                                                                <p ng-bind="s.socialNetworkId"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h4>Familia Compartamos</h4>
-                                                                        <ul class="block-list" ng-repeat="s in model.familiaCompartamos">
-                                                                            <li>
-                                                                                <h5>Familiar</h5>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <!--<ul class="block-list" ng-repeat="s in model.studies">
-                                                                            <li>
-                                                                                <h5>Estudio</h5>
-                                                                                <p ng-bind="s.school"></p>
-                                                                                <p ng-bind="s.levelOfStudies"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />-->
-
-                                                                        <!--
-                                                                        <h5>Domicilio</h5>
-                                                                        <p ng-bind="model.address.street + ' ' + model.address.num_ext + ' ' + model.address.num_int + ' ' + model.address.colony + ' ' + model.address.city + ' ' + model.address.town + ' ' + model.address.state + ' ' + model.address.country + ' ' + model.address.postalCode"></p>
-                                                                        <hr />
-
-                                                                        <h5>Teléfono</h5>
-                                                                        <ul class="block-list" ng-repeat="t in model.phones">
-                                                                            <li>
-                                                                                <p ng-bind="t"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-
-                                                                        <h5>Correo</h5>
-                                                                        <ul class="block-list">
-                                                                            <li>
-                                                                                <p ng-bind="model.email"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-
-                                                                        <h5>Redes Sociales</h5>
-                                                                        <ul class="block-list" ng-repeat="sn in model.socialNetworks">
-                                                                            <li>
-                                                                                <p>
-                                                                                    <label for="" ng-bind="sn.socialNetwork + '.'"></label>
-                                                                                    <span ng-bind="sn.socialNetworkId"></span>
-                                                                                </p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-
-                                                                        <h5>Familia Compartamos</h5>
-                                                                        <ul class="block-list" ng-repeat="fc in model.familiaCompartamos">
-                                                                            <li>
-                                                                                <p>
-                                                                                    <label for="">No. Cliente</label>
-                                                                                    <span ng-bind="fc.idClient"></span>
-                                                                                </p>
-                                                                                <p ng-bind="fc.relativeName"></p>
-                                                                                <p><em ng-bind="fc.relationship"></em></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <br />
-                                                                        -->
                                                                     </div>
                                                                 </div>
                                                             </div>
