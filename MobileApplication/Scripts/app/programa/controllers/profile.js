@@ -17,8 +17,8 @@ angular
             $rootScope.pageName = "Mi perfil"
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
-            $rootScope.showFooter = true; 
-            $rootScope.showFooterRocks = false; 
+            $rootScope.showFooter = true;
+            $rootScope.showFooterRocks = false;
 
             $scope.$emit('HidePreloader');
 
@@ -26,35 +26,39 @@ angular
             $scope.wholeBadges = {};
             $scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
             $scope.totalBadges = $scope.wholeBadges.badges.length;
-            $scope.totalBadgePages = Math.ceil( $scope.totalBadges / 12);
+            $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);
             alert("En scope: " + $scope.totalBadgePages);
             $scope.badgePage = 0;
-            
+            $scope.normalBadgePage = $scope.badgePage + 1;
+
             $scope.wholeBadgesPages = [];
-            
-            for(var i = 0; i < $scope.totalBadgePages; i++) {
-                var top = Math.min(12, $scope.totalBadges - 12*i); 
-                $scope.wholeBadgesPages[i] = []; 
-                for(var j = 0; j < top; j++) {
+
+            for (var i = 0; i < $scope.totalBadgePages; i++) {
+                var top = Math.min(12, $scope.totalBadges - 12 * i);
+                $scope.wholeBadgesPages[i] = [];
+                for (var j = 0; j < top; j++) {
                     var elem = $scope.wholeBadges.badges.shift(); //extracts first element of remaining array                    
-                    $scope.wholeBadgesPages[i].push(elem);                
+                    $scope.wholeBadgesPages[i].push(elem);
                 }
             }
-            
+
             alert($scope.wholeBadgesPages[0].length + "-" + $scope.wholeBadgesPages[1].length + "-" + $scope.wholeBadgesPages.length);
 
-            $scope.changepage = function(delta) {
+            $scope.changepage = function (delta) {
                 $scope.badgePage += delta;
+                $scope.normalBadgePage = $scope.badgePage + 1;
 
                 if ($scope.badgePage < 0) {
                     $scope.badgePage = 0;
+                    $scope.normalBadgePage = 1;
                 }
 
                 if ($scope.badgePage > $scope.totalBadgePages - 1) {
                     $scope.badgePage = $scope.totalBadgePages - 1;
+                    $scope.normalBadgePage = $scope.badgePage + 1;
                 }
             }
-            
+
 
             $rootScope.pageName = "Mi perfil"
             $rootScope.navbarBlue = false;
@@ -97,9 +101,7 @@ angular
                     $location.path('/');
                     return "";
                 }
-                initFields(m);
-
-                //alert(m.badgesToEarn.toString());
+                initFields(m);              
 
                 return m;
             }
@@ -140,13 +142,13 @@ angular
 
             function formatDate(date) {
                 var splitDate = date.split("/");
-                var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);                
+                var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
                 return userBirthDate;
             }
 
             function getAge() {
                 var splitDate = $scope.model.birthday.split("/");
-                var birthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);                
+                var birthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
                 if (birthDate != null || birthDate != '') {
                     var cur = new Date();
                     var diff = cur - birthDate;
@@ -163,8 +165,8 @@ angular
 
                 if (month.length < 2) month = '0' + month;
                 if (day.length < 2) day = '0' + day;
-                var newBirthday = [month, day, year].join('/');  
-                $scope.model.birthday =   newBirthday;           
+                var newBirthday = [month, day, year].join('/');
+                $scope.model.birthday = newBirthday;
             }
 
             $scope.navigateToPage = function (pageNumber) {
