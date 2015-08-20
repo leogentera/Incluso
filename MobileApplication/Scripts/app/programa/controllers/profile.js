@@ -35,8 +35,7 @@ angular
             $scope.wholeBadges = {};
             $scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
             $scope.totalBadges = $scope.wholeBadges.badges.length;
-            $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);
-            //alert("En scope: " + $scope.totalBadgePages);
+            $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);            
             $scope.badgePage = 0;
             $scope.normalBadgePage = $scope.badgePage + 1;
 
@@ -50,9 +49,7 @@ angular
                     $scope.wholeBadgesPages[i].push(elem);
                 }
             }
-
-            //alert($scope.wholeBadgesPages[0].length + "-" + $scope.wholeBadgesPages[1].length + "-" + $scope.wholeBadgesPages.length);
-
+            
             $scope.changepage = function (delta) {
                 $scope.badgePage += delta;
                 $scope.normalBadgePage = $scope.badgePage + 1;
