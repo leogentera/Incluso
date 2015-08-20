@@ -92,8 +92,14 @@
         ************************************************************************/
     /***********************************************************************/
     /***********************************************************************
+         $profile-info-asset
+         Description: CSS to represent a block or asset of a user information 
+         at the read only mode of profile view. 
+        ************************************************************************/
+    /***********************************************************************/
+    /***********************************************************************
          $profile-options
-         Description: CSS to represent user's profile dashboard landing page
+         Description: CSS to represent user's profile options area
         ************************************************************************/
     /***********************************************************************/
     /***********************************************************************
@@ -130,15 +136,9 @@
     text-align: center;
     color: #e1e455;
   }
-  .incluso-app img.badgesviews {
-    cursor:pointer;
-  }
   .incluso-app img {
-    /* width: 100%;  */
+    width: 100%;
   }
-   .incluso-app div.badgename {
-    color: white;
-  }  
   .incluso-app .txt-title {
     color: white;
     font-weight: bold;
@@ -1113,16 +1113,6 @@
   .incluso-app .my-badges p {
     margin-top: 15px;
   }
-  .incluso-app .user-container {
-    display: flex;
-    justify-content: center;
-  }
-  .incluso-app .active .user-avatar figure {
-    border: 0px solid #171f20;
-  }
-  .incluso-app .active .user-avatar figcaption {
-    border-color: #171f20;
-  }
   .incluso-app .user-avatar {
     display: block;
     position: relative;
@@ -1179,6 +1169,16 @@
     /*font-size: 28px;*/
     font-size: 6vw;
     font-weight: bold;
+  }
+  .incluso-app .user-container {
+    display: flex;
+    justify-content: center;
+  }
+  .incluso-app .active .user-avatar figure {
+    border: 0px solid #171f20;
+  }
+  .incluso-app .active .user-avatar figcaption {
+    border-color: #171f20;
   }
   .incluso-app .user-data {
     display: block;
@@ -1440,15 +1440,62 @@
     -moz-background-size: 100% auto;
     background-size: 100% auto;
   }
+  .incluso-app .profile-info-asset {
+    display: block;
+    padding: 0;
+    margin: 6vw 0 0;
+    border-top-style: solid;
+    border-top-width: 0.1em;
+    border-top-color: rgba(255, 255, 255, 0.5);
+  }
+  .incluso-app .profile-info-asset:first-child {
+    margin-top: 0;
+    border-top-style: none;
+  }
+  .incluso-app .profile-info-asset:first-child h4 {
+    margin-top: 0;
+  }
+  .incluso-app .profile-info-asset h4 {
+    color: #bcd431 !important;
+    font-size: 4.1vw;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+    margin: 6vw 0 0;
+  }
+  .incluso-app .profile-info-asset label {
+    color: #08b290;
+    font-size: 3.9vw;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+  }
+  .incluso-app .profile-info-asset p {
+    min-height: 8.5vw;
+    color: #ffffff;
+    font-size: 3.9vw;
+    font-size: 6vw;
+    font-weight: normal;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+  }
+  .incluso-app .profile-info-asset .from-group {
+    padding: 1.5vw 0 0;
+    margin: 1.5vw 0 0;
+  }
+  .incluso-app .profile-info-asset .block-list p {
+    margin: 0;
+    /*overflow:hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;*/
+  }
   .incluso-app .profile-options {
     margin: 0;
-    /*padding:32px 0 15px;*/
     padding: 12vw 0 6vw;
     height: auto;
     min-height: 120vw;
     background-attachment: scroll;
-    /*background-image:url('@{url-images}/img-profile-spaceship-dashboard-bottom.png');
-            background-color: @clr-gray-asphalt;*/
     background-position: center 0;
     background-repeat: no-repeat;
     background-color: #3c4448;
@@ -1481,14 +1528,7 @@
     border: none;
   }
   .incluso-app .profile-options .list-group a {
-    /*display: block;*/
     position: relative;
-    /*height: 77px;*/
-    /*padding: 0;*/
-    /*margin: 0;*/
-    /*font-size: 24px;*/
-    /*font-weight: bold;/
-                    /*line-height: 77px;*/
   }
   .incluso-app .profile-options .list-group span {
     color: #ffffff;
@@ -1499,7 +1539,6 @@
     overflow: hidden;
     width: auto;
     padding: 0;
-    /*margin: 0 72px 0 48px;*/
     margin: 0px 18vw 0px 11vw;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1508,13 +1547,10 @@
     display: block;
     position: absolute;
     z-index: 1;
-    /*padding: 0 0 0 12px;*/
     padding: 0px 0px 0px 2.6vw;
     margin: 0;
     color: #bcd431;
-    /*font-size: 1.4em;*/
     font-size: 1.1em;
-    /*font-weight: normal;*/
   }
   .incluso-app .profile-options .list-group .icomoon.icon-arrow-slim-right {
     top: 0;
