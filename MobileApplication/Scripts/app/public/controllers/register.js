@@ -51,7 +51,11 @@ angular
             $scope.isRegistered = false;
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false;
-
+            $scope.genderItems = ['Masculino', 'Femenino'];
+            $scope.countryItems = ['México', 'Guatemala', 'Costa Rica', 'Perú', 'Brasil'];
+            $scope.cityItems = ['México D.F.', 'Guadalajara', 'Monterrey', 'Villa hermosa'];
+            $scope.securityquestionItems = ['¿Dónde crecí?','Nombre de mi mejor amigo','Nombre de mi mascota','Personaje favorito','Banda musical favorita'];
+            
             $scope.$emit('HidePreloader'); //- hide preloader
 
             /* Watchers */
@@ -221,16 +225,16 @@ angular
                 }else{                    
                     if(!isConfirmedPasswordValid) { errors.push("Las contraseñas capturadas no coinciden."); }
                 }                
-                
+                                
                 if(!$scope.registerForm.userName.$valid){ errors.push("Formato de usuario incorrecto."); }
                 if(!$scope.registerForm.firstName.$valid){ errors.push("Formato de nombre incorrecto."); }
                 if(!$scope.registerForm.lastName.$valid){ errors.push("Formato de apellido paterno incorrecto."); }
                 if(!$scope.registerForm.motherName.$valid) {errors.push("Formato de apellido materno incorrecto."); }
-                if($scope.registerModel.gender.length === 0){ errors.push("Género inválido."); }
-                if($scope.registerModel.country.length === 0){ errors.push("País inválido."); }
-                if($scope.registerModel.city.length === 0){ errors.push("Ciudad inválida."); }
+                if(!$scope.registerModel.gender){ errors.push("Género inválido."); }
+                if(!$scope.registerModel.country){ errors.push("País inválido."); }
+                if(!$scope.registerModel.city){ errors.push("Ciudad inválida."); }
                 if(!$scope.registerForm.email.$valid){ errors.push("Formato de correo incorrecto."); }                
-                if($scope.registerModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
+                if(!$scope.registerModel.secretQuestion){ errors.push("Pregunta secreta inválida."); }
                 if(!$scope.registerForm.secretAnswer.$valid){ errors.push("Respuesta secreta inválida."); }
                 if(!$scope.registerModel.termsAndConditions){ errors.push("Debe aceptar los términos y condiciones."); }                
                 $scope.registerModel.modelState.errorMessages = errors;

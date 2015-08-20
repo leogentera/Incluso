@@ -132,7 +132,7 @@ angular
             }
             
             $scope.showMore = function(){
-                $scope.notificationsQuantity = ($scope.notificationsQuantity + 2);
+                $scope.notificationsQuantity = ($scope.notificationsQuantity + notificationsQuantityInitial);
             }
             
             $scope.$emit('HidePreloader');

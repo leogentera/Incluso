@@ -39,6 +39,8 @@ angular
             $scope.readOnly = false;
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false;
+            
+            $scope.securityquestionItems = ['¿Dónde crecí?','Nombre de mi mejor amigo','Nombre de mi mascota','Personaje favorito','Banda musical favorita'];
 
             /* Watchers */
             $scope.$watch("recoverPasswordModel.confirmPassword", function(newValue, oldValue){
