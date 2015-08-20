@@ -637,9 +637,7 @@
                                                             <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />      
                                                             <div class="badgename" ng-bind="badge.name"></div>
                                                         </div>
-                                                        <div style="color:white;" ng-click="changepage(-1)">Back</div>
-                                                        <span style="color:white;">Página: <span ng-bind="normalBadgePage"></span></span>
-                                                        <div style="color:white;" ng-click="changepage(1)">Forward</div>
+                                                        
                                                         <!--
                                                         <div class="col-xs-12" ng-repeat="s in model.strengths">
                                                             <h5 ng-bind="s.name"></h5>
@@ -653,6 +651,9 @@
                                                         </div>
                                                         -->
                                                     </div>
+                                                    <span style="color:white;">Página: <span ng-bind="normalBadgePage"></span></span>
+                                                    <div style="color:white;" ng-click="changepage(-1)">Back</div>
+                                                    <div style="color:white;" ng-click="changepage(1)">Forward</div>
                                                 </div>
                                             </div>
                                         </div>
