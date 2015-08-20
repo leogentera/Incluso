@@ -434,10 +434,13 @@
                                                         </ul>
                                                         <hr />
                                                         <h4>A quién admiro</h4>
-                                                        <h5>Personajes</h5>
+                                                        
                                                         <ul class="block-list" ng-repeat="s in model.inspirationalCharacters">
                                                             <li>
-                                                                <p ng-bind="s"></p>
+                                                                <h5>Nombre</h5>
+                                                                <p ng-bind="s.characterName"></p>
+                                                                <h5>Tipo de personaje</h5>
+                                                                <p ng-bind="s.characterType"></p>
                                                             </li>
                                                         </ul>
                                                         <hr />
