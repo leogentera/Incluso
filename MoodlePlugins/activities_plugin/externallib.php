@@ -1230,8 +1230,8 @@ class forum_plugin extends external_api{
                     }
                 }
                 // LIKES
-                $post->likes = $DB->count_records('forum_post_like', array('forumpostid' => $post->id));
-                $post->liked_already = $DB->record_exists('forum_post_like', array('forumpostid' => $post->id, "userid" => $USER->id));
+                $post->likes = $DB->count_records('forum_posts_like', array('forumpostid' => $post->id));
+                $post->liked_already = $DB->record_exists('forum_posts_like', array('forumpostid' => $post->id, "userid" => $USER->id));
 
                 $posts[$pid] = (array) $post;
             }
@@ -1293,11 +1293,17 @@ class forum_plugin extends external_api{
                 'parentid'     => new external_value(PARAM_TEXT, 'The id of the parent post. If it is a discussion post, defualt is 0.'),
                 'message'      => new external_value(PARAM_TEXT, 'The content mmesage of the post.'),
                 'createdtime'  => new external_value(PARAM_INT, 'The time of creation. Time as Unix timestamp.'),
-                'modifiedtime' => new external_value(PARAM_INT, 'The time of modification. Time as Unix timestamp.'))
+                'modifiedtime' => new external_value(PARAM_INT, 'The time of modification. Time as Unix timestamp.'),
+                'posttype' 	   => new external_value(PARAM_INT, 'The type of post. Text [1], link [2], video [3], attachment [4]'))
         );
     }
 
-    public static function create_forum_discussion_post($discussionid, $parentid, $message, $createdtime, $modifiedtime) {
+    public static function create_forum_discussion_post($discussionid, 
+    													$parentid, 
+    													$message, 
+    													$createdtime, 
+    													$modifiedtime,
+    													$posttype) {
         global $USER;
         global $DB;
 
@@ -1311,7 +1317,8 @@ class forum_plugin extends external_api{
             		'parentid'     => $parentid, 
             		'message'      => $message,
             		'createdtime'  => $createdtime,
-            		'modifiedtime' => $modifiedtime));
+            		'modifiedtime' => $modifiedtime,
+            		'posttype'	   => $posttype));
 
             //Context validation
             //OPTIONAL but in most web service it should present
@@ -1342,10 +1349,17 @@ class forum_plugin extends external_api{
             $record->modified = $modifiedtime;
             $record->messageformat = 1;
 
-            $lastinsert = $DB->insert_record('forum_posts', $record, false);            
+            $lastinsert = $DB->insert_record('forum_posts', $record, true);
+
+            //Insert type on forum_posts_types
+            $record = new stdClass();
+            $record->forumpostsid = $lastinsert;
+            $record->type = $posttype;
+
+            $inserttype = $DB->insert_record('forum_posts_types', $record, false);
             
             $response = new stdClass();
-        	$response->result = $lastinsert;
+        	$response->result = $inserttype;
         
         } catch (Exception $e) {
             $response = $e;

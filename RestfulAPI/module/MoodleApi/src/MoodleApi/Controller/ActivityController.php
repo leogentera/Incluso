@@ -75,7 +75,7 @@ class ActivityController extends AbstractRestfulJsonController {
         $json = json_decode($response,true);
     
         if (strpos($response, "exception") !== false){
-            return new JsonModel();
+           return new JsonModel($this->throwJSONError("Ocurrio un error al listar las actividades, contacte al administrador"));
         }
 
         if(count($json) == 0){
@@ -94,11 +94,11 @@ class ActivityController extends AbstractRestfulJsonController {
         $json = json_decode($response,true);
     
         if (strpos($response, "exception") !== false){
-            return array("error" => "error");
+            return array("error" => $response);
         }
 
         if(count($json) == 0){
-            return array("error" => "error");
+            return array("error" => "Activity not found");
         }
         
         return new JsonModel((array)$json[0]);
@@ -243,7 +243,6 @@ class ActivityController extends AbstractRestfulJsonController {
 
         $json = json_decode($response,true);
         if (strpos($response, "exception") !== false){
-            var_dump($response);
             return array();
         }
 
@@ -276,6 +275,56 @@ class ActivityController extends AbstractRestfulJsonController {
         
         return $tree;
     }
+    
+    public function update($id, $data){
+    	if (!key_exists("coursemoduleid", $data)){
+    		return new JsonModel($this->throwJSONError("Ocurrio un error, contacte al administrador"));
+    	}
+    
+    	$activity = $this->getIdAndTypeOfActivity($data["coursemoduleid"]);
+    
+    	if(array_key_exists("error", $activity)){
+    		return new JsonModel($this->throwJSONError("Actividad inválida, Contacte al administrador"));
+    	}
+    
+    	$activityid = $activity->id;
+    	$typeOfActivity = $activity->name;
+    
+    	switch($typeOfActivity){
+    
+    		case 'quiz':
+    			return $this->saveQuiz($activityid, $id, $data["answers"]);
+    			break;
+    
+    		default:
+    			return new JsonModel($this->throwJSONError("Actividad no soportada, Contacte al administrador"));
+    			break;
+    	}
+    }
+    
+    private function saveQuiz($activityid, $userid, $answers){
+    	$url = $this->getConfig()['MOODLE_API_URL'].'&quizid=%s&userid=%s';
+    	
+    	$i=0;
+    	$answers_string="";
+    	foreach($answers as $answer){
+    		$answers_string.= "&answers[$i]=$answer";
+    		$i++;
+    	}
+    	$url = sprintf($url, $this->getToken(), "save_quiz", $activityid, $userid);
+    	
+    	$url.= $answers_string;
+    
+    	$response = file_get_contents($url);
+    
+    	$json = json_decode($response,true);
+    	if($json['message']!=""){
+    		 return new JsonModel($this->throwJSONError("Ocurrió un error al guardar la información, Contacte al administrador"));
+    	}
+    
+    	return new JsonModel(array());
+    }
+    
 }
 
 

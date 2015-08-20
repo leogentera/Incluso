@@ -18,6 +18,9 @@ class MoodleFamiliaCompartamos extends Common
     			}
     			$familiaCompartamos_tmp=$this->createTableFromCompundField($familiaCompartamos_tmp);
     			foreach ($familiaCompartamos_tmp as $member){
+    				if ($member===""){
+    					continue;
+    				}
     				array_push($familiaCompartamos, new MoodleFamiliaCompartamosMember($member[0], $member[1], $member[2]));
     			}
     		}

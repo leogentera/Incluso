@@ -51,7 +51,7 @@ angular
                 var currentUser = null;
 
                 console.log('loading..');
-
+                
 
                 if (txtCredentials) {
                     userCredentials = JSON.parse(txtCredentials);
@@ -76,6 +76,7 @@ angular
                 //$scope.preloader.loading = false;  //- test
                 $scope.$emit('HidePreloader');
                 console.log('preloader hidden');
+
             }
 
             $scope.login = function (username, password) {  
@@ -159,10 +160,8 @@ angular
                 $anchorScroll(0);
             }
 
-            function FacebookLoginSuccess(data) {
-                alert(data);
-                console.log('successfully logged in ' + data);
-                
+            function FacebookLoginSuccess(data) {                
+                console.log('successfully logged in ' + data);                
                 var userFacebook = JSON.parse(data);
 
                 //save token for further requests and autologin

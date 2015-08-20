@@ -29,6 +29,7 @@
         'incluso.stage.contentscontroller',
         'incluso.stage.messagecontroller',
         'incluso.stage.gameretomultiplecontroller',
+        'incluso.stage.gameretomultipleexternalappcontroller',
         'incluso.stage.gameretomultipleresultscontroller',
         'incluso.stage.quizcontroller',
         'incluso.stage.chatcontroller',
@@ -52,7 +53,8 @@
         $http.get('Templates/Programa/Tutorial.html', { cache: $templateCache });
         $http.get('Templates/Programa/acercaPrograma.html', { cache: $templateCache });  
         $http.get('Templates/Juegos/Avatar.html', { cache: $templateCache });
-        $http.get('Templates/Programa/Alerts.html', { cache: $templateCache });  
+        $http.get('Templates/Programa/Alerts.html', { cache: $templateCache });
+        $http.get('Templates/Programa/AlertsDetail.html', { cache: $templateCache });
         $http.get('Templates/Programa/MyInterests.html', { cache: $templateCache });
         $http.get('Templates/Programa/MyStrengths.html', { cache: $templateCache });
         $http.get('Templates/Programa/HallOfFame.html', { cache: $templateCache });
@@ -74,6 +76,7 @@
         $http.get('Templates/ZonaDeVuelo/CuartoDeRecursos/MensajeDeCierre.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/Conocete/FuenteDeEnergia.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/Conocete/RetoMultiple.html', { cache: $templateCache });  
+        $http.get('Templates/ZonaDeVuelo/Conocete/RetoMultipleExternalApp.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/Conocete/RetoMultipleFichaDeResultados.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos.html', { cache: $templateCache });  
         $http.get('Templates/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Comentarios.html', { cache: $templateCache });  
@@ -203,9 +206,9 @@
             templateUrl: 'Templates/Programa/Alerts.html',
             controller: 'AlertsController'
         });
-
-        $routeProvider.when('/Notifications/Details', { 
-            templateUrl: 'Templates/NotificationDetails.html',
+       
+        $routeProvider.when('/AlertsDetail/:notificationId', { 
+            templateUrl: function(params){ return 'Templates/Programa/AlertsDetail.html?notificationId=' + params.notificationId; },
             controller: 'programaNotificationController'
         });
             
@@ -254,6 +257,11 @@
             controller: 'stageGameRetoMultipleController'
         });
     
+        $routeProvider.when('/ZonaDeVuelo/Conocete/RetoMultipleExternalApp', { 
+            templateUrl: 'Templates/ZonaDeVuelo/Conocete/RetoMultipleExternalApp.html',
+            controller: 'stageGameRetoMultipleExternalAppController'
+        });
+
         $routeProvider.when('/ZonaDeVuelo/Conocete/RetoMultipleFichaDeResultados', { 
             templateUrl: 'Templates/ZonaDeVuelo/Conocete/RetoMultipleFichaDeResultados.html',
             controller: 'stageGameRetoMultipleResultsController'

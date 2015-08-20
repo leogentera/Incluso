@@ -2,6 +2,25 @@
   <div id="site-menu">
     <!-- <menu-component></menu-component> -->
   </div>
+
+  <div class="alert alert-warning" role="alert" ng-show="!model.modelState.isValid && model.modelState.errorMessages.length >0"
+  ng-cloak>
+    <div class="alert-message">
+      <div class="icomoon icon-warning"></div>
+      <p>¡Error! Verifica tus datos</p>
+      <ul ng-if="model.modelState.errorMessages.length > 0">
+        <li ng-repeat="msg in model.modelState.errorMessages">{{msg}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <!--<div class="alert alert-success" role="alert" ng-show="isRegistered" ng-cloak>
+    <div class="alert-message">
+      <div class="icomoon icon-checked-clip"></div>
+      <p>¡Te has registrado correctamente!</p>
+    </div>
+  </div>-->
+
   <div id="site-canvas">
     <article>
       <section class="component profile-dashboard">
@@ -47,7 +66,7 @@
         </div>
       </section>
       <section class="component profile-options">
-        <form action="">
+        <form action="" name="editForm">
           <div class="pages">
             <div class="page" ng-class="currentPage == 1 ? 'active' : ''">
               <div class="container-fluid">
@@ -128,18 +147,23 @@
 
                           <section>
                             <h5>Datos generales</h5>
-                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname" required/>
+                            <input type="text" name="username" class="form-control form-control-lg theme-form" placeholder="Nombre de Usuario" ng-model="model.username"
+                            readonly />
 
-                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastname"
+                            <input type="text" name="firstname" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname"
+                            required/>
+
+                            <input type="text" name="lastname" class="form-control form-control-lg theme-form" placeholder="Apellido paterno" ng-model="model.lastname"
                             required />
 
-                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.mothername"
+                            <input type="text" name="mothername" class="form-control form-control-lg theme-form" placeholder="Apellido materno" ng-model="model.mothername"
                             required />
 
-                            <input type="text" class="form-control form-control-lg theme-form" placeholder="Alias" ng-model="model.alias" required/>
+                            <input type="text" name="alias" class="form-control form-control-lg theme-form" placeholder="Alias" ng-model="model.alias"
+                            required/>
 
                             <p class="form-group">
-                              <select ng-model="model.gender" ng-options="item for item in genderItems" ng-init="model.gender == null" class="form-control form-control-lg theme-form"
+                              <select name="gender" ng-model="model.gender" ng-options="item for item in genderItems" ng-init="model.gender == null" class="form-control form-control-lg theme-form"
                               required>
                                 <option value="" ng-disabled="!!model.gender">Sexo</option>
                               </select>
@@ -149,9 +173,10 @@
                               <select ng-model="model.birthCountry" ng-options="item for item in countryItems" ng-init="model.birthCountry == null" class="form-control form-control-lg theme-form">
                                 <option value="" ng-disabled="!!model.birthCountry">País de nacimiento</option>
                               </select>
-                            </p>                 
-                            
-                            <input type="date" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="birthdate_Dateformat" ng-change="birthdayChanged()"/>
+                            </p>
+
+                            <input type="date" class="form-control form-control-lg theme-form" placeholder="Fecha de nacimiento" ng-model="birthdate_Dateformat"
+                            ng-change="birthdayChanged()" />
 
                             <input type="text" class="form-control form-control-lg theme-form" placeholder="Edad" ng-model="model.age" readonly/>
 
@@ -165,7 +190,7 @@
 
                           <section>
                             <h5>Educación</h5>
-                            <!--<ul class="block-list">
+                            <ul class="block-list">
                               <li ng-repeat="s in model.studies">
                                 <div class="form-group theme-form">
                                   <h5>
@@ -173,10 +198,10 @@
                                     <button class="btn btn-circle" ng-click="deleteStudy($index);">
                                       <span class="icomoon icon-cross"></span>
                                     </button>
-                                  </h5>-->
+                                  </h5>
 
-                            <!--Inicio Viejo-->
-                            <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
+                                  <!--Inicio Viejo-->
+                                  <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
                                   <p class="form-group-control custom-placeholder-wrapper">
                                     <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
                                       <option value="Grado">Grado</option>
@@ -187,24 +212,31 @@
                                     </select>
                                     <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>                                    -----------------
                                   </p>-->
-                            <!--Fin Viejo-->
+                                  <!--Fin Viejo-->
 
-                            <!--<p class="form-group">
-                                    <select ng-model="model.studies" ng-options="item for item in studiesList" ng-init="model.studies == null" class="form-control form-control-lg theme-form">
-                                      <option value="" ng-disabled="!!model.studies">Nivel de Estudios</option>
+                                  <p class="form-group">
+                                    <select ng-model="model.studies[$index].school" ng-options="item for item in studiesList" ng-init="model.studies == null"
+                                    class="form-control form-control-lg theme-form">
+                                      <option value="" ng-disabled="!!model.studies">Nivel</option>
                                     </select>
-                                  </p>-->
+                                  </p>
+                                  <p class="form-group">
+                                    <select ng-model="model.studies[$index].levelOfStudies" ng-options="item for item in educationStatusList" ng-init="model.studies == null"
+                                    class="form-control form-control-lg theme-form">
+                                      <option value="" ng-disabled="!!model.studies">Estado</option>
+                                    </select>
+                                  </p>
 
-                            <!--</div>
+                                </div>
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addStudy();">
                               <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
                             </button>
-                          </section>-->
+                          </section>
 
-                            <!--Inicio Viejo-->
-                            <!--<section>
+                          <!--Inicio Viejo-->
+                          <!--<section>
                             <ul class="block-list">
 
                               <li ng-repeat="s in model.studies">
@@ -235,20 +267,20 @@
                               <span class="icomoon icon-plus"></span>Agregar nuevo estudio...
                             </button>
                           </section>-->
-                            <!--Fin Viejo-->
+                          <!--Fin Viejo-->
 
-                            <div class="page-number">
-                              <p class="text-center">
-                                <span>1</span>
-                                <span>/</span>
-                                <span>3</span>
-                              </p>
-                            </div>
+                          <div class="page-number">
+                            <p class="text-center">
+                              <span>1</span>
+                              <span>/</span>
+                              <span>3</span>
+                            </p>
+                          </div>
 
-                            <div class="actions">
-                              <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(3)">Continuar</button>
-                              <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
-                            </div>
+                          <div class="actions">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(3)">Continuar</button>
+                            <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
+                          </div>
 
                         </fieldset>
                       </div>
@@ -355,7 +387,7 @@
                           <section>
                             <h5>Teléfono</h5>
                             <ul class="block-list">
-                              <li ng-repeat="p in model.phones track by $index">
+                              <li ng-repeat="p in model.phones">
                                 <div class="form-group theme-form">
                                   <h5>
                                     <span>Teléfono {{model.phones.indexOf(p) + 1}}</span>
@@ -369,7 +401,7 @@
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addPhone();">
-                              <span class="icomoon icon-plus"></span>Agregar nuevo número...
+                              <span class="icomoon icon-plus"></span>Agregar número...
                             </button>
                           </section>
 
@@ -410,15 +442,13 @@
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
-                                  <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="sn.socialNetwork">
-                                    <option disabled>Red Social</option>
-                                    <option value="Facebook">Facebook</option>
-                                    <option value="Instagram">Instagram</option>
-                                    <option value="Twitter">Twitter</option>
+                                  <select ng-model="model.socialNetworks[$index].socialNetwork" ng-options="item for item in socialNetworksList" ng-init="model.socialNetwork == null"
+                                  class="form-control form-control-lg theme-form">
+                                    <option value="" ng-disabled="!!model.socialNetwork">Red social</option>
                                   </select>
                                 </div>
                                 <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre de Usuario" ng-model="sn.socialNetworkId"
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Red social" ng-model="model.socialNetworks[$index].socialNetworkId"
                                   />
                                 </div>
                               </li>
@@ -475,18 +505,28 @@
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" ng-model="fc.idClient"
+
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" ng-model="model.familiaCompartamos[$index].idClient"
                                   />
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" ng-model="fc.relativeName"
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" ng-model="model.familiaCompartamos[$index].relativeName"
                                   />
-                                  <p class="form-group-control custom-placeholder-wrapper">
+                                  <!--<p class="form-group-control custom-placeholder-wrapper">
                                     <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="fc.relationship">
                                       <option disabled>Parentesco</option>
                                       <option value="Mamá">Mamá</option>
                                       <option value="Papá">Papá</option>
                                     </select>
-                                  </p>
+                                  </p>-->
+
+                                  <select ng-model="model.familiaCompartamos[$index].relationship" ng-options="item for item in familiaCompartamosList" ng-init="model.familiaCompartamos.relationship == null"
+                                  class="form-control form-control-lg theme-form">
+                                    <option value="" ng-disabled="!!model.familiaCompartamos.relationship">Parentezco</option>
+                                  </select>
                                 </div>
+                                <!--<div class="form-group">
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Red social" ng-model="sn.familiaCompartamos"
+                                  />
+                                </div>-->
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFamiliaCompartamos();">
@@ -754,7 +794,7 @@
                                   </div>
                                 </li>-->
 
-                                <!--<li ng-repeat="s in model.inspirationalCharacters">
+                                <li ng-repeat="s in model.inspirationalCharacters">
                                   <div class="form-group theme-form">
                                     <h5>
                                     <span>Personaje {{model.inspirationalCharacters.indexOf(s) + 1}}</span>
@@ -762,17 +802,16 @@
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Personajes" ng-model="s" />
-                                    <p class="form-group-control custom-placeholder-wrapper">
-                                      <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s">
-                                        <option value="Empatía">Personajes</option>
-                                      </select>
-                                      <span class="custom-placeholder form-control-lg" ng-show="s.inspirationalCharacters.lenght > 0">Personajes</span>
-                                    </p>
+                                    <select ng-model="model.inspirationalCharacters[$index]" ng-options="item for item in inspirationalCharactersList" ng-init="model.inspirationalCharacters == null"
+                                    class="form-control form-control-lg theme-form">
+                                      <option value="" ng-disabled="!!model.inspirationalCharacters">Red social</option>
+                                    </select>
                                   </div>
-                                </li>-->
-
-
+                                  <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Red social" ng-model="s.inspirationalCharacters"
+                                    />
+                                  </div>
+                                </li>
                               </ul>
                               <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addInspirationalCharacter();">
                                 <span class="icomoon icon-plus"></span>Agregar personaje...
@@ -1191,8 +1230,8 @@
                   </div>
                 </div>
               </div>
+            </div>
         </form>
-        </section>
+      </section>
     </article>
-    </div>
     </div>

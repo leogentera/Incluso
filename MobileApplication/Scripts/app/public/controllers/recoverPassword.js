@@ -13,9 +13,10 @@ angular
         '$modal',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
-            $anchorScroll();
+            $scope.$emit('scrollTop'); //- scroll
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false;
+
             /* ViewModel */
             $scope.recoverPasswordModel = {
                 email: "",
@@ -36,9 +37,10 @@ angular
             $scope.successMessage = "";
             $scope.recoveredPassword = false;
             $scope.readOnly = false;
-            $scope.PreloaderModalInstance = null;
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false;
+            
+            $scope.securityquestionItems = ['¿Dónde crecí?','Nombre de mi mejor amigo','Nombre de mi mascota','Personaje favorito','Banda musical favorita'];
 
             /* Watchers */
             $scope.$watch("recoverPasswordModel.confirmPassword", function(newValue, oldValue){
@@ -58,7 +60,7 @@ angular
 
             $scope.navigateToPage = function(pageNumber){
                 $scope.currentPage = pageNumber;
-                $anchorScroll();
+                $scope.$emit('scrollTop'); //- scroll
             };
 
             $scope.getPasswordRecoveryCode = function() {
@@ -66,14 +68,14 @@ angular
                 console.log('fetching errors list'); //- debug
                 var errors = [];
                 if(!$scope.recoverPasswordForm.email.$valid){ errors.push("Formato de correo incorrecto."); }
-                if($scope.recoverPasswordModel.secretQuestion.length === 0){ errors.push("Pregunta secreta inválida."); }
+                if(!$scope.recoverPasswordModel.secretQuestion){ errors.push("Pregunta secreta inválida."); }
                 if(!$scope.recoverPasswordForm.secretAnswer.$valid){ errors.push("Respuesta secreta inválida."); }
                 $scope.recoverPasswordModel.modelState.errorMessages = errors;
 
                 console.log('validating'); //- debug
                 if(errors.length === 0){
                     console.log('errors: ' + errors.length); //- debug
-                    $scope.openProcessingActionModal();
+                    $scope.$emit('ShowPreloader'); //show preloader
 
                     $http({
                         method: 'POST',
@@ -88,15 +90,14 @@ angular
                     }).success(function(data, status, headers, config) {
 
                         console.log('SUCCESS. code recovered'); //- debug
-                        $scope.PreloaderModalInstance.dismiss();
+                        $scope.$emit('HidePreloader'); //hide preloader
                         $scope.currentPage = 2;
-                        $scope.scrollToTop();
                         $scope.successMessage = "Te hemos enviado un correo con un código para recuperar tu contraseña.";
-                        $scope.scrollToTop();
+                        $scope.$emit('scrollTop'); //- scroll
 
                     }).error(function(data, status, headers, config) {                                            
                         console.log('ERROR. code not recovered'); //- debug
-                        $scope.PreloaderModalInstance.dismiss();
+                        $scope.$emit('HidePreloader'); //hide preloader
                         var errorMessage;
                         if((data != null && data.messageerror != null)){
                             errorMessage = window.atob(data.messageerror);
@@ -106,12 +107,12 @@ angular
 
                         $scope.recoverPasswordModel.modelState.errorMessages = [errorMessage];
                         console.log('message: ' + errorMessage); //- debug
-                        $scope.scrollToTop();
+                        $scope.$emit('scrollTop'); //- scroll
                     });
                 }else{
                     console.log('errors: ' + errors.length); //- debug
                     console.log('End'); //- debug
-                    $scope.scrollToTop();
+                    $scope.$emit('scrollTop'); //- scroll
                 }
             }
 
@@ -120,15 +121,14 @@ angular
                 console.log('fetching errors list'); //- debug
                 var errors = [];
                 var passwordPolicy = "debe ser almenos de 8 caracterres, incluir un caracter especial, una letra mayúscula, una minúscula y un número.";
-                if(!isConfirmedPasswordValid) { errors.push("la confirmación de contraseña no coincide con la contraseña."); }                
-                if(!$scope.recoverPasswordForm.confirmPassword.$valid){ errors.push("formato de confirmación de contraseña incorrecto. La confirmación de contraseña " + passwordPolicy); }
+                if(!isConfirmedPasswordValid) { errors.push("Las contraseñas capturadas no coinciden."); }
                 if(!$scope.recoverPasswordForm.code.$valid){ errors.push("código requerido."); }
                 $scope.recoverPasswordModel.modelState.errorMessages = errors;
 
                 console.log('validating'); //- debug
                 if(errors.length === 0){
                     console.log('errors: ' + errors.length); //- debug
-                    $scope.openProcessingActionModal();
+                    $scope.$emit('ShowPreloader'); //show preloader
 
                     $http({
                         method: 'PUT',
@@ -142,10 +142,10 @@ angular
                     }).success(function(data, status, headers, config) {
 
                         console.log('SUCCESS. password reset'); //- debug
-                        $scope.PreloaderModalInstance.dismiss();
+                        $scope.$emit('HidePreloader'); //hide preloader
                         $scope.recoveredPassword = true;
                         $scope.successMessage = "Se ha restablecido su contraseña, ahora puedes iniciar sesión.";
-                        $anchorScroll();
+                        $scope.$emit('scrollTop'); //- scroll
 
                         //$scope.recoverPasswordModel.password = "";
                         //$scope.recoverPasswordModel.confirmPassword = "";
@@ -155,7 +155,7 @@ angular
                     }).error(function(data, status, headers, config) {
                         
                         console.log('ERROR. password not reset'); //- debug
-                        $scope.PreloaderModalInstance.dismiss();
+                        $scope.$emit('HidePreloader'); //hide preloader
                         var errorMessage;
                         if((data != null && data.messageerror != null)){
                             errorMessage = window.atob(data.messageerror);
@@ -165,31 +165,12 @@ angular
 
                         $scope.recoverPasswordModel.modelState.errorMessages = [errorMessage];
                         console.log('message: ' + errorMessage); //- debug
-                        $scope.scrollToTop();
+                        $scope.$emit('scrollTop'); //- scroll
                     });
                 }else{
                     console.log('errors: ' + errors.length); //- debug
                     console.log('End'); //- debug
-                    $scope.scrollToTop();
+                    $scope.$emit('scrollTop'); //- scroll
                 }
-            };
-
-            /* open processing action modal */
-            $scope.openProcessingActionModal = function (size) {
-                $scope.PreloaderModalInstance = $modal.open({
-                    templateUrl: 'processingActionModal.html',
-                    controller: 'processingActionModalController',
-                    windowClass: 'modal-theme-default modal-preloader',
-                    size: size,
-                    backdrop: 'static',
-                    keyboard: true,
-                    animation: true,
-                });
-                //$scope.PreloaderModalInstance = modalInstance;
-            };            
-        }])
-        .controller('processingActionModalController', function ($scope, $modalInstance) {
-            
-        });
-
-
+            };      
+        }]);

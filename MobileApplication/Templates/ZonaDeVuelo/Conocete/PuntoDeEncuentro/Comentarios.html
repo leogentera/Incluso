@@ -10,18 +10,37 @@
   <section>
     <div class="txt-renglon centered txt-bigger"></div>
     <div class="subtitle">Foro Común</div>
-    <div class="txt-renglon txt-bigger">{{discussion.message}}</div>
-      <div> <img src="{{ discussion.image[0].fileurl }}" alt="{{ discussion.image[0].filename }}"> </div>
-</section>
 
-<section class="txt-renglon distribuido">
+    <div class="txt-renglon txt-bigger">{{discussion.message}}</div>  
+  </section>
 
+  <section class="txt-renglon centered collapse-media">
+    <div class="panel">
+      <div class="panel-heading clearfix" ng-click="isCollapsed = !isCollapsed">
+        <h3>
+          <span class="icomoon icon-video-file"></span>
+          <span>Fotografía de foro</span>
+          <span class="icomoon icon-arrow" ng-show="isCollapsed"></span>
+          <span class="icomoon icon-arrow-up" ng-show="!isCollapsed"></span>
+        </h3>
+      </div>
+      <div class="panel-body" collapse="isCollapsed">
+        <div class="stage perform">
+          <figure class="player">
+              <img src="{{ discussion.image[0].fileurl }}" alt="{{ discussion.image[0].filename }}">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<a href="#openModal1"><img src="assets/images/aa.svg"></a>
-<a href="#openModal2"><img src="assets/images/link.svg"></a>
-<a href="#openModal3"><img src="assets/images/play.svg"></a>
-<a href="#openModal4"><img src="assets/images/clip.svg"></a>
-</section>
+  <section class="txt-renglon distribuido">
+    <a href="#openModal1"><img src="assets/images/aa.svg"></a>
+    <a href="#openModal2"><img src="assets/images/link.svg"></a>
+    <a href="#openModal3"><img src="assets/images/play.svg"></a>
+    <a href="#openModal4"><img src="assets/images/clip.svg"></a>
+  </section>
+
 <section class="modales">
 
 <div id="openModal1" class="modalDialog">
