@@ -39,44 +39,51 @@
 
 
     <div ng-if="content.activityType == 'url'">
-      <div class="author"><img src="assets/images/avatar.svg">
+      <div class="author"><img src="assets/images/link.svg">
         <div>   
           Visita el sitio web!
         </div>
-        <div ng-if="content.mandatory">*</div>
+        <i class="icomoon icon-required" ng-if="content.mandatory"></i>
+        <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
+        <i class="icomoon icon-edit" ng-hide="content.seen"></i>
       </div>
     </div>
     <div ng-if="content.activityType == 'video' ">
-      <div class="author"><img src="assets/images/avatar.svg">
+      <div class="author"><img src="assets/images/play.svg">
         <div>   
-
           Video tutorial incluso
         </div>
-        <div ng-if="content.mandatory">*</div>
+        <i class="icomoon icon-required" ng-if="content.mandatory"></i>
+        <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
+        <i class="icomoon icon-edit" ng-hide="content.seen"></i>
       </div>
     </div>
     <div ng-if="content.activityType == 'page'">
-      <div class="author"><img src="assets/images/avatar.svg">
+      <div class="author"><img src="assets/images/aa.svg">
         <div>   
-
           Texto
         </div>
-        <div ng-if="content.mandatory">*</div>
+        <i class="icomoon icon-required" ng-if="content.mandatory"></i>
+        <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
+        <i class="icomoon icon-edit" ng-hide="content.seen"></i>
       </div>
     </div>
     <div ng-if="content.activityType == 'file'">
-      <div class="author"><img src="assets/images/avatar.svg">
+      <div class="author"><img src="assets/images/clip.svg">
         <div>   
           Fotografía
         </div>        
-        <div ng-if="content.mandatory">*</div>
+        <i class="icomoon icon-required" ng-if="content.mandatory"></i>
+        <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
+        <i class="icomoon icon-edit" ng-hide="content.seen"></i>
       </div>      
     </div>
   <div class="block">  
-    <img ng-src="{{content.file.path}}">
+    <img ng-click="updateStatus(content.id)" ng-src="{{content.file.path}}">
     <div>
-        <a ng-hide="content.isVideo" href={{content.url}} target="_blank">{{content.url}}</a>
-        {{content.pageContent}}
+        <a ng-hide="content.isVideo" ng-click="updateStatus(content.id)" href={{content.url}} target="_blank">{{content.url}}</a>
+        <p ng-click="updateStatus(content.id)">{{content.pageContent}}</p>
+        <a ng-show="content.isVideo" ng-click="updateStatus(content.id)" href={{content.url}} target="_blank">{{content.url}}</a>
     </div>
   </div>
 </div>

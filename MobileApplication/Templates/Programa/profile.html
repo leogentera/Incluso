@@ -148,6 +148,9 @@
                                                 <div class="row">
                                                     <div class="col-xs-12">
                                                         <h4>Datos Generales</h4>
+                                                        <h5>Nombre de Usuario</h5>
+                                                        <p ng-bind="model.username" ng-readonly="true"></p>
+                                                        <hr />
                                                         <h5>Nombres(s)</h5>
                                                         <p ng-bind="model.firstname"></p>
                                                         <hr />
@@ -195,7 +198,7 @@
                                                         <p ng-bind="model.address.city"></p>
                                                         <hr />
                                                         <h5>Delegación/Municipio</h5>
-                                                        <p ng-bind="model.address.state"></p>
+                                                        <p ng-bind="model.address.town"></p>
                                                         <hr />
                                                         <h5>Código postal</h5>
                                                         <p ng-bind="model.address.postalCode"></p>
@@ -210,9 +213,15 @@
                                                         <p ng-bind="model.address.colony"></p>
                                                         <hr />
                                                         <h4>Teléfonos</h4>
-                                                        <ul class="block-list" ng-repeat="s in model.phones">
+                                                        <!--<ul class="block-list" ng-repeat="s in model.phones">
                                                             <li>
                                                                 <h5>Teléfono</h5>
+                                                                <p ng-bind="s"></p>
+                                                            </li>
+                                                        </ul>-->
+                                                        <ul class="block-list" ng-repeat="s in model.phones">
+                                                            <li>
+                                                                <h5>Teléfono </h5>
                                                                 <p ng-bind="s"></p>
                                                             </li>
                                                         </ul>
@@ -230,7 +239,9 @@
                                                         <ul class="block-list" ng-repeat="s in model.familiaCompartamos">
                                                             <li>
                                                                 <h5>Familiar</h5>
-                                                                <p ng-bind="s"></p>
+                                                                <p ng-bind="s.idClient"></p>
+                                                                <p ng-bind="s.relativeName"></p>
+                                                                <p ng-bind="s.relationship"></p>
                                                             </li>
                                                         </ul>
                                                         <hr />
@@ -607,28 +618,30 @@
                             </div>
                         </div>
                     </div>
-                      <div class="page" ng-class="currentPage == 6 ? 'active' : ''">
+                    <div class="page" ng-class="currentPage == 6 ? 'active' : ''">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-xs-12">
-
-                                    <div class="panel panel-default">
+                                    <div class="panel panel-default achievements">
                                         <div class="panel-heading">
                                             <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
                                             <span class="icomoon icon-information"></span>
                                             <h3 class="panel-title">Mis Logros</h3>
                                         </div>
-                                        <div class="panel-body">This is the Body
+                                        <div class="panel-body">
                                             <div class="container-fluid">
                                                 <div class="row">
-
-                                                    <div ng-repeat="badge in model.badgesToEarn">         
-                                                        
+                                                    <span style="color:white;">Página: <span ng-bind="normalBadgePage"></span></span>
+                                                    
+                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]">         
+                                                          <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />  
+														<div ng-repeat="badge in model.badgesToEarn" class="col-xs-4 badge-item">
                                                         <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />      
                                                         <div class="badgename" ng-bind="badge.name"></div>
                                                         <br />
                                                     </div>
-
+                                                    <div style="color:white;" ng-click="changepage(-1)">Back</div>
+                                                    <div style="color:white;" ng-click="changepage(1)">Forward</div>
 
                                                     <!--
                                                     <div class="col-xs-12" ng-repeat="s in model.strengths">
@@ -646,7 +659,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -739,8 +751,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-xs-12">
-
-                                    <div class="panel panel-default">
+                                    <div class="panel panel-default achievement-detail">
                                         <div class="panel-heading">
                                             <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
                                             <span class="icomoon icon-information"></span>
@@ -750,21 +761,28 @@
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="text-center">
-                                                    <img class="badgesviews" ng-src="data:image/png;base64,{{badgeBadgeimage}}" alt="" class="img-responsive" width="100px" height="100px"  />      
-                                                    <div class="badgename" ng-bind="badgeName"></div>
-                                                    <div class="badgename" ng-bind="badgeDateIssued"></div>
-                                                    <div style="color:white;">
-                                                        <span style="color:green;">Tú y <span class="badgename" ng-bind="earnedTimes"></span></span> jóvenes han ganado esta bandera
+                                                        <div class="achievement-badge">
+                                                            <img class="badgesviews" ng-src="data:image/png;base64,{{badgeBadgeimage}}" alt="" class="img-responsive" width="100px" height="100px"  /> 
+															<div class="badgename" ng-bind="badgeName"></div>
+                                                            <div class="badgename" ng-bind="badgeDateIssued"></div>
+                                                        </div>
+                                                        <div class="achievement-description">
+                                                            <span>
+                                                                Cumpliste con los retos de la seccion de "Mis Sueños" y asi obtuviste la Turbina CONO-CT para colocarla en tu nave espacial y estar mas cerca del despegue de tu aventura.
+                                                            </span>
+                                                        </div>
+                                                        <div class="earned-info">
+                                                            <span class="users">Tú y <span ng-bind="earnedTimes"></span></span> jóvenes han ganado esta bandera
+                                                        </div>
+                                                        <div class="share-achievement">
+                                                            <span class="icomoon icon-share"></span>
+                                                            <span class="share-text">Compartir Insignia</span>
+                                                        </div>
                                                     </div>
-                                                    </div>
-
-
-                                                    <br />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
