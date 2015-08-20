@@ -76,7 +76,7 @@ class MoodleUserProfile extends Common {
 	public $habilities = array ();
 	public $iLiveWith = "";
 	public $mainActivity = array ();
-	public $currentStudies = "";
+	public $currentStudies = null;
 	public $children = "";
 	public $gotMoneyIncome = "";
 	public $moneyIncome = array ();
@@ -88,7 +88,7 @@ class MoodleUserProfile extends Common {
 	public $playVideogames = "";
 	public $videogamesFrecuency = "";
 	public $videogamesHours = "";
-	public $kindOfVideogames = "";
+	public $kindOfVideogames = array ();
 	public $gender = "";
 	public $birthday = "";
 	public $maritalStatus = "";
@@ -96,6 +96,7 @@ class MoodleUserProfile extends Common {
 	public $birthCountry;
 	public function __construct($data, $requestinguserid) {
 		$customFields = array ();
+		$currentStudies = new MoodleCurrentStudies(array());
 		// We turn the custom fields to an array because otherwise, we should do a for loop to search for each value
 		for($i = 0; count ( $data ['customfields'] ) > $i; $i ++) {
 			$customFields [$data ['customfields'] [$i] ['name']] = $data ['customfields'] [$i] ['value'];

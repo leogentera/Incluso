@@ -85,6 +85,10 @@ class UserCourseController extends AbstractRestfulJsonController {
             return 1;
         }else{
 
+            if(count($json)==0){
+                return array();
+            }
+
             $lastStageId = -1;
             $lastChallengeId = -1;
             $stage = null;
