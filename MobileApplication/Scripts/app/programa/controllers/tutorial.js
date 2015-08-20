@@ -47,21 +47,21 @@ angular
             $rootScope.showFooter = false; 
             //function getDataAsync() {
             //    //moodleFactory.Services.GetAsyncAvatar(_getItem("userId"), getAvatarInfoCallback);
-            //    $scope.avatarInfo = [{
-            //        "userid": "",//$scope.user.UserId,
-            //        "alias": "", //$scope.user.username,
-            //        "aplicacion": "Mi Avatar",
-            //        "estrellas": 0,//$scope.user.stars,
-            //        "PathImagen": "Android/data/<app-id>/images",
-            //        "color_cabello": "amarillo",
-            //        "estilo_cabello": "",
-            //        "traje_color_principal": "",
-            //        "traje_color_secundario": "",
-            //        "rostro": "",
-            //        "color_de_piel": "",
-            //        "escudo:": "",
-            //        "imagen_recortada": "",
-            //    }];
+                $scope.avatarInfo = [{
+                    "userid": "",//$scope.user.UserId,
+                    "alias": "", //$scope.user.username,
+                    "aplicacion": "Mi Avatar",
+                    "estrellas": 0,//$scope.user.stars,
+                    "PathImagen": "Android/data/<app-id>/images",
+                    "color_cabello": "amarillo",
+                    "estilo_cabello": "",
+                    "traje_color_principal": "",
+                    "traje_color_secundario": "",
+                    "rostro": "",
+                    "color_de_piel": "",
+                    "escudo:": "",
+                    "imagen_recortada": "",
+                }];
             //}
 
             //function getAvatarInfoCallback(){
@@ -112,7 +112,7 @@ angular
                   //    $scope.avatarInfo[0].Alias = $scope.user.username;
                   //    $scope.avatarInfo[0].Estrellas = $scope.user.stars;
                   //}
-//                localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
+                localStorage.setItem("avatarInfo", JSON.stringify($scope.avatarInfo));
 
                 $scope.scrollToTop();         
                 $location.path('/Juegos/Avatar');
