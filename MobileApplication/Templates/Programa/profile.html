@@ -631,30 +631,29 @@
                                         <div class="panel-body">
                                             <div class="container-fluid">
                                                 <div class="row">
-                                                    <span style="color:white;">Página: <span ng-bind="normalBadgePage"></span></span>
-                                                    
-                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]">  
+                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]">         
+                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />  
+														<div ng-repeat="badge in model.badgesToEarn" class="col-xs-4 badge-item">
+                                                            <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />      
+                                                            <div class="badgename" ng-bind="badge.name"></div>
+                                                        </div>
                                                         
-                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" /> <div class="badgename" ng-bind="badge.name"></div>
-                                                        <br />
-                                                        
+                                                        <!--
+                                                        <div class="col-xs-12" ng-repeat="s in model.strengths">
+                                                            <h5 ng-bind="s.name"></h5>
+                                                            <ul class="block-list" ng-repeat="v in s.values">
+                                                                <li>
+                                                                    <p ng-bind="v"></p>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                            <br />
+                                                        </div>
+                                                        -->
                                                     </div>
-                                               
+                                                    <span style="color:white;">Página: <span ng-bind="normalBadgePage"></span></span>
                                                     <div style="color:white;" ng-click="changepage(-1)">Back</div>
                                                     <div style="color:white;" ng-click="changepage(1)">Forward</div>
-
-                                                    <!--
-                                                    <div class="col-xs-12" ng-repeat="s in model.strengths">
-                                                        <h5 ng-bind="s.name"></h5>
-                                                        <ul class="block-list" ng-repeat="v in s.values">
-                                                            <li>
-                                                                <p ng-bind="v"></p>
-                                                            </li>
-                                                        </ul>
-                                                        <hr />
-                                                        <br />
-                                                    </div>
-                                                    -->
                                                 </div>
                                             </div>
                                         </div>
@@ -688,7 +687,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
