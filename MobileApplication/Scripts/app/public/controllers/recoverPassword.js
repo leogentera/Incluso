@@ -13,7 +13,8 @@ angular
         '$modal',
         function ($q, $scope, $location, $routeParams, $timeout, $rootScope, $http, $anchorScroll, $modal) {
 
-            $anchorScroll();
+            //$anchorScroll();
+            $scope.$emit('scrollTop'); //- scroll
             $rootScope.showToolbar = false;
             $rootScope.showFooter = false;
             /* ViewModel */
