@@ -11,11 +11,14 @@
 <article class="blueprint">
   <div class="fuente-energia">
     <section>
-      <div class="txt-renglon centered txt-bigger"></div> 
-      <div class="subtitle">Descrubre más</div>
-      <div class="txt-renglon txt-bigger">¡Descúbre, diviértete y gana estrellas!</div>  
+      <div class="title-section">
+        <div class="txt-renglon centered txt-bigger"></div> 
+        <div class="subtitle">Descrubre más</div>
+        <span>¡Descúbre, diviértete y gana estrellas!</span>  
+      </div>
     </section>
-    <section class="txt-renglon distribuido">
+
+    <section class="filter-section">
       <select name="filter" class="form-control form-control-lg theme-default" ng-model="filter">
         <option value="" disabled>Filtrar contenido por...</option>
         <option value="">Ver Todo</option>
@@ -27,60 +30,109 @@
         <option value="url">Enlaces</option> 
       </select>
     </section>
+
     <section class="wall">
       <div class="part" ng-repeat="content in activities.activity">
         <div ng-if="filter == content.activityType || !filter || filter == 'Obligatorio' && content.mandatory">
+
           <div ng-if="content.activityType == 'url'">
-            <div class="author"><img src="assets/images/link.svg">
-              <div>   
-                Visita el sitio web!
+            <div class="type">
+              <div class="col-xs-1 type-icon">
+                <i class="icomoon icon-hyperlink" ng-if="content.mandatory"></i>
               </div>
-              <i class="icomoon icon-required" ng-if="content.mandatory"></i>
-              <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
-              <i class="icomoon icon-edit" ng-hide="content.seen"></i>
+              <div class="col-xs-9">
+                <span>Visita el sitio web!</span>
+              </div>
+              <div class="col-xs-1">
+                <i class="icomoon icon-required" ng-if="content.mandatory"></i>
+              </div>
+              <div class="col-xs-1">
+                <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
+                <i class="icomoon icon-edit" ng-hide="content.seen"></i>
+              </div>
             </div>
           </div>
+
           <div ng-if="content.activityType == 'video' ">
-            <div class="author"><img src="assets/images/play.svg">
-              <div>   
-                Video tutorial incluso
+            <div class="type">
+              <div class="col-xs-1 type-icon">
+                <i class="icomoon icon-video-file" ng-if="content.mandatory"></i>
               </div>
-              <i class="icomoon icon-required" ng-if="content.mandatory"></i>
-              <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
-              <i class="icomoon icon-edit" ng-hide="content.seen"></i>
+              <div class="col-xs-9">
+                  <span>Video tutorial Incluso</span>
+              </div>
+              <div class="col-xs-1">
+                <i class="icomoon icon-required" ng-if="content.mandatory"></i>
+              </div>
+              <div class="col-xs-1">
+                <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
+                <i class="icomoon icon-edit" ng-hide="content.seen"></i>
+              </div>
             </div>
           </div>
+
           <div ng-if="content.activityType == 'page'">
-            <div class="author"><img src="assets/images/aa.svg">
-              <div>   
-                Texto
+            <div class="type">
+              <div class="col-xs-1 type-icon">
+                <i class="icomoon icon-text" ng-if="content.mandatory"></i>
               </div>
-              <i class="icomoon icon-required" ng-if="content.mandatory"></i>
-              <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
-              <i class="icomoon icon-edit" ng-hide="content.seen"></i>
+              <div class="col-xs-9">
+                  <span>Texto</span>
+              </div>
+              <div class="col-xs-1">
+                <i class="icomoon icon-required" ng-if="content.mandatory"></i>
+              </div>
+              <div class="col-xs-1">
+                <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
+                <i class="icomoon icon-edit" ng-hide="content.seen"></i>
+              </div>
             </div>
           </div>
+
           <div ng-if="content.activityType == 'file'">
-            <div class="author"><img src="assets/images/clip.svg">
-              <div>   
-                Fotografía
+            <div class="type">
+              <div class="col-xs-1 type-icon">
+                <i class="icomoon icon-camera" ng-if="content.mandatory"></i>
+              </div>
+              <div class="col-xs-9">   
+                <span>Fotografía</span>
               </div>        
-              <i class="icomoon icon-required" ng-if="content.mandatory"></i>
-              <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
-              <i class="icomoon icon-edit" ng-hide="content.seen"></i>
+              <div class="col-xs-1">
+                <i class="icomoon icon-required" ng-if="content.mandatory"></i>
+              </div>
+              <div class="col-xs-1">
+                <i class="icomoon icon-edit" ng-hide="content.seen"></i>
+                <i class="icomoon icon-checked-join" ng-if="content.seen"></i>
+              </div>
             </div>      
           </div>
-        <div class="block">  
-          <img ng-click="updateStatus(content.id)" ng-src="{{content.file.path}}">
-          <div>
-              <a ng-hide="content.isVideo" ng-click="updateStatus(content.id)" href={{content.url}} target="_blank">{{content.url}}</a>
-              <p ng-click="updateStatus(content.id)">{{content.pageContent}}</p>
-              <a ng-show="content.isVideo" ng-click="updateStatus(content.id)" href={{content.url}} target="_blank">{{content.url}}</a>
+
+          <div class="detail">  
+            <div>
+              <div class="image-container">
+                <img ng-click="updateStatus(content.id)" ng-src="{{content.file.path}}" class="image-element">
+              </div>
+              <div class="message">
+                  <a ng-hide="content.isVideo" ng-click="updateStatus(content.id)" href={{content.url}} target="_blank">{{content.url}}</a>
+                  <span ng-click="updateStatus(content.id)">{{content.pageContent}}</span>
+                  <a ng-show="content.isVideo" ng-click="updateStatus(content.id)" href={{content.url}} target="_blank">{{content.url}}</a>
+              </div>
+            </div>
+            <div class="interact">
+              <div class="col-xs-6 like">
+                <i class="icomoon icon-like"></i>
+                <span>Me gusta</span>
+              </div>
+              <div class="col-xs-6 comment">
+                <i class="icomoon icon-comment"></i>
+                <span>Comentar</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      </div>
     </section>
+
     <section>
       <button class="btn btn-primary btn-lg btn-cnt" type="button" ng-click="back()">Regresar</button>
       <div class="txt-renglon centered txt-bigger"></div> 

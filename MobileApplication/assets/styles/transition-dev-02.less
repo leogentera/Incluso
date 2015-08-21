@@ -283,8 +283,108 @@
         }
 
         /* Fuente de energia */ 
-        .fuente-energia{
-            
+        .fuente-energia .title-section .txt-renglon {
+            margin: 0 5%;
+            display: block;
+        }
+        .fuente-energia .title-section .subtitle {
+            font-size: 5vw;
+            text-transform: uppercase;
+            font-family: play;
+            padding: 0 5%;
+            font-weight: bold;
+            display: block;
+        }
+        .fuente-energia .title-section span {
+            font-size: 4vw;
+            color: rgb(170,170,170);
+            padding: 4vw 5% 2vw;
+            display: block;
+        }
+        .fuente-energia .filter-section {
+            margin: 5%;
+            padding: 0;
+        }
+        .fuente-energia .filter-section select {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 4vw;
+        }
+        .fuente-energia .wall {
+            padding: 2vw 5%;
+        }
+        .fuente-energia .wall .part {
+            margin: 0 0 3vw;
+            width: 100%;
+            display: block;
+        }
+        .fuente-energia .wall .part .type {
+            padding: 2vw 1vw;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+        }
+        .fuente-energia .wall .part .type * {
+            float: none;
+            display: table-cell;
+            vertical-align: middle;
+            padding-right: 1px;
+        }
+        .fuente-energia .wall .part .type i {
+            color: rgb(98,118,124);
+            font-size: 7vw;
+            cursor: pointer;
+        }
+        .fuente-energia .wall .part .type .icon-checked-join {
+            color: rgb(10,150,72);
+        }
+        .fuente-energia .wall .part .type .icon-required {
+            color: rgb(240,99,68);
+            font-size: 3vw;
+        }
+        .fuente-energia .wall .part .detail .image-container {
+            display: block;
+            padding: 3vw;
+        }
+        .fuente-energia .wall .part .detail .image-element {
+            height: 45vw;
+            display: block;
+            .border-radius(5px);
+        }
+        .fuente-energia .wall .part .detail .message {
+            padding: 0 3vw 3vw; 
+        }
+        .fuente-energia .wall .part .detail .message * {
+            color: rgb(256,256,256);
+            font-size: 5vw;
+        }
+        .fuente-energia .wall .part .detail .interact {
+            display: table;
+            width: 100%;
+            border-top: 2px solid rgba(255, 255, 255, 0.08);
+        }
+        .fuente-energia .wall .part .detail .interact div {
+            float: none;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            padding: 3vw 0;
+            cursor: pointer;
+        }
+        .fuente-energia .wall .part .detail .interact .like {            
+            border-right: 2px solid rgba(255, 255, 255, 0.08);
+        }
+        .fuente-energia .wall .part .detail .interact .like * {
+            color: rgb(230,9,128);
+            font-size: 5vw;
+            padding: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .fuente-energia .wall .part .detail .interact .comment * {            
+            color: rgb(2,175,142);
+            font-size: 5vw;
+            padding: 0;
+            display: inline-block;
+            vertical-align: middle;
         }
 
 }
