@@ -92,7 +92,7 @@ angular
             
            
             
-            var notificationsQuantityInitial = 3;
+            var notificationsQuantityInitial = 6;
             
             $scope.notificationsQuantity = notificationsQuantityInitial;
             $scope.notificationsQuantityUnread = notificationsQuantityInitial;
@@ -153,17 +153,32 @@ angular
                 }
             }
             
+            $scope.showLoadMoreBar = function(type){
+                switch(type){
+                case 'All':
+                    return !($scope.notificationsQuantity == $scope.notifications.length);
+                case 'Read':                    
+                    return !($scope.notificationsQuantityRead >= _.where($scope.notifications, {read:'true'}).length);
+                    break;
+                default :
+                    return !($scope.notificationsQuantityUnread >= _.where($scope.notifications, {read:'false'}).length);
+                    break;
+                }
+            }
+            
             $scope.$emit('HidePreloader');
             
             $scope.back = function () {
                 $location.path('/ProgramaDashboard');
             }
             
-            $scope.showAlertDetail = function (alertId) {                
-                $scope.notifications[alertId -1 ].read = "true";                
+            $scope.showAlertDetail = function (alertId) {
+                $scope.notifications[alertId -1 ].read = "true";
                 localStorage.setItem("notifications", JSON.stringify($scope.notifications));
                 $scope.navigateTo('/AlertsDetail/' + alertId, 'Notificaciones', 'null', 'navbarorange');
             }
+            
+            
             
             $scope.navigateTo = function(url,name,sideToggle,navbarColor){
                 $location.path(url);
