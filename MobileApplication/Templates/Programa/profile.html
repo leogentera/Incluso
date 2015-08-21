@@ -133,6 +133,8 @@
                             </div>
                         </div>
                     </div>
+                    <!--  End of page ----------------------------------------------------------------------------------------------------------------->
+
                     <div class="page" ng-class="currentPage == 2 ? 'active' : ''">
                         <div class="container-fluid">
                             <div class="row">
@@ -170,7 +172,7 @@
                                                         <p ng-bind="model.birthCountry"></p>
                                                         <hr />
                                                         <h5>Fecha de nacimiento</h5>
-                                                        <p ng-bind="model.birthday"></p>
+                                                        <p ng-bind="model.birthday" ng-init="model.birthday == 'MM/dd/yyyy'"></p>
                                                         <p {{ng-bind="model.birthday" | date: "MM/dd/yyyy"}}></p>
 
                                                         <hr />
@@ -372,8 +374,9 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    <!--  End of page ----------------------------------------------------------------------------------------------------------------->
+
                     <div class="page" ng-class="currentPage == 3 ? 'active' : ''">
                         <div class="container-fluid">
                             <div class="row">
@@ -434,7 +437,7 @@
                                                         </ul>
                                                         <hr />
                                                         <h4>A quién admiro</h4>
-                                                        
+
                                                         <ul class="block-list" ng-repeat="s in model.inspirationalCharacters">
                                                             <li>
                                                                 <h5>Nombre</h5>
@@ -459,6 +462,8 @@
                             </div>
                         </div>
                     </div>
+                    <!--  End of page ----------------------------------------------------------------------------------------------------------------->
+
                     <div class="page" ng-class="currentPage == 4 ? 'active' : ''">
                         <div class="container-fluid">
                             <div class="row">
@@ -526,6 +531,8 @@
                             </div>
                         </div>
                     </div>
+                    <!--  End of page ----------------------------------------------------------------------------------------------------------------->
+
                     <div class="page" ng-class="currentPage == 5 ? 'active' : ''">
                         <div class="container-fluid">
                             <div class="row">
@@ -621,6 +628,8 @@
                             </div>
                         </div>
                     </div>
+                    <!--  End of page ----------------------------------------------------------------------------------------------------------------->
+
                     <div class="page" ng-class="currentPage == 6 ? 'active' : ''">
                         <div class="container-fluid">
                             <div class="row">
@@ -633,10 +642,13 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="container-fluid">
-                                                <div class="row">                                                   
+                                                <div class="row">
 
-                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]" class="col-xs-4 badge-item">         
-                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" /> <div class="badgename" ng-bind="badge.name" style="width: 100px; font-size: 10px;"></div>
+                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]" class="col-xs-4 badge-item">
+                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px"
+                                                        height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)"
+                                                        />
+                                                        <div class="badgename" ng-bind="badge.name" style="width: 100px; font-size: 10px;"></div>
                                                         <!--
                                                         <div class="col-xs-12" ng-repeat="s in model.strengths">
                                                             <h5 ng-bind="s.name"></h5>
@@ -657,6 +669,7 @@
                                                         <span ng-bind="normalBadgePage" class="actual-page"></span>
                                                     </span>
                                                     <div class="icomoon icon-arrow-bold-right" ng-click="changepage(1)"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -664,6 +677,8 @@
                             </div>
                         </div>
                     </div>
+                    <!--  End of page ----------------------------------------------------------------------------------------------------------------->
+
                     <div class="page" ng-class="currentPage == 7 ? 'active' : ''">
                         <div class="container-fluid">
                             <div class="row">
@@ -693,6 +708,8 @@
                             </div>
                         </div>
                     </div>
+                    <!--  End of page ----------------------------------------------------------------------------------------------------------------->
+
                     <div class="page" ng-class="currentPage == 8 ? 'active' : ''">
                         <div class="container-fluid">
                             <div class="row">
@@ -745,6 +762,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--  End of page ----------------------------------------------------------------------------------------------------------------->
 
 
                     <div class="page" ng-class="currentPage == 10 ? 'active' : ''">
@@ -762,8 +780,9 @@
                                                 <div class="row">
                                                     <div class="text-center">
                                                         <div class="achievement-badge">
-                                                            <img class="badgesviews" ng-src="data:image/png;base64,{{badgeBadgeimage}}" alt="" class="img-responsive" width="100px" height="100px"  /> 
-															<div class="badgename" ng-bind="badgeName"></div>
+                                                            <img class="badgesviews" ng-src="data:image/png;base64,{{badgeBadgeimage}}" alt="" class="img-responsive" width="100px" height="100px"
+                                                            />
+                                                            <div class="badgename" ng-bind="badgeName"></div>
                                                             <div class="badgedate" ng-bind="badgeDateIssued"></div>
                                                         </div>
                                                         <div class="achievement-description">
@@ -772,7 +791,8 @@
                                                             </span>
                                                         </div>
                                                         <div class="earned-info">
-                                                            <span class="users">Tú y <span ng-bind="earnedTimes"></span></span> jóvenes han ganado esta bandera
+                                                            <span class="users">Tú y <span ng-bind="earnedTimes"></span></span>
+                                                            jóvenes han ganado esta bandera
                                                         </div>
                                                         <div class="share-achievement">
                                                             <span class="icon-container">
@@ -794,8 +814,7 @@
                             </div>
                         </div>
                     </div>
-
-
+                    <!--  End of page ----------------------------------------------------------------------------------------------------------------->
 
                 </div>
             </section>
