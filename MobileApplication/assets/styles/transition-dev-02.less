@@ -171,6 +171,116 @@
         }
 
         /* Chat */  
-        
+        .container.chat .component {
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+        .container.chat .component .container-shadow {
+            height: 1vw;
+            position: absolute;
+            top: 0;
+            box-shadow: 0 0 10vw 20vw rgb(0,0,0);
+            z-index: 1;
+            height: 1vw;
+            background: rgb(0,0,0);
+            opacity: 0.3;
+        }
+        .container.chat .component .msg-container {
+            padding: 10vw 2%;
+            display: block;
+            max-height: 150vw;
+            overflow-y: auto;
+        }
+        .container.chat .component .msg-container .msg {
+            display: block;
+            margin: 0 0 4vw 0;
+            position: relative;
+        }
+        .container.chat .component .msg-container .msg .text span {
+            color: rgb(256,256,256);
+            font-family: Play;
+            font-size: 4vw;
+            display: block;
+        }
+        .container.chat .component .msg-container .msg .text .date {
+            color: rgb(255,255,255);
+            font-size: 3.5vw;
+            text-align: right;
+            opacity: 0.5;
+            margin: 2vw 0 0;
+        }
+        .container.chat .component .msg-container .msg.received .text {
+            background: rgb(0,78,112);
+            border-radius: 4vw 4vw 4vw 0;
+            padding: 1vw 4vw;
+        }
+        .container.chat .component .msg-container .msg.received .msg-icn {
+            width: 0;
+            height: 0;
+            border-left: 2vw solid transparent;
+            border-top: 2vw solid transparent;
+            border-right: 2vw solid rgb(0,78,112);
+            border-bottom: 2vw solid rgb(0,78,112);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .container.chat .component .msg-container .msg.sent {
+            float: right;
+        }
+        .container.chat .component .msg-container .msg.sent .text {
+            background: rgb(4,135,109);
+            border-radius: 4vw 4vw 0 4vw;
+            padding: 1vw 4vw;
+        }
+        .container.chat .component .msg-container .msg.sent .msg-icn {
+            width: 0;
+            height: 0;
+            border-right: 2vw solid transparent;
+            border-top: 2vw solid transparent;
+            border-left: 2vw solid rgb(4,135,109);
+            border-bottom: 2vw solid rgb(4,135,109);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .container.chat .component .typing-section {
+            background: rgb(256,256,256);
+            padding: 0;
+        }
+        .container.chat .component .typing-section input[type="text"] {
+            border-color: transparent;
+            padding: 2vw;
+            font-size: 5vw;
+            float: none;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .container.chat .component .typing-section input[type="text"]::-webkit-input-placeholder {
+            color: rgb(86,86,86);
+        }
+        .container.chat .component .typing-section input[type="text"]:-moz-placeholder {
+            color: rgb(86,86,86);
+        }
+        .container.chat .component .typing-section input[type="text"]::-moz-placeholder {
+            color: rgb(86,86,86);
+        }
+        .container.chat .component .typing-section input[type="text"]:-ms-input-placeholder {  
+            color: rgb(86,86,86);
+        }
+        .container.chat .component .typing-section .send-text {
+            width: 0; 
+            height: 0; 
+            border-left: 20px solid rgb(237,72,35);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent; 
+            float: none;
+            display: inline-block;
+            color: rgb(237,72,35);
+            font-size: 7vw;
+            vertical-align: middle;
+        }
+
 
 }
