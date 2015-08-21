@@ -147,6 +147,9 @@
 
                           <section>
                             <h5>Datos generales</h5>
+                            <input type="text" name="username" class="form-control form-control-lg theme-form" placeholder="Nombre de Usuario" ng-model="model.username"
+                            readonly />
+
                             <input type="text" name="firstname" class="form-control form-control-lg theme-form" placeholder="Nombre(s)" ng-model="model.firstname"
                             required/>
 
@@ -197,27 +200,12 @@
                                     </button>
                                   </h5>
 
-                                  <!--Inicio Viejo-->
-                                  <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
-                                  <p class="form-group-control custom-placeholder-wrapper">
-                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
-                                      <option value="Grado">Grado</option>
-                                      <option value="Primaria">Primaria</option>
-                                      <option value="Secundaria">Secundaria</option>
-                                      <option value="Preparatoria">Preparatoria</option>
-                                      <option value="Profesional">Profesional</option>
-                                    </select>
-                                    <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>                                    -----------------
-                                  </p>-->
-                                  <!--Fin Viejo-->
-
                                   <p class="form-group">
                                     <select ng-model="model.studies[$index].school" ng-options="item for item in studiesList" ng-init="model.studies == null"
                                     class="form-control form-control-lg theme-form">
                                       <option value="" ng-disabled="!!model.studies">Nivel</option>
                                     </select>
                                   </p>
-                                  <hr>
                                   <p class="form-group">
                                     <select ng-model="model.studies[$index].levelOfStudies" ng-options="item for item in educationStatusList" ng-init="model.studies == null"
                                     class="form-control form-control-lg theme-form">
@@ -385,7 +373,7 @@
                           <section>
                             <h5>Teléfono</h5>
                             <ul class="block-list">
-                              <li ng-repeat="p in model.phones track by $index">
+                              <li ng-repeat="p in model.phones">
                                 <div class="form-group theme-form">
                                   <h5>
                                     <span>Teléfono {{model.phones.indexOf(p) + 1}}</span>
@@ -399,7 +387,7 @@
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addPhone();">
-                              <span class="icomoon icon-plus"></span>Agregar nuevo número...
+                              <span class="icomoon icon-plus"></span>Agregar número...
                             </button>
                           </section>
 
@@ -440,20 +428,13 @@
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
-                                  <!--<select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="sn.socialNetwork">
-                                    <option disabled>Red Social</option>
-                                    <option value="Facebook">Facebook</option>
-                                    <option value="Instagram">Instagram</option>
-                                    <option value="Twitter">Twitter</option>
-                                  </select>-->
-
-                                  <select ng-model="model.socialNetwork[$index]" ng-options="item for item in socialNetworksList" ng-init="model.socialNetwork == null"
+                                  <select ng-model="model.socialNetworks[$index].socialNetwork" ng-options="item for item in socialNetworksList" ng-init="model.socialNetwork == null"
                                   class="form-control form-control-lg theme-form">
                                     <option value="" ng-disabled="!!model.socialNetwork">Red social</option>
                                   </select>
                                 </div>
                                 <div class="form-group">
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Red social" ng-model="sn.socialNetworkId"
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Red social" ng-model="model.socialNetworks[$index].socialNetworkId"
                                   />
                                 </div>
                               </li>
@@ -471,7 +452,10 @@
                             </p>
                           </div>
 
-                          <div class="actions">
+                          <div class="button-group">
+                            <button type="button" ng-disabled="isRegistered" class="btn btn-primary btn-lg" ng-click="navigateToPage(2)">
+                              <span class="icomoon icon-arrow-slim-left"></span>
+                            </button>
                             <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="navigateToPage(4)">Continuar</button>
                             <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
                           </div>
@@ -494,7 +478,7 @@
                         <span class="icomoon icon-information"></span>
                         <h3 class="panel-title">Mi información</h3>
                       </div>
-                      <!--<div class="panel-body">
+                      <div class="panel-body">
                         <fieldset class="my-profile-form">
                           <section>
                             <h5>Familiares Compartamos</h5>
@@ -507,18 +491,28 @@
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" ng-model="fc.idClient"
+
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="No. Cliente Compartamos" ng-model="model.familiaCompartamos[$index].idClient"
                                   />
-                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" ng-model="fc.relativeName"
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Completo" ng-model="model.familiaCompartamos[$index].relativeName"
                                   />
-                                  <p class="form-group-control custom-placeholder-wrapper">
+                                  <!--<p class="form-group-control custom-placeholder-wrapper">
                                     <select name="country" id="country" class="form-control form-control-lg theme-form" ng-model="fc.relationship">
                                       <option disabled>Parentesco</option>
                                       <option value="Mamá">Mamá</option>
                                       <option value="Papá">Papá</option>
                                     </select>
-                                  </p>
+                                  </p>-->
+
+                                  <select ng-model="model.familiaCompartamos[$index].relationship" ng-options="item for item in familiaCompartamosList" ng-init="model.familiaCompartamos.relationship == null"
+                                  class="form-control form-control-lg theme-form">
+                                    <option value="" ng-disabled="!!model.familiaCompartamos.relationship">Parentezco</option>
+                                  </select>
                                 </div>
+                                <!--<div class="form-group">
+                                  <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Red social" ng-model="sn.familiaCompartamos"
+                                  />
+                                </div>-->
                               </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addFamiliaCompartamos();">
@@ -542,7 +536,7 @@
                             <a class="btn btn-default btn-transparent btn-lg btn-block" ng-click="navigateToPage(1);">Cancelar</a>
                           </div>
                         </fieldset>
-                      </div>-->
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -773,7 +767,7 @@
                               <h4>Personajes</h4>
                               <ul class="block-list">
 
-                                <!--<li ng-repeat="p in model.inspirationalCharacters track by $index">
+                                <li ng-repeat="p in model.inspirationalCharacters track by $index">
                                   <div class="form-group theme-form">
                                     <h5>
                                     <span>Personaje {{model.inspirationalCharacters.indexOf(p) + 1}}</span>
@@ -781,29 +775,14 @@
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Personajes" ng-model="model.inspirationalCharacters[$index]"
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Personajes" ng-model="model.inspirationalCharacters[$index].characterName"
                                     />
-                                  </div>
-                                </li>-->
-
-                                <li ng-repeat="s in model.inspirationalCharacters">
-                                  <div class="form-group theme-form">
-                                    <h5>
-                                    <span>Personaje {{model.inspirationalCharacters.indexOf(s) + 1}}</span>
-                                    <button class="btn btn-circle" ng-click="deleteInspirationalCharacter($index);">
-                                      <span class="icomoon icon-cross"></span>
-                                    </button>
-                                  </h5>
-                                    <select ng-model="model.inspirationalCharacters[$index]" ng-options="item for item in inspirationalCharactersList" ng-init="model.inspirationalCharacters == null"
-                                    class="form-control form-control-lg theme-form">
-                                      <option value="" ng-disabled="!!model.inspirationalCharacters">Red social</option>
+                                    <select ng-model="model.inspirationalCharacters[$index].characterType" ng-options="item for item in inspirationalCharactersList"
+                                    ng-init="model.inspirationalCharacters == null" class="form-control form-control-lg theme-form">
+                                      <option value="" ng-disabled="!!model.inspirationalCharacters">Tipo de personaje</option>
                                     </select>
                                   </div>
-                                  <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Red social" ng-model="s.inspirationalCharacters"
-                                    />
-                                  </div>
-                                </li>
+                                </li>                              
                               </ul>
                               <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addInspirationalCharacter();">
                                 <span class="icomoon icon-plus"></span>Agregar personaje...
@@ -1222,8 +1201,8 @@
                   </div>
                 </div>
               </div>
+            </div>
         </form>
       </section>
     </article>
-    </div>
     </div>

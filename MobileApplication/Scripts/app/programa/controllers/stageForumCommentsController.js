@@ -31,7 +31,13 @@ angular
                       {
                          id:3,
                          name: "Topico1",
-                         message:"¿cuáles son las ventajas de tener habilidades diferentes? ¿cómo pueden aprovecharse?",
+                         message:"¿cuáles son las ventajas de tener habilidades diferentes? ¿cómo pueden aprovecharse? <a href=\"https://github.com/Sieena/Incluso/wiki/Restful-API\">https://github.com/Sieena/Incluso/wiki/Restful-API</a>",
+                         image:[
+                            {
+                               filename:"foro.jpg",
+                               mimetype:"image/jpeg",
+                               fileurl:"https://thenypost.files.wordpress.com/2013/11/dog1.jpg"
+                            }],
                          posts:[
                             {
                                id:3,
@@ -41,7 +47,18 @@ angular
                                subject:"Discusión 1",
                                message:"¿Que te motiva para lograr conseguir tus sueños?",
                                hasAttachment:null,
-                               attachments:null,
+                               attachments:[
+                                  {
+                                     filename:"file_attachment.txt",
+                                     mimetype:"text\/plain",
+                                     fileurl:"http:\/moodle/file_attachment.txt"
+                                  },
+                                  {
+                                     filename:"file_attachment.txt",
+                                     mimetype:"text\/plain",
+                                     fileurl:"http:\/moodle/file_attachment.txt"
+                                  }
+                               ],
                                postAutor:"Alias de usuario",
                                picturePostAutor:null,
                                likes:30,
@@ -297,6 +314,7 @@ angular
 
             $scope.discussion = _.find($scope.activity.discussions, function(d){ return d.id == $routeParams.discussionId; });
 
+
             function getDataAsync() {
                 moodleFactory.Services.GetAsyncActivity(64, getActivityInfoCallback);
 //                moodleFactory.Services.GetAsyncActivity($routeParams.moodleid, getActivityInfoCallback);
@@ -306,7 +324,7 @@ angular
                 $scope.activity = JSON.parse(moodleFactory.Services.GetCacheObject("activity/" + $routeParams.moodleid));
             }
 
-//            getDataAsync();
+            getDataAsync();
 
             $scope.back = function () {
                $location.path('ZonaDeVuelo/Conocete/PuntoDeEncuentro/Topicos/zv_puntodeencuentro#top');
