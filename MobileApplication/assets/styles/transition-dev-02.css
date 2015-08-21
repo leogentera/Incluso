@@ -227,7 +227,7 @@
   border-top: 2vw solid transparent;
   border-right: 2vw solid #004e70;
   border-bottom: 2vw solid #004e70;
-  position: relative;
+  position: absolute;
   bottom: 0;
   left: 0;
 }
