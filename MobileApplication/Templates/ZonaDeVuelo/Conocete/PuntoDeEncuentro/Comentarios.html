@@ -8,8 +8,9 @@
 <article class="blueprint">
 
   <section>
-    <div class="txt-renglon centered txt-bigger"></div> 
+    <div class="txt-renglon centered txt-bigger"></div>
     <div class="subtitle">Foro Común</div>
+
     <div class="txt-renglon txt-bigger">{{discussion.message}}</div>  
   </section>
 
@@ -26,7 +27,7 @@
       <div class="panel-body" collapse="isCollapsed">
         <div class="stage perform">
           <figure class="player">
-            <img src="assets/images/ptr-video-0001.jpg" alt="Imágen del foro" />
+              <img src="{{ discussion.image[0].fileurl }}" alt="{{ discussion.image[0].filename }}">
           </figure>
         </div>
       </div>
@@ -39,6 +40,7 @@
     <a href="#openModal3"><img src="assets/images/play.svg"></a>
     <a href="#openModal4"><img src="assets/images/clip.svg"></a>
   </section>
+
 <section class="modales">
 
 <div id="openModal1" class="modalDialog">
@@ -87,12 +89,15 @@
 
         <div class="part">
           <div class="author"><img src="assets/images/avatar.svg">
-          <div>{{p.postAutor}}<span>publicó:</span>   
-          <div>{{p.created}}</div>
+          <div>{{p.postAutor}} <span>publicó:</span>
+          <div>{{p.created | date: 'dd MMMM yyyy'}}</div>
           </div>
         </div>
         <div class="block">  
             {{p.message}}
+            <div ng-repeat="attachment in p.attachments">
+                <a href="{{ attachmentsfileurl }}"><i class="icomoon icon-required"></i> {{ attachment.filename }} </a>
+            </div>
           <div>A <span class="green">{{p.likes}}</span> jóvenes les gusta esto</div></div>
 
 
@@ -102,7 +107,6 @@
               <div>{{r.postAutor}}<span>publicó:</span>   <div>{{r.message}}</div>
               </div>
             </div>
-
           </div>
 
         <div class="vermas">
@@ -116,12 +120,7 @@
         </div>
         </div>
         </div>
-
-
-
     </div>
-
-
 
 
 <section>

@@ -34,9 +34,9 @@
 
     /* Mis Logros */    
     .achievements .panel-body .badge-item {
-        height: 40vw;
-        padding: 10px;
-        margin: 10px 0 0;
+        height: 41vw;
+        padding: 2vw 2vw 4vw;
+        margin: 4vw 0 0;
         border-bottom: 1px solid rgb(139,168,177);
         cursor: pointer;
     }
@@ -50,6 +50,28 @@
         font-size: 4vw;
         line-height: 5vw;
         text-align: center;
+    }
+    .achievements .panel-body .pager {
+        display: block;
+        margin: 8vw 0 0;
+    }
+    .achievements .panel-body .pager > * {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 2vw;
+    }
+    .incluso-app .achievements .panel-body .pager .icomoon {
+        font-size: 13vw;
+        color: rgb(0,173,138);
+        cursor: pointer;
+    }
+    .incluso-app .achievements .panel-body .pager .actual-page {
+        color: rgb(0,173,138);
+        font-weight: bold;
+        font-size: 5vw;
+    }
+    .incluso-app .achievements .panel-body .pager .icomoon.disabled {
+        opacity: 0.3;
     }
 
     /* Detalle de Logro */  
@@ -67,7 +89,14 @@
         font-size: 8vw;
         line-height: 7vw;
         text-align: center;
-        padding: 4vw 0;
+        padding: 4vw 0 0;
+    }
+    .achievement-detail .panel-body .text-center .achievement-badge .badgedate {
+        font-family: Play;
+        font-size: 4vw;
+        font-weight: bold;
+        padding: 2vw 0 4vw;
+        color: rgb(153,153,153);
     }
     .achievement-detail .panel-body .text-center .achievement-description {
         color: #fff;
@@ -90,14 +119,55 @@
     .achievement-detail .panel-body .text-center .share-achievement {
         position: relative;
         overflow: visible;
+        display: inline-block;
+        padding: 4vw;
+        cursor: pointer;
     }
-        .achievement-detail .panel-body .text-center .share-achievement .icon-share {
+    .achievement-detail .panel-body .text-center .share-achievement .icon-container {
+        .border-radius-circle();
+        background: rgb(72,81,87);
+        border-radius: 90px;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 1vw;
+        text-align: center;
+        width: auto;
+        position: relative;
+    }
+        .achievement-detail .panel-body .text-center .share-achievement .icon-container .icon-share {
             .border-radius-circle();
             background: rgb(184,207,51);
+            border-radius: 90px;
+            font-size: 7vw;
+            font-weight: bold;
+            padding: 8px;
+            display: inline-block;
+            vertical-align: middle;
         }
         .achievement-detail .panel-body .text-center .share-achievement .share-text {
             background: rgb(72,81,87);
-            .border-radius(12px);
+            .border-radius(10vw);
+            display: inline-block;
+            padding: 2vw 4vw 2vw 12vw;
+            font-size: 4vw;
+            margin-left: -10vw;
+            vertical-align: middle;
+            color: #fff;
+        }
+        .achievement-detail .panel-body .text-center .return-btn {
+            .border-radius(10px);
+            border-bottom: 1vw solid rgb(209,64,39);
+            background: rgb(237,72,35);
+            padding: 4vw 6vw;
+            color: rgb(256,256,256);
+            font-family: play;
+            font-size: 7vw;
+            font-weight: bold;
+            padding: 2vw 4vw;
+            text-transform: uppercase;
+            display: block;
+            cursor: pointer;
+            margin: 4vw 1vw 0;
         }
 
 }
