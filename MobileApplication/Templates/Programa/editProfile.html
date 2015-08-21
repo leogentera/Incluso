@@ -200,20 +200,6 @@
                                     </button>
                                   </h5>
 
-                                  <!--Inicio Viejo-->
-                                  <!--<input type="text" class="form-control form-control-lg theme-form" placeholder="Institución" ng-model="s.school" />
-                                  <p class="form-group-control custom-placeholder-wrapper">
-                                    <select name="" id="" class="form-control form-control-lg theme-form" ng-model="s.levelOfStudies" ng-init="form.type='Grado'">
-                                      <option value="Grado">Grado</option>
-                                      <option value="Primaria">Primaria</option>
-                                      <option value="Secundaria">Secundaria</option>
-                                      <option value="Preparatoria">Preparatoria</option>
-                                      <option value="Profesional">Profesional</option>
-                                    </select>
-                                    <span class="custom-placeholder form-control-lg" ng-show="s.levelOfStudies.lenght > 0">Nivel de Estudios</span>                                    -----------------
-                                  </p>-->
-                                  <!--Fin Viejo-->
-
                                   <p class="form-group">
                                     <select ng-model="model.studies[$index].school" ng-options="item for item in studiesList" ng-init="model.studies == null"
                                     class="form-control form-control-lg theme-form">
@@ -781,7 +767,7 @@
                               <h4>Personajes</h4>
                               <ul class="block-list">
 
-                                <!--<li ng-repeat="p in model.inspirationalCharacters track by $index">
+                                <li ng-repeat="p in model.inspirationalCharacters track by $index">
                                   <div class="form-group theme-form">
                                     <h5>
                                     <span>Personaje {{model.inspirationalCharacters.indexOf(p) + 1}}</span>
@@ -789,29 +775,14 @@
                                       <span class="icomoon icon-cross"></span>
                                     </button>
                                   </h5>
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Personajes" ng-model="model.inspirationalCharacters[$index]"
+                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Personajes" ng-model="model.inspirationalCharacters[$index].characterName"
                                     />
-                                  </div>
-                                </li>-->
-
-                                <li ng-repeat="s in model.inspirationalCharacters">
-                                  <div class="form-group theme-form">
-                                    <h5>
-                                    <span>Personaje {{model.inspirationalCharacters.indexOf(s) + 1}}</span>
-                                    <button class="btn btn-circle" ng-click="deleteInspirationalCharacter($index);">
-                                      <span class="icomoon icon-cross"></span>
-                                    </button>
-                                  </h5>
-                                    <select ng-model="model.inspirationalCharacters[$index]" ng-options="item for item in inspirationalCharactersList" ng-init="model.inspirationalCharacters == null"
-                                    class="form-control form-control-lg theme-form">
-                                      <option value="" ng-disabled="!!model.inspirationalCharacters">Red social</option>
+                                    <select ng-model="model.inspirationalCharacters[$index].characterType" ng-options="item for item in inspirationalCharactersList"
+                                    ng-init="model.inspirationalCharacters == null" class="form-control form-control-lg theme-form">
+                                      <option value="" ng-disabled="!!model.inspirationalCharacters">Tipo de personaje</option>
                                     </select>
                                   </div>
-                                  <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg theme-form" placeholder="Nombre Red social" ng-model="s.inspirationalCharacters"
-                                    />
-                                  </div>
-                                </li>
+                                </li>                              
                               </ul>
                               <button type="button" class="btn btn-lg btn-block btn-add" ng-click="addInspirationalCharacter();">
                                 <span class="icomoon icon-plus"></span>Agregar personaje...

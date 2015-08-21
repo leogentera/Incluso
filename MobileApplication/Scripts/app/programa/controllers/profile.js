@@ -18,11 +18,54 @@ angular
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true;
+
+
+            $rootScope.showFooterRocks = false;
+
             $rootScope.showFooterRocks = false;            
+
+            $rootScope.showFooterRocks = false;
+
+
 
             $scope.$emit('HidePreloader');
 
             $scope.model = getDataAsync();
+
+            $scope.wholeBadges = {};
+            $scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
+            $scope.totalBadges = $scope.wholeBadges.badges.length;
+            $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);            
+            $scope.badgePage = 0;
+            $scope.normalBadgePage = $scope.badgePage + 1;
+
+            $scope.wholeBadgesPages = [];
+
+            for (var i = 0; i < $scope.totalBadgePages; i++) {
+                var top = Math.min(12, $scope.totalBadges - 12 * i);
+                $scope.wholeBadgesPages[i] = [];
+                for (var j = 0; j < top; j++) {
+                    var elem = $scope.wholeBadges.badges.shift(); //extracts first element of remaining array                    
+                    $scope.wholeBadgesPages[i].push(elem);
+                }
+            }
+            
+            $scope.changepage = function (delta) {
+                $scope.badgePage += delta;
+                $scope.normalBadgePage = $scope.badgePage + 1;
+
+                if ($scope.badgePage < 0) {
+                    $scope.badgePage = 0;
+                    $scope.normalBadgePage = 1;
+                }
+
+                if ($scope.badgePage > $scope.totalBadgePages - 1) {
+                    $scope.badgePage = $scope.totalBadgePages - 1;
+                    $scope.normalBadgePage = $scope.badgePage + 1;
+                }
+            }
+
+
 
             $scope.model.modelState = {
                 isValid: null,
@@ -58,10 +101,10 @@ angular
             $scope.phoneUsageList = ['Hacer llamadas', 'Mensajes', 'Música', 'Videos', 'Fotos', 'Descargas', 'Investigación', 'Juegos', 'Redes sociales', 'Tomar selfies', 'Grabar videos'];
             $scope.videoGamesFrecuencyList = ['Diario', '3 veces a la semana', '1 vez a la semana', '1 o 2 veces al mes', 'Nunca'];
             $scope.kindOfVideoGamesList = ['Acción', 'Deportes', 'Violencia', 'Aventura', 'Reto', 'Estrategia', 'Educativos', 'Peleas'];
-            $scope.socialNetworksList = ['Facebook','Instagram','Twitter'];
-            $scope.inspirationalCharactersList = ['Familiar','Artista','Deportista','Figura social','Figura política'];
-            $scope.familiaCompartamosList = ['Madre','Padre','Tío(a)','Abuelo(a)','Primo(a)','Hermano(a)'];
-                     
+            $scope.socialNetworksList = ['Facebook', 'Instagram', 'Twitter'];
+            $scope.inspirationalCharactersList = ['Familiar', 'Artista', 'Deportista', 'Figura social', 'Figura política'];
+            $scope.familiaCompartamosList = ['Madre', 'Padre', 'Tío(a)', 'Abuelo(a)', 'Primo(a)', 'Hermano(a)'];
+
             $scope.birthdate_Dateformat = formatDate($scope.model.birthday);
             getAge();
 
@@ -74,7 +117,7 @@ angular
                     $location.path('/');
                     return "";
                 }
-                initFields(m);
+                initFields(m);              
 
                 return m;
             }
@@ -115,7 +158,13 @@ angular
 
             function formatDate(date) {
                 var splitDate = date.split("/");
+
+                var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
+
                 var userBirthDate = new Date(splitDate[2], splitDate[0]-1, splitDate[1]);
+
+                var userBirthDate = new Date(splitDate[2], splitDate[0] - 1, splitDate[1]);
+
                 return userBirthDate;
             }
 
@@ -171,6 +220,8 @@ angular
                 console.log('fetching editProfile errors list');
                 var errors = [];
 
+               validateEmptyItemsOnLists();
+
                 if (!$scope.editForm.firstname.$valid) { errors.push("Formato de nombre incorrecto."); }
                 if (!$scope.editForm.lastname.$valid) { errors.push("Formato de apellido paterno incorrecto."); }
                 if (!$scope.editForm.mothername.$valid) { errors.push("Formato de apellido materno incorrecto."); }
@@ -180,6 +231,53 @@ angular
 
                 return (errors.length === 0);
             }
+            
+            var validateEmptyItemsOnLists = function(){
+                //studies
+                 if ($scope.model.studies.length > 0) {
+                    for (var i = 0; i < $scope.model.studies.length; i++) {
+                        if (typeof  $scope.model.studies[i].school === "undefined" || 
+                            typeof $scope.model.studies[i].levelOfStudies === "undefined") {
+                            $scope.model.studies.splice(i, 1);
+                            i = i-1;
+                        }
+                    }
+                };
+                
+                //phones
+                 if ($scope.model.phones.length > 0) {
+                    for (var i = 0; i < $scope.model.phones.length; i++) {
+                        if (typeof  $scope.model.phones[i] === "undefined" || 
+                            $scope.model.phones[i].length === 0) {
+                            $scope.model.phones.splice(i, 1);
+                            i = i-1;
+                        }
+                    }
+                };
+                
+                //socialNetworks               
+                 if ($scope.model.socialNetworks.length > 0) {
+                    for (var i = 0; i < $scope.model.socialNetworks.length; i++) {
+                        if (typeof  $scope.model.socialNetworks[i].socialNetwork === "undefined" || 
+                            typeof $scope.model.socialNetworks[i].socialNetworkId === "undefined") {
+                            $scope.model.socialNetworks.splice(i, 1);
+                            i = i-1;
+                        }
+                    }
+                };
+                
+                //familiaCompartamos              
+                 if ($scope.model.familiaCompartamos.length > 0) {
+                    for (var i = 0; i < $scope.model.familiaCompartamos.length; i++) {
+                        if (typeof  $scope.model.familiaCompartamos[i].idClient === "undefined" || 
+                            typeof $scope.model.familiaCompartamos[i].relativeName === "undefined" ||
+                            typeof $scope.model.familiaCompartamos[i].relationship === "undefined") {
+                            $scope.model.familiaCompartamos.splice(i, 1);
+                            i = i-1;
+                        }
+                    }
+                };
+            };
 
             var saveUser = function () {
                 moodleFactory.Services.PutAsyncProfile(_getItem("userId"), $scope.model,
@@ -191,16 +289,16 @@ angular
                     function (date) {
                         console.log('Save profile fail...');
                     });
-            }
+            };
 
             $scope.save = function () {
                 var validationResult = validateModel();
                 //validationResult = true;
                 if (validationResult) {
-                    $scope.$emit('ShowPreloader'); 
+                    $scope.$emit('ShowPreloader');
                     saveUser();
                 } else {
-                    $scope.$emit('scrollTop'); 
+                    $scope.$emit('scrollTop');
                 }
             }
 

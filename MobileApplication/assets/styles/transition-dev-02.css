@@ -2,7 +2,14 @@
     Incluso Digital CSS Styles
 
     Parallel work file for UI Developer 02
+
+    Color Palette:  Please look at base.css
+    Index:
+        01. $_Base
+        02. $_Entities
+        03. $_Overrrides
 ********************************************************************************/
+/*******************************************************************************/
 /****************************************************************************
  LESS Utilities - variables and functions
 ****************************************************************************/
@@ -20,4 +27,150 @@
      Entities styles (if needed)
     ********************************************************************************/
   /* Start writing base classes here */
+  /********************************************************************************
+     Overrides styles (if needed)
+    ********************************************************************************/
+  /* Start writing base classes here */
+  /* Mis Logros */
+  /* Detalle de Logro */
+}
+.incluso-app .achievements .panel-body .badge-item {
+  height: 41vw;
+  padding: 2vw 2vw 4vw;
+  margin: 4vw 0 0;
+  border-bottom: 1px solid #8ba8b1;
+  cursor: pointer;
+}
+.incluso-app .achievements .panel-body .badge-item img {
+  height: auto;
+  width: 100%;
+}
+.incluso-app .achievements .panel-body .badge-item .badgename {
+  color: #fff;
+  font-family: Play;
+  font-size: 4vw;
+  line-height: 5vw;
+  text-align: center;
+}
+.incluso-app .achievements .panel-body .pager {
+  display: block;
+  margin: 8vw 0 0;
+}
+.incluso-app .achievements .panel-body .pager > * {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 2vw;
+}
+.incluso-app .incluso-app .achievements .panel-body .pager .icomoon {
+  font-size: 13vw;
+  color: #00ad8a;
+  cursor: pointer;
+}
+.incluso-app .incluso-app .achievements .panel-body .pager .actual-page {
+  color: #00ad8a;
+  font-weight: bold;
+  font-size: 5vw;
+}
+.incluso-app .incluso-app .achievements .panel-body .pager .icomoon.disabled {
+  opacity: 0.3;
+}
+.incluso-app .achievement-detail .panel-body .text-center .achievement-badge {
+  border-bottom: 1px solid #8ba8b1;
+  margin-bottom: 5vw;
+}
+.incluso-app .achievement-detail .panel-body .text-center .achievement-badge img {
+  width: 50vw;
+  height: 50vw;
+}
+.incluso-app .achievement-detail .panel-body .text-center .achievement-badge .badgename {
+  color: #fff;
+  font-family: Play;
+  font-size: 8vw;
+  line-height: 7vw;
+  text-align: center;
+  padding: 4vw 0 0;
+}
+.incluso-app .achievement-detail .panel-body .text-center .achievement-badge .badgedate {
+  font-family: Play;
+  font-size: 4vw;
+  font-weight: bold;
+  padding: 2vw 0 4vw;
+  color: #999999;
+}
+.incluso-app .achievement-detail .panel-body .text-center .achievement-description {
+  color: #fff;
+  font-family: Play;
+  font-size: 5vw;
+  line-height: 7vw;
+  padding: 4vw 0;
+}
+.incluso-app .achievement-detail .panel-body .text-center .earned-info {
+  color: #63777d;
+  font-family: Play;
+  font-size: 4vw;
+  padding: 4vw 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.incluso-app .achievement-detail .panel-body .text-center .earned-info .users {
+  color: #b8cf33;
+}
+.incluso-app .achievement-detail .panel-body .text-center .share-achievement {
+  position: relative;
+  overflow: visible;
+  display: inline-block;
+  padding: 4vw;
+  cursor: pointer;
+}
+.incluso-app .achievement-detail .panel-body .text-center .share-achievement .icon-container {
+  -webkit-border-radius: 90px;
+  -moz-border-radius: 90px;
+  background: #485157;
+  border-radius: 90px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 1vw;
+  text-align: center;
+  width: auto;
+  position: relative;
+}
+.incluso-app .achievement-detail .panel-body .text-center .share-achievement .icon-container .icon-share {
+  -webkit-border-radius: 90px;
+  -moz-border-radius: 90px;
+  background: #b8cf33;
+  border-radius: 90px;
+  font-size: 7vw;
+  font-weight: bold;
+  padding: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.incluso-app .achievement-detail .panel-body .text-center .share-achievement .share-text {
+  background: #485157;
+  -webkit-border-radius: 10vw;
+  -moz-border-radius: 10vw;
+  border-radius: 10vw;
+  display: inline-block;
+  padding: 2vw 4vw 2vw 12vw;
+  font-size: 4vw;
+  margin-left: -10vw;
+  vertical-align: middle;
+  color: #fff;
+}
+.incluso-app .achievement-detail .panel-body .text-center .return-btn {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border-bottom: 1vw solid #d14027;
+  background: #ed4823;
+  padding: 4vw 6vw;
+  color: #ffffff;
+  font-family: play;
+  font-size: 7vw;
+  font-weight: bold;
+  padding: 2vw 4vw;
+  text-transform: uppercase;
+  display: block;
+  cursor: pointer;
+  margin: 4vw 1vw 0;
 }
