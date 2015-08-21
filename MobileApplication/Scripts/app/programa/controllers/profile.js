@@ -18,30 +18,21 @@ angular
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true;
-
             $rootScope.showFooterRocks = false;
-
             $scope.$emit('HidePreloader');
-
             $scope.model = getDataAsync();
-
-
-            
             
             $scope.totalBadges = $scope.model.badges.length;
             $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);
-
             $scope.badgePage = 0;
             $scope.normalBadgePage = $scope.badgePage + 1;
-
             $scope.wholeBadgesPages = [];
             var copyBadges = $scope.model.badges.slice();  //Deep copy of the $scope.model.badges array
+            
             for (var i = 0; i < $scope.totalBadgePages; i++) {
                 var top = Math.min(12, $scope.totalBadges - 12 * i);
                 $scope.wholeBadgesPages[i] = [];
                 for (var j = 0; j < top; j++) {
-                   
-                   
                     var elem = copyBadges.shift(); //extracts first element of remaining array
                     $scope.wholeBadgesPages[i].push(elem);
                 }
@@ -61,8 +52,6 @@ angular
                     $scope.normalBadgePage = $scope.badgePage + 1;
                 }
             }
-
-
 
             $scope.model.modelState = {
                 isValid: null,
