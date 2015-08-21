@@ -1438,7 +1438,7 @@ body.modal-open {
   margin: 0;
   font-size: inherit;
   font-weight: 700;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .incluso-app .panel > .panel-body {
   padding-left: 3vw;
