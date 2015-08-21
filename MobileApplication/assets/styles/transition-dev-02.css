@@ -47,6 +47,8 @@
 .incluso-app .achievements .panel-body .badge-item img {
   height: auto;
   width: 100%;
+  text-align: center;
+  margin: 0 auto;
 }
 .incluso-app .achievements .panel-body .badge-item .badgename {
   color: #fff;
@@ -196,7 +198,7 @@
 .incluso-app .container.chat .component .msg-container {
   padding: 10vw 2%;
   display: block;
-  max-height: 240px;
+  max-height: 235px;
   overflow-y: auto;
 }
 .incluso-app .container.chat .component .msg-container .msg {
@@ -255,11 +257,11 @@
 }
 .incluso-app .container.chat .component .typing-section {
   background: #ffffff;
-  padding: 0;
+  padding: 2vw 0;
 }
 .incluso-app .container.chat .component .typing-section input[type="text"] {
   border-color: transparent;
-  padding: 2vw;
+  padding: 0 2vw;
   font-size: 5vw;
   float: none;
   display: inline-block;

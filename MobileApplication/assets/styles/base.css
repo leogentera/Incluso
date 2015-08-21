@@ -1414,6 +1414,11 @@ body.modal-open {
   -moz-border-radius: 16px;
   border-radius: 16px;
 }
+.incluso-app .panel {
+  -webkit-border-radius: 1.5vw;
+  -moz-border-radius: 1.5vw;
+  border-radius: 1.5vw;
+}
 .incluso-app .panel > .panel-heading {
   padding: 5.5vw 2.6vw;
   -webkit-border-radius: 1.5vw 1.5vw 0 0;
@@ -1433,7 +1438,7 @@ body.modal-open {
   margin: 0;
   font-size: inherit;
   font-weight: 700;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .incluso-app .panel > .panel-body {
   padding-left: 3vw;
