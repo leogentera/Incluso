@@ -434,10 +434,13 @@
                                                         </ul>
                                                         <hr />
                                                         <h4>A quién admiro</h4>
-                                                        <h5>Personajes</h5>
+                                                        
                                                         <ul class="block-list" ng-repeat="s in model.inspirationalCharacters">
                                                             <li>
-                                                                <p ng-bind="s"></p>
+                                                                <h5>Nombre</h5>
+                                                                <p ng-bind="s.characterName"></p>
+                                                                <h5>Tipo de personaje</h5>
+                                                                <p ng-bind="s.characterType"></p>
                                                             </li>
                                                         </ul>
                                                         <hr />
@@ -631,30 +634,25 @@
                                         <div class="panel-body">
                                             <div class="container-fluid">
                                                 <div class="row">
-                                                    <span style="color:white;">Página: <span ng-bind="normalBadgePage"></span></span>
-                                                    
-                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]">         
-                                                          <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />  
-														<div ng-repeat="badge in model.badgesToEarn" class="col-xs-4 badge-item">
-                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" />      
+                                                    <div ng-repeat="badge in wholeBadgesPages[badgePage]" class="col-xs-4 badge-item">         
+                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" /> 								                                                        
                                                         <div class="badgename" ng-bind="badge.name"></div>
-                                                        <br />
+                                                        <!--
+                                                        <div class="col-xs-12" ng-repeat="s in model.strengths">
+                                                            <h5 ng-bind="s.name"></h5>
+                                                            <ul class="block-list" ng-repeat="v in s.values">
+                                                                <li>
+                                                                    <p ng-bind="v"></p>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                            <br />
+                                                        </div>
+                                                        -->
                                                     </div>
+                                                    <span style="color:white;">Página: <span ng-bind="normalBadgePage"></span></span>
                                                     <div style="color:white;" ng-click="changepage(-1)">Back</div>
                                                     <div style="color:white;" ng-click="changepage(1)">Forward</div>
-
-                                                    <!--
-                                                    <div class="col-xs-12" ng-repeat="s in model.strengths">
-                                                        <h5 ng-bind="s.name"></h5>
-                                                        <ul class="block-list" ng-repeat="v in s.values">
-                                                            <li>
-                                                                <p ng-bind="v"></p>
-                                                            </li>
-                                                        </ul>
-                                                        <hr />
-                                                        <br />
-                                                    </div>
-                                                    -->
                                                 </div>
                                             </div>
                                         </div>
@@ -688,7 +686,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -755,7 +752,7 @@
                                         <div class="panel-heading">
                                             <span class="icomoon icon-arrow-slim-left" ng-click="navigateToPage(1)"></span>
                                             <span class="icomoon icon-information"></span>
-                                            <h3 class="panel-title">Mis Insignias</h3><span>{{badgeId}}</span>
+                                            <h3 class="panel-title">Mis Insignias</h3>
                                         </div>
                                         <div class="panel-body">
                                             <div class="container-fluid">
@@ -775,7 +772,9 @@
                                                             <span class="users">Tú y <span ng-bind="earnedTimes"></span></span> jóvenes han ganado esta bandera
                                                         </div>
                                                         <div class="share-achievement">
-                                                            <span class="icomoon icon-share"></span>
+                                                            <span class="icon-container">
+                                                                <span class="icomoon icon-share"></span>
+                                                            </span>
                                                             <span class="share-text">Compartir Insignia</span>
                                                         </div>
                                                     </div>
