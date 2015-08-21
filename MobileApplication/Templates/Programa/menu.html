@@ -8,8 +8,8 @@
                     <div id="navBar" class="navbar" ng-class="{'navbar-blue': navbarBlue, 'navbar-orange': navbarOrange}">
                       <div class="container-fluid">
                         <div class="row">
-                          <div class="navbar-assets">
-                            <h1 class="navbar-heading" ng-click="sideToggle()"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
+                          <div class="navbar-assets" ng-click="sideToggle()">
+                            <h1 class="navbar-heading"><a id="closeaton" data-transition="ease"><i class="icomoon icon-cross white"></i> Menu</a></h1>
                           </div>
                         </div>
                       </div>
@@ -18,7 +18,6 @@
                   <ul class="nav" ng-controller="menuController">
                     <li><a ng-click="navigateTo('ProgramaDashboard', 'Mision Incluso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-home"></i> Inicio</a></li>
                     <li><a ng-click="navigateTo('AcercaPrograma', 'Acerca del Programa', 'sideToggle', 'navbarorange')"><i class="icomoon icon-video-file"></i> Acerca de Incluso</a></li>
-                    <!--<li><a ng-click="navigateTo('Tutorial','Guia de Uso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-video-file"></i> Guía de uso</a></li> -->
                     <li><a ng-click="playVideo('assets/media', 'TutorialTest2.mp4')"><i class="icomoon icon-video-file"></i> Guía de uso </a></li>
                     <li>
                         <i class="icomoon icon-arrow fl-right white pointer" ></i>
@@ -37,7 +36,7 @@
                             </ul>
                             <ul>
                               <li>Cuarto de recursos</li>
-                              <li><a ng-click="navigateTo('/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia/zv_cuartoderecursos_fuentedeenergia','Descubre más', 'sideToggle', 'navbarorange')">Fuente de energía</a></li>
+                              <li><a ng-click="navigateTo('/ZonaDeVuelo/CuartoDeRecursos/FuenteDeEnergia/zv_cuartoderecursos_fuentedeenergia','Descubre más', 'sideToggle', 'navbarblue')">Fuente de energía</a></li>
                             </ul>
                             <ul>
                                 <li>Conócete</li>
@@ -76,7 +75,7 @@
                     <li class="hidden"><a><i class="icomoon icon-lifesaver"></i> Preguntas frecuentes</a></li>
                     <li><a ng-click="navigateTo('PrivacyNotice','Aviso de privacidad', 'sideToggle', 'navbarorange')"><i class="icomoon icon-privacy"></i> Aviso de privacidad</a></li>
                     <li><a ng-click="navigateTo('TermsOfUse','Condiciones de uso', 'sideToggle', 'navbarorange')"><i class="icomoon icon-books"></i> Condiciones de uso</a></li>
-                    <li><a> </a></li>                    
+                    <li class="separate"></li>                    
                     <li><a ng-click="logout()"><i class="icomoon icon-logout"></i> Salir</a></li>
                   </ul>
                 </div>

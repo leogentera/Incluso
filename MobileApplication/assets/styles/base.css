@@ -56,6 +56,7 @@ body.modal-open {
   position: relative;
   overflow: hidden;
   width: 100vw;
+  min-height: 62vh;
   background-color: #040203;
 }
 #site-canvas {
@@ -105,9 +106,14 @@ body.modal-open {
 }
 .sidebar-left-in .app {
   height: auto;
-  transform: translate(85vw, 0px);
-  -webkit-transform: translate(85vw, 0px);
-  -moz-transform: translate(85vw, 0px);
+  /*transform: translate(85vw, 0px);
+    -webkit-transform: translate(85vw, 0px);
+    -moz-transform: translate(85vw, 0px);*/
+  transform: translate3d(85vw, 0, 0);
+  -ms-transform: translate3d(85vw, 0, 0);
+  -webkit-transform: translate3d(85vw, 0, 0);
+  -o-transform: translate3d(85vw, 0, 0);
+  -moz-transform: translate3d(85vw, 0, 0);
 }
 .ease {
   -webkit-transition: 300ms ease all;
@@ -385,8 +391,8 @@ body.modal-open {
 .incluso-app #site-menu .nav > li > a > .glyphicon {
   margin-right: 1vw;
 }
-.incluso-app #site-menu .nav > li:last-child a {
-  padding: 3vh 3vw;
+.incluso-app #site-menu .nav > li.separate {
+  height: 9vh;
 }
 .incluso-app #site-menu .nav > li a.menu-blue {
   color: #39a6dd;
@@ -494,6 +500,9 @@ body.modal-open {
 }
 .incluso-app a.btn-transparent:hover {
   text-decoration: underline;
+}
+.incluso-app .btn-uppercase {
+  text-transform: uppercase;
 }
 .incluso-app .btn-link {
   display: block;
@@ -1257,14 +1266,17 @@ body.modal-open {
 }
 .incluso-app .navbar {
   position: relative;
+  height: 10vh;
   margin-bottom: 0;
   border-radius: 0px;
   background-color: #EE4823;
-  border-color: #EE4823;
+  border-color: rgba(0, 0, 0, 0.2);
+  /*#EE4823;*/
+  overflow: hidden;
 }
 .incluso-app .navbar .icomoon {
   font-size: 6vw;
-  line-height: 13vw;
+  line-height: 15vw;
   vertical-align: top;
 }
 .incluso-app .navbar.etapa-uno {
@@ -1276,7 +1288,7 @@ body.modal-open {
 }
 .incluso-app .navbar.navbar-orange {
   background-color: #EE4823;
-  border-color: #EE4823;
+  border-color: rgba(0, 0, 0, 0.2);
   -webkit-transition: all 700ms ease;
   -moz-transition: all 700ms ease;
   -o-transition: all 700ms ease;
@@ -1284,7 +1296,7 @@ body.modal-open {
 }
 .incluso-app .navbar.navbar-blue {
   background-color: #158CCD;
-  border-color: #158CCD;
+  border-color: rgba(0, 0, 0, 0.2);
   -webkit-transition: all 700ms ease;
   -moz-transition: all 700ms ease;
   -o-transition: all 700ms ease;
@@ -1314,7 +1326,7 @@ body.modal-open {
   position: static;
   padding: 0;
   margin: 0 2vw;
-  height: 14vw;
+  height: 12vw;
   width: 95vw;
 }
 .incluso-app .navbar-assets .sidebar-toggle {
@@ -1402,6 +1414,11 @@ body.modal-open {
   -moz-border-radius: 16px;
   border-radius: 16px;
 }
+.incluso-app .panel {
+  -webkit-border-radius: 1.5vw;
+  -moz-border-radius: 1.5vw;
+  border-radius: 1.5vw;
+}
 .incluso-app .panel > .panel-heading {
   padding: 5.5vw 2.6vw;
   -webkit-border-radius: 1.5vw 1.5vw 0 0;
@@ -1421,7 +1438,7 @@ body.modal-open {
   margin: 0;
   font-size: inherit;
   font-weight: 700;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .incluso-app .panel > .panel-body {
   padding-left: 3vw;

@@ -18,38 +18,26 @@ angular
             $rootScope.navbarBlue = false;
             $rootScope.showToolbar = true;
             $rootScope.showFooter = true;
-
-
             $rootScope.showFooterRocks = false;
-
-            $rootScope.showFooterRocks = false;            
-
-            $rootScope.showFooterRocks = false;
-
-
-
             $scope.$emit('HidePreloader');
-
             $scope.model = getDataAsync();
-
-            $scope.wholeBadges = {};
-            $scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
-            $scope.totalBadges = $scope.wholeBadges.badges.length;
-            $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);            
+            
+            $scope.totalBadges = $scope.model.badges.length;
+            $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);
             $scope.badgePage = 0;
             $scope.normalBadgePage = $scope.badgePage + 1;
-
             $scope.wholeBadgesPages = [];
-
+            var copyBadges = $scope.model.badges.slice();  //Deep copy of the $scope.model.badges array
+            
             for (var i = 0; i < $scope.totalBadgePages; i++) {
                 var top = Math.min(12, $scope.totalBadges - 12 * i);
                 $scope.wholeBadgesPages[i] = [];
                 for (var j = 0; j < top; j++) {
-                    var elem = $scope.wholeBadges.badges.shift(); //extracts first element of remaining array                    
+                    var elem = copyBadges.shift(); //extracts first element of remaining array
                     $scope.wholeBadgesPages[i].push(elem);
                 }
             }
-            
+
             $scope.changepage = function (delta) {
                 $scope.badgePage += delta;
                 $scope.normalBadgePage = $scope.badgePage + 1;
@@ -64,8 +52,6 @@ angular
                     $scope.normalBadgePage = $scope.badgePage + 1;
                 }
             }
-
-
 
             $scope.model.modelState = {
                 isValid: null,
@@ -83,7 +69,7 @@ angular
             $scope.maritalStatusItems = ['Soltero(a)', 'Casado(a)', 'Unión libre'];
             /*unir1*/ $scope.studiesList = ['Primaria', 'Secundaria', 'Preparatoria', 'Universidad'];
             $scope.educationStatusList = ['Terminada', 'En proceso', 'Inconclusa'];
-            $scope.favoritSportsList = ['Grado', 'Ciclismo', 'Ciclismo\r', 'Patinaje/skateboarding', 'Universidad', 'FutbolSoccer', 'Basquetbol', 'ArtesMarciales', 'Yoga', 'Natación', 'FutbolAmericano', 'Basebol', 'Carreras'];
+            $scope.favoritSportsList = ['Ciclismo', 'Patinaje/skateboarding', 'Universidad', 'FutbolSoccer', 'Basquetbol', 'ArtesMarciales', 'Yoga', 'Natación', 'FutbolAmericano', 'Basebol', 'Carreras'];
             $scope.artisticActivitiesList = ['Pintura', 'Música', 'Danza', 'Fotografia', 'Graffiti', 'DisenoDigital', 'Artesanias', 'Teatro', 'Modelado', 'Dibujo'];
             $scope.hobbiesList = ['Ir a fiestas', 'Leer', 'Pasar tiempo con amigos', 'Cocinar', 'Jugar videojuegos', 'Visitar museos', 'Ver películas/series', 'Ver televisión', 'Modelado', 'Pasar tiempo en redes sociales'];
             $scope.talentsList = ['Cantar', 'Llevar ritmos', 'Bailar', 'Hablar frente a otros', 'Dibujar', 'Hacer amigos', 'Hacer operaciones matemáticas', 'Aprender cosas rápido', 'Ubicar lugares', 'Memorizar', 'Hacer manualidades'];
@@ -117,7 +103,7 @@ angular
                     $location.path('/');
                     return "";
                 }
-                initFields(m);              
+                initFields(m);
 
                 return m;
             }
@@ -157,29 +143,40 @@ angular
             }
 
             function formatDate(date) {
-                var splitDate = date.split("/");
+                if (date != "NaN/NaN/NaN" && date != "") {
+                    var splitDate = date.split("/");
 
-                var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
+                    //             var userBirthDate = new Date(splitDate[2], splitDate[0], splitDate[1]); 
+                    //             var userBirthDate = new Date(splitDate[2], splitDate[0]-1, splitDate[1]);
 
-                var userBirthDate = new Date(splitDate[2], splitDate[0]-1, splitDate[1]);
-
-                var userBirthDate = new Date(splitDate[2], splitDate[0] - 1, splitDate[1]);
+                    var userBirthDate = new Date(splitDate[2], splitDate[0] - 1, splitDate[1]);
+                }
+                else {
+                    var userBirthDate = null;
+                }
 
                 return userBirthDate;
             }
 
             function getAge() {
                 var splitDate = $scope.model.birthday.split("/");
-                var birthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
-                if (birthDate != null || birthDate != '') {
-                    var cur = new Date();
-                    var diff = cur - birthDate;
-                    var age = Math.floor(diff / 31536000000);
-                    $scope.model.age = age;
+
+                if (splitDate != "") {
+                    var birthDate = new Date(splitDate[2], splitDate[0], splitDate[1]);
+                    if (birthDate != null || birthDate != '') {
+                        var cur = new Date();
+                        var diff = cur - birthDate;
+                        var age = Math.floor(diff / 31536000000);
+                        $scope.model.age = age;
+                    }
+                }
+                else {
+                    $scope.model.age = null;
                 }
             }
 
-            $scope.birthdayChanged = function () {
+            $scope.birthdayChanged = function (dateValue) {
+                var algo = dateValue;
                 var d = new Date($scope.birthdate_Dateformat),
                     month = '' + (d.getMonth() + 1),
                     day = '' + d.getDate(),
@@ -209,7 +206,8 @@ angular
             }
 
             $scope.index = function () {
-                $location.path('/Perfil');
+                $scope.navigateTo('Profile', 'Mi perfil', 'null', 'navbarblue')
+                //$location.path('/Perfil/Editar');
             }
 
             $scope.navigateToDashboard = function () {
@@ -220,60 +218,141 @@ angular
                 console.log('fetching editProfile errors list');
                 var errors = [];
 
-               validateEmptyItemsOnLists();
+                validateEmptyItemsOnLists();
 
                 if (!$scope.editForm.firstname.$valid) { errors.push("Formato de nombre incorrecto."); }
                 if (!$scope.editForm.lastname.$valid) { errors.push("Formato de apellido paterno incorrecto."); }
                 if (!$scope.editForm.mothername.$valid) { errors.push("Formato de apellido materno incorrecto."); }
                 if (!$scope.editForm.alias.$valid) { errors.push("Formato de alias incorrecto."); }
+                if (!$scope.editForm.date.$valid) { errors.push("Ingrese la fecha de nacimiento."); }
 
                 $scope.model.modelState.errorMessages = errors;
 
                 return (errors.length === 0);
             }
-            
-            var validateEmptyItemsOnLists = function(){
+
+            var validateEmptyItemsOnLists = function () {
                 //studies
-                 if ($scope.model.studies.length > 0) {
+                if ($scope.model.studies.length > 0) {
                     for (var i = 0; i < $scope.model.studies.length; i++) {
-                        if (typeof  $scope.model.studies[i].school === "undefined" || 
+                        if (typeof $scope.model.studies[i].school === "undefined" ||
                             typeof $scope.model.studies[i].levelOfStudies === "undefined") {
                             $scope.model.studies.splice(i, 1);
-                            i = i-1;
+                            i = i - 1;
                         }
                     }
                 };
                 
                 //phones
-                 if ($scope.model.phones.length > 0) {
+                if ($scope.model.phones.length > 0) {
                     for (var i = 0; i < $scope.model.phones.length; i++) {
-                        if (typeof  $scope.model.phones[i] === "undefined" || 
+                        if (typeof $scope.model.phones[i] === "undefined" ||
                             $scope.model.phones[i].length === 0) {
                             $scope.model.phones.splice(i, 1);
-                            i = i-1;
+                            i = i - 1;
                         }
                     }
                 };
                 
                 //socialNetworks               
-                 if ($scope.model.socialNetworks.length > 0) {
+                if ($scope.model.socialNetworks.length > 0) {
                     for (var i = 0; i < $scope.model.socialNetworks.length; i++) {
-                        if (typeof  $scope.model.socialNetworks[i].socialNetwork === "undefined" || 
+                        if (typeof $scope.model.socialNetworks[i].socialNetwork === "undefined" ||
                             typeof $scope.model.socialNetworks[i].socialNetworkId === "undefined") {
                             $scope.model.socialNetworks.splice(i, 1);
-                            i = i-1;
+                            i = i - 1;
                         }
                     }
                 };
                 
                 //familiaCompartamos              
-                 if ($scope.model.familiaCompartamos.length > 0) {
+                if ($scope.model.familiaCompartamos.length > 0) {
                     for (var i = 0; i < $scope.model.familiaCompartamos.length; i++) {
-                        if (typeof  $scope.model.familiaCompartamos[i].idClient === "undefined" || 
+                        if (typeof $scope.model.familiaCompartamos[i].idClient === "undefined" ||
                             typeof $scope.model.familiaCompartamos[i].relativeName === "undefined" ||
                             typeof $scope.model.familiaCompartamos[i].relationship === "undefined") {
                             $scope.model.familiaCompartamos.splice(i, 1);
-                            i = i-1;
+                            i = i - 1;
+                        }
+                    }
+                };
+                
+                
+                //favoriteSports              
+                if ($scope.model.favoriteSports.length > 0) {
+                    for (var i = 0; i < $scope.model.favoriteSports.length; i++) {
+                        if (typeof $scope.model.favoriteSports[i] === "undefined" ||
+                            $scope.model.favoriteSports[i].length === 0) {
+                            $scope.model.favoriteSports.splice(i, 1);
+                            i = i - 1;
+                        }
+                    }
+                };
+                
+                
+                //artisticActivities              
+                if ($scope.model.artisticActivities.length > 0) {
+                    for (var i = 0; i < $scope.model.artisticActivities.length; i++) {
+                        if (typeof $scope.model.artisticActivities[i] === "undefined" ||
+                            $scope.model.artisticActivities[i].length === 0) {
+                            $scope.model.artisticActivities.splice(i, 1);
+                            i = i - 1;
+                        }
+                    }
+                };
+                
+                //hobbies              
+                if ($scope.model.hobbies.length > 0) {
+                    for (var i = 0; i < $scope.model.hobbies.length; i++) {
+                        if (typeof $scope.model.hobbies[i] === "undefined" ||
+                            $scope.model.hobbies[i].length === 0) {
+                            $scope.model.hobbies.splice(i, 1);
+                            i = i - 1;
+                        }
+                    }
+                };
+                
+                //talents              
+                if ($scope.model.talents.length > 0) {
+                    for (var i = 0; i < $scope.model.talents.length; i++) {
+                        if (typeof $scope.model.talents[i] === "undefined" ||
+                            $scope.model.talents[i].length === 0) {
+                            $scope.model.talents.splice(i, 1);
+                            i = i - 1;
+                        }
+                    }
+                };
+                
+                
+                //values              
+                if ($scope.model.values.length > 0) {
+                    for (var i = 0; i < $scope.model.values.length; i++) {
+                        if (typeof $scope.model.values[i] === "undefined" ||
+                            $scope.model.values[i].length === 0) {
+                            $scope.model.values.splice(i, 1);
+                            i = i - 1;
+                        }
+                    }
+                };
+                
+                //Habilitie              
+                if ($scope.model.habilities.length > 0) {
+                    for (var i = 0; i < $scope.model.habilities.length; i++) {
+                        if (typeof $scope.model.habilities[i] === "undefined" ||
+                            $scope.model.habilities[i].length === 0) {
+                            $scope.model.habilities.splice(i, 1);
+                            i = i - 1;
+                        }
+                    }
+                };
+                
+                //inspirationalCharacters              
+                if ($scope.model.inspirationalCharacters.length > 0) {
+                    for (var i = 0; i < $scope.model.inspirationalCharacters.length; i++) {
+                        if (typeof $scope.model.inspirationalCharacters[i].characterName === "undefined" ||
+                            typeof $scope.model.inspirationalCharacters[i].characterType === "undefined") {
+                            $scope.model.inspirationalCharacters.splice(i, 1);
+                            i = i - 1;
                         }
                     }
                 };
@@ -365,7 +444,7 @@ angular
             }
 
             $scope.addInspirationalCharacter = function (index) {
-                $scope.model.inspirationalCharacters.push(new String());
+                $scope.model.inspirationalCharacters.push({});
             }
 
             $scope.deleteInspirationalCharacter = function (index) {

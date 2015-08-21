@@ -142,15 +142,8 @@
     color: #e1e455;
   }
   .incluso-app img {
-    /*width: 100%;*/
+    width: 100%;
   }
-   .incluso-app img.badgesviews {
-    cursor: pointer;
-  }
-   .incluso-app div.badgename {
-    color:white;
-  }
-  
   .incluso-app .txt-title {
     color: white;
     font-weight: bold;
@@ -1487,6 +1480,7 @@
     color: #ffffff;
     font-size: 3.9vw;
     font-size: 6vw;
+    font-size: 5vw;
     font-weight: normal;
     text-align: left;
     padding: 0;
@@ -1495,6 +1489,9 @@
   .incluso-app .profile-info-asset .from-group {
     padding: 1.5vw 0 0;
     margin: 1.5vw 0 0;
+  }
+  .incluso-app .profile-info-asset .block-list {
+    min-height: 8.5vw;
   }
   .incluso-app .profile-info-asset .block-list p {
     margin: 0;
@@ -1766,7 +1763,12 @@
   }
   .incluso-app .profile-dashboard .user-avatar {
     width: 33.3vw;
+    height: auto;
+    min-height: 33.3vw;
     margin-top: 3vw;
+  }
+  .incluso-app .profile-dashboard .user-avatar img {
+    min-height: inherit;
   }
   .incluso-app .profile-dashboard .user-avatar figcaption {
     width: 9vw;
@@ -1801,10 +1803,20 @@
   }
   .incluso-app .app {
     background: #000;
-    -webkit-transition: all 500ms ease;
-    -moz-transition: all 500ms ease;
-    -o-transition: all 500ms ease;
-    transition: all 500ms ease;
+    /*-webkit-transition: all 500ms ease;
+            -moz-transition: all 500ms ease;
+            -o-transition: all 500ms ease;
+            transition: all 500ms ease; */
+    -webkit-transition: -webkit-transform ease 800ms;
+    -moz-transition: -webkit-transform ease 800ms;
+    -ms-transition: -webkit-transform ease 800ms;
+    -o-transition: -webkit-transform ease 800ms;
+    transition: -webkit-transform ease 800ms;
+    -webkit-transition: transform ease 800ms;
+    -moz-transition: transform ease 800ms;
+    -ms-transition: transform ease 800ms;
+    -o-transition: transform ease 800ms;
+    transition: transform ease 800ms;
     z-index: 20;
   }
   .incluso-app .app,
@@ -1947,6 +1959,146 @@
   .incluso-app .collapse-media .panel .panel-body {
     /*.clr-blueDark(background-color, 0.9);*/
     background-color: rgba(13, 15, 20, 0.5);
+  }
+  .incluso-app .border-box {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  .incluso-app menu {
+    display: block;
+    z-index: 100;
+  }
+  .incluso-app menu .sidebar li {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.28);
+    display: block;
+    margin-right: 6vw;
+    position: relative;
+    padding: 1vw 0;
+  }
+  .incluso-app menu .sidebar li a:hover,
+  .incluso-app menu .sidebar li.active > a:focus {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+  }
+  .incluso-app menu .sidebar li > i {
+    padding: 3vw 1vw;
+  }
+  .incluso-app menu .sidebar li > a {
+    color: white;
+    display: block;
+    font-size: 5vw;
+    padding: 1.5vh 3vw;
+    position: relative;
+    width: 100%;
+  }
+  .incluso-app menu .sidebar li > a:focus,
+  .incluso-app menu .sidebar li > a:hover {
+    background-color: rgba(255, 255, 255, 0.28);
+  }
+  .incluso-app menu .sidebar li > a > .icomoon {
+    margin-right: 1vw;
+  }
+  .incluso-app menu .sidebar li > a > .glyphicon {
+    margin-right: 1vw;
+  }
+  .incluso-app menu .sidebar li:last-child a {
+    padding: 3vh 3vw;
+  }
+  .incluso-app menu .sidebar li a.menu-blue {
+    color: #39a6dd;
+  }
+  .incluso-app menu .sidebar li a.menu-green {
+    color: #80c241;
+  }
+  .incluso-app menu .sidebar li a.menu-pink {
+    color: #e70e80;
+  }
+  .incluso-app menu .sidebar li .submenu {
+    border-top: 2px solid rgba(255, 255, 255, 0.28);
+    display: none;
+    padding: 6vw 0 6vw 6vw;
+  }
+  .incluso-app menu .sidebar li .submenu li {
+    margin: 1vh 0px;
+  }
+  .incluso-app menu .sidebar li .submenu li:first-child {
+    color: #39a6dd;
+    /*text-transform: uppercase;*/
+  }
+  .incluso-app menu .sidebar li .submenu a {
+    color: white;
+    line-height: 20px;
+  }
+  .incluso-app menu .sidebar li .submenu ul {
+    list-style: none;
+    padding: 3vw 0;
+  }
+  .incluso-app menu > div {
+    position: absolute;
+    z-index: 1100;
+    top: 0;
+    width: 85vw;
+    height: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-transition: -webkit-transform ease 250ms;
+    -moz-transition: -webkit-transform ease 250ms;
+    -ms-transition: -webkit-transform ease 250ms;
+    -o-transition: -webkit-transform ease 250ms;
+    transition: -webkit-transform ease 250ms;
+    -webkit-transition: transform ease 250ms;
+    -moz-transition: transform ease 250ms;
+    -ms-transition: transform ease 250ms;
+    -o-transition: transform ease 250ms;
+    transition: transform ease 250ms;
+  }
+  .incluso-app menu > div.left {
+    height: 100%;
+    background: #273D7A;
+    left: -85vw;
+    background-image: url('../images/bg-menu.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  .incluso-app menu > div.show.left {
+    transform: translate3d(85vw, 0, 0);
+    -ms-transform: translate3d(85vw, 0, 0);
+    -webkit-transform: translate3d(85vw, 0, 0);
+    -o-transform: translate3d(85vw, 0, 0);
+    -moz-transform: translate3d(85vw, 0, 0);
+  }
+  .incluso-app menu > div.right {
+    background: #6B1919;
+    right: -85vw;
+  }
+  .incluso-app menu > div.show.right {
+    transform: translate3d(-85vw, 0, 0);
+    -ms-transform: translate3d(-85vw, 0, 0);
+    -webkit-transform: translate3d(-85vw, 0, 0);
+    -o-transform: translate3d(-85vw, 0, 0);
+    -moz-transform: translate3d(-85vw, 0, 0);
+  }
+  .incluso-app menu > div > menu-item {
+    display: block;
+  }
+  .incluso-app menu > div > menu-item > div {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 10px 15px;
+    border-bottom: solid 1px #555;
+    cursor: pointer;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #B0B0B0;
+  }
+  .incluso-app menu > div > menu-item > div:hover {
+    color: #F0F0F0;
+  }
+  .incluso-app menu > div > menu-item > div > span {
+    float: left;
+    color: inherit;
   }
 }
 /* sm viewport */

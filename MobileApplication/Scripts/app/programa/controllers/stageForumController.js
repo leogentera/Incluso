@@ -350,8 +350,24 @@ angular
               $location.path("/ZonaDeVuelo/Conocete/PuntoDeEncuentro/Comentarios/" + $routeParams.moodleid + "/" + discussionId);
             }
 
-            $scope.back = function () {
-                $location.path('/ZonaDeVuelo/Dashboard');
+            $scope.back = function (size) {
+              
+              setTimeout(function(){ 
+                    var modalInstance = $modal.open({
+                        animation: $scope.animationsEnabled,
+                        templateUrl: 'tutorialModal.html',
+                        controller: 'tutorialController',
+                        size: size,
+                        windowClass: 'user-help-modal'
+                    });
+                    console.log("modal open");
+                }, 1000);
+              
+              $location.path('/ZonaDeVuelo/Dashboard');
             }
 
-        }]);
+        }]).controller('tutorialController', function ($scope, $modalInstance) {
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        });   
