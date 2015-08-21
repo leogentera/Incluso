@@ -666,48 +666,136 @@
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <h4>Vivienda</h4>
-                                                        <h5>Vivo con</h5>
-                                                        <p ng-bind="model.iLiveWith"></p>
-                                                        <hr />
-                                                        <h4>Actividad</h4>
-                                                        <h5>Mi actividad principal</h5>
-                                                        <ul class="block-list" ng-repeat="s in model.mainActivity">
-                                                            <li>
-                                                                <p ng-bind="s"></p>
-                                                            </li>
-                                                        </ul>
-                                                        <hr />
-                                                        <h4>Actualmente estudio</h4>
-                                                        <h5>Nivel</h5>
-                                                        <ul class="block-list" ng-repeat="s in model.currentStudies">
-                                                            <li>
-                                                                <p ng-bind="s"></p>
-                                                            </li>
-                                                        </ul>
-                                                        <hr />
-                                                        <h4>Familiar</h4>
-                                                        <h5>Tengo hijos</h5>
-                                                        <p ng-bind="model.children"></p>
-                                                        <hr />
-                                                        <h4>Ingresos</h4>
-                                                        <h5>Recibo ingresos</h5>
-                                                        <p ng-bind="model.gotMoneyIncome"></p>
-                                                        <hr />
-                                                        <h5>Fuente de ingresos</h5>
-                                                        <ul class="block-list" ng-repeat="s in model.moneyIncome">
-                                                            <li>
-                                                                <p ng-bind="s"></p>
-                                                            </li>
-                                                        </ul>
-                                                        <hr />
-                                                        <h4>Salud</h4>
-                                                        <h5>Cuento con seguro médico</h5>
-                                                        <p ng-bind="model.medicalCoverage"></p>
-                                                        <hr />
-                                                        <h5>Mi seguro es</h5>
-                                                        <p ng-bind="model.medicalInsurance"></p>
-                                                        <hr />
+
+                                                        <div class="profile-info-asset">
+                                                            <h4>Vivienda</h4>
+                                                            <div class="from-group">
+                                                                <label>Vivo con</label>
+                                                                <p ng-bind="model.iLiveWith"></p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="profile-info-asset">
+                                                            <h4>Actividad</h4>
+                                                            <div class="from-group">
+                                                                <label>Mi actividad principal</label>
+                                                                <ul class="block-list">
+                                                                    <li ng-repeat="s in model.mainActivity">
+                                                                        <p ng-bind="s"></p>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="profile-info-asset">
+                                                            <h4>Actualmente estudio</h4>
+                                                            <ul class="block-list">
+                                                                <li ng-repeat="s in model.currentStudies">
+                                                                    <div class="from-group">
+                                                                        <label>Nivel</label>
+                                                                        <p ng-bind="s"></p>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div class="profile-info-asset">
+                                                            <h4>Familiar</h4>
+                                                            <div class="from-group">
+                                                                <label>Tengo hijos</label>
+                                                                <p ng-bind="model.children"></p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="profile-info-asset">
+                                                            <h4>Ingresos</h4>
+                                                            <div class="from-group">
+                                                                <label>Recibo ingresos</label>
+                                                                <p ng-bind="model.gotMoneyIncome"></p>
+                                                            </div>
+                                                            <div class="from-group">
+                                                                <label>Fuente de ingresos</label>
+                                                                <ul class="block-list">
+                                                                    <li ng-repeat="s in model.moneyIncome">
+                                                                        <p ng-bind="s"></p>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="profile-info-asset">
+                                                            <h4>Salud</h4>
+                                                            <div class="from-group">
+                                                                <label>Cuento con seguro médico</label>
+                                                                <p ng-bind="model.medicalCoverage"></p>
+                                                            </div>
+                                                            <div class="from-group">
+                                                                <label>Mi seguro es</label>
+                                                                <p ng-bind="model.medicalInsurance"></p>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="old-code">
+                                                            <h4>Vivienda</h4>
+                                                            <h5>Vivo con</h5>
+                                                            <p ng-bind="model.iLiveWith"></p>
+                                                            <hr />
+                                                        </div>
+
+                                                        <div class="old-code">
+                                                            <h4>Actividad</h4>
+                                                            <h5>Mi actividad principal</h5>
+                                                            <ul class="block-list" ng-repeat="s in model.mainActivity">
+                                                                <li>
+                                                                    <p ng-bind="s"></p>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                        </div>
+
+                                                        <div class="old-code">
+                                                            <h4>Actualmente estudio</h4>
+                                                            <h5>Nivel</h5>
+                                                            <ul class="block-list" ng-repeat="s in model.currentStudies">
+                                                                <li>
+                                                                    <p ng-bind="s"></p>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                        </div>
+
+                                                        <div class="old-code">
+                                                            <h4>Familiar</h4>
+                                                            <h5>Tengo hijos</h5>
+                                                            <p ng-bind="model.children"></p>
+                                                            <hr />
+                                                        </div>
+
+                                                        <div class="old-code">
+                                                            <h4>Ingresos</h4>
+                                                            <h5>Recibo ingresos</h5>
+                                                            <p ng-bind="model.gotMoneyIncome"></p>
+                                                            <hr />
+                                                            <h5>Fuente de ingresos</h5>
+                                                            <ul class="block-list" ng-repeat="s in model.moneyIncome">
+                                                                <li>
+                                                                    <p ng-bind="s"></p>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                        </div>
+
+                                                        <div class="old-code">
+                                                            <h4>Salud</h4>
+                                                            <h5>Cuento con seguro médico</h5>
+                                                            <p ng-bind="model.medicalCoverage"></p>
+                                                            <hr />
+                                                            <h5>Mi seguro es</h5>
+                                                            <p ng-bind="model.medicalInsurance"></p>
+                                                            <hr />
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -725,35 +813,6 @@
                             <div class="row">
                                 <div class="col-xs-12">
 
-                                    <ul class="list-group separate-items">
-                                        <li class="list-group-item" ng-click="navigateToPage(2)">
-                                            <a href="">
-                                                <span class="icomoon icon-information"></span>
-                                                <span>Mi Información</span>
-                                                <span class="icomoon icon-star"></span>
-                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                            </a>
-                                        </li>
-
-                                        <li class="list-group-item" ng-click="navigateToPage(3)">
-                                            <a href="">
-                                                <span class="icomoon icon-document"></span>
-                                                <span>Mi personalidad</span>
-                                                <span class="icomoon icon-star"></span>
-                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                            </a>
-                                        </li>
-
-                                        <li class="list-group-item" ng-click="navigateToPage(4)">
-                                            <a href="">
-                                                <span class="icomoon icon-required"></span>
-                                                <span>Socioeconómicos</span>
-                                                <span class="icomoon icon-star"></span>
-                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-
                                     <div class="panel panel-default">
                                         <div class="panel-heading" ng-click="navigateToPage(1)">
                                             <span class="icomoon icon-arrow-slim-left"></span>
@@ -764,47 +823,112 @@
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <h4>Dispositivos</h4>
-                                                        <h5>¿Qué dispositivo sabes usar?</h5>
-                                                        <ul class="block-list" ng-repeat="s in model.knownDevices">
-                                                            <li>
-                                                                <p ng-bind="s"></p>
-                                                            </li>
-                                                        </ul>
-                                                        <hr />
-                                                        <h5>¿Con qué dispositivos móviles cuentas?</h5>
-                                                        <ul class="block-list" ng-repeat="s in model.ownDevices">
-                                                            <li>
-                                                                <p ng-bind="s"></p>
-                                                            </li>
-                                                        </ul>
-                                                        <hr />
-                                                        <h5>¿Qué es lo que más haces con un celular?</h5>
-                                                        <ul class="block-list" ng-repeat="s in model.phoneUsage">
-                                                            <li>
-                                                                <p ng-bind="s"></p>
-                                                            </li>
-                                                        </ul>
-                                                        <hr />
-                                                        <h4>Videojuegos</h4>
-                                                        <h5>¿Juegas videojuegos?</h5>
-                                                        <p ng-bind="model.playVideogames"></p>
-                                                        <hr />
-                                                        <h5>¿Con qué frecuencia juegas videojuegos?</h5>
-                                                        <p ng-bind="model.videogamesFrecuency"></p>
-                                                        <hr />
-                                                        <h5>¿Cuántas horas juegas al día?</h5>
-                                                        <p ng-bind="model.videogamesHours"></p>
-                                                        <hr />
-                                                        <h5>¿Qué tipo de videojuegos te gustan más?</h5>
-                                                        <p ng-bind="model.kindOfVideogames"></p>
-                                                        <hr />
-                                                        <h5>¿Cuáles son tus juegos favoritos?</h5>
-                                                        <ul class="block-list" ng-repeat="s in model.favoriteGames">
-                                                            <li>
-                                                                <p ng-bind="s"></p>
-                                                            </li>
-                                                        </ul>
+
+                                                        <div class="profile-info-asset">
+                                                            <h4>Dispositivos</h4>
+                                                            <div class="from-group">
+                                                                <label>¿Qué dispositivo sabes usar?</label>
+                                                                <ul class="block-list">
+                                                                    <li ng-repeat="s in model.knownDevices">
+                                                                        <p ng-bind="s"></p>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                            <div class="from-group">
+                                                                <label>¿Con qué dispositivos móviles cuentas?</label>
+                                                                <ul class="block-list">
+                                                                    <li ng-repeat="s in model.ownDevices">
+                                                                        <p ng-bind="s"></p>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                            <div class="from-group">
+                                                                <label>¿Qué es lo que más haces con un celular?</label>
+                                                                <ul class="block-list">
+                                                                    <li ng-repeat="s in model.phoneUsage">
+                                                                        <p ng-bind="s"></p>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="profile-info-asset">
+                                                            <h4>Videojuegos</h4>
+                                                            <div class="from-group">
+                                                                <label>¿Juegas videojuegos?</label>
+                                                                <p ng-bind="model.playVideogames"></p>
+                                                            </div>
+                                                            <div class="from-group">
+                                                                <label>¿Con qué frecuencia juegas videojuegos?</label>
+                                                                <p ng-bind="model.videogamesFrecuency"></p>
+                                                            </div>
+                                                            <div class="from-group">
+                                                                <label>¿Cuántas horas juegas al día?</label>
+                                                                <p ng-bind="model.videogamesHours"></p>
+                                                            </div>
+                                                            <div class="from-group">
+                                                                <label>¿Qué tipo de videojuegos te gustan más?</label>
+                                                                <p ng-bind="model.kindOfVideogames"></p>
+                                                            </div>
+                                                            <div class="from-group">
+                                                                <label>¿Cuáles son tus juegos favoritos?</label>
+                                                                <ul class="block-list">
+                                                                    <li ng-repeat="s in model.favoriteGames">
+                                                                        <p ng-bind="s"></p>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="old-code">
+                                                            <h4>Dispositivos</h4>
+                                                            <h5>¿Qué dispositivo sabes usar?</h5>
+                                                            <ul class="block-list" ng-repeat="s in model.knownDevices">
+                                                                <li>
+                                                                    <p ng-bind="s"></p>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                            <h5>¿Con qué dispositivos móviles cuentas?</h5>
+                                                            <ul class="block-list" ng-repeat="s in model.ownDevices">
+                                                                <li>
+                                                                    <p ng-bind="s"></p>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                            <h5>¿Qué es lo que más haces con un celular?</h5>
+                                                            <ul class="block-list" ng-repeat="s in model.phoneUsage">
+                                                                <li>
+                                                                    <p ng-bind="s"></p>
+                                                                </li>
+                                                            </ul>
+                                                            <hr />
+                                                        </div>
+
+                                                        <div class="old-code">
+                                                            <h4>Videojuegos</h4>
+                                                            <h5>¿Juegas videojuegos?</h5>
+                                                            <p ng-bind="model.playVideogames"></p>
+                                                            <hr />
+                                                            <h5>¿Con qué frecuencia juegas videojuegos?</h5>
+                                                            <p ng-bind="model.videogamesFrecuency"></p>
+                                                            <hr />
+                                                            <h5>¿Cuántas horas juegas al día?</h5>
+                                                            <p ng-bind="model.videogamesHours"></p>
+                                                            <hr />
+                                                            <h5>¿Qué tipo de videojuegos te gustan más?</h5>
+                                                            <p ng-bind="model.kindOfVideogames"></p>
+                                                            <hr />
+                                                            <h5>¿Cuáles son tus juegos favoritos?</h5>
+                                                            <ul class="block-list" ng-repeat="s in model.favoriteGames">
+                                                                <li>
+                                                                    <p ng-bind="s"></p>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

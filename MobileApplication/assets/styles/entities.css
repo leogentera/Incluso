@@ -1490,6 +1490,9 @@
     padding: 1.5vw 0 0;
     margin: 1.5vw 0 0;
   }
+  .incluso-app .profile-info-asset .block-list {
+    min-height: 8.5vw;
+  }
   .incluso-app .profile-info-asset .block-list p {
     margin: 0;
     overflow: hidden;
