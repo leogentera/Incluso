@@ -20,7 +20,7 @@ angular
                                     
             var userNotifications = JSON.parse(localStorage.getItem("notifications"));
                                 
-            $scope.notification = _.find(userNotifications, function(d){return d.notificationId == $routeParams.notificationId; })
+            $scope.notification = _.find(userNotifications, function(d){return d.notificationId == $routeParams.notificationId; });
             
             $scope.scrollToTop();
             $scope.$emit('HidePreloader'); //hide preloader
