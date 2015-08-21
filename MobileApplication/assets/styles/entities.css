@@ -1433,6 +1433,9 @@
   .incluso-app .profile-settings .btn.btn-icon-aside {
     width: 36vw;
   }
+  .incluso-app .profile-settings .btn.btn-icon-aside.right {
+    display: none;
+  }
   .incluso-app .profile-settings > .container {
     position: relative;
     height: inherit;
