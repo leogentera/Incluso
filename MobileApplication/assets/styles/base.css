@@ -391,8 +391,8 @@ body.modal-open {
 .incluso-app #site-menu .nav > li > a > .glyphicon {
   margin-right: 1vw;
 }
-.incluso-app #site-menu .nav > li:last-child a {
-  padding: 3vh 3vw;
+.incluso-app #site-menu .nav > li.separate {
+  height: 9vh;
 }
 .incluso-app #site-menu .nav > li a.menu-blue {
   color: #39a6dd;
