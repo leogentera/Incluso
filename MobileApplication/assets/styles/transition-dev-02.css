@@ -35,9 +35,9 @@
   /* Detalle de Logro */
 }
 .incluso-app .achievements .panel-body .badge-item {
-  height: 40vw;
-  padding: 10px;
-  margin: 10px 0 0;
+  height: 41vw;
+  padding: 2vw 2vw 4vw;
+  margin: 4vw 0 0;
   border-bottom: 1px solid #8ba8b1;
   cursor: pointer;
 }
