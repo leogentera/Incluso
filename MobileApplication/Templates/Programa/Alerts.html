@@ -17,7 +17,7 @@
             <ul class="green-lantern-theme">              
               <li class="{{notif.read == 'true' ? 'list-item rounded-item' : 'rounded-item list-item highlight'}}" ng-repeat="notif in notifications | orderBy: '-notificationDate'" ng-show="qty('All')" ng-click="navigateTo('/AlertsDetail/' + notif.notificationId, 'Notificaciones', 'null', 'navbarorange')">
                 <span class="icomoon icon-antena pull-left no-padding pink"></span>
-                <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
+                <div class="pull-left"><div class="date">{{notif.notificationDate | date: 'fullDate'}}</div>{{ notif.notificationTitle }}</div>
                 <span class="{{notif.read == 'true' ? 'icomoon icon-checked-join pull-right no-padding green' : 'icomoon icon-gauge pull-right no-padding gray'}}"></span>
               </li>
               <li class="list-item rounded-item showmore">
@@ -32,7 +32,7 @@
             <ul class="green-lantern-theme">
               <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | orderBy: '-notificationDate' | filter: {read:'false'}" ng-click="showAlertDetail(notif.notificationId)" ng-show="qty('UnRead')">
                 <span class="icomoon icon-antena pull-left no-padding pink"></span>
-                <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
+                <div class="pull-left"><div class="date">{{notif.notificationDate | date: 'fullDate'}}</div>{{ notif.notificationTitle }}</div>
                 <span class="icomoon icon-gauge fl-right no-padding gray"></span>
               </li>
               <li class="list-item rounded-item showmore">
@@ -47,7 +47,7 @@
               <ul class="green-lantern-theme">
                 <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | orderBy: '-notificationDate' | filter: {read:'true'} " ng-click="showAlertDetail(notif.notificationId)" ng-show="qty('Read')">
 				  <span class="icomoon icon-antena pull-left no-padding pink"></span>
-                  <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
+                  <div class="pull-left"><div class="date">{{notif.notificationDate | date: 'fullDate'}}</div>{{ notif.notificationTitle }}</div>
 				  <span class="icomoon icon-gauge fl-right no-padding green"></span>
 				</li>
                 <li class="list-item rounded-item showmore">
