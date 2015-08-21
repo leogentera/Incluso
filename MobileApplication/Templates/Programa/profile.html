@@ -633,10 +633,10 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="container-fluid">
-                                                <div class="row">
+                                                <div class="row">                                                   
+
                                                     <div ng-repeat="badge in wholeBadgesPages[badgePage]" class="col-xs-4 badge-item">         
-                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" /> 								                                                        
-                                                        <div class="badgename" ng-bind="badge.name"></div>
+                                                        <img class="badgesviews" ng-src="data:image/png;base64,{{badge.badgeimage}}" alt="" class="img-responsive" width="100px" height="100px" ng-click="showDetailBadge(badge.id, badge.badgeimage, badge.name, badge.dateIssued, badge.earned_times)" /> <div class="badgename" ng-bind="badge.name" style="width: 100px; font-size: 10px;"></div>
                                                         <!--
                                                         <div class="col-xs-12" ng-repeat="s in model.strengths">
                                                             <h5 ng-bind="s.name"></h5>
@@ -657,7 +657,6 @@
                                                         <span ng-bind="normalBadgePage" class="actual-page"></span>
                                                     </span>
                                                     <div class="icomoon icon-arrow-bold-right" ng-click="changepage(1)"></div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

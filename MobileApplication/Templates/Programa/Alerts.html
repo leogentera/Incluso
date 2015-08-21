@@ -14,15 +14,15 @@
       </div>-->
         <tabset class="notifications txt-renglon green-lantern-theme">          
           <tab heading="Todas" class="item">    
-            <ul class="green-lantern-theme">
-              <li class="{{notif.read == 'true' ? 'list-item rounded-item' : 'rounded-item list-item highlight'}}" ng-repeat="notif in notifications" ng-show="qty(notif)" ng-click="navigateTo('/AlertsDetail/' + notif.notificationId, 'Notificaciones', 'null', 'navbarorange')">
+            <ul class="green-lantern-theme">              
+              <li class="{{notif.read == 'true' ? 'list-item rounded-item' : 'rounded-item list-item highlight'}}" ng-repeat="notif in notifications | orderBy: '-notificationDate'" ng-show="qty('All')" ng-click="navigateTo('/AlertsDetail/' + notif.notificationId, 'Notificaciones', 'null', 'navbarorange')">
                 <span class="icomoon icon-antena pull-left no-padding pink"></span>
-                <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
+                <div class="pull-left"><div class="date">{{notif.notificationDate | date: 'fullDate'}}</div>{{ notif.notificationTitle }}</div>
                 <span class="{{notif.read == 'true' ? 'icomoon icon-checked-join pull-right no-padding green' : 'icomoon icon-gauge pull-right no-padding gray'}}"></span>
               </li>
               <li class="list-item rounded-item showmore">
                 <span class="icomoon icon-show-more"></span> 
-                <div ng-click="showMore()">
+                <div ng-click="showMore('All')">
                   Mostrar más notificaciones...
                 </div>
               </li>      
@@ -30,14 +30,14 @@
           </tab>
           <tab heading="No leídas" class="item">
             <ul class="green-lantern-theme">
-              <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | filter: {read:'false'} " ng-click="showAlertDetail(notif.notificationId)">
+              <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | orderBy: '-notificationDate' | filter: {read:'false'}" ng-click="showAlertDetail(notif.notificationId)" ng-show="qty('UnRead')">
                 <span class="icomoon icon-antena pull-left no-padding pink"></span>
-                <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
+                <div class="pull-left"><div class="date">{{notif.notificationDate | date: 'fullDate'}}</div>{{ notif.notificationTitle }}</div>
                 <span class="icomoon icon-gauge fl-right no-padding gray"></span>
               </li>
               <li class="list-item rounded-item showmore">
                 <span class="icomoon  icon-show-more fl-right"></span>
-                <div> 
+                <div ng-click="showMore('UnRead')"> 
                   Mostrar más notificaciones...
                 </div>
               </li>
@@ -45,14 +45,14 @@
           </tab>
           <tab heading="Leídas" class="item">
               <ul class="green-lantern-theme">
-                <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | filter: {read:'true'} " ng-click="showAlertDetail(notif.notificationId)">
+                <li class="list-item rounded-item highlight" ng-repeat="notif in notifications | orderBy: '-notificationDate' | filter: {read:'true'} " ng-click="showAlertDetail(notif.notificationId)" ng-show="qty('Read')">
 				  <span class="icomoon icon-antena pull-left no-padding pink"></span>
-                  <div class="pull-left"><div class="date">{{notif.notificationDate}}</div>{{ notif.notificationTitle }}</div>
+                  <div class="pull-left"><div class="date">{{notif.notificationDate | date: 'fullDate'}}</div>{{ notif.notificationTitle }}</div>
 				  <span class="icomoon icon-gauge fl-right no-padding green"></span>
 				</li>
                 <li class="list-item rounded-item showmore">
 				  <span class="icomoon  icon-show-more fl-right"></span>
-				  <div> 
+				  <div ng-click="showMore('Read')" > 
 					Mostrar más notificaciones...
 				  </div>
 				</li>
