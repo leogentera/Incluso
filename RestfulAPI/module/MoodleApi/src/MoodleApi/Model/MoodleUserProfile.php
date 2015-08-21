@@ -37,6 +37,7 @@ class MoodleUserProfile extends Common {
 	public $dreamsToDo = array ();
 	public $badgesEarned = array ();
 	public $badgesToEarn = array ();
+public $badges = array ();
 	public $showMyInformation = true;
 	public $showAttributesAndQualities = true;
 	public $showLikesAndPreferences = true;
@@ -94,6 +95,7 @@ class MoodleUserProfile extends Common {
 	public $maritalStatus = "";
 	public $age = "";
 	public $birthCountry;
+	
 	public function __construct($data, $requestinguserid) {
 		$customFields = array ();
 		$currentStudies = new MoodleCurrentStudies(array());
@@ -232,8 +234,7 @@ class MoodleUserProfile extends Common {
 		$this->fullname = (! empty ( $data ['fullname'] )) ? $data ['fullname'] : null;
 		$this->id = (! empty ( $data ['id'] )) ? $data ['id'] : null;
 		$this->lastname = (! empty ( $data ['lastname'] )) ? $data ['lastname'] : null;
-		//$this->profileimageurl = (! empty ( $data ['profileimageurl'] )) ? $data ['profileimageurl'] : null;
-		$this->profileimageurl = "http://incluso.definityfirst.com/moodle/pluginfile.php/42/user/icon/f1";
+		$this->profileimageurl = (! empty ( $data ['profileimageurl'] )) ? $data ['profileimageurl'] : null;
 		$this->profileimageurlsmall = (! empty ( $data ['profileimageurlsmall'] )) ? $data ['profileimageurlsmall'] : null;
 		$this->username = (! empty ( $data ['username'] )) ? $data ['username'] : null;
 		
@@ -481,9 +482,21 @@ class MoodleUserProfile extends Common {
 		$this->rank = $rank;
 	}
 	public function setBadges($badgesEarned, $badgesToEarn) {
-		if ($this->showBadgesEarned) {
-			$this->badgesEarned = $badgesEarned;
-			$this->badgesToEarn = $badgesToEarn;
+		foreach ($badgesEarned as $badge){
+			$badge->status="won";
+			array_push($this->badges, $badge);
+			
+			
 		}
+		
+		foreach ($badgesToEarn as $badge){
+			$badge->status="pending";
+			array_push($this->badges, $badge);
+				
+		}
+// 		if ($this->showBadgesEarned) {
+// 			$this->badgesEarned = $badgesEarned;
+// 			$this->badgesToEarn = $badgesToEarn;
+// 		}
 	}
 }
