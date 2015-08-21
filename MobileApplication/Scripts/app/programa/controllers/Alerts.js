@@ -86,9 +86,9 @@ angular
                     notificationDetail : 'Ut consequat tristique est ac ultrices. Donec et euismod nisi. Proin sapien est, imperdiet quis ligula ac, efficitur sollicitudin metus. Sed nec risus arcu. Nam id blandit orci. Nam ornare fermentum lorem vel fermentum. Vivamus ex diam, eleifend et bibendum ac, varius a mi. Mauris commodo dolor neque, sed pretium lacus ultrices vitae'}                    
             ];
             
-            var notificationsLocalStorage = localStorage.getItem("notifications");
+            var notificationsLocalStorage = localStorage.getItem("notifications");            
                         
-            $scope.notifications = notificationsLocalStorage.length > 1 ? JSON.parse(notificationsLocalStorage) : newNotifications;
+            $scope.notifications = notificationsLocalStorage ? JSON.parse(notificationsLocalStorage) : newNotifications;
             
            
             
