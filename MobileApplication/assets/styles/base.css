@@ -501,6 +501,9 @@ body.modal-open {
 .incluso-app a.btn-transparent:hover {
   text-decoration: underline;
 }
+.incluso-app .btn-uppercase {
+  text-transform: uppercase;
+}
 .incluso-app .btn-link {
   display: block;
   /*padding: 9px 3px;*/
