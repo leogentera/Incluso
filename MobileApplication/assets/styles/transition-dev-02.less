@@ -51,6 +51,28 @@
         line-height: 5vw;
         text-align: center;
     }
+    .achievements .panel-body .pager {
+        display: block;
+        margin: 8vw 0 0;
+    }
+    .achievements .panel-body .pager > * {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 2vw;
+    }
+    .incluso-app .achievements .panel-body .pager .icomoon {
+        font-size: 13vw;
+        color: rgb(0,173,138);
+        cursor: pointer;
+    }
+    .incluso-app .achievements .panel-body .pager .actual-page {
+        color: rgb(0,173,138);
+        font-weight: bold;
+        font-size: 5vw;
+    }
+    .incluso-app .achievements .panel-body .pager .icomoon.disabled {
+        opacity: 0.3;
+    }
 
     /* Detalle de Logro */  
     .achievement-detail .panel-body .text-center .achievement-badge {
@@ -67,7 +89,14 @@
         font-size: 8vw;
         line-height: 7vw;
         text-align: center;
-        padding: 4vw 0;
+        padding: 4vw 0 0;
+    }
+    .achievement-detail .panel-body .text-center .achievement-badge .badgedate {
+        font-family: Play;
+        font-size: 4vw;
+        font-weight: bold;
+        padding: 2vw 0 4vw;
+        color: rgb(153,153,153);
     }
     .achievement-detail .panel-body .text-center .achievement-description {
         color: #fff;
@@ -100,12 +129,10 @@
         border-radius: 90px;
         display: inline-block;
         vertical-align: middle;
-        padding: 3px 2px;
+        padding: 1vw;
         text-align: center;
-        width: 45px;
-        position: absolute;
-        top: 7px;
-        left: 0;
+        width: auto;
+        position: relative;
     }
         .achievement-detail .panel-body .text-center .share-achievement .icon-container .icon-share {
             .border-radius-circle();
@@ -119,12 +146,28 @@
         }
         .achievement-detail .panel-body .text-center .share-achievement .share-text {
             background: rgb(72,81,87);
-            .border-radius(20px);
+            .border-radius(10vw);
             display: inline-block;
             padding: 2vw 4vw 2vw 12vw;
-            font-size: 5vw;
+            font-size: 4vw;
+            margin-left: -10vw;
             vertical-align: middle;
             color: #fff;
+        }
+        .achievement-detail .panel-body .text-center .return-btn {
+            .border-radius(10px);
+            border-bottom: 1vw solid rgb(209,64,39);
+            background: rgb(237,72,35);
+            padding: 4vw 6vw;
+            color: rgb(256,256,256);
+            font-family: play;
+            font-size: 7vw;
+            font-weight: bold;
+            padding: 2vw 4vw;
+            text-transform: uppercase;
+            display: block;
+            cursor: pointer;
+            margin: 4vw 1vw 0;
         }
 
 }
