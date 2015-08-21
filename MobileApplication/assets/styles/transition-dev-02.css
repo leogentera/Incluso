@@ -175,3 +175,112 @@
   cursor: pointer;
   margin: 4vw 1vw 0;
 }
+.incluso-app .container.chat .component {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.incluso-app .container.chat .component .container-shadow {
+  position: absolute;
+  top: 0;
+  box-shadow: 0 0 10vw 20vw #000000;
+  z-index: 1;
+  height: 1vw;
+  background: #000000;
+  opacity: 0.3;
+}
+.incluso-app .container.chat .component .msg-container {
+  padding: 10vw 2%;
+  display: block;
+  max-height: 150vw;
+  overflow-y: auto;
+}
+.incluso-app .container.chat .component .msg-container .msg {
+  display: block;
+  margin: 0 0 4vw 0;
+  position: relative;
+}
+.incluso-app .container.chat .component .msg-container .msg .text span {
+  color: #ffffff;
+  font-family: Play;
+  font-size: 4vw;
+  display: block;
+}
+.incluso-app .container.chat .component .msg-container .msg .text .date {
+  color: #ffffff;
+  font-size: 3.5vw;
+  text-align: right;
+  opacity: 0.5;
+  margin: 2vw 0 0;
+}
+.incluso-app .container.chat .component .msg-container .msg.received .text {
+  background: #004e70;
+  border-radius: 4vw 4vw 4vw 0;
+  padding: 1vw 4vw;
+}
+.incluso-app .container.chat .component .msg-container .msg.received .msg-icn {
+  width: 0;
+  height: 0;
+  border-left: 2vw solid transparent;
+  border-top: 2vw solid transparent;
+  border-right: 2vw solid #004e70;
+  border-bottom: 2vw solid #004e70;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.incluso-app .container.chat .component .msg-container .msg.sent {
+  float: right;
+}
+.incluso-app .container.chat .component .msg-container .msg.sent .text {
+  background: #04876d;
+  border-radius: 4vw 4vw 0 4vw;
+  padding: 1vw 4vw;
+}
+.incluso-app .container.chat .component .msg-container .msg.sent .msg-icn {
+  width: 0;
+  height: 0;
+  border-right: 2vw solid transparent;
+  border-top: 2vw solid transparent;
+  border-left: 2vw solid #04876d;
+  border-bottom: 2vw solid #04876d;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.incluso-app .container.chat .component .typing-section {
+  background: #ffffff;
+  padding: 0;
+}
+.incluso-app .container.chat .component .typing-section input[type="text"] {
+  border-color: transparent;
+  padding: 2vw;
+  font-size: 5vw;
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.incluso-app .container.chat .component .typing-section input[type="text"]::-webkit-input-placeholder {
+  color: #565656;
+}
+.incluso-app .container.chat .component .typing-section input[type="text"]:-moz-placeholder {
+  color: #565656;
+}
+.incluso-app .container.chat .component .typing-section input[type="text"]::-moz-placeholder {
+  color: #565656;
+}
+.incluso-app .container.chat .component .typing-section input[type="text"]:-ms-input-placeholder {
+  color: #565656;
+}
+.incluso-app .container.chat .component .typing-section .send-text {
+  width: 0;
+  height: 0;
+  border-left: 20px solid #ed4823;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  float: none;
+  display: inline-block;
+  color: #ed4823;
+  font-size: 7vw;
+  vertical-align: middle;
+}
