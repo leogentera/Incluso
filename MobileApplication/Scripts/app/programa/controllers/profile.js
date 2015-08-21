@@ -32,9 +32,10 @@ angular
 
             $scope.model = getDataAsync();
 
-            $scope.wholeBadges = {};
-            $scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
-            $scope.totalBadges = $scope.wholeBadges.badges.length;
+            //$scope.wholeBadges = {};
+            //$scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
+            //$scope.totalBadges = $scope.wholeBadges.badges.length;
+            $scope.totalBadges = $scope.model.badges.length;
             $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);            
             $scope.badgePage = 0;
             $scope.normalBadgePage = $scope.badgePage + 1;
@@ -45,7 +46,8 @@ angular
                 var top = Math.min(12, $scope.totalBadges - 12 * i);
                 $scope.wholeBadgesPages[i] = [];
                 for (var j = 0; j < top; j++) {
-                    var elem = $scope.wholeBadges.badges.shift(); //extracts first element of remaining array                    
+                    //var elem = $scope.wholeBadges.badges.shift(); //extracts first element of remaining array    
+                    var elem = $scope.model.badges.shift(); //extracts first element of remaining array                    
                     $scope.wholeBadgesPages[i].push(elem);
                 }
             }
