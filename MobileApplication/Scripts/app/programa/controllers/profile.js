@@ -26,8 +26,8 @@ angular
             $scope.model = getDataAsync();
 
 
-            //$scope.wholeBadges = {};
-            //$scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
+            
+            
             $scope.totalBadges = $scope.model.badges.length;
             $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);
 
@@ -35,13 +35,14 @@ angular
             $scope.normalBadgePage = $scope.badgePage + 1;
 
             $scope.wholeBadgesPages = [];
-
+            var copyBadges = $scope.model.badges.slice();  //Deep copy of the $scope.model.badges array
             for (var i = 0; i < $scope.totalBadgePages; i++) {
                 var top = Math.min(12, $scope.totalBadges - 12 * i);
                 $scope.wholeBadgesPages[i] = [];
                 for (var j = 0; j < top; j++) {
-                    //var elem = $scope.wholeBadges.badges.shift(); //extracts first element of remaining array    
-                    var elem = $scope.model.badges.shift(); //extracts first element of remaining array                    
+                   
+                   
+                    var elem = copyBadges.shift(); //extracts first element of remaining array
                     $scope.wholeBadgesPages[i].push(elem);
                 }
             }
