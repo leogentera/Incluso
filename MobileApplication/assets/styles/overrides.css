@@ -552,3 +552,6 @@ section.part.inbloq div {
 section.part.inbloq .actions {
   margin-top: 10vh;
 }
+.incluso-app .old-code {
+  display: none !important;
+}

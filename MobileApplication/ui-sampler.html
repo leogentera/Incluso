@@ -181,7 +181,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="page active" ng-class="currentPage == 2 ? 'active' : ''">
+                                    <div class="page" ng-class="currentPage == 2 ? 'active' : ''">
                                         <div class="container-fluid">
                                             <div class="row">
                                                 <div class="col-xs-12">
@@ -373,76 +373,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <ul class="list-group separate-items">
-                                                        <li class="list-group-item" ng-click="navigateToPage(3)">
-                                                            <a href="">
-                                                                <span class="icomoon icon-document"></span>
-                                                                <span>Mi personalidad</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="list-group-item" ng-click="navigateToPage(4)">
-                                                            <a href="">
-                                                                <span class="icomoon icon-required"></span>
-                                                                <span>Socioeconómicos</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="list-group-item no-badge" ng-click="navigateToPage(5)">
-                                                            <a href="">
-                                                                <span class="icomoon icon-badge"></span>
-                                                                <span>Uso tecnología</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-
-                                                        <!-- <li class="list-group-item no-badge" ng-click="navigateToPage(6)" ng-show="model.strengths.length > 0">   -->
-                                                        <li class="list-group-item no-badge" ng-click="navigateToPage(6)">
-                                                            <a href="">
-                                                                <span class="icomoon icon-workman"></span>
-                                                                <span>Mis logros</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="list-group-item no-badge" ng-click="navigateToPage(7)" ng-show="model.recomendedBachelorDegrees.length > 0">
-                                                            <a href="">
-                                                                <span class="icomoon icon-user"></span>
-                                                                <span>Mis habilidades</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="list-group-item no-badge" ng-click="navigateToPage(8)" ng-show="(model.dreamsToBe.length > 0 || model.dreamsToHave.length > 0 || model.dreamsToDo.length > 0)">
-                                                            <a href="">
-                                                                <span class="icomoon icon-rocket"></span>
-                                                                <span>Mis áreas de oportunidad</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="list-group-item no-badge" ng-click="navigateToPage(8)" ng-show="(model.dreamsToBe.length > 0 || model.dreamsToHave.length > 0 || model.dreamsToDo.length > 0)">
-                                                            <a href="">
-                                                                <span class="icomoon icon-rocket"></span>
-                                                                <span>Elige el rumbo</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="page" ng-class="currentPage == 3 ? 'active' : ''">
+                                    <div class="page active" ng-class="currentPage == 3 ? 'active' : ''">
                                         <div class="container-fluid">
                                             <div class="row">
                                                 <div class="col-xs-12">
@@ -457,63 +392,112 @@
                                                             <div class="container-fluid">
                                                                 <div class="row">
                                                                     <div class="col-xs-12">
-                                                                        <h4>Mis gustos</h4>
-                                                                        <h5>Mis deportes preferidos</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.favoriteSports">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h5>Actividades artísticas</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.artisticActivities">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h5>Hobbies</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.hobbies">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h4>Mis cualidades</h4>
-                                                                        <h5>Talentos</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.talents">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h5>Valores</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.values">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h5>Habilidades</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.habilities">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h4>A quién admiro</h4>
-                                                                        <h5>Personajes</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.inspirationalCharacters">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <!--<ul class="block-list" ng-repeat="aq in model.attributesAndQualities">
-                                                                            <li>
-                                                                                <p ng-bind="aq"></p>
-                                                                            </li>
-                                                                        </ul>-->
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Mis gustos</h4>
+                                                                            <div class="from-group">
+                                                                                <label>Mis deportes preferidos</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Fútbol soccer</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Atletismo</p>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+
+                                                                            <div class="from-group">
+                                                                                <label>Actividades artísticas</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Tocar piano</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Dibujar</p>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+
+                                                                            <div class="from-group">
+                                                                                <label>Hobbies</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Patinar</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Escuchar música</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Leer</p>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Mis cualidades</h4>
+                                                                            <div class="from-group">
+                                                                                <label>Talentos</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Música</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Ayudar a los demás</p>
+                                                                                    </li> 
+                                                                                </ul>
+                                                                            </div>
+
+                                                                            <div class="from-group">
+                                                                                <label>Valores</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Honesto</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Integro</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Generoso</p>
+                                                                                    </li> 
+                                                                                    <li>
+                                                                                        <p>Cuidadoso</p>
+                                                                                    </li> 
+                                                                                </ul>
+                                                                            </div>
+
+                                                                            <div class="from-group">
+                                                                                <label>Habilidades</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Improvisación musical</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Enseñanza y comunicación</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Análisis numérico</p>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+
+                                                                            <div class="from-group">
+                                                                                <label>A quién admiro</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Albert Einstein</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Dalai Lama</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Princesa Diana</p>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -539,48 +523,63 @@
                                                             <div class="container-fluid">
                                                                 <div class="row">
                                                                     <div class="col-xs-12">
-                                                                        <h4>Vivienda</h4>
-                                                                        <h5>Vivo con</h5>
-                                                                        <p ng-bind="model.iLiveWith"></p>
-                                                                        <hr />
-                                                                        <h4>Actividad</h4>
-                                                                        <h5>Mi actividad principal</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.mainActivity">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h4>Actualmente estudio</h4>
-                                                                        <h5>Nivel</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.currentStudies">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h4>Familiar</h4>
-                                                                        <h5>Tengo hijos</h5>
-                                                                        <p ng-bind="model.children"></p>
-                                                                        <hr />
-                                                                        <h4>Ingresos</h4>
-                                                                        <h5>Recibo ingresos</h5>
-                                                                        <p ng-bind="model.gotMoneyIncome"></p>
-                                                                        <hr />
-                                                                        <h5>Fuente de ingresos</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.moneyIncome">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h4>Salud</h4>
-                                                                        <h5>Cuento con seguro médico</h5>
-                                                                        <p ng-bind="model.medicalCoverage"></p>
-                                                                        <hr />
-                                                                        <h5>Mi seguro es</h5>
-                                                                        <p ng-bind="model.medicalInsurance"></p>
-                                                                        <hr />
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Vivienda</h4>
+                                                                            <div class="from-group">
+                                                                                <label>Vivo con</label>
+                                                                                <p>Mis Papás</p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Actividad</h4>
+                                                                            <div class="from-group">
+                                                                                <label>Mi actividad principal</label>
+                                                                                <p>Estudiante</p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Actualmente estudio</h4>
+                                                                            <div class="from-group">
+                                                                                <label>Nivel</label>
+                                                                                <p>Secundaria</p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Familiar</h4>
+                                                                            <div class="from-group">
+                                                                                <label>Tengo hijos</label>
+                                                                                <p>No</p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Ingresos</h4>
+                                                                            <div class="from-group">
+                                                                                <label>Recibo ingresos</label>
+                                                                                <p>Si</p>
+                                                                            </div>
+                                                                            <div class="from-group">
+                                                                                <label>Fuente de ingresos</label>
+                                                                                <p>Clases de Pintura</p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Salud</h4>
+                                                                            <div class="from-group">
+                                                                                <label>Cuento con seguro médico</label>
+                                                                                <p>Si</p>
+                                                                            </div>
+                                                                            <div class="from-group">
+                                                                                <label>Mi seguro es</label>
+                                                                                <p>33300921</p>
+                                                                            </div>
+                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -596,35 +595,6 @@
                                             <div class="row">
                                                 <div class="col-xs-12">
 
-                                                    <ul class="list-group separate-items">
-                                                        <li class="list-group-item" ng-click="navigateToPage(2)">
-                                                            <a href="">
-                                                                <span class="icomoon icon-information"></span>
-                                                                <span>Mi Información</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="list-group-item" ng-click="navigateToPage(3)">
-                                                            <a href="">
-                                                                <span class="icomoon icon-document"></span>
-                                                                <span>Mi personalidad</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="list-group-item" ng-click="navigateToPage(4)">
-                                                            <a href="">
-                                                                <span class="icomoon icon-required"></span>
-                                                                <span>Socioeconómicos</span>
-                                                                <span class="icomoon icon-star"></span>
-                                                                <span class="icomoon icon-arrow-slim-right"></span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading" ng-click="navigateToPage(1)">
                                                             <span class="icomoon icon-arrow-slim-left"></span>
@@ -635,47 +605,84 @@
                                                             <div class="container-fluid">
                                                                 <div class="row">
                                                                     <div class="col-xs-12">
-                                                                        <h4>Dispositivos</h4>
-                                                                        <h5>¿Qué dispositivo sabes usar?</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.knownDevices">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h5>¿Con qué dispositivos móviles cuentas?</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.ownDevices">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h5>¿Qué es lo que más haces con un celular?</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.phoneUsage">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <hr />
-                                                                        <h4>Videojuegos</h4>
-                                                                        <h5>¿Juegas videojuegos?</h5>
-                                                                        <p ng-bind="model.playVideogames"></p>
-                                                                        <hr />
-                                                                        <h5>¿Con qué frecuencia juegas videojuegos?</h5>
-                                                                        <p ng-bind="model.videogamesFrecuency"></p>
-                                                                        <hr />
-                                                                        <h5>¿Cuántas horas juegas al día?</h5>
-                                                                        <p ng-bind="model.videogamesHours"></p>
-                                                                        <hr />
-                                                                        <h5>¿Qué tipo de videojuegos te gustan más?</h5>
-                                                                        <p ng-bind="model.kindOfVideogames"></p>
-                                                                        <hr />
-                                                                        <h5>¿Cuáles son tus juegos favoritos?</h5>
-                                                                        <ul class="block-list" ng-repeat="s in model.favoriteGames">
-                                                                            <li>
-                                                                                <p ng-bind="s"></p>
-                                                                            </li>
-                                                                        </ul>
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Dispositivos</h4>
+                                                                            <div class="from-group">
+                                                                                <label>¿Qué dispositivo sabes usar?</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Celular</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Laptop</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Tableta</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Computadora</p>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                            <div class="from-group">
+                                                                                <label>¿Con qué dispositivos móviles cuentas?</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Celular</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Laptop</p>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                            <div class="from-group">
+                                                                                <label>¿Qué es lo que más haces con un celular?</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Mensajear</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Ver facebook</p>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="profile-info-asset">
+                                                                            <h4>Videojuegos</h4>
+                                                                            <div class="from-group">
+                                                                                <label>¿Juegas videojuegos?</label>
+                                                                                <p>Si</p>
+                                                                            </div>
+                                                                            <div class="from-group">
+                                                                                <label>¿Con qué frecuencia juegas videojuegos?</label>
+                                                                                <p>1 vez a la semana</p>
+                                                                            </div>
+                                                                            <div class="from-group">
+                                                                                <label>¿Cuántas horas juegas al día?</label>
+                                                                                <p>5 horas</p>
+                                                                            </div>
+                                                                            <div class="from-group">
+                                                                                <label>¿Qué tipo de videojuegos te gustan más?</label>
+                                                                                <p>De aventura</p>
+                                                                            </div>
+                                                                            <div class="from-group">
+                                                                                <label>¿Cuáles son tus juegos favoritos?</label>
+                                                                                <ul class="block-list">
+                                                                                    <li>
+                                                                                        <p>Las aventuras de Tintin</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Lego Batman</p>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <p>Mario Kart</p>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>

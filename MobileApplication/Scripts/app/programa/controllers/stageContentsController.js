@@ -22,10 +22,13 @@ angular
             var course = JSON.parse(localStorage.getItem("course"));            
             $scope.scrollToTop();
             $scope.$emit('HidePreloader'); //hide preloader
-            $scope.jsonActivities = [];
+            $scope.jsonActivities = [];            
+            var starsNoMandatory = 0;
 
             $scope.statusObligatorios = 0;            
-            $scope.activities= 
+            $scope.activities={id:50,
+                              completed:false, 
+                              activity:
                                 [{id: 12,
                                   name: "File 1",
                                   description: "Lorem ipsum",
@@ -39,6 +42,16 @@ angular
                                         path: "assets/images/avatar.svg"
                                       }
                                   },
+                                  {id: 16,
+                                  name: "URL 1",
+                                  description: "Lorem ipsum",
+                                  activityType: "url",
+                                  isVideo: false,
+                                  mandatory: false,
+                                  seen:false,
+                                  stars: 200,
+                                  url: "http:\/\/www.facebook.com"
+                                  },
                                  {id:3,
                                     name:"Contenido ejemplo",
                                     description:null,
@@ -48,6 +61,15 @@ angular
                                     stars:null,
                                     pageContent:"\u003Cp\u003E\u003Cbr\u003EContenido ejemplo\u003C\/p\u003E"
                                   },
+                                  {id:8,
+                                    name:"Contenido ejemplo",
+                                    description:null,
+                                    activityType:"page",
+                                    mandatory: false,
+                                    seen:false,
+                                    stars:null,
+                                    pageContent:"\u003Cp\u003E\u003Cbr\u003EOtro Contenido ejemplo\u003C\/p\u003E"
+                                  },
                                  {id: 15,
                                   name: "URL 1",
                                   description: "Lorem ipsum",
@@ -56,7 +78,18 @@ angular
                                   mandatory: false,
                                   seen:false,
                                   stars: 200,
-                                  url: "http:\/\/www.google.com"},
+                                  url: "http:\/\/www.google.com"
+                                  },
+                                  {id: 18,
+                                  name: "URL 1",
+                                  description: "Lorem ipsum",
+                                  activityType: "url",
+                                  isVideo: false,
+                                  mandatory: false,
+                                  seen:false,
+                                  stars: 200,
+                                  url: "http:\/\/www.elnorte.com"
+                                  },
                                   {id:7,
                                   name:"Mira  hasta donde eres capaz de llegar \u00a1Los l\u00edmites los pones t\u00fa!",
                                   description:"video",
@@ -87,35 +120,50 @@ angular
                                       seen:false,
                                       pageContent:"\u003Cp\u003E\u003Cspan lang=\u0022EN-US\u0022 style=\u0027font-family: \u0022Calibri\u0022,sans-serif; font-size: 11pt; mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; mso-bidi-font-family: \u0022Times New Roman\u0022; mso-ansi-language: EN-US; mso-fareast-language: ES-MX; mso-bidi-language: AR-SA;\u0027\u003EM00dleAdmin!\u003C\/span\u003E\u003Cbr\u003E\u003C\/p\u003E"
                                     }
-                                 ];
+                                 ]
+                               };
 
-             for (var i=0; i<$scope.activities.length; i++) {
-              if ($scope.activities[i].isVideo) {
-                $scope.activities[i].activityType = "video";                
+             for (var i=0; i<$scope.activities.activity.length; i++) {
+              if ($scope.activities.activity[i].isVideo) {
+                $scope.activities.activity[i].activityType = "video";                
               }
-              if($scope.activities[i].mandatory && $scope.activities[i].seen){                
+              if($scope.activities.activity[i].mandatory && $scope.activities.activity[i].seen){                
                 $scope.statusObligatorios+=1;                
               }
-
+              else if (!$scope.activities.activity[i].mandatory && $scope.activities.activity[i].seen){
+                starsNoMandatory+=50;
+              }
             }
 
             $scope.updateStatus = function(contentId){                        
-              for (var i=0; i<$scope.activities.length; i++) {
-              if ($scope.activities[i].id == contentId) {
-                if(!$scope.activities[i].seen){
-                  $scope.activities[i].seen = true; 
-                  if($scope.activities[i].mandatory){                    
+              for (var i=0; i<$scope.activities.activity.length; i++) {
+              if ($scope.activities.activity[i].id == contentId) {
+                if(!$scope.activities.activity[i].seen){
+                  $scope.activities.activity[i].seen = true; 
+                  if($scope.activities.activity[i].mandatory){                    
                     $scope.statusObligatorios+=1;    
+                    assingStars();  
                     if($scope.statusObligatorios == 5){
+                      $scope.activities.completed = true;
                       alert("Prueba: Ya has visto 5 elementos obligatorios");
                     }
                   }
-                  $scope.userprofile.stars = $scope.userprofile.stars + $scope.activities[i].stars;
-                  localStorage.setItem("profile", JSON.stringify($scope.userprofile));
+                  else{
+                    assingStars();
+                    starsNoMandatory+=50;  
+                  }                
                 }
                 break;
                 }
               }
+            }
+
+            function assingStars(){
+              if(starsNoMandatory < 500){
+                $scope.userprofile.stars += 50;   
+                alert("Tienes "+$scope.userprofile.stars+" estrellas")
+                localStorage.setItem("profile", JSON.stringify($scope.userprofile));           
+              }                
             }
 
             function getDataAsync() {
