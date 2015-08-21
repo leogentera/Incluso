@@ -172,7 +172,7 @@
                                                         <p ng-bind="model.birthCountry"></p>
                                                         <hr />
                                                         <h5>Fecha de nacimiento</h5>
-                                                        <p ng-bind="model.birthday"></p>
+                                                        <p ng-bind="model.birthday" ng-init="model.birthday == 'MM/dd/yyyy'"></p>
                                                         <p {{ng-bind="model.birthday" | date: "MM/dd/yyyy"}}></p>
 
                                                         <hr />
