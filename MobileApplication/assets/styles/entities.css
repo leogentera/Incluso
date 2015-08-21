@@ -142,15 +142,8 @@
     color: #e1e455;
   }
   .incluso-app img {
-    /*width: 100%;*/
+    width: 100%;
   }
-   .incluso-app img.badgesviews {
-    cursor: pointer;
-  }
-   .incluso-app div.badgename {
-    color:white;
-  }
-  
   .incluso-app .txt-title {
     color: white;
     font-weight: bold;
@@ -1960,7 +1953,7 @@
     position: absolute;
     z-index: 1100;
     top: 0;
-    width: 250px;
+    width: 85vw;
     height: 100%;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1976,26 +1969,30 @@
     transition: transform ease 250ms;
   }
   .incluso-app menu > div.left {
+    height: 100%;
     background: #273D7A;
-    left: -250px;
+    left: -85vw;
+    background-image: url('../images/bg-menu.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
   }
   .incluso-app menu > div.show.left {
-    transform: translate3d(250px, 0, 0);
-    -ms-transform: translate3d(250px, 0, 0);
-    -webkit-transform: translate3d(250px, 0, 0);
-    -o-transform: translate3d(250px, 0, 0);
-    -moz-transform: translate3d(250px, 0, 0);
+    transform: translate3d(85vw, 0, 0);
+    -ms-transform: translate3d(85vw, 0, 0);
+    -webkit-transform: translate3d(85vw, 0, 0);
+    -o-transform: translate3d(85vw, 0, 0);
+    -moz-transform: translate3d(85vw, 0, 0);
   }
   .incluso-app menu > div.right {
     background: #6B1919;
-    right: -250px;
+    right: -85vw;
   }
   .incluso-app menu > div.show.right {
-    transform: translate3d(-250px, 0, 0);
-    -ms-transform: translate3d(-250px, 0, 0);
-    -webkit-transform: translate3d(-250px, 0, 0);
-    -o-transform: translate3d(-250px, 0, 0);
-    -moz-transform: translate3d(-250px, 0, 0);
+    transform: translate3d(-85vw, 0, 0);
+    -ms-transform: translate3d(-85vw, 0, 0);
+    -webkit-transform: translate3d(-85vw, 0, 0);
+    -o-transform: translate3d(-85vw, 0, 0);
+    -moz-transform: translate3d(-85vw, 0, 0);
   }
   .incluso-app menu > div > menu-item {
     display: block;

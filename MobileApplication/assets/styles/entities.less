@@ -1698,10 +1698,10 @@
         .border-box { box-sizing:border-box; -moz-box-sizing:border-box; }
 
         menu { display:block;
-            @menu-width:250px;
+            @menu-width: 85vw;
             z-index: 100;
             >div { position:absolute; z-index:1100; top:0;  width:@menu-width; height:100%; .border-box; .transition(-webkit-transform ease 250ms); .transition(transform ease 250ms);
-                &.left { background:#273D7A; left:@menu-width*-1; }
+                &.left { height: 100%; background:#273D7A; left:@menu-width*-1; background-image: url('../images/bg-menu.jpg'); background-repeat: no-repeat; background-size: 100% auto; }
                 &.show.left { .transform(translate3d(@menu-width, 0, 0)); }
 
                 &.right { background:#6B1919; right:@menu-width*-1; }
