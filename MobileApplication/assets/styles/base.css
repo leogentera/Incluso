@@ -1282,7 +1282,7 @@ body.modal-open {
 }
 .incluso-app .navbar.navbar-orange {
   background-color: #EE4823;
-  border-color: #EE4823;
+  border-color: rgba(0, 0, 0, 0.2);
   -webkit-transition: all 700ms ease;
   -moz-transition: all 700ms ease;
   -o-transition: all 700ms ease;
@@ -1290,7 +1290,7 @@ body.modal-open {
 }
 .incluso-app .navbar.navbar-blue {
   background-color: #158CCD;
-  border-color: #158CCD;
+  border-color: rgba(0, 0, 0, 0.2);
   -webkit-transition: all 700ms ease;
   -moz-transition: all 700ms ease;
   -o-transition: all 700ms ease;
