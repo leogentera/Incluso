@@ -193,7 +193,7 @@
 .incluso-app .container.chat .component .msg-container {
   padding: 10vw 2%;
   display: block;
-  max-height: 210px;
+  max-height: 230px;
   overflow-y: auto;
 }
 .incluso-app .container.chat .component .msg-container .msg {
@@ -218,6 +218,7 @@
   background: #004e70;
   border-radius: 4vw 4vw 4vw 0;
   padding: 1vw 4vw;
+  margin-left: 3vw;
 }
 .incluso-app .container.chat .component .msg-container .msg.received .msg-icn {
   width: 0;
