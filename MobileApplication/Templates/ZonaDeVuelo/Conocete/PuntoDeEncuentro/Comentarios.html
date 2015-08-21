@@ -83,7 +83,7 @@
 
 <section class="wall">
 
-    <div id="item{{index}}" ng-repeat="p in discussion.posts">
+    <div id="item{{index}}" ng-repeat="p in discussion.posts[0].replies">
 
 
 
@@ -94,7 +94,8 @@
           </div>
         </div>
         <div class="block">  
-            {{p.message}}
+            {{p.message }}
+            <!--ng-bind-html="p.message | parseLinks" -->
             <div ng-repeat="attachment in p.attachments">
                 <a href="{{ attachmentsfileurl }}"><i class="icomoon icon-required"></i> {{ attachment.filename }} </a>
             </div>
