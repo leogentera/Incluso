@@ -42,6 +42,7 @@
   margin: 4vw 0 0;
   border-bottom: 1px solid #8ba8b1;
   cursor: pointer;
+  text-align: center;
 }
 .incluso-app .achievements .panel-body .badge-item img {
   height: auto;
@@ -193,7 +194,7 @@
 .incluso-app .container.chat .component .msg-container {
   padding: 10vw 2%;
   display: block;
-  max-height: 230px;
+  max-height: 250px;
   overflow-y: auto;
 }
 .incluso-app .container.chat .component .msg-container .msg {
