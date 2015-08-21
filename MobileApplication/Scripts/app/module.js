@@ -708,17 +708,15 @@
                 
                  $scope.navigateTo = function() {
                     //console.log($location);
-                    
                      window.location.hash = $scope.hash;
-                     
-                                     }
+                 }
              }
-         }
+         };
      })
     .directive("submenu", function(){
         return {
             restrict: "E",
-            template: "<div class='submenu' ng-transclude><ul></ul></div>",
+            template: "<div class='submenu' ng-transclude></div>",
             transclude: true,
             scope: {
 
@@ -728,7 +726,23 @@
     .directive("submenuItem", function(){
         return {
             restrict: "E",
-            template: "<li ng-click='navigateTo()' ng-transclude></li>",
+            template: "<div ng-click='navigateTo()' ng-transclude></div>",
+            transclude: true,
+            scope: {
+                 hash: "@",                 
+             },
+             link: function($scope, $location) {
+                
+                 $scope.navigateTo = function() {                    
+                     window.location.hash = $scope.hash;                     
+                }
+            }
+        };
+    })
+    .directive("submenuItemTitle", function(){
+        return {
+            restrict: "E",
+            template: "<h3 class='submenuTitle' ng-transclude></h3>",
             transclude: true,
             scope: {
 
