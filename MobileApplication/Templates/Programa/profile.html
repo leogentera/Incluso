@@ -650,9 +650,13 @@
                                                         </div>
                                                         -->
                                                     </div>
-                                                    <span style="color:white;">Página: <span ng-bind="normalBadgePage"></span></span>
-                                                    <div style="color:white;" ng-click="changepage(-1)">Back</div>
-                                                    <div style="color:white;" ng-click="changepage(1)">Forward</div>
+                                                </div>
+                                                <div class="pager">
+                                                    <div class="icomoon icon-arrow-bold-left" ng-click="changepage(-1)"></div>
+                                                    <span>
+                                                        <span ng-bind="normalBadgePage" class="actual-page"></span>
+                                                    </span>
+                                                    <div class="icomoon icon-arrow-bold-right" ng-click="changepage(1)"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -761,7 +765,7 @@
                                                         <div class="achievement-badge">
                                                             <img class="badgesviews" ng-src="data:image/png;base64,{{badgeBadgeimage}}" alt="" class="img-responsive" width="100px" height="100px"  /> 
 															<div class="badgename" ng-bind="badgeName"></div>
-                                                            <div class="badgename" ng-bind="badgeDateIssued"></div>
+                                                            <div class="badgedate" ng-bind="badgeDateIssued"></div>
                                                         </div>
                                                         <div class="achievement-description">
                                                             <span>
@@ -776,6 +780,11 @@
                                                                 <span class="icomoon icon-share"></span>
                                                             </span>
                                                             <span class="share-text">Compartir Insignia</span>
+                                                        </div>
+                                                        <div ng-click="navigateToPage(6)">
+                                                            <a class="return-btn">
+                                                                Regresar
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
