@@ -1794,10 +1794,20 @@
   }
   .incluso-app .app {
     background: #000;
-    -webkit-transition: all 500ms ease;
-    -moz-transition: all 500ms ease;
-    -o-transition: all 500ms ease;
-    transition: all 500ms ease;
+    /*-webkit-transition: all 500ms ease;
+            -moz-transition: all 500ms ease;
+            -o-transition: all 500ms ease;
+            transition: all 500ms ease; */
+    -webkit-transition: -webkit-transform ease 800ms;
+    -moz-transition: -webkit-transform ease 800ms;
+    -ms-transition: -webkit-transform ease 800ms;
+    -o-transition: -webkit-transform ease 800ms;
+    transition: -webkit-transform ease 800ms;
+    -webkit-transition: transform ease 800ms;
+    -moz-transition: transform ease 800ms;
+    -ms-transition: transform ease 800ms;
+    -o-transition: transform ease 800ms;
+    transition: transform ease 800ms;
     z-index: 20;
   }
   .incluso-app .app,
@@ -1948,6 +1958,72 @@
   .incluso-app menu {
     display: block;
     z-index: 100;
+  }
+  .incluso-app menu .sidebar li {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.28);
+    display: block;
+    margin-right: 6vw;
+    position: relative;
+    padding: 1vw 0;
+  }
+  .incluso-app menu .sidebar li a:hover,
+  .incluso-app menu .sidebar li.active > a:focus {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+  }
+  .incluso-app menu .sidebar li > i {
+    padding: 3vw 1vw;
+  }
+  .incluso-app menu .sidebar li > a {
+    color: white;
+    display: block;
+    font-size: 5vw;
+    padding: 1.5vh 3vw;
+    position: relative;
+    width: 100%;
+  }
+  .incluso-app menu .sidebar li > a:focus,
+  .incluso-app menu .sidebar li > a:hover {
+    background-color: rgba(255, 255, 255, 0.28);
+  }
+  .incluso-app menu .sidebar li > a > .icomoon {
+    margin-right: 1vw;
+  }
+  .incluso-app menu .sidebar li > a > .glyphicon {
+    margin-right: 1vw;
+  }
+  .incluso-app menu .sidebar li:last-child a {
+    padding: 3vh 3vw;
+  }
+  .incluso-app menu .sidebar li a.menu-blue {
+    color: #39a6dd;
+  }
+  .incluso-app menu .sidebar li a.menu-green {
+    color: #80c241;
+  }
+  .incluso-app menu .sidebar li a.menu-pink {
+    color: #e70e80;
+  }
+  .incluso-app menu .sidebar li .submenu {
+    border-top: 2px solid rgba(255, 255, 255, 0.28);
+    display: none;
+    padding: 6vw 0 6vw 6vw;
+  }
+  .incluso-app menu .sidebar li .submenu li {
+    margin: 1vh 0px;
+  }
+  .incluso-app menu .sidebar li .submenu li:first-child {
+    color: #39a6dd;
+    /*text-transform: uppercase;*/
+  }
+  .incluso-app menu .sidebar li .submenu a {
+    color: white;
+    line-height: 20px;
+  }
+  .incluso-app menu .sidebar li .submenu ul {
+    list-style: none;
+    padding: 3vw 0;
   }
   .incluso-app menu > div {
     position: absolute;
