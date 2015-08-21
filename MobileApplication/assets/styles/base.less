@@ -51,6 +51,7 @@ body {
     position: relative;
     overflow: hidden;
     width: 100vw;
+    min-height: 62vh;
     background-color: #040203;
 }
 #site-canvas {
@@ -1190,13 +1191,15 @@ body {
     ****************************************************************************/
     .navbar {
         position: relative;
+        height: 10vh;
         margin-bottom: 0;
         border-radius: 0px;
         background-color: #EE4823;
         border-color: rgba(0, 0, 0, 0.2);/*#EE4823;*/
+        overflow: hidden;
         .icomoon {
             font-size: 6vw;
-            line-height:13vw;
+            line-height: 15vw;
             vertical-align: top;
         }   
 
@@ -1212,7 +1215,7 @@ body {
 
     .navbar.navbar-orange {
         background-color: #EE4823;
-        border-color: #EE4823;
+        border-color: rgba(0, 0, 0, 0.2);
         -webkit-transition: all 700ms ease;
             -moz-transition: all 700ms ease;
             -o-transition: all 700ms ease;
@@ -1221,7 +1224,7 @@ body {
 
     .navbar.navbar-blue {
         background-color: #158CCD;
-        border-color: #158CCD;
+        border-color: rgba(0, 0, 0, 0.2);
         -webkit-transition: all 700ms ease;
             -moz-transition: all 700ms ease;
             -o-transition: all 700ms ease;
@@ -1250,7 +1253,7 @@ body {
         position: static;
         padding: 0; 
         margin: 0 2vw;
-        height: 14vw; 
+        height: 12vw; 
         width: 95vw;
 
         .sidebar-toggle {
