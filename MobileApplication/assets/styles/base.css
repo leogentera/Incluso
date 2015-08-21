@@ -105,9 +105,14 @@ body.modal-open {
 }
 .sidebar-left-in .app {
   height: auto;
-  transform: translate(85vw, 0px);
-  -webkit-transform: translate(85vw, 0px);
-  -moz-transform: translate(85vw, 0px);
+  /*transform: translate(85vw, 0px);
+    -webkit-transform: translate(85vw, 0px);
+    -moz-transform: translate(85vw, 0px);*/
+  transform: translate3d(85vw, 0, 0);
+  -ms-transform: translate3d(85vw, 0, 0);
+  -webkit-transform: translate3d(85vw, 0, 0);
+  -o-transform: translate3d(85vw, 0, 0);
+  -moz-transform: translate3d(85vw, 0, 0);
 }
 .ease {
   -webkit-transition: 300ms ease all;
@@ -1260,7 +1265,8 @@ body.modal-open {
   margin-bottom: 0;
   border-radius: 0px;
   background-color: #EE4823;
-  border-color: #EE4823;
+  border-color: rgba(0, 0, 0, 0.2);
+  /*#EE4823;*/
 }
 .incluso-app .navbar .icomoon {
   font-size: 6vw;
