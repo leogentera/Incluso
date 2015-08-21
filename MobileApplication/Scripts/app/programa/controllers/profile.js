@@ -26,9 +26,9 @@ angular
             $scope.model = getDataAsync();
 
 
-            $scope.wholeBadges = {};
-            $scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
-            $scope.totalBadges = $scope.wholeBadges.badges.length;
+            //$scope.wholeBadges = {};
+            //$scope.wholeBadges.badges = $scope.model.badgesEarned.concat($scope.model.badgesToEarn);  //model.badgesToEarn
+            $scope.totalBadges = $scope.model.badges.length;
             $scope.totalBadgePages = Math.ceil($scope.totalBadges / 12);
 
             $scope.badgePage = 0;
