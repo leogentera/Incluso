@@ -549,7 +549,10 @@ section.part.inbloq div {
   width: 100%;
   text-align: justify;
 }
-section.part.inbloq .actions {
+section.part.inbloq.text-left div {
+  text-align: left;
+}
+section.part.inbloq.text-left .actions {
   margin-top: 10vh;
 }
 .incluso-app .old-code {

@@ -57,7 +57,7 @@
                                         <li class="list-group-item" ng-click="navigateToPage(2)">
                                             <a href="">
                                                 <span class="icomoon icon-information"></span>
-                                                <span>Mi Información</span>
+                                                <span>Mi información</span>
                                                 <span class="icomoon icon-star"></span>
                                                 <span class="icomoon icon-arrow-slim-right"></span>
                                             </a>
@@ -72,7 +72,7 @@
                                             </a>
                                         </li>
 
-                                        <li class="list-group-item" ng-click="navigateToPage(4)">
+                                        <li class="list-group-item hidden" ng-click="navigateToPage(4)">
                                             <a href="">
                                                 <span class="icomoon icon-required"></span>
                                                 <span>Socioeconómicos</span>
@@ -81,7 +81,7 @@
                                             </a>
                                         </li>
 
-                                        <li class="list-group-item no-badge" ng-click="navigateToPage(5)">
+                                        <li class="list-group-item no-badge hidden" ng-click="navigateToPage(5)">
                                             <a href="">
                                                 <span class="icomoon icon-badge"></span>
                                                 <span>Uso tecnología</span>
@@ -976,7 +976,7 @@
                                                 </div>
                                                 <div class="pager">
                                                     <div class="icomoon icon-arrow-bold-left" ng-click="changepage(-1)"></div>
-                                                    <span>
+                                                    <span>1/<span ng-bind="totalBadgePages"></span>
                                                         <span ng-bind="normalBadgePage" class="actual-page"></span>
                                                     </span>
                                                     <div class="icomoon icon-arrow-bold-right" ng-click="changepage(1)"></div>

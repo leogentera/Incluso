@@ -391,8 +391,8 @@ body.modal-open {
 .incluso-app #site-menu .nav > li > a > .glyphicon {
   margin-right: 1vw;
 }
-.incluso-app #site-menu .nav > li:last-child a {
-  padding: 3vh 3vw;
+.incluso-app #site-menu .nav > li.separate {
+  height: 9vh;
 }
 .incluso-app #site-menu .nav > li a.menu-blue {
   color: #39a6dd;
@@ -1438,7 +1438,7 @@ body.modal-open {
   margin: 0;
   font-size: inherit;
   font-weight: 700;
-  text-transform: capitalize;
+  text-transform: none;
 }
 .incluso-app .panel > .panel-body {
   padding-left: 3vw;
