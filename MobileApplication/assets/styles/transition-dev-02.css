@@ -37,7 +37,7 @@
   /* Fuente de energia */
 }
 .incluso-app .achievements .panel-body .badge-item {
-  height: 41vw;
+  height: 45vw;
   padding: 2vw 0 4vw;
   margin: 4vw 0 0;
   border-bottom: 1px solid #8ba8b1;
@@ -76,10 +76,13 @@
   color: #00ad8a;
   cursor: pointer;
 }
+.incluso-app .incluso-app .achievements .panel-body .pager span {
+  font-size: 5vw;
+  color: #ffffff;
+  font-weight: bold;
+}
 .incluso-app .incluso-app .achievements .panel-body .pager .actual-page {
   color: #00ad8a;
-  font-weight: bold;
-  font-size: 5vw;
 }
 .incluso-app .incluso-app .achievements .panel-body .pager .icomoon.disabled {
   opacity: 0.3;
