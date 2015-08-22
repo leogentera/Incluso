@@ -56,8 +56,6 @@
         font-size: 4vw;
         line-height: 5vw;
         text-align: center;
-        display: inline-block;
-        width: auto;
         margin: 0;
         padding: 0;
     }
@@ -231,15 +229,13 @@
             margin-left: 20px;
         }
         .container.chat .component .msg-container .msg.received .msg-icn {
-            width: 20px;
-            height: 20px;
             display: block;
-            background: rgb(0,78,112);
             color: rgb(0,78,112);
             font-size: 5vw;
             position: absolute;
-            bottom: 0;
             left: 0;
+            top: auto;
+            bottom: 0;
         }
         .container.chat .component .msg-container .msg.sent {
             float: right;
@@ -255,12 +251,12 @@
             float: right;
         }
         .container.chat .component .msg-container .msg.sent .msg-icn {
-            width: 20px;
-            height: 20px;
+            font-size: 5vw;
             display: block;
-            background: rgb(4,135,109);
-            position: absolute;
+            top: auto;
             bottom: 0;
+            color: rgb(4,135,109);
+            position: absolute;
             right: 0;
         }
         .container.chat .component .typing-section {

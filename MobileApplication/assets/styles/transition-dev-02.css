@@ -59,8 +59,6 @@
   font-size: 4vw;
   line-height: 5vw;
   text-align: center;
-  display: inline-block;
-  width: auto;
   margin: 0;
   padding: 0;
 }
@@ -234,15 +232,13 @@
   margin-left: 20px;
 }
 .incluso-app .container.chat .component .msg-container .msg.received .msg-icn {
-  width: 20px;
-  height: 20px;
   display: block;
-  background: #004e70;
   color: #004e70;
   font-size: 5vw;
   position: absolute;
-  bottom: 0;
   left: 0;
+  top: auto;
+  bottom: 0;
 }
 .incluso-app .container.chat .component .msg-container .msg.sent {
   float: right;
@@ -258,12 +254,12 @@
   float: right;
 }
 .incluso-app .container.chat .component .msg-container .msg.sent .msg-icn {
-  width: 20px;
-  height: 20px;
+  font-size: 5vw;
   display: block;
-  background: #04876d;
-  position: absolute;
+  top: auto;
   bottom: 0;
+  color: #04876d;
+  position: absolute;
   right: 0;
 }
 .incluso-app .container.chat .component .typing-section {
