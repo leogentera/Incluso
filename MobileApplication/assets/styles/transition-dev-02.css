@@ -38,11 +38,14 @@
 }
 .incluso-app .achievements .panel-body .badge-item {
   height: 41vw;
-  padding: 2vw 2vw 4vw;
+  padding: 2vw 0 4vw;
   margin: 4vw 0 0;
   border-bottom: 1px solid #8ba8b1;
   cursor: pointer;
   text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  width: 33%;
 }
 .incluso-app .achievements .panel-body .badge-item img {
   height: auto;
@@ -56,8 +59,10 @@
   font-size: 4vw;
   line-height: 5vw;
   text-align: center;
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: auto;
+  margin: 0;
+  padding: 0;
 }
 .incluso-app .achievements .panel-body .pager {
   display: block;
@@ -198,13 +203,15 @@
 .incluso-app .container.chat .component .msg-container {
   padding: 10vw 2%;
   display: block;
-  max-height: 235px;
+  height: 300px;
   overflow-y: auto;
 }
 .incluso-app .container.chat .component .msg-container .msg {
   display: block;
   margin: 0 0 4vw 0;
   position: relative;
+  width: 100%;
+  float: left;
 }
 .incluso-app .container.chat .component .msg-container .msg .text span {
   color: #ffffff;
@@ -223,15 +230,16 @@
   background: #004e70;
   border-radius: 4vw 4vw 4vw 0;
   padding: 1vw 4vw;
-  margin-left: 3vw;
+  width: 96%;
+  margin-left: 20px;
 }
 .incluso-app .container.chat .component .msg-container .msg.received .msg-icn {
-  width: 0;
-  height: 0;
-  border-left: 2vw solid transparent;
-  border-top: 2vw solid transparent;
-  border-right: 2vw solid #004e70;
-  border-bottom: 2vw solid #004e70;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: #004e70;
+  color: #004e70;
+  font-size: 5vw;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -241,16 +249,19 @@
 }
 .incluso-app .container.chat .component .msg-container .msg.sent .text {
   background: #04876d;
+  color: #04876d;
+  font-size: 5vw;
   border-radius: 4vw 4vw 0 4vw;
   padding: 1vw 4vw;
+  width: 96%;
+  margin-right: 20px;
+  float: right;
 }
 .incluso-app .container.chat .component .msg-container .msg.sent .msg-icn {
-  width: 0;
-  height: 0;
-  border-right: 2vw solid transparent;
-  border-top: 2vw solid transparent;
-  border-left: 2vw solid #04876d;
-  border-bottom: 2vw solid #04876d;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: #04876d;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -313,10 +324,31 @@
   margin: 5%;
   padding: 0;
 }
-.incluso-app .fuente-energia .filter-section select {
+.incluso-app .fuente-energia .filter-section {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0;
+  margin: 0 10vw;
+  position: relative;
+}
+.incluso-app .fuente-energia .filter-section i {
+  font-size: 5vw;
+  display: inline-block;
+  vertical-align: middle;
+  color: #ffffff;
+}
+.incluso-app .fuente-energia .filter-section select {
   font-size: 4vw;
+  width: 92%;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+.incluso-app .fuente-energia .filter-section .icon-arrow {
+  font-size: 3vw;
+  position: absolute;
+  top: 5vw;
+  right: 2vw;
 }
 .incluso-app .fuente-energia .wall {
   padding: 2vw 5%;

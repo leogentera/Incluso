@@ -35,11 +35,14 @@
     /* Mis Logros */    
     .achievements .panel-body .badge-item {
         height: 41vw;
-        padding: 2vw 2vw 4vw;
+        padding: 2vw 0 4vw;
         margin: 4vw 0 0;
         border-bottom: 1px solid rgb(139,168,177);
         cursor: pointer;
         text-align: center;
+        display: inline-block;
+        vertical-align: top;
+        width: 33%;
     }
     .achievements .panel-body .badge-item img {
         height: auto;
@@ -53,8 +56,10 @@
         font-size: 4vw;
         line-height: 5vw;
         text-align: center;
-        display: block;
-        width: 100%;
+        display: inline-block;
+        width: auto;
+        margin: 0;
+        padding: 0;
     }
     .achievements .panel-body .pager {
         display: block;
@@ -194,13 +199,16 @@
         .container.chat .component .msg-container {
             padding: 10vw 2%;
             display: block;
-            max-height: 235px;
+            height: 300px;
             overflow-y: auto;
         }
         .container.chat .component .msg-container .msg {
             display: block;
             margin: 0 0 4vw 0;
             position: relative;
+            width: 100%;
+            float: left;
+
         }
         .container.chat .component .msg-container .msg .text span {
             color: rgb(256,256,256);
@@ -219,15 +227,16 @@
             background: rgb(0,78,112);
             border-radius: 4vw 4vw 4vw 0;
             padding: 1vw 4vw;
-            margin-left: 3vw;
+            width: 96%;
+            margin-left: 20px;
         }
         .container.chat .component .msg-container .msg.received .msg-icn {
-            width: 0;
-            height: 0;
-            border-left: 2vw solid transparent;
-            border-top: 2vw solid transparent;
-            border-right: 2vw solid rgb(0,78,112);
-            border-bottom: 2vw solid rgb(0,78,112);
+            width: 20px;
+            height: 20px;
+            display: block;
+            background: rgb(0,78,112);
+            color: rgb(0,78,112);
+            font-size: 5vw;
             position: absolute;
             bottom: 0;
             left: 0;
@@ -237,16 +246,19 @@
         }
         .container.chat .component .msg-container .msg.sent .text {
             background: rgb(4,135,109);
+            color: rgb(4,135,109);
+            font-size: 5vw;
             border-radius: 4vw 4vw 0 4vw;
             padding: 1vw 4vw;
+            width: 96%;
+            margin-right: 20px;
+            float: right;
         }
         .container.chat .component .msg-container .msg.sent .msg-icn {
-            width: 0;
-            height: 0;
-            border-right: 2vw solid transparent;
-            border-top: 2vw solid transparent;
-            border-left: 2vw solid rgb(4,135,109);
-            border-bottom: 2vw solid rgb(4,135,109);
+            width: 20px;
+            height: 20px;
+            display: block;
+            background: rgb(4,135,109);
             position: absolute;
             bottom: 0;
             right: 0;
@@ -311,10 +323,31 @@
             margin: 5%;
             padding: 0;
         }
-        .fuente-energia .filter-section select {
+        .fuente-energia .filter-section {
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0;
+            margin: 0 10vw;
+            position: relative;
+        }
+        .fuente-energia .filter-section i {
+            font-size: 5vw;
+            display: inline-block;
+            vertical-align: middle;
+            color: rgb(256,256,256);
+        }
+        .fuente-energia .filter-section select {
             font-size: 4vw;
+            width: 92%;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+        }
+        .fuente-energia .filter-section .icon-arrow {
+            font-size: 3vw;
+            position: absolute;
+            top: 5vw;
+            right: 2vw;
         }
         .fuente-energia .wall {
             padding: 2vw 5%;
