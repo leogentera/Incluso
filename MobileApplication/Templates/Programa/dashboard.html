@@ -34,7 +34,7 @@
         </section>
 
         <section class="component current-satge">
-          <img  src="assets/images/estacion{{currentStage != null ? currentStage : 1}}.png" alt="estacion"/>
+          <img  src="assets/images/estacion{{currentStage || 1}}.png" alt="estacion"/>
           <h3>- Estación: {{stage.name}} -</h3>
           <a href="" class="btn btn-primary btn-lg" ng-click="navigateToStage()"><span>{{stage.firstTime == 1 ? "Iniciar Aventura" : "Continuar misión"}}</span></a>
         </section>
@@ -52,7 +52,8 @@
                 <div class="user-container">
                   <div class="user-avatar">
                     <figure>
-                      <img src="assets/images/img-avatar-dummy-01.png" alt="avatar" />
+                      <!--<img src="assets/images/img-avatar-dummy-01.png" alt="avatar" />-->
+                      <img ng-src="assets/images/{{course.leaderboard[0] ? course.leaderboard[0].pictureProfile : 'img-avatar-dummy-01.png'}}" alt="avatar" />
                       <figcaption>1</figcaption>
                       <div class="arrow-up"></div>
                     </figure>
@@ -78,7 +79,8 @@
                 <div class="user-container">
                   <div class="user-avatar">
                     <figure>
-                      <img src="assets/images/img-avatar-dummy-02.png" alt="avatar" />
+                      <!--<img src="assets/images/img-avatar-dummy-02.png" alt="avatar" />-->
+                      <img ng-src="assets/images/{{course.leaderboard[1] ? course.leaderboard[1].pictureProfile : 'img-avatar-dummy-02.png'}}" alt="avatar" />
                       <figcaption>2</figcaption>
                       <div class="arrow-up"></div>
                     </figure>
@@ -104,7 +106,8 @@
                 <div class="user-container">
                   <div class="user-avatar">
                     <figure>
-                      <img src="assets/images/img-avatar-dummy-03.png" alt="avatar" />
+                      <!--<img src="assets/images/img-avatar-dummy-03.png" alt="avatar" />-->
+                      <img ng-src="assets/images/{{course.leaderboard[2] ? course.leaderboard[2].pictureProfile : 'img-avatar-dummy-03.png'}}" alt="avatar" />
                       <figcaption>3</figcaption>
                       <div class="arrow-up"></div>
                     </figure>
