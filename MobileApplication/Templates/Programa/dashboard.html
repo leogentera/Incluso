@@ -29,7 +29,7 @@
         <section class="component global-progress txt-renglon centered">
           <h3>- Avance Global -</h3>
           <div class="spinner">
-            <img src="assets/images/prcnt/{{usercourse == null ? 0 : Math.ceil(usercourse.globalProgress)}}.png" alt="progress" /><div class="circle"></div><div class="text">{{usercourse == null ? 0 : usercourse.globalProgress}}%</div>
+            <img src="assets/images/prcnt/{{usercourse == null ? 0 : Math.ceil(usercourse.globalProgress)}}.png" alt="progress" /><div class="circle"></div><div class="text">{{usercourse.globalProgress || 0}}%</div>
           </div>
         </section>
 
