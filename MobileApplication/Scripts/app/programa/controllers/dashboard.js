@@ -75,7 +75,6 @@
             function Failure() {
                 
             }
-            
 
             //$scope.navigateTo = function(url){
               //  $location.path(url);
