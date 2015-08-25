@@ -41,7 +41,7 @@
 
         <section class="component my-badges">
           <h3>- Mi Escudo -</h3>
-          <img src="assets/images/img-badges-blocked.png" alt="badges" />
+          <img ng-src="assets/images/{{user.shield || 'img-badges-blocked.png'}}" alt="badges" />
         </section>
 
         <section class="component top-users" style="width: 100vw">
@@ -52,7 +52,6 @@
                 <div class="user-container">
                   <div class="user-avatar">
                     <figure>
-                      <!--<img src="assets/images/img-avatar-dummy-01.png" alt="avatar" />-->
                       <img ng-src="assets/images/{{course.leaderboard[0] ? course.leaderboard[0].pictureProfile : 'img-avatar-dummy-01.png'}}" alt="avatar" />
                       <figcaption>1</figcaption>
                       <div class="arrow-up"></div>
@@ -79,7 +78,6 @@
                 <div class="user-container">
                   <div class="user-avatar">
                     <figure>
-                      <!--<img src="assets/images/img-avatar-dummy-02.png" alt="avatar" />-->
                       <img ng-src="assets/images/{{course.leaderboard[1] ? course.leaderboard[1].pictureProfile : 'img-avatar-dummy-02.png'}}" alt="avatar" />
                       <figcaption>2</figcaption>
                       <div class="arrow-up"></div>
@@ -106,7 +104,6 @@
                 <div class="user-container">
                   <div class="user-avatar">
                     <figure>
-                      <!--<img src="assets/images/img-avatar-dummy-03.png" alt="avatar" />-->
                       <img ng-src="assets/images/{{course.leaderboard[2] ? course.leaderboard[2].pictureProfile : 'img-avatar-dummy-03.png'}}" alt="avatar" />
                       <figcaption>3</figcaption>
                       <div class="arrow-up"></div>
