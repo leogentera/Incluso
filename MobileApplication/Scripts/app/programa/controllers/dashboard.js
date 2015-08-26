@@ -63,24 +63,6 @@
 
                 $location.path('/ProgramaDashboardEtapa/' + $scope.stage.id);
             };
-            
-             $scope.playWelcome = function(){                 
-                 var videoAddress = "assets/media";
-                 var videoName = "480x270.mp4";
-                cordova.exec(Success, Failure, "CallToAndroid", "PlayLocalVideo", [videoAddress,videoName]);
-            };
-            
-            function Success() {
-                
-            }
-            
-            function Failure() {
-                
-            }
-
-            //$scope.navigateTo = function(url){
-              //  $location.path(url);
-            //};
 
             function getDataAsync() {
                 moodleFactory.Services.GetAsyncUserCourse(_getItem("userId"), getDataAsyncCallback, errorCallback);
