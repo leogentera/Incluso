@@ -56,9 +56,11 @@
                 logout($http, $scope, $location);
             };
 
-            $scope.navigateToStage = function(){
-                localStorage.setItem("firstTimeStage",0);
-                $scope.openModal();
+            $scope.navigateToStage = function(){                    
+                if ($scope.stage.firstTime) {
+                    $scope.openModal();
+                }   
+
                 $location.path('/ProgramaDashboardEtapa/' + $scope.stage.id);
             };
             
@@ -107,13 +109,8 @@
                 
                 for(var i = 0; i < $scope.usercourse.stages.length; i++){                    
                     var uc = $scope.usercourse.stages[i];
-                    
                     localStorage.setItem("stage", JSON.stringify(uc));
-                    $scope.stage = uc;
-                    var firstTimeStage = localStorage.getItem("firstTimeStage");                    
-                    if (firstTimeStage == 0) {
-                        $scope.stage.firstTime = 0;
-                    }                        
+                    $scope.stage = uc;                     
                     
                     if(uc.stageStatus === 0){
                         break;
