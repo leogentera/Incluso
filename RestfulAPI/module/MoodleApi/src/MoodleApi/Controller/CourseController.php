@@ -41,19 +41,9 @@ class CourseController extends AbstractRestfulJsonController {
          
             // cache miss
             
-            $course = new MoodleCourse();
-            $leaders = $this->getLeaderboard($id);
-            $stages = $this->getCourseStages($id);
+            $course = $this->getCourseStages($id);
             
-            $course->setLeaderboard($leaders);
-
-            $course->setStages($stages);
-
-            for($i = 0; $i < sizeof($stages); $i++){
-                $course->stages[$i]->setChallenges($this->getChallengesStage($id, $course->stages[$i]->section));
-            }
-
-            $cache->setItem('course', $course);
+            //$cache->setItem('course', $course);
 
         }else{
 
@@ -114,7 +104,7 @@ class CourseController extends AbstractRestfulJsonController {
     
     private function getCourseStages($courseid){
         $url = $this->getConfig()['MOODLE_API_URL'].'&courseid=%s';
-        $url = sprintf($url, $this->getToken(), "get_stages_by_course", $courseid);
+        $url = sprintf($url, $this->getToken(), "get_challenges_stage", $courseid);
 
         $response = file_get_contents($url);
     
@@ -125,14 +115,8 @@ class CourseController extends AbstractRestfulJsonController {
     
             return array();
         }
-        // Good
-        $stages= array();
 
-        foreach($json as $stage){
-            $stage = new MoodleStage($stage);
-            array_push($stages, $stage);
-        }
-        return $stages;
+        return $json;
     }
 
     private function getActivitiesByChallenge($sectionid){

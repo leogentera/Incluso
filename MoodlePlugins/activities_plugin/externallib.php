@@ -420,7 +420,6 @@ public static function get_quiz_result($quizid, $userid){
 		try {
 			//Parameter validation
 			//REQUIRED
-			
 			$params = self::validate_parameters(
 					self::save_quiz_parameters(),
 					array(
@@ -432,8 +431,7 @@ public static function get_quiz_result($quizid, $userid){
 			
 				
 			
-	
-	
+			
 			$result=self::saveQuizResult($quizid, $userid, $answers);
 			$response=array();
 			$response['message']=$result;
@@ -698,10 +696,25 @@ public static function get_quiz_result($quizid, $userid){
 
 				foreach ($answers as $answer){
 					$prefix="q$usage:".$i."_";
-					$_POST[$prefix."answer"]=$answer;
+					$multchoice=json_decode($answer);
+					if ($answer!='' && !is_array($multchoice)){
+						$_POST[$prefix."answer"]=$answer;
+					}
+					elseif(is_array($multchoice)){
+						$j=0;
+						foreach ($multchoice as $choice){
+							//var_dump($choice);
+// 							$_POST[$prefix."choice$j"]=0;
+// 							if ($_POST[$prefix."choice$j"]==1)
+								$_POST[$prefix."choice$j"]=$choice;
+							$j++;
+						}
+					}
 					$_POST[$prefix.":flagged"]=0;
 					$_POST[$prefix.":flagged"]=0;
 					$_POST[$prefix.":sequencecheck"]=1;
+					$_POST[$prefix."answerformat"]=2;
+					
 					if ($slots!=""){
 						$slots.=",";
 					}
@@ -735,7 +748,7 @@ public static function get_quiz_result($quizid, $userid){
 					http_response_code(404);
 					return "Attempt is already closed";
 				}
-					
+				
 				try {
 					// 				if ($becomingabandoned) {
 					// 					$attemptobj->process_abandon($timenow, true);
@@ -765,6 +778,7 @@ public static function get_quiz_result($quizid, $userid){
 					
 				// Send the user to the review page.
 				$transaction->allow_commit();
+				
 				
 				return "";
 	}
@@ -1294,18 +1308,18 @@ class forum_plugin extends external_api{
                 'message'      => new external_value(PARAM_TEXT, 'The content mmesage of the post.'),
                 'createdtime'  => new external_value(PARAM_INT, 'The time of creation. Time as Unix timestamp.'),
                 'modifiedtime' => new external_value(PARAM_INT, 'The time of modification. Time as Unix timestamp.'),
-                'posttype' 	   => new external_value(PARAM_INT, 'The type of post. Text [1], link [2], video [3], attachment [4]'))
+                'posttype' 	   => new external_value(PARAM_INT, 'The type of post. Text [1], link [2], video [3], attachment [4]'),
+                'filename'	   => new external_value(PARAM_TEXT, 'Filename of attachment'),
+                'filepath'	   => new external_value(PARAM_TEXT, 'Filepath of attachment'),
+                'userid'       => new external_value(PARAM_INT, 'Post User Id'))
         );
     }
 
-    public static function create_forum_discussion_post($discussionid, 
-    													$parentid, 
-    													$message, 
-    													$createdtime, 
-    													$modifiedtime,
-    													$posttype) {
-        global $USER;
-        global $DB;
+    public static function create_forum_discussion_post(
+    		$discussionid, 	$parentid, 	$message, 	$createdtime, 	$modifiedtime,
+    		$posttype, 		$filename, 	$filepath,	$userid) {
+
+        global $DB, $CFG;
 
         $response = true;
         try {
@@ -1318,13 +1332,15 @@ class forum_plugin extends external_api{
             		'message'      => $message,
             		'createdtime'  => $createdtime,
             		'modifiedtime' => $modifiedtime,
-            		'posttype'	   => $posttype));
+            		'posttype'	   => $posttype,
+            		'filename'	   => $filename,
+            		'filepath'	   => $filepath,
+            		'userid'	   => $userid));
 
             //Context validation
             //OPTIONAL but in most web service it should present
-            $context = get_context_instance(CONTEXT_USER, $USER->id);
+            $context = get_context_instance(CONTEXT_USER, $userid);
             self::validate_context($context);
-
 
             //Capability checking
             //OPTIONAL but in most web service it should present
@@ -1335,7 +1351,7 @@ class forum_plugin extends external_api{
             $record = new stdClass();
             $record->discussion = $discussionid;
             $record->parent = $parentid;
-            $record->userid = $USER->id;
+            $record->userid = $userid;
 
             $sql = "SELECT subject
             		FROM {forum_posts}
@@ -1349,7 +1365,13 @@ class forum_plugin extends external_api{
             $record->modified = $modifiedtime;
             $record->messageformat = 1;
 
+            if($posttype == 4){
+            	$record->attachment = 1;
+            }
+
             $lastinsert = $DB->insert_record('forum_posts', $record, true);
+            $response = new stdClass();
+            $response->postforumid = $lastinsert;
 
             //Insert type on forum_posts_types
             $record = new stdClass();
@@ -1357,9 +1379,33 @@ class forum_plugin extends external_api{
             $record->type = $posttype;
 
             $inserttype = $DB->insert_record('forum_posts_types', $record, false);
-            
-            $response = new stdClass();
-        	$response->result = $inserttype;
+            $response->result = $inserttype;
+
+            if($posttype == 4){
+            	error_log("Value dir $CFG->libdir");
+            	require_once($CFG->libdir . '\datalib.php');
+
+            	$discussion = $DB->get_record('forum_discussions', array('id' => $discussionid));
+    			$forum      = $DB->get_record('forum', array('id' => $discussion->forum));
+    			$cm         = get_coursemodule_from_instance('forum', $forum->id);
+            	$cntxtm     = context_module::instance($cm->id);
+
+	            //Upload a file
+	        	$fs = get_file_storage();
+	 
+				// Prepare file record object
+				$fileinfo = array(
+				    'contextid' => $cntxtm->id, // ID of context
+				    'userid'	=> $userid,
+				    'component' => 'mod_forum',     // usually = table name
+				    'filearea' => 'attachment',     // usually = table name
+				    'itemid' => $record->forumpostsid,  // usually = ID of row in table
+				    'filepath' => '/',           // any path beginning and ending in /
+				    'filename' => $filename); // any filename
+				 
+				// Create file containing text 'hello world'
+				$fs->create_file_from_pathname($fileinfo, $filepath);
+			}
         
         } catch (Exception $e) {
             $response = $e;
@@ -1371,8 +1417,9 @@ class forum_plugin extends external_api{
     public static function create_forum_discussion_post_returns() {
         return new external_single_structure(
 	        array(
-	            'result' => new external_value(PARAM_BOOL, 'Boolean result of the update action.')
-	        )    
+	        	'postforumid' => new external_value(PARAM_INT, 'Post ID'),
+	            'result'      => new external_value(PARAM_BOOL, 'Boolean result of the update action.')
+	        )  
     	);
     }
 }
@@ -1569,4 +1616,220 @@ class url_plugin extends external_api{
 		);
 	}
 
+}
+
+//
+class stars_log_plugin extends external_api{
+	public static function log_stars_parameters(){
+		return new external_function_parameters(
+				array(
+						'instancetype' => new external_value(PARAM_INT, 'instancetype ', VALUE_REQUIRED, null, false),
+						'userid' => new external_value(PARAM_INT, 'userid ', VALUE_REQUIRED, null, false),
+						'instance' => new external_value(PARAM_INT, 'instance ', VALUE_REQUIRED, null, false),
+						'points' => new external_value(PARAM_INT, 'points ', VALUE_REQUIRED, null, false),
+						'dateissued' => new external_value(PARAM_INT, 'dateissued ', VALUE_REQUIRED, null, false),
+						'message' => new external_value(PARAM_TEXT, 'message ', VALUE_REQUIRED, null, false),
+				)
+		);
+	}
+	
+	public static function log_stars($instancetype, $userid, $instance, $points, $dateissued, $message){
+		global $USER;
+		global $DB;
+		$response = array();
+	
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::log_stars_parameters(),
+					array(
+							'instancetype' => $instancetype,
+						'userid' => $userid,
+						'instance' => $instance,
+						'points' => $points,
+						'dateissued' => $dateissued,
+						'message' => $message,
+					));
+	
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+	
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+			
+			$log_entry=false;
+			
+			if ($instancetype!=-1){
+				$sql = "select count(*) earned
+				from {points_log}
+				where instance=$instance
+				and instance_type=$instancetype
+				and userid=$userid;";
+					
+				$earned = $DB->get_record_sql($sql);
+				if ($earned->earned==0){
+					$log_entry=true;
+				}
+			}
+			else{
+				$log_entry=true;
+			}
+			
+			if ($log_entry){
+				
+				
+				$entry=new stdClass();
+				
+				$entry->instance_type=$instancetype;
+				$entry->userid=$userid;
+				$entry->instance=$instance;
+				$entry->points=$points;
+				$entry->dateissued=$dateissued;
+				$entry->message=$message;
+				
+				$DB->insert_record('points_log', $entry, false);
+				
+			}
+	
+			$response=new stdClass();
+			$response->log_entry=$log_entry;
+	
+		} catch (Exception $e) {
+			$response = $e;
+	}
+		return $response;
+	}
+	
+	public static function log_stars_returns(){
+			return new external_function_parameters(
+				array(
+						'log_entry' => new external_value(PARAM_BOOL, 'log_entry ')
+				)
+		);
+	}
+	
+	public static function get_stars_log_parameters(){
+		return new external_function_parameters(
+				array(
+						'userid' => new external_value(PARAM_INT, 'userid ', VALUE_REQUIRED, null, false),
+				)
+		);
+	}
+	
+	public static function get_stars_log($userid){
+		global $USER;
+		global $DB;
+		$response = array();
+	
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_stars_log_parameters(),
+					array(
+							'userid' => $userid,
+					));
+	
+			//Context validation
+			//OPTIONAL but in most web service it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+	
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+	
+			$sql = "select *
+					from {points_log} 
+					where userid=$userid;";
+	
+			$response = $DB->get_records_sql($sql);
+			
+			
+	
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+	
+	public static function get_stars_log_returns(){
+		return new external_multiple_structure(
+			new external_single_structure(
+				array(
+					'instance_type' => new external_value(PARAM_INT, 'instancetype'),
+						'userid' => new external_value(PARAM_INT, 'userid'),
+						'instance' => new external_value(PARAM_INT, 'instance'),
+						'points' => new external_value(PARAM_INT, 'points'),
+						'dateissued' => new external_value(PARAM_INT, 'dateissued'),
+						'message' => new external_value(PARAM_TEXT, 'message'),
+				)
+			)
+		);
+	}
+	
+	public static function get_stars_per_module_parameters(){
+		return new external_function_parameters(
+				array(
+						'moduleid' => new external_value(PARAM_INT, 'moduleid ', VALUE_REQUIRED, null, false),
+				)
+		);
+	}
+	
+	public static function get_stars_per_module($moduleid){
+		global $USER;
+		global $DB;
+		$response = array();
+	
+		try {
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(
+					self::get_stars_per_module_parameters(),
+					array(
+							'moduleid' => $moduleid,
+					));
+	
+	
+			//Capability checking
+			//OPTIONAL but in most web service it should present
+			// if (!has_capability('moodle/user:viewdetails', $context)) {
+			//     throw new moodle_exception('cannotviewprofile');
+			// }
+	
+			$sql = "select points
+					from mdl_points_per_module
+					where moduleid=$moduleid";
+	
+			$response = $DB->get_record_sql($sql);
+			
+			if ($response==''){
+				$response=new stdClass();
+				
+				$response->points=0;
+			}
+				
+	
+		} catch (Exception $e) {
+			$response = $e;
+		}
+		return $response;
+	}
+	
+	public static function get_stars_per_module_returns(){
+		return new external_function_parameters(
+				array(
+						'points' => new external_value(PARAM_INT, 'points '),
+				)
+		);
+	}
+	
 }

@@ -33,11 +33,14 @@ class UserCourseController extends AbstractRestfulJsonController {
     }
 
     public function update($userid, $data){
-
         //Update Flag First Time
         if(array_key_exists("firstTime", $data)){
             //Update course firsttime
-            $this->setFirstTime($userid, $data["courseId"], "course");
+            $result = $this->setFirstTime($userid, $data["courseId"], "course");
+
+            if($result == -1){
+                return new JsonModel($this->throwJSONError("Ocurrió un error al actualizar la base de datos."));
+            }
         }
 
         //Update Flag First Time
@@ -45,7 +48,11 @@ class UserCourseController extends AbstractRestfulJsonController {
             foreach ($data["stages"] as $stage) {
                 if(array_key_exists("firstTime", $stage)){
                     //Update stage firstime;
-                    $this->setFirstTime($userid, $stage["section"], "stage");
+                    $resultstage = $this->setFirstTime($userid, $stage["section"], "stage");
+
+                    if($resultstage == -1){
+                        return new JsonModel($this->throwJSONError("Ocurrió un error al actualizar la base de datos."));
+                    }
                 }
             }
         }
@@ -255,7 +262,7 @@ class UserCourseController extends AbstractRestfulJsonController {
         if (strpos($response, "exception") !== false){
             return -1;
         }else{
-            return $json[0]["id"];
+            return $json["id"];
         }
     }
 

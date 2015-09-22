@@ -50,8 +50,9 @@ public class DownloadFileFromPHP extends DownloadFile {
             InputStream input = new BufferedInputStream(url.openStream(),
                     8192);
 
-            if (input.available()>0){
-                df.changeSpinnerText("Instalando ultima version");
+            //if (input.available()>0){
+            if (lenghtOfFile>0){
+                df.changeSpinnerText("Instalando última versión");
             }
             else{
                 finishLoad();

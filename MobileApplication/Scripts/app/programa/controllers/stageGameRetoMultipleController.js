@@ -436,9 +436,19 @@ angular
 
             $scope.downloadGame = function () {
                 var r = createRequest();
-                $location.path('/ZonaDeVuelo/Conocete/RetoMultipleExternalApp');
+                
+                cordova.exec(SuccessGame, FailureGame, "CallToAndroid", "openApp", [r]);
+             //   $location.path('/ZonaDeVuelo/Conocete/RetoMultipleExternalApp');
             }
-
+            
+            function SuccessGame(data){
+               
+            }
+            
+             function FailureGame(data){
+               
+            }
+            
             $scope.back = function () {
                 $location.path('/ProgramaDashboard');
             }

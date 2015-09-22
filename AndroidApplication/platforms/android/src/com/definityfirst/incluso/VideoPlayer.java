@@ -3,6 +3,7 @@ package  com.definityfirst.incluso;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -87,4 +88,5 @@ VideoView videoView;
        videoView.pause();
         super.onStop();
     }
+
 }

@@ -11,6 +11,8 @@ use Zend\Mail;
 use Zend\Mail\Transport\Smtp as SmtpTransport;
 use Zend\Mail\Transport\SmtpOptions;
 use Zend\Mail\Message;
+use Zend\Mime\Message as MimeMessage;
+use Zend\Mime\Part as MimePart;
 
 /**
  * AuthenticationController
@@ -51,58 +53,33 @@ public function replaceList($data){
 }
 
 private function authentication($data){
-	
-	$url = $this->getConfig()['MOODLE_API_URL'].'&field=username&values[0]=%s';
-	$url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $data['username']);
-	 
-	$response = file_get_contents($url);
-	$json_user = json_decode($response,true);
-	 
-	if (strpos($response, "exception") !== false || count($json_user)==0 )
-	{
-		return new JsonModel( $this->throwJSONError("Verifique el usuario", 401));
-	}
-	
-	
-	for($i=0;count($json_user[0]['customfields'])>$i;$i++){
-    			$customFields[$json_user[0]['customfields'][$i]['name']]=$json_user[0]['customfields'][$i]['value'];
-    }
-	
-	$authenticationExpiration='';
-	if (key_exists('authenticationExpiration', $customFields)){
-		$authenticationExpiration=$customFields['authenticationExpiration'];
-	}
-	 
-	if  ($authenticationExpiration!='' && $authenticationExpiration>round(microtime(true) * 1000)) {
-		return new JsonModel( $this->throwJSONError("Ha superado la cantidad de intentos para ingresar al sistema, intente en una hora", 401));
-	}
+    $fields = array();
 
-    $url = $this->getConfig()['TOKEN_GENERATION_URL'];
-    $url = sprintf($url, $data['username'], $data['password'], $this->getConfig()['MOODLE_SERVICE_NAME']);
+    $fields["wstoken"] = $this->getToken();
+    $fields["wsfunction"] = "authenticate_user_incluso";
+    $fields["moodlewsrestformat"] = "json";
 
-    $response = file_get_contents($url);
-    $json = json_decode($response,true);
-    if (strpos($response, "error") !== false)
-    {
-    	$currentTries=0;
-    	$authenticationFirstTryDate='';
-    	if (key_exists('authenticationTries', $customFields)){
-    		$currentTries=$customFields['authenticationTries'];
-    	}
-    	
-    	if (key_exists('authenticationFirstTryDate', $customFields)){
-    		$authenticationFirstTryDate=$customFields['authenticationFirstTryDate'];
-    	}
-    	
-    	
-    	$this->saveAuthenticationTries($json_user[0]['id'], $currentTries, $authenticationFirstTryDate );
-    	
-        return new JsonModel ($this->throwJSONError("Verifique usuario y contraseña", 401));
+    $fields["username"] = urlencode($data["username"]);
+    $fields["password"] = urlencode($data["password"]);
+    $fields["service"] = $this->getConfig()["MOODLE_SERVICE_NAME"];
+
+    $url = $this->getConfig()['MOODLE_URL']."/webservice/rest/server.php";
+
+    $data_string = http_build_query($fields);   
+ 
+    $ch = curl_init($url);                                            
+    curl_setopt($ch, CURLOPT_POST, true);                                                                     
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+                                                                                                                                                                                                                       
+    $response = curl_exec($ch);
+
+    $json = json_decode($response);
+    if (strpos($response, "exception") !== false || count($json)==0 ){
+      return new JsonModel( $this->throwJSONError("Verifique el usuario", 401));
     }
-    
-   
-    $json['id']=$json_user[0]['id'];
-    return new JsonModel($json);
+
+    return new JsonModel((array)$json);
 }
 
 
@@ -176,8 +153,8 @@ private function forgotPassword($data)
     			
 //     			$to =$data['email'];
 //     			$from = 'desarrollo.definityfist@gmail.com';
-//     			$subject = 'Reseteo de Contraseña Incluso';
-//     			$body = "Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar";
+//     			$subject = 'Reseteo de ContraseÃ±a Incluso';
+//     			$body = "Hola!, has indicado que has olvidado tu contraseÃ±a y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar";
 //     			//     	$SMTPMail = new SMTPClient ($SmtpServer, $SmtpPort, $SmtpUser, $SmtpPass, $from, $to, $subject, $body);
 //     			//     	$SMTPChat = $SMTPMail->SendMail();
     			 
@@ -210,14 +187,14 @@ private function forgotPassword($data)
     				 
 //     				$message->addTo($data['email'])
 //     				->addFrom('gentera@definityfirst.com')
-//     				->setSubject('Reseteo de Contraseña Incluso')
-//     				->setBody("Hola!, has indicado que has olvidado tu contraseña y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
+//     				->setSubject('Reseteo de ContraseÃ±a Incluso')
+//     				->setBody("Hola!, has indicado que has olvidado tu contraseÃ±a y para ello tendras que ingresar el codigo $recoverycode en la aplicacion para continuar");
 //     				$transport->send($message);
 //     			} catch (\Exception $e) {
-//     				return new JsonModel( $this->throwJSONError("Ocurrio un error al momento de enviar el mail con el código de confirmacion, contacte al administrador"));
+//     				return new JsonModel( $this->throwJSONError("Ocurrio un error al momento de enviar el mail con el cÃ³digo de confirmacion, contacte al administrador"));
 //     			}
 
-    				$this->sendEmail($data['email'],'Incluso - Recupera tu contraseña',  "¡Hola!\n\n Olvidaste tu contraseña. Usa el código $recoverycode para cambiarla por una nueva.");
+    				$this->sendEmail($data['email'],'Incluso - Recupera tu contraseÃ±a', $recoverycode);
     			
     			
     			return  new JsonModel(array());
@@ -279,13 +256,13 @@ private function forgotPassword($data)
     		}
     	
     		if($recoverycode==""){
-    			return new JsonModel( $this->throwJSONError("No se ha solicitado un cambio de contraseña"));
+    			return new JsonModel( $this->throwJSONError("No se ha solicitado un cambio de contraseÃ±a"));
     		}
     		if($codeexpirationdate<round(microtime(true) * 1000)){
-    			return new JsonModel( $this->throwJSONError("El código ha expirado"));
+    			return new JsonModel( $this->throwJSONError("El cÃ³digo ha expirado"));
     		}
     		if($recoverycode!=$data['recoverycode']){
-    			return new JsonModel( $this->throwJSONError("El código ingresado es incorrecto"));
+    			return new JsonModel( $this->throwJSONError("El cÃ³digo ingresado es incorrecto"));
     		}
     		
 	    	$url = $this->getConfig()['MOODLE_API_URL'].'&users[0][password]=%s&users[0][id]=%s'.
@@ -307,7 +284,7 @@ private function forgotPassword($data)
 	    		if (strpos($response, "error") !== false)
 	    		{
 	    			if (strpos($json["errorcode"], "authpluginnotfound") !== false){
-	    				$message = 'El usuario ingresado no es válido';
+	    				$message = 'El usuario ingresado no es vÃ¡lido';
 	    			}
 	    			else{
 	    				return new JsonModel($this->throwJSONError());
@@ -364,8 +341,9 @@ private function forgotPassword($data)
     	}
     }
     
-    function sendEmail($sendTo,$subject,  $text){
+    function sendEmail($sendTo,$subject, $recoverycode){
     	try {
+            error_log("Send email");
     		$transport = new SmtpTransport();
     		$options   = new SmtpOptions(array(
     				'name' => 'mtymaildf-v05.sieenasoftware.com',
@@ -384,10 +362,82 @@ private function forgotPassword($data)
     			
     		$message->addTo($sendTo)
     		->addFrom('gentera@definityfirst.com')
-    		->setSubject($subject)
-    		->setBody($text);
+    		->setSubject($subject);
+            
+            $htmlMarkup = "<!DOCTYPE html><html><head><meta charset='utf-8' /><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+                            <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+                            <title>Incluso Digital</title>
+                            <link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
+                            <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+                              <style type='text/css'>
+                                body {
+                                  margin: 0px;
+                                  background-color: #FFF;
+                                } 
+                                hr {
+                                  border: 1px solid #999;
+                                }
+                                table {
+                                  width: 100%;
+                                  border-top: 7px solid #EE4823;
+                                  text-align: center;
+                                  color: #555;
+                                  font-weight: 600;
+                                }
+                                table thead tr td,
+                                table tbody tr td {
+                                  padding: 0px 50px;
+                                }
+                                tfoot{
+                                  color: #999;
+                                }
+
+                                table img { 
+                                  width: 100%;
+                                }
+
+                                tbody p {
+                                  margin: 5px 0px;
+                                }
+                                tbody p label {
+                                  display: block;
+                                }
+                                tbody p span {
+                                  color: #EE4823;
+                                }
+                              </style>
+                            </head>
+                            <body>
+                                <table>
+                                  <thead><td>
+                                      <img src='http://$_SERVER[HTTP_HOST]/MisionIncluso-LogoMail.jpg' src='Gentera logo'>
+                                      <hr />
+                                    </td></thead>
+                                  
+                                  <tbody class='body-content'><tr><td><p><label>Recupera tu contraseÃ±a</label></p></tr>
+                                    <tr><td><p><label>Â¡Hola!</label></p></td></tr>
+                                    <tr><td><p><label>Olvidaste tu contraseÃ±a </label></p></td></tr>
+                                    <tr><td><p><label>Usa el cÃ³digo: </label><span> $recoverycode </span></p></td></tr>
+                                    <tr><td><p><label>para cambiarla por una nueva. </label></p></td></tr>
+                                    <tr><td><hr /></td></tr>
+                                  </tbody>
+                                  
+                                  <tfoot><tr><td><label>@ 2015 Incluso</label></td></tr></tfoot>
+                                </table>
+                            </body>
+                            </html>";
+            error_log($htmlMarkup);
+
+            $bodyPart = new MimeMessage();
+            $bodyMessage = new MimePart($htmlMarkup);
+            $bodyMessage->type = "text/html";
+
+            $bodyPart->setParts(array($bodyMessage));
+            $message->setBody($bodyPart);
+            $message->setEncoding("UTF-8");
+
     		$transport->send($message);
-    	} catch (\Exception $e) {
+    	} catch (Exception $e) {
     		return $this->throwJSONError("Ocurrio un error al momento de enviar el mail, contacte al administrador");
     	}
     }
@@ -405,8 +455,8 @@ private function forgotPassword($data)
     		
     	}
     		foreach ($json as $email){
-    			$text= "El usuario $emailLocked intento en mas de 3 intentos en menos de 4 horas desbloquear su contraseña ingresando una pregunta y respuesta secreta incorrecta";
-    			$this->sendEmail($email['email'],'Bloqueo de Olvidar Contraseña',  $text);
+    			$text= "El usuario $emailLocked intento en mas de 3 intentos en menos de 4 horas desbloquear su contraseÃ±a ingresando una pregunta y respuesta secreta incorrecta";
+    			$this->sendEmail($email['email'],'Bloqueo de Olvidar ContraseÃ±a',  $text);
     			 
     		}
     	
@@ -414,7 +464,7 @@ private function forgotPassword($data)
 
     private function logout($data){
         if(!array_key_exists("token", $data) || !array_key_exists("userid", $data)){
-            return new JsonModel($this->throwJSONError("Parámetros inválidos"));
+            return new JsonModel($this->throwJSONError("ParÃ¡metros invÃ¡lidos"));
         }
 
         $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s&token=%s';

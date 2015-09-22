@@ -123,6 +123,30 @@ $functions = array(
                         'description' => 'Save a new post on db',
                         'type'        => 'write',
         ),
+        
+        'log_stars' => array(
+        		'classname'   => 'stars_log_plugin',
+        		'methodname'  => 'log_stars',
+        		'classpath'   => 'local/activities_plugin/externallib.php',
+        		'description' => 'Logs earned stars.',
+        		'type'        => 'write',
+        ),
+        
+        'get_stars_log' => array(
+        		'classname'   => 'stars_log_plugin',
+        		'methodname'  => 'get_stars_log',
+        		'classpath'   => 'local/activities_plugin/externallib.php',
+        		'description' => 'Returns the earned stars',
+        		'type'        => 'read',
+        ),
+        
+        'get_stars_per_module' => array(
+        		'classname'   => 'stars_log_plugin',
+        		'methodname'  => 'get_stars_per_module',
+        		'classpath'   => 'local/activities_plugin/externallib.php',
+        		'description' => 'Returns the earned stars',
+        		'type'        => 'read',
+        ),
 );
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
@@ -183,5 +207,14 @@ $services = array(
                         'create_forum_discussion_post'),
                 'restrictedusers' => 0,
                 'enabled'=>1,
-        )
+        ),
+		'Stars service' => array (
+				'functions' => array (
+						'log_stars',
+						'get_stars_log',
+						'get_stars_per_module' 
+				),
+				'restrictedusers' => 0,
+				'enabled' => 1,
+		)
 );

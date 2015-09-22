@@ -20,109 +20,179 @@ class UserController extends AbstractRestfulJsonController{
 	//private $function = "core_user_get_users_by_field";
 	
     // Action used for POST requests
-    public function create($data)
-    {
-    	$facebookid="";
-    	if (key_exists('facebookid', $data)){
-    		$facebookid=urlencode($data['facebookid']);
-    		
-    		//if it is a facebook user, maybe it is already registered
-    		
-    		if($this->facebookUserExists($facebookid)!=""){
-    			
-    			//If it is registered, we should be transparent and send that the resgistering was successfull
-    			$associativeArray = array();
-        		$associativeArray ['username'] =$this->facebookUserExists($facebookid);
-        		return new JsonModel($associativeArray);
-    		}
-    		
-    	}
-    	
-    	//Mortal registration
-        $url = $this->getConfig()['MOODLE_API_URL'].
-                '&users[0][username]=%s'.
-                '&users[0][password]=%s'.
-                '&users[0][firstname]=%s'.
-                '&users[0][lastname]=%s'.
-                '&users[0][customfields][7][type]=mothername&users[0][customfields][7][value]=%s'.
-                '&users[0][email]=%s'.
-                '&users[0][city]=%s'.
-                //'&users[0][country]=%s'.
-        		'&users[0][customfields][6][type]=country&users[0][customfields][6][value]=%s'.
-                '&users[0][customfields][0][type]=secretanswer&users[0][customfields][0][value]=%s'.
-                '&users[0][customfields][1][type]=secretquestion&users[0][customfields][1][value]=%s'.
-                '&users[0][customfields][2][type]=birthday&users[0][customfields][2][value]=%s'.
-                '&users[0][customfields][3][type]=gender&users[0][customfields][3][value]=%s'.
-        		'&users[0][customfields][4][type]=alias&users[0][customfields][4][value]=%s'.
-        		'&users[0][customfields][5][type]=facebookid&users[0][customfields][5][value]=%s';
-        
-        $dateinMilis= $data['birthday'];
-//      $dateinMilis=strtotime($data['birthday']) * 1000;
-//      $dateinMilis+=3600000;
+    public function create($data){
 
-        $alias=urlencode($data['username']);
-        if (key_exists('alias', $data)){
-        	$alias=urlencode($data['alias']);
+//     	$facebookid="";
+//     	if (key_exists('facebookid', $data)){
+//     		$facebookid=urlencode($data['facebookid']);
+    		
+//     		//if it is a facebook user, maybe it is already registered
+    		
+//     		if($this->facebookUserExists($facebookid)!=""){
+    			
+//     			//If it is registered, we should be transparent and send that the resgistering was successfull
+//     			$associativeArray = array();
+//         		$associativeArray ['username'] =$this->facebookUserExists($facebookid);
+//         		return new JsonModel($associativeArray);
+//     		}
+    		
+//     	}
+    	
+//     	//Mortal registration
+//         $url = $this->getConfig()['MOODLE_API_URL'].
+//                 '&users[0][username]=%s'.
+//                 '&users[0][password]=%s'.
+//                 '&users[0][firstname]=%s'.
+//                 '&users[0][lastname]=%s'.
+//                 '&users[0][customfields][7][type]=mothername&users[0][customfields][7][value]=%s'.
+//                 '&users[0][email]=%s'.
+//                 '&users[0][city]=%s'.
+//                 //'&users[0][country]=%s'.
+//         		'&users[0][customfields][6][type]=country&users[0][customfields][6][value]=%s'.
+//                 '&users[0][customfields][0][type]=secretanswer&users[0][customfields][0][value]=%s'.
+//                 '&users[0][customfields][1][type]=secretquestion&users[0][customfields][1][value]=%s'.
+//                 '&users[0][customfields][2][type]=birthday&users[0][customfields][2][value]=%s'.
+//                 '&users[0][customfields][3][type]=gender&users[0][customfields][3][value]=%s'.
+//         		'&users[0][customfields][4][type]=alias&users[0][customfields][4][value]=%s'.
+//         		'&users[0][customfields][5][type]=facebookid&users[0][customfields][5][value]=%s';
+        
+//         $dateinMilis= $data['birthday'];
+// //      $dateinMilis=strtotime($data['birthday']) * 1000;
+// //      $dateinMilis+=3600000;
+
+//         $alias=urlencode($data['username']);
+//         if (key_exists('alias', $data)){
+//         	$alias=urlencode($data['alias']);
+//         }
+//         $username=urlencode($data['username']);
+//         if (key_exists('facebookid', $data)){
+//         	//$facebookid=urlencode($data['facebookid']);
+//         	$username=$this->generateUser();
+//         }
+        
+        
+//         $url = sprintf($url, $this->getToken(), "core_user_create_users", 
+//                 $username, 
+//                 urlencode($data['password']),
+//                 urlencode($data['firstname']), 
+//                 urlencode($data['lastname']),
+//         		urlencode($data['mothername']),
+//                 urlencode($data['email']),
+//                 urlencode($data['city']), urlencode($data['country']), 
+//                 urlencode($data['secretanswer']), 
+//                 urlencode($data['secretquestion']), 
+//                 $data['birthday'], 
+//                 $data['gender'],
+//         		$alias,
+//         		$facebookid)
+//         ;
+        
+        
+//         $response = file_get_contents($url);
+        
+//         $json = json_decode($response,true);
+//         if (strpos($response, "error") !== false)
+//         {
+            
+//             if ($json["debuginfo"]=="Email address is invalid"){
+//                 //$associativeArray ['messageerror'] = ;
+//                 $message='El email no es válido';
+//             }
+//             else if (strpos($json["debuginfo"], "Username already exists") !== false){
+//                 $message = 'El usuario que ingresaste ya esta registrado';
+//             }
+//             else if (strpos($json["debuginfo"], "Email address already exists") !== false){
+//                 $message = 'El email que ingresaste ya esta registrado';
+//             }
+//             else{
+//                 return new JsonModel($this->throwJSONError());
+//             }
+            
+//             return new JsonModel($this->throwJSONError($message));
+//         }
+//         $message=$this->enrol_user($username, $this->getLatestCourse());
+        
+//         if ($message!=""){
+//         	return new JsonModel($this->throwJSONError($message));
+//         }
+        
+//         if ($facebookid!=""){
+//         	$associativeArray = array();
+//         	$associativeArray ['username'] =$this->facebookUserExists($facebookid);
+//         		return new JsonModel($associativeArray);
+        
+//         }
+//         return  new JsonModel(array());
+
+        if( !array_key_exists("birthday", $data)       ||
+            !array_key_exists("city", $data)           ||
+            !array_key_exists("country", $data)        ||
+            !array_key_exists("email", $data)          ||
+            !array_key_exists("firstname", $data)      ||
+            !array_key_exists("gender", $data)         ||
+            !array_key_exists("lastname", $data)       ||
+            !array_key_exists("mothername", $data)     ||
+            !array_key_exists("password", $data)       ||
+            !array_key_exists("secretanswer", $data)   ||
+            !array_key_exists("secretquestion", $data) ||
+            !array_key_exists("username", $data)){
+            return new JsonModel($this->throwJSONError("Parámetros inválidos, Contacte al administrador"));
         }
-        $username=urlencode($data['username']);
-        if (key_exists('facebookid', $data)){
-        	//$facebookid=urlencode($data['facebookid']);
-        	$username=$this->generateUser();
+
+        $fields = array(); 
+
+        $fields["wstoken"] = $this->getToken();
+        $fields["wsfunction"] = "register_user_incluso";
+        $fields["moodlewsrestformat"] = "json";
+
+        $fields["alias"] = "";
+        $fields["birthday"] = $data["birthday"];
+        $fields["city"] = $data["city"];
+        $fields["country"] = $data["country"];
+        $fields["email"] = $data["email"];
+        $fields["facebookid"] = "";
+        $fields["firstname"] = $data["firstname"];
+        $fields["gender"] = $data["gender"];
+        $fields["lastname"] = $data["lastname"];
+        $fields["mothername"] = $data["mothername"];
+        $fields["password"] = $data["password"];
+        $fields["secretanswer"] = $data["secretanswer"];
+        $fields["secretquestion"] = $data["secretquestion"];
+        $fields["username"] = $data["username"];
+
+        if(array_key_exists("alias", $data)){
+            $fields["alias"] = $data["alias"];
         }
         
-        
-        $url = sprintf($url, $this->getToken(), "core_user_create_users", 
-                $username, 
-                urlencode($data['password']),
-                urlencode($data['firstname']), 
-                urlencode($data['lastname']),
-        		urlencode($data['mothername']),
-                urlencode($data['email']),
-                urlencode($data['city']), urlencode($data['country']), 
-                urlencode($data['secretanswer']), 
-                urlencode($data['secretquestion']), 
-                $data['birthday'], 
-                $data['gender'],
-        		$alias,
-        		$facebookid)
-        ;
-        
-        
-        $response = file_get_contents($url);
-        
+        if(array_key_exists("facebookid", $data)){
+            $fields["facebookid"] = $data["facebookid"];
+        }
+
+        $data_string = http_build_query($fields);   
+ 
+        $ch = curl_init($this->getConfig()['MOODLE_URL']."/webservice/rest/server.php");                                            
+        curl_setopt($ch, CURLOPT_POST, true);                                                                     
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+                                                                                                                                                                                                                           
+        $response = curl_exec($ch);
         $json = json_decode($response,true);
-        if (strpos($response, "error") !== false)
-        {
-            
-            if ($json["debuginfo"]=="Email address is invalid"){
-                //$associativeArray ['messageerror'] = ;
-                $message='El email no es válido';
-            }
-            else if (strpos($json["debuginfo"], "Username already exists") !== false){
-                $message = 'El usuario que ingresaste ya esta registrado';
-            }
-            else if (strpos($json["debuginfo"], "Email address already exists") !== false){
-                $message = 'El email que ingresaste ya esta registrado';
-            }
+        if (strpos($response, "exception") !== false){
+			
+            return new JsonModel($this->throwJSONError("Ocurrió un error al ejecutar la acción. Contacte al administrador"));
+        }
+		
+		if (!$json['result']){
+			
+			if($json['message']!=''){
+				return new JsonModel($this->throwJSONError($json['message']));
+			}
             else{
-                return new JsonModel($this->throwJSONError());
-            }
-            
-            return new JsonModel($this->throwJSONError($message));
+				return new JsonModel($this->throwJSONError('Ocurrió un error al registrarse, Contacte al administrador'));
+			}
         }
-        $message=$this->enrol_user($username, $this->getLatestCourse());
-        
-        if ($message!=""){
-        	return new JsonModel($this->throwJSONError($message));
-        }
-        
-        if ($facebookid!=""){
-        	$associativeArray = array();
-        	$associativeArray ['username'] =$this->facebookUserExists($facebookid);
-        		return new JsonModel($associativeArray);
-        
-        }
-        return  new JsonModel(array());
+
+        return new JsonModel($json);
     }
     
     private function generateUser(){
@@ -243,8 +313,10 @@ class UserController extends AbstractRestfulJsonController{
 	{
 		//var$this->getRequest()));
 		
-        $url = $this->getConfig()['MOODLE_API_URL'].'&field=id&values[0]=%s';
-        $url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $id);
+        //$url = $this->getConfig()['MOODLE_API_URL'].'&field=id&values[0]=%s';
+        //$url = sprintf($url, $this->getToken(), "core_user_get_users_by_field", $id);
+        $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s';
+        $url = sprintf($url, $this->getToken(), "get_user_info", $id);
 
         $response = file_get_contents($url);
         
@@ -254,21 +326,23 @@ class UserController extends AbstractRestfulJsonController{
         
 		if (strpos($response, "exception") !== false) 
         {
+			var_dump($response);
             // Error
         	return new JsonModel($this->throwJSONError());
         }
             // Good
         	
-            $user = new MoodleUserProfile($json[0], $this->getId());
+            // $user = new MoodleUserProfile($json[0], $this->getId());
             
-            $badgesEarned=$this->getBadgesByMethod($id, "earned_badges");
-            $badgesToEarn=$this->getBadgesByMethod($id, "posible_badges_to_earn",$user->course );
-            $user->setBadges($badgesEarned, $badgesToEarn);
-            $user->setRank($this->getRank($id));
-            return new JsonModel((array) $user);
+            // $badgesEarned=$this->getBadgesByMethod($id, "earned_badges");
+            // $badgesToEarn=$this->getBadgesByMethod($id, "posible_badges_to_earn",$user->course );
+            // $user->setBadges($badgesEarned, $badgesToEarn);
+            // $user->setRank($this->getRank($id));
+            // $user->setAssignmentsProfileFields($this->getAssignmentsProfileFields());
+            // return new JsonModel((array) $user);
 
         
-        return new JsonModel($user);
+        return new JsonModel($json);
     }
     
     
@@ -286,6 +360,7 @@ class UserController extends AbstractRestfulJsonController{
     	
     	$response = file_get_contents($url);
     	$json = json_decode($response,true);
+    	
     	if (strpos($response, "exception") !== false)
     	{
     		return array();
@@ -319,7 +394,7 @@ class UserController extends AbstractRestfulJsonController{
     		return -1;
     	}
     	// Good
-    	return $json[0]['place'];
+    	return 1; //$json[0]['place'];
     
     	 
     }
@@ -339,7 +414,7 @@ class UserController extends AbstractRestfulJsonController{
     		$url.=sprintf('&users[0][customfields][0][type]=%s&users[0][customfields][0][value]=%s',
     				"address",$address);
     	}
-    	$url.=$this->createURLParms($data, 'address', '&users[0][%s]=%s', 'city' );
+    	$url.=$this->createURLParmsbyFather($data, 'address', '&users[0][%s]=%s', 'city' );
     	//$url.=$this->createURLParms($data, '&users[0][%s]=%s', 'country' );
     
     	$url.=$this->createURLParmsbyFather($data, 'address', '&users[0][customfields][1][type]=%s&users[0][customfields][1][value]=%s', 'town' );
@@ -505,7 +580,6 @@ class UserController extends AbstractRestfulJsonController{
     		$url.=sprintf('&users[0][customfields][43][type]=%s&users[0][customfields][43][value]=%s',
     				"kindOfVideogames",$kindOfVideogames);
     	}
-    	
     //Stars
        // $url.= $this->addStars($data, '&users[0][customfields][24][type]=%s&users[0][customfields][24][value]=%s', 'stars');
         
@@ -564,6 +638,20 @@ class UserController extends AbstractRestfulJsonController{
         
         $url.=$this->createURLParms($data, '&users[0][customfields][63][type]=%s&users[0][customfields][63][value]=%s', 'birthday' );
         
+        $url.=$this->createURLParms($data, '&users[0][customfields][64][type]=%s&users[0][customfields][64][value]=%s', 'shield' );
+        
+        $windowOfOpportunity=$this->createTableRows($data,  'windowOfOpportunity' );
+        if (trim($windowOfOpportunity)!=""){
+        	$url.=sprintf('&users[0][customfields][65][type]=%s&users[0][customfields][65][value]=%s',
+        			"windowOfOpportunity",$windowOfOpportunity);
+        }
+        
+		$strengths=$this->createTableRows($data,  '$strengths' );
+        if (trim($strengths)!=""){
+        	$url.=sprintf('&users[0][customfields][66][type]=%s&users[0][customfields][66][value]=%s',
+        			"strengths",$strengths);
+        }
+        
         $response = file_get_contents($url);
     
     	
@@ -596,10 +684,8 @@ class UserController extends AbstractRestfulJsonController{
     }
     
     function createURLParms($array, $format, $key ){
-    	
     	if(array_key_exists ( $key , $array )){
     		 $variable=$array[$key];
-    		 
     		 if (gettype($variable)=="boolean"){
     		 	if ($variable){
     		 		$variable=0;
@@ -619,10 +705,10 @@ class UserController extends AbstractRestfulJsonController{
     function createURLParmsbyFather($array, $fathername, $format, $key ){
     	 
     	if(array_key_exists ( $fathername , $array )){
-    		   		 
-    		return $this->createURLParms($array, $format, $key );
+    		return $this->createURLParms($array[$fathername], $format, $key );
     
     	}
+		var_dump(1); 
     	return "";
     
     }
@@ -804,6 +890,21 @@ class UserController extends AbstractRestfulJsonController{
         $url=sprintf($format,$field,$currentStars);
 
         return $url;
+    }
+    
+    public function getAssignmentsProfileFields(){
+    	$url = $this->getConfig()['MOODLE_API_URL'];
+    	$url = sprintf($url, $this->getToken(), "get_profields_points");
+    	
+    	$response = file_get_contents($url);
+    	
+    	$json = json_decode($response,true);
+    	if (strpos($response, "exception") !== false)
+    	{
+    		return array();
+    	}
+    	return $json;
+    	
     }
    
 }

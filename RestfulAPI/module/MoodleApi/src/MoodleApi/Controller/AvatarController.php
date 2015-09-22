@@ -3,17 +3,10 @@ namespace MoodleApi\Controller;
 
 use MoodleApi\Utilities\AbstractRestfulJsonController;
 use Zend\View\Model\JsonModel;
-use MoodleApi\Model\MoodleActivity;
-use MoodleApi\Model\MoodleCourse;
-use MoodleApi\Model\MoodleException;
-use MoodleApi\Model\MoodleLeader;
-use MoodleApi\Model\MoodleStage;
-use MoodleApi\Model\MoodleChallenge;
+
 
 class AvatarController  extends AbstractRestfulJsonController {
     
-    private $token = "";
-
    public function get($userid){
     
         $url = $this->getConfig()['MOODLE_API_URL'].'&userid=%s';
@@ -32,8 +25,40 @@ class AvatarController  extends AbstractRestfulJsonController {
     }
     
     public function create($data){
-    
-    	//Mortal registration
+
+        if( !array_key_exists("userid", $data) ||
+            !array_key_exists("filecontent", $data)){
+            return new JsonModel($this->throwJSONError("Parámetros inválidos, Contacte al administrador"));
+        }
+
+        $fields = array(); 
+
+        $fields["wstoken"] = $this->getToken();
+        $fields["wsfunction"] = "upload_user_profile_image";
+        $fields["moodlewsrestformat"] = "json";
+        $fields["userid"] = $data["userid"];
+        $fields["filecontent"] = $data["filecontent"];
+
+        $data_string = http_build_query($fields);   
+
+        $ch = curl_init($this->getConfig()['MOODLE_URL']."/webservice/rest/server.php");                                            
+        curl_setopt($ch, CURLOPT_POST, true);                                                                     
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+                                                                                                                                                                                                                           
+        $response = curl_exec($ch);
+
+        $json = json_decode($response,true);
+
+        if (strpos($response, "exception") !== false){
+            return new JsonModel($this->throwJSONError("Ocurrió un error al ejecutar la acción. Contacte al administrador"));
+        }
+
+        if(!$json["result"]){
+          return new JsonModel($this->throwJSONError("Ocurrió un error al ejecutar la acción. Contacte al administrador"));  
+        }
+
+        //registration
         $url = $this->getConfig()['MOODLE_API_URL'].
                 '&avatars[0][userid]=%s'.
                 '&avatars[0][alias]=%s'.
@@ -47,28 +72,32 @@ class AvatarController  extends AbstractRestfulJsonController {
                 '&avatars[0][color_de_piel]=%s'.
                 '&avatars[0][escudo]=%s'.
                 '&avatars[0][imagen_recortada]=%s'.
-                '&avatars[0][ultima_modificacion]=%s';    	    	
+                '&avatars[0][ultima_modificacion]=%s'; 
 
-        
+        //continue with logging activity
         $url = sprintf($url, $this->getToken(), "create_avatar_configuration",
-        		urlencode($data['userid']),
-        		urlencode($data['alias']),
-        		urlencode($data['aplicacion']),
-        		urlencode($data['estrellas']),
-        		urlencode($data['color_cabello']),
-        		urlencode($data['estilo_cabello']),
-        		urlencode($data['traje_color_principal']),
-        		urlencode($data['traje_color_secundario']),
-        		urlencode($data['rostro']),
-        		urlencode($data['color_de_piel']),
-        		urlencode($data['escudo']),
-        		urlencode($data['imagen_recortada']),
-        		urlencode($data['ultima_modificacion'])
-        		);     
-        		
+        urlencode($data['userid']),
+        'n/a',
+        urlencode($data['aplicacion']),
+        urlencode($data['estrellas']),
+        urlencode($data['color_cabello']),
+        urlencode($data['estilo_cabello']),
+        urlencode($data['traje_color_principal']),
+        urlencode($data['traje_color_secundario']),
+        urlencode($data['rostro']),
+        urlencode($data['color_de_piel']),
+        'n/a',
+        urlencode($data['imagen_recortada']),
+        urlencode($data['ultima_modificacion'])
+        ); 
+
         $response = file_get_contents($url);
-        
-    	return  new JsonModel(array());
+
+        if (strpos($response, "exception") !== false){
+            return new JsonModel($this->throwJSONError("Ocurrió un error al ejecutar la acción. Contacte al administrador"));
+        }
+                
+        return  new JsonModel(array());
 
     }
 }

@@ -54,10 +54,10 @@ class badge_services extends external_api {
             //     throw new moodle_exception('cannotviewprofile');
             // }
 
-            $sql = 'select bi.id id, bi.badgeid badgeid, ba.name name, ba.description description, bp.points points, (select count(*) from {badge_issued} bi_count where bi_count.badgeid = bi.badgeid  ) earned_times, bi.dateissued dateissued, 
+            $sql = 'select bi.id id, bi.badgeid badgeid, ba.name name, ba.description description,  (select count(*) from {badge_issued} bi_count where bi_count.badgeid = bi.badgeid  ) earned_times, bi.dateissued dateissued, 
 					concat("/pluginfile.php/",contextid, "/badges/badgeimage/", ba.id, "/f1") pictureroute '.
-    				'from {badge} ba, {badge_issued} bi, {badge_points} bp , (select distinct contextid, itemid badgeid from mdl_files where filearea="badgeimage") context '.
-    				'where bp.badgeid=bi.badgeid and ba.id=bi.badgeid and bi.userid=:id and context.badgeid=bi.badgeid';
+    				'from {badge} ba, {badge_issued} bi,  (select distinct contextid, itemid badgeid from mdl_files where filearea="badgeimage") context '.
+    				'where  ba.id=bi.badgeid and bi.userid=:id and context.badgeid=bi.badgeid';
             //$params = array('fieldname' => $catalogname);
             $response = $DB->get_records_sql($sql, array('id' => $id ));
             
@@ -81,12 +81,12 @@ class badge_services extends external_api {
             new external_single_structure(
                 array(
     							'id' => new external_value(PARAM_TEXT, 'id of the earned badge'),
-    							'badgeid' => new external_value(PARAM_TEXT, 'id of the badge'),
+    							//'badgeid' => new external_value(PARAM_TEXT, 'id of the badge'),
                 				//'badgeimage' => new external_value(PARAM_TEXT, 'picture of the badge'),
     							'name' => new external_value(PARAM_TEXT, 'Badge\'s name'),
     							'description' => new external_value(PARAM_TEXT, 'Badge\'s description'),
                 				'earned_times' => new external_value(PARAM_TEXT, 'Times that this badge has been earned'),
-                				'points' => new external_value(PARAM_TEXT, 'Points for getting a this badge'),
+                				//'points' => new external_value(PARAM_TEXT, 'Points for getting a this badge'),
                 				'dateissued' => new external_value(PARAM_TEXT, 'Time (in millis) indicating the date when the badge was earned'),
     					)
             )
@@ -121,13 +121,13 @@ class badge_services extends external_api {
     		//     throw new moodle_exception('cannotviewprofile');
     		// }
     
-    		$sql = "select ba.id id, ba.name name, ba.description description, bp.points points, (select count(*) from {badge_issued} bi_count where bi_count.badgeid = ba.id  ) earned_times  , 
+    		$sql = "select ba.id id, ba.name name, ba.description description, (select count(*) from {badge_issued} bi_count where bi_count.badgeid = ba.id  ) earned_times  , 
 					concat('/pluginfile.php/',contextid, '/badges/badgeimage/', ba.id, '/f1') pictureroute
-					from {badge} ba,  {badge_points} bp, (select distinct contextid, itemid badgeid from {files} where filearea='badgeimage') context
-					where  ba.courseid=$courseid and ba.id=bp.badgeid and ba.id not in
+					from {badge} ba,  (select distinct contextid, itemid badgeid from {files} where filearea='badgeimage') context
+					where  ba.courseid=$courseid  and ba.id not in
 					(select bi.id id 
-					from {badge} ba, {badge_issued} bi,{badge_points} bp
-					where bp.badgeid=bi.badgeid and ba.id=bi.badgeid and bi.userid=:id) and context.badgeid=ba.id";
+					from {badge} ba, {badge_issued} bi
+					where  ba.id=bi.badgeid and bi.userid=:id) and context.badgeid=ba.id";
     		
     		
     		//$params = array('fieldname' => $catalogname);
@@ -158,7 +158,7 @@ class badge_services extends external_api {
     							'name' => new external_value(PARAM_TEXT, 'Badge\'s name'),
     							'description' => new external_value(PARAM_TEXT, 'Badge\'s description'),
                 				'earned_times' => new external_value(PARAM_TEXT, 'Times that this badge has been earned'),
-                				'points' => new external_value(PARAM_TEXT, 'Points for getting a this badge'),
+                				//'points' => new external_value(PARAM_TEXT, 'Points for getting a this badge'),
     					)
     			)
     	);

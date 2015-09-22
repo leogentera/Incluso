@@ -68,6 +68,7 @@ public class DownloadFileFromPackage extends DownloadFile {
     protected void onProgressUpdate(String... progress) {
         // setting progress percentage
         //pDialog.setProgress(Integer.parseInt(progress[0]));
+
     }
 
     /**

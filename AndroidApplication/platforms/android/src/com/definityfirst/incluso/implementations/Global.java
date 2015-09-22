@@ -1,5 +1,7 @@
 package  com.definityfirst.incluso.implementations;
 
+import android.content.Intent;
+
 import  com.definityfirst.incluso.MainActivity;
 
 import org.apache.cordova.CallbackContext;
@@ -12,6 +14,7 @@ public class Global {
 
     MainActivity activity=null;
     CallbackContext callbackContext;
+    Intent retosMultiplesIntent=null;
     private Global(){
 
     }
@@ -35,5 +38,13 @@ public class Global {
 
     public CallbackContext getCallbackContext() {
         return callbackContext;
+    }
+
+    public Intent getRetosMultiplesIntent() {
+        return retosMultiplesIntent;
+    }
+
+    public void setRetosMultiplesIntent(Intent retosMultiplesIntent) {
+        this.retosMultiplesIntent = retosMultiplesIntent;
     }
 }
