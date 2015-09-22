@@ -21,62 +21,21 @@
   </div>
   <div id="site-canvas">
 
-    <nav ng-controller="navController">
-      <div class="navbar" id="navBar">
-        <div class="container-fluid">
-          
-          <div class="row">
-
-            <div class="navbar-assets">
-              <h1 class="navbar-heading"><a href="#" data-transition="ease" id="menuton"><i class="icomoon icon-more-options"></i> Notificaciones</a></h1>
-              <ul class="navbar-tools">
-                <li class="contribute">
-                  <a href="">
-                    <i class="icomoon icon-edit"></i>
-                  </a>
-                </li>
-                <li class="notifications">
-                  <a href="">
-                    <i class="icomoon icon-antena"></i>
-                  </a>
-                </li>
-                <li class="chat">
-                  <a href="">
-                    <i class="icomoon icon-chat"></i>
-                  </a>
-                </li>
-                <li class="profile">
-                  <a href="" ng-href="#/Perfil/">
-                    <i class="icomoon icon-emoticon-smile"></i>
-                  </a>
-                </li>                 
-              </ul>
-            </div> 
-          </div>
-        </div>
-      </div> <!-- /.container-fluid -->
-    </nav>
-
+   
   <article class="starway">
 
 
-<section class="part inbloq">
+<section class="part inbloq text-left">
 <div><i class="icomoon 	icon-earned-stars fl-left txt-bigger"></i>Has ganado +130 estrellas</div><hr>
 <div>Inteligencia Musical: Persigue tu sueño y continúa con el ritmo en tu vida, nosotros te apoyámos.
 <br/><br/>
 Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis apibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante est non.</div>
 </section>
 
-<div><img src="../../assets/images/img-lines-ftr.png"></div>	
+<div><img src="/assets/images/img-lines-ftr.png"></div>	
   </article>
 
-  <footer class="footer">
-    <ul class="block-list">
-      <li><a href="" class="centered txt-title">Preguntas Frecuentes</a></li>
-      <li><a href="" class="centered txt-title">Ayuda y Soporte</a></li>
-    </ul>
-    <a href="#navBar" class="to-top"><i class="icomoon icon-double-arrow-up"></i><br/>SUBIR</a>
-  </footer>
+
 		</div>
 		</div>
   <!-- html -->

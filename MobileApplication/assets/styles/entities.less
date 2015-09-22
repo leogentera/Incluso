@@ -1128,6 +1128,8 @@
                 
                 &.btn-icon-aside {
                     width: 36vw;
+
+                    &.right {display:none;}
                 }
             }
             & > .container {
@@ -1183,7 +1185,7 @@
             p {
                 min-height: 8.5vw;
                 color: @clr-white;
-                font-size: 3.9vw; font-size:6vw;
+                font-size: 3.9vw; font-size:6vw; font-size: 5vw;
                 font-weight: normal;
                 text-align: left; 
                 padding: 0;
@@ -1194,6 +1196,8 @@
                 margin: 1.5vw 0 0;
             }
             .block-list {
+                min-height: 8.5vw;
+
                 p {
                     margin:0;
                     overflow:hidden;
@@ -1473,8 +1477,13 @@
 
             .user-avatar {
                 width: 33.3vw;
+                height: auto;
+                min-height: 33.3vw;
                 margin-top: 3vw;
 
+                img {
+                    min-height:inherit;
+                }
                 figcaption {
                     width: 9vw;
                     height: 9vw;
@@ -1484,7 +1493,7 @@
                     font-size: 5.1vw;
                     line-height: 9vw;
                 }
-            }             
+            } 
 
             & > .row {
                 padding: 0 5%;

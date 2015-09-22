@@ -51,6 +51,7 @@ body {
     position: relative;
     overflow: hidden;
     width: 100vw;
+    min-height: 62vh;
     background-color: #040203;
 }
 #site-canvas {
@@ -256,8 +257,8 @@ body {
             } 
         }
 
-        &:last-child a { 
-            padding: 3vh 3vw;
+        &.separate { 
+            height: 9vh;
         }
         a.menu-blue{
             color: @clr-bluemenu;
@@ -344,6 +345,10 @@ body {
     }
     a.btn-transparent:hover {
         text-decoration: underline;
+    }
+
+    .btn-uppercase {
+        text-transform: uppercase;
     }
 
     .btn-link {
@@ -1190,13 +1195,15 @@ body {
     ****************************************************************************/
     .navbar {
         position: relative;
+        height: 10vh;
         margin-bottom: 0;
         border-radius: 0px;
         background-color: #EE4823;
         border-color: rgba(0, 0, 0, 0.2);/*#EE4823;*/
+        overflow: hidden;
         .icomoon {
             font-size: 6vw;
-            line-height:13vw;
+            line-height: 15vw;
             vertical-align: top;
         }   
 
@@ -1212,7 +1219,7 @@ body {
 
     .navbar.navbar-orange {
         background-color: #EE4823;
-        border-color: #EE4823;
+        border-color: rgba(0, 0, 0, 0.2);
         -webkit-transition: all 700ms ease;
             -moz-transition: all 700ms ease;
             -o-transition: all 700ms ease;
@@ -1221,7 +1228,7 @@ body {
 
     .navbar.navbar-blue {
         background-color: #158CCD;
-        border-color: #158CCD;
+        border-color: rgba(0, 0, 0, 0.2);
         -webkit-transition: all 700ms ease;
             -moz-transition: all 700ms ease;
             -o-transition: all 700ms ease;
@@ -1250,7 +1257,7 @@ body {
         position: static;
         padding: 0; 
         margin: 0 2vw;
-        height: 14vw; 
+        height: 12vw; 
         width: 95vw;
 
         .sidebar-toggle {
@@ -1357,6 +1364,7 @@ body {
      Description: CSS override to bootstrap's panel class.
     ****************************************************************************/
     .panel {
+        .border-radius(1.5vw);
         & > .panel-heading {
             padding: 5.5vw 2.6vw;
             .border-radius(1.5vw, 1.5vw, 0, 0);
@@ -1377,7 +1385,7 @@ body {
             margin: 0;
             font-size: inherit;
             font-weight: 700;
-            text-transform: capitalize;
+            text-transform: none;
         }
         & > .panel-body {
             padding-left: 3vw;

@@ -1433,6 +1433,9 @@
   .incluso-app .profile-settings .btn.btn-icon-aside {
     width: 36vw;
   }
+  .incluso-app .profile-settings .btn.btn-icon-aside.right {
+    display: none;
+  }
   .incluso-app .profile-settings > .container {
     position: relative;
     height: inherit;
@@ -1480,6 +1483,7 @@
     color: #ffffff;
     font-size: 3.9vw;
     font-size: 6vw;
+    font-size: 5vw;
     font-weight: normal;
     text-align: left;
     padding: 0;
@@ -1488,6 +1492,9 @@
   .incluso-app .profile-info-asset .from-group {
     padding: 1.5vw 0 0;
     margin: 1.5vw 0 0;
+  }
+  .incluso-app .profile-info-asset .block-list {
+    min-height: 8.5vw;
   }
   .incluso-app .profile-info-asset .block-list p {
     margin: 0;
@@ -1759,7 +1766,12 @@
   }
   .incluso-app .profile-dashboard .user-avatar {
     width: 33.3vw;
+    height: auto;
+    min-height: 33.3vw;
     margin-top: 3vw;
+  }
+  .incluso-app .profile-dashboard .user-avatar img {
+    min-height: inherit;
   }
   .incluso-app .profile-dashboard .user-avatar figcaption {
     width: 9vw;
