@@ -60,18 +60,18 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 				Context context=this.cordova.getActivity().getApplicationContext();
 				JSONObject jsonObject= new JSONObject(args.getString(0));
 				Intent intent=null;
-				if (jsonObject.getString("actividad").equals("Tú eliges")){
-					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.tomadesiciones");
-				}
-				else if(jsonObject.getString("actividad").equals("Multiplica tu dinero")){
+//				if (jsonObject.getString("actividad").equals("Tú eliges")){
+//					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.tomadesiciones");
+//				}
+//				else if(jsonObject.getString("actividad").equals("Multiplica tu dinero")){
+//					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo");
+//				}
+//				else if(jsonObject.getString("actividad").equals("Proyecta tu vida")){
+//					intent = context.getPackageManager().getLaunchIntentForPackage("com.prueba.ProyectoDeVida");
+//				}
+//				else{
 					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo");
-				}
-				else if(jsonObject.getString("actividad").equals("Proyecta tu vida")){
-					intent = context.getPackageManager().getLaunchIntentForPackage("com.prueba.ProyectoDeVida");
-				}
-				else{
-					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo");
-				}
+//				}
 
                 if (intent == null) {
                     intent = new Intent(Intent.ACTION_VIEW);
