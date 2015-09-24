@@ -103,6 +103,9 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+
+
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         //initializeLoginButton();

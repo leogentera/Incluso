@@ -61,7 +61,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 				JSONObject jsonObject= new JSONObject(args.getString(0));
 				Intent intent=null;
 //				if (jsonObject.getString("actividad").equals("Tú eliges")){
-//					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.tomadesiciones");
+//					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo.TomaDesiciones");
 //				}
 //				else if(jsonObject.getString("actividad").equals("Multiplica tu dinero")){
 //					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo");
