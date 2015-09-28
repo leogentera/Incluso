@@ -60,6 +60,9 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 				Context context=this.cordova.getActivity().getApplicationContext();
 				JSONObject jsonObject= new JSONObject(args.getString(0));
 				Intent intent=null;
+				/*if(jsonObject.getString("actividad").equals("Proyecta tu Vida")){
+					intent = context.getPackageManager().getLaunchIntentForPackage("com.definityfirst.incluso");
+				}*/
 //				if (jsonObject.getString("actividad").equals("Tú eliges")){
 //					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo.TomaDesiciones");
 //				}
@@ -69,9 +72,9 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 //				else if(jsonObject.getString("actividad").equals("Proyecta tu vida")){
 //					intent = context.getPackageManager().getLaunchIntentForPackage("com.prueba.ProyectoDeVida");
 //				}
-//				else{
+				//else{
 					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo");
-//				}
+				//}
 
                 if (intent == null) {
                     intent = new Intent(Intent.ACTION_VIEW);
@@ -92,6 +95,10 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 
 				if (jsonObject.getString("actividad").equals("Tú eliges") || jsonObject.getString("actividad").equals("Multiplica tu dinero") ){
 					jsonObject.put("pathImagenes", MainActivity.appFolder+"/"+MainActivity.formsFolder);
+				}
+
+				if(jsonObject.getString("actividad").equals("Proyecta tu vida")){
+					jsonObject.put("pathImagenFicha", MainActivity.appFolder+"/"+MainActivity.avatarFolder);
 				}
                 intent.putExtra("game_arguments", jsonObject.toString());
 				//global.setCallbackContext(callbackContext);
@@ -178,6 +185,22 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
         }else if (action.trim().equals("setRetoMultipleCallback")){
 			try {
 				global.getMainActivity().onNewIntent(global.getRetosMultiplesIntent());
+
+			} catch (Throwable e){
+				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
+			}
+			return true;
+		}else if (action.trim().equals("setTuEligesCallback")){
+			try {
+				global.getMainActivity().onNewIntent(global.getTuEligesIntent());
+
+			} catch (Throwable e){
+				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
+			}
+			return true;
+		}else if (action.trim().equals("setProyectaTuVidaCallback")){
+			try {
+				global.getMainActivity().onNewIntent(global.getProyectaTuVidaIntent());
 
 			} catch (Throwable e){
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));

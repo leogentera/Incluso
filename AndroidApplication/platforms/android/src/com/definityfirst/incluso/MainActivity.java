@@ -557,17 +557,23 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 global.getCallbackContext().success(jsonObject);
             }
             else{
-                if (jsonObject.getString("actividad").equals("Reto múltiple")){
-                    preventToLoad=true;
-                    final File file = new File(appFolder, "index.html");
+                preventToLoad=true;
+                final File file = new File(appFolder, "index.html");
                 Uri uri = Uri.fromFile(file);
-                global.setRetosMultiplesIntent(intent);
                 global.setMainActivity(this);
-                    loadUrl(uri.toString() +"#/ZonaDeVuelo/Conocete/RetoMultipleExternalApp/1039");
-            }
-            else{
-                Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();
-            }
+                if (jsonObject.getString("actividad").equals("Reto múltiple")){
+                    global.setRetosMultiplesIntent(intent);
+                    loadUrl(uri.toString() + "#/ZonaDeVuelo/Conocete/RetoMultiple/1039/1");
+                }else if (jsonObject.getString("actividad").equals("Tú eliges")) {
+                    global.setTuEligesIntent(intent);
+                    loadUrl(uri.toString() + "#/ZonaDeNavegacion/TuEliges/TuEliges/2012/1");
+                } else if (jsonObject.getString("actividad").equals("Proyecta tu vida")){
+                    global.setProyectaTuVidaIntent(intent);
+                    loadUrl(uri.toString() + "#/ZonaDeNavegacion/ProyectaTuVida/MapaDeVida/2017/1");
+                }else {
+                    loadUrl(uri.toString() + "#/");
+                    Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();
+                }
             }
 
         } catch (JSONException e) {

@@ -15,6 +15,8 @@ public class Global {
     MainActivity activity=null;
     CallbackContext callbackContext;
     Intent retosMultiplesIntent=null;
+    Intent tuEligesIntent = null;
+    Intent proyectaTuVidaIntent = null;
     private Global(){
 
     }
@@ -46,5 +48,21 @@ public class Global {
 
     public void setRetosMultiplesIntent(Intent retosMultiplesIntent) {
         this.retosMultiplesIntent = retosMultiplesIntent;
+    }
+
+    public Intent getTuEligesIntent(){
+        return tuEligesIntent;
+    }
+
+    public void setTuEligesIntent(Intent tuEligesIntent){
+        this.tuEligesIntent = tuEligesIntent;
+    }
+
+    public Intent getProyectaTuVidaIntent(){
+        return proyectaTuVidaIntent;
+    }
+
+    public void setProyectaTuVidaIntent(Intent proyectaTuVidaIntent){
+        this.proyectaTuVidaIntent = proyectaTuVidaIntent;
     }
 }
