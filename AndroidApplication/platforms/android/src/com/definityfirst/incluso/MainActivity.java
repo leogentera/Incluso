@@ -45,6 +45,7 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import  com.definityfirst.incluso.implementations.Global;
@@ -86,6 +87,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     final static String appFolder =Environment.getExternalStorageDirectory()+"/app/initializr";
     final static String avatarFolder="assets/avatar";
     final static String formsFolder="assets/images/forms";
+    final static String resultsFolder = "assets/images/results";
     int rawFolder=R.raw.app;
 
     Global global;
@@ -552,7 +554,6 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 String imagepath=searchForAvatar(avatarFolder);
                 jsonObject.put("pathimagen", imagepath);
             }
-
             if (global.getCallbackContext()!=null){
                 global.getCallbackContext().success(jsonObject);
             }
@@ -570,6 +571,12 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 } else if (jsonObject.getString("actividad").equals("Proyecta tu vida")){
                     global.setProyectaTuVidaIntent(intent);
                     loadUrl(uri.toString() + "#/ZonaDeNavegacion/ProyectaTuVida/MapaDeVida/2017/1");
+                }else if (jsonObject.getString("actividad").equals("Multiplica tu dinero")){
+                    global.setMultiplicaTuDineroIntent(intent);
+                  //  loadUrl(uri.toString() + "#/ZonaDeNavegacion/ProyectaTuVida/MapaDeVida/2017/1");
+                }else if (jsonObject.getString("actividad").equals("Fábrica de emprendimiento")){
+                    global.setFabricaDeEmprendimientoIntent(intent);
+                   // loadUrl(uri.toString() + "#/ZonaDeNavegacion/ProyectaTuVida/MapaDeVida/2017/1");
                 }else {
                     loadUrl(uri.toString() + "#/");
                     Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();
@@ -700,6 +707,4 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             if (fos != null)try {fos.close();} catch (Throwable ie) {ie.printStackTrace();}
         }
     }
-
-
 }

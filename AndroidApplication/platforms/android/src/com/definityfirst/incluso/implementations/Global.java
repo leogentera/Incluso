@@ -17,6 +17,8 @@ public class Global {
     Intent retosMultiplesIntent=null;
     Intent tuEligesIntent = null;
     Intent proyectaTuVidaIntent = null;
+    Intent multiplicaTuDineroIntent = null;
+    Intent fabricaDeEmprendimientoIntent = null;
     private Global(){
 
     }
@@ -64,5 +66,21 @@ public class Global {
 
     public void setProyectaTuVidaIntent(Intent proyectaTuVidaIntent){
         this.proyectaTuVidaIntent = proyectaTuVidaIntent;
+    }
+
+    public Intent getMultiplicaTuDineroIntent(){
+        return multiplicaTuDineroIntent;
+    }
+
+    public void setMultiplicaTuDineroIntent(Intent multiplicaTuDineroIntent){
+        this.multiplicaTuDineroIntent = multiplicaTuDineroIntent;
+    }
+
+    public Intent getFabricaDeEmprendimientoIntent(){
+        return fabricaDeEmprendimientoIntent;
+    }
+
+    public void setFabricaDeEmprendimientoIntent(Intent fabricaDeEmprendimientoIntent){
+        this.fabricaDeEmprendimientoIntent = fabricaDeEmprendimientoIntent;
     }
 }

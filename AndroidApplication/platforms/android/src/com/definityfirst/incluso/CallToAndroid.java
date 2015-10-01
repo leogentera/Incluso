@@ -97,9 +97,11 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 					jsonObject.put("pathImagenes", MainActivity.appFolder+"/"+MainActivity.formsFolder);
 				}
 
-				if(jsonObject.getString("actividad").equals("Proyecta tu vida")){
-					jsonObject.put("pathImagenFicha", MainActivity.appFolder+"/"+MainActivity.avatarFolder);
+				if(jsonObject.getString("actividad").equals("Proyecta tu vida") || jsonObject.get("actividad").equals("Fábrica de emprendimiento")){
+					jsonObject.put("imagenFicha", MainActivity.appFolder + "/" + MainActivity.resultsFolder);
+					jsonObject.put("pathImagenFicha", MainActivity.appFolder + "/" + MainActivity.resultsFolder);
 				}
+
                 intent.putExtra("game_arguments", jsonObject.toString());
 				//global.setCallbackContext(callbackContext);
 
@@ -201,6 +203,22 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 		}else if (action.trim().equals("setProyectaTuVidaCallback")){
 			try {
 				global.getMainActivity().onNewIntent(global.getProyectaTuVidaIntent());
+
+			} catch (Throwable e){
+				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
+			}
+			return true;
+		}else if (action.trim().equals("setMultiplicaTuDineroCallback")){
+			try {
+				global.getMainActivity().onNewIntent(global.getMultiplicaTuDineroIntent());
+
+			} catch (Throwable e){
+				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
+			}
+			return true;
+		}else if (action.trim().equals("setFabricaDeEmprendimientoCallback")){
+			try {
+				global.getMainActivity().onNewIntent(global.getFabricaDeEmprendimientoIntent());
 
 			} catch (Throwable e){
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
