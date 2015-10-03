@@ -194,7 +194,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}else if (action.trim().equals("setTuEligesCallback")){
 			try {
-				global.getMainActivity().onNewIntent(global.getTuEligesIntent());
+                                                                                                                                                                                                                                                                                                                                                                                                      				global.getMainActivity().onNewIntent(global.getTuEligesIntent());
 
 			} catch (Throwable e){
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
