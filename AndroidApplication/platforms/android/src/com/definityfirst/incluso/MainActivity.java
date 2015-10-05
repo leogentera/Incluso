@@ -558,6 +558,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 global.getCallbackContext().success(jsonObject);
             }
             else{
+                Toast.makeText(this, jsonObject.toString(), Toast.LENGTH_LONG).show();
                 preventToLoad=true;
                 final File file = new File(appFolder, "index.html");
                 Uri uri = Uri.fromFile(file);
@@ -573,10 +574,10 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                     loadUrl(uri.toString() + "#/ZonaDeNavegacion/ProyectaTuVida/MapaDeVida/2017/1");
                 }else if (jsonObject.getString("actividad").equals("Multiplica tu dinero")){
                     global.setMultiplicaTuDineroIntent(intent);
-                    loadUrl(uri.toString() + "#/ZonaDeAterrizaje/MapaDelEmprendedor/MapaDelEmprendedor/3402/1");
+                    loadUrl(uri.toString() + "#/ZonaDeAterrizaje/EducacionFinanciera/MultiplicaTuDinero/3302/1");
                 }else if (jsonObject.getString("actividad").equals("Fábrica de emprendimiento")){
                     global.setFabricaDeEmprendimientoIntent(intent);
-                    loadUrl(uri.toString() + "#/ZonaDeAterrizaje/EducacionFinanciera/MultiplicaTuDinero/3302/1");
+                    loadUrl(uri.toString() + "#/ZonaDeAterrizaje/MapaDelEmprendedor/MapaDelEmprendedor/3402/1");
                 }else {
                     loadUrl(uri.toString() + "#/");
                     Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();
