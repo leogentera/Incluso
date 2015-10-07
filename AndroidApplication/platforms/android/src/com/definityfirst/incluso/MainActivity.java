@@ -21,18 +21,19 @@ package com.definityfirst.incluso;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
@@ -44,8 +45,6 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Base64;
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import  com.definityfirst.incluso.implementations.Global;
@@ -71,7 +70,6 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import org.apache.cordova.*;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -619,11 +617,11 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         return "";
     }
 
-    public void sendByMail(String image, String fileName, String mailsubject){
+    /*public void sendByMail(String image, String fileName, String mailsubject){
         byte [] imagebytes= Base64.decode(image.getBytes(), Base64.DEFAULT);
 
         FileOutputStream fos = null;
-        File tempFBDataFile  = new File(/*getFilesDir()*/getExternalCacheDir(),fileName);
+        File tempFBDataFile  = new File(*//*getFilesDir()*//*getExternalCacheDir(),fileName);
         try {
             fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
             fos.write(imagebytes,0,imagebytes.length);
@@ -645,67 +643,205 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         Intent emailChooser = Intent.createChooser(emailClient, "Selecciona una aplicación de email");
         startActivity(emailChooser);
         tempFBDataFile.deleteOnExit();
+    }*/
+
+    public void sendSeveralByMail(List<String> images, List<String>  fileNames, String mailsubject){
+        ArrayList<Uri> uris = new ArrayList<Uri>();
+        for (int i=0; i< images.size();i++){
+            String image= images.get(i);
+            String fileName= fileNames.get(i);
+            byte [] imagebytes= Base64.decode(image.getBytes(), Base64.DEFAULT);
+
+            FileOutputStream fos = null;
+            File tempFBDataFile  = new File(/*getFilesDir()*/getExternalCacheDir(),fileName);
+            try {
+                fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
+                fos.write(imagebytes,0,imagebytes.length);
+                fos.flush();
+                fos.close();
+                uris.add(Uri.fromFile(tempFBDataFile));
+                tempFBDataFile.deleteOnExit();
+            } catch (Throwable ioe) {
+                ioe.printStackTrace();
+            }
+            finally {
+                if (fos != null)try {fos.close();} catch (Throwable ie) {ie.printStackTrace();}
+            }
+        }
+
+
+        Intent emailClient = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        emailClient.setType("message/rfc822");
+        //emailClient.putExtra(Intent.EXTRA_EMAIL, new String[]{data.getCredentials().getOrganizationEmail()});
+        emailClient.putExtra(Intent.EXTRA_SUBJECT, mailsubject);
+        emailClient.putExtra(Intent.EXTRA_TEXT, "");
+       // emailClient.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(tempFBDataFile));//attachment
+        emailClient.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+        Intent emailChooser = Intent.createChooser(emailClient, "Selecciona una aplicación de email");
+        startActivity(emailChooser);
+        //tempFBDataFile.deleteOnExit();
     }
 
 
-    public void share(String image){
-        byte [] imagebytes= Base64.decode(image.getBytes(), Base64.DEFAULT);
+    public void share(List<String> images){
 
-        String fileName="attachment.png";
+        ArrayList<Uri> uris = new ArrayList<Uri>();
+        int i=0;
+        for (String image:images) {
+            byte [] imagebytes= Base64.decode(image.getBytes(), Base64.DEFAULT);
+            String fileName="attachment"+i+".png";
 
-        FileOutputStream fos = null;
-        File tempFBDataFile  = new File(/*getFilesDir()*/getExternalCacheDir(),fileName);
-        try {
-            fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
-            fos.write(imagebytes,0,imagebytes.length);
-            fos.flush();
-            fos.close();
-        } catch (Throwable ioe) {
-            ioe.printStackTrace();
-        }
-        finally {
-            if (fos != null)try {fos.close();} catch (Throwable ie) {ie.printStackTrace();}
+            FileOutputStream fos = null;
+            File tempFBDataFile  = new File(/*getFilesDir()*/getExternalCacheDir(),fileName);
+            try {
+                fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
+                fos.write(imagebytes, 0, imagebytes.length);
+                fos.flush();
+                fos.close();
+
+                Uri uri = Uri.fromFile(tempFBDataFile);
+                String path = uri.getPath();
+                File imageFile = new File(path);
+                uri = getImageContentUri(imageFile);
+
+                uris.add(uri);
+                tempFBDataFile.deleteOnExit();
+
+            } catch (Throwable ioe) {
+                ioe.printStackTrace();
+            }
+            finally {
+                if (fos != null)try {fos.close();} catch (Throwable ie) {ie.printStackTrace();}
+            }
+            i++;
         }
 
         Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
+        intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+        //intent.setType("image/*");
         intent.setType("image/*");
         //intent.putExtra(Intent.EXTRA_TEXT, "Holilla");
-        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(tempFBDataFile));
+        //intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(tempFBDataFile));
+        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
         startActivity(Intent.createChooser(intent, "Seleccione una aplicación"));
 
-        tempFBDataFile.deleteOnExit();
+
     }
 
-    public void download(String image){
-        byte [] imagebytes= Base64.decode(image.getBytes(), Base64.DEFAULT);
+    public void download(List<String> images){
+        int i=0;
+        for (String image:images) {
+            byte [] imagebytes= Base64.decode(image.getBytes(), Base64.DEFAULT);
 
-        String fileName="attachment.png";
+            String fileName="mision incluso +"+getDate("ymdhms")+i+"+.png";
 
-        FileOutputStream fos = null;
-        File tempFBDataFile  = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES) +"/Mision Incluso/");
+            FileOutputStream fos = null;
+            File tempFBDataFile  = new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_PICTURES) +"/Mision Incluso/");
 
-        tempFBDataFile.mkdir();
+            tempFBDataFile.mkdir();
 
-        tempFBDataFile  = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES) +"/Mision Incluso/"+fileName);
+            tempFBDataFile  = new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_PICTURES) +"/Mision Incluso/"+fileName);
 
-        if (tempFBDataFile.exists()){
-            tempFBDataFile.delete();
+            if (tempFBDataFile.exists()){
+                tempFBDataFile.delete();
+            }
+
+            try {
+                fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
+                fos.write(imagebytes,0,imagebytes.length);
+                fos.flush();
+                fos.close();
+                sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(tempFBDataFile)));
+            } catch (Throwable ioe) {
+                ioe.printStackTrace();
+            }
+            finally {
+                if (fos != null)try {fos.close();} catch (Throwable ie) {ie.printStackTrace();}
+            }
+            i++;
         }
 
-        try {
-            fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
-            fos.write(imagebytes,0,imagebytes.length);
-            fos.flush();
-            fos.close();
-            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(tempFBDataFile)));
-        } catch (Throwable ioe) {
-            ioe.printStackTrace();
+    }
+
+    public static String getDate(String ls_format){
+        String ls_folio="", ls_letraAct;
+        Calendar c = Calendar.getInstance();
+        for (int i=0; i<ls_format.length();i++){
+            ls_letraAct=ls_format.substring(i, i+1)/*.toLowerCase()*/;
+            if (ls_letraAct.equals("y")){
+                ls_folio+= fillString(String.valueOf(c.get(Calendar.YEAR)), "0", 4, true);
+            }
+            else if (ls_letraAct.equals("Y")){
+                ls_folio+= fillString(String.valueOf(c.get(Calendar.YEAR)).substring(2), "0", 2, true);
+            }
+            else if (ls_letraAct.equals("m")){
+                ls_folio+= fillString(String.valueOf(c.get(Calendar.MONTH) + 1), "0", 2, true);
+            }
+            else if (ls_letraAct.equals("d")){
+                ls_folio+= fillString(String.valueOf(c.get(Calendar.DAY_OF_MONTH)), "0", 2, true);
+            }
+            else if (ls_letraAct.equals("h")){
+                ls_folio+= fillString(String.valueOf(c.get(Calendar.HOUR_OF_DAY)), "0", 2, true);
+            }
+            else if (ls_letraAct.equals("i")){
+                ls_folio+= fillString(String.valueOf(c.get(Calendar.MINUTE)), "0", 2, true);
+            }
+            else if (ls_letraAct.equals("s")){
+                ls_folio+= fillString(String.valueOf(c.get(Calendar.SECOND)), "0", 2, true);
+            }
+            else
+            {
+                ls_folio +=ls_letraAct;
+            }
+
+
         }
-        finally {
-            if (fos != null)try {fos.close();} catch (Throwable ie) {ie.printStackTrace();}
+        return ls_folio;
+    }
+
+    public static String fillString(String text, String fill, int times, boolean place) {
+        String ls_final = text;
+        int li_restantes;
+
+        if (times < text.length()) {
+            return text.substring(0, times);
+        }
+
+        li_restantes = times - text.length();
+
+
+        for (int i = 0; i < li_restantes; i++) {
+            if (place)
+                ls_final = fill + ls_final;
+            else
+                ls_final = ls_final + fill;
+        }
+        return ls_final;
+    }
+
+    public Uri getImageContentUri(File imageFile) {
+        String filePath = imageFile.getAbsolutePath();
+        Cursor cursor = getContentResolver().query(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                new String[] { MediaStore.Images.Media._ID },
+                MediaStore.Images.Media.DATA + "=? ",
+                new String[] { filePath }, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor
+                    .getColumnIndex(MediaStore.MediaColumns._ID));
+            //Uri baseUri = Uri.parse("content://media/external/images/media");
+            return Uri.withAppendedPath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, Integer.toString(id));
+        } else {
+            if (imageFile.exists()) {
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Images.Media.DATA, filePath);
+                return getContentResolver().insert(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            } else {
+                return null;
+            }
         }
     }
 }

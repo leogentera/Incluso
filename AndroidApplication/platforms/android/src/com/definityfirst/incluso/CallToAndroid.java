@@ -19,6 +19,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 
 	final static int FACEBOOK_REGISTRATION=0;
@@ -225,7 +228,12 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}else if (action.trim().equals("shareByMail")){
 			try {
-				global.getMainActivity().sendByMail(args.getString(0), args.getString(1), args.getString(2));
+                List <String> files= new ArrayList<String>();
+                files.add(args.getString(0));
+
+                List <String> names= new ArrayList<String>();
+                names.add(args.getString(1));
+				global.getMainActivity().sendSeveralByMail(files,names, args.getString(2));
 
 			} catch (Throwable e){
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("No se pudo enviar el mail".getBytes(), Base64.DEFAULT)));
@@ -233,7 +241,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}else if (action.trim().equals("share")){
 			try {
-				global.getMainActivity().share(args.getString(0));
+				global.getMainActivity().share( JSONArrayToStringList(args));
 
 			} catch (Throwable e){
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("No se pudo compartir".getBytes(), Base64.DEFAULT)));
@@ -241,13 +249,21 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}else if (action.trim().equals("download")){
 			try {
-				global.getMainActivity().download(args.getString(0));
+				global.getMainActivity().download( JSONArrayToStringList(args));
 
 			} catch (Throwable e){
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("No se pudo guardar".getBytes(), Base64.DEFAULT)));
 			}
 			return true;
-		}
+		}else if (action.trim().equals("shareSeveralPicturesByMail")){
+            try {
+                global.getMainActivity().sendSeveralByMail(JSONArrayToStringList(args.getJSONArray(0)), JSONArrayToStringList(args.getJSONArray(1)), args.getString(2));
+
+            } catch (Throwable e){
+                callbackContext.error(new JSONObject().put("messageerror", Base64.encode("No se pudo enviar el mail".getBytes(), Base64.DEFAULT)));
+            }
+            return true;
+        }
 
 
 		return false;
@@ -325,6 +341,20 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			e.printStackTrace();
 		}
 
+	}
+
+	public List<String> JSONArrayToStringList(JSONArray jsonArray){
+		List<String> list = new ArrayList<String>();
+
+		for(int i = 0; i < jsonArray.length(); i++){
+			try {
+				list.add(jsonArray.getString(i));
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return list;
 	}
 }
 
