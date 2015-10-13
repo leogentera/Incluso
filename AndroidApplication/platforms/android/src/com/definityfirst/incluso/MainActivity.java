@@ -32,6 +32,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -45,6 +46,7 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Base64;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import  com.definityfirst.incluso.implementations.Global;
@@ -74,7 +76,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class MainActivity extends CordovaActivity implements DownloadFileListener
+public class MainActivity extends CordovaActivity implements DownloadFileListener, DatePickerDialog.OnDateSetListener
 {
 
     final static int DUMMY_GAME=0;
@@ -263,6 +265,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     protected void onResume() {
         super.onResume();
 //        installApp();
+        System.gc();
         AppEventsLogger.activateApp(this);
 
     }
@@ -843,5 +846,24 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 return null;
             }
         }
+    }
+    public void openDatePickerDialog()
+    {
+        int mYear, mMonth, mDay;
+        Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        //updateDisplay();
+        DatePickerDialog dp = new DatePickerDialog(this,
+                this,
+                mYear, mMonth, mDay);
+        dp.show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        global.getCallbackContext().success(String.valueOf(year)+"/"+String.valueOf(monthOfYear)+"/"+String.valueOf(dayOfMonth));
     }
 }
