@@ -263,7 +263,10 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
                 callbackContext.error(new JSONObject().put("messageerror", Base64.encode("No se pudo enviar el mail".getBytes(), Base64.DEFAULT)));
             }
             return true;
-        }
+        }else if (action.trim().equals("datepicker")){
+			global.getMainActivity().openDatePickerDialog(args.getString(0));
+			return true;
+		}
 
 
 		return false;

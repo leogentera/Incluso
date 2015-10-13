@@ -848,13 +848,22 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             }
         }
     }
-    public void openDatePickerDialog()
+    public void openDatePickerDialog(String date)
     {
-        int mYear, mMonth, mDay;
-        Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        int mYear=0, mMonth=0, mDay=0;
+        if (date.equals("")){
+            Calendar c = Calendar.getInstance();
+            mYear = c.get(Calendar.YEAR);
+            mMonth = c.get(Calendar.MONTH);
+            mDay = c.get(Calendar.DAY_OF_MONTH);
+        }
+        else{
+            String[] values=date.split("/");
+            mYear = Integer.parseInt(values[2]);
+            mMonth = Integer.parseInt(values[0]);
+            mDay = Integer.parseInt(values[1]);
+        }
+
 
         //updateDisplay();
         DatePickerDialog dp = new DatePickerDialog(this,
@@ -865,6 +874,6 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        global.getCallbackContext().success(String.valueOf(year)+"/"+String.valueOf(monthOfYear)+"/"+String.valueOf(dayOfMonth));
+        global.getCallbackContext().success(fillString(String.valueOf(monthOfYear), "0", 2, true)+"/"+fillString(String.valueOf(dayOfMonth), "0", 2, true)+"/"+String.valueOf(year));
     }
 }
