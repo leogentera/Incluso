@@ -860,8 +860,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         else{
             String[] values=date.split("/");
             mYear = Integer.parseInt(values[2]);
-            mMonth = Integer.parseInt(values[0]);
-            mDay = Integer.parseInt(values[1]);
+            mMonth = Integer.parseInt(values[1])-1;
+            mDay = Integer.parseInt(values[0]);
         }
 
 
@@ -874,6 +874,6 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        global.getCallbackContext().success(fillString(String.valueOf(monthOfYear), "0", 2, true)+"/"+fillString(String.valueOf(dayOfMonth), "0", 2, true)+"/"+String.valueOf(year));
+        global.getCallbackContext().success(fillString(String.valueOf(dayOfMonth), "0", 2, true)+"/"+fillString(String.valueOf(monthOfYear+1), "0", 2, true)+"/"+String.valueOf(year));
     }
 }
