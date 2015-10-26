@@ -133,7 +133,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 				Context context=this.cordova.getActivity().getApplicationContext();
 
 				Intent intent=new Intent(context, VideoPlayer.class);
-				intent.putExtra("directory", Environment.getExternalStorageDirectory() + "/app/initializr/" +args.getString(0) );
+				intent.putExtra("directory", global.getMainActivity().appPath() +"/" +args.getString(0) );
 				intent.putExtra("filename",args.getString(1) );
 				intent.putExtra("isLocal",true );
 				(global.getMainActivity()).startActivity(intent);
