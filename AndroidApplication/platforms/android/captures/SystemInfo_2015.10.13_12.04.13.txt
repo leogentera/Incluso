@@ -1,0 +1,36 @@
+Applications Memory Usage (kB):
+Uptime: 32295387 Realtime: 353172922
+
+** MEMINFO in pid 26715 [com.gentera.misionincluso] **
+                   Pss  Private  Private  Swapped     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap        0        0        0        0    64408    52094      441
+  Dalvik Heap     7000     6868        0      500    10160     7800     2360
+ Dalvik Other     2273     2048        0      872                           
+        Stack      296      296        0      120                           
+       Ashmem     3668     3652        0        0                           
+    Other dev        9        0        8        0                           
+     .so mmap    11869     1484     9788     2360                           
+    .apk mmap        8        0        0        0                           
+    .ttf mmap        2        0        0        0                           
+    .dex mmap     3269       32     2324      228                           
+   Other mmap       39        4       32        0                           
+      Unknown    55509    55484        0    16952                           
+        TOTAL    83942    69868    12152    21032    74568    59894     2801
+ 
+ Objects
+               Views:       32         ViewRootImpl:        1
+         AppContexts:        3           Activities:        1
+              Assets:        3        AssetManagers:        3
+       Local Binders:       18        Proxy Binders:       20
+    Death Recipients:        0
+     OpenSSL Sockets:        3
+ 
+ SQL
+         MEMORY_USED:       83
+  PAGECACHE_OVERFLOW:       12          MALLOC_SIZE:       62
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)          cache  Dbname
+         4       20             20         0/15/1  /data/data/com.gentera.misionincluso/databases/password.db

@@ -8,6 +8,8 @@ public interface DownloadFileListener {
 	public void localLoadFinish(String page);
 
     public void changeSpinnerText(String text);
+
+	public void finishGotVersion(String version);
 	
 
 }

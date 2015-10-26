@@ -9,6 +9,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.definityfirst.incluso.implementations.Global;
+import com.definityfirst.incluso.modules.DownloadFileFromPackage;
+import com.definityfirst.incluso.modules.ReadHTML;
 import com.definityfirst.incluso.modules.RestClient;
 import com.definityfirst.incluso.modules.RestClientListener;
 import com.facebook.login.LoginManager;
@@ -93,16 +95,16 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 				//intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 if (jsonObject.getString("actividad").equals("Mi Avatar")){
-                    jsonObject.put("pathimagen", MainActivity.appFolder+"/"+MainActivity.avatarFolder);
+                    jsonObject.put("pathimagen", global.getMainActivity().appFolder+"/"+MainActivity.avatarFolder);
                 }
 
 				if (jsonObject.getString("actividad").equals("Tú eliges") || jsonObject.getString("actividad").equals("Multiplica tu dinero") ){
-					jsonObject.put("pathImagenes", MainActivity.appFolder+"/"+MainActivity.formsFolder);
+					jsonObject.put("pathImagenes", global.getMainActivity().appFolder+"/"+MainActivity.formsFolder);
 				}
 
 				if(jsonObject.getString("actividad").equals("Proyecta tu vida") || jsonObject.get("actividad").equals("Fábrica de emprendimiento")){
-					jsonObject.put("imagenFicha", MainActivity.appFolder + "/" + MainActivity.resultsFolder);
-					jsonObject.put("pathImagenFicha", MainActivity.appFolder + "/" + MainActivity.resultsFolder);
+					jsonObject.put("imagenFicha", global.getMainActivity().appFolder + "/" + MainActivity.resultsFolder);
+					jsonObject.put("pathImagenFicha", global.getMainActivity().appFolder + "/" + MainActivity.resultsFolder);
 				}
 
                 intent.putExtra("game_arguments", jsonObject.toString());
@@ -265,6 +267,14 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
             return true;
         }else if (action.trim().equals("datepicker")){
 			global.getMainActivity().openDatePickerDialog(args.getString(0));
+			return true;
+		}
+		else if (action.trim().equals("restart")){
+			global.getMainActivity().restart();
+			return true;
+		}else if (action.trim().equalsIgnoreCase("getVersion")){
+			ReadHTML readHTML=new ReadHTML(global.getMainActivity(), global.getMainActivity(),  "");
+			readHTML.execute(global.getMainActivity().appVersionGetter);
 			return true;
 		}
 

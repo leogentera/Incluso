@@ -32,6 +32,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -84,7 +85,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     SpinnerDialog sp_dialog;
     boolean preventToLoad =false;
 
-    final static String appFolder =Environment.getExternalStorageDirectory()+"/app/initializr";
+    String appFolder="";
+    public final static String appRootFolder="/app/initializr";
     final static String avatarFolder="assets/avatar";
     final static String formsFolder="assets/images/forms";
     final static String resultsFolder = "assets/images/results";
@@ -94,25 +96,40 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
     boolean deleteFiles=false;
 
-//    String appWebResource="http://incluso.definityfirst.com/android/package/content.php";
+    //String server="http://incluso.definityfirst.com/android/package";
+    String server="http://10.15.1.255/publisher";
+    //String server="http://inclws03.cloudapp.net";
+    String appWebResource=server+"/content.php";
+    String appVersionGetter=server+"/version.php";
+
     //String appWebResource="";
-    String appWebResource="http://inclws03.cloudapp.net/content.php";
+    //String appWebResource="http://inclws03.cloudapp.net/content.php";
 
     LoginButton loginButton;
 
     CallbackManager callbackManager;
+
+    public final  String appPath(){
+        File folder=getExternalFilesDir(null);
+        return folder.getAbsolutePath()+appRootFolder;
+    }
+
+    public final  String appPathAbsolute(){
+        File folder=getExternalFilesDir(null);
+        return folder.getAbsolutePath();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-
-
+        appFolder=appPath();
+        deleteOldFiles();
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         //initializeLoginButton();
         // Set by <content src="index.html" /> in config.xml
         global=Global.getInstance();
+
         global.setMainActivity(this);
         handler=new Handler();
         sp_dialog= new SpinnerDialog(this);
@@ -162,7 +179,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             @Override
             public void onError(FacebookException exception) {
                 // App code
-                listener.finishPost("{\"messageerror\":\""+Base64.encodeToString("Ocurrio un error, contacte al administrador".getBytes(), Base64.DEFAULT)+"\"}", SayHelloPlugin.ERROR);
+                listener.finishPost("{\"messageerror\":\""+Base64.encodeToString("5000 - Ocurrio un error".getBytes(), Base64.DEFAULT)+"\"}", SayHelloPlugin.ERROR);
             //listener.finishPost(, SayHelloPlugin.ERROR);
             }
         });
@@ -324,6 +341,29 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
     }
 
+    @Override
+    public void finishGotVersion(String version) {
+        String currentVersion=getVersion();
+        String latestVersion=version;
+
+        JSONObject versions= new JSONObject();
+
+        try {
+            versions.put("currentVersion", currentVersion);
+            versions.put("latestVersion", version);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if ( global.getCallbackContext()!=null){
+            global.getCallbackContext().success(versions);
+        }
+        else{
+            Toast.makeText(MainActivity.this, "1000 - Ocurrio un error", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     public String getVersion(){
         return getVersion(appFolder);
     }
@@ -345,7 +385,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         }
 
         if (version.trim().equals("")){
-            version="0";
+            version="0.0.0";
         }
 
        /* if (version.equals("1.0.30")){
@@ -388,10 +428,10 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         DownloadFileFromPHP df=new DownloadFileFromPHP(this, this, appFolder);
         sp_dialog.showDialog("Comparando la última versión de la aplicación");
         String version=getVersion();
-        if (deleteFiles){
-            deleteAll();
+        /*if (deleteFiles){
+            //deleteAll();
             deleteFiles=false;
-        }
+        }*/
         df.execute(appWebResource + "?version="+version);
     }
 
@@ -443,7 +483,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                     if (callbackContext!=null)
                         callbackContext.success();
                     else{
-                        Toast.makeText(MainActivity.this, "Ocurrio un error, contacte al administrador", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "2001 - Ocurrio un error", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
@@ -455,7 +495,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                             e.printStackTrace();
                         }
                     else{
-                        Toast.makeText(MainActivity.this, "Ocurrio un error, contacte al administrador", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "2002 - Ocurrio un error", Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
@@ -495,7 +535,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                     } catch (Throwable e) {
                         JSONObject jsonerror = new JSONObject();
                         try {
-                            jsonObject.put("messageerror", Base64.encode("Ocurrio un error al establecer la imagen".getBytes(), Base64.DEFAULT));
+                            jsonObject.put("messageerror", Base64.encode("3001 - Ocurrio un error al establecer la imagen".getBytes(), Base64.DEFAULT));
                             global.getCallbackContext().error(jsonObject);
                         } catch (JSONException e1) {
                             e1.printStackTrace();
@@ -525,15 +565,26 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
         return new String(array);
     }
-    public void deleteAll(){
-        File dir = new File(appFolder);
+    public void deleteOldFiles(){
+        File dir = new File(Environment.getExternalStorageDirectory()+MainActivity.appRootFolder);
+        if (!dir.exists()){
+            return;
+        }
+        deleteAFile(dir);
+    }
+
+    public void deleteAFile(File dir){
         if (dir.isDirectory())
         {
             String[] children = dir.list();
             for (int i = 0; i < children.length; i++)
             {
-                new File(dir, children[i]).delete();
+                File file= new File(dir, children[i]);
+                if (file.isDirectory()){
+                    deleteAFile(file);
+                }
 
+                    file.delete();
             }
         }
     }
@@ -588,7 +639,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Ocurrio un error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "4001 - Ocurrio un error", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -874,6 +925,19 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        global.getCallbackContext().success(fillString(String.valueOf(dayOfMonth), "0", 2, true)+"/"+fillString(String.valueOf(monthOfYear+1), "0", 2, true)+"/"+String.valueOf(year));
+        global.getCallbackContext().success(fillString(String.valueOf(dayOfMonth), "0", 2, true) + "/" + fillString(String.valueOf(monthOfYear + 1), "0", 2, true) + "/" + String.valueOf(year));
+    }
+
+    public void restart(){
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+        //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+        setResult(Activity.RESULT_CANCELED);
+        finish();
+        System.exit(0);
     }
 }

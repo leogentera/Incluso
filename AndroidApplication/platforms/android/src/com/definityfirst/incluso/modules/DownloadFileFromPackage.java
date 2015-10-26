@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
+import com.definityfirst.incluso.MainActivity;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.InputStream;
@@ -31,8 +33,10 @@ public class DownloadFileFromPackage extends DownloadFile {
     @Override
     protected String doInBackground(String... f_url) {
         int count;
-        String path=Environment
-                .getExternalStorageDirectory().toString();
+        /*String path=Environment
+                .getExternalStorageDirectory().toString();*/
+
+        String path=((MainActivity)df).appPathAbsolute();
         try {
 
             final File file = new File(f_url[0]);

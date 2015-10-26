@@ -2,6 +2,7 @@ package  com.definityfirst.incluso.modules;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -84,6 +85,7 @@ public class DownloadFile  extends AsyncTask<String, String, String> {
             FileOutputStream fout = new FileOutputStream(path + "/"+ filename);
 
             // cteni zipu a zapis
+            Log.v("Humberto", filename);
             while ((count = zis.read(buffer)) != -1)
             {
                 fout.write(buffer, 0, count);
@@ -104,4 +106,6 @@ public class DownloadFile  extends AsyncTask<String, String, String> {
         else
             df.loadFinish(errorPage);
     }
+
+
 }

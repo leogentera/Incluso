@@ -4,7 +4,10 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
+import com.definityfirst.incluso.MainActivity;
+
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -30,8 +33,9 @@ public class DownloadFileFromPHP extends DownloadFile {
     @Override
     protected String doInBackground(String... f_url) {
 
-        String path=Environment
-                .getExternalStorageDirectory().toString();
+        /*String path=Environment
+                .getExternalStorageDirectory().toString();*/
+        String path=((MainActivity)df).appPathAbsolute();
         try {
             //por ahora vamos a dar un return
             /*if(1==1){
@@ -40,6 +44,7 @@ public class DownloadFileFromPHP extends DownloadFile {
             }*/
             URL url = new URL(f_url[0]);
             URLConnection conection = url.openConnection();
+            conection.setConnectTimeout(60000);
             conection.connect();
 
             // this will be useful so that you can show a tipical 0-100%
@@ -63,6 +68,7 @@ public class DownloadFileFromPHP extends DownloadFile {
 
 
         } catch (Throwable e) {
+            e.printStackTrace();
             Log.e("Error: ", e.getMessage());
         }
         finishLoad();
@@ -86,5 +92,7 @@ public class DownloadFileFromPHP extends DownloadFile {
        // dismissDialog(progress_bar_type);
 
     }
+
+
 
 }
