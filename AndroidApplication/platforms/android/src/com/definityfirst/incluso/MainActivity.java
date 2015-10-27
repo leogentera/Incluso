@@ -97,8 +97,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     boolean deleteFiles=false;
 
     //String server="http://incluso.definityfirst.com/android/package";
-    String server="http://10.15.1.255/publisher";
-    //String server="http://inclws03.cloudapp.net";
+    //String server="http://10.15.1.255/publisher";
+    String server="http://inclws03.cloudapp.net";
     String appWebResource=server+"/content.php";
     String appVersionGetter=server+"/version.php";
 
