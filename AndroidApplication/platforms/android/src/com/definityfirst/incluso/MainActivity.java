@@ -408,9 +408,9 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
     public void installApp(){
 
-        if (  getVersion().equals("0")) {
+        if (  getVersion().equals("0") ||  getVersion().equals("0.0.0")) {
             DownloadFileFromPackage dfp=new DownloadFileFromPackage(this, this, appFolder, rawFolder);
-            sp_dialog.showDialog("Descargando la última versión");
+            sp_dialog.showDialog("Instalando la aplicación");
             dfp.execute(appWebResource);
         }
         else if (isOnline()){
