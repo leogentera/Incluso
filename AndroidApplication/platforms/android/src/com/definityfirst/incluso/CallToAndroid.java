@@ -34,6 +34,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 
     CallbackContext callbackContext;
     String url;
+	boolean is_new=false;
 
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext)
 		    throws JSONException {
@@ -276,6 +277,12 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			ReadHTML readHTML=new ReadHTML(global.getMainActivity(), global.getMainActivity(),  "");
 			readHTML.execute(global.getMainActivity().appVersionGetter);
 			return true;
+		}else if (action.trim().equalsIgnoreCase("isOnline")){
+			JSONObject jsonObject=new JSONObject();
+			jsonObject.put("online", global.getMainActivity().isOnline());
+			callbackContext.success(jsonObject);
+
+			return true;
 		}
 
 
@@ -303,6 +310,11 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 					}
 					else{
 						//Everything ok
+
+						if (finalJsonObj.has("is_new")){
+							is_new= finalJsonObj.getBoolean("is_new");
+						}
+
 						String post= "username="+finalJsonObj.getString("username")+"&password=Facebook123!";
 
 						RestClient restClient= new RestClient(global.getMainActivity(), CallToAndroid.this, RestClient.POST, "application/x-www-form-urlencoded", post, FACEBOOK_LOGIN );
@@ -331,6 +343,8 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 					else{
 						//Everything ok
 						//Toast.makeText(global.getMainActivity(), result, Toast.LENGTH_LONG).show();
+						finalJsonObj.put("is_new", is_new);
+						callbackContext.success(finalJsonObj.toString());
 						callbackContext.success(result);
 						//LoginManager.getInstance().logOut();
 					}

@@ -24,6 +24,7 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
     final static int ERROR=-2;
 
     CallbackContext callbackContext;
+	boolean is_new=false;
     String url;
 
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext)
@@ -88,6 +89,10 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
 								}
 								else{
 									//Everything ok
+									if (finalJsonObj.has("is_new")){
+										is_new= finalJsonObj.getBoolean("is_new");
+									}
+
 									String post= "username="+finalJsonObj.getString("username")+"&password=Facebook123!";
 
 									RestClient restClient= new RestClient(global.getMainActivity(), SayHelloPlugin.this, RestClient.POST, "application/x-www-form-urlencoded", post, FACEBOOK_LOGIN );
@@ -116,7 +121,8 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
 								else{
 									//Everything ok
 									//Toast.makeText(global.getMainActivity(), result, Toast.LENGTH_LONG).show();
-                                    callbackContext.success(result);
+									finalJsonObj.put("is_new", is_new);
+                                    callbackContext.success(finalJsonObj.toString());
 									LoginManager.getInstance().logOut();
 								}
 

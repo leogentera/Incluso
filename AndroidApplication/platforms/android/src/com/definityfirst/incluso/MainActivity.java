@@ -37,6 +37,7 @@ import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -50,6 +51,7 @@ import android.util.Base64;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.definityfirst.incluso.implementations.ConnectionChangeReceiver;
 import  com.definityfirst.incluso.implementations.Global;
 import  com.definityfirst.incluso.modules.DownloadFileFromPHP;
 import  com.definityfirst.incluso.modules.DownloadFileFromPackage;

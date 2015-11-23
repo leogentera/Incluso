@@ -49,6 +49,13 @@
             android:name="com.facebook.FacebookContentProvider"
             android:exported="true" />
 
+        <!--receiver android:name="com.definityfirst.incluso.implementations.ConnectionChangeReceiver"
+            android:label="NetworkConnection">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver-->
+
     </application>
 
     <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="22" />
