@@ -96,7 +96,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 				//intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 if (jsonObject.getString("actividad").equals("Mi Avatar")){
-                    jsonObject.put("pathimagen", global.getMainActivity().appFolder+"/"+MainActivity.avatarFolder);
+                    jsonObject.put("pathImagen", global.getMainActivity().appFolder+"/"+MainActivity.avatarFolder);
                 }
 
 				if (jsonObject.getString("actividad").equals("Tú eliges") || jsonObject.getString("actividad").equals("Multiplica tu dinero") ){

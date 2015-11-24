@@ -51,7 +51,6 @@ import android.util.Base64;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.definityfirst.incluso.implementations.ConnectionChangeReceiver;
 import  com.definityfirst.incluso.implementations.Global;
 import  com.definityfirst.incluso.modules.DownloadFileFromPHP;
 import  com.definityfirst.incluso.modules.DownloadFileFromPackage;
@@ -606,7 +605,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             jsonObject=new JSONObject(gameArguments);
             if (jsonObject.getString("actividad").equals("Mi Avatar")) {
                 String imagepath=searchForAvatar(avatarFolder);
-                jsonObject.put("pathimagen", imagepath);
+                jsonObject.put("pathImagen", imagepath);
             }
             if (global.getCallbackContext()!=null){
                 global.getCallbackContext().success(jsonObject);
