@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Timer;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -294,7 +295,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 		// TODO Auto-generated method stub
         final File file = new File(appFolder, "index.html");
         Uri uri = Uri.fromFile(file);
-        loadFinish(uri.toString());
+        loadFinish(uri.toString() + "?imacellphone=true");
+
 
     }
 
@@ -307,11 +309,17 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             public void run() {
                 // TODO Auto-generated method stub
                 sp_dialog.hideDialog();
-                if (!preventToLoad)
+                if (!preventToLoad){
                     loadUrl(page);
+                    Timer timer = new Timer();
+
+                    //loadUrl("javascript:imacelphone()");
+                    loadUrl("javascript:var _isCellPhone=false ;function a (){ _isCellPhone=true;} a();");
+
+                }
+
                 //startNewActivity(MainActivity.this, "com.sieena.pdi2");
             }
-
         });
 		
 		
@@ -636,7 +644,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 }else {
                     Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();
                 }
-                loadUrl(uri.toString() + "?url=" + url);
+                loadUrl(uri.toString() + "?url=" + url + "&imacellphone=true");
             }
 
         } catch (JSONException e) {
