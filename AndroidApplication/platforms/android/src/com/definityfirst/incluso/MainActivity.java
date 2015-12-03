@@ -26,6 +26,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -35,6 +36,9 @@ import java.util.Timer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -48,6 +52,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Base64;
 import android.widget.DatePicker;
 import android.widget.Toast;
@@ -82,6 +88,7 @@ import org.json.JSONObject;
 public class MainActivity extends CordovaActivity implements DownloadFileListener, DatePickerDialog.OnDateSetListener
 {
 
+    final static int DOWNLOAD_NOTIFICATION=0;
     final static int DUMMY_GAME=0;
 	Handler handler;
     SpinnerDialog sp_dialog;
@@ -292,9 +299,10 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     @Override
 	public void loadFinish() {
 		// TODO Auto-generated method stub
-        final File file = new File(appFolder, "index.html");
+        //final File file = new File(appFolder, "index.html");
+        final File file = new File(appFolder, "redirectToAndroid.html");
         Uri uri = Uri.fromFile(file);
-        loadFinish(uri.toString() + "?imacellphone=true");
+        loadFinish(uri.toString() + "?url=index.html&imacellphone=true");
 
 
     }
@@ -794,6 +802,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
     public void download(List<String> images){
         int i=0;
+        createDownloadingNotification();
         for (String image:images) {
             byte [] imagebytes= Base64.decode(image.getBytes(), Base64.DEFAULT);
 
@@ -818,6 +827,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 fos.flush();
                 fos.close();
                 sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(tempFBDataFile)));
+                createDownloadNotification(Uri.fromFile(tempFBDataFile));
             } catch (Throwable ioe) {
                 ioe.printStackTrace();
             }
@@ -948,5 +958,44 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         setResult(Activity.RESULT_CANCELED);
         finish();
         System.exit(0);
+    }
+
+    public void createDownloadNotification(Uri uri){
+
+
+        Intent intent = new Intent(Intent.ACTION_VIEW/*, uri*/);
+        intent.setDataAndType(uri, "image/*");
+        PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(android.R.drawable.stat_sys_download_done)
+                        .setContentTitle("Mision Incluso")
+                        .setContentText("Imagen descargada").setContentIntent(pIntent);
+
+                    NotificationManager mNotificationManager =
+                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.cancel(DOWNLOAD_NOTIFICATION);
+        Notification noti =mBuilder.build();
+
+        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+        mNotificationManager.notify(DOWNLOAD_NOTIFICATION, noti);
+    }
+
+    public void createDownloadingNotification(){
+
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(android.R.drawable.stat_sys_download)
+                        .setContentTitle("Mision Incluso")
+                        .setContentText("Descargando Imagen");
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification noti =mBuilder.build();
+
+        noti.flags |= Notification.FLAG_FOREGROUND_SERVICE | Notification.FLAG_NO_CLEAR;
+        mNotificationManager.notify(DOWNLOAD_NOTIFICATION, noti);
     }
 }

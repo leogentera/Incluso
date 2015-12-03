@@ -100,9 +100,11 @@ public class DownloadFile  extends AsyncTask<String, String, String> {
 
 
     public void finishLoad(){
-        final File file = new File(appFolder, "index.html");
+        //final File file = new File(appFolder, "index.html");
+        final File file = new File(appFolder, "redirectToAndroid.html");
         if ( file.exists())
-            df.loadFinish("file://" + appFolder+"/index.html");
+            //df.loadFinish("file://" + appFolder+"/index.html");
+            df.loadFinish("file://" + appFolder+"/redirectToAndroid.html?url=index.html&imacellphone=true");
         else
             df.loadFinish(errorPage);
     }
