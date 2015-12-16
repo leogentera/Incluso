@@ -88,7 +88,8 @@ import org.json.JSONObject;
 public class MainActivity extends CordovaActivity implements DownloadFileListener, DatePickerDialog.OnDateSetListener
 {
 
-    final static int DOWNLOAD_NOTIFICATION=0;
+    final static int DOWNLOADING_NOTIFICATION=0;
+    final static int DOWNLOAD_NOTIFICATION=1;
     final static int DUMMY_GAME=0;
 	Handler handler;
     SpinnerDialog sp_dialog;
@@ -976,11 +977,13 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
                     NotificationManager mNotificationManager =
                             (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.cancel(DOWNLOAD_NOTIFICATION);
+
         Notification noti =mBuilder.build();
 
-        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+        noti.flags = Notification.FLAG_AUTO_CANCEL;
         mNotificationManager.notify(DOWNLOAD_NOTIFICATION, noti);
+        //mNotificationManager.notify(DOWNLOADING_NOTIFICATION, noti);
+        mNotificationManager.cancel(DOWNLOADING_NOTIFICATION);
     }
 
     public void createDownloadingNotification(){
@@ -995,7 +998,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Notification noti =mBuilder.build();
 
-        noti.flags |= Notification.FLAG_FOREGROUND_SERVICE | Notification.FLAG_NO_CLEAR;
-        mNotificationManager.notify(DOWNLOAD_NOTIFICATION, noti);
+        noti.flags |= Notification.FLAG_NO_CLEAR;
+        mNotificationManager.notify(DOWNLOADING_NOTIFICATION, noti);
     }
 }

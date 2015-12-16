@@ -1,16 +1,4 @@
 <?php
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 /**
  * External Web Service Template
  *
@@ -44,17 +32,6 @@ class course_plugin extends external_api{
 					array(
 					));
 		
-			//Context validation
-			//OPTIONAL but in most web service it should present
-// 			$context = get_context_instance(CONTEXT_USER, $USER->id);
-// 			self::validate_context($context);
-		
-			//Capability checking
-			//OPTIONAL but in most web service it should present
-			// if (!has_capability('moodle/user:viewdetails', $context)) {
-			//     throw new moodle_exception('cannotviewprofile');
-			// }
-		
 
 
 			//HCG Added progress percentage to the users on the leaderboard
@@ -73,17 +50,6 @@ class course_plugin extends external_api{
 	}
 	
 	public static function get_latest_course_returns(){
-// 		return new external_multiple_structure(
-// 			new external_single_structure(
-// 				array(
-// 					'id' => new external_value(PARAM_INT, 'Id of the user'),
-// 					'place' => new external_value(PARAM_INT, 'Ranking'),
-// 					'name' => new external_value(PARAM_TEXT, 'Full name of user'),
-// 					'stars' => new external_value(PARAM_INT, 'Quantity of stars'),
-// 					'percentage_completed' => new external_value(PARAM_INT, 'Percentage of completed activities')
-// 				)
-// 			)
-// 		);
 		return new external_function_parameters(
 				array(
 						'id' => new external_value(PARAM_INT, 'Id of the latest course'),
@@ -119,12 +85,6 @@ class course_plugin extends external_api{
 			//OPTIONAL but in most web service it should present
 			$context = get_context_instance(CONTEXT_USER, $USER->id);
 			self::validate_context($context);
-		
-			//Capability checking
-			//OPTIONAL but in most web service it should present
-			// if (!has_capability('moodle/user:viewdetails', $context)) {
-			//     throw new moodle_exception('cannotviewprofile');
-			// }
 
 			require_once($CFG->dirroot . "/user/profile/lib.php");
             $user = profile_user_record($userid);
@@ -209,12 +169,6 @@ class course_plugin extends external_api{
 			$context = get_context_instance(CONTEXT_USER, $USER->id);
 			self::validate_context($context);
 		
-			//Capability checking
-			//OPTIONAL but in most web service it should present
-			// if (!has_capability('moodle/user:viewdetails', $context)) {
-			//     throw new moodle_exception('cannotviewprofile');
-			// }
-		
 			$record = new stdClass();
 			$record->resourceid 	= $resourceid;
 			$record->typeofresource = $typeofresource;
@@ -267,12 +221,6 @@ class course_plugin extends external_api{
 			//OPTIONAL but in most web service it should present
 			$context = get_context_instance(CONTEXT_USER, $USER->id);
 			self::validate_context($context);
-		
-			//Capability checking
-			//OPTIONAL but in most web service it should present
-			// if (!has_capability('moodle/user:viewdetails', $context)) {
-			//     throw new moodle_exception('cannotviewprofile');
-			// }
 
 			require_once($CFG->dirroot . "/user/profile/lib.php");
             $user = profile_user_record($userid);

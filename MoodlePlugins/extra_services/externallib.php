@@ -1,16 +1,4 @@
 <?php
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 /**
  * External Web Service Template
  *
@@ -46,14 +34,7 @@ class chat_services extends external_api {
             $context = get_context_instance(CONTEXT_USER, $USER->id);
             self::validate_context($context);
 
-            //Capability checking
-            //OPTIONAL but in most web service it should present
-            // if (!has_capability('moodle/user:viewdetails', $context)) {
-            //     throw new moodle_exception('cannotviewprofile');
-            // }
-
             $sql = 'select * from {chat}';
-            //$params = array('fieldname' => $catalogname);
             $response = $DB->get_records_sql($sql);
 
         } catch (Exception $e) {
@@ -108,13 +89,6 @@ class forum_services extends external_api {
             //OPTIONAL but in most web service it should present
             $context = get_context_instance(CONTEXT_USER, $USER->id);
             self::validate_context($context);
-
-
-            //Capability checking
-            //OPTIONAL but in most web service it should present
-            // if (!has_capability('moodle/user:viewdetails', $context)) {
-            //     throw new moodle_exception('cannotviewprofile');
-            // }
 
             $record = new stdClass();
             $record->discussion     = $discussionid;
@@ -178,13 +152,6 @@ class forum_services extends external_api {
             $context = get_context_instance(CONTEXT_USER, $USER->id);
             self::validate_context($context);
 
-
-            //Capability checking
-            //OPTIONAL but in most web service it should present
-            // if (!has_capability('moodle/user:viewdetails', $context)) {
-            //     throw new moodle_exception('cannotviewprofile');
-            // }
-
             $record = new stdClass();
             $record->id     = required_param('postid', PARAM_INTEGER);
             $record->message = required_param('message', PARAM_TEXT);
@@ -243,13 +210,6 @@ class forum_services extends external_api {
             $context = get_context_instance(CONTEXT_USER, $USER->id);
             self::validate_context($context);
 
-
-            //Capability checking
-            //OPTIONAL but in most web service it should present
-            // if (!has_capability('moodle/user:viewdetails', $context)) {
-            //     throw new moodle_exception('cannotviewprofile');
-            // }
-
             $record = new stdClass();
             $record->id     = required_param('postid', PARAM_INTEGER);
 
@@ -281,7 +241,6 @@ class forum_services extends external_api {
         return $response;
     }
     public static function extra_service_forum_delete_forum_discussion_post_returns() {
-        //        return new external_value(PARAM_BOOL, 'The result of the delete action.');
         return new external_single_structure(
                         array(
                             'result' => new external_value(PARAM_BOOL, 'Boolean result of the like action.'),
@@ -316,13 +275,6 @@ class forum_services extends external_api {
             $context = get_context_instance(CONTEXT_USER, $USER->id);
             self::validate_context($context);
 
-
-            //Capability checking
-            //OPTIONAL but in most web service it should present
-            // if (!has_capability('moodle/user:viewdetails', $context)) {
-            //     throw new moodle_exception('cannotviewprofile');
-            // }
-
             $record = new stdClass();
             $record->forumpostid     = $postid;
             $record->userid = $USER->id;
@@ -345,7 +297,6 @@ class forum_services extends external_api {
         return $response;
     }
     public static function extra_service_forum_like_forum_discussion_post_returns() {
-        // return new external_value(PARAM_BOOL, 'The result of the like action.');
         return new external_single_structure(
                         array(
                             'result' => new external_value(PARAM_BOOL, 'Boolean result of the like action.'),
@@ -377,13 +328,6 @@ class forum_services extends external_api {
             //OPTIONAL but in most web service it should present
             $context = get_context_instance(CONTEXT_USER, $USER->id);
             self::validate_context($context);
-
-
-            //Capability checking
-            //OPTIONAL but in most web service it should present
-            // if (!has_capability('moodle/user:viewdetails', $context)) {
-            //     throw new moodle_exception('cannotviewprofile');
-            // }
 
             $record = new stdClass();
             $record->userid     = $USER->id;
@@ -430,8 +374,6 @@ class forum_services extends external_api {
         global $CFG, $DB, $USER;
 
         $warnings = array();
-            //var_dump($_POST["wstoken"]);
-            //var_dump($CFG->wwwroot);
             
             $sortallowedvalues = array('id', 'created', 'modified');
             if (!in_array($sortby, $sortallowedvalues)) {
@@ -600,12 +542,6 @@ class forum_services extends external_api {
                 'warnings' => new external_warnings()
             )
         );
-        // return new external_single_structure(
-        //                 array(
-        //                     'result' => new external_value(PARAM_BOOL, 'Boolean result of the unlike action.'),
-        //                     'message' => new external_value(PARAM_TEXT, 'Message result of the unlike action.')
-        //                 )
-        //             );
     }
 
 
@@ -627,26 +563,11 @@ class admin_services extends external_api {
 		$response = array();
 
 		try {
-			//Parameter validation
-			//REQUIRED
-// 			$params = self::validate_parameters(self::list_chats_parameters(), array('catalogname' => $catalogname));
-
-			//Context validation
-			//OPTIONAL but in most web service it should present
-// 			$context = get_context_instance(CONTEXT_USER, $USER->id);
-// 			self::validate_context($context);
-
-			//Capability checking
-			//OPTIONAL but in most web service it should present
-			// if (!has_capability('moodle/user:viewdetails', $context)) {
-			//     throw new moodle_exception('cannotviewprofile');
-			// }
 
 			$sql = 'select email from {user} user 
 					where id in (select value
 					from {config}
 					where name="siteadmins")';
-			//$params = array('fieldname' => $catalogname);
 			$response = $DB->get_records_sql($sql);
 
 		} catch (Exception $e) {
