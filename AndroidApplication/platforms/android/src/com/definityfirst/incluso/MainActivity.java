@@ -623,12 +623,12 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         JSONObject jsonObject=null ;
         try {
             jsonObject=new JSONObject(gameArguments);
-            if (jsonObject.getString("actividad").equals("Mi Avatar")) {
-                String imagepath=searchForAvatar(avatarFolder);
+            if (jsonObject.getString("actividad").equals("Mi Avatar") || jsonObject.getString("actividad").equals("Reto múltiple")) {
+                String imagepath = searchForAvatar(avatarFolder);
                 jsonObject.put("pathImagen", imagepath);
             }
-            if (global.getCallbackContext()!=null){
-                global.getCallbackContext().success(jsonObject);
+            if (global.getCallbackContext() != null){
+                    global.getCallbackContext().success(jsonObject);
             }
             else{
                 preventToLoad=true;
@@ -652,9 +652,14 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 }else if (jsonObject.getString("actividad").equals("Fábrica de emprendimiento")){
                     global.setFabricaDeEmprendimientoIntent(intent);
                     url += "ZonaDeAterrizaje/MapaDelEmprendedor/MapaDelEmprendedor/3402/1";
-                }else {
+                }else if(jsonObject.getString("actividad").equals("Mi Avatar")) {
+                    String userId = jsonObject.getString("userId");
+                    url += (getAvatarCheckpoint().equals("Tutorial") ? "Tutorial/1" : "Perfil/" + userId + "/1" );
+                    global.setMiAvatarIntent(intent);
+                }else{
                     Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();
                 }
+
                 loadUrl(uri.toString() + "?url=" + url + "&imacellphone=true");
             }
 
@@ -662,7 +667,6 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             e.printStackTrace();
             Toast.makeText(this, "4001 - Ocurrio un error", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public String searchForAvatar(String subfolder){
@@ -1003,5 +1007,50 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
         noti.flags |= Notification.FLAG_NO_CLEAR;
         mNotificationManager.notify(DOWNLOADING_NOTIFICATION, noti);
+    }
+
+    public void setAvatarCheckpoint(String type){
+
+            String fileName="avatar.dat";
+
+            FileOutputStream fos = null;
+            File tempFBDataFile  = new File(appPath(), fileName);
+
+            //tempFBDataFile.mkdir();
+            if (tempFBDataFile.exists()){
+                tempFBDataFile.delete();
+            }
+
+            try {
+                fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
+                fos.write(type.getBytes(),0,type.getBytes().length);
+                fos.flush();
+                fos.close();
+            } catch (Throwable ioe) {
+                ioe.printStackTrace();
+            }
+            finally {
+                if (fos != null)try {fos.close();} catch (Throwable ie) {ie.printStackTrace();}
+            }
+
+
+    }
+
+    public String getAvatarCheckpoint(){
+        final File file = new File(appPath(), "avatar.dat");
+        String type="";
+        try {
+            BufferedReader reader= new BufferedReader(new FileReader(file));
+            long bufferedLength=0;
+            while (bufferedLength<file.length()){
+                type+=Character.toString((char) reader.read());
+                bufferedLength++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return type;
     }
 }

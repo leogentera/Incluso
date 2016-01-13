@@ -94,8 +94,12 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
                 }
 				intent.setFlags(0);
 				//intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				if (jsonObject.has("avatarType")){
+					global.getMainActivity().setAvatarCheckpoint(jsonObject.getString("avatarType"));
+					jsonObject.remove("avatarType");
+				}
 
-                if (jsonObject.getString("actividad").equals("Mi Avatar")){
+                if (jsonObject.getString("actividad").equals("Mi Avatar") || jsonObject.getString("actividad").equals("Reto múltiple") || jsonObject.getString("actividad").equals("Proyecta tu vida")){
                     jsonObject.put("pathImagen", global.getMainActivity().appFolder+"/"+MainActivity.avatarFolder);
                 }
 
@@ -178,7 +182,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
                     if (intent != null) {
                         isInstalled=true;
                     }
-                    jsonObject.put("isInstalled", isInstalled);
+					jsonObject.put("isInstalled", isInstalled);
                     callbackContext.success(jsonObject);
                 }catch(Throwable e){
                     callbackContext.error(new JSONObject().put("messageerror", Base64.encode("No se pudo ejecutar la operacion".getBytes(), Base64.DEFAULT)));
@@ -221,14 +225,20 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
 			}
 			return true;
-		}else if (action.trim().equals("setFabricaDeEmprendimientoCallback")){
+		}else if (action.trim().equals("setFabricaDeEmprendimientoCallback")) {
 			try {
 				global.getMainActivity().onNewIntent(global.getFabricaDeEmprendimientoIntent());
 
-			} catch (Throwable e){
+			} catch (Throwable e) {
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
 			}
 			return true;
+		}else if(action.trim().equals("setMiAvatarIntentCallback")) {
+			try {
+				global.getMainActivity().onNewIntent(global.getMiAvatarIntent());
+			}catch (Throwable e) {
+				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
+			}
 		}else if (action.trim().equals("shareByMail")){
 			try {
                 List <String> files= new ArrayList<String>();
