@@ -19,6 +19,8 @@ public class Global {
     Intent proyectaTuVidaIntent = null;
     Intent multiplicaTuDineroIntent = null;
     Intent fabricaDeEmprendimientoIntent = null;
+    Intent miAvatarIntent = null;
+
     private Global(){
 
     }
@@ -83,4 +85,13 @@ public class Global {
     public void setFabricaDeEmprendimientoIntent(Intent fabricaDeEmprendimientoIntent){
         this.fabricaDeEmprendimientoIntent = fabricaDeEmprendimientoIntent;
     }
+
+    public Intent getMiAvatarIntent(){
+        return miAvatarIntent;
+    }
+
+    public void setMiAvatarIntent(Intent miAvatarIntent){
+        this.miAvatarIntent = miAvatarIntent;
+    }
+
 }
