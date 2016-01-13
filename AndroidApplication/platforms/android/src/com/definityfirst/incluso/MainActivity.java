@@ -317,7 +317,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             public void run() {
                 // TODO Auto-generated method stub
                 sp_dialog.hideDialog();
-                if (!preventToLoad){
+                if (!preventToLoad) {
                     loadUrl(page);
                     Timer timer = new Timer();
 
@@ -617,6 +617,9 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             return;
         }
         String gameArguments=intent.getExtras().getString("game_arguments");
+        if (gameArguments==null){
+            return;
+        }
         JSONObject jsonObject=null ;
         try {
             jsonObject=new JSONObject(gameArguments);
