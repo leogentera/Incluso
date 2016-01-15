@@ -1,22 +1,20 @@
-package  com.definityfirst.incluso.modules;
+package com.definityfirst.incluso.implementations;
 
 import android.content.Context;
-import android.os.Environment;
 import android.util.Log;
 
 import com.definityfirst.incluso.MainActivity;
 
 import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
-public class DownloadFileFromPackage extends DownloadFile {
+public class DownloadFileFromPHP extends DownloadFile {
 
-    int rawResource;
 
-    public DownloadFileFromPackage(Context context, DownloadFileListener df, String appFolder , int rawResource){
-		super(context, df, appFolder);
-        this.rawResource= rawResource;
+	public DownloadFileFromPHP(Context context, DownloadFileListener df, String appFolder){
+       super(context, df, appFolder);
 	}
     /**
      * Before starting background thread Show Progress Bar Dialog
@@ -32,37 +30,46 @@ public class DownloadFileFromPackage extends DownloadFile {
      * */
     @Override
     protected String doInBackground(String... f_url) {
-        int count;
+
         /*String path=Environment
                 .getExternalStorageDirectory().toString();*/
-
         String path=((MainActivity)df).appPathAbsolute();
         try {
-
-            final File file = new File(f_url[0]);
+            //por ahora vamos a dar un return
+            /*if(1==1){
+                finishLoad();
+                return null;
+            }*/
+            URL url = new URL(f_url[0]);
+            URLConnection conection = url.openConnection();
+            conection.setConnectTimeout(60000);
+            conection.connect();
 
             // this will be useful so that you can show a tipical 0-100%
             // progress bar
-            long lenghtOfFile = file.length();
+            int lenghtOfFile = conection.getContentLength();
 
             // download the file
-            InputStream input = new BufferedInputStream(context.getResources().openRawResource(rawResource),
+            InputStream input = new BufferedInputStream(url.openStream(),
                     8192);
 
+            //if (input.available()>0){
+            if (lenghtOfFile>0){
+                df.changeSpinnerText("Instalando última versión");
+            }
+            else{
+                finishLoad();
+                return null;
+            }
             unZipAndSave(input, path);
             input.close();
-            
 
-        } catch (Exception e) {
+
+        } catch (Throwable e) {
+            e.printStackTrace();
             Log.e("Error: ", e.getMessage());
         }
-        final File file = new File( appFolder, "index.html");
-        /*Uri uri = Uri.fromFile(file);
-        df.loadFinish("file:///storage/sdcard0/app/initializr/index.html");*/
-        if ( file.exists())
-            df.localLoadFinish("file://" + appFolder+"/index.html");
-        else
-            df.localLoadFinish(errorPage);
+        finishLoad();
         return null;
     }
 
@@ -72,7 +79,6 @@ public class DownloadFileFromPackage extends DownloadFile {
     protected void onProgressUpdate(String... progress) {
         // setting progress percentage
         //pDialog.setProgress(Integer.parseInt(progress[0]));
-
     }
 
     /**
@@ -84,4 +90,7 @@ public class DownloadFileFromPackage extends DownloadFile {
        // dismissDialog(progress_bar_type);
 
     }
+
+
+
 }

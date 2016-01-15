@@ -12,8 +12,8 @@ import android.util.Base64;
 import android.widget.Toast;
 
 import  com.definityfirst.incluso.implementations.Global;
-import com.definityfirst.incluso.modules.RestClient;
-import com.definityfirst.incluso.modules.RestClientListener;
+import com.definityfirst.incluso.implementations.RestClient;
+import com.definityfirst.incluso.implementations.RestClientListener;
 import com.facebook.login.LoginManager;
 
 public class SayHelloPlugin extends CordovaPlugin implements RestClientListener {

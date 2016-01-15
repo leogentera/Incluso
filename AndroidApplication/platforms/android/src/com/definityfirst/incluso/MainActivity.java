@@ -26,7 +26,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -42,7 +41,6 @@ import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -53,17 +51,17 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.util.Base64;
+import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
 import  com.definityfirst.incluso.implementations.Global;
-import  com.definityfirst.incluso.modules.DownloadFileFromPHP;
-import  com.definityfirst.incluso.modules.DownloadFileFromPackage;
-import  com.definityfirst.incluso.modules.DownloadFileListener;
-import com.definityfirst.incluso.modules.RestClient;
-import com.definityfirst.incluso.modules.RestClientListener;
+import com.definityfirst.incluso.implementations.DownloadFileFromPHP;
+import com.definityfirst.incluso.implementations.DownloadFileFromPackage;
+import com.definityfirst.incluso.implementations.DownloadFileListener;
+import com.definityfirst.incluso.implementations.RestClient;
+import com.definityfirst.incluso.implementations.RestClientListener;
 import  com.definityfirst.incluso.ui.SpinnerDialog;
 
 import com.facebook.AccessToken;
@@ -147,6 +145,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         // Background of activity:
         //appView.getView().setBackgroundColor(getResources().getColor(android.R.color.black));
         installApp();
+       getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         //this.startActivity(new Intent(this, video_player.class));
 
     }
@@ -624,7 +623,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         try {
             jsonObject=new JSONObject(gameArguments);
             if (jsonObject.getString("actividad").equals("Mi Avatar") || jsonObject.getString("actividad").equals("Reto múltiple")) {
-                String imagepath = searchForAvatar(avatarFolder);
+                String imagepath ="avatar_"+jsonObject.getString("userId")+".png"; //searchForAvatar(avatarFolder);
                 jsonObject.put("pathImagen", imagepath);
             }
             if (global.getCallbackContext() != null){

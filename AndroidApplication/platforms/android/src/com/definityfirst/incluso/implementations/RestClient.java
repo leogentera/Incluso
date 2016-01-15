@@ -1,207 +1,141 @@
-package  com.definityfirst.incluso.implementations;
+package com.definityfirst.incluso.implementations;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.protocol.HTTP;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Environment;
+import android.util.Base64;
+import android.util.Log;
 
+import com.definityfirst.incluso.implementations.RestClientListener;
+
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URLEncoder;
-import java.util.ArrayList;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-/**
- * Created by humberto.castaneda on 04/02/2015.
- */
-public class RestClient {
-    private ArrayList<NameValuePair> params;
-    private ArrayList<NameValuePair> headers;
+public class RestClient  extends AsyncTask<String, String, String> {
 
-    private String url;
+    public static final String GET="GET";
+    public static final String POST="POST";
+    String method=GET;
+    String contentType= "application-json";
+    String body="";
+    int requestCode=0;
 
-    private int responseCode;
-    private String message;
 
-    private String response;
+    RestClientListener df;
+    Context context;
 
-    public String getResponse() {
-        return response;
-    }
-
-    public String getErrorMessage() {
-        return message;
-    }
-
-    public int getResponseCode() {
-        return responseCode;
-    }
-
-    private String jsonString="";
-
-    public RestClient(String url)
-    {
-        this.url = url;
-        params = new ArrayList<NameValuePair>();
-        headers = new ArrayList<NameValuePair>();
+	public RestClient(Context context, RestClientListener df, String method,  String contentType, String body, int requestCode){
+       this.context=context;
+        this.df=df;
+        this.contentType=contentType;
+        this.body=body;
+        this.method=POST;
+        this.requestCode=requestCode;
+	}
+    /**
+     * Before starting background thread Show Progress Bar Dialog
+     * */
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        //showDialog(progress_bar_type);
     }
 
     /**
-     * Agrega informacion al BODY del request
-     * @param name
-     * @param value
-     */
-    public void AddParam(String name, String value)
-    {
-        params.add(new BasicNameValuePair(name, value));
+     * Downloading file in background thread
+     * */
+    @Override
+    protected String doInBackground(String... f_url) {
+
+        String path=Environment
+                .getExternalStorageDirectory().toString();
+
+        StringBuilder sb=null;
+        boolean error=false;
+
+        try {
+            URL url = new URL(f_url[0]);
+            HttpURLConnection conection = (HttpURLConnection) url.openConnection();
+            conection.setRequestMethod(method);
+            conection.setRequestProperty("Content-Type", contentType);
+
+            conection.setDoInput(true);
+            conection.setDoOutput(true);
+
+            if (method.equals(POST)){
+                byte[] outputInBytes = body.getBytes("UTF-8");
+                OutputStream os = conection.getOutputStream();
+                os.write( outputInBytes );
+                os.close();
+            }
+            conection.connect();
+
+            // this will be useful so that you can show a tipical 0-100%
+            // progress bar
+            int lenghtOfFile = conection.getContentLength();
+
+            InputStream input = null;
+            // download the file
+            if (conection.getResponseCode()==200){
+                input = new BufferedInputStream(/*url.openStream()*/conection.getInputStream());
+            }
+            else{
+                input = new BufferedInputStream(/*url.openStream()*/conection.getErrorStream());
+            }
+
+            String line;
+            sb = new StringBuilder();
+            BufferedReader br = new BufferedReader(new InputStreamReader(input));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+            input.close();
+
+
+        } catch (Throwable e) {
+            error=true;
+            Log.e("Error: ", e.getMessage());
+        }
+        String response="";
+        if (sb.toString() == null){
+           response="";
+            if (error){
+                response="{\"messageerror\":\""+ Base64.encodeToString("Ocurrio un error, no se puede conectar con el servidor".getBytes(), Base64.DEFAULT)+"\"}";
+            }
+        }
+        else{
+            response=sb.toString();
+        }
+        finishPost(response, requestCode);
+        return null;
     }
-
-    public void setJsonString( String value)
-    {
-        jsonString=value;
-    }
-
-
 
     /**
-     * Agrega informacion al HEADER del request
-     * @param name
-     * @param value
-     */
-    public void AddHeader(String name, String value)
-    {
-        headers.add(new BasicNameValuePair(name, value));
+     * Updating progress bar
+     * */
+    protected void onProgressUpdate(String... progress) {
+        // setting progress percentage
+        //pDialog.setProgress(Integer.parseInt(progress[0]));
     }
 
-    public enum RequestMethod
-    {
-        GET,
-        POST
+    /**
+     * After completing background task Dismiss the progress dialog
+     * **/
+    @Override
+    protected void onPostExecute(String file_url) {
+        // dismiss the dialog after the file was downloaded
+       // dismissDialog(progress_bar_type);
+
     }
 
-    public void Execute(RequestMethod method) throws Exception
-    {
-        switch(method) {
-            case GET:
-            {
-                //add parameters
-                String combinedParams = "";
-                if(!params.isEmpty()){
-                    combinedParams += "?";
-                    for(NameValuePair p : params)
-                    {
-                        String paramString = p.getName() + "=" + URLEncoder.encode(p.getValue(), "UTF-8");
-                        if(combinedParams.length() > 1)
-                        {
-                            combinedParams  +=  "&" + paramString;
-                        }
-                        else
-                        {
-                            combinedParams += paramString;
-                        }
-                    }
-                }
-
-                HttpGet request = new HttpGet(url + combinedParams);
-
-                //add headers
-                for(NameValuePair h : headers)
-                {
-                    request.addHeader(h.getName(), h.getValue());
-                }
-
-                executeRequest(request, url);
-                break;
-            }
-            case POST:
-            {
-                HttpPost request = new HttpPost(url);
-
-                //add headers
-                for(NameValuePair h : headers)
-                {
-                    request.addHeader(h.getName(), h.getValue());
-                }
-
-                if (!jsonString.equals("")){
-                    request.setEntity(new StringEntity(jsonString, HTTP.UTF_8));
-                }
-                else
-                if(!params.isEmpty()){
-                    request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-                }
-                executeRequest(request, url);
-                break;
-            }
-        }
-    }
-
-    private void executeRequest(HttpUriRequest request, String url)
-    {
-        final HttpParams httpParams = new BasicHttpParams();
-        HttpConnectionParams.setConnectionTimeout(httpParams, 90000);
-        HttpClient client = new DefaultHttpClient(httpParams);
-
-        HttpResponse httpResponse;
-
-        try {
-            httpResponse = client.execute(request);
-            responseCode = httpResponse.getStatusLine().getStatusCode();
-            message = httpResponse.getStatusLine().getReasonPhrase();
-
-            HttpEntity entity = httpResponse.getEntity();
-
-            if (entity != null) {
-
-                InputStream instream = entity.getContent();
-                response = convertStreamToString(instream);
-
-                // Closing the input stream will trigger connection release
-                instream.close();
-            }
-
-        } catch (ClientProtocolException e)  {
-            client.getConnectionManager().shutdown();
-            e.printStackTrace();
-        } catch (IOException e) {
-            client.getConnectionManager().shutdown();
-            e.printStackTrace();
-        }
-    }
-
-    private static String convertStreamToString(InputStream is) {
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        StringBuilder sb = new StringBuilder();
-
-        String line = null;
-        try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
+    public void finishPost(String result, int requestCode){
+        df.finishPost(result, requestCode);
     }
 
 }

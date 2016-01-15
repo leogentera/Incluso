@@ -32,7 +32,8 @@ buildscript {
     // and https://issues.apache.org/jira/browse/CB-8143
     if (gradle.gradleVersion >= "2.2") {
         dependencies {
-            classpath 'com.android.tools.build:gradle:1.2.3'
+            classpath 'com.android.tools.build:gradle:2.0.0-alpha3'
+
         }
     } else if (gradle.gradleVersion >= "2.1") {
         dependencies {
@@ -43,6 +44,7 @@ buildscript {
             classpath 'com.android.tools.build:gradle:0.12.0+'
         }
     }
+
 }
 
 // Allow plugins to declare Maven dependencies via build-extras.gradle.
@@ -255,6 +257,7 @@ dependencies {
     debugCompile project(path: ':CordovaLib', configuration: 'debug')
     releaseCompile project(path: ':CordovaLib', configuration: 'release')
     // SUB-PROJECT DEPENDENCIES END
+    compile files('libs/gson-1.6.jar')
 }
 
 def promptForReleaseKeyPassword() {

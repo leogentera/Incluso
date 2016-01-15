@@ -3,17 +3,18 @@ package com.definityfirst.incluso;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Environment;
 import android.util.Base64;
-import android.util.Log;
 import android.widget.Toast;
 
+import com.definityfirst.incluso.implementations.DownloadGenericFile;
 import com.definityfirst.incluso.implementations.Global;
-import com.definityfirst.incluso.modules.DownloadFileFromPackage;
-import com.definityfirst.incluso.modules.ReadHTML;
-import com.definityfirst.incluso.modules.RestClient;
-import com.definityfirst.incluso.modules.RestClientListener;
-import com.facebook.login.LoginManager;
+import com.definityfirst.incluso.implementations.ReadHTML;
+import com.definityfirst.incluso.implementations.RestClient;
+import com.definityfirst.incluso.implementations.RestClientListener;
+import com.definityfirst.incluso.modules.DownloadedFile;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -21,6 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -291,6 +293,36 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			JSONObject jsonObject=new JSONObject();
 			jsonObject.put("online", global.getMainActivity().isOnline());
 			callbackContext.success(jsonObject);
+
+			return true;
+		}else if (action.trim().equalsIgnoreCase("downloadPictures")){
+			/*ArrayList<DownloadedFile> files=  new Gson().fromJson(args.getString(0),
+					List<DownloadedFile>.getClass());*/
+			List <DownloadedFile> files=  new ArrayList<DownloadedFile>();
+
+			JSONArray jsonArray = new JSONArray(args.getString(0));
+
+			for (int i=0; i<jsonArray.length();i++){
+				files.add(new DownloadedFile((JSONObject) jsonArray.get(i)));
+			}
+
+			DownloadGenericFile dgf=new DownloadGenericFile(global.getMainActivity(), callbackContext,files , global.getMainActivity().appPath());
+			dgf.execute("");
+
+			return true;
+		}else if (action.trim().equalsIgnoreCase("fileExists")){
+			String filepath = args.getString(0);
+
+			String file = global.getMainActivity().appPath() + "/"+filepath;
+
+            File tmp= new File(file);
+
+            boolean exists= tmp.exists();
+
+            JSONObject jsonObject= new JSONObject();
+            jsonObject.put("exists", exists);
+
+            callbackContext.success(jsonObject);
 
 			return true;
 		}

@@ -1,4 +1,4 @@
-package  com.definityfirst.incluso.modules;
+package com.definityfirst.incluso.implementations;
 
 import android.content.Context;
 import android.os.AsyncTask;
