@@ -626,10 +626,11 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 String imagepath ="avatar_"+jsonObject.getString("userId")+".png"; //searchForAvatar(avatarFolder);
                 jsonObject.put("pathImagen", imagepath);
             }
-            /*if (global.getCallbackContext() != null){
-                    global.getCallbackContext().success(jsonObject);
+            if (global.getCallbackContext() != null){
+                loadUrl("javascript:_successGame("+ jsonObject.toString() +")");
+                    //global.getCallbackContext().success(jsonObject);
             }
-            else{*/
+            else{
                 preventToLoad=true;
                 final File file = new File(appFolder, "redirectToAndroid.html");
                 //final File file = new File(appFolder, "index.html");
@@ -658,8 +659,9 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 }else{
                     Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();
                 }
+
                 loadUrl(uri.toString() + "?url=" + url + "&imacellphone=true");
-            //}
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
