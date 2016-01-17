@@ -145,7 +145,11 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         // Background of activity:
         //appView.getView().setBackgroundColor(getResources().getColor(android.R.color.black));
         installApp();
-       getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+       /* getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE );*/
         //this.startActivity(new Intent(this, video_player.class));
 
     }
