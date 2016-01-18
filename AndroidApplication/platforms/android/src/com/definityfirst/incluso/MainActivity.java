@@ -52,6 +52,7 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.support.v4.app.NotificationCompat;
 import android.util.Base64;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.Toast;
@@ -612,7 +613,6 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
     @Override
     protected void onNewIntent(Intent intent) {
-
         super.onNewIntent(intent);
         preventToLoad=false;
         global=Global.getInstance();
@@ -627,12 +627,19 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         try {
             jsonObject=new JSONObject(gameArguments);
             if (jsonObject.getString("actividad").equals("Mi Avatar") || jsonObject.getString("actividad").equals("Reto múltiple")) {
-                String imagepath ="avatar_"+jsonObject.getString("userId")+".png"; //searchForAvatar(avatarFolder);
+                String userId = jsonObject.getString(jsonObject.has("userId") ? "userId" : "userid");
+                String imagepath ="avatar_"+ userId +".png"; //searchForAvatar(avatarFolder);
                 jsonObject.put("pathImagen", imagepath);
             }
             if (global.getCallbackContext() != null){
-                loadUrl("javascript:_successGame("+ jsonObject.toString() +")");
-                    //global.getCallbackContext().success(jsonObject);
+                final JSONObject finalJsonObject = jsonObject;
+                handler.post(new Runnable(){
+                    public void run(){
+                        global.getCallbackContext().success(finalJsonObject);
+                        //loadUrl("javascript:_successGame("+ finalJsonObject.toString() +")");
+                    }
+                }
+                );
             }
             else{
                 preventToLoad=true;
@@ -663,7 +670,6 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 }else{
                     Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();
                 }
-
                 loadUrl(uri.toString() + "?url=" + url + "&imacellphone=true");
             }
 
@@ -1056,5 +1062,32 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             e.printStackTrace();
         }
         return type;
+    }
+
+    public void genericFileSaver(String content){
+
+        String fileName="json"+getDate("ymdhis")+".txt";
+
+        FileOutputStream fos = null;
+        File tempFBDataFile  = new File(appPath(), fileName);
+
+        //tempFBDataFile.mkdir();
+        if (tempFBDataFile.exists()){
+            tempFBDataFile.delete();
+        }
+
+        try {
+            fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
+            fos.write(content.getBytes(),0,content.getBytes().length);
+            fos.flush();
+            fos.close();
+        } catch (Throwable ioe) {
+            ioe.printStackTrace();
+        }
+        finally {
+            if (fos != null)try {fos.close();} catch (Throwable ie) {ie.printStackTrace();}
+        }
+
+
     }
 }
