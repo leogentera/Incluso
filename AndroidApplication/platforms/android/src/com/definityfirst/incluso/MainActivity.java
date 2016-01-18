@@ -626,8 +626,10 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         JSONObject jsonObject=null ;
         try {
             jsonObject=new JSONObject(gameArguments);
-            if (jsonObject.getString("actividad").equals("Mi Avatar") || jsonObject.getString("actividad").equals("Reto múltiple")) {
-                String imagepath ="avatar_"+jsonObject.getString("userId")+".png"; //searchForAvatar(avatarFolder);
+            if (jsonObject.getString("actividad").equals("Mi Avatar")/* || jsonObject.getString("actividad").equals("Reto múltiple")*/) {
+                String userId = jsonObject.getString(jsonObject.has("userId") ?"userId":"userid");
+                String imagepath ="avatar_"+ userId +".png"; //searchForAvatar(avatarFolder);
+
                 jsonObject.put("pathImagen", imagepath);
             }
             if (global.getCallbackContext() != null){

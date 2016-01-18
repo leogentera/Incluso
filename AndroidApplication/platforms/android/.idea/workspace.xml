@@ -14,8 +14,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="518f7a34-7844-4135-8ea4-0d9672905da8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/aidl/androidTest/debug/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/aidl/debug/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/aidl/release/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeAssets/debug/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeAssets/release/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/mergeResources/androidTest/debug/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageResources/debug/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageResources/release/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/manifests/androidTest/debug/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/tmp/packageDebugJar/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CordovaLib/build/tmp/packageReleaseJar/MANIFEST.MF" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/bundles/debug/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/bundles/release/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/outputs/aar/CordovaLib-debug.aar" afterPath="$PROJECT_DIR$/CordovaLib/build/outputs/aar/CordovaLib-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/outputs/aar/CordovaLib-release.aar" afterPath="$PROJECT_DIR$/CordovaLib/build/outputs/aar/CordovaLib-release.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/config.xml" afterPath="$PROJECT_DIR$/res/xml/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java" />
     </list>
     <ignored path="android.iws" />
@@ -174,9 +190,20 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6276803">
-              <caret line="151" column="147" selection-start-line="148" selection-start-column="7" selection-end-line="151" selection-end-column="147" />
-              <folding />
+            <state vertical-scroll-proportion="0.6647174">
+              <caret line="629" column="87" selection-start-line="629" selection-start-column="87" selection-end-line="629" selection-end-column="87" />
+              <folding>
+                <element signature="e#6263#6608#0" expanded="true" />
+                <element signature="e#6607#6608#0" expanded="true" />
+                <element signature="e#8128#11214#0" expanded="true" />
+                <element signature="e#11213#11214#0" expanded="true" />
+                <element signature="e#12281#12848#0" expanded="true" />
+                <element signature="e#12847#12848#0" expanded="true" />
+                <element signature="e#13185#13321#0" expanded="true" />
+                <element signature="e#13320#13321#0" expanded="true" />
+                <element signature="e#14015#14016#0" expanded="true" />
+                <element signature="e#14059#14060#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2599,11 +2626,11 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28518122" sideWeight="0.501006" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36525613" sideWeight="0.5138593" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.4978678" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925472" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4936034" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925472" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2614,7 +2641,7 @@
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20309168" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36525613" sideWeight="0.48614073" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36525613" sideWeight="0.48187634" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2681,15 +2708,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java</url>
-          <line>885</line>
+          <line>887</line>
           <properties />
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java</url>
-          <line>633</line>
+          <line>635</line>
           <properties />
           <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java</url>
+          <line>627</line>
+          <properties />
+          <option name="timeStamp" value="110" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -2700,7 +2733,7 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="110" />
+      <option name="time" value="111" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="android">
@@ -2761,7 +2794,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#6263#6608#0" expanded="true" />
+            <element signature="e#6607#6608#0" expanded="true" />
+            <element signature="e#8128#11214#0" expanded="true" />
+            <element signature="e#11213#11214#0" expanded="true" />
+            <element signature="e#12281#12848#0" expanded="true" />
+            <element signature="e#12847#12848#0" expanded="true" />
+            <element signature="e#13185#13321#0" expanded="true" />
+            <element signature="e#13320#13321#0" expanded="true" />
+            <element signature="e#14015#14016#0" expanded="true" />
+            <element signature="e#14059#14060#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2785,7 +2829,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#6263#6608#0" expanded="true" />
+            <element signature="e#6607#6608#0" expanded="true" />
+            <element signature="e#8128#11214#0" expanded="true" />
+            <element signature="e#11213#11214#0" expanded="true" />
+            <element signature="e#12281#12848#0" expanded="true" />
+            <element signature="e#12847#12848#0" expanded="true" />
+            <element signature="e#13185#13321#0" expanded="true" />
+            <element signature="e#13320#13321#0" expanded="true" />
+            <element signature="e#14015#14016#0" expanded="true" />
+            <element signature="e#14059#14060#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3109,9 +3164,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6276803">
-          <caret line="151" column="147" selection-start-line="148" selection-start-column="7" selection-end-line="151" selection-end-column="147" />
-          <folding />
+        <state vertical-scroll-proportion="0.6647174">
+          <caret line="629" column="87" selection-start-line="629" selection-start-column="87" selection-end-line="629" selection-end-column="87" />
+          <folding>
+            <element signature="e#6263#6608#0" expanded="true" />
+            <element signature="e#6607#6608#0" expanded="true" />
+            <element signature="e#8128#11214#0" expanded="true" />
+            <element signature="e#11213#11214#0" expanded="true" />
+            <element signature="e#12281#12848#0" expanded="true" />
+            <element signature="e#12847#12848#0" expanded="true" />
+            <element signature="e#13185#13321#0" expanded="true" />
+            <element signature="e#13320#13321#0" expanded="true" />
+            <element signature="e#14015#14016#0" expanded="true" />
+            <element signature="e#14059#14060#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
