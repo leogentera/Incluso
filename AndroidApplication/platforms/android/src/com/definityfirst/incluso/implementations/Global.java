@@ -14,6 +14,7 @@ public class Global {
 
     MainActivity activity=null;
     CallbackContext callbackContext;
+    CallbackContext callbackContextVersion = null;
     Intent retosMultiplesIntent=null;
     Intent tuEligesIntent = null;
     Intent proyectaTuVidaIntent = null;
@@ -94,4 +95,11 @@ public class Global {
         this.miAvatarIntent = miAvatarIntent;
     }
 
+    public CallbackContext getCallbackContextVersion() {
+        return callbackContextVersion;
+    }
+
+    public void setCallbackContextVersion(CallbackContext callbackContextVersion) {
+        this.callbackContextVersion = callbackContextVersion;
+    }
 }

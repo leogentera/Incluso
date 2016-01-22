@@ -286,6 +286,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			global.getMainActivity().restart();
 			return true;
 		}else if (action.trim().equalsIgnoreCase("getVersion")){
+			global.setCallbackContextVersion(callbackContext);
 			ReadHTML readHTML=new ReadHTML(global.getMainActivity(), global.getMainActivity(),  "");
 			readHTML.execute(global.getMainActivity().appVersionGetter);
 			return true;

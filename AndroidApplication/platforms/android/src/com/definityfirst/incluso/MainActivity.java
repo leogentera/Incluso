@@ -377,8 +377,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             e.printStackTrace();
         }
 
-        if ( global.getCallbackContext()!=null){
-            global.getCallbackContext().success(versions);
+        if ( global.getCallbackContextVersion()!=null){
+            global.getCallbackContextVersion().success(versions);
         }
         else{
             Toast.makeText(MainActivity.this, "1000 - Ocurrio un error", Toast.LENGTH_SHORT).show();
