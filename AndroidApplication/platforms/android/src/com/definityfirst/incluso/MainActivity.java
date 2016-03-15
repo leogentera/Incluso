@@ -63,6 +63,7 @@ import com.definityfirst.incluso.implementations.DownloadFileFromPackage;
 import com.definityfirst.incluso.implementations.DownloadFileListener;
 import com.definityfirst.incluso.implementations.RestClient;
 import com.definityfirst.incluso.implementations.RestClientListener;
+import com.definityfirst.incluso.services.RegistrationIntentService;
 import  com.definityfirst.incluso.ui.SpinnerDialog;
 
 import com.facebook.AccessToken;
@@ -78,6 +79,8 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import org.apache.cordova.*;
 import org.json.JSONException;
@@ -90,6 +93,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     final static int DOWNLOADING_NOTIFICATION=0;
     final static int DOWNLOAD_NOTIFICATION=1;
     final static int DUMMY_GAME=0;
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	Handler handler;
     SpinnerDialog sp_dialog;
     boolean preventToLoad =false;
@@ -110,6 +114,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     String server="http://inclws03.cloudapp.net";
     String appWebResource=server+"/content.php";
     String appVersionGetter=server+"/version.php";
+    String moodleAPI="http://definityincluso.cloudapp.net:82/restfulapiv2-5/RestfulAPI/public";
+    String moodleToken="b6c6784dcd49360be56b450bab4166ed";
 
     //String appWebResource="";
     //String appWebResource="http://inclws03.cloudapp.net/content.php";
@@ -142,16 +148,15 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         global.setMainActivity(this);
         handler=new Handler();
         sp_dialog= new SpinnerDialog(this);
-        //super.setIntegerProperty("splashscreen", android.R.color.black);
-        // Background of activity:
-        //appView.getView().setBackgroundColor(getResources().getColor(android.R.color.black));
+
+      /*  if (checkPlayServices()){
+            Intent intent = new Intent(this, RegistrationIntentService.class);
+            intent.putExtra("url", moodleAPI);
+            intent.putExtra("moodleToken", moodleToken);
+            startService(intent);
+        }*/
+
         installApp();
-
-       /* getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE );*/
-        //this.startActivity(new Intent(this, video_player.class));
 
     }
 
@@ -1089,5 +1094,23 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         }
 
 
+    }
+
+    /**
+     * Check the device to make sure it has the Google Play Services APK. If
+     * it doesn't, display a dialog that allows users to download the APK from
+     * the Google Play Store or enable it in the device's system settings.
+     */
+    public boolean checkPlayServices() {
+        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (apiAvailability.isUserResolvableError(resultCode)) {
+                apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
+                        .show();
+            }
+            return false;
+        }
+        return true;
     }
 }

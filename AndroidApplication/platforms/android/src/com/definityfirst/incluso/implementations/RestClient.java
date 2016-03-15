@@ -7,6 +7,7 @@ import android.util.Base64;
 import android.util.Log;
 
 import com.definityfirst.incluso.implementations.RestClientListener;
+import com.definityfirst.incluso.util.Tuple;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -15,6 +16,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RestClient  extends AsyncTask<String, String, String> {
 
@@ -24,6 +27,7 @@ public class RestClient  extends AsyncTask<String, String, String> {
     String contentType= "application-json";
     String body="";
     int requestCode=0;
+    List<Tuple<String, String>> header;
 
 
     RestClientListener df;
@@ -36,7 +40,13 @@ public class RestClient  extends AsyncTask<String, String, String> {
         this.body=body;
         this.method=POST;
         this.requestCode=requestCode;
+        header = new ArrayList<Tuple<String, String>>();
 	}
+
+    public void addHeader(String key, String value){
+        Tuple<String, String> tuple = new Tuple(key, value);
+        header.add(tuple);
+    }
     /**
      * Before starting background thread Show Progress Bar Dialog
      * */
@@ -63,6 +73,9 @@ public class RestClient  extends AsyncTask<String, String, String> {
             HttpURLConnection conection = (HttpURLConnection) url.openConnection();
             conection.setRequestMethod(method);
             conection.setRequestProperty("Content-Type", contentType);
+            for (Tuple <String, String> property:header){
+                conection.setRequestProperty(property.key, property.value);
+            }
 
             conection.setDoInput(true);
             conection.setDoOutput(true);
@@ -103,7 +116,7 @@ public class RestClient  extends AsyncTask<String, String, String> {
             Log.e("Error: ", e.getMessage());
         }
         String response="";
-        if (sb.toString() == null){
+        if (sb== null){
            response="";
             if (error){
                 response="{\"messageerror\":\""+ Base64.encodeToString("Ocurrio un error, no se puede conectar con el servidor".getBytes(), Base64.DEFAULT)+"\"}";

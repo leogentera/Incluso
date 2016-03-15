@@ -8,7 +8,44 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+
+    <permission android:name="com.gentera.misionincluso.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.gentera.misionincluso.permission.C2D_MESSAGE" />
+
     <application android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:supportsRtl="true">
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.example.gcm" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".services.MyGcmListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".services.MyInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".services.RegistrationIntentService"
+            android:exported="false">
+        </service>
+
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
         <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:hardwareAccelerated="true" android:label="@string/activity_name" android:launchMode="singleTop" android:name="com.definityfirst.incluso.MainActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="adjustResize">
             <intent-filter android:label="@string/launcher_name">

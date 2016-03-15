@@ -1,6 +1,8 @@
 package  com.definityfirst.incluso.implementations;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import  com.definityfirst.incluso.MainActivity;
 
@@ -21,6 +23,7 @@ public class Global {
     Intent multiplicaTuDineroIntent = null;
     Intent fabricaDeEmprendimientoIntent = null;
     Intent miAvatarIntent = null;
+    SharedPreferences sharedPreferences;
 
     private Global(){
 
@@ -33,6 +36,7 @@ public class Global {
 
     public void setMainActivity(MainActivity activity){
         this.activity=activity;
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(activity);
     }
 
     public MainActivity getMainActivity() {
@@ -101,5 +105,9 @@ public class Global {
 
     public void setCallbackContextVersion(CallbackContext callbackContextVersion) {
         this.callbackContextVersion = callbackContextVersion;
+    }
+
+    public SharedPreferences getSharedPreferences() {
+        return sharedPreferences;
     }
 }

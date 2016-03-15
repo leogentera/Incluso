@@ -12,6 +12,7 @@ import com.definityfirst.incluso.implementations.ReadHTML;
 import com.definityfirst.incluso.implementations.RestClient;
 import com.definityfirst.incluso.implementations.RestClientListener;
 import com.definityfirst.incluso.modules.DownloadedFile;
+import com.definityfirst.incluso.services.RegistrationIntentService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -327,6 +328,41 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 
 			return true;
 		}
+		else if (action.trim().equalsIgnoreCase("login")){
+
+			JSONObject jsonObjectWebApp = new JSONObject(args.getString(0));
+			try{
+				if (global.getMainActivity().checkPlayServices()){
+					Intent intent = new Intent(global.getMainActivity(), RegistrationIntentService.class);
+					intent.putExtra("url", (String)jsonObjectWebApp.get("moodleAPI"));
+					intent.putExtra("moodleToken", (String)jsonObjectWebApp.get("moodleToken") );
+					global.getMainActivity().startService(intent);
+				}
+			}catch(Throwable e){
+
+			}
+
+			return true;
+		}
+		else if (action.trim().equalsIgnoreCase("logout")){
+
+            JSONObject jsonObjectWebApp = new JSONObject(args.getString(0));
+            JSONObject jsonObject = new JSONObject();
+
+            try {
+                jsonObject.put("token", global.getSharedPreferences().getString(RegistrationIntentService.TOKEN, ""));
+                jsonObject.put("register", true);
+
+                RestClient restClient= new RestClient(global.getMainActivity(), this, RestClient.POST, "application/json", jsonObject.toString(), RegistrationIntentService.SEND_GCM_UNREGISTRATION );
+                restClient.addHeader("Authorization", (String)jsonObjectWebApp.get("moodleToken"));
+                restClient.execute(url+"gcm");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+			return true;
+		}
+
 
 
 		return false;
