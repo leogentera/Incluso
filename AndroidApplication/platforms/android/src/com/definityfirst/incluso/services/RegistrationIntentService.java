@@ -85,6 +85,7 @@ public class RegistrationIntentService extends IntentService implements RestClie
             // You should store a boolean that indicates whether the generated token has been
             // sent to your server. If the boolean is false, send the token to your server,
             // otherwise your server should have already received the token.
+            sharedPreferences.edit().putString(TOKEN, token).apply();
             sharedPreferences.edit().putBoolean(SENT_TOKEN_TO_SERVER, true).apply();
             sharedPreferences.edit().putString(REGISTRATION_COMPLETE, token).apply();
             // [END register_for_gcm]

@@ -53,7 +53,6 @@ import android.provider.OpenableColumns;
 import android.support.v4.app.NotificationCompat;
 import android.util.Base64;
 import android.util.Log;
-import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
@@ -63,7 +62,6 @@ import com.definityfirst.incluso.implementations.DownloadFileFromPackage;
 import com.definityfirst.incluso.implementations.DownloadFileListener;
 import com.definityfirst.incluso.implementations.RestClient;
 import com.definityfirst.incluso.implementations.RestClientListener;
-import com.definityfirst.incluso.services.RegistrationIntentService;
 import  com.definityfirst.incluso.ui.SpinnerDialog;
 
 import com.facebook.AccessToken;
@@ -116,6 +114,9 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     String appVersionGetter=server+"/version.php";
     String moodleAPI="http://definityincluso.cloudapp.net:82/restfulapiv2-5/RestfulAPI/public";
     String moodleToken="b6c6784dcd49360be56b450bab4166ed";
+
+    final static public String NOTIFICATION_INTENT="notificationIntent";
+    final static public String POST_ID="postid";
 
     //String appWebResource="";
     //String appWebResource="http://inclws03.cloudapp.net/content.php";
@@ -303,7 +304,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 //        installApp();
         System.gc();
         AppEventsLogger.activateApp(this);
-
+        global.setmIsInForegroundMode(true);
     }
 
     @Override
@@ -334,8 +335,6 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                     loadUrl("javascript:var _isCellPhone=false ;function a (){ _isCellPhone=true;} a();");
 
                 }
-
-                //startNewActivity(MainActivity.this, "com.sieena.pdi2");
             }
         });
 		
@@ -485,26 +484,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             case DUMMY_GAME:
                 if (resultCode==RESULT_OK){
                    Bundle bu_params= intent.getExtras();
-                   /* AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage()
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // FIRE ZE MISSILES!
-                                }
-                            });
-                    // Create the AlertDialog object and return it
-                   builder.create().show();*/
 
                     String message=bu_params.getString("parametros_juego");
-                    /*new AlertDialog.Builder(this)
-                            .setTitle("Delete entry")
-                            .setMessage(message)
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // continue with delete
-                                }
-                            })
-                            .show();*/
 
                     CallbackContext callbackContext = global.getCallbackContext();
                     if (callbackContext!=null)
@@ -580,7 +561,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     @Override
     protected void onPause() {
         super.onPause();
-
+        global.setmIsInForegroundMode(false);
         // Logs 'app deactivate' App Event.
         AppEventsLogger.deactivateApp(this);
     }
@@ -617,17 +598,28 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
+    protected void onNewIntent(final Intent intent) {
         super.onNewIntent(intent);
         preventToLoad=false;
         global=Global.getInstance();
         if (intent.getExtras()==null){
             return;
         }
+        Log.d("ANALU", "Entre");
+
+        if (intent.getExtras().containsKey(NOTIFICATION_INTENT)){
+            final File file = new File(appPath(), "redirectToAndroid.html");
+            Uri uri = Uri.fromFile(file);
+            loadUrl(uri.toString() +"?url=" +"index.html#/AlertsDetail/"+ intent.getExtras().getInt(POST_ID));
+            return;
+        }
+
         String gameArguments=intent.getExtras().getString("game_arguments");
+
         if (gameArguments==null){
             return;
         }
+        Log.d("ANALU", gameArguments);
         JSONObject jsonObject=null ;
         try {
             jsonObject=new JSONObject(gameArguments);
@@ -636,12 +628,21 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 String imagepath ="avatar_"+ userId +".png"; //searchForAvatar(avatarFolder);
                 jsonObject.put("pathImagen", imagepath);
             }
-            if (global.getCallbackContext() != null){
+            if (global.getCallbackContextGames() != null){
+
+
                 final JSONObject finalJsonObject = jsonObject;
                 handler.post(new Runnable(){
                     public void run(){
-                        global.getCallbackContext().success(finalJsonObject);
-                        //loadUrl("javascript:_successGame("+ finalJsonObject.toString() +")");
+                       /* PluginResult result = new PluginResult(PluginResult.Status.OK, finalJsonObject);
+                        result.setKeepCallback(true);
+                        global.getCallbackContext().sendPluginResult(result);*/
+
+                        //global.getCallbackContext().success(finalJsonObject);
+                        Log.d("SystemWebChromeClient",finalJsonObject.toString());
+                        global.getCallbackContextGames().success(finalJsonObject);
+
+
                     }
                 }
                 );
@@ -675,6 +676,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 }else{
                     Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();
                 }
+                Log.d("ANALU", uri.toString() + "?url=" + url + "&imacellphone=true");
                 loadUrl(uri.toString() + "?url=" + url + "&imacellphone=true");
             }
 

@@ -16,24 +16,31 @@
 
 package com.definityfirst.incluso.services;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.definityfirst.incluso.CallToAndroid;
 import com.definityfirst.incluso.MainActivity;
 import com.definityfirst.incluso.R;
+import com.definityfirst.incluso.implementations.Global;
 import com.google.android.gms.gcm.GcmListenerService;
 
 public class MyGcmListenerService extends GcmListenerService {
 
     private static final String TAG = "MyGcmListenerService";
 
+
+    Global global;
     /**
      * Called when message is received.
      *
@@ -44,6 +51,14 @@ public class MyGcmListenerService extends GcmListenerService {
     // [START receive_message]
     @Override
     public void onMessageReceived(String from, Bundle data) {
+        global= Global.getInstance();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!sharedPreferences.getBoolean(CallToAndroid.IS_USER_LOGGED, false)){
+            return;
+        }
+        if (global.ismIsInForegroundMode()){
+            return;
+        }
         String message = data.getString("message");
         int notificationid = Integer.parseInt(data.getString("user_notification_id"));
         Log.d(TAG, "From: " + from);
@@ -80,6 +95,8 @@ public class MyGcmListenerService extends GcmListenerService {
     private void sendNotification(String message, int notitificationid) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(MainActivity.NOTIFICATION_INTENT, true);
+        intent.putExtra(MainActivity.POST_ID, notitificationid);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
@@ -88,12 +105,13 @@ public class MyGcmListenerService extends GcmListenerService {
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.ic_notif_icon)
                 .setContentTitle("Misión Incluso")
                 .setContentText(message).setStyle(notificationStyle)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent);
+                .setContentIntent(pendingIntent)
+                .setPriority(Notification.PRIORITY_MAX).setDefaults(Notification.DEFAULT_VIBRATE);
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

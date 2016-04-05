@@ -1,9 +1,13 @@
 package com.definityfirst.incluso;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.definityfirst.incluso.implementations.DownloadGenericFile;
@@ -13,9 +17,6 @@ import com.definityfirst.incluso.implementations.RestClient;
 import com.definityfirst.incluso.implementations.RestClientListener;
 import com.definityfirst.incluso.modules.DownloadedFile;
 import com.definityfirst.incluso.services.RegistrationIntentService;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -35,6 +36,8 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
     final static int SUCCESS=-1;
     final static int ERROR=-2;
 
+	public final static String IS_USER_LOGGED="isUserLogged";
+
     CallbackContext callbackContext;
     String url;
 	boolean is_new=false;
@@ -45,6 +48,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
         this.callbackContext=callbackContext;
         global.setCallbackContext(callbackContext);
 
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(global.getMainActivity());
 
 		if (action.equals("sayHello")){
 	        try {
@@ -59,31 +63,11 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 	    }
 		else if (action.equals("openApp")){
 			try {
-				/*Context context=this.cordova.getActivity().getApplicationContext();
-				Intent intent = context.getPackageManager().getLaunchIntentForPackage("com.definityfirst.humbertocastaneda.dummygame");
-                intent.setFlags(0);
-				//intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.putExtra("parametros_juego", args.getString(0));
-				global.setCallbackContext(callbackContext);
-                (global.getMainActivity()).startActivityForResult(intent, MainActivity.DUMMY_GAME);*/
+                global.setCallbackContextGames(callbackContext);
 				Context context=this.cordova.getActivity().getApplicationContext();
 				JSONObject jsonObject= new JSONObject(args.getString(0));
 				Intent intent=null;
-				/*if(jsonObject.getString("actividad").equals("Proyecta tu Vida")){
-					intent = context.getPackageManager().getLaunchIntentForPackage("com.definityfirst.incluso");
-				}*/
-//				if (jsonObject.getString("actividad").equals("Tú eliges")){
-//					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo.TomaDesiciones");
-//				}
-//				else if(jsonObject.getString("actividad").equals("Multiplica tu dinero")){
-//					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo");
-//				}
-//				else if(jsonObject.getString("actividad").equals("Proyecta tu vida")){
-//					intent = context.getPackageManager().getLaunchIntentForPackage("com.prueba.ProyectoDeVida");
-//				}
-				//else{
 					intent = context.getPackageManager().getLaunchIntentForPackage("com.gentera.inclusointeractivo");
-				//}
 
                 if (intent == null) {
                     intent = new Intent(Intent.ACTION_VIEW);
@@ -199,6 +183,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
             return true;
         }else if (action.trim().equals("setRetoMultipleCallback")){
 			try {
+                global.setCallbackContextGames(callbackContext);
 				global.getMainActivity().onNewIntent(global.getRetosMultiplesIntent());
 
 			} catch (Throwable e){
@@ -207,6 +192,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}else if (action.trim().equals("setTuEligesCallback")){
 			try {
+                global.setCallbackContextGames(callbackContext);
 				global.getMainActivity().onNewIntent(global.getTuEligesIntent());
 			} catch (Throwable e){
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
@@ -214,6 +200,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}else if (action.trim().equals("setProyectaTuVidaCallback")){
 			try {
+                global.setCallbackContextGames(callbackContext);
 				global.getMainActivity().onNewIntent(global.getProyectaTuVidaIntent());
 
 			} catch (Throwable e){
@@ -222,6 +209,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}else if (action.trim().equals("setMultiplicaTuDineroCallback")){
 			try {
+                global.setCallbackContextGames(callbackContext);
 				global.getMainActivity().onNewIntent(global.getMultiplicaTuDineroIntent());
 
 			} catch (Throwable e){
@@ -230,6 +218,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}else if (action.trim().equals("setFabricaDeEmprendimientoCallback")) {
 			try {
+                global.setCallbackContextGames(callbackContext);
 				global.getMainActivity().onNewIntent(global.getFabricaDeEmprendimientoIntent());
 
 			} catch (Throwable e) {
@@ -238,10 +227,12 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}else if(action.trim().equals("setMiAvatarIntentCallback")) {
 			try {
+                global.setCallbackContextGames(callbackContext);
 				global.getMainActivity().onNewIntent(global.getMiAvatarIntent());
 			}catch (Throwable e) {
 				callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
 			}
+			return true;
 		}else if (action.trim().equals("shareByMail")){
 			try {
                 List <String> files= new ArrayList<String>();
@@ -329,7 +320,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}
 		else if (action.trim().equalsIgnoreCase("login")){
-
+			sharedPreferences.edit().putBoolean(IS_USER_LOGGED, true).apply();
 			JSONObject jsonObjectWebApp = new JSONObject(args.getString(0));
 			try{
 				if (global.getMainActivity().checkPlayServices()){
@@ -345,25 +336,31 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			return true;
 		}
 		else if (action.trim().equalsIgnoreCase("logout")){
-
+			sharedPreferences.edit().putBoolean(IS_USER_LOGGED, false).apply();
             JSONObject jsonObjectWebApp = new JSONObject(args.getString(0));
             JSONObject jsonObject = new JSONObject();
 
             try {
                 jsonObject.put("token", global.getSharedPreferences().getString(RegistrationIntentService.TOKEN, ""));
-                jsonObject.put("register", true);
+                jsonObject.put("register", false);
 
                 RestClient restClient= new RestClient(global.getMainActivity(), this, RestClient.POST, "application/json", jsonObject.toString(), RegistrationIntentService.SEND_GCM_UNREGISTRATION );
                 restClient.addHeader("Authorization", (String)jsonObjectWebApp.get("moodleToken"));
-                restClient.execute(url+"gcm");
+                restClient.execute((String)jsonObjectWebApp.get("moodleAPI")+"gcm");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
 			return true;
+		}//TODO
+		else if (action.trim().equalsIgnoreCase("seenNotification")){
+
+            NotificationManager mNotificationManager =
+                    (NotificationManager) global.getMainActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+
+            mNotificationManager.cancel(Integer.parseInt(args.getString(0)));
+			return true;
 		}
-
-
 
 		return false;
 	}

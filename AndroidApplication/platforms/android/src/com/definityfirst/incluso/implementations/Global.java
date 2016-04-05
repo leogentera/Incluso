@@ -17,6 +17,7 @@ public class Global {
     MainActivity activity=null;
     CallbackContext callbackContext;
     CallbackContext callbackContextVersion = null;
+    CallbackContext callbackContextGames = null;
     Intent retosMultiplesIntent=null;
     Intent tuEligesIntent = null;
     Intent proyectaTuVidaIntent = null;
@@ -24,6 +25,9 @@ public class Global {
     Intent fabricaDeEmprendimientoIntent = null;
     Intent miAvatarIntent = null;
     SharedPreferences sharedPreferences;
+    boolean stopAvatar=false;
+
+    private boolean mIsInForegroundMode=true;
 
     private Global(){
 
@@ -109,5 +113,29 @@ public class Global {
 
     public SharedPreferences getSharedPreferences() {
         return sharedPreferences;
+    }
+
+    public boolean ismIsInForegroundMode() {
+        return mIsInForegroundMode;
+    }
+
+    public void setmIsInForegroundMode(boolean mIsInForegroundMode) {
+        this.mIsInForegroundMode = mIsInForegroundMode;
+    }
+
+    public boolean isStopAvatar() {
+        return stopAvatar;
+    }
+
+    public void setStopAvatar(boolean stopAvatar) {
+        this.stopAvatar = stopAvatar;
+    }
+
+    public CallbackContext getCallbackContextGames() {
+        return callbackContextGames;
+    }
+
+    public void setCallbackContextGames(CallbackContext callbackContextGames) {
+        this.callbackContextGames = callbackContextGames;
     }
 }
