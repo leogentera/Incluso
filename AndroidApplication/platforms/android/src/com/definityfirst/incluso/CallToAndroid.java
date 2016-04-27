@@ -25,6 +25,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -361,6 +364,15 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
             mNotificationManager.cancel(Integer.parseInt(args.getString(0)));
 			return true;
 		}
+        else if (action.trim().equalsIgnoreCase("getImage")) {
+            try {
+                callbackContext.success(getImageBase64(args.getString(0)));
+
+            } catch (Throwable e) {
+                callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Error al postear la imagen".getBytes(), Base64.DEFAULT)));
+            }
+            return true;
+        }
 
 		return false;
 	}
@@ -458,6 +470,17 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 		}
 
 		return list;
+	}
+
+	public String getImageBase64(String path) throws Throwable {
+		File fimage= new File(path);
+		FileInputStream fis= new FileInputStream(fimage);
+		//FileInputStream fis= new FileInputStream(fimage);
+
+		byte[] image= new byte[fis.available()];
+		fis.read(image);
+
+		return new String(Base64.encode(image, Base64.DEFAULT));
 	}
 }
 
