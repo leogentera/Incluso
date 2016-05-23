@@ -373,6 +373,11 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
             }
             return true;
         }
+		else if (action.trim().equalsIgnoreCase("isCellphone")) {
+				callbackContext.success();
+
+			return true;
+		}
 
 		return false;
 	}
