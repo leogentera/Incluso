@@ -193,13 +193,13 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             @Override
             public void onCancel() {
                 // App code
-                listener.finishPost("{\"messageerror\":\""+Base64.encodeToString("Se ha cancelado el login".getBytes(), Base64.NO_WRAP)+"\"}", SayHelloPlugin.ERROR);
+                listener.finishPost("{\"messageerror\":\""+Base64.encodeToString("Se ha cancelado el login".getBytes(), Base64.NO_WRAP)+"\"}", CallToAndroid.ERROR);
             }
 
             @Override
             public void onError(FacebookException exception) {
                 // App code
-                listener.finishPost("{\"messageerror\":\""+Base64.encodeToString("5000 - Ocurrio un error".getBytes(), Base64.DEFAULT)+"\"}", SayHelloPlugin.ERROR);
+                listener.finishPost("{\"messageerror\":\""+Base64.encodeToString("5000 - Ocurrio un error".getBytes(), Base64.DEFAULT)+"\"}", CallToAndroid.ERROR);
             //listener.finishPost(, SayHelloPlugin.ERROR);
             }
         });
@@ -267,7 +267,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                                     "&lastname=" + lastName +
                                     "&mothername=";
 
-                            RestClient restClient = new RestClient(MainActivity.this, listener, RestClient.POST, "application/x-www-form-urlencoded", post, SayHelloPlugin.FACEBOOK_REGISTRATION);
+                            RestClient restClient = new RestClient(MainActivity.this, listener, RestClient.POST, "application/x-www-form-urlencoded", post, CallToAndroid.FACEBOOK_REGISTRATION);
                             restClient.execute(url + "/user");
                             LoginManager.getInstance().logOut();
                         } catch (JSONException e) {
@@ -377,6 +377,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         try {
             versions.put("currentVersion", currentVersion);
             versions.put("latestVersion", version);
+            versions.put("apkVersion", BuildConfig.VERSION_CODE);
         } catch (JSONException e) {
             e.printStackTrace();
         }

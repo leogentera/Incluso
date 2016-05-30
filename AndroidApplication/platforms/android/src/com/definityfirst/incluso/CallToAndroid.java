@@ -1,7 +1,10 @@
 package com.definityfirst.incluso;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -378,6 +381,30 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 
 			return true;
 		}
+        else if (action.trim().equalsIgnoreCase("showCombobox")) {
+            final String field= args.getString(0);
+            args.remove(0);
+            final String[] options = JSONArrayToStringArray(args);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(global.getMainActivity());
+            builder.setItems(options, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            JSONObject object = new JSONObject();
+                            try {
+                                object.put("field", field);
+                                object.put("which", which+1);
+                                CallToAndroid.this.callbackContext.success(object);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        }
+                    });
+            Dialog dialog= builder.create();
+            dialog.show();
+            return true;
+        }
 
 		return false;
 	}
@@ -476,6 +503,20 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 
 		return list;
 	}
+
+    public String[] JSONArrayToStringArray(JSONArray jsonArray){
+       String[]list=new String[jsonArray.length()];
+
+        for(int i = 0; i < jsonArray.length(); i++){
+            try {
+                list[i]=jsonArray.getString(i);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
+    }
 
 	public String getImageBase64(String path) throws Throwable {
 		File fimage= new File(path);
