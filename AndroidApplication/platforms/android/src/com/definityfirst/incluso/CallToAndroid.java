@@ -105,7 +105,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 					jsonObject.put("pathImagenFicha", global.getMainActivity().appFolder + "/" + MainActivity.resultsFolder);
 				}
 
-                intent.putExtra("game_arguments", jsonObject.toString());
+                intent.putExtra("game_arguments", jsonObject.toString().replace("\\/", "/"));
 				//global.setCallbackContext(callbackContext);
 
 				(global.getMainActivity()).startActivity(intent);
