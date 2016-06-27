@@ -313,7 +313,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         //final File file = new File(appFolder, "index.html");
         final File file = new File(appFolder, "redirectToAndroid.html");
         Uri uri = Uri.fromFile(file);
-        loadFinish(uri.toString() + "?url=index.html&imacellphone=true");
+        if (gamesReturn (getIntent()))
+            loadFinish(uri.toString() + "?url=index.html&imacellphone=true");
 
 
     }
@@ -332,7 +333,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                     Timer timer = new Timer();
 
                     //loadUrl("javascript:imacelphone()");
-                    loadUrl("javascript:var _isCellPhone=false ;function a (){ _isCellPhone=true;} a();");
+                    if (gamesReturn (getIntent()))
+                        loadUrl("javascript:var _isCellPhone=false ;function a (){ _isCellPhone=true;} a();");
 
                 }
             }
@@ -601,10 +603,15 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     @Override
     protected void onNewIntent(final Intent intent) {
         super.onNewIntent(intent);
+        gamesReturn( intent);
+    }
+
+    protected boolean gamesReturn (final Intent intent) {
+        super.onNewIntent(intent);
         preventToLoad=false;
         global=Global.getInstance();
         if (intent.getExtras()==null){
-            return;
+            return true;
         }
         Log.d("ANALU", "Entre");
 
@@ -613,13 +620,13 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             Uri uri = Uri.fromFile(file);
             loadUrl(uri.toString() +"?url=" +"index.html#/AlertsDetail/-1/"+ intent.getExtras().getInt(POST_ID));
 
-            return;
+            return false;
         }
 
         String gameArguments=intent.getExtras().getString("game_arguments");
 
         if (gameArguments==null){
-            return;
+            return true;
         }
         Log.d("ANALU", gameArguments);
         JSONObject jsonObject=null ;
@@ -685,7 +692,9 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(this, "4001 - Ocurrio un error", Toast.LENGTH_SHORT).show();
+            return true;
         }
+        return false;
     }
 
     public String searchForAvatar(String subfolder){
