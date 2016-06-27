@@ -611,7 +611,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         if (intent.getExtras().containsKey(NOTIFICATION_INTENT)){
             final File file = new File(appPath(), "redirectToAndroid.html");
             Uri uri = Uri.fromFile(file);
-            loadUrl(uri.toString() +"?url=" +"index.html#/AlertsDetail/"+ intent.getExtras().getInt(POST_ID));
+            loadUrl(uri.toString() +"?url=" +"index.html#/AlertsDetail/-1/"+ intent.getExtras().getInt(POST_ID));
+
             return;
         }
 

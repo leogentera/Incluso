@@ -35,9 +35,13 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.definityfirst.incluso"
         },
-        "org.apache.cordova.geolocation": {
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.definityfirst.incluso"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.definityfirst.incluso"
+        }
+    }
 }

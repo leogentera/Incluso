@@ -1,16 +1,25 @@
 {
     "cordova-plugin-whitelist": {
         "source": {
-            "type": "registry",
-            "id": "cordova-plugin-whitelist@1"
+            "type": "git",
+            "url": "https://github.com/apache/cordova-plugin-whitelist",
+            "subdir": "."
         },
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.geolocation": {
+    "cordova-plugin-compat": {
         "source": {
             "type": "registry",
-            "id": "org.apache.cordova.geolocation"
+            "id": "cordova-plugin-compat"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-geolocation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-geolocation"
         },
         "is_top_level": true,
         "variables": {}

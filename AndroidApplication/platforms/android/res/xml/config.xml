@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.incluso" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.definityfirst.incluso" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
@@ -8,18 +8,20 @@
     <feature name="SayHelloPlugin">
         <param name="android-package" value="com.definityfirst.incluso.SayHelloPlugin" />
     </feature>
-
     <feature name="CallToAndroid">
         <param name="android-package" value="com.definityfirst.incluso.CallToAndroid" />
     </feature>
-
-    <allow-intent href="market:*" />
     <name>helloWorld</name>
+    <preference name="windowSoftInputMode" value="adjustResize" />
+    <preference name="fullscreen" value="false" />
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <allow-intent href="market:*" />
+    <name>Incluso</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <preference name="windowSoftInputMode" value="adjustResize"/>
-    <preference name="fullscreen" value="false" />
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
@@ -31,8 +33,4 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-
-    <feature name="Geolocation">
-        <param name="android-package" value="org.apache.cordova.GeoBroker" />
-    </feature>
 </widget>
