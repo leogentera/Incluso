@@ -86,15 +86,12 @@ public class DownloadGenericFile extends AsyncTask<String, String, String> {
 
                 fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
 
-
                 try {
 
-                    long bufferedLength=0;
-                    while (bufferedLength<lenghtOfFile){
-
-                        fos.write( input.read());
-                        bufferedLength++;
-                        fos.flush();
+                    int bufferedLength=0;
+                    byte[] buffer = new byte[1024];
+                    while ((bufferedLength = input.read(buffer)) != -1) {
+                        fos.write(buffer, 0, bufferedLength);
                     }
                 } catch (FileNotFoundException e) {
                     file.setSuccess(false);

@@ -626,6 +626,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         String gameArguments=intent.getExtras().getString("game_arguments");
 
         if (gameArguments==null){
+            Log.d("Avatar", "No hay argumentos");
             return true;
         }
         Log.d("ANALU", gameArguments);
@@ -681,6 +682,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 }else if(jsonObject.getString("actividad").equals("Mi Avatar")) {
                     String userId = jsonObject.getString("userId");
                     url += (getAvatarCheckpoint().equals("Tutorial") ? "Tutorial/1" : "Perfil/" + userId + "/1" );
+                    Log.d("Avatar", "Intento reanudar avatar con esta url " +url);
                     global.setMiAvatarIntent(intent);
                 }else{
                     Toast.makeText(this, "Se perdió la conexión con el juego", Toast.LENGTH_SHORT).show();

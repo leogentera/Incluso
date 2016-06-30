@@ -10,56 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76d91faf-1d7a-41e5-aebd-9398bd34038d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/NOTICE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/RELEASENOTES.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/de/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/es/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/fr/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/it/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/ja/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/ko/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/pl/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/ru/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/doc/zh/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/plugin.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/src/firefoxos/GeolocationProxy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/src/ios/CDVLocation.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/src/ios/CDVLocation.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/src/ubuntu/geolocation.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/src/ubuntu/geolocation.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/src/windows/GeolocationProxy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/src/wp/GeoLocation.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/tests/plugin.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/tests/tests.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/www/Coordinates.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/www/Position.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/www/PositionError.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/www/blackberry10/GeolocationProxy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../plugins/org.apache.cordova.geolocation/www/geolocation.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/outputs/aar/CordovaLib-debug.aar" afterPath="$PROJECT_DIR$/CordovaLib/build/outputs/aar/CordovaLib-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/outputs/aar/CordovaLib-release.aar" afterPath="$PROJECT_DIR$/CordovaLib/build/outputs/aar/CordovaLib-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/bundles/debug/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/bundles/release/classes.jar" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/bundles/release/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/res/resources-debug-androidTest.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CordovaLib/CordovaLib.iml" afterPath="$PROJECT_DIR$/CordovaLib/CordovaLib.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/definityfirst/incluso/implementations/DownloadGenericFile.java" afterPath="$PROJECT_DIR$/src/com/definityfirst/incluso/implementations/DownloadGenericFile.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android.iml" afterPath="$PROJECT_DIR$/android.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android.json" afterPath="$PROJECT_DIR$/android.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../plugins/android.json" afterPath="$PROJECT_DIR$/../../plugins/android.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/config.xml" afterPath="$PROJECT_DIR$/res/xml/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/www/cordova_plugins.js" afterPath="$PROJECT_DIR$/assets/www/cordova_plugins.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platform_www/cordova_plugins.js" afterPath="$PROJECT_DIR$/platform_www/cordova_plugins.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../plugins/fetch.json" afterPath="$PROJECT_DIR$/../../plugins/fetch.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms.json" afterPath="$PROJECT_DIR$/../platforms.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="android.iws" />
@@ -88,24 +40,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2267818">
+            <state vertical-scroll-proportion="55.333332">
               <caret line="188" column="31" selection-start-line="188" selection-start-column="31" selection-end-line="188" selection-end-column="31" />
               <folding>
                 <element signature="e#0#858#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gradle-wrapper.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -138,61 +80,79 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="820" column="34" selection-start-line="820" selection-start-column="34" selection-end-line="820" selection-end-column="34" />
+            <state vertical-scroll-proportion="-6.7777777">
+              <caret line="331" column="0" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
               <folding>
-                <element signature="e#0#43118#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#13355#13356#0" expanded="false" />
-                <element signature="e#13410#13411#0" expanded="false" />
-                <element signature="e#14195#14196#0" expanded="false" />
-                <element signature="e#14239#14240#0" expanded="false" />
+                <element signature="e#12499#13046#0" expanded="true" />
+                <element signature="e#13045#13046#0" expanded="true" />
+                <element signature="e#14293#14294#0" expanded="true" />
+                <element signature="e#14337#14338#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadHTML.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/implementations/ReadHTML.java">
+      <file leaf-file-name="CallToAndroid.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+            <state vertical-scroll-proportion="-6.814815">
+              <caret line="299" column="0" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="e#12906#12922#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <file leaf-file-name="PluginManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/PluginManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="96" selection-start-line="1" selection-start-column="96" selection-end-line="1" selection-end-column="96" />
+              <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <file leaf-file-name="CordovaBridge.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaBridge.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyGcmListenerService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/services/MyGcmListenerService.java">
+      <file leaf-file-name="DownloadGenericFile.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/implementations/DownloadGenericFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0034423408">
+              <caret line="90" column="41" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DownloadedFile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/modules/DownloadedFile.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+              <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
               <folding>
-                <element signature="e#0#612#0" expanded="false" />
-                <element signature="imports" expanded="false" />
+                <element signature="e#522#523#0" expanded="true" />
+                <element signature="e#557#558#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CordovaPlugin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaPlugin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2175,13 +2135,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java" />
         <option value="$PROJECT_DIR$/CordovaLib/build.gradle" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java" />
         <option value="$PROJECT_DIR$/CordovaLib/cordova.gradle" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java" />
+        <option value="$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemExposedJsApi.java" />
+        <option value="$PROJECT_DIR$/src/com/definityfirst/incluso/implementations/DownloadGenericFile.java" />
       </list>
     </option>
   </component>
@@ -2191,7 +2153,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1920" />
-    <option name="height" value="1053" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -2257,6 +2219,38 @@
               <option name="myItemId" value="android" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="incluso" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -2284,7 +2278,7 @@
     <property name="recentsLimit" value="5" />
     <property name="android.project.structure.last.selected" value="android" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="0149c3a689504cb6" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="V4X4TA14B0113252" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_22_x86" />
   </component>
   <component name="RunManager" selected="Android Application.android">
@@ -2481,30 +2475,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1053" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283237" sideWeight="0.48455805" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44717184" sideWeight="0.8541001" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33294797" sideWeight="0.48935038" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49202976" sideWeight="0.8541001" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35325506" sideWeight="0.47337595" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35281616" sideWeight="0.471246" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44717184" sideWeight="0.14589989" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35325506" sideWeight="0.528754" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.49361023" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32837406" sideWeight="0.49361023" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37931034" sideWeight="0.5074627" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28518122" sideWeight="0.501006" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29775882" sideWeight="0.40042597" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2975558" sideWeight="0.39882854" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283237" sideWeight="0.4914803" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3276414" sideWeight="0.48935038" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30830672" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18796591" sideWeight="0.49899396" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19009584" sideWeight="0.49899396" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3276414" sideWeight="0.48935038" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2513,7 +2508,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31183368" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33294797" sideWeight="0.48935038" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3637375" sideWeight="0.48614073" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2532,60 +2526,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java</url>
-          <line>371</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java</url>
-          <line>368</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java</url>
-          <line>610</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="58" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="android">
+        <watch expression="input.available()" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#858#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CordovaLib/cordova.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="55" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#858#0" expanded="true" />
-            <element signature="e#860#890#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CordovaLib/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2601,12 +2550,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="820" column="34" selection-start-line="820" selection-start-column="34" selection-end-line="820" selection-end-column="34" />
           <folding>
-            <element signature="e#0#43118#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13355#13356#0" expanded="false" />
-            <element signature="e#13410#13411#0" expanded="false" />
-            <element signature="e#14195#14196#0" expanded="false" />
-            <element signature="e#14239#14240#0" expanded="false" />
+            <element signature="e#12499#13046#0" expanded="true" />
+            <element signature="e#13045#13046#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14337#14338#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2653,7 +2600,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="354" column="13" selection-start-line="354" selection-start-column="13" selection-end-line="354" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#12906#12922#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2683,12 +2630,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="370" column="16" selection-start-line="370" selection-start-column="16" selection-end-line="370" selection-end-column="16" />
           <folding>
-            <element signature="e#0#43118#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13355#13356#0" expanded="false" />
-            <element signature="e#13410#13411#0" expanded="false" />
-            <element signature="e#14195#14196#0" expanded="false" />
-            <element signature="e#14239#14240#0" expanded="false" />
+            <element signature="e#12499#13046#0" expanded="true" />
+            <element signature="e#13045#13046#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14337#14338#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2716,7 +2661,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#12906#12922#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2726,7 +2671,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="354" column="13" selection-start-line="354" selection-start-column="13" selection-end-line="354" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#12906#12922#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2756,12 +2701,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="370" column="16" selection-start-line="370" selection-start-column="16" selection-end-line="370" selection-end-column="16" />
           <folding>
-            <element signature="e#0#43118#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13355#13356#0" expanded="false" />
-            <element signature="e#13410#13411#0" expanded="false" />
-            <element signature="e#14195#14196#0" expanded="false" />
-            <element signature="e#14239#14240#0" expanded="false" />
+            <element signature="e#12499#13046#0" expanded="true" />
+            <element signature="e#13045#13046#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14337#14338#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2789,7 +2732,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#12906#12922#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2799,12 +2742,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="370" column="16" selection-start-line="370" selection-start-column="16" selection-end-line="370" selection-end-column="16" />
           <folding>
-            <element signature="e#0#43118#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13355#13356#0" expanded="false" />
-            <element signature="e#13410#13411#0" expanded="false" />
-            <element signature="e#14195#14196#0" expanded="false" />
-            <element signature="e#14239#14240#0" expanded="false" />
+            <element signature="e#12499#13046#0" expanded="true" />
+            <element signature="e#13045#13046#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14337#14338#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2832,7 +2773,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#12906#12922#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2842,12 +2783,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="370" column="16" selection-start-line="370" selection-start-column="16" selection-end-line="370" selection-end-column="16" />
           <folding>
-            <element signature="e#0#43118#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13355#13356#0" expanded="false" />
-            <element signature="e#13410#13411#0" expanded="false" />
-            <element signature="e#14195#14196#0" expanded="false" />
-            <element signature="e#14239#14240#0" expanded="false" />
+            <element signature="e#12499#13046#0" expanded="true" />
+            <element signature="e#13045#13046#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14337#14338#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2875,7 +2814,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#12906#12922#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2885,12 +2824,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="370" column="16" selection-start-line="370" selection-start-column="16" selection-end-line="370" selection-end-column="16" />
           <folding>
-            <element signature="e#0#43118#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13355#13356#0" expanded="false" />
-            <element signature="e#13410#13411#0" expanded="false" />
-            <element signature="e#14195#14196#0" expanded="false" />
-            <element signature="e#14239#14240#0" expanded="false" />
+            <element signature="e#12499#13046#0" expanded="true" />
+            <element signature="e#13045#13046#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14337#14338#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2927,26 +2864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="354" column="13" selection-start-line="354" selection-start-column="13" selection-end-line="354" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CordovaLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#799#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/implementations/ReadHTML.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2984,21 +2901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="820" column="34" selection-start-line="820" selection-start-column="34" selection-end-line="820" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#43118#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13355#13356#0" expanded="false" />
-            <element signature="e#13410#13411#0" expanded="false" />
-            <element signature="e#14195#14196#0" expanded="false" />
-            <element signature="e#14239#14240#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3014,6 +2916,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="55.333332">
+          <caret line="188" column="31" selection-start-line="188" selection-start-column="31" selection-end-line="188" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#858#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CordovaLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#799#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CordovaLib/cordova.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3025,13 +2947,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaPlugin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2267818">
-          <caret line="188" column="31" selection-start-line="188" selection-start-column="31" selection-end-line="188" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33275262">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.7777777">
+          <caret line="331" column="0" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
           <folding>
-            <element signature="e#0#858#0" expanded="true" />
+            <element signature="e#12499#13046#0" expanded="true" />
+            <element signature="e#13045#13046#0" expanded="true" />
+            <element signature="e#14293#14294#0" expanded="true" />
+            <element signature="e#14337#14338#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/PluginManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemExposedJsApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43889844">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/CordovaBridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.814815">
+          <caret line="299" column="0" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+          <folding>
+            <element signature="e#12906#12922#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/modules/DownloadedFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+          <folding>
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/implementations/DownloadGenericFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0034423408">
+          <caret line="90" column="41" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
