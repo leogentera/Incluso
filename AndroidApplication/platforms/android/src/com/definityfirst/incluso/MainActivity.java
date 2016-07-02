@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Timer;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -330,10 +329,9 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 sp_dialog.hideDialog();
                 if (!preventToLoad) {
                     loadUrl(page);
-                    Timer timer = new Timer();
 
                     //loadUrl("javascript:imacelphone()");
-                    if (gamesReturn (getIntent()))
+                    if (gamesReturn(getIntent()))
                         loadUrl("javascript:var _isCellPhone=false ;function a (){ _isCellPhone=true;} a();");
 
                 }
@@ -649,10 +647,8 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                         global.getCallbackContext().sendPluginResult(result);*/
 
                         //global.getCallbackContext().success(finalJsonObject);
-                        Log.d("SystemWebChromeClient",finalJsonObject.toString());
+                        Log.d("SystemWebChromeClient", finalJsonObject.toString());
                         global.getCallbackContextGames().success(finalJsonObject);
-
-
                     }
                 }
                 );
@@ -1127,5 +1123,10 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             return false;
         }
         return true;
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        global.setCallbackContextGames(null);
     }
 }
