@@ -22,6 +22,9 @@ public class DownloadedFile {
     @SerializedName("success")
     private boolean success=true;
 
+    @SerializedName("imageB64")
+    private String imageB64="";
+
     public String getDownloadLink() {
         return downloadLink;
     }
@@ -46,5 +49,9 @@ public class DownloadedFile {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setImageB64(String imageB64) {
+        this.imageB64 = imageB64;
     }
 }

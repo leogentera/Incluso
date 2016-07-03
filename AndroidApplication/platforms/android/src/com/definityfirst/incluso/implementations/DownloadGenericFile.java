@@ -2,6 +2,7 @@ package com.definityfirst.incluso.implementations;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Base64;
 import android.util.Log;
 
 import com.definityfirst.incluso.MainActivity;
@@ -15,6 +16,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -75,24 +77,19 @@ public class DownloadGenericFile extends AsyncTask<String, String, String> {
                 InputStream input = new BufferedInputStream(url.openStream(),
                         8192);
 
-
-                File tempFBDataFile  = new File(fileAbsolutePath, file.getName());
-
-                //tempFBDataFile.mkdir();
-                if (tempFBDataFile.exists()){
-                    tempFBDataFile.delete();
-                }
-
-
-                fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
-
                 try {
+                    ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
 
-                    int bufferedLength=0;
-                    byte[] buffer = new byte[1024];
-                    while ((bufferedLength = input.read(buffer)) != -1) {
-                        fos.write(buffer, 0, bufferedLength);
+                    int bufferSize = 1024;
+                    byte[] buffer = new byte[bufferSize];
+
+                    // we need to know how may bytes were read to write them to the byteBuffer
+                    int len = 0;
+                    while ((len = input.read(buffer)) != -1) {
+                        byteBuffer.write(buffer, 0, len);
                     }
+
+                    file.setImageB64(new String(Base64.encode(byteBuffer.toByteArray(), Base64.DEFAULT)));
                 } catch (FileNotFoundException e) {
                     file.setSuccess(false);
                     e.printStackTrace();

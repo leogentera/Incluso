@@ -611,12 +611,11 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         if (intent.getExtras()==null){
             return true;
         }
-        Log.d("ANALU", "Entre");
 
         if (intent.getExtras().containsKey(NOTIFICATION_INTENT)){
             final File file = new File(appPath(), "redirectToAndroid.html");
             Uri uri = Uri.fromFile(file);
-            loadUrl(uri.toString() +"?url=" +"index.html#/AlertsDetail/-1/"+ intent.getExtras().getInt(POST_ID));
+            loadUrl(uri.toString() + "?url=" + "index.html#/AlertsDetail/-1/" + intent.getExtras().getInt(POST_ID));
 
             return false;
         }
@@ -627,14 +626,26 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             Log.d("Avatar", "No hay argumentos");
             return true;
         }
-        Log.d("ANALU", gameArguments);
         JSONObject jsonObject=null ;
         try {
             jsonObject=new JSONObject(gameArguments);
-            if (jsonObject.getString("actividad").equals("Mi Avatar") || jsonObject.getString("actividad").equals("Reto múltiple")) {
+
+            if ((jsonObject.getString("actividad").equals("Mi Avatar") || jsonObject.getString("actividad").equals("Reto múltiple")) && global.getCallbackContextGames() != null) {
                 String userId = jsonObject.getString(jsonObject.has("userId") ? "userId" : "userid");
                 String imagepath ="avatar_"+ userId +".png"; //searchForAvatar(avatarFolder);
                 jsonObject.put("pathImagen", imagepath);
+
+                final File file = new File(appFolder +"/assets/avatar", imagepath);
+
+                InputStream fis = getContentResolver().openInputStream(Uri.fromFile(file));
+                //FileInputStream fis= new FileInputStream(fimage);
+
+                byte[] image= new byte[fis.available()];
+                fis.read(image);
+
+                jsonObject.put("imageB64", new String(Base64.encode(image, Base64.DEFAULT)));
+                global.getCallbackContextGames().success(jsonObject);
+
             }
             if (global.getCallbackContextGames() != null){
 
@@ -691,6 +702,10 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             e.printStackTrace();
             Toast.makeText(this, "4001 - Ocurrio un error", Toast.LENGTH_SHORT).show();
             return true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }

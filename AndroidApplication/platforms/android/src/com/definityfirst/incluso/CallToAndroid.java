@@ -405,6 +405,13 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
             dialog.show();
             return true;
         }
+		else if (action.trim().equalsIgnoreCase("reloadPage")) {
+			final String field= args.getString(0);
+			final File file = new File(global.getMainActivity().appFolder, "redirectToAndroid.html");
+			Uri uri = Uri.fromFile(file);
+			global.getMainActivity().loadUrl(uri.toString() + "?url=index.html#/" + field);
+			return true;
+		}
 
 		return false;
 	}
