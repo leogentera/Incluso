@@ -78,6 +78,12 @@ public class DownloadGenericFile extends AsyncTask<String, String, String> {
                         8192);
 
                 try {
+                    File tempFBDataFile  = new File(fileAbsolutePath, file.getName());
+                    if (tempFBDataFile.exists()){
+                       tempFBDataFile.delete();
+                    }
+                    fos  = new FileOutputStream(tempFBDataFile);//openFileOutput(getExternalCacheDir()+"/"+fileName, Context.MODE_WORLD_READABLE);
+
                     ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
 
                     int bufferSize = 1024;
@@ -87,6 +93,7 @@ public class DownloadGenericFile extends AsyncTask<String, String, String> {
                     int len = 0;
                     while ((len = input.read(buffer)) != -1) {
                         byteBuffer.write(buffer, 0, len);
+                        fos.write(buffer, 0, len);
                     }
 
                     file.setImageB64(new String(Base64.encode(byteBuffer.toByteArray(), Base64.DEFAULT)));
