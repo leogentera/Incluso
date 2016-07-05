@@ -98,7 +98,7 @@ public class MyGcmListenerService extends GcmListenerService {
         intent.putExtra(MainActivity.NOTIFICATION_INTENT, true);
         intent.putExtra(MainActivity.POST_ID, notitificationid);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+                PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.BigTextStyle notificationStyle= new NotificationCompat.BigTextStyle();
         notificationStyle.bigText(message);
