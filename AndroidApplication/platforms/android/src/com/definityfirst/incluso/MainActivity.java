@@ -622,7 +622,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
         String gameArguments=intent.getExtras().getString("game_arguments");
 
-        if (gameArguments==null){
+        if (gameArguments==null || gameArguments.equals("")){
             Log.d("Avatar", "No hay argumentos");
             return true;
         }
