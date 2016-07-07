@@ -56,6 +56,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 
 		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(global.getMainActivity());
 
+		Log.d("CallToAndroid", "Se ha llamado a una accion: "+ action);
 		if (action.equals("sayHello")){
 	        try {
 	        	Context context=this.cordova.getActivity().getApplicationContext(); 

@@ -629,7 +629,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         JSONObject jsonObject=null ;
         try {
             jsonObject=new JSONObject(gameArguments);
-
+            Log.d("gamesReturn", "Se regresa de esta actividad: "+jsonObject.getString("actividad"));
             if ((jsonObject.getString("actividad").equals("Mi Avatar") || jsonObject.getString("actividad").equals("Reto múltiple")) && global.getCallbackContextGames() != null) {
                 String userId = jsonObject.getString(jsonObject.has("userId") ? "userId" : "userid");
                 String imagepath ="avatar_"+ userId +".png"; //searchForAvatar(avatarFolder);
@@ -644,7 +644,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 fis.read(image);
 
                 jsonObject.put("imageB64", new String(Base64.encode(image, Base64.DEFAULT)));
-                global.getCallbackContextGames().success(jsonObject);
+                //global.getCallbackContextGames().success(jsonObject);
 
             }
             if (global.getCallbackContextGames() != null){
