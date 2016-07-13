@@ -20,6 +20,7 @@
 package com.definityfirst.incluso;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -535,10 +536,16 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                         InputStream fis = getContentResolver().openInputStream(selectedImageUri);
                         //FileInputStream fis= new FileInputStream(fimage);
 
-                        byte[] image= new byte[fis.available()];
-                        fis.read(image);
+                        int bufferSize = 1024;
+                        byte[] buffer = new byte[bufferSize];
+                        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
 
-                        jsonObject.put("image", new String(Base64.encode(image, Base64.DEFAULT)));
+                        int len = 0;
+                        while ((len = fis.read(buffer)) != -1) {
+                            byteBuffer.write(buffer, 0, len);
+                        }
+
+                        jsonObject.put("image", new String(Base64.encode(byteBuffer.toByteArray(), Base64.DEFAULT)));
                         global.getCallbackContext().success(jsonObject);
 
                     } catch (Throwable e) {
@@ -640,10 +647,16 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                 InputStream fis = getContentResolver().openInputStream(Uri.fromFile(file));
                 //FileInputStream fis= new FileInputStream(fimage);
 
-                byte[] image= new byte[fis.available()];
-                fis.read(image);
+                int bufferSize = 1024;
+                byte[] buffer = new byte[bufferSize];
+                ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
 
-                jsonObject.put("imageB64", new String(Base64.encode(image, Base64.DEFAULT)));
+                int len = 0;
+                while ((len = fis.read(buffer)) != -1) {
+                    byteBuffer.write(buffer, 0, len);
+                }
+
+                jsonObject.put("imageB64", new String(Base64.encode(byteBuffer.toByteArray(), Base64.DEFAULT)));
                 //global.getCallbackContextGames().success(jsonObject);
 
             }

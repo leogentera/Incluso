@@ -27,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -529,12 +530,17 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 	public String getImageBase64(String path) throws Throwable {
 		File fimage= new File(path);
 		FileInputStream fis= new FileInputStream(fimage);
-		//FileInputStream fis= new FileInputStream(fimage);
 
-		byte[] image= new byte[fis.available()];
-		fis.read(image);
+		int bufferSize = 1024;
+		byte[] buffer = new byte[bufferSize];
+		ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
 
-		return new String(Base64.encode(image, Base64.DEFAULT));
+		int len = 0;
+		while ((len = fis.read(buffer)) != -1) {
+			byteBuffer.write(buffer, 0, len);
+		}
+
+		return new String(Base64.encode(byteBuffer.toByteArray(), Base64.DEFAULT));
 	}
 }
 
