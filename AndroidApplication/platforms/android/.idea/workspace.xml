@@ -29,8 +29,8 @@
       <file leaf-file-name="CallToAndroid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="414" column="69" selection-start-line="414" selection-start-column="69" selection-end-line="414" selection-end-column="69" />
+            <state vertical-scroll-proportion="-5.962963">
+              <caret line="415" column="0" selection-start-line="415" selection-start-column="0" selection-end-line="415" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -51,7 +51,7 @@
       <file leaf-file-name="SystemWebViewEngine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemWebViewEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43775934">
+            <state vertical-scroll-proportion="0.33195022">
               <caret line="142" column="10" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
               <folding />
             </state>
@@ -59,6 +59,10 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Users\humberto.castaneda\Documents\Keys\incluso.jks" />
+    <option name="KEY_ALIAS" value="incluso" />
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -2101,6 +2105,13 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="device.picker.selection" value="V4X4TA1551801470" />
     <property name="SearchEverywhereHistoryKey" value="SystemWebViewEngine&#9;PSI&#9;JAVA://org.apache.cordova.engine.SystemWebViewEngine" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Keys/incluso.jks" />
+    <property name="ExportApk.ApkPath" value="E:\Proyectos\inclusoAndroid\AndroidApplication\platforms\android" />
+    <property name="ExportApk.Flavors" value="" />
+    <property name="ExportApk.BuildType" value="release" />
+    <property name="DEBUGGABLE_DEVICE" value="huawei-huawei_y520_u33-V4X4TA1551801470" />
+    <property name="DEBUGGABLE_PROCESS" value="com.gentera.misionincluso" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
   </component>
   <component name="RunManager" selected="Android Application.android">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -2320,18 +2331,26 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java</url>
+          <line>415</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Remote">
+        <watch expression="Settings.Secure.ANDROID_ID" />
+        <watch expression="android.provider.Settings.Secure.ANDROID_ID" language="JAVA" custom="" />
+        <watch expression="Settings.Secure.getString(this.cordova.getActivity().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID)" language="JAVA" custom="android.provider.Settings" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="414" column="69" selection-start-line="414" selection-start-column="69" selection-end-line="414" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.1034484">
@@ -2342,9 +2361,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/definityfirst/incluso/CallToAndroid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.962963">
+          <caret line="415" column="0" selection-start-line="415" selection-start-column="0" selection-end-line="415" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CordovaLib/src/org/apache/cordova/engine/SystemWebViewEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43775934">
+        <state vertical-scroll-proportion="0.33195022">
           <caret line="142" column="10" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
           <folding />
         </state>

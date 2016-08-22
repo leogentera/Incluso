@@ -414,7 +414,7 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 		}
 		else if (action.trim().equalsIgnoreCase("requestAndroidId")){
 			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("key", Settings.Secure.ANDROID_ID);
+			jsonObject.put("key", Settings.Secure.getString(this.cordova.getActivity().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID));
 
 			callbackContext.success(jsonObject);
 			return true;
