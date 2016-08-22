@@ -156,6 +156,11 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             intent.putExtra("moodleToken", moodleToken);
             startService(intent);
         }*/
+        //IMPORTANTE: NO BORRAR
+        //Para poder debuggear buscar y poner el siguiente codigo en SystemWebViewEngine en el metodo  private void initWebViewSettings() {
+        // webView.setWebContentsDebuggingEnabled(true);
+        //En Sus primeras lineas
+
 
         installApp();
 
@@ -1157,4 +1162,6 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         super.onDestroy();
         global.setCallbackContextGames(null);
     }
+
+
 }

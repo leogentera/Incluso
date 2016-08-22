@@ -140,6 +140,7 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
     private void initWebViewSettings() {
         webView.setInitialScale(0);
         webView.setVerticalScrollBarEnabled(false);
+        //webView.setWebContentsDebuggingEnabled(true);
         // Enable JavaScript
         final WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);

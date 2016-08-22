@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
@@ -182,9 +183,6 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
                 }catch(Throwable e){
                     callbackContext.error(new JSONObject().put("messageerror", Base64.encode("No se pudo ejecutar la operacion".getBytes(), Base64.DEFAULT)));
                 }
-
-
-
             } catch (Throwable e){
                 callbackContext.error(new JSONObject().put("messageerror", Base64.encode("Aplicación no disponible".getBytes(), Base64.DEFAULT)));
             }
@@ -412,6 +410,13 @@ public class CallToAndroid extends CordovaPlugin implements RestClientListener {
 			final File file = new File(global.getMainActivity().appFolder, "redirectToAndroid.html");
 			Uri uri = Uri.fromFile(file);
 			global.getMainActivity().loadUrl(uri.toString() + "?url=index.html#/" + field);
+			return true;
+		}
+		else if (action.trim().equalsIgnoreCase("requestAndroidId")){
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("key", Settings.Secure.ANDROID_ID);
+
+			callbackContext.success(jsonObject);
 			return true;
 		}
 
