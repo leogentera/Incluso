@@ -253,6 +253,7 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     debugCompile project(path: 'CordovaLib', configuration: 'debug')
     releaseCompile project(path: 'CordovaLib', configuration: 'release')
+    compile files('libs/Tradedoubler-SDK-Android-v1.2.0.jar')
     // SUB-PROJECT DEPENDENCIES END
     compile 'com.facebook.android:facebook-android-sdk:4.1.0'
     compile 'com.google.android.gms:play-services:8.3.0'

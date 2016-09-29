@@ -33,6 +33,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 
+import org.apache.cordova.BuildConfig;
 import org.apache.cordova.CordovaBridge;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPreferences;
@@ -140,7 +141,9 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
     private void initWebViewSettings() {
         webView.setInitialScale(0);
         webView.setVerticalScrollBarEnabled(false);
-        //webView.setWebContentsDebuggingEnabled(true);
+        if (BuildConfig.DEBUG) {
+            webView.setWebContentsDebuggingEnabled(true);
+        }
         // Enable JavaScript
         final WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);

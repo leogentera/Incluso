@@ -25,6 +25,7 @@ public class Global {
     Intent fabricaDeEmprendimientoIntent = null;
     Intent miAvatarIntent = null;
     SharedPreferences sharedPreferences;
+    String userNameLoginFB="";
     boolean stopAvatar=false;
 
     private boolean mIsInForegroundMode=true;
@@ -137,5 +138,13 @@ public class Global {
 
     public void setCallbackContextGames(CallbackContext callbackContextGames) {
         this.callbackContextGames = callbackContextGames;
+    }
+
+    public void setUserNameLoginFB(String userNameLoginFB) {
+        this.userNameLoginFB = userNameLoginFB;
+    }
+
+    public String getUserNameLoginFB() {
+        return userNameLoginFB;
     }
 }

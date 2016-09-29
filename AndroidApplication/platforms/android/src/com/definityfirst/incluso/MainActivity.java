@@ -54,6 +54,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.DatePicker;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import  com.definityfirst.incluso.implementations.Global;
@@ -71,6 +72,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.LoggingBehavior;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.appevents.AppEventsLogger;
@@ -79,18 +81,20 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.tradedoubler.sdk.MobileSDK;
 
 import org.apache.cordova.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class MainActivity extends CordovaActivity implements DownloadFileListener, DatePickerDialog.OnDateSetListener
+public class MainActivity extends CordovaActivity implements DownloadFileListener, DatePickerDialog.OnDateSetListener, RestClientListener
 {
 
     final static int DOWNLOADING_NOTIFICATION=0;
     final static int DOWNLOAD_NOTIFICATION=1;
     final static int DUMMY_GAME=0;
+    final static int VERIFY_ANDROID_USER=0;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	Handler handler;
     SpinnerDialog sp_dialog;
@@ -118,12 +122,14 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     final static public String NOTIFICATION_INTENT="notificationIntent";
     final static public String POST_ID="postid";
 
-    //String appWebResource="";
-    //String appWebResource="http://inclws03.cloudapp.net/content.php";
-
     LoginButton loginButton;
 
     CallbackManager callbackManager;
+
+    String RestfulURL="";
+    RestClientListener listener=null;
+
+    JSONObject FacebookInfo = new JSONObject();
 
     public final  String appPath(){
         File folder=getExternalFilesDir(null);
@@ -138,6 +144,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        startPixel();
         appFolder=appPath();
         deleteOldFiles();
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -149,6 +156,11 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         global.setMainActivity(this);
         handler=new Handler();
         sp_dialog= new SpinnerDialog(this);
+
+        if (BuildConfig.DEBUG) {
+            FacebookSdk.setIsDebugEnabled(true);
+            FacebookSdk.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
+        }
 
       /*  if (checkPlayServices()){
             Intent intent = new Intent(this, RegistrationIntentService.class);
@@ -163,13 +175,14 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
 
 
         installApp();
-
     }
 
     @SuppressLint("NewApi")
     public void loginWithFacebook(final RestClientListener listener, final String url){
-        //loginButton= new LoginButton(this);
-        //loginButton.setReadPermissions("user_friends", "user_birthday", "user_location", "email");
+
+        RestfulURL=url;
+        this.listener=listener;
+
         callbackManager = CallbackManager.Factory.create();
 
         Profile profile=Profile.getCurrentProfile();
@@ -183,13 +196,17 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                         @Override
                         protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
                             getFacebookData(AccessToken.getCurrentAccessToken(), listener, url);
+
                             stopTracking();
                         }
                     };
                     mProfileTracker.startTracking();
                 }
                 else{
+
                     getFacebookData(AccessToken.getCurrentAccessToken(), listener, url);
+
+
                 }
 
 
@@ -205,23 +222,20 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
             public void onError(FacebookException exception) {
                 // App code
                 listener.finishPost("{\"messageerror\":\""+Base64.encodeToString("5000 - Ocurrio un error".getBytes(), Base64.DEFAULT)+"\"}", CallToAndroid.ERROR);
-            //listener.finishPost(, SayHelloPlugin.ERROR);
             }
         });
 
-        /*if (profile==null){
-            loginButton.callOnClick();
-            profile=Profile.getCurrentProfile();
-        }*/
-
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_friends", "user_birthday", "user_location", "email"));
-        //if (profile!=null){
-
-
-       // }
-
-       // LoginManager.getInstance().logOut();
     }
+
+
+    public void verifyFacebookUser( Profile finalProfile){
+        String post = "exists=true&facebookid=" + finalProfile.getId();
+
+        RestClient restClient = new RestClient(MainActivity.this, MainActivity.this, RestClient.POST, "application/x-www-form-urlencoded", post, VERIFY_ANDROID_USER);
+        restClient.execute(this.RestfulURL + "/user");
+    }
+
 
     public void getFacebookData(AccessToken accessToken, final RestClientListener listener, final String url){
         final Profile finalProfile = Profile.getCurrentProfile();
@@ -236,29 +250,31 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                         //Toast.makeText(MainActivity.this, "", Toast.LENGTH_LONG);
                         try {
 
-                            String birthday = "";
-                            String gender = getGender("Male");
-                            String firstName = "";
-                            String lastName = "";
-                            String motherName = "";
+                            FacebookInfo= new JSONObject();
 
                             if (object.has("birthday")) {
-                                birthday = object.getString("birthday");
+                                FacebookInfo.put("birthday", object.getString("birthday"));
                             }
 
                             if (object.has("gender")) {
-                                gender = getGender(object.getString("gender"));
+                                FacebookInfo.put("gender", getGender(object.getString("gender")));
                             }
 
                             if (object.has("first_name")) {
-                                firstName = object.getString("first_name");
+                                FacebookInfo.put("first_name", object.getString("first_name"));
                             }
 
                             if (object.has("last_name")) {
-                                lastName = object.getString("last_name");
+                                FacebookInfo.put("last_name",object.getString("last_name"));
                             }
 
-                            String post = "username=&password=Facebook123!&email=" +
+                            if (object.has("email")) {
+                                FacebookInfo.put("email",object.getString("email"));
+                            }
+
+                            FacebookInfo.put("facebookid",finalProfile.getId());
+
+                            /*String post = "username=&password=Facebook123!&email=" +
                                     object.getString("email") +
                                     "&city=" +
                                     "&country=" +
@@ -270,10 +286,10 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                                     "&facebookid=" + finalProfile.getId() +
                                     "&firstname=" + firstName +
                                     "&lastname=" + lastName +
-                                    "&mothername=";
+                                    "&mothername=";*/
 
-                            RestClient restClient = new RestClient(MainActivity.this, listener, RestClient.POST, "application/x-www-form-urlencoded", post, CallToAndroid.FACEBOOK_REGISTRATION);
-                            restClient.execute(url + "/user");
+
+                            MainActivity.this.verifyFacebookUser(finalProfile);
                             LoginManager.getInstance().logOut();
                         } catch (JSONException e) {
                             LoginManager.getInstance().logOut();
@@ -285,7 +301,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
                             e.printStackTrace();
                         }
 
-                        // LoginManager.getInstance().logOut();
+                         LoginManager.getInstance().logOut();
                     }
                 });
         Bundle parameters = new Bundle();
@@ -310,6 +326,7 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         System.gc();
         AppEventsLogger.activateApp(this);
         global.setmIsInForegroundMode(true);
+        loadUrl("javascript:onResume()");
     }
 
     @Override
@@ -1163,5 +1180,45 @@ public class MainActivity extends CordovaActivity implements DownloadFileListene
         global.setCallbackContextGames(null);
     }
 
+    public void startPixel(){
+        String orgId = "2027824";
+        String event = "352675";
+        boolean testMode = false;
 
+        MobileSDK mobileSDK = MobileSDK.getInstance(this);
+
+        mobileSDK.trackDownloadAsLead(orgId, event, "", testMode, 5, 5);
+    }
+
+
+    @Override
+    public void finishPost(String result, int requestCode) {
+
+        switch(requestCode){
+            case VERIFY_ANDROID_USER:
+                try {
+                    JSONObject jsonObject= new JSONObject(result);
+
+                    if (jsonObject.getString("username").equals("") ){
+                        FacebookInfo.put("is_new", true);
+                        FacebookInfo.put("complete", false);
+                        global.getCallbackContext().success(FacebookInfo.toString());
+                    }
+                    else{
+                        String post= "username="+jsonObject.getString("username")+"&password=Facebook123!";
+                        global.setUserNameLoginFB(jsonObject.getString("username"));
+
+                        RestClient restClient= new RestClient(global.getMainActivity(), listener, RestClient.POST, "application/x-www-form-urlencoded", post, SayHelloPlugin.FACEBOOK_LOGIN );
+                        restClient.execute(RestfulURL+"/authentication");
+                    }
+                } catch (JSONException e) {
+                    try {
+                        global.getCallbackContext().error(new JSONObject(result));
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                break;
+        }
+    }
 }

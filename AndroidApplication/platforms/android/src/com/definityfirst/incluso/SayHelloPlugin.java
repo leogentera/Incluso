@@ -31,6 +31,7 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
 		    throws JSONException {
         Global global=Global.getInstance();
         this.callbackContext=callbackContext;
+		global.setCallbackContext(callbackContext);
 		if (action.equals("sayHello")){
 	        try {
 	        	Context context=this.cordova.getActivity().getApplicationContext(); 
@@ -82,7 +83,6 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
 
 							if (finalJsonObj!=null){
 								if (finalJsonObj.has("messageerror")){
-									//Toast.makeText(global.getMainActivity(), new String(Base64.decode(finalJsonObj.getString("messageerror"), Base64.DEFAULT)), Toast.LENGTH_LONG).show();
                                     callbackContext.error(new JSONObject(result));
 
                                      LoginManager.getInstance().logOut();
@@ -104,24 +104,20 @@ public class SayHelloPlugin extends CordovaPlugin implements RestClientListener 
                 callbackContext.error(new JSONObject("{\"messageerror\":\""+ Base64.encodeToString("Ocurrio un error, no se puso registrar al sistema".getBytes(), Base64.DEFAULT)+"\"}"));
             }
 
-
-
-
-
 			}
 			else if (RequestCode==FACEBOOK_LOGIN){
 				final JSONObject finalJsonObj = jsonObj;
 
 							if (finalJsonObj!=null){
 								if (finalJsonObj.has("messageerror")){
-									//Toast.makeText(global.getMainActivity(), new String(Base64.decode(finalJsonObj.getString("messageerror"), Base64.DEFAULT)), Toast.LENGTH_LONG).show();
 									callbackContext.error(new JSONObject(result));
 									LoginManager.getInstance().logOut();
 								}
 								else{
 									//Everything ok
-									//Toast.makeText(global.getMainActivity(), result, Toast.LENGTH_LONG).show();
-									finalJsonObj.put("is_new", is_new);
+									finalJsonObj.put("is_new", false);
+
+                                    finalJsonObj.put("complete", !global.getUserNameLoginFB().toUpperCase().startsWith("FB"));
                                     callbackContext.success(finalJsonObj.toString());
 									LoginManager.getInstance().logOut();
 								}
